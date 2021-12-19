@@ -1,0 +1,9 @@
+﻿.idea/**
+NumeralSystems.Net/.idea/**
+NumeralSystems.Net/**/obj
+NumeralSystems.Net/**/bin
+NumeralSystems.Net/.idea/.idea.NumeralSystems.Net/.idea/vcs.xml
+NumeralSystems.Net/.idea/.idea.NumeralSystems.Net/.idea/indexLayout.xml
+NumeralSystems.Net/.idea/.idea.NumeralSystems.Net/.idea/encodings.xml
+NumeralSystems.Net/.idea/.idea.NumeralSystems.Net/.idea/avalonia.xml
+NumeralSystems.Net/.idea/.idea.NumeralSystems.Net/.idea/misc.xml

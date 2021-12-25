@@ -18,7 +18,9 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Move to .Net solution folder
-      run: cd NumeralSystems.Net
+      run: cd ./NumeralSystems.Net
+    - name: Echoing current folder  
+      run: ls
     - name: Restore dependencies
       run: dotnet restore
     - name: Build

@@ -7,7 +7,6 @@ namespace NumeralSystems.Net.Utils
     {
         public static List<string> SplitAndKeep(this string s, params string[] delims)
         {
-            // ReSharper disable once HeapView.ObjectAllocation.Evident
             var rows = new List<string>() { s };
             foreach (var delim in delims)
             {

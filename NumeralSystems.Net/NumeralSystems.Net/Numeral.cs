@@ -11,17 +11,29 @@ namespace NumeralSystems.Net
         public bool Positive { get; set; } = true;
         // ReSharper disable once MemberCanBePrivate.Global
         public NumeralSystem<TElement> Base { get; }
-        
-        private IList<TElement> _value;
-        // ReSharper disable once MemberCanBePrivate.Global
-        public IList<TElement> Value
+
+        private IList<TElement> _fractional;
+
+        public IList<TElement> Fractional
         {
-            get => _value;
+            get => _fractional ?? new List<TElement>();
+            set
+            {
+                if (Base.Contains(value))
+                    _fractional = value;
+            }
+        }
+
+        private IList<TElement> _integral;
+        // ReSharper disable once MemberCanBePrivate.Global
+        public IList<TElement> Integral
+        {
+            get => _integral ?? new List<TElement>();
             // ReSharper disable once MemberCanBePrivate.Global
             set
             {
                 if (Base.Contains(value))
-                    _value = value;
+                    _integral = value;
             }
         }
 
@@ -29,37 +41,24 @@ namespace NumeralSystems.Net
         public Numeral(NumeralSystem<TElement> numericSystem)
         {
             Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
-            // ReSharper disable once HeapView.ObjectAllocation.Evident
-            Value = new List<TElement>();
+            Integral = new List<TElement>();
+            Fractional = new List<TElement>();
         }
 
-        public Numeral(NumeralSystem<TElement> numericSystem, IList<TElement> value, bool positive = true)
+        public Numeral(NumeralSystem<TElement> numericSystem, IList<TElement> integral, IList<TElement> fractional = null, bool positive = true)
         {
             Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
-            if (!Base.Contains(value)) throw new Exception("Cannot build a number without a valid representation");
-            Value = value;
+            if (!Base.Contains(integral)) throw new Exception("Cannot build a number without a valid representation");
+            if (!Base.Contains(fractional)) fractional = null;
+            Integral = integral ?? new List<TElement>();
+            Fractional = fractional ?? new List<TElement>();
             Positive = positive;
         }
-
-        /*
-        protected static Numeral<TElement> Unsafe(NumeralSystem<TElement> numericSystem, IList<TElement> value, bool positive = true)
-        {
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            // ReSharper disable once HeapView.ObjectAllocation.Evident
-            var numeric = new Numeral<TElement>(numericSystem);
-            numeric._value = value;
-            numeric.Positive = positive;
-            return numeric;
-        }
-        */
-
-        // ReSharper disable once MemberCanBePrivate.Global
-        public int Length => Value.Count;
 
         public bool TrySetValue(IList<TElement> value)
         {
             if (!Base.Contains(value)) return false;
-            Value = value;
+            Integral = value;
             return true;
         }
 
@@ -67,22 +66,14 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var output = 0;
-                // ReSharper disable once HeapView.ObjectAllocation
-                for (var i = 0; i < Length; i++)
-                {
-                    output += Base.Identity.IndexOf(Value[i]) *
-                              Convert.ToInt32(Math.Pow(Base.Size, (Length - 1 - i)));
-                }
-
-                return Positive ? output : -output;
+                var output = Integral.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToInt32(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).Sum();
+                return Positive ? output : - output;
             }
         }
 
         public Numeral<TDestination> To<TDestination>(NumeralSystem<TDestination> baseSystem) => baseSystem[Integer];
         
-        // ReSharper disable once HeapView.PossibleBoxingAllocation
-        public override string ToString() => Base.StringConverter(Value.ToList(), Positive);
+        public override string ToString() => Base.StringConverter(Integral.ToList(), Positive);
 
     }
 

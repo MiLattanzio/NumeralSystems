@@ -79,5 +79,20 @@ namespace NumeralSystem.Net.NUnit
             var test = base2[1571568556];
             Assert.AreEqual(bin, test.ToString());
         }
+        
+        [Test]
+        public void FloatTest()
+        {
+            // ReSharper disable once HeapView.ObjectAllocation.Evident
+            var random = new Random();
+            for (var i = 0; i < 10; i++)
+            {
+                var value = (float)random.NextDouble();
+                var base10 = Numeral.System.OfBase(10, string.Empty);
+                var decimalValue = base10[value];
+                Console.WriteLine($"Generated {decimalValue} should be equal {value.ToString()}");
+                Assert.AreEqual(decimalValue.ToString(), value.ToString());
+            }
+        }
     }
 }

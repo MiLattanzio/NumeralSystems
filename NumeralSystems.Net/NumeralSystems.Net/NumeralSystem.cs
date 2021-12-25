@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using NumeralSystems.Net.Utils;
 
@@ -62,10 +63,18 @@ namespace NumeralSystems.Net
             get => _negativeSign;
             set
             {
-                // ReSharper disable once HeapView.PossibleBoxingAllocation
-                // ReSharper disable once HeapView.DelegateAllocation
-                // ReSharper disable once HeapView.ClosureAllocation
                 if (null != value && !Identity.Any(x => value.Equals(x.ToString()))) _negativeSign = value;
+            }
+        }
+
+        private string _floatSign = ",";
+
+        public string FloatSign
+        {
+            get => _floatSign;
+            set
+            {
+                if (null != value && !Identity.Any(x => value.Equals(x.ToString()))) _floatSign = value;
             }
         }
 
@@ -76,9 +85,6 @@ namespace NumeralSystems.Net
             get => _separator;
             set
             {
-                // ReSharper disable once HeapView.PossibleBoxingAllocation
-                // ReSharper disable once HeapView.DelegateAllocation
-                // ReSharper disable once HeapView.ClosureAllocation
                 if (null != value && !Identity.Any(x => value.Equals(x.ToString()))) _separator = value;
             }
         }
@@ -88,13 +94,9 @@ namespace NumeralSystems.Net
         {
             if (null == identity || identity.Count == 0) throw new Exception("Identity must contain an element");
             Identity = identity.ToList();
-            // ReSharper disable once HeapView.DelegateAllocation
-            // ReSharper disable once HeapView.PossibleBoxingAllocation
             if (null == separator || Identity.Any(x => separator.Equals(x.ToString())))
                 throw new Exception("Invalid separator");
             Separator = separator;
-            // ReSharper disable once HeapView.DelegateAllocation
-            // ReSharper disable once HeapView.PossibleBoxingAllocation
             StringConverter = (val, pos) =>
                 val.Count == 0
                     ? string.Empty
@@ -119,7 +121,7 @@ namespace NumeralSystems.Net
                     if (outputKeys.Contains(x)) return identities[x];
                     throw new Exception($"Invalid mapping for value '{x}' of '{val}'");
                 });
-                var numeric = new Numeral<TElement>(this, output, positive);
+                var numeric = new Numeral<TElement>(this, output, positive: positive);
                 if (!DoubleCheckParsedValue) return numeric;
                 if (val != numeric.ToString())
                 {
@@ -141,24 +143,46 @@ namespace NumeralSystems.Net
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
         public bool DoubleCheckParsedValue { get; set; }
 
-        // ReSharper disable once HeapView.DelegateAllocation
         public bool Contains(IList<TElement> value) => (null != value && value.ToList().All(Identity.Contains));
+        
+        private List<TElement> PositiveIntegralOf(int input)
+        {
+            var value = Math.Abs(input);
+            IEnumerable<TElement> result = new List<TElement>();
+            while (value != 0)
+            {
+                value = Math.DivRem(value, Size, out var remainder);
+                result = result.Prepend(Identity[remainder]);
+            }
+            return IntIndexer(input, true, result.ToList());
+        }
 
-        public Numeral<TElement> this[int index]
+        public Numeral<TElement> this[int index] => new (this, PositiveIntegralOf(index), positive: index > 0);
+
+        public Numeral<TElement> this[float index] => this[(double)index];
+
+        public Numeral<TElement> this[double index]
         {
             get
             {
-                var positive = index > 0;
-                var value = Math.Abs(index);
-                IEnumerable<TElement> result = new List<TElement>();
-                while (value != 0)
+                var integral = PositiveIntegralOf(Convert.ToInt32(Math.Truncate(Math.Abs(index))));
+                var fractional = new List<TElement>();
+                var d = index - Math.Floor(index);
+                var dSplitString = d.ToString(CultureInfo.InvariantCulture).Split('.');
+                if (dSplitString.Length <= 1) return new(this, integral, fractional, index > 0);
+                var fractionalIntString = dSplitString[1];
+                var maxIntValueLength = int.MaxValue.ToString(CultureInfo.InvariantCulture).Length - 1;
+                fractionalIntString = fractionalIntString[..maxIntValueLength];
+                var frontZeros = 0;
+                foreach (var t in fractionalIntString)
                 {
-                    value = Math.DivRem(value, Size, out var remainder);
-                    result = result.Prepend(Identity[remainder]);
+                    if (t == '0') frontZeros++;
+                    else break;
                 }
-
-                var resultList = IntIndexer(index, positive, result.ToList());
-                return new Numeral<TElement>(this, resultList, positive);
+                var fractionalInt = int.Parse(fractionalIntString);
+                fractional = PositiveIntegralOf(fractionalInt);
+                fractional = Enumerable.Repeat(Identity[0], frontZeros).Concat(fractional).ToList();
+                return new (this, integral, fractional, index > 0);
             }
         }
     }

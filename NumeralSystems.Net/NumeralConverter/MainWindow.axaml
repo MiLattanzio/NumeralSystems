@@ -7,7 +7,7 @@
         Title="Numeral Converter">
     <Window.Content>
         <StackPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <Grid ColumnDefinitions="Auto, Auto" RowDefinitions="Auto, Auto, Auto, Auto">
+            <Grid ColumnDefinitions="Auto, Auto" HorizontalAlignment="Center" RowDefinitions="Auto, Auto, Auto, Auto">
                 <Label Grid.Row="0" Grid.Column="0" Content="Input base"/>
                 <TextBox Name="InputBase" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" />
                 <Label Grid.Row="1" Grid.Column="0" Content="Input number"/>

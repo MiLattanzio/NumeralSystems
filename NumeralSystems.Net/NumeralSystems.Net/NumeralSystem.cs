@@ -15,7 +15,6 @@ namespace NumeralSystems.Net
     {
         public IList<TElement> Identity { get; }
         private Func<string, Numeral<TElement>> _stringParse;
-
         public Func<string, Numeral<TElement>> StringParse
         {
             get => _stringParse;
@@ -25,8 +24,7 @@ namespace NumeralSystems.Net
             }
         }
 
-        private Func<int, bool, List<TElement>, List<TElement>> _intIndexer = (index, positive, suggestedOutput) =>
-            suggestedOutput;
+        private Func<int, bool, List<TElement>, List<TElement>> _intIndexer = (index, positive, suggestedOutput) => suggestedOutput;
 
         public Func<int, bool, List<TElement>, List<TElement>> IntIndexer
         {
@@ -59,13 +57,15 @@ namespace NumeralSystems.Net
         public int Size => Identity.Count;
 
         private string _negativeSign = "-";
-
         public string NegativeSign
         {
             get => _negativeSign;
             set
             {
-                if (null != value) _negativeSign = value;
+                // ReSharper disable once HeapView.PossibleBoxingAllocation
+                // ReSharper disable once HeapView.DelegateAllocation
+                // ReSharper disable once HeapView.ClosureAllocation
+                if (null != value && !Identity.Any(x => value.Equals(x.ToString()))) _negativeSign = value;
             }
         }
 

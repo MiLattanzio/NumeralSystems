@@ -67,14 +67,24 @@ namespace NumeralSystems.Net
             }
         }
 
-        private string _floatSign = ".";
+        private CultureInfo _cultureInfo = CultureInfo.InvariantCulture;
+
+        public CultureInfo CultureInfo
+        {
+            get => _cultureInfo;
+            set
+            {
+                if (null != value) _cultureInfo = value;
+            }
+        }
 
         public string FloatSign
         {
-            get => _floatSign;
+            get => CultureInfo.NumberFormat.NumberDecimalSeparator;
             set
             {
-                if (!string.IsNullOrWhiteSpace(value) && !Identity.Any(x => value.Equals(x.ToString()))) _floatSign = value;
+                if (!string.IsNullOrWhiteSpace(value) && !Identity.Any(x => value.Equals(x.ToString())))
+                    CultureInfo.NumberFormat.NumberDecimalSeparator = value;
             }
         }
 
@@ -179,7 +189,7 @@ namespace NumeralSystems.Net
             {
                 var integral = PositiveIntegralOf(Convert.ToInt32(Math.Truncate(Math.Abs(index))));
                 var fractional = new List<TElement>();
-                var dSplitString = index.ToString(CultureInfo.InvariantCulture).Split('.');
+                var dSplitString = index.ToString(CultureInfo).Split(FloatSign);
                 if (dSplitString.Length <= 1) return new(this, integral, fractional, index > 0);
                 var fractionalIntString = dSplitString[1];
                 var frontZeros = 0;

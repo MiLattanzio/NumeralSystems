@@ -90,9 +90,9 @@ namespace NumeralSystem.Net.NUnit
                 var value = (float)random.NextDouble();
                 var base10 = Numeral.System.OfBase(10, string.Empty);
                 var decimalValue = base10[value];
-                Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(new CultureInfo("en-US"))}");
+                Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(base10.CultureInfo)}");
                 //Keeps failing only on GitHub
-                //Assert.AreEqual(decimalValue.ToString(), value.ToString(new CultureInfo("en-US")));
+                Assert.AreEqual(decimalValue.ToString(), value.ToString(base10.CultureInfo));
                 Assert.AreEqual(decimalValue.Float, value);
                 var decimalValue2 = base10.StringParse(decimalValue.ToString());
                 Assert.AreEqual(decimalValue2.Float, decimalValue.Float);
@@ -106,9 +106,9 @@ namespace NumeralSystem.Net.NUnit
             //0.65348464
             var base10 = Numeral.System.OfBase(10, string.Empty);
             var decimalValue = base10[value];
-            Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(new CultureInfo("en-US"))}");
+            Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(base10.CultureInfo)}");
             //Keeps failing only on GitHub
-            //Assert.AreEqual(decimalValue.ToString(), value.ToString(new CultureInfo("en-US")));
+            Assert.AreEqual(decimalValue.ToString(), value.ToString(base10.CultureInfo));
             Assert.AreEqual(decimalValue.Float, value);
             var decimalValue2 = base10.StringParse(decimalValue.ToString());
             Assert.AreEqual(decimalValue2.Float, decimalValue.Float);

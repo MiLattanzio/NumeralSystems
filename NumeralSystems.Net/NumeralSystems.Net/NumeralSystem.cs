@@ -182,8 +182,6 @@ namespace NumeralSystems.Net
                 var dSplitString = index.ToString(CultureInfo.InvariantCulture).Split('.');
                 if (dSplitString.Length <= 1) return new(this, integral, fractional, index > 0);
                 var fractionalIntString = dSplitString[1];
-                var maxIntValueLength = int.MaxValue.ToString(CultureInfo.InvariantCulture).Length - 1;
-                fractionalIntString = fractionalIntString[..(maxIntValueLength > fractionalIntString.Length ? fractionalIntString.Length : maxIntValueLength)];
                 var frontZeros = 0;
                 foreach (var t in fractionalIntString)
                 {

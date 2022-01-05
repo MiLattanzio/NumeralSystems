@@ -90,12 +90,26 @@ namespace NumeralSystem.Net.NUnit
                 var value = (float)random.NextDouble();
                 var base10 = Numeral.System.OfBase(10, string.Empty);
                 var decimalValue = base10[value];
-                Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(CultureInfo.InvariantCulture)}");
-                Assert.AreEqual(decimalValue.ToString(), value.ToString(CultureInfo.InvariantCulture));
+                Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(new CultureInfo("en-US"))}");
+                Assert.AreEqual(decimalValue.ToString(), value.ToString(new CultureInfo("en-US")));
                 Assert.AreEqual(decimalValue.Float, value);
                 var decimalValue2 = base10.StringParse(decimalValue.ToString());
                 Assert.AreEqual(decimalValue2.Float, decimalValue.Float);
             }
+            
+        }
+        [Test]
+        public void FloatTestSpecific()
+        {
+            var value = 0.65348464999f;
+            //0.65348464
+            var base10 = Numeral.System.OfBase(10, string.Empty);
+            var decimalValue = base10[value];
+            Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(new CultureInfo("en-US"))}");
+            Assert.AreEqual(decimalValue.ToString(), value.ToString(new CultureInfo("en-US")));
+            Assert.AreEqual(decimalValue.Float, value);
+            var decimalValue2 = base10.StringParse(decimalValue.ToString());
+            Assert.AreEqual(decimalValue2.Float, decimalValue.Float);
         }
     }
 }

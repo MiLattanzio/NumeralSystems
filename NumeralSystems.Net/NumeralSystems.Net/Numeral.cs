@@ -64,6 +64,7 @@ namespace NumeralSystems.Net
 
         public int Integer
         {
+            set => Integral = Base[value].Integral;
             get
             {
                 var output = Integral.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToInt32(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).Sum();
@@ -71,9 +72,25 @@ namespace NumeralSystems.Net
             }
         }
 
+        public float Float
+        {
+            get
+            {
+                var integral = Integral.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToInt32(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).Sum();
+                var fractional = Fractional.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToInt32(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).Sum();
+                var frontZeros = 0;
+                foreach (var t in Fractional)
+                {
+                    if (t.Equals(Base.Identity[0])) frontZeros++;
+                    else break;
+                }
+                return float.Parse($"{(Positive ? string.Empty : "-")}{integral},{new string('0', frontZeros)}{fractional}");
+            }
+        }
+
         public Numeral<TDestination> To<TDestination>(NumeralSystem<TDestination> baseSystem) => baseSystem[Integer];
         
-        public override string ToString() => Base.StringConverter(Integral.ToList(), Positive);
+        public override string ToString() => Base.StringConverter((Integral.ToList(), Fractional.ToList(), Positive));
 
     }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using NumeralSystems.Net;
 using NUnit.Framework;
 
@@ -23,7 +24,7 @@ namespace NumeralSystem.Net.NUnit
                 var value = random.Next();
                 var base10 = Numeral.System.OfBase(10, string.Empty);
                 var decimalValue = base10[value];
-                Console.WriteLine($"Generated {decimalValue} should be equal {value.ToString()}");
+                Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString()}");
                 Assert.AreEqual(decimalValue.ToString(), value.ToString());
             }
         }
@@ -39,7 +40,7 @@ namespace NumeralSystem.Net.NUnit
                 var base2 = Numeral.System.OfBase(2, string.Empty);
                 var binaryValue = base2[value];
                 var expected = $"{(value > 0 ? "" : "-" )}{Convert.ToString(Math.Abs(value), 2)}";
-                Console.WriteLine($"Generated {binaryValue} should be equal {expected}");
+                Console.WriteLine($"Generated {binaryValue} should be equal to {expected}");
                 Assert.AreEqual(binaryValue.ToString(), expected);
             }
         }
@@ -83,15 +84,17 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void FloatTest()
         {
-            // ReSharper disable once HeapView.ObjectAllocation.Evident
             var random = new Random();
             for (var i = 0; i < 10; i++)
             {
                 var value = (float)random.NextDouble();
                 var base10 = Numeral.System.OfBase(10, string.Empty);
                 var decimalValue = base10[value];
-                Console.WriteLine($"Generated {decimalValue} should be equal {value.ToString()}");
-                Assert.AreEqual(decimalValue.ToString(), value.ToString());
+                Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(CultureInfo.InvariantCulture)}");
+                Assert.AreEqual(decimalValue.ToString(), value.ToString(CultureInfo.InvariantCulture));
+                Assert.AreEqual(decimalValue.Float, value);
+                var decimalValue2 = base10.StringParse(decimalValue.ToString());
+                Assert.AreEqual(decimalValue2.Float, decimalValue.Float);
             }
         }
     }

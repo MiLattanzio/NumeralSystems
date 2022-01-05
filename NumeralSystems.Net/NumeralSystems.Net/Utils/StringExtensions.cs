@@ -7,6 +7,7 @@ namespace NumeralSystems.Net.Utils
     {
         public static List<string> SplitAndKeep(this string s, params string[] delims)
         {
+            if (string.IsNullOrEmpty(s)) return new();
             var rows = new List<string>() { s };
             foreach (var delim in delims)
             {

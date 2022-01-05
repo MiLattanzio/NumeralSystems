@@ -41,9 +41,9 @@ namespace NumeralSystems.Net
         }
 
         // ReSharper disable once HeapView.PossibleBoxingAllocation
-        private Func<List<TElement>, bool, string> _stringConverter;
+        private Func<(List<TElement> Integral, List<TElement> Fractional, bool IsPositive), string> _stringConverter;
 
-        public Func<List<TElement>, bool, string> StringConverter
+        public Func<(List<TElement> Integral, List<TElement> Fractional, bool IsPositive), string> StringConverter
         {
             get => _stringConverter;
             set
@@ -67,14 +67,14 @@ namespace NumeralSystems.Net
             }
         }
 
-        private string _floatSign = ",";
+        private string _floatSign = ".";
 
         public string FloatSign
         {
             get => _floatSign;
             set
             {
-                if (null != value && !Identity.Any(x => value.Equals(x.ToString()))) _floatSign = value;
+                if (!string.IsNullOrWhiteSpace(value) && !Identity.Any(x => value.Equals(x.ToString()))) _floatSign = value;
             }
         }
 
@@ -97,14 +97,21 @@ namespace NumeralSystems.Net
             if (null == separator || Identity.Any(x => separator.Equals(x.ToString())))
                 throw new Exception("Invalid separator");
             Separator = separator;
-            StringConverter = (val, pos) =>
-                val.Count == 0
-                    ? string.Empty
-                    : $"{(pos ? "" : NegativeSign)}{string.Join(Separator, val.ConvertAll(x => x.ToString()))}";
+            StringConverter = (number) =>
+            {
+                var (integral, fractional, isPositive) = number;
+                integral ??= new();
+                fractional ??= new();
+                var integralString = integral.Count == 0 ? Identity[0].ToString() : string.Join(Separator, integral.ConvertAll(x => x.ToString()));
+                var fractionalString = fractional.Count == 0 ? Identity[0].ToString() : string.Join(Separator, fractional.ConvertAll(x => x.ToString()));
+                if (integral.Count == 0 && fractional.Count == 0)
+                    return integralString;
+                return $"{(isPositive ? string.Empty : NegativeSign)}{integralString}{(fractional.Count == 0 ? string.Empty :$"{FloatSign}{fractionalString}")}";
+            };
             StringParse = (val) =>
             {
                 if (null == val) return new Numeral<TElement>(this, new List<TElement>() { Identity[0] });
-                var input = val.Clone() as string;
+                var input = val.Clone() as string ?? string.Empty;
                 if (string.IsNullOrEmpty(val)) return this[0];
                 var positive = !val.StartsWith(NegativeSign);
                 if (!positive)
@@ -115,13 +122,20 @@ namespace NumeralSystems.Net
                 // ReSharper disable once HeapView.PossibleBoxingAllocation
 
                 var identities = Identity.ToList().ToDictionary(x => x.ToString(), x => x);
-                var outputKeys = input.SplitAndKeep(identities.Keys.ToArray());
-                var output = outputKeys.ConvertAll(x =>
+                var floatString = input.Split(FloatSign);
+                var integralKeys = floatString[0].SplitAndKeep(identities.Keys.ToArray());
+                var integral = integralKeys.ConvertAll(x =>
                 {
-                    if (outputKeys.Contains(x)) return identities[x];
+                    if (integralKeys.Contains(x)) return identities[x];
                     throw new Exception($"Invalid mapping for value '{x}' of '{val}'");
                 });
-                var numeric = new Numeral<TElement>(this, output, positive: positive);
+                var fractionalKeys = (floatString.Length == 1 ? string.Empty : floatString[1]).SplitAndKeep(identities.Keys.ToArray());
+                var fractional = fractionalKeys.ConvertAll(x =>
+                {
+                    if (fractionalKeys.Contains(x)) return identities[x];
+                    throw new Exception($"Invalid mapping for value '{x}' of '{val}'");
+                });
+                var numeric = new Numeral<TElement>(this, integral, fractional, positive: positive);
                 if (!DoubleCheckParsedValue) return numeric;
                 if (val != numeric.ToString())
                 {
@@ -158,21 +172,18 @@ namespace NumeralSystems.Net
         }
 
         public Numeral<TElement> this[int index] => new (this, PositiveIntegralOf(index), positive: index > 0);
-
-        public Numeral<TElement> this[float index] => this[(double)index];
-
-        public Numeral<TElement> this[double index]
+        
+        public Numeral<TElement> this[float index]
         {
             get
             {
                 var integral = PositiveIntegralOf(Convert.ToInt32(Math.Truncate(Math.Abs(index))));
                 var fractional = new List<TElement>();
-                var d = index - Math.Floor(index);
-                var dSplitString = d.ToString(CultureInfo.InvariantCulture).Split('.');
+                var dSplitString = index.ToString(CultureInfo.InvariantCulture).Split('.');
                 if (dSplitString.Length <= 1) return new(this, integral, fractional, index > 0);
                 var fractionalIntString = dSplitString[1];
                 var maxIntValueLength = int.MaxValue.ToString(CultureInfo.InvariantCulture).Length - 1;
-                fractionalIntString = fractionalIntString[..maxIntValueLength];
+                fractionalIntString = fractionalIntString[..(maxIntValueLength > fractionalIntString.Length ? fractionalIntString.Length : maxIntValueLength)];
                 var frontZeros = 0;
                 foreach (var t in fractionalIntString)
                 {

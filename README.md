@@ -44,7 +44,7 @@ A numeral can be converted to:
 - A number of another base
 
 
-    var d = valueC.To(Numeral.OfBase(5));
+    var d = valueC.To(Numeral.System.OfBase(5));
 ### Customizations
 You can create your custom Numeral System by providing:
 

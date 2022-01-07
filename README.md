@@ -87,4 +87,4 @@ Math will be implemented as a separate library with NumeralSystem.Net as a depen
 Incomplete numerals will be implemented in this library as a new feature after the introduction of the math library
 
 ## Nuget
-You can use the library here from [Nuget.org](https://www.nuget.org/packages/NumeralSystems.Net/0.5.0)
+You can use the library here from [Nuget.org](https://www.nuget.org/packages/NumeralSystems.Net)

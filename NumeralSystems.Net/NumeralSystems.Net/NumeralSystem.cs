@@ -57,13 +57,12 @@ namespace NumeralSystems.Net
 
         public int Size => Identity.Count;
 
-        private string _negativeSign = "-";
         public string NegativeSign
         {
-            get => _negativeSign;
+            get => CultureInfo.NumberFormat.NegativeSign;
             set
             {
-                if (null != value && !Identity.Any(x => value.Equals(x.ToString()))) _negativeSign = value;
+                if (null != value && !Identity.Any(x => value.Equals(x.ToString()))) CultureInfo.NumberFormat.NegativeSign = value;
             }
         }
 
@@ -114,7 +113,7 @@ namespace NumeralSystems.Net
                 fractional ??= new();
                 var integralString = integral.Count == 0 ? Identity[0].ToString() : string.Join(Separator, integral.ConvertAll(x => x.ToString()));
                 var fractionalString = fractional.Count == 0 ? Identity[0].ToString() : string.Join(Separator, fractional.ConvertAll(x => x.ToString()));
-                if (integral.Count == 0 && fractional.Count == 0)
+                if ((integral.Count == 0 || integral.All(x => x.Equals(Identity[0]))) && (fractional.Count == 0 || fractional.All(x => x.Equals(Identity[0]))))
                     return integralString;
                 return $"{(isPositive ? string.Empty : NegativeSign)}{integralString}{(fractional.Count == 0 ? string.Empty :$"{FloatSign}{fractionalString}")}";
             };
@@ -163,8 +162,7 @@ namespace NumeralSystems.Net
                 return numeric;
             };
         }
-
-        // ReSharper disable once UnusedAutoPropertyAccessor.Global
+        
         public bool DoubleCheckParsedValue { get; set; }
 
         public bool Contains(IList<TElement> value) => (null != value && value.ToList().All(Identity.Contains));

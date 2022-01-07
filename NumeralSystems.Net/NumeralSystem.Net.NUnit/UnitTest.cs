@@ -99,11 +99,11 @@ namespace NumeralSystem.Net.NUnit
             }
             
         }
+        
         [Test]
         public void FloatTestSpecific()
         {
-            var value = 0.65348464999f;
-            //0.65348464
+            var value = 0.65348464f;
             var base10 = Numeral.System.OfBase(10, string.Empty);
             var decimalValue = base10[value];
             Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(base10.CultureInfo)}");

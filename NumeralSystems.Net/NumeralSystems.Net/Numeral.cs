@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace NumeralSystems.Net
 {
     public class Numeral<TElement>
     {
-        // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
         // ReSharper disable once MemberCanBePrivate.Global
         public bool Positive { get; set; } = true;
         // ReSharper disable once MemberCanBePrivate.Global
@@ -84,11 +84,12 @@ namespace NumeralSystems.Net
                     if (t.Equals(Base.Identity[0])) frontZeros++;
                     else break;
                 }
-                return float.Parse($"{(Positive ? string.Empty : "-")}{integral},{new string('0', frontZeros)}{fractional}");
+                if (integral == 0 && fractional == 0) Positive = true;
+                return float.Parse($"{(Positive ? string.Empty : "-")}{integral}{Base.FloatSign}{new string('0', frontZeros)}{fractional}", Base.CultureInfo);
             }
         }
 
-        public Numeral<TDestination> To<TDestination>(NumeralSystem<TDestination> baseSystem) => baseSystem[Integer];
+        public Numeral<TDestination> To<TDestination>(NumeralSystem<TDestination> baseSystem) => baseSystem[Float];
         
         public override string ToString() => Base.StringConverter((Integral.ToList(), Fractional.ToList(), Positive));
 

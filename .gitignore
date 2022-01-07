@@ -1,4 +1,5 @@
 ﻿.idea/**
+.run/**
 NumeralSystems.Net/.idea/**
 NumeralSystems.Net/**/obj
 NumeralSystems.Net/**/bin

@@ -77,14 +77,5 @@ To test the functionalities you can use NumeralSystem.Net.NUnit
 ### Test
 To test the implementations you can use the UI project NumeralConverter that features a conversion from base to base.
 
-## Missing features
-### Math
-
-Math will be implemented as a separate library with NumeralSystem.Net as a dependency
-
-### Incomplete numeral
-
-Incomplete numerals will be implemented in this library as a new feature after the introduction of the math library
-
 ## Nuget
 You can use the library here from [Nuget.org](https://www.nuget.org/packages/NumeralSystems.Net)

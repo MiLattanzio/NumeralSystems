@@ -1,6 +1,7 @@
 using System;
-using System.Globalization;
+using System.Linq;
 using NumeralSystems.Net;
+using NumeralSystems.Net.Utils;
 using NUnit.Framework;
 
 namespace NumeralSystem.Net.NUnit
@@ -12,8 +13,35 @@ namespace NumeralSystem.Net.NUnit
         {
             
         }
+        
+        [Test]
+        public void Test1()
+        {
+            var numeralSystem = Numeral.System.OfBase(104);
+            var numeral = numeralSystem[75];
+            var result = numeral.ToString();
+            Console.WriteLine(numeralSystem.StringParse(result).Integer);
+            Console.WriteLine(result);
+        }
 
-       
+        [Test]
+        public void RandomAlphanumericTest()
+        {
+            var random = new Random();
+            var r = random.Next(2, 2000);
+            var difficulty = Numeral.System.Characters.Alphanumeric.Count();
+            for (int i = 0; i < r; i++)
+            {
+                var r2 = random.Next(2, difficulty);
+                var r3 = random.Next(2, int.MaxValue);
+                var numerals = Numeral.System.OfBase(r2, Convert.ToString(Numeral.System.Characters.Semicolon), Numeral.System.Characters.Alphanumeric);
+                var numeral = numerals[r3];
+                Assert.AreEqual(r3, numeral.Integer);
+                Assert.AreEqual(numerals.StringParse(numeral.ToString()).ToString(), numeral.ToString());
+            }
+        }
+
+
         [Test]
         public void DecimalTest()
         {
@@ -91,7 +119,6 @@ namespace NumeralSystem.Net.NUnit
                 var base10 = Numeral.System.OfBase(10, string.Empty);
                 var decimalValue = base10[value];
                 Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(base10.CultureInfo)}");
-                //Keeps failing only on GitHub
                 Assert.AreEqual(decimalValue.ToString(), value.ToString(base10.CultureInfo));
                 Assert.AreEqual(decimalValue.Float, value);
                 var decimalValue2 = base10.StringParse(decimalValue.ToString());
@@ -107,7 +134,6 @@ namespace NumeralSystem.Net.NUnit
             var base10 = Numeral.System.OfBase(10, string.Empty);
             var decimalValue = base10[value];
             Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(base10.CultureInfo)}");
-            //Keeps failing only on GitHub
             Assert.AreEqual(decimalValue.ToString(), value.ToString(base10.CultureInfo));
             Assert.AreEqual(decimalValue.Float, value);
             var decimalValue2 = base10.StringParse(decimalValue.ToString());

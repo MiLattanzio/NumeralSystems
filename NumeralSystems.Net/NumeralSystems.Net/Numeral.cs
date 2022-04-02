@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
+using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net
 {
-    public class Numeral<TElement>
+    public class Numeral
     {
         // ReSharper disable once MemberCanBePrivate.Global
         public bool Positive { get; set; } = true;
         // ReSharper disable once MemberCanBePrivate.Global
-        public NumeralSystem<TElement> Base { get; }
+        public NumeralSystem Base { get; }
 
-        private IList<TElement> _fractional;
+        private IList<string> _fractional;
 
-        public IList<TElement> Fractional
+        public IList<string> Fractional
         {
-            get => _fractional ?? new List<TElement>();
+            get => _fractional ?? new List<string>();
             set
             {
                 if (Base.Contains(value))
@@ -24,11 +24,11 @@ namespace NumeralSystems.Net
             }
         }
 
-        private IList<TElement> _integral;
+        private IList<string> _integral;
         // ReSharper disable once MemberCanBePrivate.Global
-        public IList<TElement> Integral
+        public IList<string> Integral
         {
-            get => _integral ?? new List<TElement>();
+            get => _integral ?? new List<string>();
             // ReSharper disable once MemberCanBePrivate.Global
             set
             {
@@ -38,24 +38,24 @@ namespace NumeralSystems.Net
         }
 
         // ReSharper disable once MemberCanBePrivate.Global
-        public Numeral(NumeralSystem<TElement> numericSystem)
+        public Numeral(NumeralSystem numericSystem)
         {
             Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
-            Integral = new List<TElement>();
-            Fractional = new List<TElement>();
+            Integral = new List<string>();
+            Fractional = new List<string>();
         }
 
-        public Numeral(NumeralSystem<TElement> numericSystem, IList<TElement> integral, IList<TElement> fractional = null, bool positive = true)
+        public Numeral(NumeralSystem numericSystem, IList<string> integral, IList<string> fractional = null, bool positive = true)
         {
             Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
             if (!Base.Contains(integral)) throw new Exception("Cannot build a number without a valid representation");
             if (!Base.Contains(fractional)) fractional = null;
-            Integral = integral ?? new List<TElement>();
-            Fractional = fractional ?? new List<TElement>();
+            Integral = integral ?? new List<string>();
+            Fractional = fractional ?? new List<string>();
             Positive = positive;
         }
 
-        public bool TrySetValue(IList<TElement> value)
+        public bool TrySetValue(IList<string> value)
         {
             if (!Base.Contains(value)) return false;
             Integral = value;
@@ -89,28 +89,93 @@ namespace NumeralSystems.Net
             }
         }
 
-        public Numeral<TDestination> To<TDestination>(NumeralSystem<TDestination> baseSystem) => baseSystem[Float];
+        public Numeral To(NumeralSystem baseSystem) => baseSystem[Float];
         
         public override string ToString() => Base.StringConverter((Integral.ToList(), Fractional.ToList(), Positive));
 
-    }
-
-    public static class Numeral
-    {
         public static class System
         {
-            private static List<string> ValueRange(int value) =>
-                Enumerable.Range(0, value)
-                    .ToList()
-                    .ConvertAll(x => x switch {
-                        < 10 => x.ToString(),
-                        >= 10 and <= 35 => ((char)(55 + x)).ToString(),
-                        > 35 and <= 61 => ((char)(61 + x)).ToString(),
-                        // > 61 and <= 157 => ((char)(98 + x)).ToString(),
-                        _ => (x - 148).ToString() 
-                    }).ToList();
-            public static NumeralSystem<string> OfBase(int value, string separator = "") => value <= 0 ? throw new Exception("Invalid base") : new NumeralSystem<string>(new HashSet<string>(ValueRange(value)), value > 157 ? string.IsNullOrEmpty(separator) ? ";" : separator : separator);
+            public static class Characters
+            {
+                public static IEnumerable<char> Numbers = Enumerable.Range(char.MinValue, char.MaxValue + 1)
+                    .Skip(48)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c)).Take(10);
+                
+                public static IEnumerable<char> UpperLetters = Enumerable.Range(char.MinValue, char.MaxValue + 1).Skip(65)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c)).Take(26);
+                
+                public static IEnumerable<char> LowerLetters = Enumerable.Range(char.MinValue, char.MaxValue + 1).Skip(97)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c)).Take(26);
+                
+                public static IEnumerable<char> SymbolsA = Enumerable.Range(char.MinValue, char.MaxValue + 1)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c)).Take(16);
+                
+                public static IEnumerable<char> SymbolsB = Enumerable.Range(char.MinValue, char.MaxValue + 1).Skip(33)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c)).Take(7);
+                
+                public static IEnumerable<char> SymbolsC = Enumerable.Range(char.MinValue, char.MaxValue + 1).Skip(58)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c)).Take(6);
+                
+                public static IEnumerable<char> SymbolsD = Enumerable.Range(char.MinValue, char.MaxValue + 1).Skip(91)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c)).Take(6);
+                
+                public static IEnumerable<char> Others = Enumerable.Range(char.MinValue, char.MaxValue + 1).Skip(123)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c));
+                
+                public static IEnumerable<char> Alphanumeric = Numbers.Concat(UpperLetters).Concat(LowerLetters);
+                
+                public static IEnumerable<char> AlphanumericUpper = Numbers.Concat(UpperLetters);
+                
+                public static IEnumerable<char> AlphanumericLower = Numbers.Concat(LowerLetters);
+                
+                public static IEnumerable<char> AlphanumericSymbols = Alphanumeric.Concat(SymbolsA.Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD));
+
+                public static IEnumerable<char> Printable = Numbers.Concat(UpperLetters).Concat(LowerLetters).Concat(SymbolsA).Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD).Concat(Others);
+
+                public static IEnumerable<char> NotPrintable = Enumerable.Range(char.MinValue, char.MaxValue + 1)
+                    .Select(i => (char)i)
+                    .Where(char.IsControl);
+                
+                public static IEnumerable<char> All = Printable.Concat(NotPrintable);
+
+                public static IEnumerable<char> WhiteSpaces = Printable.Where(ch => string.IsNullOrWhiteSpace(Convert.ToString(ch)));
+
+                public const char Point = '.';
+                
+                public const char Comma = ',';
+                
+                public const char Minus = '-';
+
+                public const char Semicolon = ';';
+
+            }
+
+            private static List<string> ValueRange(int value, IEnumerable<char> identity, Func<char, bool> allow = null)
+            {
+                var enumerable = identity.ToList();
+                if (value <= enumerable.Count()) return enumerable.Where(c => allow?.Invoke(c) ?? true).Take(value).Select(x => Convert.ToString(x)).ToList();
+                return Sequence.IdentityEnumerableOfSize(enumerable.Where(c => allow?.Invoke(c) ?? true).ToList(), value).Select(x => string.Join(string.Empty, x)).ToList();
+            }
+            
+            public static NumeralSystem OfBase(int value, string separator = "", IEnumerable<char> identity = null)
+            {
+                if (null == identity) identity = Characters.AlphanumericSymbols;
+                var enumerable = identity.ToList();
+                if (enumerable.Any(separator.Contains)) throw new ArgumentException("Separator cannot be contained in identity");
+                var range = ValueRange(value, enumerable, (c) => !separator.Contains(c) && c is not Characters.Minus and not Characters.Comma and not Characters.Point) ;
+                var set = new HashSet<string>(range);
+                return new NumeralSystem(set, separator);
+            }
 
         }
+
     }
 }

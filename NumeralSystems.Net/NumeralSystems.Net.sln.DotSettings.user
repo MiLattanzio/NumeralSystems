@@ -1,42 +1,13 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0b7d9ec6_002D84ee_002D4fe3_002D91c0_002Decf4cb01a275/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Tests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=55b342e5_002Da4c2_002D489b_002D8b51_002D7d44cdc3befe/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1 #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests.Test1&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=793e3527_002D99ff_002D4072_002D9dae_002De9d8696a394f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RandomTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests.RandomTest&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=a4e3f755_002Dd588_002D407a_002D93c6_002D1d9b6bc718c2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="FloatTestSpecific" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=acb2a3fa_002Db35e_002D4eb2_002Db60a_002D8677355385c3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="FloatTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b3c098c5_002D2b07_002D4f87_002Dba8b_002Dc23dfc795160/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests.Test1&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests.RandomTest&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cf154d68_002D9e4f_002D42ef_002Dad3e_002Dd8da8e6156ff/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1 #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests.Test1&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String>
+	
+	
+	
+	
+	
+	
+	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ea27cb2c_002D052d_002D4272_002Db0f3_002Dad56e164fc48/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="RandomTest #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests.RandomTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

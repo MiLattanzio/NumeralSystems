@@ -72,12 +72,12 @@ namespace NumeralSystems.Net
             }
         }
 
-        public float Float
+        public double Double
         {
             get
             {
-                var integral = Integral.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToInt32(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).Sum();
-                var fractional = Fractional.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToInt32(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).Sum();
+                var integral = Integral.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToUInt32(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).Sum();
+                var fractional = Fractional.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToUInt32(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).Sum();
                 var frontZeros = 0;
                 foreach (var t in Fractional)
                 {
@@ -85,11 +85,11 @@ namespace NumeralSystems.Net
                     else break;
                 }
                 if (integral == 0 && fractional == 0) Positive = true;
-                return float.Parse($"{(Positive ? string.Empty : "-")}{integral}{Base.FloatSign}{new string('0', frontZeros)}{fractional}", Base.CultureInfo);
+                return ((Positive ? 1 : -1) * (integral + (fractional / Math.Pow(Base.Size, Fractional.Count + frontZeros))));
             }
         }
 
-        public Numeral To(NumeralSystem baseSystem) => baseSystem[Float];
+        public Numeral To(NumeralSystem baseSystem) => baseSystem[Double];
         
         public override string ToString() => Base.StringConverter((Integral.ToList(), Fractional.ToList(), Positive));
 
@@ -97,6 +97,8 @@ namespace NumeralSystems.Net
         {
             public static class Characters
             {
+                
+                
                 public static IEnumerable<char> Numbers = Enumerable.Range(char.MinValue, char.MaxValue + 1)
                     .Skip(48)
                     .Select(i => (char)i)

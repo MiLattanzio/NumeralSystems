@@ -27,16 +27,16 @@ namespace NumeralSystems.Net
             }
         }
 
-        private Func<int, bool, List<string>, List<string>> _intIndexer = (index, positive, suggestedOutput) => suggestedOutput;
-        public Func<int, bool, List<string>, List<string>> IntIndexer
+        private Func<ulong, bool, List<string>, List<string>> _uLongIndexer = (index, positive, suggestedOutput) => suggestedOutput;
+        public Func<ulong, bool, List<string>, List<string>> LongIndexer
         {
-            get => _intIndexer;
+            get => _uLongIndexer;
             // ReSharper disable once UnusedMember.Global
             set
             {
                 if (null != value)
                 {
-                    _intIndexer = value;
+                    _uLongIndexer = value;
                 }
             }
         }
@@ -190,31 +190,41 @@ namespace NumeralSystems.Net
             return (int)Math.Ceiling(Math.Log(number + 1, numeralBase));
         }
         
+        public static long DigitsInBase(long number, int numeralBase)
+        {
+            return (long)Math.Ceiling(Math.Log(number + 1, numeralBase));
+        }
+        
+        public static ulong DigitsInBase(ulong number, int numeralBase)
+        {
+            return (ulong)Math.Ceiling(Math.Log(number + 1, numeralBase));
+        }
+        
         public bool Contains(IList<string> value) => (null != value && value.ToList().All(Identity.Contains));
         
-        private List<string> PositiveIntegralOf(int input)
+        private List<string> PositiveIntegralOf(ulong value)
         {
-            var value = Math.Abs(input);
             IEnumerable<string> result = new List<string>();
             while (value != 0)
             {
-                value = Math.DivRem(value, Size, out var remainder);
+                var remainder = (int)(value % (ulong)Size);
+                value /= (ulong)Size;
                 result = result.Prepend(Identity[remainder]);
             }
-            return IntIndexer(input, true, result.ToList());
+            return LongIndexer(value, true, result.ToList());
         }
 
-        public Numeral this[int index] => new (this, PositiveIntegralOf(index), positive: index > 0);
+        public Numeral this[int index] => new (this, PositiveIntegralOf((ulong)Math.Abs(index)), positive: index > 0);
         
         public Numeral this[double index]
         {
             get
             {
                 var zero = Numeral.System.Characters.Numbers.First();
-                var integral = PositiveIntegralOf(Convert.ToInt32(Math.Truncate(Math.Abs(index))));
+                var integral = PositiveIntegralOf((ulong)Math.Abs(index));
                 var cultureInfo = (CultureInfo)CultureInfo.Clone();
                 cultureInfo.NumberFormat.NumberGroupSeparator = string.Empty;
-                var dSplitString = index.ToString("N16", cultureInfo)
+                var dSplitString = index.ToString("N18", cultureInfo)
                                     .Split(NumberDecimalSeparator)
                                     .ToArray();
                 
@@ -237,14 +247,7 @@ namespace NumeralSystems.Net
                 //remove last backZeros from fractionalIntString 0.0101882201
                 if (backZeros > 0)
                     fractionalIntString = fractionalIntString[..^backZeros];
-                //var shouldAddOne = false;
-                if (fractionalIntString.Length > 9)
-                {
-                    //shouldAddOne = fractionalIntString.Length > 8;
-                    fractionalIntString = fractionalIntString[..9];
-                }
-                var fractionalInt = fractionalIntString.Length == 0 ? 0 : int.Parse(fractionalIntString);
-                //if (shouldAddOne) fractionalInt++;
+                var fractionalInt = fractionalIntString.Length == 0 ? 0 : ulong.Parse(fractionalIntString);
                 var fractional = PositiveIntegralOf(fractionalInt);
                 fractional = Enumerable.Repeat(Identity[0], frontZeros).Concat(fractional).ToList();
                 return new (this, integral, fractional, index > 0);

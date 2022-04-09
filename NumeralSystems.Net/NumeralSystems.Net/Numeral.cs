@@ -76,8 +76,10 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var integral = Integral.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToUInt32(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).Sum();
-                var fractional = Fractional.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToUInt32(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).Sum();
+                var integralEnumerable = Integral.Select((t, i) => (ulong)Base.Identity.IndexOf(t) * Convert.ToUInt64(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).ToList();
+                var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a,c) => a + c) : 0;
+                var fractionalEnumerable = Fractional.Select((t, i) => (ulong)Base.Identity.IndexOf(t) * Convert.ToUInt64(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).ToList();
+                var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a,c) => a + c) : 0;
                 var frontZeros = 0;
                 foreach (var t in Fractional)
                 {
@@ -85,7 +87,7 @@ namespace NumeralSystems.Net
                     else break;
                 }
                 if (integral == 0 && fractional == 0) Positive = true;
-                return ((Positive ? 1 : -1) * (integral + (fractional / Math.Pow(Base.Size, Fractional.Count + frontZeros))));
+                return ((Positive ? 1 : -1) * (integral + (fractional / Math.Pow(10, (int)NumeralSystem.DigitsInBase( fractional, 10) + frontZeros))));
             }
         }
 

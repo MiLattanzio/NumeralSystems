@@ -125,7 +125,7 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void DoubleTestSpecific()
         {
-            var value = 0.8327749328840407d;
+            var value = 0.382989189765876703d;
             var base10 = Numeral.System.OfBase(10, string.Empty);
             var decimalValue = base10[value];
             Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(base10.CultureInfo)}");

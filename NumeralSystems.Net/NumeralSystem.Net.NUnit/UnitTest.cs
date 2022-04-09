@@ -109,7 +109,7 @@ namespace NumeralSystem.Net.NUnit
         public void DoubleTest()
         {
             var random = new Random();
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < 2000; i++)
             {
                 var value = random.NextDouble();
                 var base10 = Numeral.System.OfBase(10, string.Empty);

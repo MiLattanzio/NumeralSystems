@@ -9,11 +9,11 @@ This library is inteded to simplify the creation/usage of numeral systems.
 
 To create a numeral system by It's construnctor you must define an identity of unique elements and a string separator.
 
-    public NumeralSystem(HashSet<TElement> identity, string separator = ";")
+    public NumeralSystem(HashSet<string> identity, string separator = ";")
 
 Otherwhise you can create a numeral system with the identity dimension by calling:
 
-    public static NumeralSystem<string> Numeral.System.OfBase(int value, string separator = "")
+    public static NumeralSystem Numeral.System.OfBase(int value, string separator = "")
 Like so:
 
     var binary = Numeral.System.OfBase(2);
@@ -33,10 +33,14 @@ A numeral can be converted to:
 
 
     var a = valueA.Integer;
-- A float
+- A double
 
 
-    var b = valueB.Float;
+    var b = valueB.Double;
+- A decimal
+
+
+    var d = valueB.Double;
 - A string
     
 
@@ -50,13 +54,13 @@ You can create your custom Numeral System by providing:
 
 - A custom string parser.
     
-    By calling the setter of "Func<string, Numeral<TElement>> StringParse" in the NumeralSystem class
+    By calling the setter of "Func<string, Numeral> StringParse" in the NumeralSystem class
 - The indexing mechanism.
 
-  By calling the setter of "Func<int, bool, List<TElement>, List<TElement>> IntIndexer" in the NumeralSystem class
+  By calling the setter of "Func<int, bool, List<string>, List<string>> IntIndexer" in the NumeralSystem class
 - The string conversion mechanism.
     
-    By calling the setter of "Func<(List<TElement> Integral, List<TElement> Fractional, bool IsPositive), string> StringConverter" in the NumeralSystem class
+    By calling the setter of "Func<(List<string> Integral, List<string> Fractional, bool IsPositive), string> StringConverter" in the NumeralSystem class
 - The negative simbol.
 
   By calling the setter of "string NegativeSign" in the NumeralSystem class

@@ -72,12 +72,35 @@ namespace NumeralSystems.Net
             }
         }
 
-        public float Float
+        public double Double
         {
             get
             {
-                var integral = Integral.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToInt32(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).Sum();
-                var fractional = Fractional.Select((t, i) => Base.Identity.IndexOf(t) * Convert.ToInt32(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).Sum();
+                var zero = Base.Identity[0];
+                var integralEnumerable = Integral.Select((t, i) => (ulong)Base.Identity.IndexOf(t) * Convert.ToUInt64(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).ToList();
+                var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a,c) => a + c) : 0;
+                var fractionalEnumerable = Fractional.Select((t, i) => (ulong)Base.Identity.IndexOf(t) * Convert.ToUInt64(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).ToList();
+                var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a,c) => a + c) : 0;
+                var frontZeros = 0;
+                foreach (var t in Fractional)
+                {
+                    if (t.Equals(zero)) frontZeros++;
+                    else break;
+                }
+                if (integral == 0 && fractional == 0) Positive = true;
+                var resultString = string.Concat((Positive ? string.Empty : "-").Concat(integral.ToString().Concat(Base.NumberDecimalSeparator).Concat(frontZeros > 0 ? new string(zero[0], frontZeros) : string.Empty).Concat(fractional.ToString())));
+                return double.Parse(resultString, Base.CultureInfo);
+            }
+        }
+        
+        public decimal Decimal
+        {
+            get
+            {
+                var integralEnumerable = Integral.Select((t, i) => (ulong)Base.Identity.IndexOf(t) * Convert.ToUInt64(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).ToList();
+                var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a,c) => a + c) : 0;
+                var fractionalEnumerable = Fractional.Select((t, i) => (ulong)Base.Identity.IndexOf(t) * Convert.ToUInt64(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).ToList();
+                var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a,c) => a + c) : 0;
                 var frontZeros = 0;
                 foreach (var t in Fractional)
                 {
@@ -85,11 +108,13 @@ namespace NumeralSystems.Net
                     else break;
                 }
                 if (integral == 0 && fractional == 0) Positive = true;
-                return float.Parse($"{(Positive ? string.Empty : "-")}{integral}{Base.FloatSign}{new string('0', frontZeros)}{fractional}", Base.CultureInfo);
+                var digitsInBase = (int)NumeralSystem.DigitsInBase(fractional, 10) + frontZeros;
+                var div = (decimal)Math.Pow(10, digitsInBase);
+                return ((Positive ? 1 : -1) * (integral + (Decimal.Divide(fractional, div))));
             }
         }
 
-        public Numeral To(NumeralSystem baseSystem) => baseSystem[Float];
+        public Numeral To(NumeralSystem baseSystem) => baseSystem[Double];
         
         public override string ToString() => Base.StringConverter((Integral.ToList(), Fractional.ToList(), Positive));
 
@@ -97,6 +122,8 @@ namespace NumeralSystems.Net
         {
             public static class Characters
             {
+                
+                
                 public static IEnumerable<char> Numbers = Enumerable.Range(char.MinValue, char.MaxValue + 1)
                     .Skip(48)
                     .Select(i => (char)i)
@@ -158,19 +185,20 @@ namespace NumeralSystems.Net
 
             }
 
-            private static List<string> ValueRange(int value, IEnumerable<char> identity, Func<char, bool> allow = null)
+            private static List<string> ValueRange(int value, IEnumerable<string> identity)
             {
                 var enumerable = identity.ToList();
-                if (value <= enumerable.Count()) return enumerable.Where(c => allow?.Invoke(c) ?? true).Take(value).Select(x => Convert.ToString(x)).ToList();
-                return Sequence.IdentityEnumerableOfSize(enumerable.Where(c => allow?.Invoke(c) ?? true).ToList(), value).Select(x => string.Join(string.Empty, x)).ToList();
+                return Sequence.IdentityEnumerableOfSize(enumerable, value).Select(x => string.Join(string.Empty, x)).ToList();
             }
             
-            public static NumeralSystem OfBase(int value, string separator = "", IEnumerable<char> identity = null)
+            public static NumeralSystem OfBase(int value, string separator = "", IEnumerable<string> identity = null)
             {
-                if (null == identity) identity = Characters.AlphanumericSymbols;
-                var enumerable = identity.ToList();
-                if (enumerable.Any(separator.Contains)) throw new ArgumentException("Separator cannot be contained in identity");
-                var range = ValueRange(value, enumerable, (c) => !separator.Contains(c) && c is not Characters.Minus and not Characters.Comma and not Characters.Point) ;
+                IEnumerable<string> enumerable;
+                if (null != identity) enumerable = identity;
+                else enumerable = Characters.All.Select(x => x.ToString());
+                var exceptions = new []{separator, NumeralSystem.BaseSeparator, NumeralSystem.BaseNegativeSign, NumeralSystem.BaseNumberDecimalSeparator};
+                var enumerableSet = new HashSet<string>(enumerable);
+                var range = ValueRange(value, enumerableSet.Where(c => !string.IsNullOrWhiteSpace(c) && !exceptions.Contains(c)));
                 var set = new HashSet<string>(range);
                 return new NumeralSystem(set, separator);
             }

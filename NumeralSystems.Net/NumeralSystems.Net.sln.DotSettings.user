@@ -1,9 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=945faada_002Dd1dc_002D4e27_002Da80e_002Dde3a6cc35b24/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="DoubleTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests.DoubleTest&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests.DoubleTestSpecific&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests.BinaryParseTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Tests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	

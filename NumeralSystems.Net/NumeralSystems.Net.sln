@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{2AE80B7A-EA94-
 		..\.github\workflows\dotnet.yml = ..\.github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumeralSystems.Net.Benchmark", "NumeralSystems.Net.Benchmark\NumeralSystems.Net.Benchmark.csproj", "{8969E7B3-CA48-4068-B667-000133BAAD44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,5 +37,9 @@ Global
 		{04ED0657-9B46-486C-BA12-2F57EBA88F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04ED0657-9B46-486C-BA12-2F57EBA88F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04ED0657-9B46-486C-BA12-2F57EBA88F79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8969E7B3-CA48-4068-B667-000133BAAD44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8969E7B3-CA48-4068-B667-000133BAAD44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8969E7B3-CA48-4068-B667-000133BAAD44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8969E7B3-CA48-4068-B667-000133BAAD44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

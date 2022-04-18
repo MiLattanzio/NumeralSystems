@@ -1,11 +1,17 @@
 using System;
 using System.Linq;
+using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Order;
+using BenchmarkDotNet.Running;
 using NumeralSystems.Net;
 using NumeralSystems.Net.Utils;
 using NUnit.Framework;
 
 namespace NumeralSystem.Net.NUnit
 {
+    [MemoryDiagnoser()]
+    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
+    [RankColumn()]
     public class Tests
     {
         [SetUp]
@@ -14,6 +20,7 @@ namespace NumeralSystem.Net.NUnit
             
         }
 
+        [Benchmark]
         [Test]
         public void RandomAlphanumericTest()
         {
@@ -23,24 +30,18 @@ namespace NumeralSystem.Net.NUnit
             for (int i = 0; i < r; i++)
             {
                 var r2 = random.Next(2, difficulty);
-                var r3 = random.Next(2, int.MaxValue) + random.NextDouble();
-                var numerals = Numeral.System.OfBase(r2, Convert.ToString(Numeral.System.Characters.Semicolon), Numeral.System.Characters.Alphanumeric);
+                var r3 = (decimal)(random.Next(2, int.MaxValue) + random.NextDouble());
+                var numerals = Numeral.System.OfBase(r2, Convert.ToString(Numeral.System.Characters.Semicolon), Numeral.System.Characters.Alphanumeric.Select(x => x.ToString()));
                 var numeral = numerals[r3];
-                try
-                {
-                    Assert.AreEqual(r3, numeral.Double);
-                    Assert.AreEqual(numerals.StringParse(numeral.ToString()).ToString(), numeral.ToString());
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
+                Assert.AreEqual(r3, numeral.Decimal);
+                Assert.AreEqual(numerals.StringParse(numeral.ToString()).ToString(), numeral.ToString());
+                
             }
         }
 
-
+        [Benchmark]
         [Test]
-        public void DecimalTest()
+        public void Base10Test()
         {
             // ReSharper disable once HeapView.ObjectAllocation.Evident
             var random = new Random();
@@ -54,6 +55,7 @@ namespace NumeralSystem.Net.NUnit
             }
         }
 
+        [Benchmark]
         [Test]
         public void BinaryTest()
         {
@@ -70,6 +72,7 @@ namespace NumeralSystem.Net.NUnit
             }
         }
         
+        [Benchmark]
         [Test]
         public void BinaryParseTest()
         {
@@ -93,6 +96,7 @@ namespace NumeralSystem.Net.NUnit
             }
         }
         
+        [Benchmark]
         [Test]
         public void BinaryParseSpecificTest()
         {
@@ -105,11 +109,12 @@ namespace NumeralSystem.Net.NUnit
             Assert.AreEqual(bin, test.ToString());
         }
         
+        [Benchmark]
         [Test]
         public void DoubleTest()
         {
             var random = new Random();
-            for (var i = 0; i < 2000; i++)
+            for (var i = 0; i < 20; i++)
             {
                 var value = random.NextDouble();
                 var base10 = Numeral.System.OfBase(10, string.Empty);
@@ -122,16 +127,48 @@ namespace NumeralSystem.Net.NUnit
             
         }
         
+        [Benchmark]
         [Test]
         public void DoubleTestSpecific()
         {
-            var value = 0.382989189765876703d;
+            double value = 0.382989189765876703;
             var base10 = Numeral.System.OfBase(10, string.Empty);
             var decimalValue = base10[value];
             Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(base10.CultureInfo)}");
             Assert.AreEqual(decimalValue.Double, value);
             var decimalValue2 = base10.StringParse(decimalValue.ToString());
             Assert.AreEqual(decimalValue2.Double, decimalValue.Double);
+        }
+        
+        [Benchmark]
+        [Test]
+        public void DecimalTestSpecific()
+        {
+            decimal value = 0.382989189765876703m;
+            var base10 = Numeral.System.OfBase(10, string.Empty);
+            var decimalValue = base10[value];
+            Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(base10.CultureInfo)}");
+            Assert.AreEqual(decimalValue.Decimal, value);
+            var decimalValue2 = base10.StringParse(decimalValue.ToString());
+            Assert.AreEqual(decimalValue2.Decimal, decimalValue.Decimal);
+        }
+        
+        [Benchmark]
+        [Test]
+        public void DecimalTest()
+        {
+            var random = new Random();
+            for (var i = 0; i < 20; i++)
+            {
+                var value = (decimal)random.NextDouble();
+                var base10 = Numeral.System.OfBase(10, string.Empty);
+                var decimalValue = base10[value];
+                Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString(base10.CultureInfo)}");
+                Assert.AreEqual(decimalValue.Decimal, value);
+                var decimalValue2 = base10.StringParse(decimalValue.ToString());
+                Assert.AreEqual(decimalValue2.Decimal, decimalValue.Decimal);
+            }
+            
         }
     }
 }

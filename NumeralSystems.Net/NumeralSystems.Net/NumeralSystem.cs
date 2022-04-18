@@ -136,12 +136,20 @@ namespace NumeralSystems.Net
                 if (null == val) return new Numeral(this, new List<string> { Identity[0] });
                 var input = val.Clone() as string ?? string.Empty;
                 if (string.IsNullOrEmpty(val)) return this[0];
-                var positive = !val.StartsWith(NegativeSign);
-                if (!positive)
+                var positive = true;
+                if (val.StartsWith(NegativeSign))
                 {
+                    positive = false;
                     var idx = val.IndexOf(NegativeSign, StringComparison.Ordinal);
-                    input = val.Substring(idx + 1);
+                    input = val[(idx + 1)..];
                 }
+                else if (Numeral.System.Characters.Minus.ToString() == NegativeSign && val.StartsWith(Numeral.System.Characters.Minus)) //Wierd patch
+                {
+                    positive = false;
+                    var idx = val.IndexOf(Numeral.System.Characters.Minus, StringComparison.Ordinal);
+                    input = val[(idx + 1)..];
+                }
+                
                 // ReSharper disable once HeapView.PossibleBoxingAllocation
 
                 var floatString = input.Split(NumberDecimalSeparator);
@@ -167,7 +175,7 @@ namespace NumeralSystems.Net
                         throw new Exception($"String '{numeric}' is not equal to input '{val}'");
                     }
 
-                    var f = numeric.Double;
+                    var f = numeric.Decimal;
                 
                     var numericInteger = this[f];
                     if (numericInteger.ToString() != numeric.ToString())
@@ -224,9 +232,47 @@ namespace NumeralSystems.Net
                 var integral = PositiveIntegralOf((ulong)Math.Abs(index));
                 var cultureInfo = (CultureInfo)CultureInfo.Clone();
                 cultureInfo.NumberFormat.NumberGroupSeparator = string.Empty;
-                var dSplitString = index.ToString("N18", cultureInfo)
+                var dSplitString = index.ToString("N19", cultureInfo)
                                     .Split(NumberDecimalSeparator)
                                     .ToArray();
+                
+                if (dSplitString.Length <= 1) return new(this, integral, new List<string>(), index > 0);
+                if (dSplitString[1].All(x => x == zero)) return new(this, integral, new List<string>(), index > 0);
+                var fractionalIntString = dSplitString[1];
+                var frontZeros = 0;
+                foreach (var t in fractionalIntString)
+                {
+                    if (t == zero) frontZeros++;
+                    else break;
+                }
+                //reverse the string
+                var backZeros = 0;
+                foreach (var t in fractionalIntString.Reverse())
+                {
+                    if (t == zero) backZeros++;
+                    else break;
+                }
+                //remove last backZeros from fractionalIntString 0.0101882201
+                if (backZeros > 0)
+                    fractionalIntString = fractionalIntString[..^backZeros];
+                var fractionalInt = fractionalIntString.Length == 0 ? 0 : ulong.Parse(fractionalIntString);
+                var fractional = PositiveIntegralOf(fractionalInt);
+                fractional = Enumerable.Repeat(Identity[0], frontZeros).Concat(fractional).ToList();
+                return new (this, integral, fractional, index > 0);
+            }
+        }
+        
+        public Numeral this[decimal index]
+        {
+            get
+            {
+                var zero = Numeral.System.Characters.Numbers.First();
+                var integral = PositiveIntegralOf((ulong)Math.Abs(index));
+                var cultureInfo = (CultureInfo)CultureInfo.Clone();
+                cultureInfo.NumberFormat.NumberGroupSeparator = string.Empty;
+                var dSplitString = index.ToString("N19", cultureInfo)
+                    .Split(NumberDecimalSeparator)
+                    .ToArray();
                 
                 if (dSplitString.Length <= 1) return new(this, integral, new List<string>(), index > 0);
                 if (dSplitString[1].All(x => x == zero)) return new(this, integral, new List<string>(), index > 0);

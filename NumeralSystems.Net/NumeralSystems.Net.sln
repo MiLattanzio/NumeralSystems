@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{48249091-F
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
 		..\.gitignore = ..\.gitignore
+		LICENSE.txt = LICENSE.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI", "CI", "{2AE80B7A-EA94-4C14-8BA4-8FE6E671ADE9}"

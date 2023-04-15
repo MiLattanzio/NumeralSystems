@@ -81,8 +81,10 @@ namespace NumeralSystems.Net.Benchmark
             {
                 Console.WriteLine($"Generated {numeral} should be equal to {r3}");
                 Assert.AreEqual(r3, numeral.Decimal);
-                var stringParse = NumeralSystem.StringParse(numeral.ToString()); 
+                var stringParse = NumeralSystem.Parse(numeral.ToString()); 
                 Assert.AreEqual(stringParse.ToString(), numeral.ToString());
+                //numeral.Decimal = r3;
+                Assert.AreEqual(r3, numeral.Decimal);
             }
             catch (Exception e)
             {

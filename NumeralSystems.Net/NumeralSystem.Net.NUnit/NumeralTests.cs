@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
@@ -18,6 +19,68 @@ namespace NumeralSystem.Net.NUnit
         public void Setup()
         {
             
+        }
+        
+        [Test]
+        public void ParseTest()
+        {
+            var base10 = Numeral.System.OfBase(10, ";");
+            var zero = base10.Parse(null);
+            Assert.AreEqual(0, zero.Decimal);
+            zero = base10.Parse(string.Empty);
+            Assert.AreEqual(0, zero.Decimal);
+            zero = base10.Parse("0.0");
+            Assert.AreEqual(0, zero.Decimal);
+            var zeroBytes = zero.Bytes;
+            Assert.AreEqual(zeroBytes, Enumerable.Repeat((byte)0, zeroBytes.Length));
+            var minusOne = base10.Parse("-1");
+            Assert.AreEqual(-1, minusOne.Decimal);
+            Assert.Throws(typeof(Exception), () => base10.Parse("a"));
+            Assert.Throws(typeof(Exception), () => base10.Parse("1.a"));
+            Assert.Throws(typeof(Exception), () => new Numeral(base10, new List<int>(){-1}));
+        }
+
+        [Test]
+        public void IndexTest()
+        {
+            var base10 = Numeral.System.OfBase(10, string.Empty);
+            var tmp = base10[0];
+            Assert.AreEqual(0, tmp.Decimal);
+            tmp = base10[0.0];
+            Assert.AreEqual(0, tmp.Decimal);
+            var zeroBytes = tmp.Bytes;
+            Assert.AreEqual(zeroBytes, Enumerable.Repeat((byte)0, zeroBytes.Length));
+            var zeroLong = base10[0L];
+            Assert.AreEqual(0, zeroLong.Decimal);
+            var zeroULong = base10[0UL];
+            Assert.AreEqual(0, zeroULong.Decimal);
+            var zeroUInt = base10[0U];
+            Assert.AreEqual(0, zeroUInt.Decimal);
+            var zeroUShort = base10[(ushort)0];
+            Assert.AreEqual(0, zeroUShort.Decimal);
+            var zeroSByte = base10[(sbyte)0];
+            Assert.AreEqual(0, zeroSByte.Decimal);
+            var zeroByte = base10[(byte)0];
+            Assert.AreEqual(0, zeroByte.Decimal);
+            var zeroShort = base10[(short)0];
+            Assert.AreEqual(0, zeroShort.Decimal);
+            
+            tmp = base10[100000.00000000500];
+            Assert.AreEqual(100000.00000000500, tmp.Decimal);
+            tmp = base10[100000.00000000500d];
+            Assert.AreEqual(100000.00000000500d, tmp.Decimal);
+        }
+
+        [Test]
+        public void CultureInfoTest()
+        {
+            var random = new Random();
+            var value = random.Next();
+            var base10 = Numeral.System.OfBase(10, string.Empty);
+            base10.CultureInfo = null;
+            var decimalValue = base10[value];
+            Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString()}");
+            Assert.AreEqual(decimalValue.ToString(), value.ToString());
         }
 
         [Benchmark]
@@ -43,7 +106,6 @@ namespace NumeralSystem.Net.NUnit
         }
         
         
-
         [Benchmark]
         [Test]
         public void Base10Test()

@@ -1,50 +1,70 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Running;
+using Microsoft.Diagnostics.Runtime.Interop;
 
 namespace NumeralSystems.Net.Benchmark
 {
     class Program
     {
+
+        public static IList<T> SkipNandPutInBack<T>(IList<T> list, int n)
+        {
+            List<T> skippedItems = list.Take(n).ToList();
+            list = list.Skip(n).ToList();
+            ((List<T>)list).AddRange(skippedItems);
+            return list;
+        }
         public static void Main(string[] args)
         {
 #if RELEASE
-            var summary = BenchmarkRunner.Run<Tests>();
+           // var summary = BenchmarkRunner.Run<Tests>();
+           
+           // Convert string into list of chars
+              var dummy = Numeral.System.OfBase(10, string.Empty);
+              var base10 = Numeral.System.OfBase(10, string.Empty);
+              var idx = 0;
+              for (int i = 0; i < 30; i++)
+              {
+                  var current = dummy[i];
+                  var current2 = base10[i];
+                  dummy.Identity = SkipNandPutInBack<string>(dummy.Identity, idx++);
+                  
+                  var number = current.Decimal + current2.Decimal;
+                  Console.WriteLine($"{number}");
+              }
+              
 #else
             //var summary = BenchmarkRunner.Run<Tests>();
-            
-              var test = new Tests();
-              var bases = new int[] { 10, 2, 16, 256, 1028, 4096 };
-              var sw = new System.Diagnostics.Stopwatch();
-              foreach (var b in bases)
-              {
-                  
-                  test.Base = b;
-                  Console.WriteLine($"{b} {sw.ElapsedMilliseconds}");
-                  for (var i = 0; i < 100; i++)
-                  {
-                      sw.Restart();
-                      test.Test();
-                      sw.Stop();
-                      Console.WriteLine($"Base {b} test took {sw.ElapsedMilliseconds} ms");
-                  }
-              }
+            var test = new Tests();
+            var bases = new int[] {10, 2, 16, 256, 1028, 4096};
+            var sw = new System.Diagnostics.Stopwatch();
+            foreach (var b in bases)
+            {
+                test.Base = b;
+                Console.WriteLine($"{b} {sw.ElapsedMilliseconds}");
+                for (var i = 0; i < 100; i++)
+                {
+                    sw.Restart();
+                    test.Test();
+                    sw.Stop();
+                    Console.WriteLine($"Base {b} test took {sw.ElapsedMilliseconds} ms");
+                }
+            }
 #endif
-              
         }
-        
     }
-    
+
     [MemoryDiagnoser()]
     public class Tests
     {
-        
-        [Params(10, 2, 16, 256, 1028, 4096)]
+        [Params(10, 2, 16, 256, 1028, 4096)] 
         public int Base { get; set; }
-        
+
         private NumeralSystem _numeralSystem;
 
         public NumeralSystem NumeralSystem
@@ -56,10 +76,11 @@ namespace NumeralSystems.Net.Benchmark
                     Console.WriteLine($"{_numeralSystem?.Size ?? 0} != {Base}");
                     _numeralSystem = Numeral.System.OfBase(Base, ";");
                 }
+
                 return _numeralSystem;
             }
         }
-        
+
         [GlobalSetup]
         public void Setup()
         {
@@ -74,14 +95,14 @@ namespace NumeralSystems.Net.Benchmark
         public void Test()
         {
             var random = new Random();
-            var r3 = (decimal)(random.Next(2, int.MaxValue) + random.NextDouble());
+            var r3 = (decimal) (random.Next(2, int.MaxValue) + random.NextDouble());
             r3 = random.NextDouble() < 0.5 ? r3 : -r3;
             var numeral = NumeralSystem[r3];
             try
             {
                 Console.WriteLine($"Generated {numeral} should be equal to {r3}");
                 Assert.AreEqual(r3, numeral.Decimal);
-                var stringParse = NumeralSystem.Parse(numeral.ToString()); 
+                var stringParse = NumeralSystem.Parse(numeral.ToString());
                 Assert.AreEqual(stringParse.ToString(), numeral.ToString());
                 //numeral.Decimal = r3;
                 Assert.AreEqual(r3, numeral.Decimal);
@@ -91,115 +112,112 @@ namespace NumeralSystems.Net.Benchmark
                 Console.WriteLine(e);
             }
         }
-        
+    }
 
-            
-        }
-        
-        public static class Assert
+    public static class Assert
+    {
+        public static void AreEqual(double expected, double actual)
         {
-            public static void AreEqual(double expected, double actual)
+            if (Math.Abs(expected - actual) > 1e-10)
             {
-                if (Math.Abs(expected - actual) > 1e-10)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(decimal expected, decimal actual)
+        }
+
+        public static void AreEqual(decimal expected, decimal actual)
+        {
+            if (Math.Abs(expected - actual) > 1e-10m)
             {
-                if (Math.Abs(expected - actual) > 1e-10m)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(int expected, int actual)
+        }
+
+        public static void AreEqual(int expected, int actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(long expected, long actual)
+        }
+
+        public static void AreEqual(long expected, long actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(ulong expected, ulong actual)
+        }
+
+        public static void AreEqual(ulong expected, ulong actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(uint expected, uint actual)
+        }
+
+        public static void AreEqual(uint expected, uint actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(ushort expected, ushort actual)
+        }
+
+        public static void AreEqual(ushort expected, ushort actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(short expected, short actual)
+        }
+
+        public static void AreEqual(short expected, short actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(sbyte expected, sbyte actual)
+        }
+
+        public static void AreEqual(sbyte expected, sbyte actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(byte expected, byte actual)
+        }
+
+        public static void AreEqual(byte expected, byte actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(bool expected, bool actual)
+        }
+
+        public static void AreEqual(bool expected, bool actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(char expected, char actual)
+        }
+
+        public static void AreEqual(char expected, char actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
-            
-            public static void AreEqual(string expected, string actual)
+        }
+
+        public static void AreEqual(string expected, string actual)
+        {
+            if (expected != actual)
             {
-                if (expected != actual)
-                {
-                    throw new Exception($"Expected {expected} but was {actual}");
-                }
+                throw new Exception($"Expected {expected} but was {actual}");
             }
         }
     }
+}

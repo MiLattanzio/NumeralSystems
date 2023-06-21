@@ -5,7 +5,7 @@ namespace NumeralSystems.Net.Utils
 {
     public static class StringExtensions
     {
-        public static List<string> SplitAndKeep(this string s, params string[] delims)
+        public static IEnumerable<string> SplitAndKeep(this string s, params string[] delims)
         {
             if (string.IsNullOrEmpty(s)) return new List<string>();
             var rows = new List<string> { s };

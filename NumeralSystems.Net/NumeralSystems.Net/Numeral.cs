@@ -13,31 +13,31 @@ namespace NumeralSystems.Net
         // ReSharper disable once MemberCanBePrivate.Global
         public NumeralSystem Base { get; }
 
-        private IList<string> _fractional;
+        private IList<int> _fractional;
 
-        public IList<string> Fractional
+        private IList<int> Fractional
         {
-            get => _fractional ?? new List<string>();
+            get => _fractional ?? new List<int>();
             set
             {
-                if (null == value)
-                    _fractional = new List<string>();
+                if (null == value || value.Count == 0)
+                    _fractional = new List<int>();
                 else if (Base.Contains(value))
                     _fractional = value;
             }
         }
 
-        private IList<string> _integral;
+        private IList<int> _integral;
 
         // ReSharper disable once MemberCanBePrivate.Global
-        public IList<string> Integral
+        private IList<int> Integral
         {
-            get => _integral ?? new List<string>();
+            get => _integral ?? new List<int>();
             // ReSharper disable once MemberCanBePrivate.Global
             set
             {
-                if (null == value)
-                    _integral = new List<string>();
+                if (null == value || value.Count == 0)
+                    _integral = new List<int>();
                 else if (Base.Contains(value))
                     _integral = value;
             }
@@ -47,23 +47,31 @@ namespace NumeralSystems.Net
         public Numeral(NumeralSystem numericSystem)
         {
             Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
-            Integral = new List<string>();
-            Fractional = new List<string>();
+            Integral = new List<int>();
+            Fractional = new List<int>();
         }
-
-        public Numeral(NumeralSystem numericSystem, IList<string> integral, IList<string> fractional = null,
-            bool positive = true)
+        
+        public Numeral(NumeralSystem numericSystem, IList<string> integral, IList<string> fractional = null, bool positive = true)
         {
             Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
             if (!Base.Contains(integral)) throw new Exception("Cannot build a number without a valid representation");
             if (!Base.Contains(fractional)) fractional = null;
-            Integral = integral ?? new List<string>();
-            Fractional = fractional ?? new List<string>();
+            Integral = integral?.Select(Base.Identity.IndexOf).ToList();
+            Fractional = fractional?.Select(Base.Identity.IndexOf).ToList();
+            Positive = positive;
+        }
+        
+        public Numeral(NumeralSystem numericSystem, IList<int> integral, IList<int> fractional = null, bool positive = true)
+        {
+            Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
+            if (!Base.Contains(integral)) throw new Exception("Cannot build a number without a valid representation");
+            if (!Base.Contains(fractional)) fractional = null;
+            Integral = integral ?? new List<int>();
+            Fractional = fractional ?? new List<int>();
             Positive = positive;
         }
 
-        public bool TrySetValue(IList<string> value)
-        {
+        public bool TrySetValue(IList<int> value) {
             if (!Base.Contains(value)) return false;
             Integral = value;
             return true;
@@ -74,10 +82,14 @@ namespace NumeralSystems.Net
             get
             {
                 var output = Integral.Select((t, i) =>
-                    Base.Identity.IndexOf(t) * Convert.ToInt32(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).Sum();
+                    t * Convert.ToInt32(Math.Pow(Base.Size, (Integral.Count - 1 - i)))).Sum();
                 return Positive ? output : -output;
             }
-            set => Integral = Base[value].Integral;
+            set
+            {
+                Integral = Base[value].Integral;
+                Fractional = new List<int>();
+            }
         }
 
         public double Double
@@ -86,23 +98,23 @@ namespace NumeralSystems.Net
             {
                 var zero = Base.Identity[0];
                 var integralEnumerable = Integral.Select((t, i) =>
-                        (ulong) Base.Identity.IndexOf(t) *
+                        (ulong) t *
                         Convert.ToUInt64(Math.Pow(Base.Size, (Integral.Count - 1 - i))))
                     .ToList();
                 var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
                 var fractionalEnumerable = Fractional.Select((t, i) =>
-                    (ulong) Base.Identity.IndexOf(t) *
+                    (ulong) t *
                     Convert.ToUInt64(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).ToList();
                 var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
                 var frontZeros = 0;
                 foreach (var t in Fractional)
                 {
-                    if (t.Equals(zero)) frontZeros++;
+                    if (t == 0) frontZeros++;
                     else break;
                 }
 
                 if (integral == 0 && fractional == 0) Positive = true;
-                var resultString = string.Concat((Positive ? string.Empty : "-").Concat(integral.ToString()
+                var resultString = string.Concat((Positive ? string.Empty : Base.NegativeSign).Concat(integral.ToString()
                     .Concat(Base.NumberDecimalSeparator)
                     .Concat(frontZeros > 0 ? new string(zero[0], frontZeros) : string.Empty)
                     .Concat(fractional.ToString())));
@@ -122,18 +134,18 @@ namespace NumeralSystems.Net
             get
             {
                 var integralEnumerable = Integral.Select((t, i) =>
-                        (ulong) Base.Identity.IndexOf(t) *
+                        (ulong) t *
                         Convert.ToUInt64(Math.Pow(Base.Size, (Integral.Count - 1 - i))))
                     .ToList();
                 var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
                 var fractionalEnumerable = Fractional.Select((t, i) =>
-                    (ulong) Base.Identity.IndexOf(t) *
+                    (ulong) t *
                     Convert.ToUInt64(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).ToList();
                 var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
                 var frontZeros = 0;
                 foreach (var t in Fractional)
                 {
-                    if (t.Equals(Base.Identity[0])) frontZeros++;
+                    if (t == 0) frontZeros++;
                     else break;
                 }
 
@@ -156,18 +168,18 @@ namespace NumeralSystems.Net
             get
             {
                 var integralEnumerable = Integral.Select((t, i) =>
-                        (ulong) Base.Identity.IndexOf(t) *
+                        (ulong) t *
                         Convert.ToUInt64(Math.Pow(Base.Size, (Integral.Count - 1 - i))))
                     .ToList();
                 var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
                 var fractionalEnumerable = Fractional.Select((t, i) =>
-                    (ulong) Base.Identity.IndexOf(t) *
+                    (ulong) t *
                     Convert.ToUInt64(Math.Pow(Base.Size, (Fractional.Count - 1 - i)))).ToList();
                 var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
                 var frontZeros = 0;
                 foreach (var t in Fractional)
                 {
-                    if (t.Equals(Base.Identity[0])) frontZeros++;
+                    if (t == 0) frontZeros++;
                     else break;
                 }
 
@@ -187,21 +199,28 @@ namespace NumeralSystems.Net
             }
         }
 
-        public Numeral To(NumeralSystem baseSystem) => baseSystem[Double];
+        public Numeral To(NumeralSystem baseSystem) => baseSystem[Decimal];
 
         public override string ToString()
         {
+            return ToString(true);
+        }
+
+        public string ToString(bool showFloat = true)
+        {
             var integralString = Integral.Count == 0
                 ? Base.Identity[0]
-                : string.Join(Base.Separator, Integral);
+                : string.Join(Base.Separator, Integral.Select(x => Base.Identity[x]));
             var fractionalString = Fractional.Count == 0
                 ? Base.Identity[0]
-                : string.Join(Base.Separator, Fractional);
-            if ((Integral.Count == 0 || Integral.All(x => x.Equals(Base.Identity[0]))) &&
-                (Fractional.Count == 0 || Fractional.All(x => x.Equals(Base.Identity[0]))))
+                : string.Join(Base.Separator, Fractional.Select(x => Base.Identity[x]));
+            if ((Integral.Count == 0 || Integral.All(x => x == 0)) &&
+                (Fractional.Count == 0 || Fractional.All(x => x == 0)))
                 return integralString;
-            return
-                $"{(Positive ? string.Empty : Base.NegativeSign)}{integralString}{(Fractional.Count == 0 ? string.Empty : $"{Base.NumberDecimalSeparator}{fractionalString}")}";
+            if (showFloat)
+                return
+                    $"{(Positive ? string.Empty : Base.NegativeSign)}{integralString}{(Fractional.Count == 0 ? string.Empty : $"{Base.NumberDecimalSeparator}{fractionalString}")}";
+            return $"{(Positive ? string.Empty : Base.NegativeSign)}{integralString}";
         }
 
         public static class System

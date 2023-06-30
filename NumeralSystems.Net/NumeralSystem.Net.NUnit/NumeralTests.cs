@@ -25,18 +25,18 @@ namespace NumeralSystem.Net.NUnit
         public void ParseTest()
         {
             var base10 = Numeral.System.OfBase(10, ";");
-            var zero = base10.Parse(null);
+            Assert.False(base10.TryParse(null, out var zero));
             Assert.AreEqual(0, zero.Decimal);
-            zero = base10.Parse(string.Empty);
+            Assert.False(base10.TryParse(string.Empty, out zero));
             Assert.AreEqual(0, zero.Decimal);
-            zero = base10.Parse("0.0");
+            Assert.True(base10.TryParse("0.0", out zero));
             Assert.AreEqual(0, zero.Decimal);
             var zeroBytes = zero.Bytes;
             Assert.AreEqual(zeroBytes, Enumerable.Repeat((byte)0, zeroBytes.Length));
-            var minusOne = base10.Parse("-1");
+            Assert.True(base10.TryParse("-1", out var minusOne));
             Assert.AreEqual(-1, minusOne.Decimal);
-            Assert.Throws(typeof(Exception), () => base10.Parse("a"));
-            Assert.Throws(typeof(Exception), () => base10.Parse("1.a"));
+            Assert.Throws(typeof(InvalidOperationException), () => base10.Parse("a"));
+            Assert.Throws(typeof(InvalidOperationException), () => base10.Parse("1.a"));
             Assert.Throws(typeof(Exception), () => new Numeral(base10, new List<int>(){-1}));
         }
 

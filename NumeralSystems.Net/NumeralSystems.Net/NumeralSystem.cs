@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -102,6 +102,12 @@ namespace NumeralSystems.Net
             }
         }
         
+        /// <summary>
+        /// If true, the parsing will skip the unknown values during the parsing, otherwise they will be replaced with zeros.
+        /// Example: for base 10, the value 1;1 will be parsed as 11 if true, otherwhise it will be parsed as 101.
+        /// </summary>
+        public bool SkipUnknownValues { get; set; }
+        
         // ReSharper disable once SuggestBaseTypeForParameterInConstructor
         public NumeralSystem(HashSet<string> identity, string separator = null)
         {
@@ -128,6 +134,7 @@ namespace NumeralSystems.Net
 
         public bool TrySplitNumberIndices(string val, out (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional) result)
         {
+            var sucess = true;
             result = (true, new List<int>(), new List<int>(), Identity[0], Identity[0]);
             if (null == val) return false;
             var input = val.Clone() as string ?? string.Empty;
@@ -145,14 +152,22 @@ namespace NumeralSystems.Net
             var integralKeys = !string.IsNullOrEmpty(Separator) && floatString[0].Contains(Separator)
                 ? integralString.Split(Separator).Select(Identity.IndexOf).ToList()
                 : integralString.SplitAndKeep(Identity.ToArray()).Select(Identity.IndexOf).ToList();
+            if (integralKeys.Any(x => x == -1))
+            {
+                sucess = false;
+            }
             var fractionalKeys = !string.IsNullOrEmpty(Separator) && fractionalString.Contains(Separator)
                 ?
                 fractionalString.Split(Separator).Select(Identity.IndexOf).ToList()
                 : string.IsNullOrEmpty(fractionalString)
                     ? new List<int>()
                     : fractionalString.SplitAndKeep(Identity.ToArray()).Select(x => x.Split(Separator)[0]).Select(Identity.IndexOf).ToList();
-            result = (positive, integralKeys, fractionalKeys, integralString, fractionalString);
-            return integralKeys.All(x => x != -1) && fractionalKeys.All(x => x != -1);
+            if (fractionalKeys.Any(x => x == -1))
+            {
+                sucess = false;
+            }
+            result = (positive, integralKeys.Select(x => !SkipUnknownValues && x == -1? 0 : x).Where(x => x != -1).ToList(), fractionalKeys.Select(x => !SkipUnknownValues && x == -1? 0 : x).Where(x => x != -1).ToList(), integralString, fractionalString);
+            return sucess;
         }
 
         public string Encode(string value, string newline = null)

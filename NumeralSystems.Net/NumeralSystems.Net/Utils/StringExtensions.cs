@@ -1,10 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NumeralSystems.Net.Utils
 {
     public static class StringExtensions
     {
+        
+        public static IEnumerable<string> TakeOnly(this string input, params string[] delimiters) => input.SplitAndKeep(delimiters).Where(delimiters.Contains);
+
+        public static IEnumerable<string> Remove(this string input, params string[] delimiters) => input.SplitAndKeep(delimiters).Where(x => !delimiters.Contains(x));
+        
         public static IEnumerable<string> SplitAndKeep(this string input, params string[] delimiters)
         {
             var result = new List<string>();

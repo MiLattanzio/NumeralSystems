@@ -150,9 +150,8 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var output = IntegralIndices.Select((t, i) =>
-                    t * Convert.ToInt32(Math.Pow(Base.Size, (IntegralIndices.Count - 1 - i)))).Sum();
-                return Positive ? output : -output;
+                Base.TryIntegerOf(IntegralIndices, out var result, Positive);
+                return result;
             }
             set
             {
@@ -272,24 +271,8 @@ namespace NumeralSystems.Net
 
         public override string ToString()
         {
-            return ToString(true);
-        }
-
-        public string ToString(bool showFloat = true)
-        {
-            var integralString = IntegralIndices.Count == 0
-                ? Base.Identity[0]
-                : string.Join(Base.Separator, IntegralIndices.Select(x => Base.Identity[x]));
-            var fractionalString = Fractionals.Count == 0
-                ? Base.Identity[0]
-                : string.Join(Base.Separator, FractionalIndices.Select(x => Base.Identity[x]));
-            if ((IntegralIndices.Count == 0 || IntegralIndices.All(x => x == 0)) &&
-                (Fractionals.Count == 0 || FractionalIndices.All(x => x == 0)))
-                return integralString;
-            if (showFloat)
-                return
-                    $"{(Positive ? string.Empty : Base.NegativeSign)}{integralString}{(Fractionals.Count == 0 ? string.Empty : $"{Base.NumberDecimalSeparator}{fractionalString}")}";
-            return $"{(Positive ? string.Empty : Base.NegativeSign)}{integralString}";
+            Base.TryFromIndices(IntegralIndices, FractionalIndices, out var result, Positive);
+            return result;
         }
 
         public static class System

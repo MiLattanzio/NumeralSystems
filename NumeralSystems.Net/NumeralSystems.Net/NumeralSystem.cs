@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using NumeralSystems.Net.Utils;
 
 // ReSharper disable HeapView.ObjectAllocation
@@ -14,6 +15,25 @@ namespace NumeralSystems.Net
     // ReSharper disable once ClassNeverInstantiated.Global
     public class NumeralSystem
     {
+        public static string BaseNegativeSign => BaseCultureInfo.NumberFormat.NegativeSign;
+        public static CultureInfo BaseCultureInfo => CultureInfo.InvariantCulture;
+        public static string BaseNumberDecimalSeparator => BaseCultureInfo.NumberFormat.NumberDecimalSeparator;
+        public static string BaseSeparator => Convert.ToString(Numeral.System.Characters.Semicolon);
+        public static int DigitsInBase(int number, int numeralBase)
+        {
+            return (int) Math.Ceiling(Math.Log(number + 1, numeralBase));
+        }
+
+        public static long DigitsInBase(long number, int numeralBase)
+        {
+            return (long) Math.Ceiling(Math.Log(number + 1, numeralBase));
+        }
+
+        public static ulong DigitsInBase(ulong number, int numeralBase)
+        {
+            return (ulong) Math.Ceiling(Math.Log(number + 1, numeralBase));
+        }
+        
         private IList<string> _identity;
         
         /// <summary>
@@ -36,17 +56,13 @@ namespace NumeralSystems.Net
         /// <para>For example, for base 10 it is 10</para>
         /// </summary>
         public int Size => Identity.Count;
-
-        public static string BaseNegativeSign => BaseCultureInfo.NumberFormat.NegativeSign;
-
+        
         /// <summary>
         /// Negative sign of the numeral system, inherited from the culture info.
         /// <para>For example, for base 10 it is -</para>
         /// </summary>
         public string NegativeSign => CultureInfo.NumberFormat.NegativeSign;
-
-        public static CultureInfo BaseCultureInfo => CultureInfo.InvariantCulture;
-
+        
         private CultureInfo _cultureInfo = BaseCultureInfo;
 
         /// <summary>
@@ -61,16 +77,13 @@ namespace NumeralSystems.Net
                 if (null != value) _cultureInfo = value;
             }
         }
-
-        public static string BaseNumberDecimalSeparator => BaseCultureInfo.NumberFormat.NumberDecimalSeparator;
-
+        
         /// <summary>
         /// Floating point separator of the numeral system, inherited from the culture info.
         /// <para>For example, for base 10 it is .</para>
         /// </summary>
         public string NumberDecimalSeparator => CultureInfo.NumberFormat.NumberDecimalSeparator;
 
-        public static string BaseSeparator => Convert.ToString(Numeral.System.Characters.Semicolon);
         private string _separator;
         
         /// <summary>
@@ -113,21 +126,6 @@ namespace NumeralSystems.Net
             Separator = separator;
         }
 
-        public static int DigitsInBase(int number, int numeralBase)
-        {
-            return (int) Math.Ceiling(Math.Log(number + 1, numeralBase));
-        }
-
-        public static long DigitsInBase(long number, int numeralBase)
-        {
-            return (long) Math.Ceiling(Math.Log(number + 1, numeralBase));
-        }
-
-        public static ulong DigitsInBase(ulong number, int numeralBase)
-        {
-            return (ulong) Math.Ceiling(Math.Log(number + 1, numeralBase));
-        }
-        
         public bool TrySplitNumberIndices(string val, out (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional) result)
         {
             result = (true, new List<int>(), new List<int>(), Identity[0], Identity[0]);
@@ -156,8 +154,48 @@ namespace NumeralSystems.Net
             result = (positive, integralKeys, fractionalKeys, integralString, fractionalString);
             return integralKeys.All(x => x != -1) && fractionalKeys.All(x => x != -1);
         }
+
+        public string Encode(string value, string newline = null)
+        {
+            var buider = new StringBuilder();
+            foreach (int ch in value)
+            {
+                var result = Get(ch);
+                if (!result.positive)
+                {
+                    buider.Append(NegativeSign);
+                    if (!string.IsNullOrEmpty(Separator)) buider.Append(Separator);
+                }
+                buider.Append(string.Join(Separator, result.integralIndices.Select(x => Identity[x])));
+                if (!string.IsNullOrEmpty(Separator)) buider.Append(Separator);
+                if (!string.IsNullOrEmpty(newline)) buider.Append(newline);
+            }
+            return buider.ToString();
+        }
         
-        // ReSharper disable once UnusedMethodReturnValue.Global
+        //TODO: Continue here
+        public string Decode(string value, string newline = null)
+        {
+            var buider = new StringBuilder();
+            var lines = value.Split(newline ?? string.Empty);
+            foreach (var line in lines)
+            {
+                var result = TrySplitNumberIndices(line, out var split);
+                if (!result) continue;
+                var integral = split.integralIndices;
+                var fractional = split.fractionalIndices;
+                var positive = split.positive;
+                var integralString = string.Join(Separator, integral.Select(x => Identity[x]));
+                var fractionalString = string.Join(Separator, fractional.Select(x => Identity[x]));
+                var isFloat = fractional.Any(x => x != 0);
+                var number = isFloat ? $"{integralString}{NumberDecimalSeparator}{fractionalString}" : integralString;
+                if (!positive) number = $"{NegativeSign}{number}";
+                buider.Append(number);
+                if (!string.IsNullOrEmpty(newline)) buider.Append(newline);
+            }
+            return buider.ToString();
+        }
+        
         public bool TryFromIndices(List<int> integralIndices, List<int> fractionalIndices, out string result, bool positive = true)
         {
             var success = true;
@@ -346,5 +384,77 @@ namespace NumeralSystems.Net
         public Numeral this[IList<byte> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
 
         public Numeral this[IEnumerable<int> index] => new(this, index.ToList(), positive: true);
+
+        /// <summary>
+        /// Try to get the integer value of the indices
+        /// </summary>
+        /// <param name="indices">Indices of the digits of the number</param>
+        /// <param name="result">Integer value representing the indices of the digits</param>
+        /// <param name="positive"></param>
+        /// <returns>True If the conversion succeds, False if it was approssimated to the nearest 0 possible value</returns>
+        public bool TryIntegerOf(IList<int> indices, out int result, bool positive = true)
+        {
+            result = 0; 
+            var success = true;
+            var ind = indices;
+            if (null == indices || indices.Count == 0)
+            {
+                ind = new List<int> {0};
+            } else if (!Contains(indices))
+            {
+                ind = indices.Select(x => x < Size && x >= 0 ? x : 0).ToList();
+                success = false;
+            }
+            result = ind.Select((t, i) => t * Convert.ToInt32(Math.Pow(Size, (ind.Count() - 1 - i)))).Sum();
+            result = positive ? result : -result;
+            return success;
+        }
+
+        /// <summary>
+        /// Try to get the integer value of the indices
+        /// </summary>
+        /// <param name="indices">Indices of the digits of the number</param>
+        /// <param name="result">Integer value representing the indices of the digits</param>
+        /// <param name="positive"></param>
+        /// <returns>True If the conversion succeds, False if it was approssimated to the nearest 0 possible value</returns>
+        public bool TryIntegerOf(IList<string> indices, out int result, bool positive = true)
+        {
+            result = 0;
+            IList<string> ind;
+            if (indices.Count == 0)
+            {
+                ind = new List<string> { Identity[0] };
+            }
+            else
+            {
+                if (indices[0] == NegativeSign)
+                {
+                    positive = false;
+                }
+                ind = indices
+                    .SkipWhile(x => x.Equals(NegativeSign))
+                    .TakeWhile(x => !x.Equals(NumberDecimalSeparator))
+                    .Where(x => !x.Equals(Separator))
+                    .ToList();
+            }
+            return TryIntegerOf(ind.Select(x => Identity.IndexOf(x)).ToList(), out result, positive);
+        }
+        
+        public bool TryIntegerOf(string value, out int integral, bool positive = true)
+        {
+            integral = 0;
+            if (string.IsNullOrEmpty(value))
+            {
+                return false;
+            }
+            
+            //var integral = string.Join(string.Empty, value.Split(NumberDecimalSeparator).First());
+            //var test = integral.SplitAndKeep(Identity.ToArray());
+            var success = TrySplitNumberIndices(value, out var result);
+            var test = TryIntegerOf(result.integralIndices, out integral, result.positive | positive);
+            return success && test;
+        }
+        
+        
     }
 }

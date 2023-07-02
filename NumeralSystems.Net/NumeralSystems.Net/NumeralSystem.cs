@@ -172,41 +172,52 @@ namespace NumeralSystems.Net
 
         public string Encode(string value, string newline = null)
         {
-            var buider = new StringBuilder();
-            foreach (int ch in value)
+            var zero = Get(0).integral;
+            var ffLength = Get( char.MaxValue).integral.Length;
+            var elms = (from char ch in value select Get(ch) into result select result.integral).ToList();
+            var maxStringLength = elms.Max(s => s.Length);
+            var remainder = maxStringLength % ffLength;
+            var prependZeroCount = (ffLength - remainder) % ffLength;
+            if (Identity.Contains(newline) || newline == Separator)
             {
-                var result = Get(ch);
-                if (!result.positive)
-                {
-                    buider.Append(NegativeSign);
-                    if (!string.IsNullOrEmpty(Separator)) buider.Append(Separator);
-                }
-                buider.Append(string.Join(Separator, result.integralIndices.Select(x => Identity[x])));
-                if (!string.IsNullOrEmpty(Separator)) buider.Append(Separator);
-                if (!string.IsNullOrEmpty(newline)) buider.Append(newline);
+                newline = null;
             }
-            return buider.ToString();
+
+            if (null == newline)
+            {
+                elms = elms.Select(s =>
+                {
+                    var targetLength = maxStringLength + prependZeroCount;
+                    return string.Concat(Enumerable.Repeat(zero,targetLength - s.Length)) + s;
+                }).ToList(); 
+            } 
+            return string.Join(newline, elms);
         }
         
-        //TODO: Continue here
         public string Decode(string value, string newline = null)
         {
             var buider = new StringBuilder();
-            var lines = value.Split(newline ?? string.Empty);
+            var ffLength = Get( char.MaxValue).integral.Length;
+            List<string> lines;
+            if (null != newline)
+            {
+                lines = value.Split(newline).ToList();
+            }else
+            {
+                lines = new List<string>();
+                for (var i = 0; i < value.Length; i += ffLength)
+                {
+                    var substring = new string(value.Skip(i).Take(ffLength).ToArray());
+                    var parsed = substring.SplitAndKeep(Identity.ToArray()).SkipWhile(x => x == Identity[0]).ToList();
+                    var numeral = string.Join(string.Empty, parsed);
+                    lines.Add(numeral);
+                }
+            }
             foreach (var line in lines)
             {
-                var result = TrySplitNumberIndices(line, out var split);
+                var result = TryIntegerOf(line, out var integer);
                 if (!result) continue;
-                var integral = split.integralIndices;
-                var fractional = split.fractionalIndices;
-                var positive = split.positive;
-                var integralString = string.Join(Separator, integral.Select(x => Identity[x]));
-                var fractionalString = string.Join(Separator, fractional.Select(x => Identity[x]));
-                var isFloat = fractional.Any(x => x != 0);
-                var number = isFloat ? $"{integralString}{NumberDecimalSeparator}{fractionalString}" : integralString;
-                if (!positive) number = $"{NegativeSign}{number}";
-                buider.Append(number);
-                if (!string.IsNullOrEmpty(newline)) buider.Append(newline);
+                buider.Append((char)integer);
             }
             return buider.ToString();
         }
@@ -255,6 +266,7 @@ namespace NumeralSystems.Net
         
         private List<int> IntegralIndicesOf(ulong value)
         {
+            if (value == 0) return new List<int> {0};
             IEnumerable<int> result = new List<int>();
             while (value != 0)
             {
@@ -268,7 +280,7 @@ namespace NumeralSystems.Net
         public (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional) Get(int index)
         {
             var integralIndices = IntegralIndicesOf((ulong) Math.Abs(index));
-            TryFromIndices(integralIndices, null, out var integral, index > 0);
+            TryFromIndices(integralIndices, null, out var integral, index >= 0);
             return (index >= 0, integralIndices, new List<int>(), integral, Identity[0]);
         }
 

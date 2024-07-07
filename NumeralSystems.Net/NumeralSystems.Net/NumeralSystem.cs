@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using NumeralSystems.Net.Utils;
+using Math = System.Math;
+using Convert = System.Convert;
 
 // ReSharper disable HeapView.ObjectAllocation
 // ReSharper disable HeapView.ObjectAllocation.Evident
@@ -34,22 +36,12 @@ namespace NumeralSystems.Net
             return (ulong) Math.Ceiling(Math.Log(number + 1, numeralBase));
         }
         
-        private IList<string> _identity;
-        
         /// <summary>
         /// Identity of the numeral system.
         /// <para>For example, for base 10 it is 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</para>
         /// </summary>
         /// <exception cref="InvalidOperationException"></exception>
-        public IList<string> Identity
-        {
-            get => _identity;
-            set
-            {
-                var val = value?.Distinct().ToList();
-                _identity = val ?? throw new InvalidOperationException("Identity cannot be null");
-            }
-        }
+        public IList<string> Identity { get; }
 
         /// <summary>
         /// Size of the numeral system.
@@ -434,6 +426,24 @@ namespace NumeralSystems.Net
             }
             result = ind.Select((t, i) => t * Convert.ToInt32(Math.Pow(Size, (ind.Count() - 1 - i)))).Sum();
             result = positive ? result : -result;
+            return success;
+        }
+        
+        /// <summary>
+        /// Try to get the char value of the indices
+        /// </summary>
+        /// <param name="indices">Indices of the digits of the number</param>
+        /// <param name="result">Char value representing the indices of the digits</param>
+        /// <param name="positive"></param>
+        /// <returns>True If the conversion succeds, False if it was approssimated to the nearest 0 possible value</returns>
+        public bool TryCharOf(IList<int> indices, out char result, bool positive = true)
+        {
+            result = char.MinValue;
+            var success = TryIntegerOf(indices, out var integer, positive);
+            if (success)
+            {
+                result = (char) integer;
+            }
             return success;
         }
 

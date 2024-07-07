@@ -2,7 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
+using Math = System.Math;
+using Convert = System.Convert;
 
 namespace NumeralSystems.Net
 {
@@ -159,6 +162,20 @@ namespace NumeralSystems.Net
                 FractionalIndices = new List<int>();
             }
         }
+        
+        public char Char
+        {
+            get
+            {
+                Base.TryCharOf(IntegralIndices, out var result, Positive);
+                return result;
+            }
+            set
+            {
+                IntegralIndices = Base[value].IntegralIndices;
+                FractionalIndices = new List<int>();
+            }
+        }
 
         public double Double
         {
@@ -231,6 +248,12 @@ namespace NumeralSystems.Net
             }
         }
 
+        public float Float
+        {
+            get => decimal.ToSingle(Decimal);
+            set => Decimal = Convert.ToDecimal(value);
+        }
+
         public byte[] Bytes
         {
             get
@@ -262,6 +285,20 @@ namespace NumeralSystems.Net
                 // Byte array to int array
                 var intArray = new int[value.Length / 4];
                 Buffer.BlockCopy(value, 0, intArray, 0, value.Length);
+                switch (intArray.Length)
+                {
+                    case < 4:
+                        // Pad so it's 4 int long
+                        Enumerable.Range(0, 4 - intArray.Length).ToList().ForEach(i => intArray = intArray.Append(0).ToArray());
+                        break;
+                    case 4:
+                        break;
+                    case > 4:
+                        // Truncate to 4 int long
+                        //intArray = intArray.Take(4).ToArray();
+                        throw new ArgumentOutOfRangeException(nameof(value), "Byte array is too long");
+                        break;
+                }
                 var result = new decimal(intArray);
                 Decimal = result;
             }

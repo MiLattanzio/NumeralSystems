@@ -6,13 +6,14 @@ using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Order;
 using BenchmarkDotNet.Running;
 using Microsoft.Diagnostics.Runtime.Interop;
+using NumeralSystems.Net.Type.Base;
 
 namespace NumeralSystems.Net.Benchmark
 {
     class Program
     {
 
-        public static IList<T> SkipNandPutInBack<T>(IList<T> list, int n)
+        public static IList<T> SkipCountAndPushBack<T>(IList<T> list, int n)
         {
             List<T> skippedItems = list.Take(n).ToList();
             list = list.Skip(n).ToList();
@@ -21,25 +22,14 @@ namespace NumeralSystems.Net.Benchmark
         }
         public static void Main(string[] args)
         {
-#if RELEASE
-           // var summary = BenchmarkRunner.Run<Tests>();
-           
-           // Convert string into list of chars
-              var dummy = Numeral.System.OfBase(10, string.Empty);
-              var base10 = Numeral.System.OfBase(10, string.Empty);
-              var idx = 0;
-              for (int i = 0; i < 30; i++)
-              {
-                  var current = dummy[i];
-                  var current2 = base10[i];
-                  dummy.Identity = SkipNandPutInBack<string>(dummy.Identity, idx++);
-                  
-                  var number = current.Decimal + current2.Decimal;
-                  Console.WriteLine($"{number}");
-              }
-              
-#else
-            //var summary = BenchmarkRunner.Run<Tests>();
+            var t = new NumeralInt32(2);
+            t.Binary[1] = false;
+            Console.WriteLine(t.Binary[1]);
+            Console.WriteLine(t.ToString());
+            Console.WriteLine(t.Numeral);
+            Console.WriteLine(t.Binary.Select(x => x?"1":"0").Aggregate((x, y) => x + y));
+            if (true) return;
+//var summary = BenchmarkRunner.Run<Tests>();
             var test = new Tests();
             var bases = new int[] {10, 2, 16, 256, 1028, 4096};
             var sw = new System.Diagnostics.Stopwatch();
@@ -55,7 +45,6 @@ namespace NumeralSystems.Net.Benchmark
                     Console.WriteLine($"Base {b} test took {sw.ElapsedMilliseconds} ms");
                 }
             }
-#endif
         }
     }
 

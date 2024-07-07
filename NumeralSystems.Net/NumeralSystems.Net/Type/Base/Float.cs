@@ -12,20 +12,21 @@ namespace NumeralSystems.Net.Type.Base
     {
         public static Float FromBinary(bool[] binary) => new ()
         {
-            Value = Utils.Convert.ToFloat(binary)
+            Value = Convert.ToFloat(binary)
         };
         public virtual float Value { get; set; }
 
         public byte[] Bytes
         {
             get => BitConverter.GetBytes(Value).ToArray();
-            set => Value = BitConverter.ToSingle(value, 0);
+            // ReSharper disable once UnusedMember.Local
+            private set => Value = BitConverter.ToSingle(value, 0);
         }
 
         public bool[] Binary
         {
             get => Convert.ToBoolArray(Value);
-            set => Value = Convert.ToFloat(value);
+            private set => Value = Convert.ToFloat(value);
         } 
         
         public bool this[int index]
@@ -111,12 +112,12 @@ namespace NumeralSystems.Net.Type.Base
         
         public Float And(Float value) => new ()
         {
-            Binary = Utils.Math.And(Binary, value.Binary)
+            Binary = Math.And(Binary, value.Binary)
         };
 
         public IncompleteFloat And(IncompleteFloat value) => new ()
         {
-            Binary = Utils.Math.And(Binary, value.Binary)
+            Binary = Math.And(Binary, value.Binary)
         };
 
         public Float Or(Float value) => new()

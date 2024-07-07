@@ -5,7 +5,7 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public  class Byte : IRegularOperable<IncompleteByte, Byte, byte>
+    public class Byte : IRegularOperable<IncompleteByte, Byte, byte>
     {
         public virtual byte Value { get; set; }
 
@@ -68,7 +68,7 @@ namespace NumeralSystems.Net.Type.Base
         public bool[] Binary
         {
             get => Value.ToBoolArray();
-            set => Value = value.ToByte();
+            internal set => Value = value.ToByte();
         }
         
         public bool this[int index]
@@ -84,7 +84,7 @@ namespace NumeralSystems.Net.Type.Base
         public byte[] Bytes
         {
             get => new[] { Value };
-            set => Value = value.Length == 0 ? (byte)0 : value[0];
+            internal set => Value = value.Length == 0 ? (byte)0 : value[0];
         }
 
 

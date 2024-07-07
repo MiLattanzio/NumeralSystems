@@ -18,13 +18,14 @@ namespace NumeralSystems.Net.Type.Base
         public byte[] Bytes
         {
             get => BitConverter.GetBytes(Value).ToArray();
-            set => Value = BitConverter.ToInt32(value, 0);
+            // ReSharper disable once UnusedMember.Local
+            private set => Value = BitConverter.ToInt32(value, 0);
         }
 
         public bool[] Binary
         {
             get => Convert.ToBoolArray(Value);
-            set => Value = Convert.ToInt(value);
+            private set => Value = Convert.ToInt(value);
         } 
         
         public bool this[int index]

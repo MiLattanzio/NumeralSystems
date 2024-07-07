@@ -20,13 +20,13 @@ namespace NumeralSystems.Net.Type.Base
         public byte[] Bytes
         {
             get => BitConverter.GetBytes(Value);
-            set => Value = BitConverter.ToChar(value, 0);
+            private set => Value = BitConverter.ToChar(value, 0);
         }
 
         public bool[] Binary
         {
             get => Value.ToBoolArray();
-            set => Value = value.ToChar();
+            private set => Value = value.ToChar();
         }
         
         public bool this[int index]

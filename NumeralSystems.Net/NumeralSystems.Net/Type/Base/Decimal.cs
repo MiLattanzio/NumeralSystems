@@ -18,13 +18,14 @@ namespace NumeralSystems.Net.Type.Base
         public byte[] Bytes
         {
             get => Utils.Convert.ToByteArray(Value);
-            set => Value = Utils.Convert.ToDecimal(value);
+            // ReSharper disable once UnusedMember.Local
+            private set => Value = Utils.Convert.ToDecimal(value);
         }
 
         public bool[] Binary
         {
             get => Utils.Convert.ToBoolArray(Value);
-            set => Value = Convert.ToDecimal(value);
+            private set => Value = Convert.ToDecimal(value);
         }
         
         public bool this[int index]

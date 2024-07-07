@@ -13,7 +13,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         public bool?[] Binary
         {
             get => _binary ?? Enumerable.Repeat(false, 8).Select(x => x as bool?).ToArray();
-            set
+            internal set
             {
                 if (null == _binary)
                 {
@@ -49,23 +49,24 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
         public IncompleteByte[] Array
         {
-            get
-            {
-                var result = new List<IncompleteByte>();
-                for (var i = 0; i < (Binary.Length / 8); i++)
-                {
-                    result.Add(new IncompleteByte()
-                    {
-                        Binary = Binary.Skip(i*8).Take(8).ToArray()
-                    });
-                }
-                return result.ToArray();
-            }
-            
+            get => ArrayOf(Binary);
             set
             {
                 Binary = null == value ? new IncompleteByte().Binary : value.Select(x => x.Binary).SelectMany(x => x).ToArray();
             }
+        }
+        
+        public static IncompleteByte[] ArrayOf(bool?[] binary)
+        {
+            var result = new List<IncompleteByte>();
+            for (var i = 0; i < (binary.Length / 8); i++)
+            {
+                result.Add(new IncompleteByte()
+                {
+                    Binary = binary.Skip(i*8).Take(8).ToArray()
+                });
+            }
+            return result.ToArray();
         }
         
     }

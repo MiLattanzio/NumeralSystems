@@ -19,13 +19,14 @@ namespace NumeralSystems.Net.Type.Base
         public byte[] Bytes
         {
             get => BitConverter.GetBytes(Value).ToArray();
-            set => Value = BitConverter.ToDouble(value, 0);
+            // ReSharper disable once UnusedMember.Local
+            private set => Value = BitConverter.ToDouble(value, 0);
         }
 
         public bool[] Binary
         {
             get => Utils.Convert.ToBoolArray(Value);
-            set => Value = Convert.ToDouble(value);
+            private set => Value = Convert.ToDouble(value);
         } 
         
         public bool this[int index]

@@ -17,7 +17,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         public bool?[] Binary
         {
             get => _binary ?? System.Linq.Enumerable.Repeat(false, 8).Select(x => x as bool?).ToArray();
-            set
+            internal set
             {
                 if (null == value)
                 {
@@ -42,24 +42,18 @@ namespace NumeralSystems.Net.Type.Incomplete
 
         public bool IsComplete => Binary.All(x => x != null);
 
-        public Byte this[int value] => new ()
+        public Byte this[int value] => new()
         {
             Binary = ((byte)value).ToBoolArray()
         };
 
-        public IEnumerable<Byte> Bytes => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        private IEnumerable<Byte> Bytes => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
 
         public IEnumerable<Byte> Enumerable => Bytes;
 
-        public IncompleteByteArray ByteArray => new()
-        {
-            Binary = Binary
-        };
+        public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
 
-        public IncompleteByteArray ToByteArray() => new()
-        {
-            Binary = Binary.Select(x => x).ToArray()
-        };
+        public IncompleteByte[] ToByteArray() => IncompleteByteArray.ArrayOf(Binary.Select(x => x).ToArray());
 
         public string ToString(string missingSeparator = "*") => string.Join(string.Empty, Binary.Group(8).Select(x => x.Reverse().ToArray()).SelectMany(x => x).Select(x => null == x ? missingSeparator : (x.Value ? 1 : 0).ToString()));
 

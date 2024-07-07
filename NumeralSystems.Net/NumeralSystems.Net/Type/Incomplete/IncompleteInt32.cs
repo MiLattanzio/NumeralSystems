@@ -43,13 +43,9 @@ namespace NumeralSystems.Net.Type.Incomplete
         
         public IEnumerable<Int32> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
 
-        public IncompleteByteArray ByteArray => new() {
-            Binary = Binary
-        };
+        public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
         
-        public IncompleteByteArray ToByteArray() => new () {
-            Binary = Binary.Select(x => x).ToArray()
-        };
+        public IncompleteByte[] ToByteArray() => IncompleteByteArray.ArrayOf(Binary.Select(x => x).ToArray());
 
         public override string ToString() => ToString("*");
 

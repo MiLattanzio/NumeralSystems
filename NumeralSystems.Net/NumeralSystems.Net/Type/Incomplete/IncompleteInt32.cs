@@ -81,6 +81,21 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
+        public IncompleteInt32 Not() => new()
+        {
+            Binary = Binary.Select(x => !x).ToArray()
+        };
+
+        public IncompleteInt32 Xor(IncompleteInt32 other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
+        public IncompleteInt32 Xor(Int32 other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
         public IncompleteInt32 And(IncompleteInt32 other) => new() {
             Binary = Binary.And(other.Binary)
         };

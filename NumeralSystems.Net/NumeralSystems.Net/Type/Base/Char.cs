@@ -2,6 +2,7 @@
 using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Incomplete;
+using NumeralSystems.Net.Utils;
 using Math = NumeralSystems.Net.Utils.Math;
 
 
@@ -11,7 +12,7 @@ namespace NumeralSystems.Net.Type.Base
     {
         public static Char FromBinary(bool[] binary) => new ()
         {
-            Value = Utils.Convert.ToChar(binary)
+            Value = binary.ToChar()
         };
         
         public virtual char Value { get; set; }
@@ -24,8 +25,8 @@ namespace NumeralSystems.Net.Type.Base
 
         public bool[] Binary
         {
-            get => Utils.Convert.ToBoolArray(Value);
-            set => Value = Utils.Convert.ToChar(value);
+            get => Value.ToBoolArray();
+            set => Value = value.ToChar();
         }
         
         public bool this[int index]
@@ -54,11 +55,11 @@ namespace NumeralSystems.Net.Type.Base
 
         public bool ReverseAnd(Char right, out IncompleteChar result)
         {
-            if (Math.CanReverseAnd(Binary, right.Binary))
+            if (Binary.CanReverseAnd(right.Binary))
             {
                 result = new ()
                 {
-                    Binary = Math.ReverseAnd(Binary, right.Binary)
+                    Binary = Binary.ReverseAnd(right.Binary)
                 };
                 return true;
             }
@@ -68,11 +69,11 @@ namespace NumeralSystems.Net.Type.Base
 
         public bool ReverseAnd(IncompleteChar right, out IncompleteChar result)
         {
-            if (Math.CanReverseAnd(Binary, right.Binary))
+            if (Binary.CanReverseAnd(right.Binary))
             {
                 result = new ()
                 {
-                    Binary = Math.ReverseAnd(Binary, right.Binary)
+                    Binary = Binary.ReverseAnd(right.Binary)
                 };
                 return true;
             }
@@ -82,11 +83,11 @@ namespace NumeralSystems.Net.Type.Base
 
         public bool ReverseOr(Char right, out IncompleteChar result)
         {
-            if (Math.CanReverseOr(Binary, right.Binary))
+            if (Binary.CanReverseOr(right.Binary))
             {
                 result = new ()
                 {
-                    Binary = Math.ReverseOr(Binary, right.Binary)
+                    Binary = Binary.ReverseOr(right.Binary)
                 };
                 return true;
             }
@@ -96,11 +97,11 @@ namespace NumeralSystems.Net.Type.Base
 
         public bool ReverseOr(IncompleteChar right, out IncompleteChar result)
         {
-            if (Math.CanReverseOr(Binary, right.Binary))
+            if (Binary.CanReverseOr(right.Binary))
             {
                 result = new ()
                 {
-                    Binary = Math.ReverseOr(Binary, right.Binary)
+                    Binary = Binary.ReverseOr(right.Binary)
                 };
                 return true;
             }
@@ -109,25 +110,40 @@ namespace NumeralSystems.Net.Type.Base
         }
         
         public override string ToString() => string.Join(string.Empty, Binary.Reverse().Select(x => x ? "1" : "0"));
-        
+
+        public Char Not() => new ()
+        {
+            Binary = Binary.Not()
+        };
+
+        public Char Xor(Char value) => new()
+        {
+            Binary = Binary.Xor(value.Binary)
+        };
+
+        public IncompleteChar Xor(IncompleteChar value) => new()
+        {
+            Binary = Binary.Xor(value.Binary)
+        };
+
         public Char And(Char value) => new()
         {
-            Binary = Math.And(Binary, value.Binary)
+            Binary = Binary.And(value.Binary)
         };
 
         public IncompleteChar And(IncompleteChar value) => new()
         {
-            Binary = Math.And(Binary, value.Binary)
+            Binary = Binary.And(value.Binary)
         };
 
         public Char Or(Char value) => new()
         {
-            Binary = Math.Or(Binary, value.Binary)
+            Binary = Binary.Or(value.Binary)
         };
 
         public IncompleteChar Or(IncompleteChar value) => new()
         {
-            Binary = Math.Or(Binary, value.Binary)
+            Binary = Binary.Or(value.Binary)
         };
 
         public IncompleteChar Incomplete() => new()

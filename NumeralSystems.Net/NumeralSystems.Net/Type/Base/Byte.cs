@@ -5,12 +5,11 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public  class Byte : IRegularOperable<IncompleteByte, NumeralByte, byte>
+    public  class Byte : IRegularOperable<IncompleteByte, Byte, byte>
     {
-
         public virtual byte Value { get; set; }
 
-        public bool ReverseAnd(NumeralByte right, out IncompleteByte result) 
+        public bool ReverseAnd(Byte right, out IncompleteByte result) 
         {
             if (Binary.CanReverseAnd(right.Binary))
             {
@@ -38,7 +37,7 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
-        public bool ReverseOr(NumeralByte right, out IncompleteByte result)
+        public bool ReverseOr(Byte right, out IncompleteByte result)
         {
             if (Binary.CanReverseOr(right.Binary))
             {
@@ -88,16 +87,36 @@ namespace NumeralSystems.Net.Type.Base
             set => Value = value.Length == 0 ? (byte)0 : value[0];
         }
 
-        public static NumeralByte FromBinary(bool[] binary) => new(binary.ToByte());
 
-        public NumeralByte And(NumeralByte value) => FromBinary(Binary.And(value.Binary));
+        public Byte Not() => new()
+        {
+            Binary = Binary.Not()
+        };
+
+        public Byte Xor(Byte value) => new()
+        {
+            Binary = Binary.Xor(value.Binary)
+        };
+
+        public IncompleteByte Xor(IncompleteByte value) => new()
+        {
+            Binary = Binary.Xor(value.Binary)
+        };
+
+        public Byte And(Byte value) => new()
+        {
+            Binary = Binary.And(value.Binary)
+        };
 
         public IncompleteByte And(IncompleteByte value) => new ()
         {
             Binary = Binary.And(value.Binary)
         };
 
-        public NumeralByte Or(NumeralByte value) => FromBinary(Binary.Or(value.Binary));
+        public Byte Or(Byte value) => new()
+        {
+            Binary = Binary.Or(value.Binary)
+        };
 
         public IncompleteByte Or(IncompleteByte value) => new()
         {

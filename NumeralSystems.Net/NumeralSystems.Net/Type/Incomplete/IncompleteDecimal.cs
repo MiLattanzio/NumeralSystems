@@ -78,6 +78,21 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
+        public IncompleteDecimal Not() => new()
+        {
+            Binary = Binary.Not()
+        };
+
+        public IncompleteDecimal Xor(IncompleteDecimal other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
+        public IncompleteDecimal Xor(Decimal other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
         public IncompleteDecimal And(IncompleteDecimal other) => new() {
             Binary = Binary.And(other.Binary)
         };

@@ -77,6 +77,21 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
+        public IncompleteDouble Not() => new()
+        {
+            Binary = Binary.Not()
+        };
+
+        public IncompleteDouble Xor(IncompleteDouble other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
+        public IncompleteDouble Xor(Double other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
         public IncompleteDouble And(IncompleteDouble other) => new() {
             Binary = Binary.And(other.Binary)
         };

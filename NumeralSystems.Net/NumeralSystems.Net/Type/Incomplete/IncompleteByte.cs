@@ -10,7 +10,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteByte : IIRregularOperable<IncompleteByte, NumeralByte, byte>
+    public class IncompleteByte : IIRregularOperable<IncompleteByte, Byte, byte>
     {
         private bool?[] _binary;
 
@@ -42,11 +42,14 @@ namespace NumeralSystems.Net.Type.Incomplete
 
         public bool IsComplete => Binary.All(x => x != null);
 
-        public NumeralByte this[int value] => Byte.FromBinary(((byte)value).ToBoolArray());
+        public Byte this[int value] => new ()
+        {
+            Binary = ((byte)value).ToBoolArray()
+        };
 
-        public IEnumerable<NumeralByte> Bytes => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<Byte> Bytes => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
 
-        public IEnumerable<NumeralByte> Enumerable => Bytes;
+        public IEnumerable<Byte> Enumerable => Bytes;
 
         public IncompleteByteArray ByteArray => new()
         {
@@ -60,12 +63,12 @@ namespace NumeralSystems.Net.Type.Incomplete
 
         public string ToString(string missingSeparator = "*") => string.Join(string.Empty, Binary.Group(8).Select(x => x.Reverse().ToArray()).SelectMany(x => x).Select(x => null == x ? missingSeparator : (x.Value ? 1 : 0).ToString()));
 
-        public IncompleteByte Or(NumeralByte other)=> new()
+        public IncompleteByte Or(Byte other)=> new()
         {
             Binary = Binary.Or(other.Binary)
         };
 
-        public bool Contains(NumeralByte value)
+        public bool Contains(Byte value)
         {
             var bytes = Binary;
             var bytesBinary = value.Binary;
@@ -87,12 +90,27 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
+        public IncompleteByte Not() => new()
+        {
+            Binary = Binary.Not()
+        };
+
+        public IncompleteByte Xor(IncompleteByte other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
+        public IncompleteByte Xor(Byte other) => new ()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
         public IncompleteByte And(IncompleteByte other) => new()
         {
             Binary = Binary.And(other.Binary)
         };
 
-        public IncompleteByte And(NumeralByte other) => new()
+        public IncompleteByte And(Byte other) => new()
         {
             Binary = Binary.And(other.Binary)
         };
@@ -102,7 +120,7 @@ namespace NumeralSystems.Net.Type.Incomplete
             Binary = Binary.Or(other.Binary)
         };
 
-        public bool ReverseAnd(NumeralByte right, out IncompleteByte result)
+        public bool ReverseAnd(Byte right, out IncompleteByte result)
         {
             if (!Binary.CanReverseAnd(right.Binary))
             {
@@ -130,7 +148,7 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
-        public bool ReverseOr(NumeralByte right, out IncompleteByte result)
+        public bool ReverseOr(Byte right, out IncompleteByte result)
         {
             if (!Binary.CanReverseOr(right.Binary))
             {

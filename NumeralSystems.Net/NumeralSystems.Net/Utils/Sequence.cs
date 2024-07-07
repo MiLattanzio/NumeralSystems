@@ -38,7 +38,6 @@ namespace NumeralSystems.Net.Utils
         
         public static int PermutationsCount(int identity, int size, bool repetition = false)
             => repetition ? System.Convert.ToInt32(System.Math.Pow(identity, size)) : (Factorial(identity) / Factorial(identity -size));
-        
         public static int CombinationsCount(int identity, int size, bool repetition = false)
             => repetition ? ((Factorial(identity + size - 1))/(Factorial(size)*(identity-1))) : (Factorial(identity) / ((Factorial(identity))/(Factorial(size)*(identity-1))));
         

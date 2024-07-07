@@ -32,14 +32,17 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
         public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null));
         public int Size => Binary.Length / 8;
-        public NumeralByte[] this[int value]{
+        public Byte[] this[int value]{
             get
             {
                 var resultBinary = value.ToBoolArray();
-                var result = new List<NumeralByte>();
+                var result = new List<Byte>();
                 for (var i = 0; i < (resultBinary.Length / 8); i++)
                 {
-                    result.Add(Byte.FromBinary(resultBinary.Skip(i * 8).Take(8).ToArray()));
+                    result.Add(new Byte()
+                    {
+                        Binary = resultBinary.Skip(i * 8).Take(8).ToArray()
+                    });
                 }
                 return result.ToArray();
             }

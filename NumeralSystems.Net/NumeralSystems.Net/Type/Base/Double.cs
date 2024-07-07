@@ -94,6 +94,21 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
+        public Double Not() => new()
+        {
+            Binary = Math.Not(Binary)
+        };
+
+        public Double Xor(Double value) => new()
+        {
+            Binary = Math.Xor(Binary, value.Binary)
+        };
+
+        public IncompleteDouble Xor(IncompleteDouble value) => new()
+        {
+            Binary = Math.Xor(Binary, value.Binary)
+        };
+        
         public Double And(Double value) => new()
         {
             Binary = Math.And(Binary, value.Binary)

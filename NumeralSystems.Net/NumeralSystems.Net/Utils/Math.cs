@@ -1,10 +1,88 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace NumeralSystems.Net.Utils
 {
-    public static class Math
+    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
+    internal static class Math
     {
+        public static bool? Not(this bool? value) => value switch
+        {
+            null => null,
+            false => true,
+            true => false
+        };
+        public static bool Not(this bool value) => !value;
+        public static bool[] Not(this bool[] value) => value.Select(Not).ToArray();
+        public static bool?[] Not(this bool?[] value) => value.Select(Not).ToArray();
+        public static bool? Xor(this bool left, bool? right) => (left, right) switch
+        {
+            (false, null) => null,
+            (true, null) => null,
+            (false, false) => false,
+            (false, true) => true,
+            (true, false) => true,
+            (true, true) => false
+        };
+        public static bool? Xor(this bool? left, bool? right) => (left, right) switch
+        {
+            (null, null) => null,
+            (false, null) => null,
+            (true, null) => null,
+            (null, false) => null,
+            (null, true) => null,
+            (false, false) => false,
+            (false, true) => true,
+            (true, false) => true,
+            (true, true) => false
+        };
+        
+        public static bool? Xor(this bool? left, bool right) => (left, right) switch
+        {
+            (null, false) => null,
+            (null, true) => null,
+            (false, false) => false,
+            (false, true) => true,
+            (true, false) => true,
+            (true, true) => false
+        };
+        
+        public static bool Xor(this bool left, bool right) => left ^ right;
+        public static bool?[] Xor(this bool[] left, bool?[] right)
+        {
+            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
+            var result = new bool?[left.Length];
+            for (var i = 0; i < left.Length; i++)
+                result[i] = left[i].Xor(right[i]);
+            return result;
+        }
+        public static bool[] Xor(this bool[] left, bool[] right)
+        {
+            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
+            var result = new bool[left.Length];
+            for (var i = 0; i < left.Length; i++)
+                result[i] = left[i].Xor(right[i]);
+            return result;
+        }
+        public static bool?[] Xor(this bool?[] left, bool?[] right)
+        {
+            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
+            var result = new bool?[left.Length];
+            for (var i = 0; i < left.Length; i++)
+                result[i] = left[i].Xor(right[i]);
+            return result;
+        }
+
+        public static bool?[] Xor(this bool?[] left, bool[] right)
+        {
+            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
+            var result = new bool?[left.Length];
+            for (var i = 0; i < left.Length; i++)
+                result[i] = left[i].Xor(right[i]);
+            return result;
+        }
+        
         public static bool[] And(this bool[] a, bool[] b)
         {
             if (a.Length != b.Length) throw new ArgumentException("Arrays must be of equal length");
@@ -69,13 +147,23 @@ namespace NumeralSystems.Net.Utils
             (true, false) => true,
             (true, true) => true
         };
+        
+        public static bool? Or(this bool left, bool? right) => (left, right) switch
+        {
+            (false, null) => null,
+            (true, null) => true,
+            (false, false) => false,
+            (false, true) => true,
+            (true, false) => true,
+            (true, true) => true
+        };
 
         public static bool[] Or(this bool[] left, bool[] right)
         {
             if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
             var result = new bool[left.Length];
             for (var i = 0; i < left.Length; i++)
-                 result[i] = Or(left[i], right[i]);
+                 result[i] = left[i].Or(right[i]);
             return result;
         }
         
@@ -84,7 +172,7 @@ namespace NumeralSystems.Net.Utils
             if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
             var result = new bool?[left.Length];
             for (var i = 0; i < left.Length; i++)
-                result[i] = Or(left[i], right[i]);
+                result[i] = left[i].Or(right[i]);
             return result;
         }
         
@@ -93,7 +181,7 @@ namespace NumeralSystems.Net.Utils
             if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
             var result = new bool?[left.Length];
             for (var i = 0; i < left.Length; i++)
-                result[i] = Or(left[i], right[i]);
+                result[i] = left[i].Or(right[i]);
             return result;
         }
         
@@ -102,11 +190,11 @@ namespace NumeralSystems.Net.Utils
             if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
             var result = new bool?[left.Length];
             for (var i = 0; i < left.Length; i++)
-                result[i] = Or(left[i], right[i]);
+                result[i] = left[i].Or(right[i]);
             return result;
         }
         
-        public static bool Or(this bool left, bool right) => Or((bool?)left, (bool?)right) ?? throw new InvalidOperationException();
+        public static bool Or(this bool left, bool right) => left | right;
         
         public static bool? ReverseOr(this bool? left, bool? right) => (left, right) switch
         {

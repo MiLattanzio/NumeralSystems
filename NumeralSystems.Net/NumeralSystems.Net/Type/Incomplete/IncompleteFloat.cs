@@ -76,6 +76,21 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
+        public IncompleteFloat Not() => new()
+        {
+            Binary = Binary.Not()
+        };
+
+        public IncompleteFloat Xor(IncompleteFloat other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
+        public IncompleteFloat Xor(Float other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
         public IncompleteFloat And(IncompleteFloat other) => new() {
             Binary = Binary.And(other.Binary)
         };

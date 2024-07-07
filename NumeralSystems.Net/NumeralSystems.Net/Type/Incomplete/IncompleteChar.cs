@@ -84,6 +84,21 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
+        public IncompleteChar Not() => new()
+        {
+            Binary = Binary.Not()
+        };
+
+        public IncompleteChar Xor(IncompleteChar other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
+        public IncompleteChar Xor(Char other) => new()
+        {
+            Binary = Binary.Xor(other.Binary)
+        };
+
         public IncompleteChar And(IncompleteChar other) => new()
         {
             Binary = Binary.And(other.Binary)

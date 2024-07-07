@@ -43,7 +43,6 @@ namespace NumeralSystems.Net.Utils
         public static bool[] ToBoolArray(this double b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
         public static bool[] ToBoolArray(this long b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
         public static bool[] ToBoolArray(this decimal b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
-
         public static byte ToByte(this bool[] s) {
             if (null == s)
                 s = Enumerable.Repeat(false, 8).ToArray();

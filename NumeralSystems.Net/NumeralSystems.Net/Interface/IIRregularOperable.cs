@@ -5,6 +5,9 @@
         where TValue : IRegularOperable<TIncomplete, TValue, TType>
         where TIncomplete : IIncompleteValue<TValue, TType>
     {
+        TIncomplete Not();
+        TIncomplete Xor(TIncomplete other);
+        TIncomplete Xor(TValue other);
         TIncomplete And(TIncomplete other);
         TIncomplete And(TValue other);
         TIncomplete Or(TIncomplete other);

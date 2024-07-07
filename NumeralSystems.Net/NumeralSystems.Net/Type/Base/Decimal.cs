@@ -93,6 +93,21 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
+        public Decimal Not() => new()
+        {
+            Binary = Math.Not(Binary)
+        };
+
+        public Decimal Xor(Decimal value) => new()
+        {
+            Binary = Math.Xor(Binary, value.Binary)
+        };
+
+        public IncompleteDecimal Xor(IncompleteDecimal value) => new()
+        {
+            Binary = Math.Xor(Binary, value.Binary)
+        };
+        
         public Decimal And(Decimal value) => new()
         {
             Binary = Math.And(Binary, value.Binary)

@@ -12,6 +12,7 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void Encode()
         {
+            var ciao = NumeralSystems.Net.Utils.Encode.Float.ToIndicesOfBase(18.04399f, 10);
             var nBase = _random.Next(2, int.MaxValue);
             var testString = "Hello World!";
             var output = Numeral.System.OfBase(nBase);

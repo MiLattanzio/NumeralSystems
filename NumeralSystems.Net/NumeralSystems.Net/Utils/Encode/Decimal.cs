@@ -38,7 +38,7 @@ namespace NumeralSystems.Net.Utils.Encode
             }
 
             // Calcoliamo il numero di cifre della parte frazionaria moltiplicando per 10 finché non otteniamo un intero
-            var multiplier = 1;
+            ulong multiplier = 1;
             while ((fractionalPart * multiplier) % 1 != 0)
             {
                 multiplier *= 10;

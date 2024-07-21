@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
@@ -38,31 +39,17 @@ namespace NumeralSystems.Net
         }
         
         // ReSharper disable once MemberCanBePrivate.Global
-        public List<string> Fractionals
+
+        public List<string> GetFractionalStrings(IList<string> identity)
         {
-            get => FractionalIndices.Select(Base.Identity.ElementAt).ToList();
-            set
-            {
-                if (null == value || value.Count == 0)
-                    FractionalIndices = null;
-                else if (Base.Contains(value))
-                    FractionalIndices = value.Select(Base.Identity.IndexOf).ToList();
-            }
+            if (identity.Count < Base.Size) throw new ArgumentOutOfRangeException(nameof(identity), "Identity must be at least the size of the base");
+            return FractionalIndices.Select(identity.ElementAt).ToList();
         }
-        
-        public string Fractional
+
+        public string GetFractionalString(IList<string> identity, string separator)
         {
-            get
-            {
-                var result = string.Join(Base.Separator, Fractionals);
-                return string.IsNullOrEmpty(result) ? Base.Identity[0] : result;
-            }
-            set
-            {
-                Base.TrySplitNumberIndices(value, out var result);
-                Positive = result.positive;
-                FractionalIndices = result.integralIndices;
-            }
+            var result = string.Join(separator, GetFractionalStrings(identity));
+            return string.IsNullOrEmpty(result) ? identity[0] : result;
         }
 
         
@@ -84,53 +71,28 @@ namespace NumeralSystems.Net
                 }
             }
         }
-
-        public List<string> Integrals
-        {
-            get => IntegralIndices.Select(Base.Identity.ElementAt).ToList();
-            set
-            {
-                if (null == value || value.Count == 0)
-                    IntegralIndices = null;
-                else if (Base.Contains(value))
-                    IntegralIndices = value.Select(Base.Identity.IndexOf).ToList();
-            }
-        }
         
-        public string Integral
+        public List<string> GetIntegralStrings(IList<string> identity)
         {
-            get
-            {
-                var result = string.Join(Base.Separator, Integrals);
-                return string.IsNullOrEmpty(result) ? Base.Identity[0] : result;
-            }
-            set
-            {
-                Base.TrySplitNumberIndices(value, out var result);
-                Positive = result.positive;
-                IntegralIndices = result.integralIndices;
-            }
+            if (identity.Count < Base.Size) throw new ArgumentOutOfRangeException(nameof(identity), "Identity must be at least the size of the base");
+            return IntegralIndices.Select(identity.ElementAt).ToList();
+        }
+
+        public string GetIntegralString(IList<string> identity, string separator)
+        {
+            var result = string.Join(separator, GetIntegralStrings(identity));
+            return string.IsNullOrEmpty(result) ? identity[0] : result;
         }
 
         public Numeral()
         {
-            Base = Numeral.System.OfBase(10, string.Empty);
+            Base = Numeral.System.OfBase(10);
         }
         
         // ReSharper disable once MemberCanBePrivate.Global
         public Numeral(NumeralSystem numericSystem)
         {
             Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
-        }
-        
-        public Numeral(NumeralSystem numericSystem, List<string> integral, List<string> fractionals = null, bool positive = true)
-        {
-            Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
-            if (!Base.Contains(integral)) throw new Exception("Cannot build a number without a valid representation");
-            if (!Base.Contains(fractionals)) fractionals = null;
-            Integrals = integral;
-            Fractionals = fractionals;
-            Positive = positive;
         }
         
         public Numeral(NumeralSystem numericSystem, List<int> integral, List<int> fractional = null, bool positive = true)
@@ -179,37 +141,12 @@ namespace NumeralSystems.Net
 
         public double Double
         {
-            get
-            {
-                var zero = Base.Identity[0];
-                var integralEnumerable = IntegralIndices.Select((t, i) =>
-                        (ulong) t *
-                        Convert.ToUInt64(Math.Pow(Base.Size, (IntegralIndices.Count - 1 - i))))
-                    .ToList();
-                var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
-                var fractionalEnumerable = FractionalIndices.Select((t, i) =>
-                    (ulong) t *
-                    Convert.ToUInt64(Math.Pow(Base.Size, (Fractionals.Count - 1 - i)))).ToList();
-                var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
-                var frontZeros = 0;
-                foreach (var t in FractionalIndices)
-                {
-                    if (t == 0) frontZeros++;
-                    else break;
-                }
-
-                if (integral == 0 && fractional == 0) Positive = true;
-                var resultString = string.Concat((Positive ? string.Empty : Base.NegativeSign).Concat(integral.ToString()
-                    .Concat(Base.NumberDecimalSeparator)
-                    .Concat(frontZeros > 0 ? new string(zero[0], frontZeros) : string.Empty)
-                    .Concat(fractional.ToString())));
-                return double.Parse(resultString, Base.CultureInfo);
-            }
+            get => Utils.Encode.Double.FromIndicesOfBase(IntegralIndices.Select(x => (ulong) x).ToArray(), FractionalIndices.Select(x => (ulong) x).ToArray(), Positive, Base.Size);
             set
             {
                 var temp = Base[value];
                 IntegralIndices = temp.IntegralIndices;
-                Fractionals = temp.Fractionals;
+                FractionalIndices = temp.FractionalIndices;
                 Positive = value >= 0;
             }
         }
@@ -225,7 +162,7 @@ namespace NumeralSystems.Net
                 var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
                 var fractionalEnumerable = FractionalIndices.Select((t, i) =>
                     (ulong) t *
-                    Convert.ToUInt64(Math.Pow(Base.Size, (Fractionals.Count - 1 - i)))).ToList();
+                    Convert.ToUInt64(Math.Pow(Base.Size, (FractionalIndices.Count - 1 - i)))).ToList();
                 var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
                 var frontZeros = 0;
                 foreach (var t in FractionalIndices)
@@ -235,7 +172,7 @@ namespace NumeralSystems.Net
                 }
 
                 if (integral == 0 && fractional == 0) Positive = true;
-                var digitsInBase = (int) NumeralSystem.DigitsInBase(fractional, 10) + frontZeros;
+                var digitsInBase = (int) Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
                 var div = (decimal) Math.Pow(10, digitsInBase);
                 return ((Positive ? 1 : -1) * (integral + (decimal.Divide(fractional, div))));
             }
@@ -243,7 +180,7 @@ namespace NumeralSystems.Net
             {
                 var temp = Base[value];
                 IntegralIndices = temp.IntegralIndices;
-                Fractionals = temp.Fractionals;
+                FractionalIndices = temp.FractionalIndices;
                 Positive = value >= 0;
             }
         }
@@ -265,7 +202,7 @@ namespace NumeralSystems.Net
                 var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
                 var fractionalEnumerable = FractionalIndices.Select((t, i) =>
                     (ulong) t *
-                    Convert.ToUInt64(Math.Pow(Base.Size, (Fractionals.Count - 1 - i)))).ToList();
+                    Convert.ToUInt64(Math.Pow(Base.Size, (FractionalIndices.Count - 1 - i)))).ToList();
                 var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
                 var frontZeros = 0;
                 foreach (var t in FractionalIndices)
@@ -275,7 +212,7 @@ namespace NumeralSystems.Net
                 }
 
                 if (integral == 0 && fractional == 0) Positive = true;
-                var digitsInBase = (int) NumeralSystem.DigitsInBase(fractional, 10) + frontZeros;
+                var digitsInBase = (int) Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
                 var div = (decimal) Math.Pow(10, digitsInBase);
                 var result = ((Positive ? 1 : -1) * (integral + (decimal.Divide(fractional, div))));
                 return decimal.GetBits(result).SelectMany(BitConverter.GetBytes).ToArray();
@@ -306,10 +243,16 @@ namespace NumeralSystems.Net
 
         public Numeral To(NumeralSystem baseSystem) => baseSystem[Decimal];
 
+        public string ToString(IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator)
+        {
+            Base.TryFromIndices(IntegralIndices, FractionalIndices, identity, separator, negativeSign, numberDecimalSeparator, out var result, Positive);
+            return result;
+        }
+
         public override string ToString()
         {
-            Base.TryFromIndices(IntegralIndices, FractionalIndices, out var result, Positive);
-            return result;
+            var serializationInfo = NumeralSystem.SerializationInfo.OfBase(Base.Size);
+            return ToString(serializationInfo.Identity, serializationInfo.Separator, serializationInfo.NegativeSign, serializationInfo.NumberDecimalSeparator);
         }
 
         public static class System
@@ -331,29 +274,30 @@ namespace NumeralSystems.Net
                     .Select(i => (char) i)
                     .Where(c => !char.IsControl(c)).Take(26);
 
-                public static readonly IEnumerable<char> SymbolsA = Enumerable.Range(char.MinValue, char.MaxValue + 1)
-                    .Select(i => (char) i)
-                    .Where(c => !char.IsControl(c)).Take(16);
+                public static readonly IEnumerable<char> SymbolsA = Enumerable.Range(0, char.MaxValue + 1)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c))
+                    .Take(16);
 
-                public static readonly IEnumerable<char> SymbolsB = Enumerable.Range(char.MinValue, char.MaxValue + 1)
-                    .Skip(33)
-                    .Select(i => (char) i)
-                    .Where(c => !char.IsControl(c)).Take(7);
+                public static readonly IEnumerable<char> SymbolsB = Enumerable.Range(33, char.MaxValue + 1 - 33)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c))
+                    .Take(7);
 
-                public static readonly IEnumerable<char> SymbolsC = Enumerable.Range(char.MinValue, char.MaxValue + 1)
-                    .Skip(58)
-                    .Select(i => (char) i)
-                    .Where(c => !char.IsControl(c)).Take(6);
+                public static readonly IEnumerable<char> SymbolsC = Enumerable.Range(58, char.MaxValue + 1 - 58)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c))
+                    .Take(6);
 
-                public static readonly IEnumerable<char> SymbolsD = Enumerable.Range(char.MinValue, char.MaxValue + 1)
-                    .Skip(91)
-                    .Select(i => (char) i)
-                    .Where(c => !char.IsControl(c)).Take(6);
+                public static readonly IEnumerable<char> SymbolsD = Enumerable.Range(91, char.MaxValue + 1 - 91)
+                    .Select(i => (char)i)
+                    .Where(c => !char.IsControl(c))
+                    .Take(6);
 
-                public static readonly IEnumerable<char> Others = Enumerable.Range(char.MinValue, char.MaxValue + 1)
-                    .Skip(123)
-                    .Select(i => (char) i)
+                public static readonly IEnumerable<char> Others = Enumerable.Range(123, char.MaxValue + 1 - 123)
+                    .Select(i => (char)i)
                     .Where(c => !char.IsControl(c));
+
 
                 public static readonly IEnumerable<char> Alphanumeric =
                     Numbers.Concat(UpperLetters).Concat(LowerLetters);
@@ -366,7 +310,7 @@ namespace NumeralSystems.Net
                     Alphanumeric.Concat(SymbolsA.Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD));
 
                 public static readonly IEnumerable<char> Printable = Numbers.Concat(UpperLetters).Concat(LowerLetters)
-                    .Concat(SymbolsA).Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD).Concat(Others);
+                    .Concat(SymbolsA).Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD).Concat(Others).Distinct();
 
                 public static readonly IEnumerable<char> NotPrintable = Enumerable
                     .Range(char.MinValue, char.MaxValue + 1)
@@ -393,20 +337,7 @@ namespace NumeralSystems.Net
                 return Sequence.IdentityEnumerableOfSize(enumerable, value).Select(x => string.Join(string.Empty, x));
             }
 
-            public static NumeralSystem OfBase(int value, string separator = "", IEnumerable<string> identity = null)
-            {
-                var enumerable = identity ?? Characters.All.Select(x => x.ToString());
-                var exceptions = new[]
-                {
-                    separator, NumeralSystem.BaseSeparator, NumeralSystem.BaseNegativeSign,
-                    NumeralSystem.BaseNumberDecimalSeparator
-                };
-                var enumerableSet = new HashSet<string>(enumerable);
-                var range = ValueRange(value,
-                    enumerableSet.Where(c => !string.IsNullOrWhiteSpace(c) && !exceptions.Contains(c)));
-                var set = new HashSet<string>(range);
-                return new NumeralSystem(set, separator);
-            }
+            public static NumeralSystem OfBase(int value) => new (value);
         }
     }
 }

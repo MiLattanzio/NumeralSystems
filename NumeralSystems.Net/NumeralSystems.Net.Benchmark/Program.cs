@@ -55,6 +55,7 @@ namespace NumeralSystems.Net.Benchmark
         public int Base { get; set; }
 
         private NumeralSystem _numeralSystem;
+        private NumeralSystem.SerializationInfo _serializationInfo;
 
         public NumeralSystem NumeralSystem
         {
@@ -63,10 +64,23 @@ namespace NumeralSystems.Net.Benchmark
                 if (null == _numeralSystem || _numeralSystem.Size != Base)
                 {
                     Console.WriteLine($"{_numeralSystem?.Size ?? 0} != {Base}");
-                    _numeralSystem = Numeral.System.OfBase(Base, ";");
+                    _numeralSystem = Numeral.System.OfBase(Base);
                 }
 
                 return _numeralSystem;
+            }
+        }
+        
+        public NumeralSystem.SerializationInfo SerializationInfo
+        {
+            get
+            {
+                if (null == _serializationInfo)
+                {
+                    _serializationInfo = NumeralSystem.SerializationInfo.OfBase(Base);
+                }
+
+                return _serializationInfo;
             }
         }
 
@@ -76,7 +90,8 @@ namespace NumeralSystems.Net.Benchmark
             if (null == _numeralSystem || _numeralSystem.Size != Base)
             {
                 Console.WriteLine($"{_numeralSystem?.Size ?? 0} != {Base}");
-                _numeralSystem = Numeral.System.OfBase(Base, ";");
+                _numeralSystem = Numeral.System.OfBase(Base);
+                _serializationInfo = NumeralSystem.SerializationInfo.OfBase(Base);
             }
         }
 
@@ -91,7 +106,7 @@ namespace NumeralSystems.Net.Benchmark
             {
                 Console.WriteLine($"Generated {numeral} should be equal to {r3}");
                 Assert.AreEqual(r3, numeral.Decimal);
-                var stringParse = NumeralSystem.Parse(numeral.ToString());
+                var stringParse = NumeralSystem.Parse(numeral.ToString(), SerializationInfo);
                 Assert.AreEqual(stringParse.ToString(), numeral.ToString());
                 //numeral.Decimal = r3;
                 Assert.AreEqual(r3, numeral.Decimal);

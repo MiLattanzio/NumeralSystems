@@ -22,16 +22,14 @@ namespace NumeralSystem.Net.NUnit
         private Random _random;
         private NumeralSystems.Net.NumeralSystem _base2;
         private NumeralSystems.Net.NumeralSystem _base10;
-        private NumeralSystems.Net.NumeralSystem _base10Separator;
         
         
         [SetUp]
         public void Setup()
         {
             _random = new Random();
-            _base2 = Numeral.System.OfBase(2, string.Empty);
-            _base10 = Numeral.System.OfBase(10, string.Empty);
-            _base10Separator = Numeral.System.OfBase(10, ";");
+            _base2 = Numeral.System.OfBase(2);
+            _base10 = Numeral.System.OfBase(10);
         }
 
         [Test]
@@ -73,19 +71,23 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void ParseTest()
         {
-            Assert.False(_base10Separator.TryParse(null, out var zero));
+            var identity = Enumerable.Range(0, 9).Select(x => x.ToString()).ToList();
+            var separator = ",";
+            var negativeSign = "-";
+            var numberDecimalSeparator = ".";
+            Assert.False(_base10.TryParse(null, identity, separator, negativeSign, numberDecimalSeparator, out var zero));
             Assert.AreEqual(0, zero.Decimal);
-            Assert.False(_base10Separator.TryParse(string.Empty, out zero));
+            Assert.False(_base10.TryParse(string.Empty, identity, separator, negativeSign, numberDecimalSeparator, out zero));
             Assert.AreEqual(0, zero.Decimal);
-            Assert.True(_base10Separator.TryParse("0.0", out zero));
+            Assert.True(_base10.TryParse("0.0", identity, separator, negativeSign, numberDecimalSeparator, out zero));
             Assert.AreEqual(0, zero.Decimal);
             var zeroBytes = zero.Bytes;
             Assert.AreEqual(zeroBytes, Enumerable.Repeat((byte)0, zeroBytes.Length));
-            Assert.True(_base10Separator.TryParse("-1", out var minusOne));
+            Assert.True(_base10.TryParse("-1", identity, separator, negativeSign, numberDecimalSeparator, out var minusOne));
             Assert.AreEqual(-1, minusOne.Decimal);
-            Assert.Throws(typeof(InvalidOperationException), () => _base10Separator.Parse("a"));
-            Assert.Throws(typeof(InvalidOperationException), () => _base10Separator.Parse("1.a"));
-            Assert.Throws(typeof(Exception), () => new Numeral(_base10Separator, new List<int>(){-1}));
+            Assert.Throws(typeof(InvalidOperationException), () => _base10.Parse("a", identity, separator, negativeSign, numberDecimalSeparator));
+            Assert.Throws(typeof(InvalidOperationException), () => _base10.Parse("1.a", identity, separator, negativeSign, numberDecimalSeparator));
+            Assert.Throws(typeof(Exception), () => new Numeral(_base10, new List<int>(){-1}));
         }
 
         [Test]
@@ -123,8 +125,7 @@ namespace NumeralSystem.Net.NUnit
         {
             var random = new Random();
             var value = random.Next();
-            var base10 = Numeral.System.OfBase(10, string.Empty);
-            base10.CultureInfo = null;
+            var base10 = Numeral.System.OfBase(10);
             var decimalValue = base10[value];
             Console.WriteLine($"Generated {decimalValue} should be equal to {value.ToString()}");
             Assert.AreEqual(decimalValue.ToString(), value.ToString());
@@ -141,10 +142,14 @@ namespace NumeralSystem.Net.NUnit
             {
                 var r2 = random.Next(2, difficulty);
                 var r3 = (decimal)(random.Next(2, int.MaxValue) + random.NextDouble());
-                var numerals = Numeral.System.OfBase(r2, Convert.ToString(Numeral.System.Characters.Semicolon), Numeral.System.Characters.Alphanumeric.Select(x => x.ToString()));
+                var identity = Numeral.System.Characters.Alphanumeric.Take(r2).Select(x => x.ToString()).ToList();
+                var separator = ",";
+                var negativeSign = "-";
+                var numberDecimalSeparator = ".";
+                var numerals = Numeral.System.OfBase(r2);
                 var numeral = numerals[r3];
                 Assert.AreEqual(r3, numeral.Decimal);
-                Assert.AreEqual(numerals.Parse(numeral.ToString()).ToString(), numeral.ToString());
+                Assert.AreEqual(numerals.Parse(numeral.ToString(), identity, separator, negativeSign, numberDecimalSeparator).ToString(), numeral.ToString());
                 var r3Bytes = decimal.GetBits(r3).SelectMany(BitConverter.GetBytes).ToArray();
                 Assert.AreEqual(numeral.Bytes, r3Bytes);
                 numeral.Bytes = r3Bytes;
@@ -192,6 +197,10 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void BinaryParseTest()
         {
+            var identity = Enumerable.Range(0,1).Select(x => x.ToString()).ToList();
+            var separator = ",";
+            var negativeSign = "-";
+            var numberDecimalSeparator = ".";
             // ReSharper disable once HeapView.ObjectAllocation.Evident
             var random = new Random();
             for (var i = 0; i < 10; i++)
@@ -199,7 +208,7 @@ namespace NumeralSystem.Net.NUnit
                 var value = random.Next();
                 value = random.NextDouble() < 0.5 ? value : -value;
                 var binaryValue = _base2[value];
-                var parse = _base2.Parse(binaryValue.ToString());
+                var parse = _base2.Parse(binaryValue.ToString(), identity, separator, negativeSign, numberDecimalSeparator);
                 Assert.AreEqual(binaryValue.ToString(), parse.ToString());
             }
         }
@@ -208,13 +217,17 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void DoubleTest()
         {
+            var identity = Enumerable.Range(0,9).Select(x => x.ToString()).ToList();
+            var separator = "";
+            var negativeSign = "-";
+            var numberDecimalSeparator = ".";
             var random = new Random();
             for (var i = 0; i < 20; i++)
             {
                 var value = random.NextDouble();
                 var decimalValue = _base10[value];
                 Assert.AreEqual(decimalValue.Double, value);
-                var decimalValue2 = _base10.Parse(decimalValue.ToString());
+                var decimalValue2 = _base10.Parse(decimalValue.ToString(), identity, separator, negativeSign, numberDecimalSeparator);
                 Assert.AreEqual(decimalValue2.Double, decimalValue.Double);
                 var numInt = new NumeralDouble(value);
                 var numIntClone = new NumeralDouble(decimalValue.Double);
@@ -229,13 +242,17 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void DecimalTest()
         {
+            var identity = Enumerable.Range(0,9).Select(x => x.ToString()).ToList();
+            var separator = "";
+            var negativeSign = "-";
+            var numberDecimalSeparator = ".";
             var random = new Random();
             for (var i = 0; i < 20; i++)
             {
                 var value = (decimal)random.NextDouble();
                 var decimalValue = _base10[value];
                 Assert.AreEqual(decimalValue.Decimal, value);
-                var decimalValue2 = _base10.Parse(decimalValue.ToString());
+                var decimalValue2 = _base10.Parse(decimalValue.ToString(), identity, separator, negativeSign, numberDecimalSeparator);
                 Assert.AreEqual(decimalValue2.Decimal, decimalValue.Decimal);
                 var numInt = new NumeralDecimal(value);
                 var numIntClone = new NumeralDecimal(decimalValue.Decimal);

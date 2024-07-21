@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using NumeralSystems.Net;
 using NUnit.Framework;
 
@@ -10,15 +11,22 @@ namespace NumeralSystem.Net.NUnit
         private readonly Random _random = new ();
         
         [Test]
-        public void Encode()
+        public void Identities()
         {
-            var ciao = NumeralSystems.Net.Utils.Encode.Float.ToIndicesOfBase(18.04399f, 10);
-            var nBase = _random.Next(2, int.MaxValue);
-            var testString = "Hello World!";
-            var output = Numeral.System.OfBase(nBase);
-            var encoded = output.Encode(testString);
-            var decoded = output.Decode(encoded);
-            Assert.That(testString, Is.EqualTo(decoded));
+            Assert.That(Numeral.System.Characters.Alphanumeric.Count(), Is.EqualTo(Numeral.System.Characters.Alphanumeric.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.Numbers.Count(), Is.EqualTo(Numeral.System.Characters.Numbers.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.AlphanumericLower.Count(), Is.EqualTo(Numeral.System.Characters.AlphanumericLower.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.AlphanumericUpper.Count(), Is.EqualTo(Numeral.System.Characters.AlphanumericUpper.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.LowerLetters.Count(), Is.EqualTo(Numeral.System.Characters.LowerLetters.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.UpperLetters.Count(), Is.EqualTo(Numeral.System.Characters.UpperLetters.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.SymbolsA.Count(), Is.EqualTo(Numeral.System.Characters.SymbolsA.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.SymbolsB.Count(), Is.EqualTo(Numeral.System.Characters.SymbolsB.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.SymbolsC.Count(), Is.EqualTo(Numeral.System.Characters.SymbolsC.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.SymbolsD.Count(), Is.EqualTo(Numeral.System.Characters.SymbolsD.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.WhiteSpaces.Count(), Is.EqualTo(Numeral.System.Characters.WhiteSpaces.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.Others.Count(), Is.EqualTo(Numeral.System.Characters.Others.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.Printable.Count(), Is.EqualTo(Numeral.System.Characters.Printable.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.All.Count(), Is.EqualTo(Numeral.System.Characters.All.Distinct().Count()));
         }
         
         

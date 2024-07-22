@@ -178,7 +178,7 @@ namespace NumeralSystem.Net.NUnit
                 var value = random.Next();
                 value = random.NextDouble() < 0.5 ? value : -value;
                 var binaryValue = _base2[value];
-                var expected = $"{(value > 0 ? "" : "-" )}{Convert.ToString(Math.Abs(value), 2)}";
+                var expected = $"{(value > 0 ? "" : "-" )}{Convert.ToString(System.Math.Abs(value), 2)}";
                 Console.WriteLine($"Generated {binaryValue} should be equal to {expected}");
                 Assert.AreEqual(binaryValue.ToString(), expected);
             }

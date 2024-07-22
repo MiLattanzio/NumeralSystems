@@ -28,6 +28,16 @@ namespace NumeralSystem.Net.NUnit.Utils
             Assert.That(value, Is.EqualTo(decoded).Within(0.000000000000001));
         }
         
+        [Test(Author = "Mi", Description = "Failed 10045594282/job/27763245466")]
+        public void ULongFailedTest0()
+        {
+            var nBase = _random.Next(2, int.MaxValue);
+            var value = 18446744073499964511ul;
+            var encoded = NumeralSystems.Net.Utils.Encode.ULong.ToIndicesOfBase(value, nBase);
+            var decoded = NumeralSystems.Net.Utils.Encode.ULong.FromIndicesOfBase(encoded, nBase);
+            Assert.That(value, Is.EqualTo(decoded).Within(0.0000000000000001));
+        }
+        
         [Test]
         public void Double()
         {

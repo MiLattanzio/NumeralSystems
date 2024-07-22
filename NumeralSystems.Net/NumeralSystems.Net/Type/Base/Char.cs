@@ -146,6 +146,16 @@ namespace NumeralSystems.Net.Type.Base
             Binary = Binary.Or(value.Binary)
         };
 
+        public Char Nand(Char value) => new()
+        {
+            Binary = Binary.Nand(value.Binary)
+        };
+
+        public IncompleteChar Nand(IncompleteChar value) => new()
+        {
+            Binary = Binary.Nand(value.Binary)
+        };
+
         public IncompleteChar Incomplete() => new()
         {
             Binary = Binary.Select(x => x as bool?).ToArray()

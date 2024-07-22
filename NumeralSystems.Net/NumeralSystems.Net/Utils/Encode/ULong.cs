@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace NumeralSystems.Net.Utils.Encode
 {
@@ -36,19 +37,23 @@ namespace NumeralSystems.Net.Utils.Encode
         
         public static ulong FromIndicesOfBase(ulong[] val, int sourceBase)
         {
-            switch (sourceBase)
+            if (sourceBase <= 0)
             {
-                case <= 0:
-                    throw new ArgumentException("Source base must be greater than 0");
-                case 1:
-                    return (ulong)val.Length;
+                throw new ArgumentException("Source base must be greater than 0");
             }
-            ulong result = 0;
+            if (sourceBase == 1)
+            {
+                return (ulong)new BigInteger(val.Length);
+            }
+
+            BigInteger result = 0;
             for (var i = 0; i < val.Length; i++)
             {
-                result += val[i] * (ulong) System.Math.Pow(sourceBase, val.Length - i - 1);
+                result += val[i] * BigInteger.Pow(new BigInteger(sourceBase), val.Length - i - 1);
             }
-            return result;
+            return (ulong)result;
         }
+        
+        
     }
 }

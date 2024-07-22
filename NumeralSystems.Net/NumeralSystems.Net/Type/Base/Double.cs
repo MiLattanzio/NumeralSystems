@@ -130,6 +130,16 @@ namespace NumeralSystems.Net.Type.Base
             Binary = Math.Or(Binary, value.Binary)
         };
 
+        public Double Nand(Double value) => new()
+        {
+            Binary = Math.Nand(Binary, value.Binary)
+        };
+
+        public IncompleteDouble Nand(IncompleteDouble value) => new()
+        {
+            Binary = Math.Nand(Binary, value.Binary)
+        };
+
         public IncompleteDouble Incomplete() => new()
         {
             Binary = Binary.Select(x => x as bool?).ToArray()

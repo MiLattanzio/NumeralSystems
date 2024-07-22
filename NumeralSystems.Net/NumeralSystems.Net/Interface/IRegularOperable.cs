@@ -9,6 +9,8 @@
         public TIncomplete And(TIncomplete value);
         public TValue Or(TValue value);
         public TIncomplete Or(TIncomplete value);
+        public TValue Nand(TValue value);
+        public TIncomplete Nand(TIncomplete value);
     }
     
 }

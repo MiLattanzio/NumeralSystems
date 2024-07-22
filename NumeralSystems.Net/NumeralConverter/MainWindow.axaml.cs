@@ -40,7 +40,7 @@ namespace NumeralConverter
             Numeral inputValue;
             try
             {
-                inputValue = inputBase.StringParse(InputNumber?.Text);
+                inputValue = inputBase.Parse(InputNumber?.Text);
             }
             catch (Exception ex)
             {

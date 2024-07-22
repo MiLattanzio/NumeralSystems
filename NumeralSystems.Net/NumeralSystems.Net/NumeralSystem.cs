@@ -1,11 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using NumeralSystems.Net.Utils;
+using NumeralSystems.Net.Utils.Encode;
+using Math = System.Math;
+using Convert = System.Convert;
+using Decimal = NumeralSystems.Net.Utils.Encode.Decimal;
+using Double = System.Double;
 
 // ReSharper disable HeapView.ObjectAllocation
 // ReSharper disable HeapView.ObjectAllocation.Evident
@@ -16,288 +20,352 @@ namespace NumeralSystems.Net
     // ReSharper disable once ClassNeverInstantiated.Global
     public class NumeralSystem
     {
-        public IList<string> Identity { get; }
-        private Func<string, Numeral> _stringParse;
-        public Func<string, Numeral> StringParse
-        {
-            get => _stringParse;
-            set
-            {
-                if (null != value) _stringParse = value;
-            }
-        }
-
-        private Func<ulong, bool, List<string>, List<string>> _uLongIndexer = (index, positive, suggestedOutput) => suggestedOutput;
-        public Func<ulong, bool, List<string>, List<string>> LongIndexer
-        {
-            get => _uLongIndexer;
-            // ReSharper disable once UnusedMember.Global
-            set
-            {
-                if (null != value)
-                {
-                    _uLongIndexer = value;
-                }
-            }
-        }
-
-        // ReSharper disable once HeapView.PossibleBoxingAllocation
-        private Func<(List<string> Integral, List<string> Fractional, bool IsPositive), string> _stringConverter;
-
-        public Func<(List<string> Integral, List<string> Fractional, bool IsPositive), string> StringConverter
-        {
-            get => _stringConverter;
-            set
-            {
-                if (null != value)
-                {
-                    _stringConverter = value;
-                }
-            }
-        }
-
-        public int Size => Identity.Count;
-
-        public static string BaseNegativeSign => BaseCultureInfo.NumberFormat.NegativeSign;
-
-        public string NegativeSign
-        {
-            get => CultureInfo.NumberFormat.NegativeSign;
-            set
-            {
-                if (null != value && !Identity
-                                .Concat(new []{Separator})
-                                .Concat(new []{NumberDecimalSeparator})
-                                .Any(x => value.Equals(x.ToString()))) CultureInfo.NumberFormat.NegativeSign = value;
-            }
-        }
-        public static CultureInfo BaseCultureInfo => CultureInfo.InvariantCulture;
-
-        private CultureInfo _cultureInfo = BaseCultureInfo;
-        public CultureInfo CultureInfo
-        {
-            get => _cultureInfo;
-            set
-            {
-                if (null != value) _cultureInfo = value;
-            }
-        }
-
-        public static string BaseNumberDecimalSeparator => BaseCultureInfo.NumberFormat.NumberDecimalSeparator;
-
-        public string NumberDecimalSeparator
-        {
-            get => CultureInfo.NumberFormat.NumberDecimalSeparator;
-            set
-            {
-                if (!string.IsNullOrWhiteSpace(value) && !Identity
-                        .Concat(new []{Separator})
-                        .Concat(new []{NegativeSign})
-                        .Any(x => value.Equals(x.ToString())))
-                    CultureInfo.NumberFormat.NumberDecimalSeparator = value;
-            }
-        }
-
-        public static string BaseSeparator => Convert.ToString(Numeral.System.Characters.Semicolon);
-        private string _separator;
-        public string Separator
-        {
-            get => _separator;
-            set
-            {
-                if (null != value && !Identity
-                        .Concat(new []{NumberDecimalSeparator})
-                        .Concat(new []{NegativeSign})
-                        .Any(x => value.Equals(x.ToString()))) _separator = value;
-            }
-        }
-
+       
+        /// <summary>
+        /// Size of the numeral system.
+        /// <para>For example, for base 10 it is 10</para>
+        /// </summary>
+        public int Size { get; }
+        
+        
+        /// <summary>
+        /// If true, the parsing will skip the unknown values during the parsing, otherwise they will be replaced with zeros.
+        /// Example: for base 10, the value 1;1 will be parsed as 11 if true, otherwhise it will be parsed as 101.
+        /// </summary>
+        public bool SkipUnknownValues { get; set; }
+        
         // ReSharper disable once SuggestBaseTypeForParameterInConstructor
-        public NumeralSystem(HashSet<string> identity, string separator = ";")
+        public NumeralSystem(int size)
         {
-            if (null == identity || identity.Count == 0) throw new Exception("Identity must contain an element");
-            Identity = identity.ToList();
-            if (null == separator || Identity.Any(x => separator.Equals(x.ToString())))
-                throw new Exception("Invalid separator");
-            Separator = separator;
-            StringConverter = number =>
-            {
-                var (integral, fractional, isPositive) = number;
-                integral ??= new();
-                fractional ??= new();
-                var integralString = integral.Count == 0 ? Identity[0] : string.Join(Separator, integral.ConvertAll(x => x.ToString()));
-                var fractionalString = fractional.Count == 0 ? Identity[0] : string.Join(Separator, fractional.ConvertAll(x => x.ToString()));
-                if ((integral.Count == 0 || integral.All(x => x.Equals(Identity[0]))) && (fractional.Count == 0 || fractional.All(x => x.Equals(Identity[0]))))
-                    return integralString;
-                return $"{(isPositive ? string.Empty : NegativeSign)}{integralString}{(fractional.Count == 0 ? string.Empty :$"{NumberDecimalSeparator}{fractionalString}")}";
-            };
-            StringParse = val =>
-            {
-                if (null == val) return new Numeral(this, new List<string> { Identity[0] });
-                var input = val.Clone() as string ?? string.Empty;
-                if (string.IsNullOrEmpty(val)) return this[0];
-                var positive = true;
-                if (val.StartsWith(NegativeSign))
-                {
-                    positive = false;
-                    var idx = val.IndexOf(NegativeSign, StringComparison.Ordinal);
-                    input = val[(idx + 1)..];
-                }
-                else if (Numeral.System.Characters.Minus.ToString() == NegativeSign && val.StartsWith(Numeral.System.Characters.Minus)) //Wierd patch
-                {
-                    positive = false;
-                    var idx = val.IndexOf(Numeral.System.Characters.Minus, StringComparison.Ordinal);
-                    input = val[(idx + 1)..];
-                }
-                
-                // ReSharper disable once HeapView.PossibleBoxingAllocation
+            if (size <= 0) throw new Exception("Size cannot be less than 1");
+           Size = size;
+        }
 
-                var floatString = input.Split(NumberDecimalSeparator);
-                var integralKeys =  !string.IsNullOrEmpty(Separator) && floatString[0].Contains(Separator) ? floatString[0].Split(Separator).ToList() : floatString[0].SplitAndKeep(Identity.ToArray());
-                integralKeys.ForEach(x =>
-                {
-                    if (!integralKeys.Contains(x))
-                        throw new Exception($"Invalid mapping for value '{x}' of '{val}'");
-                });
-                var fractionalString = (floatString.Length == 1 ? string.Empty : floatString[1]);
-                var fractionalKeys = !string.IsNullOrEmpty(Separator) && fractionalString.Contains(Separator) ? fractionalString.Split(Separator).ToList() : string.IsNullOrEmpty(fractionalString) ? new List<string>() : fractionalString.SplitAndKeep(Identity.ToArray()).Select(x => x.Split(Separator)[0]).ToList();;
-                fractionalKeys.ForEach(x =>
-                {
-                    if (!fractionalKeys.Contains(x))
-                        throw new Exception($"Invalid mapping for value '{x}' of '{val}'");
-                });
-                var numeric = new Numeral(this, integralKeys, fractionalKeys, positive: positive);
-#if DEBUG
-                try
-                {
-                    if (val != numeric.ToString())
-                    {
-                        throw new Exception($"String '{numeric}' is not equal to input '{val}'");
-                    }
-
-                    var f = numeric.Decimal;
-                
-                    var numericInteger = this[f];
-                    if (numericInteger.ToString() != numeric.ToString())
-                    {
-                        throw new Exception($"String '{numeric}' obtained from input '{val}' is not equal to '{numericInteger}' obtained from It's combination count ({f})");
-                    } 
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
-                      
-#endif
-                return numeric;
-            };
-        }
-        
-        public static int DigitsInBase(int number, int numeralBase)
+        public bool TrySplitNumberIndices(string val, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional) result)
         {
-            return (int)Math.Ceiling(Math.Log(number + 1, numeralBase));
-        }
-        
-        public static long DigitsInBase(long number, int numeralBase)
-        {
-            return (long)Math.Ceiling(Math.Log(number + 1, numeralBase));
-        }
-        
-        public static ulong DigitsInBase(ulong number, int numeralBase)
-        {
-            return (ulong)Math.Ceiling(Math.Log(number + 1, numeralBase));
-        }
-        
-        public bool Contains(IList<string> value) => (null != value && value.ToList().All(Identity.Contains));
-        
-        private List<string> PositiveIntegralOf(ulong value)
-        {
-            IEnumerable<string> result = new List<string>();
-            while (value != 0)
+            var sucess = true;
+            result = (true, new List<int>(), new List<int>(), identity[0], identity[0]);
+            if (null == val) return false;
+            var input = val.Clone() as string ?? string.Empty;
+            if (string.IsNullOrEmpty(val)) return false;
+            var positive = true;
+            if (val.StartsWith(negativeSign))
             {
-                var remainder = (int)(value % (ulong)Size);
-                value /= (ulong)Size;
-                result = result.Prepend(Identity[remainder]);
+                positive = false;
+                var idx = val.IndexOf(negativeSign, StringComparison.Ordinal);
+                input = val[(idx + 1)..];
             }
-            return LongIndexer(value, true, result.ToList());
+            var floatString = input.Split(numberDecimalSeparator);
+            var integralString = floatString[0];
+            var fractionalString = (floatString.Length == 1 ? string.Empty : floatString[1]);
+            var integralKeys = !string.IsNullOrEmpty(separator) && floatString[0].Contains(separator)
+                ? integralString.Split(separator).Select(identity.IndexOf).ToList()
+                : integralString.SplitAndKeep(identity.ToArray()).Select(identity.IndexOf).ToList();
+            if (integralKeys.Any(x => x == -1))
+            {
+                sucess = false;
+            }
+            var fractionalKeys = !string.IsNullOrEmpty(separator) && fractionalString.Contains(separator)
+                ?
+                fractionalString.Split(separator).Select(identity.IndexOf).ToList()
+                : string.IsNullOrEmpty(fractionalString)
+                    ? new List<int>()
+                    : fractionalString.SplitAndKeep(identity.ToArray()).Select(x => x.Split(separator)[0]).Select(identity.IndexOf).ToList();
+            if (fractionalKeys.Any(x => x == -1))
+            {
+                sucess = false;
+            }
+            result = (positive, integralKeys.Select(x => !SkipUnknownValues && x == -1? 0 : x).Where(x => x != -1).ToList(), fractionalKeys.Select(x => !SkipUnknownValues && x == -1? 0 : x).Where(x => x != -1).ToList(), integralString, fractionalString);
+            return sucess;
+        }
+        
+        public bool TryFromIndices(List<int> integralIndices, List<int> fractionalIndices, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out string result, bool positive = true)
+        {
+            var success = true;
+            var integralList = (integralIndices ?? new List<int>())
+                .Select(x =>
+                {
+                    if (x >= 0 && x < identity.Count) return identity[x];
+                    success = false;
+                    return identity[0];
+                }).ToList();
+            var integral = string.Join(separator, integralList);
+            var fractionalList = (fractionalIndices ?? new List<int>())
+                .Select(x =>
+                {
+                    if (x >= 0 && x < identity.Count) return identity[x];
+                    success = false;
+                    return identity[0];
+                }).ToList();
+            var fractional = string.Join(separator, fractionalList);
+            var isFloat = fractionalList.Any(x => x != identity[0]);
+            result = isFloat ? $"{(positive ? string.Empty : negativeSign)}{integral}{numberDecimalSeparator}{fractional}" : positive ? integral : $"{negativeSign}{integral}";
+            return success;
+        }
+        
+        
+        public Numeral Parse(string val, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator)
+        {
+            if (!TrySplitNumberIndices(val, identity, separator, negativeSign, numberDecimalSeparator,  out var result)) throw new InvalidOperationException($"'{val}' is not a valid numeral");
+            var (positive, integralIndices, fractionalIndices, _, _) = result;
+            return new Numeral(this, integralIndices, fractionalIndices, positive);
+        }
+        
+        public bool TryParse(string value, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out Numeral result)
+        {
+            var success = TrySplitNumberIndices(value, identity, separator, negativeSign, numberDecimalSeparator, out var r);
+            var (positive, integralIndices, fractionalIndices, _, _) = r;
+            result = new Numeral(this, integralIndices, fractionalIndices, positive);
+            return success;
         }
 
-        public Numeral this[int index] => new (this, PositiveIntegralOf((ulong)Math.Abs(index)), positive: index > 0);
-        
+        public bool Contains(IList<int> value) => (null != value && value.ToList().All(x => x >= 0 && x < Size));
+
+        public Numeral this[int index]
+        {
+            get
+            {
+                var integral = Utils.Encode.UInt.ToIndicesOfBase(index, Size, out var positive);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
+            }
+        } 
+
         public Numeral this[double index]
         {
             get
             {
-                var zero = Numeral.System.Characters.Numbers.First();
-                var integral = PositiveIntegralOf((ulong)Math.Abs(index));
-                var cultureInfo = (CultureInfo)CultureInfo.Clone();
-                cultureInfo.NumberFormat.NumberGroupSeparator = string.Empty;
-                var dSplitString = index.ToString("N19", cultureInfo)
-                                    .Split(NumberDecimalSeparator)
-                                    .ToArray();
-                
-                if (dSplitString.Length <= 1) return new(this, integral, new List<string>(), index > 0);
-                if (dSplitString[1].All(x => x == zero)) return new(this, integral, new List<string>(), index > 0);
-                var fractionalIntString = dSplitString[1];
-                var frontZeros = 0;
-                foreach (var t in fractionalIntString)
-                {
-                    if (t == zero) frontZeros++;
-                    else break;
-                }
-                //reverse the string
-                var backZeros = 0;
-                foreach (var t in fractionalIntString.Reverse())
-                {
-                    if (t == zero) backZeros++;
-                    else break;
-                }
-                //remove last backZeros from fractionalIntString 0.0101882201
-                if (backZeros > 0)
-                    fractionalIntString = fractionalIntString[..^backZeros];
-                var fractionalInt = fractionalIntString.Length == 0 ? 0 : ulong.Parse(fractionalIntString);
-                var fractional = PositiveIntegralOf(fractionalInt);
-                fractional = Enumerable.Repeat(Identity[0], frontZeros).Concat(fractional).ToList();
-                return new (this, integral, fractional, index > 0);
+                var (integral, fractional, positive) = Utils.Encode.Double.ToIndicesOfBase(index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), fractional.Select(x => (int)x).ToList(), positive);
             }
         }
-        
+
         public Numeral this[decimal index]
         {
             get
             {
-                var zero = Numeral.System.Characters.Numbers.First();
-                var integral = PositiveIntegralOf((ulong)Math.Abs(index));
-                var cultureInfo = (CultureInfo)CultureInfo.Clone();
-                cultureInfo.NumberFormat.NumberGroupSeparator = string.Empty;
-                var dSplitString = index.ToString("N19", cultureInfo)
-                    .Split(NumberDecimalSeparator)
-                    .ToArray();
-                
-                if (dSplitString.Length <= 1) return new(this, integral, new List<string>(), index > 0);
-                if (dSplitString[1].All(x => x == zero)) return new(this, integral, new List<string>(), index > 0);
-                var fractionalIntString = dSplitString[1];
-                var frontZeros = 0;
-                foreach (var t in fractionalIntString)
-                {
-                    if (t == zero) frontZeros++;
-                    else break;
-                }
-                //reverse the string
-                var backZeros = 0;
-                foreach (var t in fractionalIntString.Reverse())
-                {
-                    if (t == zero) backZeros++;
-                    else break;
-                }
-                //remove last backZeros from fractionalIntString 0.0101882201
-                if (backZeros > 0)
-                    fractionalIntString = fractionalIntString[..^backZeros];
-                var fractionalInt = fractionalIntString.Length == 0 ? 0 : ulong.Parse(fractionalIntString);
-                var fractional = PositiveIntegralOf(fractionalInt);
-                fractional = Enumerable.Repeat(Identity[0], frontZeros).Concat(fractional).ToList();
-                return new (this, integral, fractional, index > 0);
+                var (integral, fractional, positive) = Decimal.ToIndicesOfBase(index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), fractional.Select(x => (int)x).ToList(), positive);
             }
+        }
+
+        public Numeral this[long index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
+            }
+        }
+
+        public Numeral this[ulong index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase(index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
+            }
+        }
+
+        public Numeral this[uint index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase(index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
+            }
+        }
+
+        public Numeral this[short index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
+            }
+        }
+
+        public Numeral this[ushort index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
+            }
+        }
+
+        public Numeral this[sbyte index]
+        {
+            get 
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
+            }
+        }
+
+        public Numeral this[byte index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
+            }
+        } 
+
+        public Numeral this[IEnumerable<byte> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
+
+        public Numeral this[IEnumerable<char> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
+
+        public Numeral this[List<int> index] => new(this, index, positive: true);
+
+        public Numeral this[IList<char> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
+
+        public Numeral this[IList<byte> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
+
+        public Numeral this[IEnumerable<int> index] => new(this, index.ToList(), positive: true);
+
+        /// <summary>
+        /// Try to get the integer value of the indices
+        /// </summary>
+        /// <param name="indices">Indices of the digits of the number</param>
+        /// <param name="result">Integer value representing the indices of the digits</param>
+        /// <param name="positive"></param>
+        /// <returns>True If the conversion succeds, False if it was approssimated to the nearest 0 possible value</returns>
+        public bool TryIntegerOf(IList<int> indices, out int result, bool positive = true)
+        {
+            result = 0; 
+            var success = true;
+            var ind = indices;
+            if (null == indices || indices.Count == 0)
+            {
+                ind = new List<int> {0};
+            } else if (!Contains(indices))
+            {
+                ind = indices.Select(x => x < Size && x >= 0 ? x : 0).ToList();
+                success = false;
+            }
+            result = ind.Select((t, i) => t * Convert.ToInt32(Math.Pow(Size, (ind.Count() - 1 - i)))).Sum();
+            result = positive ? result : -result;
+            return success;
+        }
+        
+        /// <summary>
+        /// Try to get the char value of the indices
+        /// </summary>
+        /// <param name="indices">Indices of the digits of the number</param>
+        /// <param name="result">Char value representing the indices of the digits</param>
+        /// <param name="positive"></param>
+        /// <returns>True If the conversion succeds, False if it was approssimated to the nearest 0 possible value</returns>
+        public bool TryCharOf(IList<int> indices, out char result, bool positive = true)
+        {
+            result = char.MinValue;
+            var success = TryIntegerOf(indices, out var integer, positive);
+            if (success)
+            {
+                result = (char) integer;
+            }
+            return success;
+        }
+
+        /// <summary>
+        /// Try to get the integer value of the indices
+        /// </summary>
+        /// <param name="indices">Indices of the digits of the number</param>
+        /// <param name="result">Integer value representing the indices of the digits</param>
+        /// <param name="positive">If the number is greater than 0</param>
+        /// <param name="identity">The identity that represents the number at each index</param>
+        /// <param name="separator">The separator of each number</param>
+        /// <param name="negativeSign">The negative sign symbol</param>
+        /// <param name="numberDecimalSeparator">The separator for integral and fractional part in a float</param>
+        /// <returns>True If the conversion succeds, False if it was approssimated to the nearest 0 possible value</returns>
+        public bool TryIntegerOf(IList<string> indices, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator,  out int result, bool positive = true)
+        {
+            result = 0;
+            IList<string> ind;
+            if (indices.Count == 0)
+            {
+                ind = new List<string> { identity[0] };
+            }
+            else
+            {
+                if (indices[0] == negativeSign)
+                {
+                    positive = false;
+                }
+                ind = indices
+                    .SkipWhile(x => x.Equals(negativeSign))
+                    .TakeWhile(x => !x.Equals(numberDecimalSeparator))
+                    .Where(x => !x.Equals(separator))
+                    .ToList();
+            }
+            return TryIntegerOf(ind.Select(identity.IndexOf).ToList(), out result, positive);
+        }
+        
+        public bool TryIntegerOf(string value, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out int integral, bool positive = true)
+        {
+            integral = 0;
+            if (string.IsNullOrEmpty(value))
+            {
+                return false;
+            }
+            
+            //var integral = string.Join(string.Empty, value.Split(NumberDecimalSeparator).First());
+            //var test = integral.SplitAndKeep(Identity.ToArray());
+            var success = TrySplitNumberIndices(value, identity, separator, negativeSign, numberDecimalSeparator, out var result);
+            var test = TryIntegerOf(result.integralIndices, out integral, result.positive | positive);
+            return success && test;
+        }
+        
+        public class SerializationInfo
+        {
+            public List<string> Identity { get; set; } = new ();
+            public string Separator { get; set; } = string.Empty;
+            public string NegativeSign { get; set; } = string.Empty;
+            public string NumberDecimalSeparator { get; set; } = string.Empty;
+
+            public static SerializationInfo OfBase(int size)
+            {
+                const int numberCount = 10;
+                const int lettersLowerCount = 26;
+                var cultureInfo = CultureInfo.CurrentCulture;
+                var negativeSign = cultureInfo.NumberFormat.NegativeSign;
+                var numberDecimalSeparator = cultureInfo.NumberFormat.NumberDecimalSeparator;
+                var separator = size switch
+                {
+                    < numberCount + lettersLowerCount * 2 => string.Empty,
+                    _ => cultureInfo.NumberFormat.NumberGroupSeparator
+                };
+                var identity = size switch
+                {
+                    < 10 => Enumerable.Range(0, size).Select(i => i.ToString(cultureInfo)).ToList(),
+                    _ => Numeral.System.Characters.All
+                        .Take(size)
+                        .Where(x =>
+                            !negativeSign.Contains(x) &&
+                            !numberDecimalSeparator.Contains(x) &&
+                            !separator.Contains(x)
+                        )
+                        .Select(c => c.ToString(cultureInfo)).ToList(),
+                };
+                if (identity.Count() < size)
+                {
+                    identity = identity.Concat(Enumerable.Range(identity.Count(), size - identity.Count()).Select(i => i.ToString(cultureInfo))).ToList();
+                }
+                return new SerializationInfo
+                {
+                    Identity = identity,
+                    Separator = separator,
+                    NegativeSign = negativeSign,
+                    NumberDecimalSeparator = numberDecimalSeparator
+                };
+            }
+        }
+        
+        public Numeral Parse(string toString, SerializationInfo serializationInfo) => Parse(toString, serializationInfo.Identity, serializationInfo.Separator, serializationInfo.NegativeSign, serializationInfo.NumberDecimalSeparator);
+
+        public Numeral Parse(string toString)
+        {
+            var serializationInfo = SerializationInfo.OfBase(Size);
+            return Parse(toString, serializationInfo);
         }
     }
 }

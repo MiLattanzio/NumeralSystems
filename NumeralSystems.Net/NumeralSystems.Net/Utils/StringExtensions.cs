@@ -1,27 +1,59 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NumeralSystems.Net.Utils
 {
     public static class StringExtensions
     {
-        public static List<string> SplitAndKeep(this string s, params string[] delims)
+        
+        public static IEnumerable<string> TakeOnly(this string input, params string[] delimiters) => input.SplitAndKeep(delimiters).Where(delimiters.Contains);
+
+        public static IEnumerable<string> Remove(this string input, params string[] delimiters) => input.SplitAndKeep(delimiters).Where(x => !delimiters.Contains(x));
+        
+        public static IEnumerable<string> SplitAndKeep(this string input, params string[] delimiters)
         {
-            if (string.IsNullOrEmpty(s)) return new();
-            var rows = new List<string> { s };
-            foreach (var delim in delims)
+            var result = new List<string>();
+        
+            var startIndex = 0;
+            int delimiterIndex;
+        
+            while ((delimiterIndex = FindDelimiterIndex(input, startIndex, delimiters)) != -1)
             {
-                for (var i = 0; i < rows.Count; i++)
+                if (delimiterIndex > startIndex)
                 {
-                    var index = rows[i].IndexOf(delim, StringComparison.Ordinal);
-                    if (index <= -1 || rows[i].Length <= index + 1) continue;
-                    var leftPart = rows[i][..(index + delim.Length)];
-                    var rightPart = rows[i][(index + delim.Length)..];
-                    rows[i] = leftPart;
-                    rows.Insert(i + 1, rightPart);
+                    var substring = input.Substring(startIndex, delimiterIndex - startIndex);
+                    result.Add(substring);
+                }
+            
+                var delimiter = input.Substring(delimiterIndex, 1);
+                result.Add(delimiter);
+            
+                startIndex = delimiterIndex + 1;
+            }
+
+            if (startIndex >= input.Length) return result.ToArray();
+            var remainingSubstring = input[startIndex..];
+            result.Add(remainingSubstring);
+
+            return result.ToArray();
+        }
+    
+        private static int FindDelimiterIndex(string input, int startIndex, IEnumerable<string> delimiters)
+        {
+            var minIndex = -1;
+        
+            foreach (var delimiter in delimiters)
+            {
+                var index = input.IndexOf(delimiter, startIndex, StringComparison.Ordinal);
+            
+                if (index != -1 && (minIndex == -1 || index < minIndex))
+                {
+                    minIndex = index;
                 }
             }
-            return rows;
+        
+            return minIndex;
         }
     }
 }

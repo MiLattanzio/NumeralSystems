@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Globalization;
+using System.Linq;
 
 namespace NumeralSystems.Net.Utils.Encode
 {
@@ -11,14 +13,24 @@ namespace NumeralSystems.Net.Utils.Encode
             var fractionalPart = absoluteValue - integralPart;
             var intFractional = GetFractionalPart(fractionalPart, out var zeroCount);
             var zeros = Enumerable.Repeat(0ul, zeroCount).ToArray();
-            return (ULong.ToIndicesOfBase(integralPart, destinationBase), zeros.Concat(ULong.ToIndicesOfBase(intFractional, destinationBase)).ToArray(), val>0);
+            return (ULong.ToIndicesOfBase(integralPart, destinationBase), zeros.Concat(ULong.ToIndicesOfBase(intFractional, destinationBase)).ToArray(), val>=0);
         }
         public static decimal FromIndicesOfBase(ulong[] integral, ulong[] fractional, bool positive, int sourceBase)
         {
             var integralPart = ULong.FromIndicesOfBase(integral, sourceBase);
             var fractionalPart = ULong.FromIndicesOfBase(fractional, sourceBase);
             var fractionalPats = ULong.ToIndicesOfBase(fractionalPart, 10);
-            var result = integralPart + fractionalPart / System.Math.Pow(10, fractionalPats.Length);
+            var result = fractionalPart / System.Math.Pow(10, fractionalPats.Length);
+            var zeros = 0;
+            while (fractional.Length > zeros && fractional[zeros] == 0)
+            {
+                zeros++;
+            }
+            if (zeros > 0)
+            {
+                result /= System.Math.Pow(10, zeros);
+            }
+            result += integralPart;
             return new decimal(positive ? result : - result);
         }
         private static ulong GetFractionalPart(decimal number, out int numberOfZeros)
@@ -47,5 +59,14 @@ namespace NumeralSystems.Net.Utils.Encode
             // Convertiamo la parte frazionaria in intero
             return (ulong)(fractionalPart * multiplier);
         }
+        
+        
+        public static decimal From(double val)
+        {
+            //Using string to avoid precision loss
+            return decimal.Parse(val.ToString(CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
+        }
+        
+        
     }
 }

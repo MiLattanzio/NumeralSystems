@@ -25,7 +25,7 @@ namespace NumeralSystem.Net.NUnit.Utils
             var value = (ulong)_random.Next(int.MinValue, int.MaxValue);
             var encoded = NumeralSystems.Net.Utils.Encode.ULong.ToIndicesOfBase(value, nBase);
             var decoded = NumeralSystems.Net.Utils.Encode.ULong.FromIndicesOfBase(encoded, nBase);
-            Assert.That(value, Is.EqualTo(decoded));
+            Assert.That(value, Is.EqualTo(decoded).Within(0.000000000000001));
         }
         
         [Test]

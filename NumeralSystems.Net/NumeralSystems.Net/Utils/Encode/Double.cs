@@ -11,14 +11,25 @@ namespace NumeralSystems.Net.Utils.Encode
             var fractionalPart = absoluteValue - integralPart;
             var intFractional = GetFractionalPart(fractionalPart, out var zeroCount);
             var zeros = Enumerable.Repeat(0ul, zeroCount).ToArray();
-            return (ULong.ToIndicesOfBase(integralPart, destinationBase), zeros.Concat(ULong.ToIndicesOfBase(intFractional, destinationBase)).ToArray(), val>0);
+            return (ULong.ToIndicesOfBase(integralPart, destinationBase), zeros.Concat(ULong.ToIndicesOfBase(intFractional, destinationBase)).ToArray(), val>=0);
         }
+        
         public static double FromIndicesOfBase(ulong[] integral, ulong[] fractional, bool positive, int sourceBase)
         {
             var integralPart = ULong.FromIndicesOfBase(integral, sourceBase);
             var fractionalPart = ULong.FromIndicesOfBase(fractional, sourceBase);
             var fractionalPats = ULong.ToIndicesOfBase(fractionalPart, 10);
-            var result = integralPart + fractionalPart / System.Math.Pow(10, fractionalPats.Length);
+            var result = fractionalPart / System.Math.Pow(10, fractionalPats.Length);
+            var zeros = 0;
+            while (fractional.Length > zeros && fractional[zeros] == 0)
+            {
+                zeros++;
+            }
+            if (zeros > 0)
+            {
+                result /= System.Math.Pow(10, zeros);
+            }
+            result += integralPart;
             return positive ? result : - result;
         }
         
@@ -46,7 +57,7 @@ namespace NumeralSystems.Net.Utils.Encode
             }
 
             // Convertiamo la parte frazionaria in intero
-            return (ulong)(fractionalPart * multiplier);
+            return (ulong)(Encode.Decimal.From(fractionalPart) * multiplier);
         }
     }
 }

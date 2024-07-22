@@ -120,30 +120,96 @@ namespace NumeralSystems.Net
         }
 
         public bool Contains(IList<int> value) => (null != value && value.ToList().All(x => x >= 0 && x < Size));
-        private List<int> IntegralIndicesOf(ulong value) => ULong.ToIndicesOfBase(value, Size).Select(x => (int)x).ToList();
-        private List<int> IntegralIndicesOf(double value) => Utils.Encode.Double.ToIndicesOfBase(value, Size).Integral.Select(x => (int)x).ToList();
-        private List<int> IntegralIndicesOf(decimal value) => Utils.Encode.Decimal.ToIndicesOfBase(value, Size).Integral.Select(x => (int)x).ToList();
-        private List<int> FractionalIndicesOf(double value) => Utils.Encode.Double.ToIndicesOfBase(value, Size).Fractional.Select(x => (int)x).ToList();
-        private List<int> FractionalIndicesOf(decimal value) => Utils.Encode.Decimal.ToIndicesOfBase(value, Size).Fractional.Select(x => (int)x).ToList();
-        
-        public Numeral this[int index] => new (this, IntegralIndicesOf((ulong) Math.Abs(index)), new List<int>(), index>=0);
-        public Numeral this[double index] => new (this, IntegralIndicesOf(index), FractionalIndicesOf(index), index > 0);
 
-        public Numeral this[decimal index] => new (this, IntegralIndicesOf(index), FractionalIndicesOf(index), index > 0);
+        public Numeral this[int index]
+        {
+            get
+            {
+                var integral = Utils.Encode.UInt.ToIndicesOfBase(index, Size, out var positive);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
+            }
+        } 
 
-        public Numeral this[long index] => new(this, IntegralIndicesOf((ulong) Math.Abs(index)), positive: index > 0);
+        public Numeral this[double index]
+        {
+            get
+            {
+                var (integral, fractional, positive) = Utils.Encode.Double.ToIndicesOfBase(index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), fractional.Select(x => (int)x).ToList(), positive);
+            }
+        }
 
-        public Numeral this[ulong index] => new(this, IntegralIndicesOf(index), positive: true);
+        public Numeral this[decimal index]
+        {
+            get
+            {
+                var (integral, fractional, positive) = Decimal.ToIndicesOfBase(index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), fractional.Select(x => (int)x).ToList(), positive);
+            }
+        }
 
-        public Numeral this[uint index] => new(this, IntegralIndicesOf(index), positive: true);
+        public Numeral this[long index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
+            }
+        }
 
-        public Numeral this[short index] => new(this, IntegralIndicesOf((ulong) Math.Abs(index)), positive: index > 0);
+        public Numeral this[ulong index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase(index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
+            }
+        }
 
-        public Numeral this[ushort index] => new(this, IntegralIndicesOf(index), positive: true);
+        public Numeral this[uint index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase(index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
+            }
+        }
 
-        public Numeral this[sbyte index] => new(this, IntegralIndicesOf((ulong) Math.Abs(index)), positive: index > 0);
+        public Numeral this[short index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
+            }
+        }
 
-        public Numeral this[byte index] => new(this, IntegralIndicesOf(index), positive: true);
+        public Numeral this[ushort index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
+            }
+        }
+
+        public Numeral this[sbyte index]
+        {
+            get 
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
+            }
+        }
+
+        public Numeral this[byte index]
+        {
+            get
+            {
+                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
+            }
+        } 
 
         public Numeral this[IEnumerable<byte> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
 
@@ -295,5 +361,11 @@ namespace NumeralSystems.Net
         }
         
         public Numeral Parse(string toString, SerializationInfo serializationInfo) => Parse(toString, serializationInfo.Identity, serializationInfo.Separator, serializationInfo.NegativeSign, serializationInfo.NumberDecimalSeparator);
+
+        public Numeral Parse(string toString)
+        {
+            var serializationInfo = SerializationInfo.OfBase(Size);
+            return Parse(toString, serializationInfo);
+        }
     }
 }

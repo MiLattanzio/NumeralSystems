@@ -20,7 +20,17 @@ namespace NumeralSystems.Net.Utils.Encode
             var integralPart = UInt.FromIndicesOfBase(integral.ToArray(), sourceBase, positive);
             var fractionalPart = UInt.FromIndicesOfBase(fractional, sourceBase, true);
             var fractionalPats = UInt.ToIndicesOfBase(fractionalPart, 10, out _);
-            var result = integralPart + fractionalPart / System.Math.Pow(10, fractionalPats.Length);
+            var result = fractionalPart / System.Math.Pow(10, fractionalPats.Length);
+            var zeros = 0;
+            while (fractional.Length > zeros && fractional[zeros] == 0)
+            {
+                zeros++;
+            }
+            if (zeros > 0)
+            {
+                result /= System.Math.Pow(10, zeros);
+            }
+            result += integralPart;
             return System.Convert.ToSingle(positive ? result : - result);
         }
 
@@ -48,7 +58,7 @@ namespace NumeralSystems.Net.Utils.Encode
             }
 
             // Convertiamo la parte frazionaria in intero
-            return (int)(fractionalPart * multiplier);
+            return (int)(Encode.Decimal.From(fractionalPart) * multiplier);
         }
     }
 }

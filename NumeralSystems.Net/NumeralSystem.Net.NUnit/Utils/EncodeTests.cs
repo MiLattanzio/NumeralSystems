@@ -48,6 +48,16 @@ namespace NumeralSystem.Net.NUnit.Utils
             Assert.That(value, Is.EqualTo(decoded).Within(0.000000000000001));
         }
         
+        [Test(Author = "Mi", Description = "Failed 10045594282/job/27763245466")]
+        public void FloatFailedTest0()
+        {
+            var nBase = _random.Next(2, int.MaxValue);
+            var value = 223346432.0f;
+            var encoded = NumeralSystems.Net.Utils.Encode.Float.ToIndicesOfBase(value, nBase);
+            var decoded = NumeralSystems.Net.Utils.Encode.Float.FromIndicesOfBase(encoded.Integral, encoded.Fractional, encoded.positive, nBase);
+            Assert.That(value, Is.EqualTo(decoded).Within(0.000000000000001));
+        }
+        
         [Test]
         public void Float()
         {

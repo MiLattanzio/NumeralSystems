@@ -12,7 +12,7 @@ namespace NumeralSystems.Net.Utils.Encode
             var fractionalPart = absoluteValue - integralPart;
             var intFractional = GetFractionalPart(fractionalPart, out var zeroCount);
             var zeros = Enumerable.Repeat(0u, zeroCount).ToArray();
-            return (UInt.ToIndicesOfBase(integralPart, destinationBase, out var positive), zeros.Concat(UInt.ToIndicesOfBase(intFractional, destinationBase, out _)).ToArray(), positive);
+            return (UInt.ToIndicesOfBase(integralPart, destinationBase, out var positive), zeros.Concat(UInt.ToIndicesOfBase(intFractional, destinationBase, out _)).ToArray(), val >= 0);
         }
         
         public static float FromIndicesOfBase(uint[] integral, uint[] fractional, bool positive, int sourceBase)
@@ -31,7 +31,7 @@ namespace NumeralSystems.Net.Utils.Encode
                 result /= System.Math.Pow(10, zeros);
             }
             result += integralPart;
-            return System.Convert.ToSingle(positive ? result : - result);
+            return System.Convert.ToSingle(result);
         }
 
         private static int GetFractionalPart(float number, out int numberOfZeros)

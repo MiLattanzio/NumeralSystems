@@ -35,9 +35,6 @@ namespace NumeralSystem.Net.NUnit
                 Assert.AreEqual(decimalValue.Decimal, value);
                 var decimalValue2 = base2.Parse(decimalValue.ToString(), serializationInfo);
                 Assert.AreEqual(decimalValue2.Decimal, decimalValue.Decimal);
-                var dec = new NumeralDecimal(decimalValue);
-                Console.WriteLine(dec.Value);
-                Console.WriteLine(dec);
             }
             
         }

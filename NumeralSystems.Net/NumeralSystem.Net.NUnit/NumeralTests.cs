@@ -53,18 +53,6 @@ namespace NumeralSystem.Net.NUnit
             //Check that the Int32 is equal to the integer after conversion
             randomInt32.Value = randomInt;
             Assert.AreEqual(randomInt, randomInt32.Value);
-            //Create a NumeralInt32 from randomNumeral
-            var randomNumeralInt = new NumeralInt()
-            {
-                Numeral = randomNumeral
-            };
-            //Check that the NumeralInt32 is equal to the integer
-            Assert.AreEqual(randomInt, randomNumeralInt.Value);
-            Assert.AreEqual(randomInt, randomNumeralInt.Numeral.Integer);
-            //Check that the NumeralInt32 is equal to the integer after conversion
-            randomNumeralInt.Value = randomInt;
-            Assert.AreEqual(randomInt, randomNumeralInt.Value);
-            Assert.AreEqual(randomInt, randomNumeralInt.Numeral.Integer);
         }
         
         [Test]
@@ -159,11 +147,6 @@ namespace NumeralSystem.Net.NUnit
                 var value = random.Next();
                 var decimalValue = _base10[value];
                 Assert.AreEqual(decimalValue.ToString(), value.ToString());
-                var numInt = new NumeralInt(decimalValue);
-                var numIntClone = new NumeralInt(value);
-                Assert.AreEqual(value, numIntClone.Value);
-                Assert.AreEqual(numInt.Value, numIntClone.Value);
-                Assert.AreEqual(numInt.Bytes, numIntClone.Bytes);
             }
         }
 
@@ -212,11 +195,6 @@ namespace NumeralSystem.Net.NUnit
                 Assert.AreEqual(decimalValue.Double, value, 0.000000000000001);
                 var decimalValue2 = _base10.Parse(decimalValue.ToString());
                 Assert.AreEqual(decimalValue2.Double, decimalValue.Double, 0.000000000000001);
-                var numInt = new NumeralDouble(value);
-                var numIntClone = new NumeralDouble(decimalValue.Double);
-                Assert.AreEqual(value, numIntClone.Value, 0.000000000000001);
-                Assert.AreEqual(numInt.Value, numIntClone.Value, 0.000000000000001);
-                Assert.AreEqual(numInt.Bytes, numIntClone.Bytes);
             }
             
         }
@@ -233,11 +211,6 @@ namespace NumeralSystem.Net.NUnit
                 Assert.AreEqual(decimalValue.Decimal, value);
                 var decimalValue2 = _base10.Parse(decimalValue.ToString());
                 Assert.AreEqual(decimalValue2.Decimal, decimalValue.Decimal);
-                var numInt = new NumeralDecimal(value);
-                var numIntClone = new NumeralDecimal(decimalValue.Decimal);
-                Assert.AreEqual(value, numIntClone.Value);
-                Assert.AreEqual(numInt.Value, numIntClone.Value);
-                Assert.AreEqual(numInt.Bytes, numIntClone.Bytes);
             }
             
         }

@@ -22,12 +22,6 @@ namespace NumeralSystems.Net.Benchmark
         }
         public static void Main(string[] args)
         {
-            var t = new NumeralInt(2);
-            t.Binary[1] = false;
-            Console.WriteLine(t.Binary[1]);
-            Console.WriteLine(t.ToString());
-            Console.WriteLine(t.Numeral);
-            Console.WriteLine(t.Binary.Select(x => x?"1":"0").Aggregate((x, y) => x + y));
             if (true) return;
 //var summary = BenchmarkRunner.Run<Tests>();
             var test = new Tests();

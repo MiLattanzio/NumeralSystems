@@ -156,13 +156,13 @@ namespace NumeralSystems.Net
             get
             {
                 var integralEnumerable = IntegralIndices.Select((t, i) =>
-                        (ulong) t *
-                        Convert.ToUInt64(Math.Pow(Base.Size, (IntegralIndices.Count - 1 - i))))
+                       t *
+                        NumeralSystems.Net.Type.Base.Decimal.Pow(Base.Size, (IntegralIndices.Count - 1 - i)))
                     .ToList();
                 var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
                 var fractionalEnumerable = FractionalIndices.Select((t, i) =>
-                    (ulong) t *
-                    Convert.ToUInt64(Math.Pow(Base.Size, (FractionalIndices.Count - 1 - i)))).ToList();
+                     t *
+                    NumeralSystems.Net.Type.Base.Decimal.Pow(Base.Size, (FractionalIndices.Count - 1 - i))).ToList();
                 var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
                 var frontZeros = 0;
                 foreach (var t in FractionalIndices)
@@ -173,7 +173,7 @@ namespace NumeralSystems.Net
 
                 if (integral == 0 && fractional == 0) Positive = true;
                 var digitsInBase = (int) Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
-                var div = (decimal) Math.Pow(10, digitsInBase);
+                var div =  NumeralSystems.Net.Type.Base.Decimal.Pow(10, digitsInBase);
                 return ((Positive ? 1 : -1) * (integral + (decimal.Divide(fractional, div))));
             }
             set
@@ -242,6 +242,7 @@ namespace NumeralSystems.Net
         }
 
         public Numeral To(NumeralSystem baseSystem) => baseSystem[Decimal];
+        public Numeral ToBase(int baseSystem) => Numeral.System.OfBase(baseSystem)[Decimal];
 
         public string ToString(IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator)
         {

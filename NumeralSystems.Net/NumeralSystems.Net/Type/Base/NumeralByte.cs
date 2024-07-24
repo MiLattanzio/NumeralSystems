@@ -6,11 +6,7 @@ namespace NumeralSystems.Net.Type.Base
     public sealed class NumeralByte : Byte
     {
 
-        public NumeralByte(Numeral numeral)
-        {
-            Numeral = numeral;
-        }
-
+   
         public NumeralByte(byte value, NumeralSystem system)
         {
             Numeral = system[value];

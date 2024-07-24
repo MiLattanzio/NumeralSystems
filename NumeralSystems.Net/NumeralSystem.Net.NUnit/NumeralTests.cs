@@ -241,5 +241,14 @@ namespace NumeralSystem.Net.NUnit
             }
             
         }
+        
+        [Benchmark]
+        [Test]
+        public void DecimalTestMax()
+        {
+            var baseSystem = new NumeralSystems.Net.NumeralSystem(10000);
+            var max = baseSystem[decimal.MaxValue];
+            Assert.AreEqual(decimal.MaxValue, max.Decimal);
+        }
     }
 }

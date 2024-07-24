@@ -7,5 +7,8 @@
         public static long DigitsInBase(long number, int numeralBase) => (long) System.Math.Ceiling(System.Math.Log(number + 1, numeralBase));
 
         public static ulong DigitsInBase(ulong number, int numeralBase) => (ulong) System.Math.Ceiling(System.Math.Log(number + 1, numeralBase));
+        
+        public static decimal DigitsInBase(decimal number, int numeralBase) =>  NumeralSystems.Net.Type.Base.Decimal.Ceiling(NumeralSystems.Net.Type.Base.Decimal.Log(number + 1, numeralBase));
+
     }
 }

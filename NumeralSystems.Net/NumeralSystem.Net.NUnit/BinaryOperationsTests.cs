@@ -1,6 +1,6 @@
 ﻿using System;
+using NumeralSystems.Net.Type.Base;
 using NUnit.Framework;
-using Int32 = NumeralSystems.Net.Type.Base.Int32;
 
 namespace NumeralSystem.Net.NUnit
 {
@@ -14,8 +14,8 @@ namespace NumeralSystem.Net.NUnit
         {
             var numberA = Random.Next(0, int.MaxValue);
             var numberB = Random.Next(0, int.MaxValue);
-            var a = new Int32() { Value = numberA };
-            var b = new Int32() { Value = numberB };
+            var a = new Int() { Value = numberA };
+            var b = new Int() { Value = numberB };
             var numberC = numberA & numberB;
             var c = a.And(b);
             Assert.That(numberC, Is.EqualTo(c.Value));
@@ -26,8 +26,8 @@ namespace NumeralSystem.Net.NUnit
         {
             var numberA = Random.Next(0, int.MaxValue);
             var numberB = Random.Next(0, int.MaxValue);
-            var a = new Int32() { Value = numberA };
-            var b = new Int32() { Value = numberB };
+            var a = new Int() { Value = numberA };
+            var b = new Int() { Value = numberB };
             var numberC = numberA | numberB;
             var c = a.Or(b);
             Assert.That(numberC, Is.EqualTo(c.Value));

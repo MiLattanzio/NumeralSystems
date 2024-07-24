@@ -9,7 +9,6 @@ using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
 using NUnit.Framework;
 using Convert = System.Convert;
-using Int32 = NumeralSystems.Net.Type.Base.Int32;
 using Math = System.Math;
 
 namespace NumeralSystem.Net.NUnit
@@ -45,7 +44,7 @@ namespace NumeralSystem.Net.NUnit
             randomNumeral.Integer = randomInt;
             Assert.AreEqual(randomInt, randomNumeral.Integer);
             //Create a Int32 from randomInt
-            var randomInt32 = new Int32()
+            var randomInt32 = new Int()
             {
                 Value = randomInt
             };
@@ -55,7 +54,7 @@ namespace NumeralSystem.Net.NUnit
             randomInt32.Value = randomInt;
             Assert.AreEqual(randomInt, randomInt32.Value);
             //Create a NumeralInt32 from randomNumeral
-            var randomNumeralInt = new NumeralInt32()
+            var randomNumeralInt = new NumeralInt()
             {
                 Numeral = randomNumeral
             };
@@ -160,8 +159,8 @@ namespace NumeralSystem.Net.NUnit
                 var value = random.Next();
                 var decimalValue = _base10[value];
                 Assert.AreEqual(decimalValue.ToString(), value.ToString());
-                var numInt = new NumeralInt32(decimalValue);
-                var numIntClone = new NumeralInt32(value);
+                var numInt = new NumeralInt(decimalValue);
+                var numIntClone = new NumeralInt(value);
                 Assert.AreEqual(value, numIntClone.Value);
                 Assert.AreEqual(numInt.Value, numIntClone.Value);
                 Assert.AreEqual(numInt.Bytes, numIntClone.Bytes);

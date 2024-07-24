@@ -1,4 +1,5 @@
 ﻿using System;
+using NumeralSystems.Net.Type.Base;
 using NUnit.Framework;
 
 namespace NumeralSystem.Net.NUnit.Utils
@@ -13,8 +14,8 @@ namespace NumeralSystem.Net.NUnit.Utils
         {
             var nBase = _random.Next(2, int.MaxValue);
             var value = _random.Next(int.MinValue, int.MaxValue);
-            var encoded = NumeralSystems.Net.Utils.Encode.UInt.ToIndicesOfBase(value, nBase, out var positive);
-            var decoded = NumeralSystems.Net.Utils.Encode.UInt.FromIndicesOfBase(encoded, nBase, positive);
+            var encoded = UInt.ToIndicesOfBase(value, nBase, out var positive);
+            var decoded = UInt.FromIndicesOfBase(encoded, nBase, positive);
             Assert.That(value, Is.EqualTo(decoded));
         }
         
@@ -23,8 +24,8 @@ namespace NumeralSystem.Net.NUnit.Utils
         {
             var nBase = _random.Next(2, int.MaxValue);
             var value = (ulong)_random.Next(int.MinValue, int.MaxValue);
-            var encoded = NumeralSystems.Net.Utils.Encode.ULong.ToIndicesOfBase(value, nBase);
-            var decoded = NumeralSystems.Net.Utils.Encode.ULong.FromIndicesOfBase(encoded, nBase);
+            var encoded = NumeralSystems.Net.Type.Base.ULong.ToIndicesOfBase(value, nBase);
+            var decoded = NumeralSystems.Net.Type.Base.ULong.FromIndicesOfBase(encoded, nBase);
             Assert.That(value, Is.EqualTo(decoded).Within(0.000000000000001));
         }
         
@@ -33,8 +34,8 @@ namespace NumeralSystem.Net.NUnit.Utils
         {
             var nBase = _random.Next(2, int.MaxValue);
             var value = 18446744073499964511ul;
-            var encoded = NumeralSystems.Net.Utils.Encode.ULong.ToIndicesOfBase(value, nBase);
-            var decoded = NumeralSystems.Net.Utils.Encode.ULong.FromIndicesOfBase(encoded, nBase);
+            var encoded = NumeralSystems.Net.Type.Base.ULong.ToIndicesOfBase(value, nBase);
+            var decoded = NumeralSystems.Net.Type.Base.ULong.FromIndicesOfBase(encoded, nBase);
             Assert.That(value, Is.EqualTo(decoded).Within(0.0000000000000001));
         }
         
@@ -43,8 +44,8 @@ namespace NumeralSystem.Net.NUnit.Utils
         {
             var nBase = _random.Next(2, int.MaxValue);
             var value = _random.NextDouble() * _random.Next(int.MinValue, int.MaxValue);
-            var encoded = NumeralSystems.Net.Utils.Encode.Double.ToIndicesOfBase(value, nBase);
-            var decoded = NumeralSystems.Net.Utils.Encode.Double.FromIndicesOfBase(encoded.Integral, encoded.Fractional, encoded.positive, nBase);
+            var encoded = NumeralSystems.Net.Type.Base.Double.ToIndicesOfBase(value, nBase);
+            var decoded = NumeralSystems.Net.Type.Base.Double.FromIndicesOfBase(encoded.Integral, encoded.Fractional, encoded.positive, nBase);
             Assert.That(value, Is.EqualTo(decoded).Within(0.000000000000001));
         }
         
@@ -53,8 +54,8 @@ namespace NumeralSystem.Net.NUnit.Utils
         {
             var nBase = _random.Next(2, int.MaxValue);
             var value = 223346432.0f;
-            var encoded = NumeralSystems.Net.Utils.Encode.Float.ToIndicesOfBase(value, nBase);
-            var decoded = NumeralSystems.Net.Utils.Encode.Float.FromIndicesOfBase(encoded.Integral, encoded.Fractional, encoded.positive, nBase);
+            var encoded = NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase(value, nBase);
+            var decoded = NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase(encoded.Integral, encoded.Fractional, encoded.positive, nBase);
             Assert.That(value, Is.EqualTo(decoded).Within(0.000000000000001));
         }
         
@@ -63,8 +64,8 @@ namespace NumeralSystem.Net.NUnit.Utils
         {
             var nBase = _random.Next(2, int.MaxValue);
             var value = (float)(_random.NextDouble() * _random.Next(int.MinValue, int.MaxValue));
-            var encoded = NumeralSystems.Net.Utils.Encode.Float.ToIndicesOfBase(value, nBase);
-            var decoded = NumeralSystems.Net.Utils.Encode.Float.FromIndicesOfBase(encoded.Integral, encoded.Fractional, encoded.positive, nBase);
+            var encoded = NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase(value, nBase);
+            var decoded = NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase(encoded.Integral, encoded.Fractional, encoded.positive, nBase);
             Assert.That(value, Is.EqualTo(decoded).Within(0.000000000000001));
         }
         
@@ -73,8 +74,8 @@ namespace NumeralSystem.Net.NUnit.Utils
         {
             var nBase = _random.Next(2, int.MaxValue);
             var value = (decimal)(_random.NextDouble() * _random.Next(int.MinValue, int.MaxValue));
-            var encoded = NumeralSystems.Net.Utils.Encode.Decimal.ToIndicesOfBase(value, nBase);
-            var decoded = NumeralSystems.Net.Utils.Encode.Decimal.FromIndicesOfBase(encoded.Integral, encoded.Fractional, encoded.positive, nBase);
+            var encoded = NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase(value, nBase);
+            var decoded = NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase(encoded.Integral, encoded.Fractional, encoded.positive, nBase);
             Assert.That(value, Is.EqualTo(decoded).Within(0.000000000000001));
         }
         
@@ -83,10 +84,10 @@ namespace NumeralSystem.Net.NUnit.Utils
         {
             var nBase = _random.Next(2, char.MaxValue);
             var testString = "Hello World!";
-            var encoded = NumeralSystems.Net.Utils.Encode.String.ToIndicesOfBase(testString, nBase);
-            var decoded = NumeralSystems.Net.Utils.Encode.String.FromIndicesOfBase(encoded, nBase);
-            var e = NumeralSystems.Net.Utils.Encode.String.EncodeToBase(testString, nBase, out var size);
-            var d = NumeralSystems.Net.Utils.Encode.String.DecodeFromBase(e, nBase, size);
+            var encoded = NumeralSystems.Net.Type.Base.String.ToIndicesOfBase(testString, nBase);
+            var decoded = NumeralSystems.Net.Type.Base.String.FromIndicesOfBase(encoded, nBase);
+            var e = NumeralSystems.Net.Type.Base.String.EncodeToBase(testString, nBase, out var size);
+            var d = NumeralSystems.Net.Type.Base.String.DecodeFromBase(e, nBase, size);
             Assert.That(testString, Is.EqualTo(decoded));
             Assert.That(testString, Is.EqualTo(d));
         }

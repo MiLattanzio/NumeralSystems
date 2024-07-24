@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 
-namespace NumeralSystems.Net.Utils.Encode
+// ReSharper disable once CheckNamespace
+namespace NumeralSystems.Net.Type.Base
 {
-    public static class ULong
+    public partial class ULong
     {
         public static ulong[] ToIndicesOfBase(ulong val, int destinationBase)
         {

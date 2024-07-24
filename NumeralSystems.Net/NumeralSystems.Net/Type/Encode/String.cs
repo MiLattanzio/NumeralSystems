@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace NumeralSystems.Net.Utils.Encode
+// ReSharper disable once CheckNamespace
+namespace NumeralSystems.Net.Type.Base
 {
-    public static class String
+    public partial class String
     {
         public static string EncodeToBase(string s, int destinationBase, out int size)
         {

@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System.Globalization;
+using System.Linq;
 
-namespace NumeralSystems.Net.Utils.Encode
+// ReSharper disable once CheckNamespace
+namespace NumeralSystems.Net.Type.Base
 {
-    public class Double
+    public partial class Decimal
     {
-        public static (ulong[] Integral, ulong[] Fractional, bool positive) ToIndicesOfBase(double val, int destinationBase)
+        public static (ulong[] Integral, ulong[] Fractional, bool positive) ToIndicesOfBase(decimal val, int destinationBase)
         {
             var absoluteValue = System.Math.Abs(val);
             var integralPart = (ulong)absoluteValue;
@@ -13,8 +15,7 @@ namespace NumeralSystems.Net.Utils.Encode
             var zeros = Enumerable.Repeat(0ul, zeroCount).ToArray();
             return (ULong.ToIndicesOfBase(integralPart, destinationBase), zeros.Concat(ULong.ToIndicesOfBase(intFractional, destinationBase)).ToArray(), val>=0);
         }
-        
-        public static double FromIndicesOfBase(ulong[] integral, ulong[] fractional, bool positive, int sourceBase)
+        public static decimal FromIndicesOfBase(ulong[] integral, ulong[] fractional, bool positive, int sourceBase)
         {
             var integralPart = ULong.FromIndicesOfBase(integral, sourceBase);
             var fractionalPart = ULong.FromIndicesOfBase(fractional, sourceBase);
@@ -30,10 +31,9 @@ namespace NumeralSystems.Net.Utils.Encode
                 result /= System.Math.Pow(10, zeros);
             }
             result += integralPart;
-            return positive ? result : - result;
+            return new decimal(positive ? result : - result);
         }
-        
-        private static ulong GetFractionalPart(double number, out int numberOfZeros)
+        private static ulong GetFractionalPart(decimal number, out int numberOfZeros)
         {
             // Separiamo la parte intera
             var integerPart = System.Math.Floor(number);
@@ -50,14 +50,23 @@ namespace NumeralSystems.Net.Utils.Encode
             }
 
             // Calcoliamo il numero di cifre della parte frazionaria moltiplicando per 10 finché non otteniamo un intero
-            var multiplier = 1ul;
+            ulong multiplier = 1;
             while ((fractionalPart * multiplier) % 1 != 0)
             {
                 multiplier *= 10;
             }
 
             // Convertiamo la parte frazionaria in intero
-            return (ulong)(Encode.Decimal.From(fractionalPart) * multiplier);
+            return (ulong)(fractionalPart * multiplier);
         }
+        
+        
+        public static decimal From(double val)
+        {
+            //Using string to avoid precision loss
+            return decimal.Parse(val.ToString(CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
+        }
+        
+        
     }
 }

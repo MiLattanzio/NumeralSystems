@@ -8,12 +8,12 @@ namespace NumeralSystems.Net.Utils
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public static partial class Convert
     {
-        public static IncompleteInt32[] ToIncompleteInt32Array(this IEnumerable<IncompleteByte> s) => ToIncompleteInt32Array(new IncompleteByteArray() {
+        public static IncompleteInt[] ToIncompleteInt32Array(this IEnumerable<IncompleteByte> s) => ToIncompleteInt32Array(new IncompleteByteArray() {
             Binary = s.Select(x => x.Binary).SelectMany(x => x).ToArray(),
         });
-        public static IncompleteInt32[] ToIncompleteInt32Array(this IncompleteByteArray s)
+        public static IncompleteInt[] ToIncompleteInt32Array(this IncompleteByteArray s)
         {
-            var chars = new List<IncompleteInt32>();
+            var chars = new List<IncompleteInt>();
             for (var i = 0; i < (s.Binary.Length / (8 * sizeof(int))); i++)
             {
                 chars.Add(new()

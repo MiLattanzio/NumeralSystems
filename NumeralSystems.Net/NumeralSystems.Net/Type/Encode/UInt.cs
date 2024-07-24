@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace NumeralSystems.Net.Utils.Encode
+// ReSharper disable once CheckNamespace
+namespace NumeralSystems.Net.Type.Base
 {
-    public static class UInt
+    public partial class UInt
     {
         public static uint[] ToIndicesOfBase(int val, int destinationBase, out bool positive)
         {

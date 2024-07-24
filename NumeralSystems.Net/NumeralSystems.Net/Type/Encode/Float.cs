@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace NumeralSystems.Net.Utils.Encode
+// ReSharper disable once CheckNamespace
+namespace NumeralSystems.Net.Type.Base
 {
-    public static class Float
+    public partial class Float
     {
         public static (uint[] Integral, uint[] Fractional, bool positive) ToIndicesOfBase(float val, int destinationBase)
         {
@@ -58,7 +59,7 @@ namespace NumeralSystems.Net.Utils.Encode
             }
 
             // Convertiamo la parte frazionaria in intero
-            return (int)(Encode.Decimal.From(fractionalPart) * multiplier);
+            return (int)(Decimal.From(fractionalPart) * multiplier);
         }
     }
 }

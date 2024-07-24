@@ -141,7 +141,7 @@ namespace NumeralSystems.Net
 
         public double Double
         {
-            get => Utils.Encode.Double.FromIndicesOfBase(IntegralIndices.Select(x => (ulong) x).ToArray(), FractionalIndices.Select(x => (ulong) x).ToArray(), Positive, Base.Size);
+            get => Type.Base.Double.FromIndicesOfBase(IntegralIndices.Select(x => (ulong) x).ToArray(), FractionalIndices.Select(x => (ulong) x).ToArray(), Positive, Base.Size);
             set
             {
                 var temp = Base[value];

@@ -7,25 +7,25 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Int64 : IRegularOperable<IncompleteInt64, Int64, long>
+    public class Int: IRegularOperable<IncompleteInt, Int, int>
     {
-        public static Int64 FromBinary(bool[] binary) => new ()
+        public static Int FromBinary(bool[] binary) => new ()
         {
-            Value = Utils.Convert.ToLong(binary)
+            Value = Utils.Convert.ToInt(binary)
         };
-        public virtual long Value { get; set; }
+        public virtual int Value { get; set; }
 
         public byte[] Bytes
         {
-            get => BitConverter.GetBytes(Value);
+            get => BitConverter.GetBytes(Value).ToArray();
             // ReSharper disable once UnusedMember.Local
-            private set => Value = BitConverter.ToInt64(value, 0);
+            private set => Value = BitConverter.ToInt32(value, 0);
         }
 
         public bool[] Binary
         {
             get => Convert.ToBoolArray(Value);
-            private set => Value = Convert.ToLong(value);
+            private set => Value = Convert.ToInt(value);
         } 
         
         public bool this[int index]
@@ -38,7 +38,7 @@ namespace NumeralSystems.Net.Type.Base
             }
         }
 
-        public bool ReverseAnd(Int64 right, out IncompleteInt64 result)
+        public bool ReverseAnd(Int right, out IncompleteInt result)
         {
             if (Math.CanReverseAnd(Binary, right.Binary))
             {
@@ -52,7 +52,7 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
-        public bool ReverseAnd(IncompleteInt64 right, out IncompleteInt64 result)
+        public bool ReverseAnd(IncompleteInt right, out IncompleteInt result)
         {
             if (Math.CanReverseAnd(Binary, right.Binary))
             {
@@ -66,7 +66,7 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
-        public bool ReverseOr(Int64 right, out IncompleteInt64 result)
+        public bool ReverseOr(Int right, out IncompleteInt result)
         {
             if (Math.CanReverseOr(Binary, right.Binary))
             {
@@ -80,7 +80,7 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
-        public bool ReverseOr(IncompleteInt64 right, out IncompleteInt64 result)
+        public bool ReverseOr(IncompleteInt right, out IncompleteInt result)
         {
             if (Math.CanReverseOr(Binary, right.Binary))
             {
@@ -94,59 +94,59 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
-        public Int64 Not() => new()
+        public Int Not() => new()
         {
             Binary = Math.Not(Binary)
         };
 
-        public Int64 Xor(Int64 value) => new()
+        public Int Xor(Int value) => new()
         {
             Binary = Math.Xor(Binary, value.Binary)
         };
 
-        public IncompleteInt64 Xor(IncompleteInt64 value) => new()
+        public IncompleteInt Xor(IncompleteInt value) => new()
         {
             Binary = Math.Xor(Binary, value.Binary)
         };
 
-        public Int64 And(Int64 value) => new ()
+        public Int And(Int value) => new()
         {
             Binary = Math.And(Binary, value.Binary)
         };
 
-        public IncompleteInt64 And(IncompleteInt64 value) => new ()
+        public IncompleteInt And(IncompleteInt value) => new()
         {
             Binary = Math.And(Binary, value.Binary)
         };
 
-        public Int64 Or(Int64 value) => new()
+        public Int Or(Int value) => new()
         {
             Binary = Math.Or(Binary, value.Binary)
         };
 
-        public IncompleteInt64 Or(IncompleteInt64 value) => new()
+        public IncompleteInt Or(IncompleteInt value) => new()
         {
             Binary = Math.Or(Binary, value.Binary)
         };
 
-        public Int64 Nand(Int64 value) => new()
+        public Int Nand(Int value) => new()
         {
             Binary = Math.Nand(Binary, value.Binary)
         };
 
-        public IncompleteInt64 Nand(IncompleteInt64 value) => new()
+        public IncompleteInt Nand(IncompleteInt value) => new()
         {
             Binary = Math.Nand(Binary, value.Binary)
         };
 
-        public IncompleteInt64 Incomplete() => new ()
+        public IncompleteInt Incomplete() => new()
         {
             Binary = Binary.Select(x => x as bool?).ToArray()
         };
 
-        public override string ToString() =>string.Join(string.Empty, Bytes.Select(x => (new Byte() {Value = x})));
+        public override string ToString() => string.Join(string.Empty, Bytes.Select(x => new Byte(){ Value =  x }.ToString()));
 
         public string ToString(string format) => Value.ToString(format);
-        
+
     }
 }

@@ -22,7 +22,7 @@ namespace NumeralSystems.Net.Benchmark
         }
         public static void Main(string[] args)
         {
-            var t = new NumeralInt32(2);
+            var t = new NumeralInt(2);
             t.Binary[1] = false;
             Console.WriteLine(t.Binary[1]);
             Console.WriteLine(t.ToString());

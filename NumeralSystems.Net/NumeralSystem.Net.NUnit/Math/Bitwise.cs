@@ -1,7 +1,6 @@
 ﻿using System;
+using NumeralSystems.Net.Type.Base;
 using NUnit.Framework;
-using Double = NumeralSystems.Net.Utils.Encode.Double;
-using Int32 = NumeralSystems.Net.Type.Base.Int32;
 
 namespace NumeralSystem.Net.NUnit.Math
 {
@@ -12,11 +11,11 @@ namespace NumeralSystem.Net.NUnit.Math
         [Test]
         public void And()
         {
-            var int32A = new Int32()
+            var int32A = new Int()
             {
                 Value = _random.Next()
             };
-            var int32B = new Int32()
+            var int32B = new Int()
             {
                 Value = _random.Next()
             };
@@ -26,11 +25,11 @@ namespace NumeralSystem.Net.NUnit.Math
         [Test]
         public void Or()
         {
-            var int32A = new Int32()
+            var int32A = new Int()
             {
                 Value = _random.Next()
             };
-            var int32B = new Int32()
+            var int32B = new Int()
             {
                 Value = _random.Next()
             };
@@ -40,11 +39,11 @@ namespace NumeralSystem.Net.NUnit.Math
         [Test]
         public void Xor()
         {
-            var int32A = new Int32()
+            var int32A = new Int()
             {
                 Value = _random.Next()
             };
-            var int32B = new Int32()
+            var int32B = new Int()
             {
                 Value = _random.Next()
             };
@@ -54,7 +53,7 @@ namespace NumeralSystem.Net.NUnit.Math
         [Test]
         public void Not()
         {
-            var int32 = new Int32()
+            var int32 = new Int()
             {
                 Value = _random.Next()
             };
@@ -64,11 +63,11 @@ namespace NumeralSystem.Net.NUnit.Math
         [Test]
         public void Nand()
         {
-            var int32A = new Int32()
+            var int32A = new Int()
             {
                 Value = _random.Next()
             };
-            var int32B = new Int32()
+            var int32B = new Int()
             {
                 Value = _random.Next()
             };

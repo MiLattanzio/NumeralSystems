@@ -7,7 +7,7 @@ using Math = NumeralSystems.Net.Utils.Math;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Double : IRegularOperable<IncompleteDouble, Double, double>
+    public partial class Double : IRegularOperable<IncompleteDouble, Double, double>
     {
         public static Double FromBinary(bool[] binary) => new ()
         {

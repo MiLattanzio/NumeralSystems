@@ -4,11 +4,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
-using NumeralSystems.Net.Utils.Encode;
 using Math = System.Math;
 using Convert = System.Convert;
-using Decimal = NumeralSystems.Net.Utils.Encode.Decimal;
+using Decimal = System.Decimal;
 using Double = System.Double;
 
 // ReSharper disable HeapView.ObjectAllocation
@@ -125,7 +125,7 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var integral = Utils.Encode.UInt.ToIndicesOfBase(index, Size, out var positive);
+                var integral = UInt.ToIndicesOfBase(index, Size, out var positive);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
             }
         } 
@@ -134,7 +134,7 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var (integral, fractional, positive) = Utils.Encode.Double.ToIndicesOfBase(index, Size);
+                var (integral, fractional, positive) = Type.Base.Double.ToIndicesOfBase(index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), fractional.Select(x => (int)x).ToList(), positive);
             }
         }
@@ -143,7 +143,7 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var (integral, fractional, positive) = Decimal.ToIndicesOfBase(index, Size);
+                var (integral, fractional, positive) = Type.Base.Decimal.ToIndicesOfBase(index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), fractional.Select(x => (int)x).ToList(), positive);
             }
         }
@@ -152,7 +152,7 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
             }
         }
@@ -161,7 +161,7 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var integral = Utils.Encode.ULong.ToIndicesOfBase(index, Size);
+                var integral = ULong.ToIndicesOfBase(index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
             }
         }
@@ -170,7 +170,7 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var integral = Utils.Encode.ULong.ToIndicesOfBase(index, Size);
+                var integral = ULong.ToIndicesOfBase(index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
             }
         }
@@ -179,7 +179,7 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
             }
         }
@@ -188,7 +188,7 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
             }
         }
@@ -197,7 +197,7 @@ namespace NumeralSystems.Net
         {
             get 
             {
-                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
             }
         }
@@ -206,7 +206,7 @@ namespace NumeralSystems.Net
         {
             get
             {
-                var integral = Utils.Encode.ULong.ToIndicesOfBase((ulong)index, Size);
+                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
             }
         } 

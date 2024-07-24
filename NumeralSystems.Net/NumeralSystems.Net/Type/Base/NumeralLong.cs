@@ -3,29 +3,29 @@ using System.Linq;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class NumeralInt64: Int64
+    public class NumeralLong: Long
     {
-        public NumeralInt64(Numeral numeral)
+        public NumeralLong(Numeral numeral)
         {
             Numeral = numeral;
         }
 
-        public NumeralInt64(long value, NumeralSystem system)
+        public NumeralLong(long value, NumeralSystem system)
         {
             Numeral = system[value];
         }
 
-        public NumeralInt64(long value, int size = 10): this(value, Numeral.System.OfBase(size))
+        public NumeralLong(long value, int size = 10): this(value, Numeral.System.OfBase(size))
         {
             
         }
 
-        public NumeralInt64() : this(0)
+        public NumeralLong() : this(0)
         {
 
         }
 
-        public NumeralInt64(Int64 value, int size): this(value.Value, size)
+        public NumeralLong(Long value, int size): this(value.Value, size)
         {
             
         }

@@ -2,67 +2,67 @@
 using System.Collections.Generic;
 using System.Linq;
 using NumeralSystems.Net.Interface;
+using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
 using Math = NumeralSystems.Net.Utils.Math;
 using Convert = NumeralSystems.Net.Utils.Convert;
-using Int64 = NumeralSystems.Net.Type.Base.Int64;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteInt64 : IIRregularOperable<IncompleteInt64, Int64, long>
+    public class IncompleteInt: IIRregularOperable<IncompleteInt, Int, int>
     {
         private bool?[] _binary;
 
         public bool?[] Binary
         {
-            get => _binary ?? System.Linq.Enumerable.Repeat(false, 8 * sizeof(long)).Select(x => x as bool?).ToArray();
+            get => _binary ?? System.Linq.Enumerable.Repeat(false, 8 * sizeof(int)).Select(x => x as bool?).ToArray();
             set
             {
                 if (null == value)
                 {
-                    _binary = System.Linq.Enumerable.Repeat(false, 8 * sizeof(long)).Select(x => x as bool?).ToArray();
+                    _binary = System.Linq.Enumerable.Repeat(false, 8 * sizeof(int)).Select(x => x as bool?).ToArray();
                 }
                 else
                 {
-                    if (value.Length >= (8 * sizeof(long)))
+                    if (value.Length >= (8 * sizeof(int)))
                     {
-                        _binary = value.Take(8 * sizeof(long)).ToArray();
+                        _binary = value.Take(8 * sizeof(int)).ToArray();
                     }
                     else
                     {
-                        _binary = System.Linq.Enumerable.Repeat(false, (8 * sizeof(long)) - value.Length)
-                            .Select(x => x as bool?)
+                        _binary = System.Linq.Enumerable.Repeat(false, (8 * sizeof(int)) - value.Length).Select(x => x as bool?)
                             .Concat(value).ToArray();
                     }
                 }
             }
         }
-
         public bool IsComplete => Binary.All(x => x != null);
         public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
 
-        public Int64 this[int value] => Int64.FromBinary(value.ToBoolArray());
-
-        public IEnumerable<Int64> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public Int this[int value] => Int.FromBinary(value.ToBoolArray());
+        
+        public IEnumerable<Int> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
-
+        
         public IncompleteByte[] ToByteArray() => IncompleteByteArray.ArrayOf(Binary.Select(x => x).ToArray());
-        public string ToString(string missingSeparator = "*") => string.Join(string.Empty, Binary.Group(8).Select(x => x.Reverse().ToArray()).SelectMany(x => x).Select(x => null == x ? missingSeparator : (x.Value ? 1 : 0).ToString()));
 
-        public IncompleteInt64 Or(Int64 other) => new()
+        public override string ToString() => ToString("*");
+
+        public string ToString(string missingSeparator) => string.Join(string.Empty, Binary.Group(8).Select(x => x.Reverse().ToArray()).SelectMany(x => x).Select(x => null == x ? missingSeparator : (x.Value ? 1 : 0).ToString()));
+        public IncompleteInt Or(Int other) => new()
         {
             Binary = Binary.And(other.Binary)
         };
 
-        public bool Contains(Int64 value)
+        public bool Contains(Int value)
         {
             var bytes = Binary;
             var bytesBinary = value.Binary;
             return !bytes.Where((t, i) => t is not null && t != bytesBinary[i]).Any();
         }
 
-        public bool Contains(IncompleteInt64 value)
+        public bool Contains(IncompleteInt value)
         {
             var bytes = Binary;
             var bytesBinary = value.Binary;
@@ -77,87 +77,84 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
-
-        public IncompleteInt64 Not() => new()
+        public IncompleteInt Not() => new()
         {
             Binary = Binary.Select(x => !x).ToArray()
         };
 
-        public IncompleteInt64 Xor(IncompleteInt64 other) => new()
+        public IncompleteInt Xor(IncompleteInt other) => new()
         {
             Binary = Binary.Xor(other.Binary)
         };
 
-        public IncompleteInt64 Xor(Int64 other) => new()
+        public IncompleteInt Xor(Int other) => new()
         {
             Binary = Binary.Xor(other.Binary)
         };
 
-        public IncompleteInt64 And(IncompleteInt64 other) => new()
+        public IncompleteInt And(IncompleteInt other) => new() {
+            Binary = Binary.And(other.Binary)
+        };
+
+        public IncompleteInt And(Int other) => new() {
+            Binary = Binary.And(other.Binary)
+        };
+
+        public IncompleteInt Or(IncompleteInt other) => new()
         {
             Binary = Binary.And(other.Binary)
         };
 
-        public IncompleteInt64 And(Int64 other) => new()
-        {
-            Binary = Binary.And(other.Binary)
-        };
-
-        public IncompleteInt64 Or(IncompleteInt64 other) => new()
-        {
-            Binary = Binary.And(other.Binary)
-        };
-
-        public bool ReverseAnd(Int64 right, out IncompleteInt64 result)
+        public bool ReverseAnd(Int right, out IncompleteInt result)
         {
             if (!Binary.CanReverseAnd(right.Binary))
             {
                 result = null;
                 return false;
             }
-            result = new IncompleteInt64()
+            result = new IncompleteInt()
             {
                 Binary = Binary.ReverseAnd(right.Binary)
             };
             return true;
         }
 
-        public bool ReverseAnd(IncompleteInt64 right, out IncompleteInt64 result)
+        public bool ReverseAnd(IncompleteInt right, out IncompleteInt result)
         {
             if (!Binary.CanReverseAnd(right.Binary))
             {
                 result = null;
                 return false;
             }
-            result = new IncompleteInt64()
+            result = new IncompleteInt()
             {
                 Binary = Binary.ReverseAnd(right.Binary)
             };
             return true;
         }
 
-        public bool ReverseOr(Int64 right, out IncompleteInt64 result)
+        public bool ReverseOr(Int right, out IncompleteInt result)
         {
             if (!Binary.CanReverseAnd(right.Binary))
             {
                 result = null;
                 return false;
             }
-            result = new IncompleteInt64()
+            result = new IncompleteInt()
             {
                 Binary = Binary.ReverseAnd(right.Binary)
             };
             return true;
         }
 
-        public bool ReverseOr(IncompleteInt64 right, out IncompleteInt64 result)
+        public bool ReverseOr(IncompleteInt right, out IncompleteInt result)
         {
             if (!Binary.CanReverseAnd(right.Binary))
             {
                 result = null;
                 return false;
             }
-            result = new IncompleteInt64()
+            result = new IncompleteInt()
             {
                 Binary = Binary.ReverseAnd(right.Binary)
             };

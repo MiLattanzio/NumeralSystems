@@ -23,6 +23,7 @@ namespace NumeralSystems.Net.Utils
                 b[i] = ToByte(s.Skip(i * 8).Take(8).ToArray());
             return b;
         }
+        public static byte[] ToByteArray(this uint s) => BitConverter.GetBytes(s);
         public static byte[] ToByteArray(this int s) => BitConverter.GetBytes(s);
         public static byte[] ToByteArray(this IEnumerable<int> s) => s.Select(ToByteArray).SelectMany(x => x).ToArray();
 

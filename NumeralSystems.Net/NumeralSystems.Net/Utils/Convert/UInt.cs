@@ -5,23 +5,29 @@ namespace NumeralSystems.Net.Utils
 {
     public static partial class Convert
     {
-        public static uint ToUInt(this bool[] s) {
-            if (null == s)
-                s = Enumerable.Repeat(false, 32).ToArray();
-            else
-                s = s.Length switch
-                {
-                    > 32 => s[0..32],
-                    < 32 => Enumerable.Repeat(false, 32 - s.Length).Concat(s).ToArray(),
-                    _ => s
-                };
-            uint b = 0;
-            foreach (var t in s.Reverse())
+        public static uint ToUInt(this bool[] s)
+        {
+            const int bitsInUint = sizeof(uint) * 8;
+            if (s == null)
             {
-                b <<= 1;
-                if (t) b |= 1;
+                s = new bool[bitsInUint];
             }
-            return b;
+            else if (s.Length > bitsInUint)
+            {
+                s = s.TakeLast(bitsInUint).ToArray();
+            }
+            else if (s.Length < bitsInUint)
+            {
+                s = Enumerable.Repeat(false, bitsInUint - s.Length).Concat(s).ToArray();
+            }
+
+            uint result = 0;
+            foreach (var bit in s.Reverse())
+            {
+                result = (result << 1) | (bit ? 1u : 0u);
+            }
+
+            return result;
         }
         public static uint ToUInt(this byte[] s) => BitConverter.ToUInt32(s, 0);
     }

@@ -5,21 +5,25 @@ using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class UInt: IRegularOperable<IncompleteUInt, UInt, uint>
+    public partial class ULong: IRegularOperable<IncompleteULong, ULong, ulong>
     {
-        public virtual uint Value { get; set; }
+         public static ULong FromBinary(bool[] binary) => new ()
+        {
+            Value = Utils.Convert.ToULong(binary)
+        };
+        public virtual ulong Value { get; set; }
 
         public byte[] Bytes
         {
             get => BitConverter.GetBytes(Value).ToArray();
             // ReSharper disable once UnusedMember.Local
-            set => Value = value.Length >= sizeof(uint) ? BitConverter.ToUInt32(value.Take(sizeof(uint)).ToArray(), 0) : BitConverter.ToUInt32(value.Concat(Enumerable.Repeat((byte)0, sizeof(uint) - value.Length)).ToArray(), 0);
+            private set => Value = BitConverter.ToUInt64(value, 0);
         }
 
         public bool[] Binary
         {
             get => Utils.Convert.ToBoolArray(Value);
-            set => Value = value.Length * 8 >= sizeof(uint) ? Utils.Convert.ToUInt(value.Take(sizeof(uint)*8).ToArray()) : Utils.Convert.ToUInt(value.Concat(Enumerable.Repeat(false, sizeof(uint)*8 - value.Length*8)).ToArray());
+            private set => Value = Utils.Convert.ToULong(value);
         } 
         
         public bool this[int index]
@@ -32,7 +36,7 @@ namespace NumeralSystems.Net.Type.Base
             }
         }
 
-        public bool ReverseAnd(UInt right, out IncompleteUInt result)
+        public bool ReverseAnd(ULong right, out IncompleteULong result)
         {
             if (Utils.Math.CanReverseAnd(Binary, right.Binary))
             {
@@ -46,7 +50,7 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
-        public bool ReverseAnd(IncompleteUInt right, out IncompleteUInt result)
+        public bool ReverseAnd(IncompleteULong right, out IncompleteULong result)
         {
             if (Utils.Math.CanReverseAnd(Binary, right.Binary))
             {
@@ -60,7 +64,7 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
-        public bool ReverseOr(UInt right, out IncompleteUInt result)
+        public bool ReverseOr(ULong right, out IncompleteULong result)
         {
             if (Utils.Math.CanReverseOr(Binary, right.Binary))
             {
@@ -74,7 +78,7 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
-        public bool ReverseOr(IncompleteUInt right, out IncompleteUInt result)
+        public bool ReverseOr(IncompleteULong right, out IncompleteULong result)
         {
             if (Utils.Math.CanReverseOr(Binary, right.Binary))
             {
@@ -88,52 +92,52 @@ namespace NumeralSystems.Net.Type.Base
             return false;
         }
 
-        public UInt Not() => new()
+        public ULong Not() => new()
         {
             Binary = Utils.Math.Not(Binary)
         };
 
-        public UInt Xor(UInt value) => new()
+        public ULong Xor(ULong value) => new()
         {
             Binary = Utils.Math.Xor(Binary, value.Binary)
         };
 
-        public IncompleteUInt Xor(IncompleteUInt value) => new()
+        public IncompleteULong Xor(IncompleteULong value) => new()
         {
             Binary = Utils.Math.Xor(Binary, value.Binary)
         };
 
-        public UInt And(UInt value) => new()
+        public ULong And(ULong value) => new()
         {
             Binary = Utils.Math.And(Binary, value.Binary)
         };
 
-        public IncompleteUInt And(IncompleteUInt value) => new()
+        public IncompleteULong And(IncompleteULong value) => new()
         {
             Binary = Utils.Math.And(Binary, value.Binary)
         };
 
-        public UInt Or(UInt value) => new()
+        public ULong Or(ULong value) => new()
         {
             Binary = Utils.Math.Or(Binary, value.Binary)
         };
 
-        public IncompleteUInt Or(IncompleteUInt value) => new()
+        public IncompleteULong Or(IncompleteULong value) => new()
         {
             Binary = Utils.Math.Or(Binary, value.Binary)
         };
 
-        public UInt Nand(UInt value) => new()
+        public ULong Nand(ULong value) => new()
         {
             Binary = Utils.Math.Nand(Binary, value.Binary)
         };
 
-        public IncompleteUInt Nand(IncompleteUInt value) => new()
+        public IncompleteULong Nand(IncompleteULong value) => new()
         {
             Binary = Utils.Math.Nand(Binary, value.Binary)
         };
 
-        public IncompleteUInt Incomplete() => new()
+        public IncompleteULong Incomplete() => new()
         {
             Binary = Binary.Select(x => x as bool?).ToArray()
         };

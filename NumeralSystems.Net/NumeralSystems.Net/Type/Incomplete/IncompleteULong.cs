@@ -6,28 +6,28 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteUInt: IIRregularOperable<IncompleteUInt, UInt, uint>
+    public class IncompleteULong: IIRregularOperable<IncompleteULong, ULong, ulong>
     {
         private bool?[] _binary;
 
         public bool?[] Binary
         {
-            get => _binary ?? System.Linq.Enumerable.Repeat(false, 8 * sizeof(uint)).Select(x => x as bool?).ToArray();
+            get => _binary ?? System.Linq.Enumerable.Repeat(false, 8 * sizeof(ulong)).Select(x => x as bool?).ToArray();
             set
             {
                 if (null == value)
                 {
-                    _binary = System.Linq.Enumerable.Repeat(false, 8 * sizeof(uint)).Select(x => x as bool?).ToArray();
+                    _binary = System.Linq.Enumerable.Repeat(false, 8 * sizeof(ulong)).Select(x => x as bool?).ToArray();
                 }
                 else
                 {
-                    if (value.Length >= (8 * sizeof(uint)))
+                    if (value.Length >= (8 * sizeof(ulong)))
                     {
                         _binary = value.Take(8 * sizeof(uint)).ToArray();
                     }
                     else
                     {
-                        _binary = System.Linq.Enumerable.Repeat(false, (8 * sizeof(uint)) - value.Length).Select(x => x as bool?)
+                        _binary = System.Linq.Enumerable.Repeat(false, (8 * sizeof(ulong)) - value.Length).Select(x => x as bool?)
                             .Concat(value).ToArray();
                     }
                 }
@@ -35,41 +35,10 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
         public bool IsComplete => Binary.All(x => x != null);
         public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
-        
-        public UInt this[int value]
-        {
-            get
-            {
-                var binary = Binary;
-                var valueBinary = value.ToBoolArray();
-                var resultBinary = new bool[binary.Length];
-                var lastValueBinaryIndex = 0;
-                for (var i = 0; i < binary.Length; i++)
-                {
-                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
-                    {
-                        if (binary[i] is null)
-                        {
-                            resultBinary[i] = valueBinary[i1];
-                            lastValueBinaryIndex = i1 + 1;
-                            break;
-                        }
-                        else
-                        {
-                            resultBinary[i] = binary[i].Value;
-                            break;
-                        }
-                    }
-                }
-                return new UInt()
-                {
-                    Binary = resultBinary
-                };
 
-            }
-        }
+        public ULong this[int value] => ULong.FromBinary(value.ToBoolArray());
         
-        public IEnumerable<UInt> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<ULong> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
         
@@ -78,19 +47,19 @@ namespace NumeralSystems.Net.Type.Incomplete
         public override string ToString() => ToString("*");
 
         public string ToString(string missingSeparator) => string.Join(string.Empty, Binary.Group(8).Select(x => x.Reverse().ToArray()).SelectMany(x => x).Select(x => null == x ? missingSeparator : (x.Value ? 1 : 0).ToString()));
-        public IncompleteUInt Or(UInt other) => new()
+        public IncompleteULong Or(ULong other) => new()
         {
             Binary = Binary.And(other.Binary)
         };
 
-        public bool Contains(UInt value)
+        public bool Contains(ULong value)
         {
             var bytes = Binary;
             var bytesBinary = value.Binary;
             return !bytes.Where((t, i) => t is not null && t != bytesBinary[i]).Any();
         }
 
-        public bool Contains(IncompleteUInt value)
+        public bool Contains(IncompleteULong value)
         {
             var bytes = Binary;
             var bytesBinary = value.Binary;
@@ -105,84 +74,84 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
-        public IncompleteUInt Not() => new()
+        public IncompleteULong Not() => new()
         {
             Binary = Binary.Select(x => !x).ToArray()
         };
 
-        public IncompleteUInt Xor(IncompleteUInt other) => new()
+        public IncompleteULong Xor(IncompleteULong other) => new()
         {
             Binary = Binary.Xor(other.Binary)
         };
 
-        public IncompleteUInt Xor(UInt other) => new()
+        public IncompleteULong Xor(ULong other) => new()
         {
             Binary = Binary.Xor(other.Binary)
         };
 
-        public IncompleteUInt And(IncompleteUInt other) => new() {
+        public IncompleteULong And(IncompleteULong other) => new() {
             Binary = Binary.And(other.Binary)
         };
 
-        public IncompleteUInt And(UInt other) => new() {
+        public IncompleteULong And(ULong other) => new() {
             Binary = Binary.And(other.Binary)
         };
 
-        public IncompleteUInt Or(IncompleteUInt other) => new()
+        public IncompleteULong Or(IncompleteULong other) => new()
         {
             Binary = Binary.And(other.Binary)
         };
 
-        public bool ReverseAnd(UInt right, out IncompleteUInt result)
+        public bool ReverseAnd(ULong right, out IncompleteULong result)
         {
             if (!Binary.CanReverseAnd(right.Binary))
             {
                 result = null;
                 return false;
             }
-            result = new IncompleteUInt()
+            result = new IncompleteULong()
             {
                 Binary = Binary.ReverseAnd(right.Binary)
             };
             return true;
         }
 
-        public bool ReverseAnd(IncompleteUInt right, out IncompleteUInt result)
+        public bool ReverseAnd(IncompleteULong right, out IncompleteULong result)
         {
             if (!Binary.CanReverseAnd(right.Binary))
             {
                 result = null;
                 return false;
             }
-            result = new IncompleteUInt()
+            result = new IncompleteULong()
             {
                 Binary = Binary.ReverseAnd(right.Binary)
             };
             return true;
         }
 
-        public bool ReverseOr(UInt right, out IncompleteUInt result)
+        public bool ReverseOr(ULong right, out IncompleteULong result)
         {
             if (!Binary.CanReverseAnd(right.Binary))
             {
                 result = null;
                 return false;
             }
-            result = new IncompleteUInt()
+            result = new IncompleteULong()
             {
                 Binary = Binary.ReverseAnd(right.Binary)
             };
             return true;
         }
 
-        public bool ReverseOr(IncompleteUInt right, out IncompleteUInt result)
+        public bool ReverseOr(IncompleteULong right, out IncompleteULong result)
         {
             if (!Binary.CanReverseAnd(right.Binary))
             {
                 result = null;
                 return false;
             }
-            result = new IncompleteUInt()
+            result = new IncompleteULong()
             {
                 Binary = Binary.ReverseAnd(right.Binary)
             };

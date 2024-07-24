@@ -19,5 +19,6 @@ namespace NumeralSystems.Net.Utils
         public static bool[] ToBoolArray(this double b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
         public static bool[] ToBoolArray(this long b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
         public static bool[] ToBoolArray(this decimal b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
+        public static bool[] ToBoolArray(this ulong b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
     }
 }

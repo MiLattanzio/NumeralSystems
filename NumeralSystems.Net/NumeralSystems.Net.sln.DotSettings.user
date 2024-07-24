@@ -1,6 +1,24 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4df9b1db_002D3e84_002D48b8_002Dbd50_002D78424b761fa4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Int" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Int&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5354672f_002D9706_002D4c9c_002D96fe_002D28c923e32e06/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Identities" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\miche\Repo\NumeralSystems\NumeralSystems.Net\NumeralSystem.Net.NUnit" Presentation="&amp;lt;NumeralSystem.Net.NUnit&amp;gt;" /&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=61360a2a_002D91f8_002D4fa1_002Db062_002Dc4970f295d7f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="IntTest #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Int&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.UInt&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=660f8231_002Da995_002D4ac9_002Da9a5_002D9539a366a948/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Int #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Int&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.UInt.Generation&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.UInt&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=8c3870ad_002D948b_002D4759_002Da8a6_002D8b9e606cf757/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Encode" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;

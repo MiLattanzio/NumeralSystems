@@ -32,5 +32,6 @@ namespace NumeralSystems.Net.Utils
         public static byte[] ToByteArray(this double s) => BitConverter.GetBytes(s);
         public static byte[] ToByteArray(this float s) => BitConverter.GetBytes(s);
         public static byte[] ToByteArray(this decimal s) => decimal.GetBits(s).Select(ToByteArray).SelectMany(x => x).ToArray();
+        public static byte[] ToByteArray(this ulong s) => BitConverter.GetBytes(s);
     }
 }

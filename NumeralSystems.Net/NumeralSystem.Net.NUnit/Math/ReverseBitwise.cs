@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using NumeralSystems.Net.Type.Base;
 using NUnit.Framework;
 
@@ -41,6 +42,11 @@ namespace NumeralSystem.Net.NUnit.Math
             var success = result.ReverseOr(int32B, out var int32AReversed);
             Assert.IsTrue(success);
             Assert.IsTrue(int32AReversed.Contains(int32A));
+            Assert.Multiple(() =>
+            {
+                var trueForAll = int32AReversed.Enumerable.ToList().TrueForAll((value => int32AReversed.Contains(value)));
+                Assert.IsTrue(trueForAll);
+            });
         }
     }
 }

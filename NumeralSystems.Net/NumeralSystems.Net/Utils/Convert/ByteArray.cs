@@ -28,6 +28,8 @@ namespace NumeralSystems.Net.Utils
         public static byte[] ToByteArray(this IEnumerable<int> s) => s.Select(ToByteArray).SelectMany(x => x).ToArray();
 
         public static byte[] ToByteArray(this char c) => BitConverter.GetBytes(c);
+        public static byte[] ToByteArray(this short s) => BitConverter.GetBytes(s);
+        public static byte[] ToByteArray(this ushort s) => BitConverter.GetBytes(s);
         public static byte[] ToByteArray(this long s) => BitConverter.GetBytes(s);
         public static byte[] ToByteArray(this double s) => BitConverter.GetBytes(s);
         public static byte[] ToByteArray(this float s) => BitConverter.GetBytes(s);

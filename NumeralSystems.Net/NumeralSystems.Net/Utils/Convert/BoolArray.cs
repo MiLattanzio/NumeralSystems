@@ -13,6 +13,8 @@ namespace NumeralSystems.Net.Utils
             return s;
         }
         public static bool[] ToBoolArray(this char c) => ToByteArray(c).Select(ToBoolArray).SelectMany(x => x).ToArray();
+        public static bool[] ToBoolArray(this short b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
+        public static bool[] ToBoolArray(this ushort b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
         public static bool[] ToBoolArray(this uint b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
         public static bool[] ToBoolArray(this int b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
         public static bool[] ToBoolArray(this float b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();

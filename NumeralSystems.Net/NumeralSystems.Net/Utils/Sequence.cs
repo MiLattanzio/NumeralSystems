@@ -47,6 +47,12 @@ namespace NumeralSystems.Net.Utils
             return n * Factorial(n - 1);
         }
         
+        private static long Factorial(long n)
+        {
+            if (n == 0) return 1;
+            return n * Factorial(n - 1);
+        }
+        
         public static T[][] Group<T>(this T[] sequence, int count)
         {
             if (sequence.Length % count != 0) throw new InvalidOperationException();

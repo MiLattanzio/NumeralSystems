@@ -68,7 +68,7 @@ namespace NumeralSystems.Net.Type.Base
         public bool[] Binary
         {
             get => Value.ToBoolArray();
-            internal set => Value = value.ToByte();
+            set => Value = value.Length >= sizeof(byte) * 8 ? value.Take(sizeof(byte) * 8).ToArray().ToByte() : value.Concat(Enumerable.Repeat(false, sizeof(byte)*8 - value.Length*8)).ToArray().ToByte();
         }
         
         public bool this[int index]
@@ -84,7 +84,7 @@ namespace NumeralSystems.Net.Type.Base
         public byte[] Bytes
         {
             get => new[] { Value };
-            internal set => Value = value.Length == 0 ? (byte)0 : value[0];
+            set => Value = value.Length == 0 ? (byte)0 : value[0];
         }
 
 

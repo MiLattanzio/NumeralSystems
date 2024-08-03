@@ -3,6 +3,7 @@ using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Incomplete;
 using NumeralSystems.Net.Utils;
+using Convert = NumeralSystems.Net.Utils.Convert;
 using Math = NumeralSystems.Net.Utils.Math;
 
 
@@ -20,13 +21,13 @@ namespace NumeralSystems.Net.Type.Base
         public byte[] Bytes
         {
             get => BitConverter.GetBytes(Value);
-            private set => Value = BitConverter.ToChar(value, 0);
+            set => Value = value.Length >= sizeof(char) ? BitConverter.ToChar(value.Take(sizeof(char)).ToArray(),0) : BitConverter.ToChar(value.Concat(Enumerable.Repeat((byte)0, sizeof(char) - value.Length)).ToArray(), 0);
         }
 
         public bool[] Binary
         {
             get => Value.ToBoolArray();
-            private set => Value = value.ToChar();
+            set => Value = value.Length * 8 >= sizeof(char) ? value.Take(sizeof(char)*8).ToArray().ToChar() : value.Concat(Enumerable.Repeat(false, sizeof(char)*8 - value.Length*8)).ToArray().ToChar();
         }
         
         public bool this[int index]

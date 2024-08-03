@@ -8,7 +8,7 @@ namespace NumeralSystem.Net.NUnit.Math
     [TestFixture]
     public class ReverseBitwise
     {
-        Random _random = new Random();
+        private readonly Random _random = new();
         
         [Test]
         public void ReverseAnd()

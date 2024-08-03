@@ -18,13 +18,13 @@ namespace NumeralSystems.Net.Type.Base
         public byte[] Bytes
         {
             get => BitConverter.GetBytes(Value);
-            private set => Value = BitConverter.ToUInt16(value, 0);
+            set => Value = value.Length >= sizeof(ushort) ? BitConverter.ToUInt16(value.Take(sizeof(short)).ToArray(),0) : BitConverter.ToUInt16(value.Concat(Enumerable.Repeat((byte)0, sizeof(ushort) - value.Length)).ToArray(), 0);
         }
 
         public bool[] Binary
         {
             get => Value.ToBoolArray();
-            private set => Value = value.ToUShort();
+            set => Value = value.Length * 8 >= sizeof(ushort) ? value.Take(sizeof(ushort)*8).ToArray().ToUShort() : value.Concat(Enumerable.Repeat(false, sizeof(ushort)*8 - value.Length*8)).ToArray().ToUShort();
         }
         
         public bool this[int index]

@@ -4,9 +4,9 @@ using NUnit.Framework;
 namespace NumeralSystem.Net.NUnit.Type
 {
     [TestFixture]
-    public class UInt
+    public class UInt: IBaseTypeTest
     {
-        Random _random = new Random();
+        private readonly Random _random = new();
         
         [Test]
         public void Generation()

@@ -4,9 +4,9 @@ using NUnit.Framework;
 namespace NumeralSystem.Net.NUnit.Type
 {
     [TestFixture]
-    public class Byte
+    public class Byte: IBaseTypeTest
     {
-        Random _random = new Random();
+        private readonly Random _random = new();
 
         [Test]
         public void Generation()
@@ -91,7 +91,7 @@ namespace NumeralSystem.Net.NUnit.Type
             {
                 Value = a
             };
-            Assert.That(~int32.Value, Is.EqualTo(int32.Not().Value));
+            Assert.That((byte)~a, Is.EqualTo(int32.Not().Value));
         }
         
         [Test]
@@ -109,7 +109,7 @@ namespace NumeralSystem.Net.NUnit.Type
             {
                 Value = b
             };
-            Assert.That(~(int32A.Value & int32B.Value), Is.EqualTo(int32A.Nand(int32B).Value));
+            Assert.That((byte)~(int32A.Value & int32B.Value), Is.EqualTo(int32A.Nand(int32B).Value));
         }
         
         [Test]

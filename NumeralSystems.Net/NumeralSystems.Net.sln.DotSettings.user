@@ -1,9 +1,16 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4df9b1db_002D3e84_002D48b8_002Dbd50_002D78424b761fa4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Int" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4df9b1db_002D3e84_002D48b8_002Dbd50_002D78424b761fa4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Int" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Int&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.TypeTests.Sizeof&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Byte&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Char&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Short&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.UShort&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Float.And&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Float.Or&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Float.Nand&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Float&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5354672f_002D9706_002D4c9c_002D96fe_002D28c923e32e06/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Identities" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
@@ -45,7 +52,7 @@
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.EncodingTests.Identities&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e9ff9d07_002D0709_002D4890_002D8227_002Dbafb03823647/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Encode #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e9ff9d07_002D0709_002D4890_002D8227_002Dbafb03823647/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Encode #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.EncodingTests.Encode&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Utils.EncodeTests&lt;/TestId&gt;&#xD;

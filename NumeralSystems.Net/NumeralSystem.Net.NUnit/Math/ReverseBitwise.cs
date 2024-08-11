@@ -44,8 +44,10 @@ namespace NumeralSystem.Net.NUnit.Math
             Assert.IsTrue(int32AReversed.Contains(int32A));
             Assert.Multiple(() =>
             {
-                var trueForAll = int32AReversed.Enumerable.ToList().TrueForAll((value => int32AReversed.Contains(value)));
-                Assert.IsTrue(trueForAll);
+                foreach (var i in int32AReversed.Enumerable)
+                {
+                    Assert.IsTrue(int32AReversed.Contains(i));
+                }
             });
         }
     }

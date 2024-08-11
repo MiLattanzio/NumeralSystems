@@ -35,7 +35,7 @@ namespace NumeralSystems.Net.Type.Incomplete
             }
         }
         public bool IsComplete => Binary.All(x => x != null);
-        public uint Permutations => Sequence.PermutationsCount(2, Sequence.CountToUInt(Binary.Select(x => x is null)), true);
+        public uint Permutations => Sequence.PermutationsCount(2, Sequence.CountToUInt(Binary.Where(x => x is null)), true);
 
         public Short this[uint value]
         {

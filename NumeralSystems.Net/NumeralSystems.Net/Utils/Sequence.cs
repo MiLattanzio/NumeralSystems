@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -45,10 +46,10 @@ namespace NumeralSystems.Net.Utils
             }
         }
         
-        public static uint CountToUInt(IEnumerable<bool> sequence)
+        public static uint CountToUInt(IEnumerable sequence)
         {
             var count = 0u;
-            foreach (var _ in sequence)
+            foreach (var value in sequence)
             {
                 count++;
             }

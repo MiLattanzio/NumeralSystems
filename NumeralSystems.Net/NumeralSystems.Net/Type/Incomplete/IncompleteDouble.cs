@@ -8,7 +8,7 @@ using Double = NumeralSystems.Net.Type.Base.Double;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteDouble: IIRregularOperable<IncompleteDouble, Double, double>
+    public class IncompleteDouble: IIRregularOperable<IncompleteDouble, Double, double, int>
     {
         private bool?[] _binary;
         public bool?[] Binary

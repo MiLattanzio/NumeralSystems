@@ -7,7 +7,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteFloat: IIRregularOperable<IncompleteFloat, Float, float>
+    public class IncompleteFloat: IIRregularOperable<IncompleteFloat, Float, float, int>
     {
         private bool?[] _binary;
         public bool?[] Binary

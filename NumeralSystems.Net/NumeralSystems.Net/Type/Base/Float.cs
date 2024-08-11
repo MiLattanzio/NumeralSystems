@@ -9,7 +9,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Float : IRegularOperable<IncompleteFloat, Float, float>
+    public partial class Float : IRegularOperable<IncompleteFloat, Float, float, int>
     {
         public static Float FromBinary(bool[] binary) => new ()
         {

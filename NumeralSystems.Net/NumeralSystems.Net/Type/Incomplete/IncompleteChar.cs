@@ -10,7 +10,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteChar : IIRregularOperable<IncompleteChar, Char, char>
+    public class IncompleteChar : IIRregularOperable<IncompleteChar, Char, char, int>
     {
         private bool?[] _binary;
 

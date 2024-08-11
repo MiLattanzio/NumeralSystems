@@ -9,7 +9,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteInt: IIRregularOperable<IncompleteInt, Int, int>
+    public class IncompleteInt: IIRregularOperable<IncompleteInt, Int, int, int>
     {
         private bool?[] _binary;
 

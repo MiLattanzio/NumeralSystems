@@ -7,7 +7,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Long : IRegularOperable<IncompleteLong, Long, long>
+    public class Long : IRegularOperable<IncompleteLong, Long, long, int>
     {
         public static Long FromBinary(bool[] binary) => new ()
         {

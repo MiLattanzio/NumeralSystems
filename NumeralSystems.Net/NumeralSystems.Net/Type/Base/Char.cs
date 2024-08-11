@@ -9,7 +9,7 @@ using Math = NumeralSystems.Net.Utils.Math;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Char : IRegularOperable<IncompleteChar, Char, char>
+    public class Char : IRegularOperable<IncompleteChar, Char, char, int>
     {
         public static Char FromBinary(bool[] binary) => new ()
         {

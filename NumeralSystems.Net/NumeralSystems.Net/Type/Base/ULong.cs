@@ -5,7 +5,7 @@ using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class ULong: IRegularOperable<IncompleteULong, ULong, ulong>
+    public partial class ULong: IRegularOperable<IncompleteULong, ULong, ulong, int>
     {
          public static ULong FromBinary(bool[] binary) => new ()
         {

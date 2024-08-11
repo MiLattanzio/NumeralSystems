@@ -1,6 +1,6 @@
 ﻿namespace NumeralSystems.Net.Interface
 {
-    public interface IRregularReversible<TIncomplete, TValue, TType> where TValue : INumeralValue<TType> where TIncomplete: IIncompleteValue<TValue, TType>
+    public interface IRregularReversible<TIncomplete, TValue, TType, TIndexer> where TValue : INumeralValue<TType> where TIncomplete: IIncompleteValue<TValue, TType, TIndexer> where TIndexer : struct
     {
         bool ReverseAnd(TValue right, out TIncomplete result);
         bool ReverseAnd(TIncomplete right, out TIncomplete result);

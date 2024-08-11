@@ -9,7 +9,7 @@ using Decimal = NumeralSystems.Net.Type.Base.Decimal;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteDecimal: IIRregularOperable<IncompleteDecimal, Decimal, decimal>
+    public class IncompleteDecimal: IIRregularOperable<IncompleteDecimal, Decimal, decimal, int>
     {
         private bool?[] _binary;
         public bool?[] Binary

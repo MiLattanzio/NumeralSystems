@@ -7,7 +7,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Int: IRegularOperable<IncompleteInt, Int, int>
+    public class Int: IRegularOperable<IncompleteInt, Int, int, int>
     {
         public virtual int Value { get; set; }
 

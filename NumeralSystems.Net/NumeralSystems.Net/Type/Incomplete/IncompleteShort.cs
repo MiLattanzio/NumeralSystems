@@ -6,7 +6,7 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteShort : IIRregularOperable<IncompleteShort, Short, short>
+    public class IncompleteShort : IIRregularOperable<IncompleteShort, Short, short, int>
     {
         private bool?[] _binary;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using NumeralSystems.Net.Utils;
 using NUnit.Framework;
 
 namespace NumeralSystem.Net.NUnit.Type
@@ -25,6 +26,10 @@ namespace NumeralSystem.Net.NUnit.Type
                 Bytes = int32.Bytes
             };
             Assert.That(bytes[0], Is.EqualTo(fromBytes.Value));
+            for (var i = 0; i < fromBinary.Binary.Length; i++)
+            {
+                Assert.That(fromBinary.Binary[i], Is.EqualTo(fromBinary.Value.GetBoolAtIndex((uint)i)));
+            }
         }
         
         [Test]

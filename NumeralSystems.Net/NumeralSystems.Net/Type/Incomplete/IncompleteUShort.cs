@@ -37,7 +37,33 @@ namespace NumeralSystems.Net.Type.Incomplete
         public bool IsComplete => Binary.All(x => x != null);
         public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
 
-        public UShort this[int value] => UShort.FromBinary(value.ToBoolArray());
+        public UShort this[int value]
+        {
+            get
+            {
+                var binary = Binary;
+                var valueBinary = value.ToBoolArray();
+                var resultBinary = new bool[binary.Length];
+                var lastValueBinaryIndex = 0;
+                for (var i = 0; i < binary.Length; i++)
+                {
+                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    {
+                        if (binary[i] is null)
+                        {
+                            resultBinary[i] = valueBinary[i1];
+                            lastValueBinaryIndex = i1 + 1;
+                            break;
+                        }
+                        resultBinary[i] = binary[i] ?? false;
+                    }
+                }
+                return new UShort
+                {
+                    Binary = resultBinary
+                };
+            }
+        }
 
         public IEnumerable<UShort> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
 

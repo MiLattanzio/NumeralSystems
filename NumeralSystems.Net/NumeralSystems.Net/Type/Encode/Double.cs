@@ -11,7 +11,7 @@ namespace NumeralSystems.Net.Type.Base
             var integralPart = (ulong)absoluteValue;
             var fractionalPart = absoluteValue - integralPart;
             var intFractional = GetFractionalPart(fractionalPart, out var zeroCount);
-            var zeros = Enumerable.Repeat(0ul, zeroCount).ToArray();
+            var zeros = System.Linq.Enumerable.Repeat(0ul, zeroCount).ToArray();
             return (ULong.ToIndicesOfBase(integralPart, destinationBase), zeros.Concat(ULong.ToIndicesOfBase(intFractional, destinationBase)).ToArray(), val>=0);
         }
         

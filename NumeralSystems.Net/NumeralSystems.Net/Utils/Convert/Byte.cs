@@ -22,5 +22,11 @@ namespace NumeralSystems.Net.Utils
             }
             return b;
         }
+        
+        public static byte SetBoolAtIndex(this byte b, uint index, bool value)
+        {
+            if (value) return (byte)(b | (1 << (int)index));
+            return (byte)(b & ~(1 << (int)index));
+        }
     }
 }

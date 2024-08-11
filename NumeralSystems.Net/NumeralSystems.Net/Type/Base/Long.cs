@@ -22,10 +22,12 @@ namespace NumeralSystems.Net.Type.Base
             private set => Value = BitConverter.ToInt64(value, 0);
         }
 
+        public int BitLength => sizeof(long) * 8;
+
         public bool[] Binary
         {
             get => Convert.ToBoolArray(Value);
-            private set => Value = Convert.ToLong(value);
+            set => Value = value.Length * 8 >= sizeof(long) ? Convert.ToLong(value) : Convert.ToLong(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(long) * 8 - value.Length * 8)).ToArray());
         } 
         
         public bool this[int index]

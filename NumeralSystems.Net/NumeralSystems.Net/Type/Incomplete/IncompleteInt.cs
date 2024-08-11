@@ -58,11 +58,8 @@ namespace NumeralSystems.Net.Type.Incomplete
                             lastValueBinaryIndex = i1 + 1;
                             break;
                         }
-                        else
-                        {
-                            resultBinary[i] = binary[i].Value;
-                            break;
-                        }
+                        resultBinary[i] = binary[i].Value;
+                        break;
                     }
                 }
                 return new Int()

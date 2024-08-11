@@ -24,5 +24,14 @@ namespace NumeralSystems.Net.Utils
             return b;
         }
         public static int ToInt(this byte[] s) => BitConverter.ToInt32(s, 0);
+        
+        public static int SetBoolAtIndex(this int b, uint index, bool value)
+        {
+            var bytes = b.ToByteArray();
+            var byteIndex = index / 8;
+            var bitIndex = index % 8;
+            bytes[byteIndex] = bytes[byteIndex].SetBoolAtIndex(bitIndex, value);
+            return bytes.Select(x => x.ToBoolArray()).SelectMany(x =>x).ToArray().ToInt();
+        }
     }
 }

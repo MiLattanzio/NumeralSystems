@@ -42,10 +42,34 @@ namespace NumeralSystems.Net.Type.Incomplete
 
         public bool IsComplete => Binary.All(x => x != null);
 
-        public Byte this[int value] => new()
+        public Byte this[int value]
         {
-            Binary = ((byte)value).ToBoolArray()
-        };
+            get
+            {
+                var binary = Binary;
+                var valueBinary = value.ToBoolArray();
+                var resultBinary = new bool[binary.Length];
+                var lastValueBinaryIndex = 0;
+                for (var i = 0; i < binary.Length; i++)
+                {
+                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    {
+                        if (binary[i] is null)
+                        {
+                            resultBinary[i] = valueBinary[i1];
+                            lastValueBinaryIndex = i1 + 1;
+                            break;
+                        }
+                        resultBinary[i] = binary[i].Value;
+                        break;
+                    }
+                }
+                return new Byte()
+                {
+                    Binary = resultBinary
+                };
+            }
+        }
 
         private IEnumerable<Byte> Bytes => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
 

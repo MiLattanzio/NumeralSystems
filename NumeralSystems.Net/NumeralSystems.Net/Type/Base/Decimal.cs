@@ -22,10 +22,12 @@ namespace NumeralSystems.Net.Type.Base
             private set => Value = Utils.Convert.ToDecimal(value);
         }
 
+        public int BitLength => sizeof(decimal) * 8;
+
         public bool[] Binary
         {
             get => Utils.Convert.ToBoolArray(Value);
-            private set => Value = Convert.ToDecimal(value);
+            set => Value = value.Length * 8 >= sizeof(decimal) ?  Convert.ToDecimal(value) : Convert.ToDecimal(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(decimal)*8 - value.Length*8)).ToArray());
         }
         
         public bool this[int index]

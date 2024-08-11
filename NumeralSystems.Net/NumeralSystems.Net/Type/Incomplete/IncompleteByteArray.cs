@@ -12,12 +12,12 @@ namespace NumeralSystems.Net.Type.Incomplete
         private bool?[] _binary;
         public bool?[] Binary
         {
-            get => _binary ?? Enumerable.Repeat(false, 8).Select(x => x as bool?).ToArray();
+            get => _binary ?? System.Linq.Enumerable.Repeat(false, 8).Select(x => x as bool?).ToArray();
             internal set
             {
                 if (null == _binary)
                 {
-                    _binary = Enumerable.Repeat(false, 8).Select(x => x as bool?).ToArray();
+                    _binary = System.Linq.Enumerable.Repeat(false, 8).Select(x => x as bool?).ToArray();
                 }
                 else
                 {
@@ -25,7 +25,7 @@ namespace NumeralSystems.Net.Type.Incomplete
                     {
                         _binary = value.Take(Convert.ToInt32(Math.Abs(value.Length / 8.0d))*8).ToArray();
                     }else {
-                        _binary = Enumerable.Repeat(false, 8 - value.Length).Select(x => x as bool?).Concat(value).ToArray();
+                        _binary = System.Linq.Enumerable.Repeat(false, 8 - value.Length).Select(x => x as bool?).Concat(value).ToArray();
                     }
                 }
             }

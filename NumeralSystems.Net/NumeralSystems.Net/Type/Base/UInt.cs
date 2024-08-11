@@ -13,13 +13,15 @@ namespace NumeralSystems.Net.Type.Base
         {
             get => BitConverter.GetBytes(Value).ToArray();
             // ReSharper disable once UnusedMember.Local
-            set => Value = value.Length >= sizeof(uint) ? BitConverter.ToUInt32(value.Take(sizeof(uint)).ToArray(), 0) : BitConverter.ToUInt32(value.Concat(Enumerable.Repeat((byte)0, sizeof(uint) - value.Length)).ToArray(), 0);
+            set => Value = value.Length >= sizeof(uint) ? BitConverter.ToUInt32(value.Take(sizeof(uint)).ToArray(), 0) : BitConverter.ToUInt32(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(uint) - value.Length)).ToArray(), 0);
         }
+
+        public int BitLength => sizeof(uint) * 8;
 
         public bool[] Binary
         {
             get => Utils.Convert.ToBoolArray(Value);
-            set => Value = value.Length * 8 >= sizeof(uint) ? Utils.Convert.ToUInt(value.Take(sizeof(uint)*8).ToArray()) : Utils.Convert.ToUInt(value.Concat(Enumerable.Repeat(false, sizeof(uint)*8 - value.Length*8)).ToArray());
+            set => Value = value.Length * 8 >= sizeof(uint) ? Utils.Convert.ToUInt(value.Take(sizeof(uint)*8).ToArray()) : Utils.Convert.ToUInt(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(uint)*8 - value.Length*8)).ToArray());
         } 
         
         public bool this[int index]

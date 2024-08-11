@@ -15,13 +15,15 @@ namespace NumeralSystems.Net.Type.Base
         {
             get => BitConverter.GetBytes(Value).ToArray();
             // ReSharper disable once UnusedMember.Local
-            set => Value = value.Length >= sizeof(int) ? BitConverter.ToInt32(value.Take(sizeof(int)).ToArray(),0) : BitConverter.ToInt32(value.Concat(Enumerable.Repeat((byte)0, sizeof(int) - value.Length)).ToArray(), 0);
+            set => Value = value.Length >= sizeof(int) ? BitConverter.ToInt32(value.Take(sizeof(int)).ToArray(),0) : BitConverter.ToInt32(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(int) - value.Length)).ToArray(), 0);
         }
+
+        public int BitLength => sizeof(int) * 8;
 
         public bool[] Binary
         {
             get => Convert.ToBoolArray(Value);
-            set => Value = value.Length * 8 >= sizeof(int) ? Convert.ToInt(value.Take(sizeof(int)*8).ToArray()) : Convert.ToInt(value.Concat(Enumerable.Repeat(false, sizeof(int)*8 - value.Length*8)).ToArray());
+            set => Value = value.Length * 8 >= sizeof(int) ? Convert.ToInt(value.Take(sizeof(int)*8).ToArray()) : Convert.ToInt(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(int)*8 - value.Length*8)).ToArray());
         } 
         
         public bool this[int index]

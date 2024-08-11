@@ -20,10 +20,12 @@ namespace NumeralSystems.Net.Type.Base
             private set => Value = BitConverter.ToUInt64(value, 0);
         }
 
+        public int BitLength => sizeof(ulong) * 8;
+
         public bool[] Binary
         {
             get => Utils.Convert.ToBoolArray(Value);
-            private set => Value = Utils.Convert.ToULong(value);
+            set => Value = value.Length * 8 >= sizeof(ulong) ? Utils.Convert.ToULong(value) : Utils.Convert.ToULong(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(ulong) * 8 - value.Length * 8)).ToArray());
         } 
         
         public bool this[int index]

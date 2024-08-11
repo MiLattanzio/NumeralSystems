@@ -22,5 +22,14 @@ namespace NumeralSystems.Net.Utils
             }
             return System.Convert.ToChar(b);
         }
+        
+        public static char SetBoolAtIndex(this char b, uint index, bool value)
+        {
+            var bytes = b.ToByteArray();
+            var byteIndex = index / 8;
+            var bitIndex = index % 8;
+            bytes[byteIndex] = bytes[byteIndex].SetBoolAtIndex(bitIndex, value);
+            return bytes.Select(x => x.ToBoolArray()).SelectMany(x =>x).ToArray().ToChar();
+        }
     }
 }

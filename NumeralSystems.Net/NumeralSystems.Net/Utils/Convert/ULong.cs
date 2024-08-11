@@ -24,5 +24,14 @@ namespace NumeralSystems.Net.Utils
             return b;
         }
         public static ulong ToULong(this byte[] s) => BitConverter.ToUInt64(s, 0);
+        
+        public static ulong SetBoolAtIndex(this ulong b, uint index, bool value)
+        {
+            var bytes = b.ToByteArray();
+            var byteIndex = index / 8;
+            var bitIndex = index % 8;
+            bytes[byteIndex] = bytes[byteIndex].SetBoolAtIndex(bitIndex, value);
+            return bytes.Select(x => x.ToBoolArray()).SelectMany(x =>x).ToArray().ToULong();
+        }
     }
 }

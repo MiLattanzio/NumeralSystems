@@ -21,13 +21,15 @@ namespace NumeralSystems.Net.Type.Base
         public byte[] Bytes
         {
             get => BitConverter.GetBytes(Value);
-            set => Value = value.Length >= sizeof(char) ? BitConverter.ToChar(value.Take(sizeof(char)).ToArray(),0) : BitConverter.ToChar(value.Concat(Enumerable.Repeat((byte)0, sizeof(char) - value.Length)).ToArray(), 0);
+            set => Value = value.Length >= sizeof(char) ? BitConverter.ToChar(value.Take(sizeof(char)).ToArray(),0) : BitConverter.ToChar(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(char) - value.Length)).ToArray(), 0);
         }
+
+        public int BitLength => sizeof(char) * 8;
 
         public bool[] Binary
         {
             get => Value.ToBoolArray();
-            set => Value = value.Length * 8 >= sizeof(char) ? value.Take(sizeof(char)*8).ToArray().ToChar() : value.Concat(Enumerable.Repeat(false, sizeof(char)*8 - value.Length*8)).ToArray().ToChar();
+            set => Value = value.Length * 8 >= sizeof(char) ? value.Take(sizeof(char)*8).ToArray().ToChar() : value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(char)*8 - value.Length*8)).ToArray().ToChar();
         }
         
         public bool this[int index]

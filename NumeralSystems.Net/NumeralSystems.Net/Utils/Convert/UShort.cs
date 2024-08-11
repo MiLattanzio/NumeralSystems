@@ -25,5 +25,14 @@ namespace NumeralSystems.Net.Utils
         }
         
         public static ushort ToUShort(this byte[] s) => BitConverter.ToUInt16(s, 0);
+
+        public static ushort SetBoolAtIndex(this ushort b, uint index, bool value)
+        {
+            var bytes = b.ToByteArray();
+            var byteIndex = index / 8;
+            var bitIndex = index % 8;
+            bytes[byteIndex] = bytes[byteIndex].SetBoolAtIndex(bitIndex, value);
+            return bytes.Select(x => x.ToBoolArray()).SelectMany(x => x).ToArray().ToUShort();
+        }
     }
 }

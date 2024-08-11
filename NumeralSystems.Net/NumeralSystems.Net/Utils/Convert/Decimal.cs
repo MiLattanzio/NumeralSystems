@@ -7,5 +7,13 @@
             return ToDecimal(bytes);
         }
         public static decimal ToDecimal(this byte[] s) => new (ToIntArray(s));
+        public static decimal SetBoolAtIndex(this decimal b, uint index, bool value)
+        {
+            var bytes = b.ToByteArray();
+            var byteIndex = index / 8;
+            var bitIndex = index % 8;
+            bytes[byteIndex] = bytes[byteIndex].SetBoolAtIndex(bitIndex, value);
+            return ToDecimal(bytes);
+        }
     }
 }

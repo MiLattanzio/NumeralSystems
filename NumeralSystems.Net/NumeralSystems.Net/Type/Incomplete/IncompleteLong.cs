@@ -9,7 +9,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteLong : IIRregularOperable<IncompleteLong, Long, long, int>
+    public class IncompleteLong : IIRregularOperable<IncompleteLong, Long, long, ulong>
     {
         private bool?[] _binary;
 
@@ -39,9 +39,9 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
 
         public bool IsComplete => Binary.All(x => x != null);
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
+        public ulong Permutations => Sequence.PermutationsCount(2, Sequence.CountToULong(Binary.Where(x => x is null)), true);
 
-        public Long this[int value]
+        public Long this[ulong value]
         {
             get
             {
@@ -69,7 +69,7 @@ namespace NumeralSystems.Net.Type.Incomplete
             }
         }
 
-        public IEnumerable<Long> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<Long> Enumerable => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
 

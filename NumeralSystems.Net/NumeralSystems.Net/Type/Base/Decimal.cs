@@ -6,7 +6,7 @@ using Math = NumeralSystems.Net.Utils.Math;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Decimal: IRegularOperable<IncompleteDecimal, Decimal, decimal, int>
+    public partial class Decimal: IRegularOperable<IncompleteDecimal, Decimal, decimal, ulong>
     {
         public static Decimal FromBinary(bool[] binary) => new ()
         {

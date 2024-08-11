@@ -9,7 +9,7 @@ using Decimal = NumeralSystems.Net.Type.Base.Decimal;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteDecimal: IIRregularOperable<IncompleteDecimal, Decimal, decimal, int>
+    public class IncompleteDecimal: IIRregularOperable<IncompleteDecimal, Decimal, decimal, ulong>
     {
         private bool?[] _binary;
         public bool?[] Binary
@@ -37,9 +37,9 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
         
         public bool IsComplete => Binary.All(x => x != null);
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
+        public ulong Permutations => Sequence.PermutationsCount(2, Sequence.CountToULong(Binary.Where(x => x is null)), true);
 
-        public Decimal this[int value]
+        public Decimal this[ulong value]
         {
             get
             {
@@ -68,7 +68,7 @@ namespace NumeralSystems.Net.Type.Incomplete
             }
         }
         
-        public IEnumerable<Decimal> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<Decimal> Enumerable => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
         

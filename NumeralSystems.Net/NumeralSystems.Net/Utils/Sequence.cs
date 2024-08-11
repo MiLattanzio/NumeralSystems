@@ -56,6 +56,16 @@ namespace NumeralSystems.Net.Utils
             return count;
         }
         
+        public static ulong CountToULong(IEnumerable sequence)
+        {
+            var count = 0ul;
+            foreach (var value in sequence)
+            {
+                count++;
+            }
+            return count;
+        }
+        
         public static IEnumerable<BigInteger> Range(BigInteger start, BigInteger end)
         {
             for (BigInteger i = start; i <= end; i++)
@@ -64,7 +74,18 @@ namespace NumeralSystems.Net.Utils
             }
         }
         
+        public static IEnumerable<ulong> Range(ulong start, ulong end)
+        {
+            for (ulong i = start; i <= end; i++)
+            {
+                yield return i;
+            }
+        }
+        
         public static BigInteger PermutationsCount(BigInteger identity, BigInteger size, bool repetition = false)
+            => repetition ? Pow(identity, size) : (Factorial(identity) / Factorial(identity -size));
+        
+        public static ulong PermutationsCount(ulong identity, ulong size, bool repetition = false)
             => repetition ? Pow(identity, size) : (Factorial(identity) / Factorial(identity -size));
         public static int PermutationsCount(int identity, int size, bool repetition = false)
             => repetition ? System.Convert.ToInt32(System.Math.Pow(identity, size)) : (Factorial(identity) / Factorial(identity -size));
@@ -103,6 +124,21 @@ namespace NumeralSystems.Net.Utils
             return result;
         }
         
+        private static ulong Pow(ulong baseNumber, ulong exponent)
+        {
+            var result = 1ul;
+            while (exponent > 0)
+            {
+                if (exponent % 2 == 1)
+                {
+                    result *= baseNumber;
+                }
+                baseNumber *= baseNumber;
+                exponent /= 2;
+            }
+            return result;
+        }
+        
         private static int Factorial(int n)
         {
             if (n == 0) return 1;
@@ -120,7 +156,14 @@ namespace NumeralSystems.Net.Utils
             if (n == 0) return 1;
             return n * Factorial(n - 1);
         }
-        
+
+        private static ulong Factorial(ulong n)
+        {
+            if (n == 0) return 1;
+            return n * Factorial(n - 1);
+        }
+
+
         private static long Factorial(long n)
         {
             if (n == 0) return 1;

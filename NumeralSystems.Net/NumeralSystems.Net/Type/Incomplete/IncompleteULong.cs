@@ -6,7 +6,7 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteULong: IIRregularOperable<IncompleteULong, ULong, ulong, int>
+    public class IncompleteULong: IIRregularOperable<IncompleteULong, ULong, ulong, ulong>
     {
         private bool?[] _binary;
 
@@ -34,9 +34,9 @@ namespace NumeralSystems.Net.Type.Incomplete
             }
         }
         public bool IsComplete => Binary.All(x => x != null);
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
+        public ulong Permutations => Sequence.PermutationsCount(2, Sequence.CountToULong(Binary.Where(x => x is null)), true);
 
-        public ULong this[int value]
+        public ULong this[ulong value]
         {
             get
             {
@@ -64,7 +64,7 @@ namespace NumeralSystems.Net.Type.Incomplete
             }
         }
         
-        public IEnumerable<ULong> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<ULong> Enumerable => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
         

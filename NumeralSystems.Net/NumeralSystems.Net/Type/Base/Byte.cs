@@ -5,7 +5,7 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Byte : IRegularOperable<IncompleteByte, Byte, byte, int>
+    public class Byte : IRegularOperable<IncompleteByte, Byte, byte, uint>
     {
         public virtual byte Value { get; set; }
 

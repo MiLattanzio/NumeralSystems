@@ -6,7 +6,7 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class UShort: IRegularOperable<IncompleteUShort, UShort, ushort, int>
+    public partial class UShort: IRegularOperable<IncompleteUShort, UShort, ushort, uint>
     {
         public static UShort FromBinary(bool[] binary) => new ()
         {

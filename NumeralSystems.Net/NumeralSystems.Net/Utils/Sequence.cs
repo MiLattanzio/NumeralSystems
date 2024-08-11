@@ -37,6 +37,24 @@ namespace NumeralSystems.Net.Utils
             
         }
         
+        public static IEnumerable<uint> Range(uint start, uint end)
+        {
+            for (uint i = start; i <= end; i++)
+            {
+                yield return i;
+            }
+        }
+        
+        public static uint CountToUInt(IEnumerable<bool> sequence)
+        {
+            var count = 0u;
+            foreach (var _ in sequence)
+            {
+                count++;
+            }
+            return count;
+        }
+        
         public static IEnumerable<BigInteger> Range(BigInteger start, BigInteger end)
         {
             for (BigInteger i = start; i <= end; i++)

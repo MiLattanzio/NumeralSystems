@@ -10,7 +10,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteByte : IIRregularOperable<IncompleteByte, Byte, byte, int>
+    public class IncompleteByte : IIRregularOperable<IncompleteByte, Byte, byte, uint>
     {
         private bool?[] _binary;
 
@@ -38,11 +38,11 @@ namespace NumeralSystems.Net.Type.Incomplete
             }
         }
 
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
+        public uint Permutations => Sequence.PermutationsCount(2, Sequence.CountToUInt(Binary.Select(x => x is null)), true);
 
         public bool IsComplete => Binary.All(x => x != null);
 
-        public Byte this[int value]
+        public Byte this[uint value]
         {
             get
             {
@@ -71,7 +71,7 @@ namespace NumeralSystems.Net.Type.Incomplete
             }
         }
 
-        private IEnumerable<Byte> Bytes => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        private IEnumerable<Byte> Bytes => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IEnumerable<Byte> Enumerable => Bytes;
 

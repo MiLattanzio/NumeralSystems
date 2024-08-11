@@ -68,8 +68,23 @@ namespace NumeralSystems.Net.Utils
             => repetition ? Pow(identity, size) : (Factorial(identity) / Factorial(identity -size));
         public static int PermutationsCount(int identity, int size, bool repetition = false)
             => repetition ? System.Convert.ToInt32(System.Math.Pow(identity, size)) : (Factorial(identity) / Factorial(identity -size));
+
         public static uint PermutationsCount(uint identity, uint size, bool repetition = false)
-            => repetition ? System.Convert.ToUInt32(System.Math.Pow(identity, size)) : (Factorial(identity) / Factorial(identity -size));
+        {
+            try
+            {
+                if (repetition)
+                {
+                    return System.Convert.ToUInt32(System.Math.Pow(identity, size));
+                }
+                return  (Factorial(identity) / Factorial(identity -size));
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine(e);
+                return uint.MaxValue;
+            }
+        }
         public static int CombinationsCount(int identity, int size, bool repetition = false)
             => repetition ? ((Factorial(identity + size - 1))/(Factorial(size)*(identity-1))) : (Factorial(identity) / ((Factorial(identity))/(Factorial(size)*(identity-1))));
         

@@ -125,6 +125,7 @@ namespace NumeralSystem.Net.NUnit.Type
             Assert.That(result, Is.EqualTo(floatA.Nand(floatB).Value));
         }
 
+        [Test]
         public void ReverseAnd()
         {
             var a = (float)_random.NextDouble();
@@ -137,16 +138,29 @@ namespace NumeralSystem.Net.NUnit.Type
             {
                 Value = b
             };
-            var aInt = BitConverter.ToInt32(BitConverter.GetBytes(a), 0);
-            var bInt = BitConverter.ToInt32(BitConverter.GetBytes(b), 0);
-            var resultInt = aInt & bInt;
-            var result = BitConverter.ToSingle(BitConverter.GetBytes(resultInt), 0);
             var floatC = floatA.And(floatB);
+            var success = floatC.ReverseAnd(floatB, out var reversedA);
+            Assert.IsTrue(success);
+            Assert.IsTrue(reversedA.Contains(floatA));
         }
 
+        [Test]
         public void ReverseOr()
         {
-            throw new System.NotImplementedException();
+            var a = (float)_random.NextDouble();
+            var b = (float)_random.NextDouble();
+            var floatA = new NumeralSystems.Net.Type.Base.Float()
+            {
+                Value = a
+            };
+            var floatB = new NumeralSystems.Net.Type.Base.Float()
+            {
+                Value = b
+            };
+            var floatC = floatA.Or(floatB);
+            var success = floatC.ReverseOr(floatB, out var reversedA);
+            Assert.IsTrue(success);
+            Assert.IsTrue(reversedA.Contains(floatA));
         }
     }
 }

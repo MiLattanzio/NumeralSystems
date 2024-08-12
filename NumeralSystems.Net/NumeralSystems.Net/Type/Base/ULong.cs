@@ -17,7 +17,7 @@ namespace NumeralSystems.Net.Type.Base
         {
             get => BitConverter.GetBytes(Value).ToArray();
             // ReSharper disable once UnusedMember.Local
-            private set => Value = BitConverter.ToUInt64(value, 0);
+            set => Value = value.Length >= sizeof(ulong) ? BitConverter.ToUInt64(value, 0) : BitConverter.ToUInt64(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(ulong) - value.Length)).ToArray(), 0);
         }
 
         public int BitLength => sizeof(ulong) * 8;

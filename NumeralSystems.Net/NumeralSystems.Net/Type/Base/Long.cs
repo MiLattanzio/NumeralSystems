@@ -19,7 +19,7 @@ namespace NumeralSystems.Net.Type.Base
         {
             get => BitConverter.GetBytes(Value);
             // ReSharper disable once UnusedMember.Local
-            private set => Value = BitConverter.ToInt64(value, 0);
+            set => Value = value.Length >= sizeof(long) ? BitConverter.ToInt64(value, 0) : BitConverter.ToInt64(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(long) - value.Length)).ToArray(), 0);
         }
 
         public int BitLength => sizeof(long) * 8;

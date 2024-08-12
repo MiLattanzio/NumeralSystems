@@ -7,12 +7,12 @@ namespace NumeralSystems.Net.Utils
     {
         public static int ToInt(this bool[] s) {
             if (null == s)
-                s = Enumerable.Repeat(false, 32).ToArray();
+                s = Enumerable.Repeat(false, sizeof(int)).ToArray();
             else
                 s = s.Length switch
                 {
-                    > 32 => s[0..32],
-                    < 32 => Enumerable.Repeat(false, 32 - s.Length).Concat(s).ToArray(),
+                    > sizeof(int) * 8 => s[0..(sizeof(int)*8)],
+                    < sizeof(int) * 8 => Enumerable.Repeat(false, (sizeof(int)*8) - s.Length).Concat(s).ToArray(),
                     _ => s
                 };
             int b = 0;

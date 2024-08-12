@@ -6,12 +6,12 @@ namespace NumeralSystems.Net.Utils
     {
         public static long ToLong(this bool[] s) {
             if (null == s)
-                s = Enumerable.Repeat(false, 64).ToArray();
+                s = Enumerable.Repeat(false, sizeof(long)).ToArray();
             else
                 s = s.Length switch
                 {
-                    > 64 => s[0..64],
-                    < 64 => Enumerable.Repeat(false, 64 - s.Length).Concat(s).ToArray(),
+                    > sizeof(long) * 8 => s[0..(sizeof(long)*8)],
+                    < sizeof(long) * 8 => Enumerable.Repeat(false, (sizeof(long)*8) - s.Length).Concat(s).ToArray(),
                     _ => s
                 };
             long b = 0;

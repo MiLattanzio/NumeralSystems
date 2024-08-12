@@ -6,12 +6,12 @@ namespace NumeralSystems.Net.Utils
     {
         public static byte ToByte(this bool[] s) {
             if (null == s)
-                s = Enumerable.Repeat(false, 8).ToArray();
+                s = Enumerable.Repeat(false, sizeof(byte)).ToArray();
             else
                 s = s.Length switch
                 {
-                    > 8 => s[0..8],
-                    < 8 => Enumerable.Repeat(false, 8 - s.Length).Concat(s).ToArray(),
+                    > sizeof(byte) * 8 => s[0..(sizeof(byte)*8)],
+                    < sizeof(byte) * 8 => Enumerable.Repeat(false, (sizeof(byte)*8) - s.Length).Concat(s).ToArray(),
                     _ => s
                 };
             byte b = 0;

@@ -58,6 +58,14 @@ namespace NumeralSystems.Net.Utils
             return bytes[byteIndex].GetBoolAtIndex(bitIndex);
         }
         
+        public static bool GetBoolAtIndex(this ulong b, uint index)
+        {
+            var bytes = b.ToByteArray();
+            var byteIndex = index / 8;
+            var bitIndex = index % 8;
+            return bytes[byteIndex].GetBoolAtIndex(bitIndex);
+        }
+        
         public static bool GetBoolAtIndex(this double b, uint index)
         {
             var bytes = b.ToByteArray();

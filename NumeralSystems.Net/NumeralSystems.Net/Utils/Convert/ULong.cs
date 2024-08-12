@@ -11,8 +11,8 @@ namespace NumeralSystems.Net.Utils
             else
                 s = s.Length switch
                 {
-                    > sizeof(ulong) => s[0..sizeof(ulong)],
-                    < sizeof(ulong) => Enumerable.Repeat(false, sizeof(ulong) - s.Length).Concat(s).ToArray(),
+                    > sizeof(ulong) * 8 => s[0..(sizeof(ulong)*8)],
+                    < sizeof(ulong) * 8 => Enumerable.Repeat(false, (sizeof(ulong)*8) - s.Length).Concat(s).ToArray(),
                     _ => s
                 };
             ulong b = 0;

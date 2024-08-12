@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 namespace NumeralSystems.Net.Utils
 {
@@ -36,12 +38,133 @@ namespace NumeralSystems.Net.Utils
             
         }
         
+        public static IEnumerable<uint> Range(uint start, uint end)
+        {
+            for (uint i = start; i <= end; i++)
+            {
+                yield return i;
+            }
+        }
+        
+        public static uint CountToUInt(IEnumerable sequence)
+        {
+            var count = 0u;
+            foreach (var value in sequence)
+            {
+                count++;
+            }
+            return count;
+        }
+        
+        public static ulong CountToULong(IEnumerable sequence)
+        {
+            var count = 0ul;
+            foreach (var value in sequence)
+            {
+                count++;
+            }
+            return count;
+        }
+        
+        public static IEnumerable<BigInteger> Range(BigInteger start, BigInteger end)
+        {
+            for (BigInteger i = start; i <= end; i++)
+            {
+                yield return i;
+            }
+        }
+        
+        public static IEnumerable<ulong> Range(ulong start, ulong end)
+        {
+            for (ulong i = start; i <= end; i++)
+            {
+                yield return i;
+            }
+        }
+        
+        public static BigInteger PermutationsCount(BigInteger identity, BigInteger size, bool repetition = false)
+            => repetition ? Pow(identity, size) : (Factorial(identity) / Factorial(identity -size));
+        
+        public static ulong PermutationsCount(ulong identity, ulong size, bool repetition = false)
+            => repetition ? Pow(identity, size) : (Factorial(identity) / Factorial(identity -size));
         public static int PermutationsCount(int identity, int size, bool repetition = false)
             => repetition ? System.Convert.ToInt32(System.Math.Pow(identity, size)) : (Factorial(identity) / Factorial(identity -size));
+
+        public static uint PermutationsCount(uint identity, uint size, bool repetition = false)
+        {
+            try
+            {
+                if (repetition)
+                {
+                    return System.Convert.ToUInt32(System.Math.Pow(identity, size));
+                }
+                return  (Factorial(identity) / Factorial(identity -size));
+            }
+            catch (OverflowException e)
+            {
+                Console.WriteLine(e);
+                return uint.MaxValue;
+            }
+        }
         public static int CombinationsCount(int identity, int size, bool repetition = false)
             => repetition ? ((Factorial(identity + size - 1))/(Factorial(size)*(identity-1))) : (Factorial(identity) / ((Factorial(identity))/(Factorial(size)*(identity-1))));
         
+        private static BigInteger Pow(BigInteger baseNumber, BigInteger exponent)
+        {
+            var result = BigInteger.One;
+            while (exponent > 0)
+            {
+                if (exponent % 2 == 1)
+                {
+                    result *= baseNumber;
+                }
+                baseNumber *= baseNumber;
+                exponent /= 2;
+            }
+            return result;
+        }
+        
+        private static ulong Pow(ulong baseNumber, ulong exponent)
+        {
+            var result = 1ul;
+            while (exponent > 0)
+            {
+                if (exponent % 2 == 1)
+                {
+                    result *= baseNumber;
+                }
+                baseNumber *= baseNumber;
+                exponent /= 2;
+            }
+            return result;
+        }
+        
         private static int Factorial(int n)
+        {
+            if (n == 0) return 1;
+            return n * Factorial(n - 1);
+        }
+        
+        private static uint Factorial(uint n)
+        {
+            if (n == 0) return 1;
+            return n * Factorial(n - 1);
+        }
+        
+        private static BigInteger Factorial(BigInteger n)
+        {
+            if (n == 0) return 1;
+            return n * Factorial(n - 1);
+        }
+
+        private static ulong Factorial(ulong n)
+        {
+            if (n == 0) return 1;
+            return n * Factorial(n - 1);
+        }
+
+
+        private static long Factorial(long n)
         {
             if (n == 0) return 1;
             return n * Factorial(n - 1);

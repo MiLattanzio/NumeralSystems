@@ -18,6 +18,10 @@
         <PackageProjectUrl>polecola.it</PackageProjectUrl>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Type\Enumerable\" />
+    </ItemGroup>
+
 
 
 </Project>

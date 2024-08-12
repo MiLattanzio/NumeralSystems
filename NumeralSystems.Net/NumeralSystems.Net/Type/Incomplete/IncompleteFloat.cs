@@ -7,7 +7,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteFloat: IIRregularOperable<IncompleteFloat, Float, float>
+    public class IncompleteFloat: IIRregularOperable<IncompleteFloat, Float, float, uint>
     {
         private bool?[] _binary;
         public bool?[] Binary
@@ -35,10 +35,36 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
         
         public bool IsComplete => Binary.All(x => x != null);
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
-        public Float this[int value] => Float.FromBinary(value.ToBoolArray());
+        public uint Permutations => Sequence.PermutationsCount(2, Sequence.CountToUInt(Binary.Where(x => x is null)), true);
+
+        public Float this[uint value]
+        {
+            get {
+                var binary = Binary;
+                var valueBinary = value.ToBoolArray();
+                var resultBinary = new bool[binary.Length];
+                var lastValueBinaryIndex = 0;
+                for (var i = 0; i < binary.Length; i++)
+                {
+                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    {
+                        if (binary[i] is null)
+                        {
+                            resultBinary[i] = valueBinary[i1];
+                            lastValueBinaryIndex = i1 + 1;
+                            break;
+                        }
+                        resultBinary[i] = binary[i] ?? false;
+                    }
+                }
+                return new Float()
+                {
+                    Binary = resultBinary
+                };
+            }
+        }
         
-        public IEnumerable<Float> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<Float> Enumerable => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
         

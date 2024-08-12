@@ -1,12 +1,13 @@
 ﻿using System;
+using NumeralSystems.Net.Utils;
 using NUnit.Framework;
 
 namespace NumeralSystem.Net.NUnit.Type
 {
     [TestFixture]
-    public class UInt
+    public class UInt: IBaseTypeTest
     {
-        Random _random = new Random();
+        private readonly Random _random = new();
         
         [Test]
         public void Generation()
@@ -24,6 +25,10 @@ namespace NumeralSystem.Net.NUnit.Type
                 Bytes = uInt.Bytes
             };
             Assert.That(number, Is.EqualTo(fromBytes.Value));
+            for (var i = 0; i < fromBinary.Binary.Length; i++)
+            {
+                Assert.That(fromBinary.Binary[i], Is.EqualTo(fromBinary.Value.GetBoolAtIndex((uint)i)));
+            }
         }
         
         [Test]

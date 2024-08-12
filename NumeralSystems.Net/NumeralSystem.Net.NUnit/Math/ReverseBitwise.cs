@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using NumeralSystems.Net.Type.Base;
 using NUnit.Framework;
 
@@ -7,7 +8,7 @@ namespace NumeralSystem.Net.NUnit.Math
     [TestFixture]
     public class ReverseBitwise
     {
-        Random _random = new Random();
+        private readonly Random _random = new();
         
         [Test]
         public void ReverseAnd()
@@ -41,6 +42,13 @@ namespace NumeralSystem.Net.NUnit.Math
             var success = result.ReverseOr(int32B, out var int32AReversed);
             Assert.IsTrue(success);
             Assert.IsTrue(int32AReversed.Contains(int32A));
+            Assert.Multiple(() =>
+            {
+                foreach (var i in int32AReversed.Enumerable)
+                {
+                    Assert.IsTrue(int32AReversed.Contains(i));
+                }
+            });
         }
     }
 }

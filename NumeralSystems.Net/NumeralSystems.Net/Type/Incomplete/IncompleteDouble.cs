@@ -8,7 +8,7 @@ using Double = NumeralSystems.Net.Type.Base.Double;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteDouble: IIRregularOperable<IncompleteDouble, Double, double>
+    public class IncompleteDouble: IIRregularOperable<IncompleteDouble, Double, double, ulong>
     {
         private bool?[] _binary;
         public bool?[] Binary
@@ -36,10 +36,37 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
         
         public bool IsComplete => Binary.All(x => x != null);
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
-        public Double this[int value] => Double.FromBinary(value.ToBoolArray());
+        public ulong Permutations => Sequence.PermutationsCount(2, Sequence.CountToULong(Binary.Where(x => x is null)), true);
+
+        public Double this[ulong value]
+        {
+            get
+            {
+                var binary = Binary;
+                var valueBinary = value.ToBoolArray();
+                var resultBinary = new bool[binary.Length];
+                var lastValueBinaryIndex = 0;
+                for (var i = 0; i < binary.Length; i++)
+                {
+                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    {
+                        if (binary[i] is null)
+                        {
+                            resultBinary[i] = valueBinary[i1];
+                            lastValueBinaryIndex = i1 + 1;
+                            break;
+                        }
+                        resultBinary[i] = binary[i] ?? false;
+                    }
+                }
+                return new Double()
+                {
+                    Binary = resultBinary
+                };
+            }
+        }
         
-        public IEnumerable<Double> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<Double> Enumerable => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
         

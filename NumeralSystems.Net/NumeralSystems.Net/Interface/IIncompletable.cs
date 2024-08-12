@@ -1,6 +1,6 @@
 ﻿namespace NumeralSystems.Net.Interface
 {
-    public interface IIncompletable<out TIncomplete, TValue, TType> where TIncomplete : IIncompleteValue<TValue, TType> where TValue : INumeralValue<TType>
+    public interface IIncompletable<out TIncomplete, TValue, TType, TIndexer> where TIncomplete : IIncompleteValue<TValue, TType, TIndexer> where TValue : INumeralValue<TType> where TIndexer : struct
     {
         public TIncomplete Incomplete();
     }

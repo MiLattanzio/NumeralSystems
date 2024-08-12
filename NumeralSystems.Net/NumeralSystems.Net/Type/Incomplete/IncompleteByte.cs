@@ -10,7 +10,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteByte : IIRregularOperable<IncompleteByte, Byte, byte>
+    public class IncompleteByte : IIRregularOperable<IncompleteByte, Byte, byte, uint>
     {
         private bool?[] _binary;
 
@@ -38,16 +38,40 @@ namespace NumeralSystems.Net.Type.Incomplete
             }
         }
 
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
+        public uint Permutations => Sequence.PermutationsCount(2, Sequence.CountToUInt(Binary.Where(x => x is null)), true);
 
         public bool IsComplete => Binary.All(x => x != null);
 
-        public Byte this[int value] => new()
+        public Byte this[uint value]
         {
-            Binary = ((byte)value).ToBoolArray()
-        };
+            get
+            {
+                var binary = Binary;
+                var valueBinary = value.ToBoolArray();
+                var resultBinary = new bool[binary.Length];
+                var lastValueBinaryIndex = 0;
+                for (var i = 0; i < binary.Length; i++)
+                {
+                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    {
+                        if (binary[i] is null)
+                        {
+                            resultBinary[i] = valueBinary[i1];
+                            lastValueBinaryIndex = i1 + 1;
+                            break;
+                        }
+                        resultBinary[i] = binary[i].Value;
+                        break;
+                    }
+                }
+                return new Byte()
+                {
+                    Binary = resultBinary
+                };
+            }
+        }
 
-        private IEnumerable<Byte> Bytes => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        private IEnumerable<Byte> Bytes => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IEnumerable<Byte> Enumerable => Bytes;
 

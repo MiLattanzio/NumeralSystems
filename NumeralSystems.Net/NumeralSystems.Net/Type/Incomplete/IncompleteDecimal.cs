@@ -9,7 +9,8 @@ using Decimal = NumeralSystems.Net.Type.Base.Decimal;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteDecimal: IIRregularOperable<IncompleteDecimal, Decimal, decimal>
+    /* TODO: Implement IncompleteDecimal
+    public class IncompleteDecimal: IIRregularOperable<IncompleteDecimal, Decimal, decimal, ulong>
     {
         private bool?[] _binary;
         public bool?[] Binary
@@ -37,10 +38,38 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
         
         public bool IsComplete => Binary.All(x => x != null);
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
-        public Decimal this[int value] => Decimal.FromBinary(value.ToBoolArray());
+        public ulong Permutations => Sequence.PermutationsCount(2, Sequence.CountToULong(Binary.Where(x => x is null)), true);
+
+        public Decimal this[ulong value]
+        {
+            get
+            {
+                var binary = Binary;
+                var valueBinary = value.ToBoolArray();
+                var resultBinary = new bool[binary.Length];
+                var lastValueBinaryIndex = 0;
+                for (var i = 0; i < binary.Length; i++)
+                {
+                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    {
+                        if (binary[i] is null)
+                        {
+                            resultBinary[i] = valueBinary[i1];
+                            lastValueBinaryIndex = i1 + 1;
+                            break;
+                        }
+                        resultBinary[i] = binary[i].Value;
+                        break;
+                    }
+                }
+                return new Decimal()
+                {
+                    Binary = resultBinary
+                };
+            }
+        }
         
-        public IEnumerable<Decimal> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<Decimal> Enumerable => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
         
@@ -158,4 +187,5 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
     }
+    */
 }

@@ -7,7 +7,7 @@ using Math = NumeralSystems.Net.Utils.Math;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Double : IRegularOperable<IncompleteDouble, Double, double>
+    public partial class Double : IRegularOperable<IncompleteDouble, Double, double, ulong>
     {
         public static Double FromBinary(bool[] binary) => new ()
         {
@@ -20,13 +20,15 @@ namespace NumeralSystems.Net.Type.Base
         {
             get => BitConverter.GetBytes(Value).ToArray();
             // ReSharper disable once UnusedMember.Local
-            private set => Value = BitConverter.ToDouble(value, 0);
+            set => Value = value.Length >= sizeof(double) ? BitConverter.ToDouble(value, 0) : BitConverter.ToDouble(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(double) - value.Length)).ToArray(), 0);
         }
+
+        public int BitLength => sizeof(double) * 8;
 
         public bool[] Binary
         {
             get => Utils.Convert.ToBoolArray(Value);
-            private set => Value = Convert.ToDouble(value);
+            set => Value = value.Length * 8 >= sizeof(double) ? Utils.Convert.ToDouble(value) : Utils.Convert.ToDouble(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(double)*8 - value.Length*8)).ToArray());
         } 
         
         public bool this[int index]

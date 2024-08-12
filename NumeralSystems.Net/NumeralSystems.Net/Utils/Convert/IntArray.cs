@@ -14,5 +14,7 @@ namespace NumeralSystems.Net.Utils
                 result.Add(BitConverter.ToInt32(s, i));
             return result.ToArray();
         }
+        
+        
     }
 }

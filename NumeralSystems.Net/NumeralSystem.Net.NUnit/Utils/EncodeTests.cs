@@ -7,7 +7,7 @@ namespace NumeralSystem.Net.NUnit.Utils
     [TestFixture]
     public class EncodeTests
     {
-        private readonly Random _random = new Random();
+        private readonly Random _random = new();
 
         [Test]
         public void Uint()

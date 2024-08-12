@@ -6,7 +6,7 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteULong: IIRregularOperable<IncompleteULong, ULong, ulong>
+    public class IncompleteULong: IIRregularOperable<IncompleteULong, ULong, ulong, ulong>
     {
         private bool?[] _binary;
 
@@ -34,11 +34,37 @@ namespace NumeralSystems.Net.Type.Incomplete
             }
         }
         public bool IsComplete => Binary.All(x => x != null);
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
+        public ulong Permutations => Sequence.PermutationsCount(2, Sequence.CountToULong(Binary.Where(x => x is null)), true);
 
-        public ULong this[int value] => ULong.FromBinary(value.ToBoolArray());
+        public ULong this[ulong value]
+        {
+            get
+            {
+                var binary = Binary;
+                var valueBinary = value.ToBoolArray();
+                var resultBinary = new bool[binary.Length];
+                var lastValueBinaryIndex = 0;
+                for (var i = 0; i < binary.Length; i++)
+                {
+                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    {
+                        if (binary[i] is null)
+                        {
+                            resultBinary[i] = valueBinary[i1];
+                            lastValueBinaryIndex = i1 + 1;
+                            break;
+                        }
+                        resultBinary[i] = binary[i] ?? false;
+                    }
+                }
+                return new ULong()
+                {
+                    Binary = resultBinary
+                };
+            }
+        }
         
-        public IEnumerable<ULong> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<ULong> Enumerable => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
         

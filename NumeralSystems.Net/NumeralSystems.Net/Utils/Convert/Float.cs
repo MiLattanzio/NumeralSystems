@@ -9,5 +9,14 @@ namespace NumeralSystems.Net.Utils
             var bytes = ToByteArray(s);
             return BitConverter.ToSingle(bytes);
         }
+
+        public static float SetBoolAtIndex(this float b, uint index, bool value)
+        {
+            var bytes = b.ToByteArray();
+            var byteIndex = index / 8;
+            var bitIndex = index % 8;
+            bytes[byteIndex] = bytes[byteIndex].SetBoolAtIndex(bitIndex, value);
+            return BitConverter.ToSingle(bytes);
+        }
     }
 }

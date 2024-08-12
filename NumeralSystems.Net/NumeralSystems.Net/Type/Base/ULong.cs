@@ -5,7 +5,7 @@ using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class ULong: IRegularOperable<IncompleteULong, ULong, ulong>
+    public partial class ULong: IRegularOperable<IncompleteULong, ULong, ulong, ulong>
     {
          public static ULong FromBinary(bool[] binary) => new ()
         {
@@ -17,13 +17,15 @@ namespace NumeralSystems.Net.Type.Base
         {
             get => BitConverter.GetBytes(Value).ToArray();
             // ReSharper disable once UnusedMember.Local
-            private set => Value = BitConverter.ToUInt64(value, 0);
+            set => Value = value.Length >= sizeof(ulong) ? BitConverter.ToUInt64(value, 0) : BitConverter.ToUInt64(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(ulong) - value.Length)).ToArray(), 0);
         }
+
+        public int BitLength => sizeof(ulong) * 8;
 
         public bool[] Binary
         {
             get => Utils.Convert.ToBoolArray(Value);
-            private set => Value = Utils.Convert.ToULong(value);
+            set => Value = value.Length * 8 >= sizeof(ulong) ? Utils.Convert.ToULong(value) : Utils.Convert.ToULong(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(ulong) * 8 - value.Length * 8)).ToArray());
         } 
         
         public bool this[int index]

@@ -1,9 +1,10 @@
 ﻿namespace NumeralSystems.Net.Interface
 {
-    public interface IIRregularOperable<TIncomplete, TValue, TType> : IIncompleteValue<TValue, TType>,
-        IRregularReversible<TIncomplete, TValue, TType>
-        where TValue : IRegularOperable<TIncomplete, TValue, TType>
-        where TIncomplete : IIncompleteValue<TValue, TType>
+    public interface IIRregularOperable<TIncomplete, TValue, TType, TIndexer> : IIncompleteValue<TValue, TType, TIndexer>,
+        IRregularReversible<TIncomplete, TValue, TType, TIndexer>
+        where TValue : IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+        where TIncomplete : IIncompleteValue<TValue, TType, TIndexer>
+        where TIndexer : struct
     {
         TIncomplete Not();
         TIncomplete Xor(TIncomplete other);

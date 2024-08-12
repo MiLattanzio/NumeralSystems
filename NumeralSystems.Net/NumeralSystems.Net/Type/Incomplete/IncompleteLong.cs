@@ -9,7 +9,7 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteLong : IIRregularOperable<IncompleteLong, Long, long>
+    public class IncompleteLong : IIRregularOperable<IncompleteLong, Long, long, ulong>
     {
         private bool?[] _binary;
 
@@ -39,11 +39,37 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
 
         public bool IsComplete => Binary.All(x => x != null);
-        public int Permutations => Sequence.PermutationsCount(2, Binary.Count(x => x is null), true);
+        public ulong Permutations => Sequence.PermutationsCount(2, Sequence.CountToULong(Binary.Where(x => x is null)), true);
 
-        public Long this[int value] => Long.FromBinary(value.ToBoolArray());
+        public Long this[ulong value]
+        {
+            get
+            {
+                var binary = Binary;
+                var valueBinary = value.ToBoolArray();
+                var resultBinary = new bool[binary.Length];
+                var lastValueBinaryIndex = 0;
+                for (var i = 0; i < binary.Length; i++)
+                {
+                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    {
+                        if (binary[i] is null)
+                        {
+                            resultBinary[i] = valueBinary[i1];
+                            lastValueBinaryIndex = i1 + 1;
+                            break;
+                        }
+                        resultBinary[i] = binary[i] ?? false;
+                    }
+                }
+                return new Long()
+                {
+                    Binary = resultBinary
+                };
+            }
+        }
 
-        public IEnumerable<Long> Enumerable => System.Linq.Enumerable.Range(0, Permutations).Select(x => this[x]);
+        public IEnumerable<Long> Enumerable => Sequence.Range(0, Permutations).Select(x => this[x]);
 
         public IncompleteByte[] ByteArray => IncompleteByteArray.ArrayOf(Binary);
 

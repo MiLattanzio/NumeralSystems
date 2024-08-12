@@ -6,7 +6,8 @@ using Math = NumeralSystems.Net.Utils.Math;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Decimal: IRegularOperable<IncompleteDecimal, Decimal, decimal>
+    /* TODO: Implement Decimal
+    public partial class Decimal: IRegularOperable<IncompleteDecimal, Decimal, decimal, ulong>
     {
         public static Decimal FromBinary(bool[] binary) => new ()
         {
@@ -19,13 +20,15 @@ namespace NumeralSystems.Net.Type.Base
         {
             get => Utils.Convert.ToByteArray(Value);
             // ReSharper disable once UnusedMember.Local
-            private set => Value = Utils.Convert.ToDecimal(value);
+            set => Value = value.Length >= sizeof(decimal) ? Utils.Convert.ToDecimal(value) : Utils.Convert.ToDecimal(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(decimal) - value.Length)).ToArray());
         }
+
+        public int BitLength => sizeof(decimal) * 8;
 
         public bool[] Binary
         {
             get => Utils.Convert.ToBoolArray(Value);
-            private set => Value = Convert.ToDecimal(value);
+            set => Value = value.Length * 8 >= sizeof(decimal) ?  Utils.Convert.ToDecimal(value) : Utils.Convert.ToDecimal(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(decimal)*8 - value.Length*8)).ToArray());
         }
         
         public bool this[int index]
@@ -148,4 +151,5 @@ namespace NumeralSystems.Net.Type.Base
 
         public string ToString(string format) => Value.ToString(format);
     }
+    */
 }

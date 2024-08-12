@@ -12,7 +12,7 @@ namespace NumeralSystems.Net.Type.Base
                 throw new System.ArgumentException("Destination base must be greater than 0 and less than or equal to " + char.MaxValue);
             var indices = ToIndicesOfBase(s, destinationBase).ToList();
             var len = indices.Max(x => x.Length);
-            var adjustedIndices = indices.Select(x => x.Length < len ? Enumerable.Repeat(0U, len - x.Length).Concat(x).ToArray() : x).ToArray();
+            var adjustedIndices = indices.Select(x => x.Length < len ? System.Linq.Enumerable.Repeat(0U, len - x.Length).Concat(x).ToArray() : x).ToArray();
             size = len;
             return string.Concat(adjustedIndices.SelectMany(x => x.Select(y => (char)y)));
         }
@@ -22,7 +22,7 @@ namespace NumeralSystems.Net.Type.Base
                 throw new System.ArgumentException("Source base must be greater than 0 and less than or equal to " + char.MaxValue);
             var indices = s.Select(c => (uint)c).ToArray();
             var len = indices.Length / size;
-            var adjustedIndices = Enumerable.Range(0, len).Select(x => indices.Skip(x * size).Take(size).ToArray()).ToArray();
+            var adjustedIndices = System.Linq.Enumerable.Range(0, len).Select(x => indices.Skip(x * size).Take(size).ToArray()).ToArray();
             return FromIndicesOfBase(adjustedIndices, sourceBase);
         }
         public static IEnumerable<uint[]> ToIndicesOfBase(string s, int destinationBase) => s.Select(c => UInt.ToIndicesOfBase(c, destinationBase, out var _));

@@ -7,7 +7,7 @@ namespace NumeralSystem.Net.NUnit.Math
     [TestFixture]
     public class Bitwise
     {
-        Random _random = new Random();
+        private readonly Random _random = new();
         [Test]
         public void And()
         {

@@ -12,7 +12,7 @@ namespace NumeralSystems.Net.Type.Base
             var integralPart = (int)absoluteValue;
             var fractionalPart = absoluteValue - integralPart;
             var intFractional = GetFractionalPart(fractionalPart, out var zeroCount);
-            var zeros = Enumerable.Repeat(0u, zeroCount).ToArray();
+            var zeros = System.Linq.Enumerable.Repeat(0u, zeroCount).ToArray();
             return (UInt.ToIndicesOfBase(integralPart, destinationBase, out var positive), zeros.Concat(UInt.ToIndicesOfBase(intFractional, destinationBase, out _)).ToArray(), val >= 0);
         }
         

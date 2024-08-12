@@ -9,6 +9,7 @@ using Decimal = NumeralSystems.Net.Type.Base.Decimal;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
+    /* TODO: Implement IncompleteDecimal
     public class IncompleteDecimal: IIRregularOperable<IncompleteDecimal, Decimal, decimal, ulong>
     {
         private bool?[] _binary;
@@ -186,4 +187,5 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
     }
+    */
 }

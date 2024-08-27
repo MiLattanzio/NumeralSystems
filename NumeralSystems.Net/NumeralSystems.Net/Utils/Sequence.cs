@@ -40,7 +40,7 @@ namespace NumeralSystems.Net.Utils
         
         public static IEnumerable<uint> Range(uint start, uint end)
         {
-            for (uint i = start; i <= end; i++)
+            for (var i = start; i <= end; i++)
             {
                 yield return i;
             }
@@ -68,7 +68,7 @@ namespace NumeralSystems.Net.Utils
         
         public static IEnumerable<BigInteger> Range(BigInteger start, BigInteger end)
         {
-            for (BigInteger i = start; i <= end; i++)
+            for (var i = start; i <= end; i++)
             {
                 yield return i;
             }
@@ -76,7 +76,7 @@ namespace NumeralSystems.Net.Utils
         
         public static IEnumerable<ulong> Range(ulong start, ulong end)
         {
-            for (ulong i = start; i <= end; i++)
+            for (var i = start; i <= end; i++)
             {
                 yield return i;
             }

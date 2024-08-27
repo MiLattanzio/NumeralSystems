@@ -13,17 +13,26 @@ namespace NumeralSystems.Net
     public class Numeral
     {
         // ReSharper disable once MemberCanBePrivate.Global
-        // If the number is positive or negative
+        /// <summary>
+        /// If the number is positive or negative
+        /// </summary>
         public bool Positive { get; set; } = true;
 
         // ReSharper disable once MemberCanBePrivate.Global
-        // The base of the number
+        /// <summary>
+        /// The base of the number
+        /// </summary>
         public NumeralSystem Base { get; }
         
-        // Fractional indices are the indices of the fractional part of the number
+        /// <summary>
+        /// Fractional indices are the indices of the fractional part of the number
+        /// </summary>
         private readonly List<int> _fractionalIndices = new();
 
         // ReSharper disable once MemberCanBePrivate.Global
+        /// <summary>
+        /// Fractional indices are the indices of the fractional part of the number
+        /// </summary>
         public List<int> FractionalIndices
         {
             get => _fractionalIndices;
@@ -39,7 +48,6 @@ namespace NumeralSystems.Net
         }
         
         // ReSharper disable once MemberCanBePrivate.Global
-
         public List<string> GetFractionalStrings(IList<string> identity)
         {
             if (identity.Count < Base.Size) throw new ArgumentOutOfRangeException(nameof(identity), "Identity must be at least the size of the base");
@@ -170,7 +178,6 @@ namespace NumeralSystems.Net
                     if (t == 0) frontZeros++;
                     else break;
                 }
-
                 if (integral == 0 && fractional == 0) Positive = true;
                 var digitsInBase = (int) Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
                 var div = (decimal) Math.Pow(10, digitsInBase);

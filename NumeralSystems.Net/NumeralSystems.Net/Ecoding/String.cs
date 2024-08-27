@@ -3,6 +3,9 @@ using System.Linq;
 
 namespace NumeralSystems.Net.Ecoding
 {
+    /// <summary>
+    /// String encoding utilities.
+    /// </summary>
     public class String
     {
         /// <summary>
@@ -10,6 +13,7 @@ namespace NumeralSystems.Net.Ecoding
         /// </summary>
         /// <param name="value">Value to extract the identity from</param>
         /// <returns>The identity of the value</returns>
+        /// <remarks>For the Numeral type usage</remarks>
         public IList<char> GetIdentity(string value)
         {
             var identity = new List<char>();
@@ -17,7 +21,6 @@ namespace NumeralSystems.Net.Ecoding
             {
                 identity.Add(c);
             }
-            identity.Sort((a, b) => value.Count(x => x == b).CompareTo(value.Count(x => x == a)));
             return identity;
         }
     }

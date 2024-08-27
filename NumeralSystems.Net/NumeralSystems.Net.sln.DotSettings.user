@@ -1,4 +1,10 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AAssert_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FSourcesCache_003F967970eb58b63e4977b87c01850b7af6afd5431576aa402786bd2d7aee5e95_003FAssert_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ASimpleWorkItemDispatcher_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FSourcesCache_003Fdf6051f28c6c3f2ca0ddb6b26543d79632e5fa7a43a54a54eba91d4478568c0_003FSimpleWorkItemDispatcher_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AWorkItem_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E2_003Fresharper_002Dhost_003FSourcesCache_003Fd056b4e3b34cd15e21dec611d5b5bbaf85e1f15b445f4e6b3e4dc6634d649042_003FWorkItem_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:Boolean x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/ShowAdvancedOptions/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestProjectMapping/=43551381_002D28D8_002D420D_002DB6DD_002D205B4FF67968/@EntryIndexedValue">53C7C998-E2B3-4C60-9480-34822AC4AF14</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/CreateUnitTestDialog/TestTemplateMapping/=NUnit3x/@EntryIndexedValue">db4927dd-2e12-48a7-9a84-2b7e3e31b9c8</s:String>
 	
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4df9b1db_002D3e84_002D48b8_002Dbd50_002D78424b761fa4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Int" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
@@ -61,7 +67,7 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b9fa1a4f_002D6c51_002D4776_002D88dd_002D10056ad5a06d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="And #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\miche\Repo\NumeralSystems\NumeralSystems.Net\NumeralSystem.Net.NUnit" Presentation="&amp;lt;NumeralSystem.Net.NUnit&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e9ff9d07_002D0709_002D4890_002D8227_002Dbafb03823647/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Encode #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=e9ff9d07_002D0709_002D4890_002D8227_002Dbafb03823647/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Encode #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.EncodingTests.Encode&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Utils.EncodeTests&lt;/TestId&gt;&#xD;
@@ -73,8 +79,11 @@
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.TypeTests.Sizeof&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Char.And&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Type.Char.Generation&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Ecoding.StringTest.GetIdentity&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Ecoding.StringTest.GetIdentitySorted&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.Ecoding.StringTest&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fecce2bd_002Db9b9_002D4f5a_002D99ef_002Da1aecd4d8839/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Unknown" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fecce2bd_002Db9b9_002D4f5a_002D99ef_002Da1aecd4d8839/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Unknown" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Project Location="C:\Users\miche\Repo\NumeralSystems\NumeralSystems.Net\NumeralSystem.Net.NUnit" Presentation="&amp;lt;NumeralSystem.Net.NUnit&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

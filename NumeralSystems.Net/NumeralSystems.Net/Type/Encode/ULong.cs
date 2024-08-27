@@ -6,7 +6,7 @@ using System.Numerics;
 // ReSharper disable once CheckNamespace
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class ULong
+    public sealed partial class ULong
     {
         public static ulong[] ToIndicesOfBase(ulong val, int destinationBase)
         {

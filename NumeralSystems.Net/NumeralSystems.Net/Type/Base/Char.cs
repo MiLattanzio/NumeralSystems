@@ -9,14 +9,14 @@ using Math = NumeralSystems.Net.Utils.Math;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Char : IRegularOperable<IncompleteChar, Char, char, uint>
+    public sealed class Char : IRegularOperable<IncompleteChar, Char, char, uint>
     {
         public static Char FromBinary(bool[] binary) => new ()
         {
             Value = binary.ToChar()
         };
         
-        public virtual char Value { get; set; }
+        public char Value { get; set; }
 
         public byte[] Bytes
         {

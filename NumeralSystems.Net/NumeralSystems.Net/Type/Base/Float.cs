@@ -9,13 +9,13 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Float : IRegularOperable<IncompleteFloat, Float, float, uint>
+    public sealed partial class Float : IRegularOperable<IncompleteFloat, Float, float, uint>
     {
         public static Float FromBinary(bool[] binary) => new ()
         {
             Value = binary.ToFloat()
         };
-        public virtual float Value { get; set; }
+        public float Value { get; set; }
 
         public byte[] Bytes
         {

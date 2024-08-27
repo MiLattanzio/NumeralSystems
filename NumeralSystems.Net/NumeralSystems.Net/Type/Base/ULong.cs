@@ -5,13 +5,13 @@ using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class ULong: IRegularOperable<IncompleteULong, ULong, ulong, ulong>
+    public sealed partial class ULong: IRegularOperable<IncompleteULong, ULong, ulong, ulong>
     {
          public static ULong FromBinary(bool[] binary) => new ()
         {
             Value = Utils.Convert.ToULong(binary)
         };
-        public virtual ulong Value { get; set; }
+        public ulong Value { get; set; }
 
         public byte[] Bytes
         {

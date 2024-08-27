@@ -7,14 +7,14 @@ using Math = NumeralSystems.Net.Utils.Math;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Double : IRegularOperable<IncompleteDouble, Double, double, ulong>
+    public sealed partial class Double : IRegularOperable<IncompleteDouble, Double, double, ulong>
     {
         public static Double FromBinary(bool[] binary) => new ()
         {
             Value = Utils.Convert.ToDouble(binary)
         };
         
-        public virtual double Value { get; set; }
+        public double Value { get; set; }
 
         public byte[] Bytes
         {

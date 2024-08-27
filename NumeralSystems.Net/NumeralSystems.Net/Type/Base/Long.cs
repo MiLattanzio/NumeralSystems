@@ -7,13 +7,13 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Long : IRegularOperable<IncompleteLong, Long, long, ulong>
+    public sealed class Long : IRegularOperable<IncompleteLong, Long, long, ulong>
     {
         public static Long FromBinary(bool[] binary) => new ()
         {
             Value = Utils.Convert.ToLong(binary)
         };
-        public virtual long Value { get; set; }
+        public long Value { get; set; }
 
         public byte[] Bytes
         {

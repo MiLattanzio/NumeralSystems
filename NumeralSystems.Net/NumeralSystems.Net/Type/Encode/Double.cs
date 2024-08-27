@@ -3,7 +3,7 @@
 // ReSharper disable once CheckNamespace
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Double
+    public sealed partial class Double
     {
         public static (ulong[] Integral, ulong[] Fractional, bool positive) ToIndicesOfBase(double val, int destinationBase)
         {

@@ -7,9 +7,9 @@ using Convert = NumeralSystems.Net.Utils.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Int: IRegularOperable<IncompleteInt, Int, int, uint>
+    public sealed class Int: IRegularOperable<IncompleteInt, Int, int, uint>
     {
-        public virtual int Value { get; set; }
+        public int Value { get; set; }
 
         public byte[] Bytes
         {

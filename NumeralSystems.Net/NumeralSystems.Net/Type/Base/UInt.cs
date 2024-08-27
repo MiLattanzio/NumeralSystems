@@ -5,9 +5,9 @@ using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class UInt: IRegularOperable<IncompleteUInt, UInt, uint, uint>
+    public sealed partial class UInt: IRegularOperable<IncompleteUInt, UInt, uint, uint>
     {
-        public virtual uint Value { get; set; }
+        public uint Value { get; set; }
 
         public byte[] Bytes
         {

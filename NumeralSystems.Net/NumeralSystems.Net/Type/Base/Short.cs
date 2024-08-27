@@ -6,14 +6,14 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Short: IRegularOperable<IncompleteShort, Short, short, uint>
+    public sealed partial class Short: IRegularOperable<IncompleteShort, Short, short, uint>
     {
         public static Short FromBinary(bool[] binary) => new ()
         {
             Value = binary.ToShort()
         };
         
-        public virtual short Value { get; set; }
+        public short Value { get; set; }
 
         public byte[] Bytes
         {

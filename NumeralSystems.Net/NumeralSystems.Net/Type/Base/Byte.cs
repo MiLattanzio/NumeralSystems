@@ -5,9 +5,9 @@ using NumeralSystems.Net.Utils;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public class Byte : IRegularOperable<IncompleteByte, Byte, byte, uint>
+    public sealed class Byte : IRegularOperable<IncompleteByte, Byte, byte, uint>
     {
-        public virtual byte Value { get; set; }
+        public byte Value { get; set; }
 
         public bool ReverseAnd(Byte right, out IncompleteByte result) 
         {

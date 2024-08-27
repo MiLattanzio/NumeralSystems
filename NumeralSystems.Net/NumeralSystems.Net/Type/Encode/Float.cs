@@ -4,7 +4,7 @@ using System.Linq;
 // ReSharper disable once CheckNamespace
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Float
+    public sealed partial class Float
     {
         public static (uint[] Integral, uint[] Fractional, bool positive) ToIndicesOfBase(float val, int destinationBase)
         {

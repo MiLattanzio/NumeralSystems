@@ -4,7 +4,7 @@ using System.Linq;
 // ReSharper disable once CheckNamespace
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class UInt
+    public sealed partial class UInt
     {
         public static uint[] ToIndicesOfBase(int val, int destinationBase, out bool positive)
         {

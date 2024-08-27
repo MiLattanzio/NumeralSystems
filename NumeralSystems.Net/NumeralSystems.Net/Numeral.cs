@@ -313,9 +313,11 @@ namespace NumeralSystems.Net
 
                 public static IEnumerable<char> AlphanumericLower = Numbers.Concat(LowerLetters);
 
+                //TODO: Remove duplicates
                 public static IEnumerable<char> AlphanumericSymbols =
-                    Alphanumeric.Concat(SymbolsA.Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD));
+                    Numbers.Concat(UpperLetters).Concat(LowerLetters).Concat(SymbolsA.Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD)).Distinct();
 
+                //TODO: Remove duplicates
                 public static readonly IEnumerable<char> Printable = Numbers.Concat(UpperLetters).Concat(LowerLetters)
                     .Concat(SymbolsA).Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD).Concat(Others).Distinct();
 

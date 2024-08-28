@@ -8,6 +8,13 @@ namespace NumeralSystems.Net.Type.Base
 {
     public sealed partial class ULong
     {
+        /// <summary>
+        /// Converts an unsigned long value to its indices representation in a specified base.
+        /// </summary>
+        /// <param name="val">The unsigned long value to convert.</param>
+        /// <param name="destinationBase">The base to convert to.</param>
+        /// <returns>An array of unsigned long representing the indices in the specified base.</returns>
+        /// <exception cref="ArgumentException">Thrown when the destination base is less than or equal to 0.</exception>
         public static ulong[] ToIndicesOfBase(ulong val, int destinationBase)
         {
             if (destinationBase <= 0)
@@ -35,7 +42,14 @@ namespace NumeralSystems.Net.Type.Base
             }
             return result.ToArray();
         }
-        
+
+        /// <summary>
+        /// Converts indices representation in a specified base to an unsigned long value.
+        /// </summary>
+        /// <param name="val">The array of unsigned long representing the indices.</param>
+        /// <param name="sourceBase">The base of the indices.</param>
+        /// <returns>The unsigned long value.</returns>
+        /// <exception cref="ArgumentException">Thrown when the source base is less than or equal to 0.</exception>
         public static ulong FromIndicesOfBase(ulong[] val, int sourceBase)
         {
             if (sourceBase <= 0)
@@ -54,7 +68,5 @@ namespace NumeralSystems.Net.Type.Base
             }
             return (ulong)result;
         }
-        
-        
     }
 }

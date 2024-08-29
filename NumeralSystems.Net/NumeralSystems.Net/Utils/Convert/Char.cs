@@ -2,8 +2,16 @@
 
 namespace NumeralSystems.Net.Utils
 {
+    /// <summary>
+    /// Provides conversion utilities for various data types.
+    /// </summary>
     public static partial class Convert
     {
+        /// <summary>
+        /// Converts a binary array to a character.
+        /// </summary>
+        /// <param name="s">The binary array to convert.</param>
+        /// <returns>The character representation of the binary array.</returns>
         public static char ToChar(this bool[] s) {
             if (null == s)
                 s = Enumerable.Repeat(false, sizeof(char)).ToArray();
@@ -22,7 +30,12 @@ namespace NumeralSystems.Net.Utils
             }
             return b;
         }
-        
+
+        /// Sets the value of the bit at the given index in a character.
+        /// <param name="b">The character value.</param>
+        /// <param name="index">The index of the bit to set.</param>
+        /// <param name="value">The value to set the bit to.</param>
+        /// <returns>The updated character value with the specified bit set.</returns>
         public static char SetBoolAtIndex(this char b, uint index, bool value)
         {
             var bytes = b.ToByteArray();

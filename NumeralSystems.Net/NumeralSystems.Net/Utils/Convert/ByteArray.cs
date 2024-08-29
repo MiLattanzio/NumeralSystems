@@ -9,6 +9,11 @@ namespace NumeralSystems.Net.Utils
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     public static partial class Convert
     {
+        /// <summary>
+        /// Converts a boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to convert.</param>
+        /// <returns>The byte array representation of the boolean array.</returns>
         public static byte[] ToByteArray(this bool[] s) {
             if (null == s)
                 s = Enumerable.Repeat(false, 8).ToArray();
@@ -23,17 +28,74 @@ namespace NumeralSystems.Net.Utils
                 b[i] = ToByte(s.Skip(i * 8).Take(8).ToArray());
             return b;
         }
+
+        /// <summary>
+        /// Converts a boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to convert.</param>
+        /// <returns>The resulting byte array.</returns>
         public static byte[] ToByteArray(this uint s) => BitConverter.GetBytes(s);
+
+        /// <summary>
+        /// Converts a boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to convert.</param>
+        /// <returns>The resulting byte array.</returns>
         public static byte[] ToByteArray(this int s) => BitConverter.GetBytes(s);
+
+        /// <summary>
+        /// Converts a boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to convert.</param>
+        /// <returns>A byte array.</returns>
         public static byte[] ToByteArray(this IEnumerable<int> s) => s.Select(ToByteArray).SelectMany(x => x).ToArray();
 
+        /// <summary>
+        /// Converts a boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to be converted.</param>
+        /// <returns>The byte array representation of the boolean array.</returns>
         public static byte[] ToByteArray(this char c) => BitConverter.GetBytes(c);
+
+        /// <summary>
+        /// Converts the specified boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to convert.</param>
+        /// <returns>The byte array.</returns>
         public static byte[] ToByteArray(this short s) => BitConverter.GetBytes(s);
+
+        /// <summary>
+        /// Converts a boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to convert.</param>
+        /// <returns>The converted byte array.</returns>
         public static byte[] ToByteArray(this ushort s) => BitConverter.GetBytes(s);
+
+        /// <summary>
+        /// Converts the given value to a byte array.
+        /// </summary>
+        /// <param name="s">The value to convert.</param>
+        /// <returns>
+        /// The byte array representation of the given value.
+        /// </returns>
         public static byte[] ToByteArray(this long s) => BitConverter.GetBytes(s);
         public static byte[] ToByteArray(this double s) => BitConverter.GetBytes(s);
+
+        /// <summary>
+        /// Converts a boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to convert</param>
+        /// <returns>The byte array representation of the boolean array</returns>
         public static byte[] ToByteArray(this float s) => BitConverter.GetBytes(s);
+
+        /// <summary>
+        /// Converts a boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to be converted.</param>
+        /// <returns>The byte array representation of the boolean array.</returns
         public static byte[] ToByteArray(this decimal s) => decimal.GetBits(s).Select(ToByteArray).SelectMany(x => x).ToArray();
+
+        /// *Parameters:**
         public static byte[] ToByteArray(this ulong s) => BitConverter.GetBytes(s);
     }
 }

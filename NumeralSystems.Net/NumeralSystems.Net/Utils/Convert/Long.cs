@@ -4,6 +4,11 @@ namespace NumeralSystems.Net.Utils
 {
     public static partial class Convert
     {
+        /// <summary>
+        /// Converts a binary array to a long integer.
+        /// </summary>
+        /// <param name="s">The binary array to convert.</param>
+        /// <returns>The converted long integer.</returns>
         public static long ToLong(this bool[] s) {
             if (null == s)
                 s = Enumerable.Repeat(false, sizeof(long)).ToArray();
@@ -22,7 +27,14 @@ namespace NumeralSystems.Net.Utils
             }
             return b;
         }
-        
+
+        /// <summary>
+        /// Sets the value of a specified bit at the given index in a long.
+        /// </summary>
+        /// <param name="b">The long value.</param>
+        /// <param name="index">The index of the bit to set.</param>
+        /// <param name="value">The value to set the bit to.</param>
+        /// <returns>The updated long value with the specified bit set.</returns>
         public static long SetBoolAtIndex(this long b, uint index, bool value)
         {
             var bytes = b.ToByteArray();

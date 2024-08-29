@@ -420,7 +420,18 @@ namespace NumeralSystems.Net
         /// @param {string} negativeSign - The negative sign character or string.
         /// @param {string} numberDecimalSeparator - The decimal separator character or string.
         /// @param {number} result - The result of the conversion.
-        /// @param {boolean} positive - A flag indicating whether the resulting integer value should be positive.
+        /// @param {boolean} positive - A flag indicating whether the resulting integer value should be positive. Default is `true`.
+        /// @returns {boolean} - A boolean indicating whether the conversion was successful.
+        /// @method TryIntegerOf - Tries to convert a number string to an integer value and returns the result.
+        /// @param {string} value - The number string to convert.
+        /// @param {Array<string>} identity - The identity list of the numeral system.
+        /// @param {string} separator - The separator character or string.
+        /// @param {string} negativeSign - The negative sign character or string.
+        /// @param {string} numberDecimalSeparator - The decimal separator character or string.
+        /// @param {number} integral - The integral part of the converted value.
+        /// @param {boolean} positive - A flag indicating whether the resulting integer value should be positive. Default is `true`.
+        /// @returns {boolean} - A boolean indicating whether the conversion was successful.
+        /// /
         public Numeral this[IList<char> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
 
         /// *NumeralSystems.Net.NumeralSystem**

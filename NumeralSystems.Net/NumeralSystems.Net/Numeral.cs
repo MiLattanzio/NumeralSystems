@@ -62,7 +62,8 @@ namespace NumeralSystems.Net
         public List<string> GetFractionalStrings(IList<string> identity)
         {
             if (identity.Count < Base.Size)
-                throw new ArgumentOutOfRangeException(nameof(identity), "Identity must be at least the size of the base");
+                throw new ArgumentOutOfRangeException(nameof(identity),
+                    "Identity must be at least the size of the base");
             return FractionalIndices.Select(identity.ElementAt).ToList();
         }
 
@@ -226,7 +227,8 @@ namespace NumeralSystems.Net
         /// </remarks>
         public double Double
         {
-            get => Type.Base.Double.FromIndicesOfBase(IntegralIndices.Select(x => (ulong) x).ToArray(), FractionalIndices.Select(x => (ulong) x).ToArray(), Positive, Base.Size);
+            get => Type.Base.Double.FromIndicesOfBase(IntegralIndices.Select(x => (ulong)x).ToArray(),
+                FractionalIndices.Select(x => (ulong)x).ToArray(), Positive, Base.Size);
             set
             {
                 var temp = Base[value];
@@ -244,12 +246,12 @@ namespace NumeralSystems.Net
             get
             {
                 var integralEnumerable = IntegralIndices.Select((t, i) =>
-                        (ulong) t *
+                        (ulong)t *
                         Convert.ToUInt64(Math.Pow(Base.Size, (IntegralIndices.Count - 1 - i))))
                     .ToList();
                 var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
                 var fractionalEnumerable = FractionalIndices.Select((t, i) =>
-                    (ulong) t *
+                    (ulong)t *
                     Convert.ToUInt64(Math.Pow(Base.Size, (FractionalIndices.Count - 1 - i)))).ToList();
                 var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
                 var frontZeros = 0;
@@ -258,9 +260,10 @@ namespace NumeralSystems.Net
                     if (t == 0) frontZeros++;
                     else break;
                 }
+
                 if (integral == 0 && fractional == 0) Positive = true;
-                var digitsInBase = (int) Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
-                var div = (decimal) Math.Pow(10, digitsInBase);
+                var digitsInBase = (int)Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
+                var div = (decimal)Math.Pow(10, digitsInBase);
                 return ((Positive ? 1 : -1) * (integral + (decimal.Divide(fractional, div))));
             }
             set
@@ -289,12 +292,12 @@ namespace NumeralSystems.Net
             get
             {
                 var integralEnumerable = IntegralIndices.Select((t, i) =>
-                        (ulong) t *
+                        (ulong)t *
                         Convert.ToUInt64(Math.Pow(Base.Size, (IntegralIndices.Count - 1 - i))))
                     .ToList();
                 var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
                 var fractionalEnumerable = FractionalIndices.Select((t, i) =>
-                    (ulong) t *
+                    (ulong)t *
                     Convert.ToUInt64(Math.Pow(Base.Size, (FractionalIndices.Count - 1 - i)))).ToList();
                 var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
                 var frontZeros = 0;
@@ -305,8 +308,8 @@ namespace NumeralSystems.Net
                 }
 
                 if (integral == 0 && fractional == 0) Positive = true;
-                var digitsInBase = (int) Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
-                var div = (decimal) Math.Pow(10, digitsInBase);
+                var digitsInBase = (int)Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
+                var div = (decimal)Math.Pow(10, digitsInBase);
                 var result = ((Positive ? 1 : -1) * (integral + (decimal.Divide(fractional, div))));
                 return decimal.GetBits(result).SelectMany(BitConverter.GetBytes).ToArray();
             }
@@ -319,7 +322,8 @@ namespace NumeralSystems.Net
                 {
                     case < 4:
                         // Pad so it's 4 int long
-                        Enumerable.Range(0, 4 - intArray.Length).ToList().ForEach(i => intArray = intArray.Append(0).ToArray());
+                        Enumerable.Range(0, 4 - intArray.Length).ToList()
+                            .ForEach(i => intArray = intArray.Append(0).ToArray());
                         break;
                     case 4:
                         break;
@@ -329,6 +333,7 @@ namespace NumeralSystems.Net
                         throw new ArgumentOutOfRangeException(nameof(value), "Byte array is too long");
                         break;
                 }
+
                 var result = new decimal(intArray);
                 Decimal = result;
             }
@@ -415,44 +420,17 @@ namespace NumeralSystems.Net
                 /// and other specified collections of characters.
                 /// The resulting collection is then filtered to remove duplicate characters.
                 /// </remarks>
-                public static readonly IEnumerable<char> SymbolsA = Enumerable.Range(0, char.MaxValue + 1)
-                    .Select(i => (char)i)
-                    .Where(c => !char.IsControl(c))
-                    .Take(16);
-
-                /// <summary>
-                /// The set of characters representing symbols B in the numeral system.
-                /// </summary>
-                public static readonly IEnumerable<char> SymbolsB = Enumerable.Range(33, char.MaxValue + 1 - 33)
-                    .Select(i => (char)i)
-                    .Where(c => !char.IsControl(c))
-                    .Take(7);
-
-                /// <summary>
-                /// The SymbolsC variable represents a collection of characters that are considered symbols.
-                /// These symbols are used in the context of numeral systems and are part of the Numeral class in the NumeralSystems.Net namespace.
-                /// The SymbolsC collection is a subset of the printable characters and contains 6 symbols.
-                /// These symbols are specifically used in alphanumeric symbols in Numeral systems.
-                /// </summary>
-                public static readonly IEnumerable<char> SymbolsC = Enumerable.Range(58, char.MaxValue + 1 - 58)
-                    .Select(i => (char)i)
-                    .Where(c => !char.IsControl(c))
-                    .Take(6);
-
-                /// <summary>
-                /// A collection of symbols in the numeral system used in the Numeral class.
-                /// </summary>
-                public static readonly IEnumerable<char> SymbolsD = Enumerable.Range(91, char.MaxValue + 1 - 91)
-                    .Select(i => (char)i)
-                    .Where(c => !char.IsControl(c))
-                    .Take(6);
-
-                /// <summary>
-                /// The <c>Numeral</c> class provides static access to character sets used in numeral systems.
-                /// </summary>
-                public static readonly IEnumerable<char> Others = Enumerable.Range(123, char.MaxValue + 1 - 123)
-                    .Select(i => (char)i)
-                    .Where(c => !char.IsControl(c));
+                public static IEnumerable<char> Symbols
+                {
+                    get
+                    {
+                        var others = Alphanumeric.ToList();
+                        return Enumerable.Range(0, char.MaxValue + 1)
+                            .Select(i => (char)i)
+                            .Where(c => !char.IsControl(c))
+                            .Where(c => !others.Contains(c));
+                    }
+                }
 
 
                 /// <summary>
@@ -474,20 +452,23 @@ namespace NumeralSystems.Net
                 /// </summary>
                 public static IEnumerable<char> AlphanumericLower = Numbers.Concat(LowerLetters);
 
-                //TODO: Remove duplicates
                 /// <summary>
                 /// Represents a collection of alphanumeric symbols.
                 /// </summary>
                 public static IEnumerable<char> AlphanumericSymbols =
-                    Numbers.Concat(UpperLetters).Concat(LowerLetters).Concat(SymbolsA.Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD)).Distinct();
+                    Numbers.Concat(UpperLetters).Concat(LowerLetters)
+                        .Concat(Symbols);
 
                 //TODO: Remove duplicates
                 /// <summary>
                 /// The set of printable characters.
                 /// </summary>
                 public static readonly IEnumerable<char> Printable = Numbers.Concat(UpperLetters).Concat(LowerLetters)
-                    .Concat(SymbolsA).Concat(SymbolsB).Concat(SymbolsC).Concat(SymbolsD).Concat(Others).Distinct();
+                    .Concat(Symbols);
 
+                /// <summary>
+                /// Characters that can't be printed
+                /// </summary>
                 public static readonly IEnumerable<char> NotPrintable = Enumerable
                     .Range(char.MinValue, char.MaxValue + 1)
                     .Select(i => (char)i)

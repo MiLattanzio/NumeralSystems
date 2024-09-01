@@ -1,6 +1,6 @@
 # NumeralSystem
 
-This library is inteded to simplify the creation/usage of numeral systems.
+This library is inteded to simplify the creation/usage of numeral systems and base types.
 
 
 ## Usage
@@ -44,6 +44,12 @@ A numeral can be converted to:
 - A number of another base
 
     var d = valueC.To(Numeral.System.OfBase(5));
+### Base types
+If you ever need to perform reverse bitwise operation or access bits of your native data types you can use the wrapper inside NumeralSystems.Net.Type.Base
+
+### Incomplete types
+
+If you ever need an incomplete representation of a native type due missing bits that can be either true or false you can use NumeralSystems.Net.Type.Base.Incomplete 
 
 ### UnitTest
 

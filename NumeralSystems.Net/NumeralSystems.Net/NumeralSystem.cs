@@ -552,20 +552,15 @@ namespace NumeralSystems.Net
             /// <returns>The serialization information for the numeral system</returns>
             public static SerializationInfo OfBase(int size)
             {
-                const int numberCount = 10;
-                const int lettersLowerCount = 26;
+                var printableIdentity = Numeral.System.Characters.Printable.ToList();
                 var cultureInfo = CultureInfo.CurrentCulture;
                 var negativeSign = cultureInfo.NumberFormat.NegativeSign;
                 var numberDecimalSeparator = cultureInfo.NumberFormat.NumberDecimalSeparator;
-                var separator = size switch
-                {
-                    < numberCount + lettersLowerCount * 2 => string.Empty,
-                    _ => cultureInfo.NumberFormat.NumberGroupSeparator
-                };
+                var separator = size < printableIdentity.Count ? string.Empty : printableIdentity[^1].ToString();
                 var identity = size switch
                 {
                     < 10 => Enumerable.Range(0, size).Select(i => i.ToString(cultureInfo)).ToList(),
-                    _ => Numeral.System.Characters.All
+                    _ => printableIdentity
                         .Take(size)
                         .Where(x =>
                             !negativeSign.Contains(x) &&

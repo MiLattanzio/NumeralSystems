@@ -20,12 +20,8 @@ namespace NumeralSystem.Net.NUnit
             Assert.That(Numeral.System.Characters.AlphanumericSymbols.Count(), Is.EqualTo(Numeral.System.Characters.AlphanumericSymbols.Distinct().Count()));
             Assert.That(Numeral.System.Characters.LowerLetters.Count(), Is.EqualTo(Numeral.System.Characters.LowerLetters.Distinct().Count()));
             Assert.That(Numeral.System.Characters.UpperLetters.Count(), Is.EqualTo(Numeral.System.Characters.UpperLetters.Distinct().Count()));
-            Assert.That(Numeral.System.Characters.SymbolsA.Count(), Is.EqualTo(Numeral.System.Characters.SymbolsA.Distinct().Count()));
-            Assert.That(Numeral.System.Characters.SymbolsB.Count(), Is.EqualTo(Numeral.System.Characters.SymbolsB.Distinct().Count()));
-            Assert.That(Numeral.System.Characters.SymbolsC.Count(), Is.EqualTo(Numeral.System.Characters.SymbolsC.Distinct().Count()));
-            Assert.That(Numeral.System.Characters.SymbolsD.Count(), Is.EqualTo(Numeral.System.Characters.SymbolsD.Distinct().Count()));
+            Assert.That(Numeral.System.Characters.Symbols.Count(), Is.EqualTo(Numeral.System.Characters.Symbols.Distinct().Count()));
             Assert.That(Numeral.System.Characters.WhiteSpaces.Count(), Is.EqualTo(Numeral.System.Characters.WhiteSpaces.Distinct().Count()));
-            Assert.That(Numeral.System.Characters.Others.Count(), Is.EqualTo(Numeral.System.Characters.Others.Distinct().Count()));
             Assert.That(Numeral.System.Characters.Printable.Count(), Is.EqualTo(Numeral.System.Characters.Printable.Distinct().Count()));
             Assert.That(Numeral.System.Characters.NotPrintable.Count(), Is.EqualTo(Numeral.System.Characters.NotPrintable.Distinct().Count()));
             Assert.That(Numeral.System.Characters.All.Count(), Is.EqualTo(Numeral.System.Characters.All.Distinct().Count()));

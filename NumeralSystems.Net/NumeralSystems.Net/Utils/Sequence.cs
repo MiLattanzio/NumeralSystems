@@ -278,13 +278,15 @@ namespace NumeralSystems.Net.Utils
             return n * Factorial(n - 1);
         }
 
-        /// The Group method groups the elements of an array into subarrays of specified size.
-        /// @param <T> The type of elements in the array.
-        /// @param sequence The array to group.
-        /// @param count The size of each subarray.
-        /// @return An array of subarrays, where each subarray contains count elements from the original array.
-        /// @throws InvalidOperationException if the length of the array is not divisible evenly by count.
-        /// /
+
+        /// <summary>
+        /// Groups the elements of the array into subarrays of the specified size.
+        /// </summary>
+        /// <typeparam name="T">The type of the elements in the array.</typeparam>
+        /// <param name="sequence">The array of elements to be grouped.</param>
+        /// <param name="count">The size of each group.</param>
+        /// <returns>A two-dimensional array where each subarray contains elements of the specified size.</returns>
+        /// <exception cref="InvalidOperationException">Thrown when the length of the array is not divisible by the specified group size.</exception>
         public static T[][] Group<T>(this T[] sequence, int count)
         {
             if (sequence.Length % count != 0) throw new InvalidOperationException();

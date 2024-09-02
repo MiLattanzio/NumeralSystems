@@ -557,18 +557,14 @@ namespace NumeralSystems.Net
                 var negativeSign = cultureInfo.NumberFormat.NegativeSign;
                 var numberDecimalSeparator = cultureInfo.NumberFormat.NumberDecimalSeparator;
                 var separator = size < printableIdentity.Count ? string.Empty : printableIdentity[^1].ToString();
-                var identity = size switch
-                {
-                    < 10 => Enumerable.Range(0, size).Select(i => i.ToString(cultureInfo)).ToList(),
-                    _ => printableIdentity
-                        .Take(size)
-                        .Where(x =>
-                            !negativeSign.Contains(x) &&
-                            !numberDecimalSeparator.Contains(x) &&
-                            !separator.Contains(x)
-                        )
-                        .Select(c => c.ToString(cultureInfo)).ToList(),
-                };
+                var identity = printableIdentity
+                    .Take(size)
+                    .Where(x =>
+                        !negativeSign.Contains(x) &&
+                        !numberDecimalSeparator.Contains(x) &&
+                        !separator.Contains(x)
+                    )
+                    .Select(c => c.ToString(cultureInfo)).ToList();
                 if (identity.Count() < size)
                 {
                     identity = identity.Concat(Enumerable.Range(identity.Count(), size - identity.Count()).Select(i => i.ToString(cultureInfo))).ToList();

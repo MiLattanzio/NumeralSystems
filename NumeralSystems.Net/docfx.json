@@ -1,0 +1,33 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "./NumeralSystems.Net/",
+          "files": [
+            "*.csproj"
+          ]
+        }
+      ],
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["**/*.md", "toc.yml"],  // Include all .md files
+        "src": "docs"  // The directory containing your .md files
+      }
+    ],
+    "dest": "_site",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [],
+    "postProcessors": [],
+    "markdownEngineName": "markdig",
+    "markdownEngineProperties": {
+      "extensions": ["table", "tasklist"]
+    },
+    "outputType": "markdown"
+  }
+}

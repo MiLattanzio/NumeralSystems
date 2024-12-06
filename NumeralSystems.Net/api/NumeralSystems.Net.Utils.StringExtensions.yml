@@ -1,0 +1,584 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Utils.StringExtensions
+  commentId: T:NumeralSystems.Net.Utils.StringExtensions
+  id: StringExtensions
+  parent: NumeralSystems.Net.Utils
+  children:
+  - NumeralSystems.Net.Utils.StringExtensions.Remove(System.String,System.String[])
+  - NumeralSystems.Net.Utils.StringExtensions.SplitAndKeep(System.String,System.String[])
+  - NumeralSystems.Net.Utils.StringExtensions.TakeOnly(System.String,System.String[])
+  langs:
+  - csharp
+  - vb
+  name: StringExtensions
+  nameWithType: StringExtensions
+  fullName: NumeralSystems.Net.Utils.StringExtensions
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/StringExtensions.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: StringExtensions
+    path: NumeralSystems.Net/Utils/StringExtensions.cs
+    startLine: 6
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static class StringExtensions
+    content.vb: Public Module StringExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: NumeralSystems.Net.Utils.StringExtensions.TakeOnly(System.String,System.String[])
+  commentId: M:NumeralSystems.Net.Utils.StringExtensions.TakeOnly(System.String,System.String[])
+  id: TakeOnly(System.String,System.String[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.StringExtensions
+  langs:
+  - csharp
+  - vb
+  name: TakeOnly(string, params string[])
+  nameWithType: StringExtensions.TakeOnly(string, params string[])
+  fullName: NumeralSystems.Net.Utils.StringExtensions.TakeOnly(string, params string[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/StringExtensions.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: TakeOnly
+    path: NumeralSystems.Net/Utils/StringExtensions.cs
+    startLine: 11
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Provides extension methods for string manipulation.
+  example: []
+  syntax:
+    content: public static IEnumerable<string> TakeOnly(this string input, params string[] delimiters)
+    parameters:
+    - id: input
+      type: System.String
+    - id: delimiters
+      type: System.String[]
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+    content.vb: Public Shared Function TakeOnly(input As String, ParamArray delimiters As String()) As IEnumerable(Of String)
+  overload: NumeralSystems.Net.Utils.StringExtensions.TakeOnly*
+  nameWithType.vb: StringExtensions.TakeOnly(String, ParamArray String())
+  fullName.vb: NumeralSystems.Net.Utils.StringExtensions.TakeOnly(String, ParamArray String())
+  name.vb: TakeOnly(String, ParamArray String())
+- uid: NumeralSystems.Net.Utils.StringExtensions.Remove(System.String,System.String[])
+  commentId: M:NumeralSystems.Net.Utils.StringExtensions.Remove(System.String,System.String[])
+  id: Remove(System.String,System.String[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.StringExtensions
+  langs:
+  - csharp
+  - vb
+  name: Remove(string, params string[])
+  nameWithType: StringExtensions.Remove(string, params string[])
+  fullName: NumeralSystems.Net.Utils.StringExtensions.Remove(string, params string[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/StringExtensions.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Remove
+    path: NumeralSystems.Net/Utils/StringExtensions.cs
+    startLine: 19
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Removes the specified delimiters from the input string and returns the resulting substrings.
+  example: []
+  syntax:
+    content: public static IEnumerable<string> Remove(this string input, params string[] delimiters)
+    parameters:
+    - id: input
+      type: System.String
+      description: The input string to remove delimiters from.
+    - id: delimiters
+      type: System.String[]
+      description: The delimiters to remove from the input string.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: An enumerable collection of substrings obtained by removing the specified delimiters from the input string.
+    content.vb: Public Shared Function Remove(input As String, ParamArray delimiters As String()) As IEnumerable(Of String)
+  overload: NumeralSystems.Net.Utils.StringExtensions.Remove*
+  nameWithType.vb: StringExtensions.Remove(String, ParamArray String())
+  fullName.vb: NumeralSystems.Net.Utils.StringExtensions.Remove(String, ParamArray String())
+  name.vb: Remove(String, ParamArray String())
+- uid: NumeralSystems.Net.Utils.StringExtensions.SplitAndKeep(System.String,System.String[])
+  commentId: M:NumeralSystems.Net.Utils.StringExtensions.SplitAndKeep(System.String,System.String[])
+  id: SplitAndKeep(System.String,System.String[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.StringExtensions
+  langs:
+  - csharp
+  - vb
+  name: SplitAndKeep(string, params string[])
+  nameWithType: StringExtensions.SplitAndKeep(string, params string[])
+  fullName: NumeralSystems.Net.Utils.StringExtensions.SplitAndKeep(string, params string[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/StringExtensions.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SplitAndKeep
+    path: NumeralSystems.Net/Utils/StringExtensions.cs
+    startLine: 27
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Splits a string based on the given delimiters and keeps the delimiters in the result.
+  example: []
+  syntax:
+    content: public static IEnumerable<string> SplitAndKeep(this string input, params string[] delimiters)
+    parameters:
+    - id: input
+      type: System.String
+      description: The input string to be split.
+    - id: delimiters
+      type: System.String[]
+      description: The delimiters to split the input string by.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.String}
+      description: An array of strings containing the split parts of the input string.
+    content.vb: Public Shared Function SplitAndKeep(input As String, ParamArray delimiters As String()) As IEnumerable(Of String)
+  overload: NumeralSystems.Net.Utils.StringExtensions.SplitAndKeep*
+  nameWithType.vb: StringExtensions.SplitAndKeep(String, ParamArray String())
+  fullName.vb: NumeralSystems.Net.Utils.StringExtensions.SplitAndKeep(String, ParamArray String())
+  name.vb: SplitAndKeep(String, ParamArray String())
+references:
+- uid: NumeralSystems.Net.Utils
+  commentId: N:NumeralSystems.Net.Utils
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Utils
+  nameWithType: NumeralSystems.Net.Utils
+  fullName: NumeralSystems.Net.Utils
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Utils
+    name: Utils
+    href: NumeralSystems.Net.Utils.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Utils
+    name: Utils
+    href: NumeralSystems.Net.Utils.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.Utils.StringExtensions.TakeOnly*
+  commentId: Overload:NumeralSystems.Net.Utils.StringExtensions.TakeOnly
+  href: NumeralSystems.Net.Utils.StringExtensions.html#NumeralSystems_Net_Utils_StringExtensions_TakeOnly_System_String_System_String___
+  name: TakeOnly
+  nameWithType: StringExtensions.TakeOnly
+  fullName: NumeralSystems.Net.Utils.StringExtensions.TakeOnly
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.String}
+  commentId: T:System.Collections.Generic.IEnumerable{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<string>
+  nameWithType: IEnumerable<string>
+  fullName: System.Collections.Generic.IEnumerable<string>
+  nameWithType.vb: IEnumerable(Of String)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of String)
+  name.vb: IEnumerable(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: NumeralSystems.Net.Utils.StringExtensions.Remove*
+  commentId: Overload:NumeralSystems.Net.Utils.StringExtensions.Remove
+  href: NumeralSystems.Net.Utils.StringExtensions.html#NumeralSystems_Net_Utils_StringExtensions_Remove_System_String_System_String___
+  name: Remove
+  nameWithType: StringExtensions.Remove
+  fullName: NumeralSystems.Net.Utils.StringExtensions.Remove
+- uid: NumeralSystems.Net.Utils.StringExtensions.SplitAndKeep*
+  commentId: Overload:NumeralSystems.Net.Utils.StringExtensions.SplitAndKeep
+  href: NumeralSystems.Net.Utils.StringExtensions.html#NumeralSystems_Net_Utils_StringExtensions_SplitAndKeep_System_String_System_String___
+  name: SplitAndKeep
+  nameWithType: StringExtensions.SplitAndKeep
+  fullName: NumeralSystems.Net.Utils.StringExtensions.SplitAndKeep

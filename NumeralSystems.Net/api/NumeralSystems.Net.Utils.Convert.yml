@@ -1,0 +1,3812 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Utils.Convert
+  commentId: T:NumeralSystems.Net.Utils.Convert
+  id: Convert
+  parent: NumeralSystems.Net.Utils
+  children:
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Byte,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Char,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Decimal,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Double,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Int16,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Int32,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Int64,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Numerics.BigInteger,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Single,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.UInt16,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.UInt32,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.UInt64,System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Byte,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Char,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Decimal,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Double,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Int16,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Int32,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Int64,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Single,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.UInt16,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.UInt32,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.UInt64,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Byte)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Char)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Decimal)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Double)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Int16)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Int32)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Int64)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Numerics.BigInteger)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Single)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.UInt16)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.ToBoolArray(System.UInt64)
+  - NumeralSystems.Net.Utils.Convert.ToByte(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.Char)
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.Collections.Generic.IEnumerable{System.Int32})
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.Decimal)
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.Double)
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.Int16)
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.Int32)
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.Int64)
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.Single)
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.UInt16)
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.UInt32)
+  - NumeralSystems.Net.Utils.Convert.ToByteArray(System.UInt64)
+  - NumeralSystems.Net.Utils.Convert.ToChar(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToDecimal(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToDecimal(System.Byte[])
+  - NumeralSystems.Net.Utils.Convert.ToDouble(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToFloat(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  - NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  - NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  - NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  - NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  - NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  - NumeralSystems.Net.Utils.Convert.ToInt(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToInt(System.Byte[])
+  - NumeralSystems.Net.Utils.Convert.ToIntArray(System.Byte[])
+  - NumeralSystems.Net.Utils.Convert.ToLong(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToShort(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToShort(System.Byte[])
+  - NumeralSystems.Net.Utils.Convert.ToUInt(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToUInt(System.Byte[])
+  - NumeralSystems.Net.Utils.Convert.ToULong(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToULong(System.Byte[])
+  - NumeralSystems.Net.Utils.Convert.ToUShort(System.Boolean[])
+  - NumeralSystems.Net.Utils.Convert.ToUShort(System.Byte[])
+  langs:
+  - csharp
+  - vb
+  name: Convert
+  nameWithType: Convert
+  fullName: NumeralSystems.Net.Utils.Convert
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/UShort.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Convert
+    path: NumeralSystems.Net/Utils/Convert/UShort.cs
+    startLine: 5
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: A utility class that provides methods for converting different types to boolean arrays.
+  example: []
+  syntax:
+    content: public static class Convert
+    content.vb: Public Module Convert
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Byte,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Byte,System.UInt32)
+  id: GetBoolAtIndex(System.Byte,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(byte, uint)
+  nameWithType: Convert.GetBoolAtIndex(byte, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(byte, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 12
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Gets the boolean value at the specified index in a byte.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this byte b, uint index)
+    parameters:
+    - id: b
+      type: System.Byte
+      description: The byte value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit.
+    return:
+      type: System.Boolean
+      description: The boolean value at the specified index.
+    content.vb: Public Shared Function GetBoolAtIndex(b As Byte, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(Byte, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(Byte, UInteger)
+  name.vb: GetBoolAtIndex(Byte, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Int16,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Int16,System.UInt32)
+  id: GetBoolAtIndex(System.Int16,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(short, uint)
+  nameWithType: Convert.GetBoolAtIndex(short, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(short, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 17
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static bool GetBoolAtIndex(this short b, uint index)
+    parameters:
+    - id: b
+      type: System.Int16
+    - id: index
+      type: System.UInt32
+    return:
+      type: System.Boolean
+    content.vb: Public Shared Function GetBoolAtIndex(b As Short, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(Short, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(Short, UInteger)
+  name.vb: GetBoolAtIndex(Short, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.UInt16,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.UInt16,System.UInt32)
+  id: GetBoolAtIndex(System.UInt16,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(ushort, uint)
+  nameWithType: Convert.GetBoolAtIndex(ushort, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(ushort, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 31
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Retrieves the boolean value at the specified index from the given byte.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this ushort b, uint index)
+    parameters:
+    - id: b
+      type: System.UInt16
+      description: The byte from which to retrieve the boolean value.
+    - id: index
+      type: System.UInt32
+      description: The index of the boolean value to retrieve.
+    return:
+      type: System.Boolean
+      description: The boolean value at the specified index.
+    content.vb: Public Shared Function GetBoolAtIndex(b As UShort, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(UShort, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(UShort, UInteger)
+  name.vb: GetBoolAtIndex(UShort, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Int32,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Int32,System.UInt32)
+  id: GetBoolAtIndex(System.Int32,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(int, uint)
+  nameWithType: Convert.GetBoolAtIndex(int, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(int, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 45
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Retrieves the boolean value at a specific index of a byte.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this int b, uint index)
+    parameters:
+    - id: b
+      type: System.Int32
+      description: The byte value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit.
+    return:
+      type: System.Boolean
+      description: The boolean value at the specified index.
+    content.vb: Public Shared Function GetBoolAtIndex(b As Integer, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(Integer, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(Integer, UInteger)
+  name.vb: GetBoolAtIndex(Integer, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.UInt32,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.UInt32,System.UInt32)
+  id: GetBoolAtIndex(System.UInt32,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(uint, uint)
+  nameWithType: Convert.GetBoolAtIndex(uint, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(uint, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 59
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Retrieves the Boolean value at the specified index in a byte.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this uint b, uint index)
+    parameters:
+    - id: b
+      type: System.UInt32
+      description: The byte value.
+    - id: index
+      type: System.UInt32
+      description: The index.
+    return:
+      type: System.Boolean
+      description: The Boolean value at the specified index.
+    content.vb: Public Shared Function GetBoolAtIndex(b As UInteger, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(UInteger, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(UInteger, UInteger)
+  name.vb: GetBoolAtIndex(UInteger, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Single,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Single,System.UInt32)
+  id: GetBoolAtIndex(System.Single,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(float, uint)
+  nameWithType: Convert.GetBoolAtIndex(float, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(float, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 74
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Retrieves the bool value at the specified index from a byte.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this float b, uint index)
+    parameters:
+    - id: b
+      type: System.Single
+      description: The byte value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bool value to retrieve.
+    return:
+      type: System.Boolean
+      description: The bool value at the specified index.
+    content.vb: Public Shared Function GetBoolAtIndex(b As Single, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(Single, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(Single, UInteger)
+  name.vb: GetBoolAtIndex(Single, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Int64,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Int64,System.UInt32)
+  id: GetBoolAtIndex(System.Int64,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(long, uint)
+  nameWithType: Convert.GetBoolAtIndex(long, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(long, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 88
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Retrieves the boolean value at the specified index from a byte value.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this long b, uint index)
+    parameters:
+    - id: b
+      type: System.Int64
+      description: The byte value.
+    - id: index
+      type: System.UInt32
+      description: The index of the boolean value to retrieve.
+    return:
+      type: System.Boolean
+      description: The boolean value at the specified index.
+    content.vb: Public Shared Function GetBoolAtIndex(b As Long, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(Long, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(Long, UInteger)
+  name.vb: GetBoolAtIndex(Long, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.UInt64,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.UInt64,System.UInt32)
+  id: GetBoolAtIndex(System.UInt64,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(ulong, uint)
+  nameWithType: Convert.GetBoolAtIndex(ulong, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(ulong, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 102
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Gets the value of the bit at the specified index in a byte.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this ulong b, uint index)
+    parameters:
+    - id: b
+      type: System.UInt64
+      description: The byte value.
+    - id: index
+      type: System.UInt32
+      description: The index of the target bit (0-7).
+    return:
+      type: System.Boolean
+      description: The boolean value of the specified bit.
+    content.vb: Public Shared Function GetBoolAtIndex(b As ULong, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(ULong, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(ULong, UInteger)
+  name.vb: GetBoolAtIndex(ULong, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Double,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Double,System.UInt32)
+  id: GetBoolAtIndex(System.Double,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(double, uint)
+  nameWithType: Convert.GetBoolAtIndex(double, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(double, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 119
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Retrieves the boolean value at the specified index in the given byte.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this double b, uint index)
+    parameters:
+    - id: b
+      type: System.Double
+      description: The byte value from which to retrieve the boolean.
+    - id: index
+      type: System.UInt32
+      description: The index of the boolean to retrieve, ranging from 0 to 7.
+    return:
+      type: System.Boolean
+      description: >-
+        <code>true</code> if the boolean at the specified index is 1;
+
+        otherwise, <code>false</code> if the boolean at the specified index is 0.
+    content.vb: Public Shared Function GetBoolAtIndex(b As Double, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(Double, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(Double, UInteger)
+  name.vb: GetBoolAtIndex(Double, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Decimal,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Decimal,System.UInt32)
+  id: GetBoolAtIndex(System.Decimal,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(decimal, uint)
+  nameWithType: Convert.GetBoolAtIndex(decimal, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(decimal, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 133
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Retrieves the value of a boolean at the specified index from a byte.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this decimal b, uint index)
+    parameters:
+    - id: b
+      type: System.Decimal
+      description: The byte from which to retrieve the boolean value.
+    - id: index
+      type: System.UInt32
+      description: The index of the boolean value to retrieve.
+    return:
+      type: System.Boolean
+      description: The boolean value at the specified index in the byte.
+    content.vb: Public Shared Function GetBoolAtIndex(b As Decimal, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(Decimal, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(Decimal, UInteger)
+  name.vb: GetBoolAtIndex(Decimal, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Char,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Char,System.UInt32)
+  id: GetBoolAtIndex(System.Char,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(char, uint)
+  nameWithType: Convert.GetBoolAtIndex(char, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(char, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 147
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Gets the boolean value at the specified index from a byte value.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this char b, uint index)
+    parameters:
+    - id: b
+      type: System.Char
+      description: The byte value.
+    - id: index
+      type: System.UInt32
+      description: The index of the boolean value to retrieve.
+    return:
+      type: System.Boolean
+      description: The boolean value at the specified index.
+    content.vb: Public Shared Function GetBoolAtIndex(b As Char, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(Char, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(Char, UInteger)
+  name.vb: GetBoolAtIndex(Char, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Numerics.BigInteger,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Numerics.BigInteger,System.UInt32)
+  id: GetBoolAtIndex(System.Numerics.BigInteger,System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: GetBoolAtIndex(BigInteger, uint)
+  nameWithType: Convert.GetBoolAtIndex(BigInteger, uint)
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Numerics.BigInteger, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Bool.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Bool.cs
+    startLine: 161
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Retrieves the boolean value at the specified index from a byte.
+  example: []
+  syntax:
+    content: public static bool GetBoolAtIndex(this BigInteger b, uint index)
+    parameters:
+    - id: b
+      type: System.Numerics.BigInteger
+      description: The byte value.
+    - id: index
+      type: System.UInt32
+      description: The index of the boolean value to retrieve. The index is zero-based.
+    return:
+      type: System.Boolean
+      description: The boolean value at the specified index.
+    content.vb: Public Shared Function GetBoolAtIndex(b As BigInteger, index As UInteger) As Boolean
+  overload: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  nameWithType.vb: Convert.GetBoolAtIndex(BigInteger, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex(System.Numerics.BigInteger, UInteger)
+  name.vb: GetBoolAtIndex(BigInteger, UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Byte)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Byte)
+  id: ToBoolArray(System.Byte)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(byte)
+  nameWithType: Convert.ToBoolArray(byte)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(byte)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 15
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a byte to a boolean array representation.
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this byte b)
+    parameters:
+    - id: b
+      type: System.Byte
+      description: The byte to convert.
+    return:
+      type: System.Boolean[]
+      description: The boolean array representation of the byte.
+    content.vb: Public Shared Function ToBoolArray(b As Byte) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(Byte)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(Byte)
+  name.vb: ToBoolArray(Byte)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Numerics.BigInteger)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Numerics.BigInteger)
+  id: ToBoolArray(System.Numerics.BigInteger)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(BigInteger)
+  nameWithType: Convert.ToBoolArray(BigInteger)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Numerics.BigInteger)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 29
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a byte to a boolean array representation.
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this BigInteger c)
+    parameters:
+    - id: c
+      type: System.Numerics.BigInteger
+    return:
+      type: System.Boolean[]
+      description: The boolean array representation of the byte.
+    content.vb: Public Shared Function ToBoolArray(c As BigInteger) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Char)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Char)
+  id: ToBoolArray(System.Char)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(char)
+  nameWithType: Convert.ToBoolArray(char)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(char)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 32
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this char c)
+    parameters:
+    - id: c
+      type: System.Char
+    return:
+      type: System.Boolean[]
+    content.vb: Public Shared Function ToBoolArray(c As Char) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(Char)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(Char)
+  name.vb: ToBoolArray(Char)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Int16)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Int16)
+  id: ToBoolArray(System.Int16)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(short)
+  nameWithType: Convert.ToBoolArray(short)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(short)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 39
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a byte to a boolean array.
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this short b)
+    parameters:
+    - id: b
+      type: System.Int16
+      description: The byte to convert.
+    return:
+      type: System.Boolean[]
+      description: The boolean array representing the byte.
+    content.vb: Public Shared Function ToBoolArray(b As Short) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(Short)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(Short)
+  name.vb: ToBoolArray(Short)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.UInt16)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.UInt16)
+  id: ToBoolArray(System.UInt16)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(ushort)
+  nameWithType: Convert.ToBoolArray(ushort)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(ushort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 40
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static bool[] ToBoolArray(this ushort b)
+    parameters:
+    - id: b
+      type: System.UInt16
+    return:
+      type: System.Boolean[]
+    content.vb: Public Shared Function ToBoolArray(b As UShort) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(UShort)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(UShort)
+  name.vb: ToBoolArray(UShort)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.UInt32)
+  id: ToBoolArray(System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(uint)
+  nameWithType: Convert.ToBoolArray(uint)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 47
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a uint value to a bool array representation.
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this uint b)
+    parameters:
+    - id: b
+      type: System.UInt32
+      description: The uint value to convert.
+    return:
+      type: System.Boolean[]
+      description: The bool array representation of the uint value.
+    content.vb: Public Shared Function ToBoolArray(b As UInteger) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(UInteger)
+  name.vb: ToBoolArray(UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Int32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Int32)
+  id: ToBoolArray(System.Int32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(int)
+  nameWithType: Convert.ToBoolArray(int)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 48
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static bool[] ToBoolArray(this int b)
+    parameters:
+    - id: b
+      type: System.Int32
+    return:
+      type: System.Boolean[]
+    content.vb: Public Shared Function ToBoolArray(b As Integer) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(Integer)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(Integer)
+  name.vb: ToBoolArray(Integer)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Single)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Single)
+  id: ToBoolArray(System.Single)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(float)
+  nameWithType: Convert.ToBoolArray(float)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(float)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 55
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a byte to a boolean array.
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this float b)
+    parameters:
+    - id: b
+      type: System.Single
+      description: The byte value to convert
+    return:
+      type: System.Boolean[]
+      description: The boolean array representation of the byte
+    content.vb: Public Shared Function ToBoolArray(b As Single) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(Single)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(Single)
+  name.vb: ToBoolArray(Single)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Double)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Double)
+  id: ToBoolArray(System.Double)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(double)
+  nameWithType: Convert.ToBoolArray(double)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(double)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 62
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a byte value to a boolean array.
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this double b)
+    parameters:
+    - id: b
+      type: System.Double
+      description: The byte value to convert.
+    return:
+      type: System.Boolean[]
+      description: A boolean array representing the byte value.
+    content.vb: Public Shared Function ToBoolArray(b As Double) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(Double)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(Double)
+  name.vb: ToBoolArray(Double)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Int64)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Int64)
+  id: ToBoolArray(System.Int64)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(long)
+  nameWithType: Convert.ToBoolArray(long)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(long)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 68
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this long b)
+    parameters:
+    - id: b
+      type: System.Int64
+    return:
+      type: System.Boolean[]
+    content.vb: Public Shared Function ToBoolArray(b As Long) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(Long)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(Long)
+  name.vb: ToBoolArray(Long)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Decimal)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.Decimal)
+  id: ToBoolArray(System.Decimal)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(decimal)
+  nameWithType: Convert.ToBoolArray(decimal)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(decimal)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 74
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this decimal b)
+    parameters:
+    - id: b
+      type: System.Decimal
+    return:
+      type: System.Boolean[]
+    content.vb: Public Shared Function ToBoolArray(b As Decimal) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(Decimal)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(Decimal)
+  name.vb: ToBoolArray(Decimal)
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray(System.UInt64)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToBoolArray(System.UInt64)
+  id: ToBoolArray(System.UInt64)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToBoolArray(ulong)
+  nameWithType: Convert.ToBoolArray(ulong)
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray(ulong)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/BoolArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToBoolArray
+    path: NumeralSystems.Net/Utils/Convert/BoolArray.cs
+    startLine: 81
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts an unsigned long integer to a boolean array representing its binary representation.
+  example: []
+  syntax:
+    content: public static bool[] ToBoolArray(this ulong b)
+    parameters:
+    - id: b
+      type: System.UInt64
+      description: The unsigned long integer to convert.
+    return:
+      type: System.Boolean[]
+      description: A boolean array representing the binary representation of the unsigned long integer.
+    content.vb: Public Shared Function ToBoolArray(b As ULong) As Boolean()
+  overload: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  nameWithType.vb: Convert.ToBoolArray(ULong)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToBoolArray(ULong)
+  name.vb: ToBoolArray(ULong)
+- uid: NumeralSystems.Net.Utils.Convert.ToByte(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByte(System.Boolean[])
+  id: ToByte(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByte(bool[])
+  nameWithType: Convert.ToByte(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToByte(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Byte.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByte
+    path: NumeralSystems.Net/Utils/Convert/Byte.cs
+    startLine: 19
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static byte ToByte(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+    return:
+      type: System.Byte
+    content.vb: Public Shared Function ToByte(s As Boolean()) As Byte
+  overload: NumeralSystems.Net.Utils.Convert.ToByte*
+  nameWithType.vb: Convert.ToByte(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByte(Boolean())
+  name.vb: ToByte(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Byte,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Byte,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.Byte,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(byte, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(byte, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(byte, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Byte.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Byte.cs
+    startLine: 45
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in a byte.
+  example: []
+  syntax:
+    content: public static byte SetBoolAtIndex(this byte b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.Byte
+      description: The byte value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.Byte
+      description: The updated byte value with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As Byte, index As UInteger, value As Boolean) As Byte
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(Byte, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(Byte, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(Byte, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.Boolean[])
+  id: ToByteArray(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(bool[])
+  nameWithType: Convert.ToByteArray(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 16
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a byte array.
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The boolean array to convert.
+    return:
+      type: System.Byte[]
+      description: The byte array representation of the boolean array.
+    content.vb: Public Shared Function ToByteArray(s As Boolean()) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(Boolean())
+  name.vb: ToByteArray(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.UInt32)
+  id: ToByteArray(System.UInt32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(uint)
+  nameWithType: Convert.ToByteArray(uint)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 36
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a byte array.
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this uint s)
+    parameters:
+    - id: s
+      type: System.UInt32
+      description: The boolean array to convert.
+    return:
+      type: System.Byte[]
+      description: The resulting byte array.
+    content.vb: Public Shared Function ToByteArray(s As UInteger) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(UInteger)
+  name.vb: ToByteArray(UInteger)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Int32)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.Int32)
+  id: ToByteArray(System.Int32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(int)
+  nameWithType: Convert.ToByteArray(int)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 43
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a byte array.
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this int s)
+    parameters:
+    - id: s
+      type: System.Int32
+      description: The boolean array to convert.
+    return:
+      type: System.Byte[]
+      description: The resulting byte array.
+    content.vb: Public Shared Function ToByteArray(s As Integer) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(Integer)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(Integer)
+  name.vb: ToByteArray(Integer)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Collections.Generic.IEnumerable{System.Int32})
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.Collections.Generic.IEnumerable{System.Int32})
+  id: ToByteArray(System.Collections.Generic.IEnumerable{System.Int32})
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(IEnumerable<int>)
+  nameWithType: Convert.ToByteArray(IEnumerable<int>)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Collections.Generic.IEnumerable<int>)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 50
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a byte array.
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this IEnumerable<int> s)
+    parameters:
+    - id: s
+      type: System.Collections.Generic.IEnumerable{System.Int32}
+      description: The boolean array to convert.
+    return:
+      type: System.Byte[]
+      description: A byte array.
+    content.vb: Public Shared Function ToByteArray(s As IEnumerable(Of Integer)) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(IEnumerable(Of Integer))
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Collections.Generic.IEnumerable(Of Integer))
+  name.vb: ToByteArray(IEnumerable(Of Integer))
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Char)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.Char)
+  id: ToByteArray(System.Char)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(char)
+  nameWithType: Convert.ToByteArray(char)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(char)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 57
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a byte array.
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this char c)
+    parameters:
+    - id: c
+      type: System.Char
+    return:
+      type: System.Byte[]
+      description: The byte array representation of the boolean array.
+    content.vb: Public Shared Function ToByteArray(c As Char) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(Char)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(Char)
+  name.vb: ToByteArray(Char)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Int16)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.Int16)
+  id: ToByteArray(System.Int16)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(short)
+  nameWithType: Convert.ToByteArray(short)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(short)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 64
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts the specified boolean array to a byte array.
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this short s)
+    parameters:
+    - id: s
+      type: System.Int16
+      description: The boolean array to convert.
+    return:
+      type: System.Byte[]
+      description: The byte array.
+    content.vb: Public Shared Function ToByteArray(s As Short) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(Short)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(Short)
+  name.vb: ToByteArray(Short)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.UInt16)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.UInt16)
+  id: ToByteArray(System.UInt16)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(ushort)
+  nameWithType: Convert.ToByteArray(ushort)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(ushort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 71
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a byte array.
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this ushort s)
+    parameters:
+    - id: s
+      type: System.UInt16
+      description: The boolean array to convert.
+    return:
+      type: System.Byte[]
+      description: The converted byte array.
+    content.vb: Public Shared Function ToByteArray(s As UShort) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(UShort)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(UShort)
+  name.vb: ToByteArray(UShort)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Int64)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.Int64)
+  id: ToByteArray(System.Int64)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(long)
+  nameWithType: Convert.ToByteArray(long)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(long)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 80
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts the given value to a byte array.
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this long s)
+    parameters:
+    - id: s
+      type: System.Int64
+      description: The value to convert.
+    return:
+      type: System.Byte[]
+      description: The byte array representation of the given value.
+    content.vb: Public Shared Function ToByteArray(s As Long) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(Long)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(Long)
+  name.vb: ToByteArray(Long)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Double)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.Double)
+  id: ToByteArray(System.Double)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(double)
+  nameWithType: Convert.ToByteArray(double)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(double)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 81
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static byte[] ToByteArray(this double s)
+    parameters:
+    - id: s
+      type: System.Double
+    return:
+      type: System.Byte[]
+    content.vb: Public Shared Function ToByteArray(s As Double) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(Double)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(Double)
+  name.vb: ToByteArray(Double)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Single)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.Single)
+  id: ToByteArray(System.Single)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(float)
+  nameWithType: Convert.ToByteArray(float)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(float)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 88
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a byte array.
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this float s)
+    parameters:
+    - id: s
+      type: System.Single
+      description: The boolean array to convert
+    return:
+      type: System.Byte[]
+      description: The byte array representation of the boolean array
+    content.vb: Public Shared Function ToByteArray(s As Single) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(Single)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(Single)
+  name.vb: ToByteArray(Single)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.Decimal)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.Decimal)
+  id: ToByteArray(System.Decimal)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(decimal)
+  nameWithType: Convert.ToByteArray(decimal)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(decimal)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 95
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static byte[] ToByteArray(this decimal s)
+    parameters:
+    - id: s
+      type: System.Decimal
+    return:
+      type: System.Byte[]
+    content.vb: Public Shared Function ToByteArray(s As Decimal) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(Decimal)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(Decimal)
+  name.vb: ToByteArray(Decimal)
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray(System.UInt64)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToByteArray(System.UInt64)
+  id: ToByteArray(System.UInt64)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray(ulong)
+  nameWithType: Convert.ToByteArray(ulong)
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray(ulong)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ByteArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Utils/Convert/ByteArray.cs
+    startLine: 98
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  example: []
+  syntax:
+    content: public static byte[] ToByteArray(this ulong s)
+    parameters:
+    - id: s
+      type: System.UInt64
+    return:
+      type: System.Byte[]
+    content.vb: Public Shared Function ToByteArray(s As ULong) As Byte()
+  overload: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  nameWithType.vb: Convert.ToByteArray(ULong)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToByteArray(ULong)
+  name.vb: ToByteArray(ULong)
+- uid: NumeralSystems.Net.Utils.Convert.ToChar(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToChar(System.Boolean[])
+  id: ToChar(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToChar(bool[])
+  nameWithType: Convert.ToChar(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToChar(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Char.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToChar
+    path: NumeralSystems.Net/Utils/Convert/Char.cs
+    startLine: 14
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a binary array to a character.
+  example: []
+  syntax:
+    content: public static char ToChar(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The binary array to convert.
+    return:
+      type: System.Char
+      description: The character representation of the binary array.
+    content.vb: Public Shared Function ToChar(s As Boolean()) As Char
+  overload: NumeralSystems.Net.Utils.Convert.ToChar*
+  nameWithType.vb: Convert.ToChar(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToChar(Boolean())
+  name.vb: ToChar(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Char,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Char,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.Char,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(char, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(char, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(char, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Char.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Char.cs
+    startLine: 38
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  example: []
+  syntax:
+    content: public static char SetBoolAtIndex(this char b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.Char
+      description: The character value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.Char
+      description: The updated character value with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As Char, index As UInteger, value As Boolean) As Char
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(Char, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(Char, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(Char, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToDecimal(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToDecimal(System.Boolean[])
+  id: ToDecimal(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToDecimal(bool[])
+  nameWithType: Convert.ToDecimal(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToDecimal(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Decimal.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToDecimal
+    path: NumeralSystems.Net/Utils/Convert/Decimal.cs
+    startLine: 12
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a decimal number.
+  example: []
+  syntax:
+    content: public static decimal ToDecimal(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The boolean array to convert.
+    return:
+      type: System.Decimal
+      description: The decimal representation of the boolean array.
+    content.vb: Public Shared Function ToDecimal(s As Boolean()) As Decimal
+  overload: NumeralSystems.Net.Utils.Convert.ToDecimal*
+  nameWithType.vb: Convert.ToDecimal(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToDecimal(Boolean())
+  name.vb: ToDecimal(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.ToDecimal(System.Byte[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToDecimal(System.Byte[])
+  id: ToDecimal(System.Byte[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToDecimal(byte[])
+  nameWithType: Convert.ToDecimal(byte[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToDecimal(byte[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Decimal.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToDecimal
+    path: NumeralSystems.Net/Utils/Convert/Decimal.cs
+    startLine: 22
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array into a decimal number.
+  example: []
+  syntax:
+    content: public static decimal ToDecimal(this byte[] s)
+    parameters:
+    - id: s
+      type: System.Byte[]
+      description: The boolean array to be converted.
+    return:
+      type: System.Decimal
+      description: The decimal representation of the boolean array.
+    content.vb: Public Shared Function ToDecimal(s As Byte()) As Decimal
+  overload: NumeralSystems.Net.Utils.Convert.ToDecimal*
+  nameWithType.vb: Convert.ToDecimal(Byte())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToDecimal(Byte())
+  name.vb: ToDecimal(Byte())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Decimal,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Decimal,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.Decimal,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(decimal, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(decimal, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(decimal, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Decimal.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Decimal.cs
+    startLine: 31
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in a decimal number.
+  example: []
+  syntax:
+    content: public static decimal SetBoolAtIndex(this decimal b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.Decimal
+      description: The decimal number.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.Decimal
+      description: The updated decimal number with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As Decimal, index As UInteger, value As Boolean) As Decimal
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(Decimal, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(Decimal, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(Decimal, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToDouble(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToDouble(System.Boolean[])
+  id: ToDouble(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToDouble(bool[])
+  nameWithType: Convert.ToDouble(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToDouble(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Double.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToDouble
+    path: NumeralSystems.Net/Utils/Convert/Double.cs
+    startLine: 11
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a binary array to a double value.
+  example: []
+  syntax:
+    content: public static double ToDouble(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The binary array to convert.
+    return:
+      type: System.Double
+      description: The converted double value.
+    content.vb: Public Shared Function ToDouble(s As Boolean()) As Double
+  overload: NumeralSystems.Net.Utils.Convert.ToDouble*
+  nameWithType.vb: Convert.ToDouble(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToDouble(Boolean())
+  name.vb: ToDouble(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Double,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Double,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.Double,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(double, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(double, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(double, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Double.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Double.cs
+    startLine: 23
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in a 64-bit double-precision floating-point number.
+  example: []
+  syntax:
+    content: public static double SetBoolAtIndex(this double b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.Double
+      description: The double value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.Double
+      description: The updated double value with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As Double, index As UInteger, value As Boolean) As Double
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(Double, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(Double, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(Double, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToFloat(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToFloat(System.Boolean[])
+  id: ToFloat(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToFloat(bool[])
+  nameWithType: Convert.ToFloat(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToFloat(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToFloat
+    path: NumeralSystems.Net/Utils/Convert/Float.cs
+    startLine: 14
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a float value.
+  example: []
+  syntax:
+    content: public static float ToFloat(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The boolean array.
+    return:
+      type: System.Single
+      description: The corresponding float value.
+    content.vb: Public Shared Function ToFloat(s As Boolean()) As Single
+  overload: NumeralSystems.Net.Utils.Convert.ToFloat*
+  nameWithType.vb: Convert.ToFloat(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToFloat(Boolean())
+  name.vb: ToFloat(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Single,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Single,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.Single,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(float, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(float, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(float, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Float.cs
+    startLine: 27
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in a float.
+  example: []
+  syntax:
+    content: public static float SetBoolAtIndex(this float b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.Single
+      description: The float value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.Single
+      description: The updated float value with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As Single, index As UInteger, value As Boolean) As Single
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(Single, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(Single, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(Single, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  id: ToIncompleteCharArray(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToIncompleteCharArray(IEnumerable<IncompleteByte>)
+  nameWithType: Convert.ToIncompleteCharArray(IEnumerable<IncompleteByte>)
+  fullName: NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray(System.Collections.Generic.IEnumerable<NumeralSystems.Net.Type.Incomplete.IncompleteByte>)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/IncompleteCharArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIncompleteCharArray
+    path: NumeralSystems.Net/Utils/Convert/IncompleteCharArray.cs
+    startLine: 16
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a collection of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteByte" data-throw-if-not-resolved="false"></xref> into an array of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteChar" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static IncompleteChar[] ToIncompleteCharArray(this IEnumerable<IncompleteByte> s)
+    parameters:
+    - id: s
+      type: System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte}
+      description: The collection of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteByte" data-throw-if-not-resolved="false"></xref> to convert.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteChar[]
+      description: An array of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteChar" data-throw-if-not-resolved="false"></xref>.
+    content.vb: Public Shared Function ToIncompleteCharArray(s As IEnumerable(Of IncompleteByte)) As IncompleteChar()
+  overload: NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray*
+  nameWithType.vb: Convert.ToIncompleteCharArray(IEnumerable(Of IncompleteByte))
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray(System.Collections.Generic.IEnumerable(Of NumeralSystems.Net.Type.Incomplete.IncompleteByte))
+  name.vb: ToIncompleteCharArray(IEnumerable(Of IncompleteByte))
+- uid: NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  id: ToIncompleteCharArray(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToIncompleteCharArray(IncompleteByteArray)
+  nameWithType: Convert.ToIncompleteCharArray(IncompleteByteArray)
+  fullName: NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/IncompleteCharArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIncompleteCharArray
+    path: NumeralSystems.Net/Utils/Convert/IncompleteCharArray.cs
+    startLine: 25
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts an IEnumerable of IncompleteByte to an array of IncompleteChar.
+  example: []
+  syntax:
+    content: public static IncompleteChar[] ToIncompleteCharArray(this IncompleteByteArray s)
+    parameters:
+    - id: s
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+      description: The IEnumerable of IncompleteByte to convert.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteChar[]
+      description: An array of IncompleteChar.
+    content.vb: Public Shared Function ToIncompleteCharArray(s As IncompleteByteArray) As IncompleteChar()
+  overload: NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray*
+- uid: NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  id: ToIncompleteInt32Array(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToIncompleteInt32Array(IEnumerable<IncompleteByte>)
+  nameWithType: Convert.ToIncompleteInt32Array(IEnumerable<IncompleteByte>)
+  fullName: NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array(System.Collections.Generic.IEnumerable<NumeralSystems.Net.Type.Incomplete.IncompleteByte>)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/IncompleteIntArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIncompleteInt32Array
+    path: NumeralSystems.Net/Utils/Convert/IncompleteIntArray.cs
+    startLine: 18
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a collection of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteByte" data-throw-if-not-resolved="false"></xref> objects to an array of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteInt" data-throw-if-not-resolved="false"></xref> objects.
+  example: []
+  syntax:
+    content: public static IncompleteInt[] ToIncompleteInt32Array(this IEnumerable<IncompleteByte> s)
+    parameters:
+    - id: s
+      type: System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte}
+      description: The collection of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteByte" data-throw-if-not-resolved="false"></xref> objects to convert.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteInt[]
+      description: An array of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteInt" data-throw-if-not-resolved="false"></xref> objects.
+    content.vb: Public Shared Function ToIncompleteInt32Array(s As IEnumerable(Of IncompleteByte)) As IncompleteInt()
+  overload: NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array*
+  nameWithType.vb: Convert.ToIncompleteInt32Array(IEnumerable(Of IncompleteByte))
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array(System.Collections.Generic.IEnumerable(Of NumeralSystems.Net.Type.Incomplete.IncompleteByte))
+  name.vb: ToIncompleteInt32Array(IEnumerable(Of IncompleteByte))
+- uid: NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  id: ToIncompleteInt32Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToIncompleteInt32Array(IncompleteByteArray)
+  nameWithType: Convert.ToIncompleteInt32Array(IncompleteByteArray)
+  fullName: NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/IncompleteIntArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIncompleteInt32Array
+    path: NumeralSystems.Net/Utils/Convert/IncompleteIntArray.cs
+    startLine: 27
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts an enumerable collection of IncompleteByte objects to an array of IncompleteInt objects.
+  example: []
+  syntax:
+    content: public static IncompleteInt[] ToIncompleteInt32Array(this IncompleteByteArray s)
+    parameters:
+    - id: s
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+      description: The enumerable collection of IncompleteByte objects.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteInt[]
+      description: An array of IncompleteInt objects.
+    content.vb: Public Shared Function ToIncompleteInt32Array(s As IncompleteByteArray) As IncompleteInt()
+  overload: NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array*
+- uid: NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  id: ToIncompleteInt64Array(System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte})
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToIncompleteInt64Array(IEnumerable<IncompleteByte>)
+  nameWithType: Convert.ToIncompleteInt64Array(IEnumerable<IncompleteByte>)
+  fullName: NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array(System.Collections.Generic.IEnumerable<NumeralSystems.Net.Type.Incomplete.IncompleteByte>)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/IncompleteLongArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIncompleteInt64Array
+    path: NumeralSystems.Net/Utils/Convert/IncompleteLongArray.cs
+    startLine: 13
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static IncompleteLong[] ToIncompleteInt64Array(this IEnumerable<IncompleteByte> s)
+    parameters:
+    - id: s
+      type: System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte}
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteLong[]
+    content.vb: Public Shared Function ToIncompleteInt64Array(s As IEnumerable(Of IncompleteByte)) As IncompleteLong()
+  overload: NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array*
+  nameWithType.vb: Convert.ToIncompleteInt64Array(IEnumerable(Of IncompleteByte))
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array(System.Collections.Generic.IEnumerable(Of NumeralSystems.Net.Type.Incomplete.IncompleteByte))
+  name.vb: ToIncompleteInt64Array(IEnumerable(Of IncompleteByte))
+- uid: NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  id: ToIncompleteInt64Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToIncompleteInt64Array(IncompleteByteArray)
+  nameWithType: Convert.ToIncompleteInt64Array(IncompleteByteArray)
+  fullName: NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array(NumeralSystems.Net.Type.Incomplete.IncompleteByteArray)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/IncompleteLongArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIncompleteInt64Array
+    path: NumeralSystems.Net/Utils/Convert/IncompleteLongArray.cs
+    startLine: 22
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts an enumerable of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteByte" data-throw-if-not-resolved="false"></xref> to an array of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteLong" data-throw-if-not-resolved="false"></xref>.
+  example: []
+  syntax:
+    content: public static IncompleteLong[] ToIncompleteInt64Array(this IncompleteByteArray s)
+    parameters:
+    - id: s
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+      description: The enumerable of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteByte" data-throw-if-not-resolved="false"></xref> to convert.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteLong[]
+      description: An array of <xref href="NumeralSystems.Net.Type.Incomplete.IncompleteLong" data-throw-if-not-resolved="false"></xref> representing the converted values.
+    content.vb: Public Shared Function ToIncompleteInt64Array(s As IncompleteByteArray) As IncompleteLong()
+  overload: NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array*
+- uid: NumeralSystems.Net.Utils.Convert.ToInt(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToInt(System.Boolean[])
+  id: ToInt(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToInt(bool[])
+  nameWithType: Convert.ToInt(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToInt(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Int.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToInt
+    path: NumeralSystems.Net/Utils/Convert/Int.cs
+    startLine: 15
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to an integer.
+  example: []
+  syntax:
+    content: public static int ToInt(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The boolean array to convert.
+    return:
+      type: System.Int32
+      description: The integer value obtained from the boolean array.
+    content.vb: Public Shared Function ToInt(s As Boolean()) As Integer
+  overload: NumeralSystems.Net.Utils.Convert.ToInt*
+  nameWithType.vb: Convert.ToInt(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToInt(Boolean())
+  name.vb: ToInt(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.ToInt(System.Byte[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToInt(System.Byte[])
+  id: ToInt(System.Byte[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToInt(byte[])
+  nameWithType: Convert.ToInt(byte[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToInt(byte[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Int.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToInt
+    path: NumeralSystems.Net/Utils/Convert/Int.cs
+    startLine: 39
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to an integer.
+  example: []
+  syntax:
+    content: public static int ToInt(this byte[] s)
+    parameters:
+    - id: s
+      type: System.Byte[]
+      description: The boolean array to convert.
+    return:
+      type: System.Int32
+      description: The resulting integer.
+    content.vb: Public Shared Function ToInt(s As Byte()) As Integer
+  overload: NumeralSystems.Net.Utils.Convert.ToInt*
+  nameWithType.vb: Convert.ToInt(Byte())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToInt(Byte())
+  name.vb: ToInt(Byte())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Int32,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Int32,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.Int32,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(int, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(int, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(int, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Int.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Int.cs
+    startLine: 48
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in a boolean array and returns the updated boolean array as an integer.
+  example: []
+  syntax:
+    content: public static int SetBoolAtIndex(this int b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.Int32
+      description: The original integer value representing a boolean array.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.Int32
+      description: The updated boolean array as an integer.
+    content.vb: Public Shared Function SetBoolAtIndex(b As Integer, index As UInteger, value As Boolean) As Integer
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(Integer, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(Integer, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(Integer, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToIntArray(System.Byte[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToIntArray(System.Byte[])
+  id: ToIntArray(System.Byte[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToIntArray(byte[])
+  nameWithType: Convert.ToIntArray(byte[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToIntArray(byte[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/IntArray.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIntArray
+    path: NumeralSystems.Net/Utils/Convert/IntArray.cs
+    startLine: 17
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a byte array to an integer array.
+  example: []
+  syntax:
+    content: public static int[] ToIntArray(this byte[] s)
+    parameters:
+    - id: s
+      type: System.Byte[]
+      description: The byte array to convert.
+    return:
+      type: System.Int32[]
+      description: The integer array created from the byte array.
+    content.vb: Public Shared Function ToIntArray(s As Byte()) As Integer()
+  overload: NumeralSystems.Net.Utils.Convert.ToIntArray*
+  nameWithType.vb: Convert.ToIntArray(Byte())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToIntArray(Byte())
+  name.vb: ToIntArray(Byte())
+- uid: NumeralSystems.Net.Utils.Convert.ToLong(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToLong(System.Boolean[])
+  id: ToLong(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToLong(bool[])
+  nameWithType: Convert.ToLong(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToLong(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Long.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToLong
+    path: NumeralSystems.Net/Utils/Convert/Long.cs
+    startLine: 11
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a binary array to a long integer.
+  example: []
+  syntax:
+    content: public static long ToLong(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The binary array to convert.
+    return:
+      type: System.Int64
+      description: The converted long integer.
+    content.vb: Public Shared Function ToLong(s As Boolean()) As Long
+  overload: NumeralSystems.Net.Utils.Convert.ToLong*
+  nameWithType.vb: Convert.ToLong(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToLong(Boolean())
+  name.vb: ToLong(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Int64,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Int64,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.Int64,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(long, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(long, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(long, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Long.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Long.cs
+    startLine: 37
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in a long.
+  example: []
+  syntax:
+    content: public static long SetBoolAtIndex(this long b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.Int64
+      description: The long value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.Int64
+      description: The updated long value with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As Long, index As UInteger, value As Boolean) As Long
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(Long, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(Long, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(Long, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToShort(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToShort(System.Boolean[])
+  id: ToShort(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToShort(bool[])
+  nameWithType: Convert.ToShort(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToShort(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToShort
+    path: NumeralSystems.Net/Utils/Convert/Short.cs
+    startLine: 12
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a short value.
+  example: []
+  syntax:
+    content: public static short ToShort(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The boolean array to convert. If null, a default array of length sizeof(short)*8 will be created.
+    return:
+      type: System.Int16
+      description: The converted short value.
+    content.vb: Public Shared Function ToShort(s As Boolean()) As Short
+  overload: NumeralSystems.Net.Utils.Convert.ToShort*
+  nameWithType.vb: Convert.ToShort(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToShort(Boolean())
+  name.vb: ToShort(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.ToShort(System.Byte[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToShort(System.Byte[])
+  id: ToShort(System.Byte[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToShort(byte[])
+  nameWithType: Convert.ToShort(byte[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToShort(byte[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToShort
+    path: NumeralSystems.Net/Utils/Convert/Short.cs
+    startLine: 36
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to a short value.
+  example: []
+  syntax:
+    content: public static short ToShort(this byte[] s)
+    parameters:
+    - id: s
+      type: System.Byte[]
+      description: The boolean array to convert. If null, a default array of length sizeof(short)*8 will be created.
+    return:
+      type: System.Int16
+      description: The converted short value.
+    content.vb: Public Shared Function ToShort(s As Byte()) As Short
+  overload: NumeralSystems.Net.Utils.Convert.ToShort*
+  nameWithType.vb: Convert.ToShort(Byte())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToShort(Byte())
+  name.vb: ToShort(Byte())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Int16,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.Int16,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.Int16,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(short, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(short, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(short, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/Short.cs
+    startLine: 45
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in a short.
+  example: []
+  syntax:
+    content: public static short SetBoolAtIndex(this short b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.Int16
+      description: The short value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.Int16
+      description: The updated short value with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As Short, index As UInteger, value As Boolean) As Short
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(Short, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(Short, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(Short, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToUInt(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToUInt(System.Boolean[])
+  id: ToUInt(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToUInt(bool[])
+  nameWithType: Convert.ToUInt(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToUInt(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/UInt.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToUInt
+    path: NumeralSystems.Net/Utils/Convert/UInt.cs
+    startLine: 12
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to an unsigned 32-bit integer.
+  example: []
+  syntax:
+    content: public static uint ToUInt(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The boolean array to convert.
+    return:
+      type: System.UInt32
+      description: The converted unsigned 32-bit integer.
+    content.vb: Public Shared Function ToUInt(s As Boolean()) As UInteger
+  overload: NumeralSystems.Net.Utils.Convert.ToUInt*
+  nameWithType.vb: Convert.ToUInt(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToUInt(Boolean())
+  name.vb: ToUInt(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.ToUInt(System.Byte[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToUInt(System.Byte[])
+  id: ToUInt(System.Byte[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToUInt(byte[])
+  nameWithType: Convert.ToUInt(byte[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToUInt(byte[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/UInt.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToUInt
+    path: NumeralSystems.Net/Utils/Convert/UInt.cs
+    startLine: 36
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static uint ToUInt(this byte[] s)
+    parameters:
+    - id: s
+      type: System.Byte[]
+    return:
+      type: System.UInt32
+    content.vb: Public Shared Function ToUInt(s As Byte()) As UInteger
+  overload: NumeralSystems.Net.Utils.Convert.ToUInt*
+  nameWithType.vb: Convert.ToUInt(Byte())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToUInt(Byte())
+  name.vb: ToUInt(Byte())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.UInt32,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.UInt32,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.UInt32,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(uint, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(uint, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(uint, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/UInt.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/UInt.cs
+    startLine: 45
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in an unsigned 32-bit integer.
+  example: []
+  syntax:
+    content: public static uint SetBoolAtIndex(this uint b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.UInt32
+      description: The unsigned 32-bit integer value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.UInt32
+      description: The updated unsigned 32-bit integer value with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As UInteger, index As UInteger, value As Boolean) As UInteger
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(UInteger, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(UInteger, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(UInteger, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToULong(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToULong(System.Boolean[])
+  id: ToULong(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToULong(bool[])
+  nameWithType: Convert.ToULong(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToULong(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ULong.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToULong
+    path: NumeralSystems.Net/Utils/Convert/ULong.cs
+    startLine: 15
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to an unsigned long integer.
+  example: []
+  syntax:
+    content: public static ulong ToULong(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The boolean array.
+    return:
+      type: System.UInt64
+      description: The converted unsigned long integer.
+    content.vb: Public Shared Function ToULong(s As Boolean()) As ULong
+  overload: NumeralSystems.Net.Utils.Convert.ToULong*
+  nameWithType.vb: Convert.ToULong(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToULong(Boolean())
+  name.vb: ToULong(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.ToULong(System.Byte[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToULong(System.Byte[])
+  id: ToULong(System.Byte[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToULong(byte[])
+  nameWithType: Convert.ToULong(byte[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToULong(byte[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ULong.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToULong
+    path: NumeralSystems.Net/Utils/Convert/ULong.cs
+    startLine: 39
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to an unsigned long (ulong) value.
+  example: []
+  syntax:
+    content: public static ulong ToULong(this byte[] s)
+    parameters:
+    - id: s
+      type: System.Byte[]
+      description: The boolean array to convert.
+    return:
+      type: System.UInt64
+      description: The unsigned long value representing the boolean array.
+    content.vb: Public Shared Function ToULong(s As Byte()) As ULong
+  overload: NumeralSystems.Net.Utils.Convert.ToULong*
+  nameWithType.vb: Convert.ToULong(Byte())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToULong(Byte())
+  name.vb: ToULong(Byte())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.UInt64,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.UInt64,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.UInt64,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(ulong, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(ulong, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(ulong, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/ULong.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/ULong.cs
+    startLine: 48
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in a ulong value.
+  example: []
+  syntax:
+    content: public static ulong SetBoolAtIndex(this ulong b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.UInt64
+      description: The ulong value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.UInt64
+      description: The updated ulong value with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As ULong, index As UInteger, value As Boolean) As ULong
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(ULong, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(ULong, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(ULong, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Convert.ToUShort(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToUShort(System.Boolean[])
+  id: ToUShort(System.Boolean[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToUShort(bool[])
+  nameWithType: Convert.ToUShort(bool[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToUShort(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/UShort.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToUShort
+    path: NumeralSystems.Net/Utils/Convert/UShort.cs
+    startLine: 12
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to an unsigned short integer.
+  example: []
+  syntax:
+    content: public static ushort ToUShort(this bool[] s)
+    parameters:
+    - id: s
+      type: System.Boolean[]
+      description: The boolean array to convert.
+    return:
+      type: System.UInt16
+      description: The converted unsigned short integer.
+    content.vb: Public Shared Function ToUShort(s As Boolean()) As UShort
+  overload: NumeralSystems.Net.Utils.Convert.ToUShort*
+  nameWithType.vb: Convert.ToUShort(Boolean())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToUShort(Boolean())
+  name.vb: ToUShort(Boolean())
+- uid: NumeralSystems.Net.Utils.Convert.ToUShort(System.Byte[])
+  commentId: M:NumeralSystems.Net.Utils.Convert.ToUShort(System.Byte[])
+  id: ToUShort(System.Byte[])
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: ToUShort(byte[])
+  nameWithType: Convert.ToUShort(byte[])
+  fullName: NumeralSystems.Net.Utils.Convert.ToUShort(byte[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/UShort.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToUShort
+    path: NumeralSystems.Net/Utils/Convert/UShort.cs
+    startLine: 36
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Converts a boolean array to an unsigned short integer.
+  example: []
+  syntax:
+    content: public static ushort ToUShort(this byte[] s)
+    parameters:
+    - id: s
+      type: System.Byte[]
+      description: The boolean array to convert.
+    return:
+      type: System.UInt16
+      description: The converted unsigned short integer.
+    content.vb: Public Shared Function ToUShort(s As Byte()) As UShort
+  overload: NumeralSystems.Net.Utils.Convert.ToUShort*
+  nameWithType.vb: Convert.ToUShort(Byte())
+  fullName.vb: NumeralSystems.Net.Utils.Convert.ToUShort(Byte())
+  name.vb: ToUShort(Byte())
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.UInt16,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(System.UInt16,System.UInt32,System.Boolean)
+  id: SetBoolAtIndex(System.UInt16,System.UInt32,System.Boolean)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Convert
+  langs:
+  - csharp
+  - vb
+  name: SetBoolAtIndex(ushort, uint, bool)
+  nameWithType: Convert.SetBoolAtIndex(ushort, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(ushort, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Convert/UShort.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SetBoolAtIndex
+    path: NumeralSystems.Net/Utils/Convert/UShort.cs
+    startLine: 45
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Sets the value of a specified bit at the given index in a ushort.
+  example: []
+  syntax:
+    content: public static ushort SetBoolAtIndex(this ushort b, uint index, bool value)
+    parameters:
+    - id: b
+      type: System.UInt16
+      description: The ushort value.
+    - id: index
+      type: System.UInt32
+      description: The index of the bit to set.
+    - id: value
+      type: System.Boolean
+      description: The value to set the bit to.
+    return:
+      type: System.UInt16
+      description: The updated ushort value with the specified bit set.
+    content.vb: Public Shared Function SetBoolAtIndex(b As UShort, index As UInteger, value As Boolean) As UShort
+  overload: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  nameWithType.vb: Convert.SetBoolAtIndex(UShort, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex(UShort, UInteger, Boolean)
+  name.vb: SetBoolAtIndex(UShort, UInteger, Boolean)
+references:
+- uid: NumeralSystems.Net.Utils
+  commentId: N:NumeralSystems.Net.Utils
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Utils
+  nameWithType: NumeralSystems.Net.Utils
+  fullName: NumeralSystems.Net.Utils
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Utils
+    name: Utils
+    href: NumeralSystems.Net.Utils.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Utils
+    name: Utils
+    href: NumeralSystems.Net.Utils.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.GetBoolAtIndex
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_GetBoolAtIndex_System_Byte_System_UInt32_
+  name: GetBoolAtIndex
+  nameWithType: Convert.GetBoolAtIndex
+  fullName: NumeralSystems.Net.Utils.Convert.GetBoolAtIndex
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Int16
+  commentId: T:System.Int16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int16
+  name: short
+  nameWithType: short
+  fullName: short
+  nameWithType.vb: Short
+  fullName.vb: Short
+  name.vb: Short
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.UInt64
+  commentId: T:System.UInt64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint64
+  name: ulong
+  nameWithType: ulong
+  fullName: ulong
+  nameWithType.vb: ULong
+  fullName.vb: ULong
+  name.vb: ULong
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: System.Numerics.BigInteger
+  commentId: T:System.Numerics.BigInteger
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.biginteger
+  name: BigInteger
+  nameWithType: BigInteger
+  fullName: System.Numerics.BigInteger
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: NumeralSystems.Net.Utils.Convert.ToBoolArray*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToBoolArray
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToBoolArray_System_Byte_
+  name: ToBoolArray
+  nameWithType: Convert.ToBoolArray
+  fullName: NumeralSystems.Net.Utils.Convert.ToBoolArray
+- uid: System.Boolean[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool[]
+  nameWithType: bool[]
+  fullName: bool[]
+  nameWithType.vb: Boolean()
+  fullName.vb: Boolean()
+  name.vb: Boolean()
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Utils.Convert.ToByte*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToByte
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToByte_System_Boolean___
+  name: ToByte
+  nameWithType: Convert.ToByte
+  fullName: NumeralSystems.Net.Utils.Convert.ToByte
+- uid: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.SetBoolAtIndex
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_SetBoolAtIndex_System_Byte_System_UInt32_System_Boolean_
+  name: SetBoolAtIndex
+  nameWithType: Convert.SetBoolAtIndex
+  fullName: NumeralSystems.Net.Utils.Convert.SetBoolAtIndex
+- uid: NumeralSystems.Net.Utils.Convert.ToByteArray*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToByteArray
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToByteArray_System_Boolean___
+  name: ToByteArray
+  nameWithType: Convert.ToByteArray
+  fullName: NumeralSystems.Net.Utils.Convert.ToByteArray
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Int32}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<int>
+  nameWithType: IEnumerable<int>
+  fullName: System.Collections.Generic.IEnumerable<int>
+  nameWithType.vb: IEnumerable(Of Integer)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Integer)
+  name.vb: IEnumerable(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: NumeralSystems.Net.Utils.Convert.ToChar*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToChar
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToChar_System_Boolean___
+  name: ToChar
+  nameWithType: Convert.ToChar
+  fullName: NumeralSystems.Net.Utils.Convert.ToChar
+- uid: NumeralSystems.Net.Utils.Convert.ToDecimal*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToDecimal
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToDecimal_System_Boolean___
+  name: ToDecimal
+  nameWithType: Convert.ToDecimal
+  fullName: NumeralSystems.Net.Utils.Convert.ToDecimal
+- uid: NumeralSystems.Net.Utils.Convert.ToDouble*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToDouble
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToDouble_System_Boolean___
+  name: ToDouble
+  nameWithType: Convert.ToDouble
+  fullName: NumeralSystems.Net.Utils.Convert.ToDouble
+- uid: NumeralSystems.Net.Utils.Convert.ToFloat*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToFloat
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToFloat_System_Boolean___
+  name: ToFloat
+  nameWithType: Convert.ToFloat
+  fullName: NumeralSystems.Net.Utils.Convert.ToFloat
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteByte
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteByte
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteByte.html
+  name: IncompleteByte
+  nameWithType: IncompleteByte
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteByte
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteChar
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteChar
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteChar.html
+  name: IncompleteChar
+  nameWithType: IncompleteChar
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteChar
+- uid: NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToIncompleteCharArray_System_Collections_Generic_IEnumerable_NumeralSystems_Net_Type_Incomplete_IncompleteByte__
+  name: ToIncompleteCharArray
+  nameWithType: Convert.ToIncompleteCharArray
+  fullName: NumeralSystems.Net.Utils.Convert.ToIncompleteCharArray
+- uid: System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte}
+  commentId: T:System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Incomplete.IncompleteByte}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IncompleteByte>
+  nameWithType: IEnumerable<IncompleteByte>
+  fullName: System.Collections.Generic.IEnumerable<NumeralSystems.Net.Type.Incomplete.IncompleteByte>
+  nameWithType.vb: IEnumerable(Of IncompleteByte)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of NumeralSystems.Net.Type.Incomplete.IncompleteByte)
+  name.vb: IEnumerable(Of IncompleteByte)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteByte
+    name: IncompleteByte
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteByte.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteByte
+    name: IncompleteByte
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteByte.html
+  - name: )
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteChar[]
+  isExternal: true
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteChar.html
+  name: IncompleteChar[]
+  nameWithType: IncompleteChar[]
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteChar[]
+  nameWithType.vb: IncompleteChar()
+  fullName.vb: NumeralSystems.Net.Type.Incomplete.IncompleteChar()
+  name.vb: IncompleteChar()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteChar
+    name: IncompleteChar
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteChar.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteChar
+    name: IncompleteChar
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteChar.html
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Incomplete
+  commentId: N:NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Type.Incomplete
+  nameWithType: NumeralSystems.Net.Type.Incomplete
+  fullName: NumeralSystems.Net.Type.Incomplete
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Type.Incomplete.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Type.Incomplete.html
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray.html
+  name: IncompleteByteArray
+  nameWithType: IncompleteByteArray
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteInt
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteInt
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteInt.html
+  name: IncompleteInt
+  nameWithType: IncompleteInt
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteInt
+- uid: NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToIncompleteInt32Array_System_Collections_Generic_IEnumerable_NumeralSystems_Net_Type_Incomplete_IncompleteByte__
+  name: ToIncompleteInt32Array
+  nameWithType: Convert.ToIncompleteInt32Array
+  fullName: NumeralSystems.Net.Utils.Convert.ToIncompleteInt32Array
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteInt[]
+  isExternal: true
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteInt.html
+  name: IncompleteInt[]
+  nameWithType: IncompleteInt[]
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteInt[]
+  nameWithType.vb: IncompleteInt()
+  fullName.vb: NumeralSystems.Net.Type.Incomplete.IncompleteInt()
+  name.vb: IncompleteInt()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteInt
+    name: IncompleteInt
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteInt.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteInt
+    name: IncompleteInt
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteInt.html
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToIncompleteInt64Array_System_Collections_Generic_IEnumerable_NumeralSystems_Net_Type_Incomplete_IncompleteByte__
+  name: ToIncompleteInt64Array
+  nameWithType: Convert.ToIncompleteInt64Array
+  fullName: NumeralSystems.Net.Utils.Convert.ToIncompleteInt64Array
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteLong[]
+  isExternal: true
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteLong.html
+  name: IncompleteLong[]
+  nameWithType: IncompleteLong[]
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteLong[]
+  nameWithType.vb: IncompleteLong()
+  fullName.vb: NumeralSystems.Net.Type.Incomplete.IncompleteLong()
+  name.vb: IncompleteLong()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteLong
+    name: IncompleteLong
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteLong.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteLong
+    name: IncompleteLong
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteLong.html
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteLong
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteLong
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteLong.html
+  name: IncompleteLong
+  nameWithType: IncompleteLong
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteLong
+- uid: NumeralSystems.Net.Utils.Convert.ToInt*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToInt
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToInt_System_Boolean___
+  name: ToInt
+  nameWithType: Convert.ToInt
+  fullName: NumeralSystems.Net.Utils.Convert.ToInt
+- uid: NumeralSystems.Net.Utils.Convert.ToIntArray*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToIntArray
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToIntArray_System_Byte___
+  name: ToIntArray
+  nameWithType: Convert.ToIntArray
+  fullName: NumeralSystems.Net.Utils.Convert.ToIntArray
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Utils.Convert.ToLong*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToLong
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToLong_System_Boolean___
+  name: ToLong
+  nameWithType: Convert.ToLong
+  fullName: NumeralSystems.Net.Utils.Convert.ToLong
+- uid: NumeralSystems.Net.Utils.Convert.ToShort*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToShort
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToShort_System_Boolean___
+  name: ToShort
+  nameWithType: Convert.ToShort
+  fullName: NumeralSystems.Net.Utils.Convert.ToShort
+- uid: NumeralSystems.Net.Utils.Convert.ToUInt*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToUInt
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToUInt_System_Boolean___
+  name: ToUInt
+  nameWithType: Convert.ToUInt
+  fullName: NumeralSystems.Net.Utils.Convert.ToUInt
+- uid: NumeralSystems.Net.Utils.Convert.ToULong*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToULong
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToULong_System_Boolean___
+  name: ToULong
+  nameWithType: Convert.ToULong
+  fullName: NumeralSystems.Net.Utils.Convert.ToULong
+- uid: NumeralSystems.Net.Utils.Convert.ToUShort*
+  commentId: Overload:NumeralSystems.Net.Utils.Convert.ToUShort
+  href: NumeralSystems.Net.Utils.Convert.html#NumeralSystems_Net_Utils_Convert_ToUShort_System_Boolean___
+  name: ToUShort
+  nameWithType: Convert.ToUShort
+  fullName: NumeralSystems.Net.Utils.Convert.ToUShort

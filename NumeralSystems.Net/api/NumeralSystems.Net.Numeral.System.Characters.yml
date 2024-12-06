@@ -1,0 +1,1053 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Numeral.System.Characters
+  commentId: T:NumeralSystems.Net.Numeral.System.Characters
+  id: Numeral.System.Characters
+  parent: NumeralSystems.Net
+  children:
+  - NumeralSystems.Net.Numeral.System.Characters.All
+  - NumeralSystems.Net.Numeral.System.Characters.Alphanumeric
+  - NumeralSystems.Net.Numeral.System.Characters.AlphanumericLower
+  - NumeralSystems.Net.Numeral.System.Characters.AlphanumericSymbols
+  - NumeralSystems.Net.Numeral.System.Characters.AlphanumericUpper
+  - NumeralSystems.Net.Numeral.System.Characters.Comma
+  - NumeralSystems.Net.Numeral.System.Characters.LowerLetters
+  - NumeralSystems.Net.Numeral.System.Characters.Minus
+  - NumeralSystems.Net.Numeral.System.Characters.NotPrintable
+  - NumeralSystems.Net.Numeral.System.Characters.Numbers
+  - NumeralSystems.Net.Numeral.System.Characters.Others
+  - NumeralSystems.Net.Numeral.System.Characters.Point
+  - NumeralSystems.Net.Numeral.System.Characters.Printable
+  - NumeralSystems.Net.Numeral.System.Characters.Semicolon
+  - NumeralSystems.Net.Numeral.System.Characters.SymbolsA
+  - NumeralSystems.Net.Numeral.System.Characters.SymbolsB
+  - NumeralSystems.Net.Numeral.System.Characters.SymbolsC
+  - NumeralSystems.Net.Numeral.System.Characters.SymbolsD
+  - NumeralSystems.Net.Numeral.System.Characters.UpperLetters
+  - NumeralSystems.Net.Numeral.System.Characters.WhiteSpaces
+  langs:
+  - csharp
+  - vb
+  name: Numeral.System.Characters
+  nameWithType: Numeral.System.Characters
+  fullName: NumeralSystems.Net.Numeral.System.Characters
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Characters
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 383
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: >-
+    The Characters class provides static properties that define various sets of characters.
+
+    These sets include numbers, upper and lower case letters, symbols, and other printable and non-printable characters.
+
+    The class is part of the NumeralSystems.Net namespace.
+  example: []
+  syntax:
+    content: public static class Numeral.System.Characters
+    content.vb: Public Module Numeral.System.Characters
+  seealso:
+  - linkId: NumeralSystems.Net.Numeral.System
+    commentId: T:NumeralSystems.Net.Numeral.System
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: NumeralSystems.Net.Numeral.System.Characters.Numbers
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.Numbers
+  id: Numbers
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: Numbers
+  nameWithType: Numeral.System.Characters.Numbers
+  fullName: NumeralSystems.Net.Numeral.System.Characters.Numbers
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Numbers
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 387
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public static readonly IEnumerable<char> Numbers
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly Numbers As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.UpperLetters
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.UpperLetters
+  id: UpperLetters
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: UpperLetters
+  nameWithType: Numeral.System.Characters.UpperLetters
+  fullName: NumeralSystems.Net.Numeral.System.Characters.UpperLetters
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: UpperLetters
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 395
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: A collection of upper case letters.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> UpperLetters
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly UpperLetters As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.LowerLetters
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.LowerLetters
+  id: LowerLetters
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: LowerLetters
+  nameWithType: Numeral.System.Characters.LowerLetters
+  fullName: NumeralSystems.Net.Numeral.System.Characters.LowerLetters
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: LowerLetters
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 403
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Provides a collection of lower case letters in the Unicode character set.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> LowerLetters
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly LowerLetters As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.SymbolsA
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.SymbolsA
+  id: SymbolsA
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: SymbolsA
+  nameWithType: Numeral.System.Characters.SymbolsA
+  fullName: NumeralSystems.Net.Numeral.System.Characters.SymbolsA
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SymbolsA
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 417
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  remarks: >-
+    The SymbolsA collection is designed to include a wide range of characters,
+
+    such as letters, numbers, and other symbols, that can be used in various numeral systems.
+
+    The collection is created by combining the Numbers, UpperLetters, LowerLetters,
+
+    and other specified collections of characters.
+
+    The resulting collection is then filtered to remove duplicate characters.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> SymbolsA
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly SymbolsA As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.SymbolsB
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.SymbolsB
+  id: SymbolsB
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: SymbolsB
+  nameWithType: Numeral.System.Characters.SymbolsB
+  fullName: NumeralSystems.Net.Numeral.System.Characters.SymbolsB
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SymbolsB
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 425
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: The set of characters representing symbols B in the numeral system.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> SymbolsB
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly SymbolsB As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.SymbolsC
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.SymbolsC
+  id: SymbolsC
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: SymbolsC
+  nameWithType: Numeral.System.Characters.SymbolsC
+  fullName: NumeralSystems.Net.Numeral.System.Characters.SymbolsC
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SymbolsC
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 436
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: >-
+    The SymbolsC variable represents a collection of characters that are considered symbols.
+
+    These symbols are used in the context of numeral systems and are part of the Numeral class in the NumeralSystems.Net namespace.
+
+    The SymbolsC collection is a subset of the printable characters and contains 6 symbols.
+
+    These symbols are specifically used in alphanumeric symbols in Numeral systems.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> SymbolsC
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly SymbolsC As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.SymbolsD
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.SymbolsD
+  id: SymbolsD
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: SymbolsD
+  nameWithType: Numeral.System.Characters.SymbolsD
+  fullName: NumeralSystems.Net.Numeral.System.Characters.SymbolsD
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SymbolsD
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 444
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: A collection of symbols in the numeral system used in the Numeral class.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> SymbolsD
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly SymbolsD As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.Others
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.Others
+  id: Others
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: Others
+  nameWithType: Numeral.System.Characters.Others
+  fullName: NumeralSystems.Net.Numeral.System.Characters.Others
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Others
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 452
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: The <code>Numeral</code> class provides static access to character sets used in numeral systems.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> Others
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly Others As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.Alphanumeric
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.Alphanumeric
+  id: Alphanumeric
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: Alphanumeric
+  nameWithType: Numeral.System.Characters.Alphanumeric
+  fullName: NumeralSystems.Net.Numeral.System.Characters.Alphanumeric
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Alphanumeric
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 460
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Represents a collection of alphanumeric characters, which includes numbers, uppercase letters, and lowercase letters.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> Alphanumeric
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly Alphanumeric As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.AlphanumericUpper
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.AlphanumericUpper
+  id: AlphanumericUpper
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: AlphanumericUpper
+  nameWithType: Numeral.System.Characters.AlphanumericUpper
+  fullName: NumeralSystems.Net.Numeral.System.Characters.AlphanumericUpper
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: AlphanumericUpper
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 469
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: The collection of uppercase alphanumeric characters.
+  remarks: This collection includes uppercase letters (A-Z) and numbers (0-9).
+  example: []
+  syntax:
+    content: public static IEnumerable<char> AlphanumericUpper
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared AlphanumericUpper As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.AlphanumericLower
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.AlphanumericLower
+  id: AlphanumericLower
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: AlphanumericLower
+  nameWithType: Numeral.System.Characters.AlphanumericLower
+  fullName: NumeralSystems.Net.Numeral.System.Characters.AlphanumericLower
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: AlphanumericLower
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 474
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: The collection of lowercase alphanumeric characters.
+  example: []
+  syntax:
+    content: public static IEnumerable<char> AlphanumericLower
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared AlphanumericLower As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.AlphanumericSymbols
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.AlphanumericSymbols
+  id: AlphanumericSymbols
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: AlphanumericSymbols
+  nameWithType: Numeral.System.Characters.AlphanumericSymbols
+  fullName: NumeralSystems.Net.Numeral.System.Characters.AlphanumericSymbols
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: AlphanumericSymbols
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 480
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Represents a collection of alphanumeric symbols.
+  example: []
+  syntax:
+    content: public static IEnumerable<char> AlphanumericSymbols
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared AlphanumericSymbols As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.Printable
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.Printable
+  id: Printable
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: Printable
+  nameWithType: Numeral.System.Characters.Printable
+  fullName: NumeralSystems.Net.Numeral.System.Characters.Printable
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Printable
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 487
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: The set of printable characters.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> Printable
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly Printable As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.NotPrintable
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.NotPrintable
+  id: NotPrintable
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: NotPrintable
+  nameWithType: Numeral.System.Characters.NotPrintable
+  fullName: NumeralSystems.Net.Numeral.System.Characters.NotPrintable
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: NotPrintable
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 490
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public static readonly IEnumerable<char> NotPrintable
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly NotPrintable As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.All
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.All
+  id: All
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: All
+  nameWithType: Numeral.System.Characters.All
+  fullName: NumeralSystems.Net.Numeral.System.Characters.All
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: All
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 498
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Contains all printable and non-printable characters in the Numeral Systems library.
+  example: []
+  syntax:
+    content: public static readonly IEnumerable<char> All
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared ReadOnly All As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.WhiteSpaces
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.WhiteSpaces
+  id: WhiteSpaces
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: WhiteSpaces
+  nameWithType: Numeral.System.Characters.WhiteSpaces
+  fullName: NumeralSystems.Net.Numeral.System.Characters.WhiteSpaces
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: WhiteSpaces
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 503
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Represents a collection of white space characters.
+  example: []
+  syntax:
+    content: public static IEnumerable<char> WhiteSpaces
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    content.vb: Public Shared WhiteSpaces As IEnumerable(Of Char)
+- uid: NumeralSystems.Net.Numeral.System.Characters.Point
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.Point
+  id: Point
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: Point
+  nameWithType: Numeral.System.Characters.Point
+  fullName: NumeralSystems.Net.Numeral.System.Characters.Point
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Point
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 509
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Represents a point character.
+  example: []
+  syntax:
+    content: public const char Point = '.'
+    return:
+      type: System.Char
+    content.vb: Public Const Point As Char = "."c
+- uid: NumeralSystems.Net.Numeral.System.Characters.Comma
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.Comma
+  id: Comma
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: Comma
+  nameWithType: Numeral.System.Characters.Comma
+  fullName: NumeralSystems.Net.Numeral.System.Characters.Comma
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Comma
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 514
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Represents the Comma character (,).
+  example: []
+  syntax:
+    content: public const char Comma = ','
+    return:
+      type: System.Char
+    content.vb: Public Const Comma As Char = ","c
+- uid: NumeralSystems.Net.Numeral.System.Characters.Minus
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.Minus
+  id: Minus
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: Minus
+  nameWithType: Numeral.System.Characters.Minus
+  fullName: NumeralSystems.Net.Numeral.System.Characters.Minus
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Minus
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 519
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: The minus symbol character (-) used in numeral systems.
+  example: []
+  syntax:
+    content: public const char Minus = '-'
+    return:
+      type: System.Char
+    content.vb: Public Const Minus As Char = "-"c
+- uid: NumeralSystems.Net.Numeral.System.Characters.Semicolon
+  commentId: F:NumeralSystems.Net.Numeral.System.Characters.Semicolon
+  id: Semicolon
+  parent: NumeralSystems.Net.Numeral.System.Characters
+  langs:
+  - csharp
+  - vb
+  name: Semicolon
+  nameWithType: Numeral.System.Characters.Semicolon
+  fullName: NumeralSystems.Net.Numeral.System.Characters.Semicolon
+  type: Field
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Numeral.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Semicolon
+    path: NumeralSystems.Net/Numeral.cs
+    startLine: 522
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  example: []
+  syntax:
+    content: public const char Semicolon = ';'
+    return:
+      type: System.Char
+    content.vb: Public Const Semicolon As Char = ";"c
+references:
+- uid: NumeralSystems.Net.Numeral.System
+  commentId: T:NumeralSystems.Net.Numeral.System
+  href: NumeralSystems.Net.Numeral.html
+  name: Numeral.System
+  nameWithType: Numeral.System
+  fullName: NumeralSystems.Net.Numeral.System
+  spec.csharp:
+  - uid: NumeralSystems.Net.Numeral
+    name: Numeral
+    href: NumeralSystems.Net.Numeral.html
+  - name: .
+  - uid: NumeralSystems.Net.Numeral.System
+    name: System
+    href: NumeralSystems.Net.Numeral.System.html
+  spec.vb:
+  - uid: NumeralSystems.Net.Numeral
+    name: Numeral
+    href: NumeralSystems.Net.Numeral.html
+  - name: .
+  - uid: NumeralSystems.Net.Numeral.System
+    name: System
+    href: NumeralSystems.Net.Numeral.System.html
+- uid: NumeralSystems.Net
+  commentId: N:NumeralSystems.Net
+  href: NumeralSystems.html
+  name: NumeralSystems.Net
+  nameWithType: NumeralSystems.Net
+  fullName: NumeralSystems.Net
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IEnumerable{System.Char}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Char}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<char>
+  nameWithType: IEnumerable<char>
+  fullName: System.Collections.Generic.IEnumerable<char>
+  nameWithType.vb: IEnumerable(Of Char)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Char)
+  name.vb: IEnumerable(Of Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char

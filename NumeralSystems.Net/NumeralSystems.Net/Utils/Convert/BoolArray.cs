@@ -38,6 +38,12 @@ namespace NumeralSystems.Net.Utils
         /// <param name="b">The byte to convert.</param>
         /// <returns>The boolean array representing the byte.</returns>
         public static bool[] ToBoolArray(this short b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
+
+        /// <summary>
+        /// Converts an unsigned short integer to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The unsigned short integer to convert.</param>
+        /// <returns>The boolean array representation of the unsigned short integer.</returns>
         public static bool[] ToBoolArray(this ushort b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
 
         /// <summary>
@@ -46,6 +52,62 @@ namespace NumeralSystems.Net.Utils
         /// <param name="b">The uint value to convert.</param>
         /// <returns>The bool array representation of the uint value.</returns>
         public static bool[] ToBoolArray(this uint b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
+
+        /// <summary>
+        /// Converts a BigInteger to a boolean array representation.
+        /// </summary>
+        /// <param name="c">The BigInteger to convert.</param>
+        /// <returns>The boolean array representation of the BigInteger.</returns>
+        /// <summary>
+        /// Converts a character to a boolean array representation.
+        /// </summary>
+        /// <param name="c">The character to convert.</param>
+        /// <returns>The boolean array representation of the character.</returns>
+        /// <summary>
+        /// Converts a short to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The short value to convert.</param>
+        /// <returns>The boolean array representation of the short.</returns>
+        /// <summary>
+        /// Converts an unsigned short to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The ushort value to convert.</param>
+        /// <returns>The boolean array representation of the ushort.</returns>
+        /// <summary>
+        /// Converts an unsigned integer to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The uint value to convert.</param>
+        /// <returns>The boolean array representation of the uint.</returns>
+        /// <summary>
+        /// Converts an integer to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The int value to convert.</param>
+        /// <returns>The boolean array representation of the int.</returns>
+        /// <summary>
+        /// Converts a float to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The float value to convert.</param>
+        /// <returns>The boolean array representation of the float.</returns>
+        /// <summary>
+        /// Converts a double to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The double value to convert.</param>
+        /// <returns>The boolean array representation of the double.</returns>
+        /// <summary>
+        /// Converts a long to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The long value to convert.</param>
+        /// <returns>The boolean array representation of the long.</returns>
+        /// <summary>
+        /// Converts a decimal to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The decimal value to convert.</param>
+        /// <returns>The boolean array representation of the decimal.</returns>
+        /// <summary>
+        /// Converts an unsigned long to a boolean array representation.
+        /// </summary>
+        /// <param name="b">The ulong value to convert.</param>
+        /// <returns>The boolean array representation of the ulong.</returns>
         public static bool[] ToBoolArray(this int b) => ToByteArray(b).Select(ToBoolArray).SelectMany(x => x).ToArray();
 
         /// <summary>

@@ -1,0 +1,300 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Interface
+  commentId: N:NumeralSystems.Net.Interface
+  id: NumeralSystems.Net.Interface
+  children:
+  - NumeralSystems.Net.Interface.IIRregularOperable`4
+  - NumeralSystems.Net.Interface.IIncompletable`4
+  - NumeralSystems.Net.Interface.IIncompleteValue`3
+  - NumeralSystems.Net.Interface.INumeralValue`1
+  - NumeralSystems.Net.Interface.IRegularOperable`4
+  - NumeralSystems.Net.Interface.IRegularReversible`4
+  - NumeralSystems.Net.Interface.IRregularReversible`4
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystems.Net.Interface
+  nameWithType: NumeralSystems.Net.Interface
+  fullName: NumeralSystems.Net.Interface
+  type: Namespace
+  assemblies:
+  - NumeralSystems.Net
+references:
+- uid: NumeralSystems.Net.Interface.IIncompletable`4
+  commentId: T:NumeralSystems.Net.Interface.IIncompletable`4
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  name: IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType: IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  name.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3
+  commentId: T:NumeralSystems.Net.Interface.IIncompleteValue`3
+  href: NumeralSystems.Net.Interface.IIncompleteValue-3.html
+  name: IIncompleteValue<TValue, TType, TIndexer>
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer)
+  name.vb: IIncompleteValue(Of TValue, TType, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompleteValue`3
+    name: IIncompleteValue
+    href: NumeralSystems.Net.Interface.IIncompleteValue-3.html
+  - name: <
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompleteValue`3
+    name: IIncompleteValue
+    href: NumeralSystems.Net.Interface.IIncompleteValue-3.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Interface.IIRregularOperable`4
+  commentId: T:NumeralSystems.Net.Interface.IIRregularOperable`4
+  href: NumeralSystems.Net.Interface.IIRregularOperable-4.html
+  name: IIRregularOperable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType: IIRregularOperable<TIncomplete, TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IIRregularOperable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType.vb: IIRregularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IIRregularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  name.vb: IIRregularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIRregularOperable`4
+    name: IIRregularOperable
+    href: NumeralSystems.Net.Interface.IIRregularOperable-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIRregularOperable`4
+    name: IIRregularOperable
+    href: NumeralSystems.Net.Interface.IIRregularOperable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Interface.INumeralValue`1
+  commentId: T:NumeralSystems.Net.Interface.INumeralValue`1
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  name: INumeralValue<TValue>
+  nameWithType: INumeralValue<TValue>
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>
+  nameWithType.vb: INumeralValue(Of TValue)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue)
+  name.vb: INumeralValue(Of TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4
+  commentId: T:NumeralSystems.Net.Interface.IRegularOperable`4
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  name: IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  name.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4
+  commentId: T:NumeralSystems.Net.Interface.IRegularReversible`4
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  name: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer)
+  name.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRregularReversible`4
+  commentId: T:NumeralSystems.Net.Interface.IRregularReversible`4
+  href: NumeralSystems.Net.Interface.IRregularReversible-4.html
+  name: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>
+  nameWithType: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>
+  nameWithType.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer)
+  name.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRregularReversible`4
+    name: IRregularReversible
+    href: NumeralSystems.Net.Interface.IRregularReversible-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TNumeralValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRregularReversible`4
+    name: IRregularReversible
+    href: NumeralSystems.Net.Interface.IRregularReversible-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TNumeralValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )

@@ -1,0 +1,2979 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Type.Base.Float
+  commentId: T:NumeralSystems.Net.Type.Base.Float
+  id: Float
+  parent: NumeralSystems.Net.Type.Base
+  children:
+  - NumeralSystems.Net.Type.Base.Float.And(NumeralSystems.Net.Type.Base.Float)
+  - NumeralSystems.Net.Type.Base.Float.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  - NumeralSystems.Net.Type.Base.Float.Binary
+  - NumeralSystems.Net.Type.Base.Float.BitLength
+  - NumeralSystems.Net.Type.Base.Float.Bytes
+  - NumeralSystems.Net.Type.Base.Float.FromBinary(System.Boolean[])
+  - NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase(System.UInt32[],System.UInt32[],System.Boolean,System.Int32)
+  - NumeralSystems.Net.Type.Base.Float.Incomplete
+  - NumeralSystems.Net.Type.Base.Float.Item(System.Int32)
+  - NumeralSystems.Net.Type.Base.Float.Nand(NumeralSystems.Net.Type.Base.Float)
+  - NumeralSystems.Net.Type.Base.Float.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  - NumeralSystems.Net.Type.Base.Float.Not
+  - NumeralSystems.Net.Type.Base.Float.Or(NumeralSystems.Net.Type.Base.Float)
+  - NumeralSystems.Net.Type.Base.Float.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  - NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  - NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  - NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  - NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  - NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase(System.Single,System.Int32)
+  - NumeralSystems.Net.Type.Base.Float.ToString
+  - NumeralSystems.Net.Type.Base.Float.ToString(System.String)
+  - NumeralSystems.Net.Type.Base.Float.Value
+  - NumeralSystems.Net.Type.Base.Float.Xor(NumeralSystems.Net.Type.Base.Float)
+  - NumeralSystems.Net.Type.Base.Float.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  langs:
+  - csharp
+  - vb
+  name: Float
+  nameWithType: Float
+  fullName: NumeralSystems.Net.Type.Base.Float
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Float
+    path: NumeralSystems.Net/Type/Encode/Float.cs
+    startLine: 6
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Represents a single-precision floating-point number with various binary operations.
+  example: []
+  syntax:
+    content: 'public sealed class Float : IRegularOperable<IncompleteFloat, Float, float, uint>, IIncompletable<IncompleteFloat, Float, float, uint>, INumeralValue<float>, IRegularReversible<IncompleteFloat, Float, float, uint>'
+    content.vb: Public NotInheritable Class Float Implements IRegularOperable(Of IncompleteFloat, Float, Single, UInteger), IIncompletable(Of IncompleteFloat, Float, Single, UInteger), INumeralValue(Of Single), IRegularReversible(Of IncompleteFloat, Float, Single, UInteger)
+  inheritance:
+  - System.Object
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  - NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  - NumeralSystems.Net.Interface.INumeralValue{System.Single}
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: NumeralSystems.Net.Type.Base.Float.FromBinary(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Type.Base.Float.FromBinary(System.Boolean[])
+  id: FromBinary(System.Boolean[])
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: FromBinary(bool[])
+  nameWithType: Float.FromBinary(bool[])
+  fullName: NumeralSystems.Net.Type.Base.Float.FromBinary(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: FromBinary
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 20
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Creates a Float instance from a binary array.
+  example: []
+  syntax:
+    content: public static Float FromBinary(bool[] binary)
+    parameters:
+    - id: binary
+      type: System.Boolean[]
+      description: The binary array representing the float value.
+    return:
+      type: NumeralSystems.Net.Type.Base.Float
+      description: A new Float instance.
+    content.vb: Public Shared Function FromBinary(binary As Boolean()) As Float
+  overload: NumeralSystems.Net.Type.Base.Float.FromBinary*
+  nameWithType.vb: Float.FromBinary(Boolean())
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.FromBinary(Boolean())
+  name.vb: FromBinary(Boolean())
+- uid: NumeralSystems.Net.Type.Base.Float.Value
+  commentId: P:NumeralSystems.Net.Type.Base.Float.Value
+  id: Value
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: Float.Value
+  fullName: NumeralSystems.Net.Type.Base.Float.Value
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Value
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 28
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets or sets the float value.
+  example: []
+  syntax:
+    content: public float Value { get; set; }
+    parameters: []
+    return:
+      type: System.Single
+    content.vb: Public Property Value As Single
+  overload: NumeralSystems.Net.Type.Base.Float.Value*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Single}.Value
+- uid: NumeralSystems.Net.Type.Base.Float.Bytes
+  commentId: P:NumeralSystems.Net.Type.Base.Float.Bytes
+  id: Bytes
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Bytes
+  nameWithType: Float.Bytes
+  fullName: NumeralSystems.Net.Type.Base.Float.Bytes
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Bytes
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 33
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets or sets the byte representation of the float value.
+  example: []
+  syntax:
+    content: public byte[] Bytes { get; set; }
+    parameters: []
+    return:
+      type: System.Byte[]
+    content.vb: Public Property Bytes As Byte()
+  overload: NumeralSystems.Net.Type.Base.Float.Bytes*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Single}.Bytes
+- uid: NumeralSystems.Net.Type.Base.Float.BitLength
+  commentId: P:NumeralSystems.Net.Type.Base.Float.BitLength
+  id: BitLength
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: BitLength
+  nameWithType: Float.BitLength
+  fullName: NumeralSystems.Net.Type.Base.Float.BitLength
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: BitLength
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 43
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets the bit length of the float value.
+  example: []
+  syntax:
+    content: public int BitLength { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property BitLength As Integer
+  overload: NumeralSystems.Net.Type.Base.Float.BitLength*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Single}.BitLength
+- uid: NumeralSystems.Net.Type.Base.Float.Binary
+  commentId: P:NumeralSystems.Net.Type.Base.Float.Binary
+  id: Binary
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Binary
+  nameWithType: Float.Binary
+  fullName: NumeralSystems.Net.Type.Base.Float.Binary
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Binary
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 48
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets or sets the binary representation of the float value.
+  example: []
+  syntax:
+    content: public bool[] Binary { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean[]
+    content.vb: Public Property Binary As Boolean()
+  overload: NumeralSystems.Net.Type.Base.Float.Binary*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Single}.Binary
+- uid: NumeralSystems.Net.Type.Base.Float.Item(System.Int32)
+  commentId: P:NumeralSystems.Net.Type.Base.Float.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: this[int]
+  nameWithType: Float.this[int]
+  fullName: NumeralSystems.Net.Type.Base.Float.this[int]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 59
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets or sets the binary value at the specified index.
+  example: []
+  syntax:
+    content: public bool this[int index] { get; set; }
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the binary value.
+    return:
+      type: System.Boolean
+      description: The binary value at the specified index.
+    content.vb: Public Default Property this[](index As Integer) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Float.Item*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Single}.Item(System.Int32)
+  nameWithType.vb: Float.this[](Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.this[](Integer)
+  name.vb: this[](Integer)
+- uid: NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  id: ReverseAnd(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: ReverseAnd(Float, out IncompleteFloat)
+  nameWithType: Float.ReverseAnd(Float, out IncompleteFloat)
+  fullName: NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Base.Float, out NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseAnd
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 75
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a reverse AND operation with another Float and returns the result as an IncompleteFloat.
+  example: []
+  syntax:
+    content: public bool ReverseAnd(Float right, out IncompleteFloat result)
+    parameters:
+    - id: right
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The Float to perform the operation with.
+    - id: result
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The result of the operation.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful, otherwise false.
+    content.vb: Public Function ReverseAnd(right As Float, result As IncompleteFloat) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Float.ReverseAnd*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  nameWithType.vb: Float.ReverseAnd(Float, IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Base.Float, NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  name.vb: ReverseAnd(Float, IncompleteFloat)
+- uid: NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  id: ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: ReverseAnd(IncompleteFloat, out IncompleteFloat)
+  nameWithType: Float.ReverseAnd(IncompleteFloat, out IncompleteFloat)
+  fullName: NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat, out NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseAnd
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 95
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a reverse AND operation with an IncompleteFloat and returns the result as an IncompleteFloat.
+  example: []
+  syntax:
+    content: public bool ReverseAnd(IncompleteFloat right, out IncompleteFloat result)
+    parameters:
+    - id: right
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The IncompleteFloat to perform the operation with.
+    - id: result
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The result of the operation.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful, otherwise false.
+    content.vb: Public Function ReverseAnd(right As IncompleteFloat, result As IncompleteFloat) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Float.ReverseAnd*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  nameWithType.vb: Float.ReverseAnd(IncompleteFloat, IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  name.vb: ReverseAnd(IncompleteFloat, IncompleteFloat)
+- uid: NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  id: ReverseOr(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: ReverseOr(Float, out IncompleteFloat)
+  nameWithType: Float.ReverseOr(Float, out IncompleteFloat)
+  fullName: NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Base.Float, out NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseOr
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 115
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a reverse OR operation with another Float and returns the result as an IncompleteFloat.
+  example: []
+  syntax:
+    content: public bool ReverseOr(Float right, out IncompleteFloat result)
+    parameters:
+    - id: right
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The Float to perform the operation with.
+    - id: result
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The result of the operation.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful, otherwise false.
+    content.vb: Public Function ReverseOr(right As Float, result As IncompleteFloat) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Float.ReverseOr*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  nameWithType.vb: Float.ReverseOr(Float, IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Base.Float, NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  name.vb: ReverseOr(Float, IncompleteFloat)
+- uid: NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  id: ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: ReverseOr(IncompleteFloat, out IncompleteFloat)
+  nameWithType: Float.ReverseOr(IncompleteFloat, out IncompleteFloat)
+  fullName: NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat, out NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseOr
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 135
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a reverse OR operation with an IncompleteFloat and returns the result as an IncompleteFloat.
+  example: []
+  syntax:
+    content: public bool ReverseOr(IncompleteFloat right, out IncompleteFloat result)
+    parameters:
+    - id: right
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The IncompleteFloat to perform the operation with.
+    - id: result
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The result of the operation.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful, otherwise false.
+    content.vb: Public Function ReverseOr(right As IncompleteFloat, result As IncompleteFloat) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Float.ReverseOr*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  nameWithType.vb: Float.ReverseOr(IncompleteFloat, IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  name.vb: ReverseOr(IncompleteFloat, IncompleteFloat)
+- uid: NumeralSystems.Net.Type.Base.Float.Not
+  commentId: M:NumeralSystems.Net.Type.Base.Float.Not
+  id: Not
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Not()
+  nameWithType: Float.Not()
+  fullName: NumeralSystems.Net.Type.Base.Float.Not()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Not
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 153
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a NOT operation on the Float and returns the result.
+  example: []
+  syntax:
+    content: public Float Not()
+    return:
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The result of the NOT operation.
+    content.vb: Public Function [Not]() As Float
+  overload: NumeralSystems.Net.Type.Base.Float.Not*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Not
+- uid: NumeralSystems.Net.Type.Base.Float.Xor(NumeralSystems.Net.Type.Base.Float)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.Xor(NumeralSystems.Net.Type.Base.Float)
+  id: Xor(NumeralSystems.Net.Type.Base.Float)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Xor(Float)
+  nameWithType: Float.Xor(Float)
+  fullName: NumeralSystems.Net.Type.Base.Float.Xor(NumeralSystems.Net.Type.Base.Float)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Xor
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 163
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an XOR operation with another Float and returns the result.
+  example: []
+  syntax:
+    content: public Float Xor(Float value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The Float to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The result of the XOR operation.
+    content.vb: Public Function [Xor](value As Float) As Float
+  overload: NumeralSystems.Net.Type.Base.Float.Xor*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Float)
+- uid: NumeralSystems.Net.Type.Base.Float.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  id: Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Xor(IncompleteFloat)
+  nameWithType: Float.Xor(IncompleteFloat)
+  fullName: NumeralSystems.Net.Type.Base.Float.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Xor
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 173
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an XOR operation with an IncompleteFloat and returns the result.
+  example: []
+  syntax:
+    content: public IncompleteFloat Xor(IncompleteFloat value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The IncompleteFloat to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The result of the XOR operation.
+    content.vb: Public Function [Xor](value As IncompleteFloat) As IncompleteFloat
+  overload: NumeralSystems.Net.Type.Base.Float.Xor*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+- uid: NumeralSystems.Net.Type.Base.Float.And(NumeralSystems.Net.Type.Base.Float)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.And(NumeralSystems.Net.Type.Base.Float)
+  id: And(NumeralSystems.Net.Type.Base.Float)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: And(Float)
+  nameWithType: Float.And(Float)
+  fullName: NumeralSystems.Net.Type.Base.Float.And(NumeralSystems.Net.Type.Base.Float)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: And
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 183
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an AND operation with another Float and returns the result.
+  example: []
+  syntax:
+    content: public Float And(Float value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The Float to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The result of the AND operation.
+    content.vb: Public Function [And](value As Float) As Float
+  overload: NumeralSystems.Net.Type.Base.Float.And*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Base.Float)
+- uid: NumeralSystems.Net.Type.Base.Float.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  id: And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: And(IncompleteFloat)
+  nameWithType: Float.And(IncompleteFloat)
+  fullName: NumeralSystems.Net.Type.Base.Float.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: And
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 193
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an AND operation with an IncompleteFloat and returns the result.
+  example: []
+  syntax:
+    content: public IncompleteFloat And(IncompleteFloat value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The IncompleteFloat to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The result of the AND operation.
+    content.vb: Public Function [And](value As IncompleteFloat) As IncompleteFloat
+  overload: NumeralSystems.Net.Type.Base.Float.And*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+- uid: NumeralSystems.Net.Type.Base.Float.Or(NumeralSystems.Net.Type.Base.Float)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.Or(NumeralSystems.Net.Type.Base.Float)
+  id: Or(NumeralSystems.Net.Type.Base.Float)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Or(Float)
+  nameWithType: Float.Or(Float)
+  fullName: NumeralSystems.Net.Type.Base.Float.Or(NumeralSystems.Net.Type.Base.Float)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Or
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 203
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an OR operation with another Float and returns the result.
+  example: []
+  syntax:
+    content: public Float Or(Float value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The Float to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The result of the OR operation.
+    content.vb: Public Function [Or](value As Float) As Float
+  overload: NumeralSystems.Net.Type.Base.Float.Or*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Float)
+- uid: NumeralSystems.Net.Type.Base.Float.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  id: Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Or(IncompleteFloat)
+  nameWithType: Float.Or(IncompleteFloat)
+  fullName: NumeralSystems.Net.Type.Base.Float.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Or
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 213
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an OR operation with an IncompleteFloat and returns the result.
+  example: []
+  syntax:
+    content: public IncompleteFloat Or(IncompleteFloat value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The IncompleteFloat to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The result of the OR operation.
+    content.vb: Public Function [Or](value As IncompleteFloat) As IncompleteFloat
+  overload: NumeralSystems.Net.Type.Base.Float.Or*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+- uid: NumeralSystems.Net.Type.Base.Float.Nand(NumeralSystems.Net.Type.Base.Float)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.Nand(NumeralSystems.Net.Type.Base.Float)
+  id: Nand(NumeralSystems.Net.Type.Base.Float)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Nand(Float)
+  nameWithType: Float.Nand(Float)
+  fullName: NumeralSystems.Net.Type.Base.Float.Nand(NumeralSystems.Net.Type.Base.Float)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Nand
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 223
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a NAND operation with another Float and returns the result.
+  example: []
+  syntax:
+    content: public Float Nand(Float value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The Float to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Base.Float
+      description: The result of the NAND operation.
+    content.vb: Public Function Nand(value As Float) As Float
+  overload: NumeralSystems.Net.Type.Base.Float.Nand*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Float)
+- uid: NumeralSystems.Net.Type.Base.Float.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  id: Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Nand(IncompleteFloat)
+  nameWithType: Float.Nand(IncompleteFloat)
+  fullName: NumeralSystems.Net.Type.Base.Float.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Nand
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 233
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a NAND operation with an IncompleteFloat and returns the result.
+  example: []
+  syntax:
+    content: public IncompleteFloat Nand(IncompleteFloat value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The IncompleteFloat to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The result of the NAND operation.
+    content.vb: Public Function Nand(value As IncompleteFloat) As IncompleteFloat
+  overload: NumeralSystems.Net.Type.Base.Float.Nand*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+- uid: NumeralSystems.Net.Type.Base.Float.Incomplete
+  commentId: M:NumeralSystems.Net.Type.Base.Float.Incomplete
+  id: Incomplete
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: Incomplete()
+  nameWithType: Float.Incomplete()
+  fullName: NumeralSystems.Net.Type.Base.Float.Incomplete()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Incomplete
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 242
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts the Float to an IncompleteFloat.
+  example: []
+  syntax:
+    content: public IncompleteFloat Incomplete()
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+      description: The IncompleteFloat representation of the Float.
+    content.vb: Public Function Incomplete() As IncompleteFloat
+  overload: NumeralSystems.Net.Type.Base.Float.Incomplete*
+  implements:
+  - NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Incomplete
+- uid: NumeralSystems.Net.Type.Base.Float.ToString
+  commentId: M:NumeralSystems.Net.Type.Base.Float.ToString
+  id: ToString
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: Float.ToString()
+  fullName: NumeralSystems.Net.Type.Base.Float.ToString()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToString
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 251
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Returns the string representation of the Float value.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: The string representation of the Float value.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: NumeralSystems.Net.Type.Base.Float.ToString*
+- uid: NumeralSystems.Net.Type.Base.Float.ToString(System.String)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.ToString(System.String)
+  id: ToString(System.String)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: ToString(string)
+  nameWithType: Float.ToString(string)
+  fullName: NumeralSystems.Net.Type.Base.Float.ToString(string)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToString
+    path: NumeralSystems.Net/Type/Base/Float.cs
+    startLine: 258
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts the Float to a string using the specified format.
+  example: []
+  syntax:
+    content: public string ToString(string format)
+    parameters:
+    - id: format
+      type: System.String
+      description: The format string.
+    return:
+      type: System.String
+      description: The formatted string representation of the Float.
+    content.vb: Public Function ToString(format As String) As String
+  overload: NumeralSystems.Net.Type.Base.Float.ToString*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Single}.ToString(System.String)
+  nameWithType.vb: Float.ToString(String)
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.ToString(String)
+  name.vb: ToString(String)
+- uid: NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase(System.Single,System.Int32)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase(System.Single,System.Int32)
+  id: ToIndicesOfBase(System.Single,System.Int32)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: ToIndicesOfBase(float, int)
+  nameWithType: Float.ToIndicesOfBase(float, int)
+  fullName: NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase(float, int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIndicesOfBase
+    path: NumeralSystems.Net/Type/Encode/Float.cs
+    startLine: 14
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts a float value to its indices representation in a specified base.
+  example: []
+  syntax:
+    content: public static (uint[] Integral, uint[] Fractional, bool positive) ToIndicesOfBase(float val, int destinationBase)
+    parameters:
+    - id: val
+      type: System.Single
+      description: The float value to convert.
+    - id: destinationBase
+      type: System.Int32
+      description: The base to convert to.
+    return:
+      type: System.ValueTuple{System.UInt32[],System.UInt32[],System.Boolean}
+      description: A tuple containing the integral part, fractional part, and a boolean indicating if the value is positive.
+    content.vb: Public Shared Function ToIndicesOfBase(val As Single, destinationBase As Integer) As (Integral As UInteger(), Fractional As UInteger(), positive As Boolean)
+  overload: NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase*
+  nameWithType.vb: Float.ToIndicesOfBase(Single, Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase(Single, Integer)
+  name.vb: ToIndicesOfBase(Single, Integer)
+- uid: NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase(System.UInt32[],System.UInt32[],System.Boolean,System.Int32)
+  commentId: M:NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase(System.UInt32[],System.UInt32[],System.Boolean,System.Int32)
+  id: FromIndicesOfBase(System.UInt32[],System.UInt32[],System.Boolean,System.Int32)
+  parent: NumeralSystems.Net.Type.Base.Float
+  langs:
+  - csharp
+  - vb
+  name: FromIndicesOfBase(uint[], uint[], bool, int)
+  nameWithType: Float.FromIndicesOfBase(uint[], uint[], bool, int)
+  fullName: NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase(uint[], uint[], bool, int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/Float.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: FromIndicesOfBase
+    path: NumeralSystems.Net/Type/Encode/Float.cs
+    startLine: 32
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts indices representation in a specified base to a float value.
+  example: []
+  syntax:
+    content: public static float FromIndicesOfBase(uint[] integral, uint[] fractional, bool positive, int sourceBase)
+    parameters:
+    - id: integral
+      type: System.UInt32[]
+      description: The integral part indices.
+    - id: fractional
+      type: System.UInt32[]
+      description: The fractional part indices.
+    - id: positive
+      type: System.Boolean
+      description: Indicates if the value is positive.
+    - id: sourceBase
+      type: System.Int32
+      description: The base of the indices.
+    return:
+      type: System.Single
+      description: The float value.
+    content.vb: Public Shared Function FromIndicesOfBase(integral As UInteger(), fractional As UInteger(), positive As Boolean, sourceBase As Integer) As Single
+  overload: NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase*
+  nameWithType.vb: Float.FromIndicesOfBase(UInteger(), UInteger(), Boolean, Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase(UInteger(), UInteger(), Boolean, Integer)
+  name.vb: FromIndicesOfBase(UInteger(), UInteger(), Boolean, Integer)
+references:
+- uid: NumeralSystems.Net.Type.Base
+  commentId: N:NumeralSystems.Net.Type.Base
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Type.Base
+  nameWithType: NumeralSystems.Net.Type.Base
+  fullName: NumeralSystems.Net.Type.Base
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  commentId: T:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  parent: NumeralSystems.Net.Interface
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  name: IRegularOperable<IncompleteFloat, Float, float, uint>
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger)
+  name.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: <
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  commentId: T:NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  parent: NumeralSystems.Net.Interface
+  definition: NumeralSystems.Net.Interface.IIncompletable`4
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  name: IIncompletable<IncompleteFloat, Float, float, uint>
+  nameWithType: IIncompletable<IncompleteFloat, Float, float, uint>
+  fullName: NumeralSystems.Net.Interface.IIncompletable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>
+  nameWithType.vb: IIncompletable(Of IncompleteFloat, Float, Single, UInteger)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger)
+  name.vb: IIncompletable(Of IncompleteFloat, Float, Single, UInteger)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: <
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}
+  commentId: T:NumeralSystems.Net.Interface.INumeralValue{System.Single}
+  parent: NumeralSystems.Net.Interface
+  definition: NumeralSystems.Net.Interface.INumeralValue`1
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  name: INumeralValue<float>
+  nameWithType: INumeralValue<float>
+  fullName: NumeralSystems.Net.Interface.INumeralValue<float>
+  nameWithType.vb: INumeralValue(Of Single)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Single)
+  name.vb: INumeralValue(Of Single)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: <
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  commentId: T:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  parent: NumeralSystems.Net.Interface
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  name: IRegularReversible<IncompleteFloat, Float, float, uint>
+  nameWithType: IRegularReversible<IncompleteFloat, Float, float, uint>
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>
+  nameWithType.vb: IRegularReversible(Of IncompleteFloat, Float, Single, UInteger)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger)
+  name.vb: IRegularReversible(Of IncompleteFloat, Float, Single, UInteger)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: <
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: float
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - uid: System.Single
+    name: Single
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.single
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4
+  commentId: T:NumeralSystems.Net.Interface.IRegularOperable`4
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  name: IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  name.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Interface
+  commentId: N:NumeralSystems.Net.Interface
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Interface
+  nameWithType: NumeralSystems.Net.Interface
+  fullName: NumeralSystems.Net.Interface
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+- uid: NumeralSystems.Net.Interface.IIncompletable`4
+  commentId: T:NumeralSystems.Net.Interface.IIncompletable`4
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  name: IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType: IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  name.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Interface.INumeralValue`1
+  commentId: T:NumeralSystems.Net.Interface.INumeralValue`1
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  name: INumeralValue<TValue>
+  nameWithType: INumeralValue<TValue>
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>
+  nameWithType.vb: INumeralValue(Of TValue)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue)
+  name.vb: INumeralValue(Of TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4
+  commentId: T:NumeralSystems.Net.Interface.IRegularReversible`4
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  name: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer)
+  name.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.FromBinary*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.FromBinary
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_FromBinary_System_Boolean___
+  name: FromBinary
+  nameWithType: Float.FromBinary
+  fullName: NumeralSystems.Net.Type.Base.Float.FromBinary
+- uid: System.Boolean[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool[]
+  nameWithType: bool[]
+  fullName: bool[]
+  nameWithType.vb: Boolean()
+  fullName.vb: Boolean()
+  name.vb: Boolean()
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float
+  commentId: T:NumeralSystems.Net.Type.Base.Float
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Float.html
+  name: Float
+  nameWithType: Float
+  fullName: NumeralSystems.Net.Type.Base.Float
+- uid: NumeralSystems.Net.Type.Base.Float.Value*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.Value
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_Value
+  name: Value
+  nameWithType: Float.Value
+  fullName: NumeralSystems.Net.Type.Base.Float.Value
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}.Value
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Single}.Value
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Single}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.Value
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Value
+  name: Value
+  nameWithType: INumeralValue<float>.Value
+  fullName: NumeralSystems.Net.Interface.INumeralValue<float>.Value
+  nameWithType.vb: INumeralValue(Of Single).Value
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Single).Value
+- uid: System.Single
+  commentId: T:System.Single
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.single
+  name: float
+  nameWithType: float
+  fullName: float
+  nameWithType.vb: Single
+  fullName.vb: Single
+  name.vb: Single
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.Value
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.Value
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Value
+  name: Value
+  nameWithType: INumeralValue<TValue>.Value
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.Value
+  nameWithType.vb: INumeralValue(Of TValue).Value
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).Value
+- uid: NumeralSystems.Net.Type.Base.Float.Bytes*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.Bytes
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_Bytes
+  name: Bytes
+  nameWithType: Float.Bytes
+  fullName: NumeralSystems.Net.Type.Base.Float.Bytes
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}.Bytes
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Single}.Bytes
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Single}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.Bytes
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Bytes
+  name: Bytes
+  nameWithType: INumeralValue<float>.Bytes
+  fullName: NumeralSystems.Net.Interface.INumeralValue<float>.Bytes
+  nameWithType.vb: INumeralValue(Of Single).Bytes
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Single).Bytes
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.Bytes
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.Bytes
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Bytes
+  name: Bytes
+  nameWithType: INumeralValue<TValue>.Bytes
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.Bytes
+  nameWithType.vb: INumeralValue(Of TValue).Bytes
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).Bytes
+- uid: NumeralSystems.Net.Type.Base.Float.BitLength*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.BitLength
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_BitLength
+  name: BitLength
+  nameWithType: Float.BitLength
+  fullName: NumeralSystems.Net.Type.Base.Float.BitLength
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}.BitLength
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Single}.BitLength
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Single}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.BitLength
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_BitLength
+  name: BitLength
+  nameWithType: INumeralValue<float>.BitLength
+  fullName: NumeralSystems.Net.Interface.INumeralValue<float>.BitLength
+  nameWithType.vb: INumeralValue(Of Single).BitLength
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Single).BitLength
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.BitLength
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.BitLength
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_BitLength
+  name: BitLength
+  nameWithType: INumeralValue<TValue>.BitLength
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.BitLength
+  nameWithType.vb: INumeralValue(Of TValue).BitLength
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).BitLength
+- uid: NumeralSystems.Net.Type.Base.Float.Binary*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.Binary
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_Binary
+  name: Binary
+  nameWithType: Float.Binary
+  fullName: NumeralSystems.Net.Type.Base.Float.Binary
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}.Binary
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Single}.Binary
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Single}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.Binary
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Binary
+  name: Binary
+  nameWithType: INumeralValue<float>.Binary
+  fullName: NumeralSystems.Net.Interface.INumeralValue<float>.Binary
+  nameWithType.vb: INumeralValue(Of Single).Binary
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Single).Binary
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.Binary
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.Binary
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Binary
+  name: Binary
+  nameWithType: INumeralValue<TValue>.Binary
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.Binary
+  nameWithType.vb: INumeralValue(Of TValue).Binary
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).Binary
+- uid: NumeralSystems.Net.Type.Base.Float.Item*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.Item
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_Item_System_Int32_
+  name: this
+  nameWithType: Float.this
+  fullName: NumeralSystems.Net.Type.Base.Float.this
+  nameWithType.vb: Float.this[]
+  fullName.vb: NumeralSystems.Net.Type.Base.Float.this[]
+  name.vb: this[]
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}.Item(System.Int32)
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Single}.Item(System.Int32)
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Single}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.Item(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: this[int]
+  nameWithType: INumeralValue<float>.this[int]
+  fullName: NumeralSystems.Net.Interface.INumeralValue<float>.this[int]
+  nameWithType.vb: INumeralValue(Of Single).this[](Integer)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Single).this[](Integer)
+  name.vb: this[](Integer)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ']'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}.Item(System.Int32)
+    name: this[]
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Item_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.Item(System.Int32)
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.Item(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: this[int]
+  nameWithType: INumeralValue<TValue>.this[int]
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.this[int]
+  nameWithType.vb: INumeralValue(Of TValue).this[](Integer)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).this[](Integer)
+  name.vb: this[](Integer)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ']'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1.Item(System.Int32)
+    name: this[]
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Item_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.ReverseAnd*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.ReverseAnd
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_ReverseAnd_NumeralSystems_Net_Type_Base_Float_NumeralSystems_Net_Type_Incomplete_IncompleteFloat__
+  name: ReverseAnd
+  nameWithType: Float.ReverseAnd
+  fullName: NumeralSystems.Net.Type.Base.Float.ReverseAnd
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  parent: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  name: ReverseAnd(Float, out IncompleteFloat)
+  nameWithType: IRegularReversible<IncompleteFloat, Float, float, uint>.ReverseAnd(Float, out IncompleteFloat)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.ReverseAnd(NumeralSystems.Net.Type.Base.Float, out NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  nameWithType.vb: IRegularReversible(Of IncompleteFloat, Float, Single, UInteger).ReverseAnd(Float, IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).ReverseAnd(NumeralSystems.Net.Type.Base.Float, NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  name.vb: ReverseAnd(Float, IncompleteFloat)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  name: IncompleteFloat
+  nameWithType: IncompleteFloat
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  name: ReverseAnd(TNumaralValue, out TIncomplete)
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseAnd(TNumaralValue, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseAnd(TNumaralValue, out TIncomplete)
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseAnd(TNumaralValue, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseAnd(TNumaralValue, TIncomplete)
+  name.vb: ReverseAnd(TNumaralValue, TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  - name: (
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  - name: (
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Incomplete
+  commentId: N:NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Type.Incomplete
+  nameWithType: NumeralSystems.Net.Type.Incomplete
+  fullName: NumeralSystems.Net.Type.Incomplete
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Type.Incomplete.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Type.Incomplete.html
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  parent: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  name: ReverseAnd(IncompleteFloat, out IncompleteFloat)
+  nameWithType: IRegularReversible<IncompleteFloat, Float, float, uint>.ReverseAnd(IncompleteFloat, out IncompleteFloat)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat, out NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  nameWithType.vb: IRegularReversible(Of IncompleteFloat, Float, Single, UInteger).ReverseAnd(IncompleteFloat, IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  name.vb: ReverseAnd(IncompleteFloat, IncompleteFloat)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  name: ReverseAnd(TIncomplete, out TIncomplete)
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseAnd(TIncomplete, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseAnd(TIncomplete, out TIncomplete)
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseAnd(TIncomplete, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseAnd(TIncomplete, TIncomplete)
+  name.vb: ReverseAnd(TIncomplete, TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  - name: (
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  - name: (
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.ReverseOr*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.ReverseOr
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_ReverseOr_NumeralSystems_Net_Type_Base_Float_NumeralSystems_Net_Type_Incomplete_IncompleteFloat__
+  name: ReverseOr
+  nameWithType: Float.ReverseOr
+  fullName: NumeralSystems.Net.Type.Base.Float.ReverseOr
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  parent: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  name: ReverseOr(Float, out IncompleteFloat)
+  nameWithType: IRegularReversible<IncompleteFloat, Float, float, uint>.ReverseOr(Float, out IncompleteFloat)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.ReverseOr(NumeralSystems.Net.Type.Base.Float, out NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  nameWithType.vb: IRegularReversible(Of IncompleteFloat, Float, Single, UInteger).ReverseOr(Float, IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).ReverseOr(NumeralSystems.Net.Type.Base.Float, NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  name.vb: ReverseOr(Float, IncompleteFloat)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Float,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  name: ReverseOr(TNumaralValue, out TIncomplete)
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseOr(TNumaralValue, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseOr(TNumaralValue, out TIncomplete)
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseOr(TNumaralValue, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseOr(TNumaralValue, TIncomplete)
+  name.vb: ReverseOr(TNumaralValue, TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  - name: (
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  - name: (
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+  parent: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  name: ReverseOr(IncompleteFloat, out IncompleteFloat)
+  nameWithType: IRegularReversible<IncompleteFloat, Float, float, uint>.ReverseOr(IncompleteFloat, out IncompleteFloat)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat, out NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  nameWithType.vb: IRegularReversible(Of IncompleteFloat, Float, Single, UInteger).ReverseOr(IncompleteFloat, IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  name.vb: ReverseOr(IncompleteFloat, IncompleteFloat)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Incomplete.IncompleteFloat@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  name: ReverseOr(TIncomplete, out TIncomplete)
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseOr(TIncomplete, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseOr(TIncomplete, out TIncomplete)
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseOr(TIncomplete, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseOr(TIncomplete, TIncomplete)
+  name.vb: ReverseOr(TIncomplete, TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  - name: (
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  - name: (
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.Not*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.Not
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_Not
+  name: Not
+  nameWithType: Float.Not
+  fullName: NumeralSystems.Net.Type.Base.Float.Not
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Not
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Not
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Not
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  name: Not()
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>.Not()
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.Not()
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger).Not()
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).Not()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Not
+    name: Not
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Not
+    name: Not
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Not
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Not
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  name: Not()
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Not()
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Not()
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Not()
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Not()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Not
+    name: Not
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Not
+    name: Not
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.Xor*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.Xor
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_Xor_NumeralSystems_Net_Type_Base_Float_
+  name: Xor
+  nameWithType: Float.Xor
+  fullName: NumeralSystems.Net.Type.Base.Float.Xor
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Float)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Float)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  name: Xor(Float)
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>.Xor(Float)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.Xor(NumeralSystems.Net.Type.Base.Float)
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger).Xor(Float)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).Xor(NumeralSystems.Net.Type.Base.Float)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Float)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Float)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  name: Xor(TValue)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Xor(TValue)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Xor(TValue)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Xor(TValue)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Xor(TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  - name: (
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  name: Xor(IncompleteFloat)
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>.Xor(IncompleteFloat)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger).Xor(IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  name: Xor(TIncomplete)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Xor(TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Xor(TIncomplete)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Xor(TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Xor(TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.And*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.And
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_And_NumeralSystems_Net_Type_Base_Float_
+  name: And
+  nameWithType: Float.And
+  fullName: NumeralSystems.Net.Type.Base.Float.And
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Base.Float)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Base.Float)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  name: And(Float)
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>.And(Float)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.And(NumeralSystems.Net.Type.Base.Float)
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger).And(Float)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).And(NumeralSystems.Net.Type.Base.Float)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Base.Float)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Base.Float)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  name: And(TValue)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.And(TValue)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.And(TValue)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).And(TValue)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).And(TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  - name: (
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  name: And(IncompleteFloat)
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>.And(IncompleteFloat)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger).And(IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  name: And(TIncomplete)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.And(TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.And(TIncomplete)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).And(TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).And(TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.Or*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.Or
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_Or_NumeralSystems_Net_Type_Base_Float_
+  name: Or
+  nameWithType: Float.Or
+  fullName: NumeralSystems.Net.Type.Base.Float.Or
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Float)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Float)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  name: Or(Float)
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>.Or(Float)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.Or(NumeralSystems.Net.Type.Base.Float)
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger).Or(Float)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).Or(NumeralSystems.Net.Type.Base.Float)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Float)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Float)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  name: Or(TValue)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Or(TValue)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Or(TValue)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Or(TValue)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Or(TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  - name: (
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  name: Or(IncompleteFloat)
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>.Or(IncompleteFloat)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger).Or(IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  name: Or(TIncomplete)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Or(TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Or(TIncomplete)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Or(TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Or(TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.Nand*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.Nand
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_Nand_NumeralSystems_Net_Type_Base_Float_
+  name: Nand
+  nameWithType: Float.Nand
+  fullName: NumeralSystems.Net.Type.Base.Float.Nand
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Float)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Float)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  name: Nand(Float)
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>.Nand(Float)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.Nand(NumeralSystems.Net.Type.Base.Float)
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger).Nand(Float)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).Nand(NumeralSystems.Net.Type.Base.Float)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Float)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Float)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+    href: NumeralSystems.Net.Type.Base.Float.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  name: Nand(TValue)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Nand(TValue)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Nand(TValue)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Nand(TValue)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Nand(TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  - name: (
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  name: Nand(IncompleteFloat)
+  nameWithType: IRegularOperable<IncompleteFloat, Float, float, uint>.Nand(IncompleteFloat)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  nameWithType.vb: IRegularOperable(Of IncompleteFloat, Float, Single, UInteger).Nand(IncompleteFloat)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteFloat)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  name: Nand(TIncomplete)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Nand(TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Nand(TIncomplete)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Nand(TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Nand(TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.Incomplete*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.Incomplete
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_Incomplete
+  name: Incomplete
+  nameWithType: Float.Incomplete
+  fullName: NumeralSystems.Net.Type.Base.Float.Incomplete
+- uid: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Incomplete
+  commentId: M:NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Incomplete
+  parent: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  name: Incomplete()
+  nameWithType: IIncompletable<IncompleteFloat, Float, float, uint>.Incomplete()
+  fullName: NumeralSystems.Net.Interface.IIncompletable<NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, float, uint>.Incomplete()
+  nameWithType.vb: IIncompletable(Of IncompleteFloat, Float, Single, UInteger).Incomplete()
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of NumeralSystems.Net.Type.Incomplete.IncompleteFloat, NumeralSystems.Net.Type.Base.Float, Single, UInteger).Incomplete()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteFloat,NumeralSystems.Net.Type.Base.Float,System.Single,System.UInt32}.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  commentId: M:NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  name: Incomplete()
+  nameWithType: IIncompletable<TIncomplete, TValue, TType, TIndexer>.Incomplete()
+  fullName: NumeralSystems.Net.Interface.IIncompletable<TIncomplete, TValue, TType, TIndexer>.Incomplete()
+  nameWithType.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer).Incomplete()
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of TIncomplete, TValue, TType, TIndexer).Incomplete()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  - name: (
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.ToString*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.ToString
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_ToString
+  name: ToString
+  nameWithType: Float.ToString
+  fullName: NumeralSystems.Net.Type.Base.Float.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}.ToString(System.String)
+  commentId: M:NumeralSystems.Net.Interface.INumeralValue{System.Single}.ToString(System.String)
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Single}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  name: ToString(string)
+  nameWithType: INumeralValue<float>.ToString(string)
+  fullName: NumeralSystems.Net.Interface.INumeralValue<float>.ToString(string)
+  nameWithType.vb: INumeralValue(Of Single).ToString(String)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Single).ToString(String)
+  name.vb: ToString(String)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}.ToString(System.String)
+    name: ToString
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue{System.Single}.ToString(System.String)
+    name: ToString
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+  commentId: M:NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+  isExternal: true
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  name: ToString(string)
+  nameWithType: INumeralValue<TValue>.ToString(string)
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.ToString(string)
+  nameWithType.vb: INumeralValue(Of TValue).ToString(String)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).ToString(String)
+  name.vb: ToString(String)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+    name: ToString
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+    name: ToString
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_ToIndicesOfBase_System_Single_System_Int32_
+  name: ToIndicesOfBase
+  nameWithType: Float.ToIndicesOfBase
+  fullName: NumeralSystems.Net.Type.Base.Float.ToIndicesOfBase
+- uid: System.ValueTuple{System.UInt32[],System.UInt32[],System.Boolean}
+  commentId: T:System.ValueTuple{System.UInt32[],System.UInt32[],System.Boolean}
+  parent: System
+  definition: System.ValueTuple`3
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: (uint[] Integral, uint[] Fractional, bool positive)
+  nameWithType: (uint[] Integral, uint[] Fractional, bool positive)
+  fullName: (uint[] Integral, uint[] Fractional, bool positive)
+  nameWithType.vb: (Integral As UInteger(), Fractional As UInteger(), positive As Boolean)
+  fullName.vb: (Integral As UInteger(), Fractional As UInteger(), positive As Boolean)
+  name.vb: (Integral As UInteger(), Fractional As UInteger(), positive As Boolean)
+  spec.csharp:
+  - name: (
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '['
+  - name: ']'
+  - name: " "
+  - uid: System.ValueTuple{System.UInt32[],System.UInt32[],System.Boolean}.Integral
+    name: Integral
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint32[],system.uint32[],system.boolean-.integral
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '['
+  - name: ']'
+  - name: " "
+  - uid: System.ValueTuple{System.UInt32[],System.UInt32[],System.Boolean}.Fractional
+    name: Fractional
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint32[],system.uint32[],system.boolean-.fractional
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: " "
+  - uid: System.ValueTuple{System.UInt32[],System.UInt32[],System.Boolean}.positive
+    name: positive
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint32[],system.uint32[],system.boolean-.positive
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.UInt32[],System.UInt32[],System.Boolean}.Integral
+    name: Integral
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint32[],system.uint32[],system.boolean-.integral
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.UInt32[],System.UInt32[],System.Boolean}.Fractional
+    name: Fractional
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint32[],system.uint32[],system.boolean-.fractional
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.UInt32[],System.UInt32[],System.Boolean}.positive
+    name: positive
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint32[],system.uint32[],system.boolean-.positive
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.ValueTuple`3
+  commentId: T:System.ValueTuple`3
+  name: (T1, T2, T3)
+  nameWithType: (T1, T2, T3)
+  fullName: (T1, T2, T3)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase
+  href: NumeralSystems.Net.Type.Base.Float.html#NumeralSystems_Net_Type_Base_Float_FromIndicesOfBase_System_UInt32___System_UInt32___System_Boolean_System_Int32_
+  name: FromIndicesOfBase
+  nameWithType: Float.FromIndicesOfBase
+  fullName: NumeralSystems.Net.Type.Base.Float.FromIndicesOfBase
+- uid: System.UInt32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint[]
+  nameWithType: uint[]
+  fullName: uint[]
+  nameWithType.vb: UInteger()
+  fullName.vb: UInteger()
+  name.vb: UInteger()
+  spec.csharp:
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: (
+  - name: )

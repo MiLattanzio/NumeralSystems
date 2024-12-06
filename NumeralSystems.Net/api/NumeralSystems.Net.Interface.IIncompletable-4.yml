@@ -1,0 +1,125 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Interface.IIncompletable`4
+  commentId: T:NumeralSystems.Net.Interface.IIncompletable`4
+  id: IIncompletable`4
+  parent: NumeralSystems.Net.Interface
+  children:
+  - NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  langs:
+  - csharp
+  - vb
+  name: IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType: IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  type: Interface
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompletable.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: IIncompletable
+    path: NumeralSystems.Net/Interface/IIncompletable.cs
+    startLine: 9
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Represents a type that can be converted to an incomplete value.
+  example: []
+  syntax:
+    content: 'public interface IIncompletable<out TIncomplete, TValue, TType, TIndexer> where TIncomplete : IIncompleteValue<TValue, TType, TIndexer> where TValue : INumeralValue<TType> where TIndexer : struct'
+    typeParameters:
+    - id: TIncomplete
+      description: The incomplete type that it can be converted to
+    - id: TValue
+      description: The source value type
+    - id: TType
+      description: The internal .net base type that the source value represents
+    - id: TIndexer
+      description: The index type used to get the complete representation
+    content.vb: Public Interface IIncompletable(Of Out TIncomplete As IIncompleteValue(Of TValue, TType, TIndexer), TValue As INumeralValue(Of TType), TType, TIndexer As Structure)
+  nameWithType.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  name.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+- uid: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  commentId: M:NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  id: Incomplete
+  parent: NumeralSystems.Net.Interface.IIncompletable`4
+  langs:
+  - csharp
+  - vb
+  name: Incomplete()
+  nameWithType: IIncompletable<TIncomplete, TValue, TType, TIndexer>.Incomplete()
+  fullName: NumeralSystems.Net.Interface.IIncompletable<TIncomplete, TValue, TType, TIndexer>.Incomplete()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompletable.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Incomplete
+    path: NumeralSystems.Net/Interface/IIncompletable.cs
+    startLine: 15
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Gets the incomplete representation of the value.
+  example: []
+  syntax:
+    content: TIncomplete Incomplete()
+    return:
+      type: '{TIncomplete}'
+      description: The source value as an incomplete value
+    content.vb: Function Incomplete() As TIncomplete
+  overload: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete*
+  nameWithType.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer).Incomplete()
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of TIncomplete, TValue, TType, TIndexer).Incomplete()
+references:
+- uid: NumeralSystems.Net.Interface
+  commentId: N:NumeralSystems.Net.Interface
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Interface
+  nameWithType: NumeralSystems.Net.Interface
+  fullName: NumeralSystems.Net.Interface
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+- uid: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete*
+  commentId: Overload:NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  name: Incomplete
+  nameWithType: IIncompletable<TIncomplete, TValue, TType, TIndexer>.Incomplete
+  fullName: NumeralSystems.Net.Interface.IIncompletable<TIncomplete, TValue, TType, TIndexer>.Incomplete
+  nameWithType.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer).Incomplete
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of TIncomplete, TValue, TType, TIndexer).Incomplete
+- uid: '{TIncomplete}'
+  commentId: '!:TIncomplete'
+  definition: TIncomplete
+  name: TIncomplete
+  nameWithType: TIncomplete
+  fullName: TIncomplete
+- uid: TIncomplete
+  name: TIncomplete
+  nameWithType: TIncomplete
+  fullName: TIncomplete

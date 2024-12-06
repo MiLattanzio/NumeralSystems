@@ -1,0 +1,148 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Type.Base
+  commentId: N:NumeralSystems.Net.Type.Base
+  id: NumeralSystems.Net.Type.Base
+  children:
+  - NumeralSystems.Net.Type.Base.Byte
+  - NumeralSystems.Net.Type.Base.Char
+  - NumeralSystems.Net.Type.Base.Decimal
+  - NumeralSystems.Net.Type.Base.Double
+  - NumeralSystems.Net.Type.Base.Float
+  - NumeralSystems.Net.Type.Base.Int
+  - NumeralSystems.Net.Type.Base.Long
+  - NumeralSystems.Net.Type.Base.Short
+  - NumeralSystems.Net.Type.Base.String
+  - NumeralSystems.Net.Type.Base.UInt
+  - NumeralSystems.Net.Type.Base.ULong
+  - NumeralSystems.Net.Type.Base.UShort
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystems.Net.Type.Base
+  nameWithType: NumeralSystems.Net.Type.Base
+  fullName: NumeralSystems.Net.Type.Base
+  type: Namespace
+  assemblies:
+  - NumeralSystems.Net
+references:
+- uid: NumeralSystems.Net.Type.Base.Byte
+  commentId: T:NumeralSystems.Net.Type.Base.Byte
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Byte.html
+  name: Byte
+  nameWithType: Byte
+  fullName: NumeralSystems.Net.Type.Base.Byte
+- uid: NumeralSystems.Net.Type.Base.Char
+  commentId: T:NumeralSystems.Net.Type.Base.Char
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Char.html
+  name: Char
+  nameWithType: Char
+  fullName: NumeralSystems.Net.Type.Base.Char
+- uid: NumeralSystems.Net.Type.Base.Double
+  commentId: T:NumeralSystems.Net.Type.Base.Double
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Double.html
+  name: Double
+  nameWithType: Double
+  fullName: NumeralSystems.Net.Type.Base.Double
+- uid: NumeralSystems.Net.Type.Base.Float
+  commentId: T:NumeralSystems.Net.Type.Base.Float
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Float.html
+  name: Float
+  nameWithType: Float
+  fullName: NumeralSystems.Net.Type.Base.Float
+- uid: NumeralSystems.Net.Type.Base.Int
+  commentId: T:NumeralSystems.Net.Type.Base.Int
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Int.html
+  name: Int
+  nameWithType: Int
+  fullName: NumeralSystems.Net.Type.Base.Int
+- uid: NumeralSystems.Net.Type.Base.Long
+  commentId: T:NumeralSystems.Net.Type.Base.Long
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Long.html
+  name: Long
+  nameWithType: Long
+  fullName: NumeralSystems.Net.Type.Base.Long
+- uid: NumeralSystems.Net.Type.Base.Short
+  commentId: T:NumeralSystems.Net.Type.Base.Short
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Short.html
+  name: Short
+  nameWithType: Short
+  fullName: NumeralSystems.Net.Type.Base.Short
+- uid: NumeralSystems.Net.Type.Base.String
+  commentId: T:NumeralSystems.Net.Type.Base.String
+  href: NumeralSystems.Net.Type.Base.String.html
+  name: String
+  nameWithType: String
+  fullName: NumeralSystems.Net.Type.Base.String
+- uid: NumeralSystems.Net.Type.Base.UInt
+  commentId: T:NumeralSystems.Net.Type.Base.UInt
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.UInt.html
+  name: UInt
+  nameWithType: UInt
+  fullName: NumeralSystems.Net.Type.Base.UInt
+- uid: NumeralSystems.Net.Type.Base.ULong
+  commentId: T:NumeralSystems.Net.Type.Base.ULong
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.ULong.html
+  name: ULong
+  nameWithType: ULong
+  fullName: NumeralSystems.Net.Type.Base.ULong
+- uid: NumeralSystems.Net.Type.Base.UShort
+  commentId: T:NumeralSystems.Net.Type.Base.UShort
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.UShort.html
+  name: UShort
+  nameWithType: UShort
+  fullName: NumeralSystems.Net.Type.Base.UShort
+- uid: NumeralSystems.Net.Type.Base.Decimal
+  commentId: T:NumeralSystems.Net.Type.Base.Decimal
+  href: NumeralSystems.Net.Type.Base.Decimal.html
+  name: Decimal
+  nameWithType: Decimal
+  fullName: NumeralSystems.Net.Type.Base.Decimal
+- uid: NumeralSystems.Net.Type.Base
+  commentId: N:NumeralSystems.Net.Type.Base
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Type.Base
+  nameWithType: NumeralSystems.Net.Type.Base
+  fullName: NumeralSystems.Net.Type.Base
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html

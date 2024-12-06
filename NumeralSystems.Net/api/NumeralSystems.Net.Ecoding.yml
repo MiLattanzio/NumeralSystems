@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Ecoding
+  commentId: N:NumeralSystems.Net.Ecoding
+  id: NumeralSystems.Net.Ecoding
+  children:
+  - NumeralSystems.Net.Ecoding.String
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystems.Net.Ecoding
+  nameWithType: NumeralSystems.Net.Ecoding
+  fullName: NumeralSystems.Net.Ecoding
+  type: Namespace
+  assemblies:
+  - NumeralSystems.Net
+references:
+- uid: NumeralSystems.Net.Ecoding.String
+  commentId: T:NumeralSystems.Net.Ecoding.String
+  href: NumeralSystems.Net.Ecoding.String.html
+  name: String
+  nameWithType: String
+  fullName: NumeralSystems.Net.Ecoding.String

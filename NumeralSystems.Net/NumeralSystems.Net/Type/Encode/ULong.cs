@@ -58,13 +58,13 @@ namespace NumeralSystems.Net.Type.Base
             }
             if (sourceBase == 1)
             {
-                return (ulong)new BigInteger(val.Length);
+                return (ulong)new System.Numerics.BigInteger(val.Length);
             }
 
-            BigInteger result = 0;
+            System.Numerics.BigInteger result = 0;
             for (var i = 0; i < val.Length; i++)
             {
-                result += val[i] * BigInteger.Pow(new BigInteger(sourceBase), val.Length - i - 1);
+                result += val[i] * System.Numerics.BigInteger.Pow(new System.Numerics.BigInteger(sourceBase), val.Length - i - 1);
             }
             return (ulong)result;
         }

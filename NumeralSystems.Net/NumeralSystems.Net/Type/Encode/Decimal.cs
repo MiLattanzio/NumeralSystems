@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Linq;
 
 // ReSharper disable once CheckNamespace
@@ -15,11 +16,11 @@ namespace NumeralSystems.Net.Type.Base
         public static (ulong[] Integral, ulong[] Fractional, bool positive) ToIndicesOfBase(decimal val, int destinationBase)
         {
             var absoluteValue = System.Math.Abs(val);
-            var integralPart = (ulong)absoluteValue;
-            var fractionalPart = absoluteValue - integralPart;
+            var integralPart = (System.Numerics.BigInteger)absoluteValue;
+            var fractionalPart = absoluteValue - (decimal)integralPart;
             var intFractional = GetFractionalPart(fractionalPart, out var zeroCount);
             var zeros = System.Linq.Enumerable.Repeat(0ul, zeroCount).ToArray();
-            return (ULong.ToIndicesOfBase(integralPart, destinationBase), zeros.Concat(ULong.ToIndicesOfBase(intFractional, destinationBase)).ToArray(), val>=0);
+            return (BigInteger.ToIndicesOfBase(integralPart, destinationBase).Select(x => (ulong)x).ToArray(), zeros.Concat(ULong.ToIndicesOfBase(intFractional, destinationBase)).ToArray(), val>=0);
         }
 
         /// <summary>
@@ -32,10 +33,10 @@ namespace NumeralSystems.Net.Type.Base
         /// <returns>The decimal value.</returns>
         public static decimal FromIndicesOfBase(ulong[] integral, ulong[] fractional, bool positive, int sourceBase)
         {
-            var integralPart = ULong.FromIndicesOfBase(integral, sourceBase);
-            var fractionalPart = ULong.FromIndicesOfBase(fractional, sourceBase);
-            var fractionalPats = ULong.ToIndicesOfBase(fractionalPart, 10);
-            var result = fractionalPart / System.Math.Pow(10, fractionalPats.Length);
+            var integralPart = BigInteger.FromIndicesOfBase(integral, sourceBase);
+            var fractionalPart = BigInteger.FromIndicesOfBase(fractional, sourceBase);
+            var fractionalPats = BigInteger.ToIndicesOfBase(fractionalPart, 10);
+            var result = (decimal)fractionalPart / (decimal)System.Numerics.BigInteger.Pow(10, fractionalPats.Length);
             var zeros = 0;
             while (fractional.Length > zeros && fractional[zeros] == 0)
             {
@@ -43,10 +44,10 @@ namespace NumeralSystems.Net.Type.Base
             }
             if (zeros > 0)
             {
-                result /= System.Math.Pow(10, zeros);
+                result /= (decimal)Math.Pow(10, zeros);
             }
-            result += integralPart;
-            return new decimal(positive ? result : - result);
+            result += (decimal)integralPart;
+            return positive ? result : - result;
         }
 
         /// <summary>

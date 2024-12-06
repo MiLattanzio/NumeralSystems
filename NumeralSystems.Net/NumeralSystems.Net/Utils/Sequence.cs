@@ -101,7 +101,13 @@ namespace NumeralSystems.Net.Utils
             }
             return count;
         }
-        
+
+        /// <summary>
+        /// Generates a sequence of unsigned integers starting from the specified start value and ending at the specified end value.
+        /// </summary>
+        /// <param name="start">The starting value of the sequence.</param>
+        /// <param name="end">The ending value of the sequence.</param>
+        /// <returns>An enumerable sequence of unsigned integers from start to end.</returns>
         public static IEnumerable<BigInteger> Range(BigInteger start, BigInteger end)
         {
             for (var i = start; i <= end; i++)
@@ -143,6 +149,14 @@ namespace NumeralSystems.Net.Utils
         /// <returns>The number of permutations.</returns>
         public static ulong PermutationsCount(ulong identity, ulong size, bool repetition = false)
             => repetition ? Pow(identity, size) : (Factorial(identity) / Factorial(identity -size));
+
+        /// <summary>
+        /// Calculates the number of permutations for a given identity and size, with an option to allow repetition.
+        /// </summary>
+        /// <param name="identity">The total number of distinct objects.</param>
+        /// <param name="size">The number of objects to choose.</param>
+        /// <param name="repetition">If set to true, allows repetitions in permutations; otherwise, repetitions are not allowed.</param>
+        /// <returns>The count of permutations based on the specified parameters.</returns>
         public static int PermutationsCount(int identity, int size, bool repetition = false)
             => repetition ? System.Convert.ToInt32(System.Math.Pow(identity, size)) : (Factorial(identity) / Factorial(identity -size));
 

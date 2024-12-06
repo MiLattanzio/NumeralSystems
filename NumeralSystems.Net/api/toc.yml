@@ -1,0 +1,99 @@
+### YamlMime:TableOfContent
+items:
+- uid: NumeralSystems.Net
+  name: NumeralSystems.Net
+  items:
+  - uid: NumeralSystems.Net.Numeral
+    name: Numeral
+  - uid: NumeralSystems.Net.Numeral.System
+    name: Numeral.System
+  - uid: NumeralSystems.Net.Numeral.System.Characters
+    name: Numeral.System.Characters
+  - uid: NumeralSystems.Net.NumeralSystem
+    name: NumeralSystem
+  - uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+    name: NumeralSystem.SerializationInfo
+- uid: NumeralSystems.Net.Ecoding
+  name: NumeralSystems.Net.Ecoding
+  items:
+  - uid: NumeralSystems.Net.Ecoding.String
+    name: String
+- uid: NumeralSystems.Net.Interface
+  name: NumeralSystems.Net.Interface
+  items:
+  - uid: NumeralSystems.Net.Interface.IIRregularOperable`4
+    name: IIRregularOperable<TIncomplete, TValue, TType, TIndexer>
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  - uid: NumeralSystems.Net.Interface.IIncompleteValue`3
+    name: IIncompleteValue<TValue, TType, TIndexer>
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue<TValue>
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  - uid: NumeralSystems.Net.Interface.IRregularReversible`4
+    name: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>
+- uid: NumeralSystems.Net.Type.Base
+  name: NumeralSystems.Net.Type.Base
+  items:
+  - uid: NumeralSystems.Net.Type.Base.Byte
+    name: Byte
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+  - uid: NumeralSystems.Net.Type.Base.Decimal
+    name: Decimal
+  - uid: NumeralSystems.Net.Type.Base.Double
+    name: Double
+  - uid: NumeralSystems.Net.Type.Base.Float
+    name: Float
+  - uid: NumeralSystems.Net.Type.Base.Int
+    name: Int
+  - uid: NumeralSystems.Net.Type.Base.Long
+    name: Long
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+  - uid: NumeralSystems.Net.Type.Base.String
+    name: String
+  - uid: NumeralSystems.Net.Type.Base.UInt
+    name: UInt
+  - uid: NumeralSystems.Net.Type.Base.ULong
+    name: ULong
+  - uid: NumeralSystems.Net.Type.Base.UShort
+    name: UShort
+- uid: NumeralSystems.Net.Type.Incomplete
+  name: NumeralSystems.Net.Type.Incomplete
+  items:
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteByte
+    name: IncompleteByte
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+    name: IncompleteByteArray
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteChar
+    name: IncompleteChar
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteDouble
+    name: IncompleteDouble
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+    name: IncompleteFloat
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteInt
+    name: IncompleteInt
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteLong
+    name: IncompleteLong
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteUInt
+    name: IncompleteUInt
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteULong
+    name: IncompleteULong
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteUShort
+    name: IncompleteUShort
+- uid: NumeralSystems.Net.Utils
+  name: NumeralSystems.Net.Utils
+  items:
+  - uid: NumeralSystems.Net.Utils.Convert
+    name: Convert
+  - uid: NumeralSystems.Net.Utils.Sequence
+    name: Sequence
+  - uid: NumeralSystems.Net.Utils.StringExtensions
+    name: StringExtensions
+memberLayout: SamePage

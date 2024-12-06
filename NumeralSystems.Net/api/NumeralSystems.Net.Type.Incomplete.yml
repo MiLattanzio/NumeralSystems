@@ -1,0 +1,142 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Type.Incomplete
+  commentId: N:NumeralSystems.Net.Type.Incomplete
+  id: NumeralSystems.Net.Type.Incomplete
+  children:
+  - NumeralSystems.Net.Type.Incomplete.IncompleteByte
+  - NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+  - NumeralSystems.Net.Type.Incomplete.IncompleteChar
+  - NumeralSystems.Net.Type.Incomplete.IncompleteDouble
+  - NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+  - NumeralSystems.Net.Type.Incomplete.IncompleteInt
+  - NumeralSystems.Net.Type.Incomplete.IncompleteLong
+  - NumeralSystems.Net.Type.Incomplete.IncompleteShort
+  - NumeralSystems.Net.Type.Incomplete.IncompleteUInt
+  - NumeralSystems.Net.Type.Incomplete.IncompleteULong
+  - NumeralSystems.Net.Type.Incomplete.IncompleteUShort
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystems.Net.Type.Incomplete
+  nameWithType: NumeralSystems.Net.Type.Incomplete
+  fullName: NumeralSystems.Net.Type.Incomplete
+  type: Namespace
+  assemblies:
+  - NumeralSystems.Net
+references:
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteByte
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteByte
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteByte.html
+  name: IncompleteByte
+  nameWithType: IncompleteByte
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteByte
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray.html
+  name: IncompleteByteArray
+  nameWithType: IncompleteByteArray
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteByteArray
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteChar
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteChar
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteChar.html
+  name: IncompleteChar
+  nameWithType: IncompleteChar
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteChar
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteDouble
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteDouble
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteDouble.html
+  name: IncompleteDouble
+  nameWithType: IncompleteDouble
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteDouble
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteFloat.html
+  name: IncompleteFloat
+  nameWithType: IncompleteFloat
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteFloat
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteInt
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteInt
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteInt.html
+  name: IncompleteInt
+  nameWithType: IncompleteInt
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteInt
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteLong
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteLong
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteLong.html
+  name: IncompleteLong
+  nameWithType: IncompleteLong
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteLong
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteShort
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  name: IncompleteShort
+  nameWithType: IncompleteShort
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteUInt
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteUInt
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteUInt.html
+  name: IncompleteUInt
+  nameWithType: IncompleteUInt
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteUInt
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteULong
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteULong
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteULong.html
+  name: IncompleteULong
+  nameWithType: IncompleteULong
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteULong
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteUShort
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteUShort
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteUShort.html
+  name: IncompleteUShort
+  nameWithType: IncompleteUShort
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteUShort
+- uid: NumeralSystems.Net.Type.Incomplete
+  commentId: N:NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Type.Incomplete
+  nameWithType: NumeralSystems.Net.Type.Incomplete
+  fullName: NumeralSystems.Net.Type.Incomplete
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Type.Incomplete.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Type.Incomplete.html

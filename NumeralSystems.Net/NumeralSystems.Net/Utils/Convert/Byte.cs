@@ -17,6 +17,11 @@ namespace NumeralSystems.Net.Utils
     /// /
     public static partial class Convert
     {
+        /// <summary>
+        /// Converts an array of boolean values representing bits into a byte.
+        /// </summary>
+        /// <param name="s">An array of boolean values, where each value represents a bit.</param>
+        /// <returns>A byte where the array of boolean values has been converted into its byte representation.</returns>
         public static byte ToByte(this bool[] s) {
             if (null == s)
                 s = Enumerable.Repeat(false, sizeof(byte)).ToArray();

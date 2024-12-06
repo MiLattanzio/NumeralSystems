@@ -1,0 +1,2742 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Type.Base.Short
+  commentId: T:NumeralSystems.Net.Type.Base.Short
+  id: Short
+  parent: NumeralSystems.Net.Type.Base
+  children:
+  - NumeralSystems.Net.Type.Base.Short.And(NumeralSystems.Net.Type.Base.Short)
+  - NumeralSystems.Net.Type.Base.Short.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  - NumeralSystems.Net.Type.Base.Short.Binary
+  - NumeralSystems.Net.Type.Base.Short.BitLength
+  - NumeralSystems.Net.Type.Base.Short.Bytes
+  - NumeralSystems.Net.Type.Base.Short.FromBinary(System.Boolean[])
+  - NumeralSystems.Net.Type.Base.Short.Incomplete
+  - NumeralSystems.Net.Type.Base.Short.Item(System.Int32)
+  - NumeralSystems.Net.Type.Base.Short.Nand(NumeralSystems.Net.Type.Base.Short)
+  - NumeralSystems.Net.Type.Base.Short.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  - NumeralSystems.Net.Type.Base.Short.Not
+  - NumeralSystems.Net.Type.Base.Short.Or(NumeralSystems.Net.Type.Base.Short)
+  - NumeralSystems.Net.Type.Base.Short.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  - NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  - NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  - NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  - NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  - NumeralSystems.Net.Type.Base.Short.ToString
+  - NumeralSystems.Net.Type.Base.Short.ToString(System.String)
+  - NumeralSystems.Net.Type.Base.Short.Value
+  - NumeralSystems.Net.Type.Base.Short.Xor(NumeralSystems.Net.Type.Base.Short)
+  - NumeralSystems.Net.Type.Base.Short.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  langs:
+  - csharp
+  - vb
+  name: Short
+  nameWithType: Short
+  fullName: NumeralSystems.Net.Type.Base.Short
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Short
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 11
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Represents a 16-bit signed integer with various binary operations.
+  example: []
+  syntax:
+    content: 'public sealed class Short : IRegularOperable<IncompleteShort, Short, short, uint>, IIncompletable<IncompleteShort, Short, short, uint>, INumeralValue<short>, IRegularReversible<IncompleteShort, Short, short, uint>'
+    content.vb: Public NotInheritable Class [Short] Implements IRegularOperable(Of IncompleteShort, Short, Short, UInteger), IIncompletable(Of IncompleteShort, Short, Short, UInteger), INumeralValue(Of Short), IRegularReversible(Of IncompleteShort, Short, Short, UInteger)
+  inheritance:
+  - System.Object
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  - NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  - NumeralSystems.Net.Interface.INumeralValue{System.Int16}
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: NumeralSystems.Net.Type.Base.Short.FromBinary(System.Boolean[])
+  commentId: M:NumeralSystems.Net.Type.Base.Short.FromBinary(System.Boolean[])
+  id: FromBinary(System.Boolean[])
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: FromBinary(bool[])
+  nameWithType: Short.FromBinary(bool[])
+  fullName: NumeralSystems.Net.Type.Base.Short.FromBinary(bool[])
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: FromBinary
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 18
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Creates a Short instance from a binary array.
+  example: []
+  syntax:
+    content: public static Short FromBinary(bool[] binary)
+    parameters:
+    - id: binary
+      type: System.Boolean[]
+      description: The binary array representing the short value.
+    return:
+      type: NumeralSystems.Net.Type.Base.Short
+      description: A new Short instance.
+    content.vb: Public Shared Function FromBinary(binary As Boolean()) As [Short]
+  overload: NumeralSystems.Net.Type.Base.Short.FromBinary*
+  nameWithType.vb: Short.FromBinary(Boolean())
+  fullName.vb: NumeralSystems.Net.Type.Base.Short.FromBinary(Boolean())
+  name.vb: FromBinary(Boolean())
+- uid: NumeralSystems.Net.Type.Base.Short.Value
+  commentId: P:NumeralSystems.Net.Type.Base.Short.Value
+  id: Value
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: Short.Value
+  fullName: NumeralSystems.Net.Type.Base.Short.Value
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Value
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 26
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets or sets the short value.
+  example: []
+  syntax:
+    content: public short Value { get; set; }
+    parameters: []
+    return:
+      type: System.Int16
+    content.vb: Public Property Value As Short
+  overload: NumeralSystems.Net.Type.Base.Short.Value*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Value
+- uid: NumeralSystems.Net.Type.Base.Short.Bytes
+  commentId: P:NumeralSystems.Net.Type.Base.Short.Bytes
+  id: Bytes
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Bytes
+  nameWithType: Short.Bytes
+  fullName: NumeralSystems.Net.Type.Base.Short.Bytes
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Bytes
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 31
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets or sets the byte representation of the short value.
+  example: []
+  syntax:
+    content: public byte[] Bytes { get; set; }
+    parameters: []
+    return:
+      type: System.Byte[]
+    content.vb: Public Property Bytes As Byte()
+  overload: NumeralSystems.Net.Type.Base.Short.Bytes*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Bytes
+- uid: NumeralSystems.Net.Type.Base.Short.BitLength
+  commentId: P:NumeralSystems.Net.Type.Base.Short.BitLength
+  id: BitLength
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: BitLength
+  nameWithType: Short.BitLength
+  fullName: NumeralSystems.Net.Type.Base.Short.BitLength
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: BitLength
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 40
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets the bit length of the short value.
+  example: []
+  syntax:
+    content: public int BitLength { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property BitLength As Integer
+  overload: NumeralSystems.Net.Type.Base.Short.BitLength*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Int16}.BitLength
+- uid: NumeralSystems.Net.Type.Base.Short.Binary
+  commentId: P:NumeralSystems.Net.Type.Base.Short.Binary
+  id: Binary
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Binary
+  nameWithType: Short.Binary
+  fullName: NumeralSystems.Net.Type.Base.Short.Binary
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Binary
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 45
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets or sets the binary representation of the short value.
+  example: []
+  syntax:
+    content: public bool[] Binary { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean[]
+    content.vb: Public Property Binary As Boolean()
+  overload: NumeralSystems.Net.Type.Base.Short.Binary*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Binary
+- uid: NumeralSystems.Net.Type.Base.Short.Item(System.Int32)
+  commentId: P:NumeralSystems.Net.Type.Base.Short.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: this[int]
+  nameWithType: Short.this[int]
+  fullName: NumeralSystems.Net.Type.Base.Short.this[int]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 56
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets or sets the binary value at the specified index.
+  example: []
+  syntax:
+    content: public bool this[int index] { get; set; }
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The index of the binary value.
+    return:
+      type: System.Boolean
+      description: The binary value at the specified index.
+    content.vb: Public Default Property this[](index As Integer) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Short.Item*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Item(System.Int32)
+  nameWithType.vb: Short.this[](Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.Short.this[](Integer)
+  name.vb: this[](Integer)
+- uid: NumeralSystems.Net.Type.Base.Short.ToString(System.String)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.ToString(System.String)
+  id: ToString(System.String)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: ToString(string)
+  nameWithType: Short.ToString(string)
+  fullName: NumeralSystems.Net.Type.Base.Short.ToString(string)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToString
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 71
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts the Short to a string using the specified format.
+  example: []
+  syntax:
+    content: public string ToString(string format)
+    parameters:
+    - id: format
+      type: System.String
+      description: The format string.
+    return:
+      type: System.String
+      description: The formatted string representation of the Short.
+    content.vb: Public Function ToString(format As String) As String
+  overload: NumeralSystems.Net.Type.Base.Short.ToString*
+  implements:
+  - NumeralSystems.Net.Interface.INumeralValue{System.Int16}.ToString(System.String)
+  nameWithType.vb: Short.ToString(String)
+  fullName.vb: NumeralSystems.Net.Type.Base.Short.ToString(String)
+  name.vb: ToString(String)
+- uid: NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  id: ReverseAnd(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: ReverseAnd(Short, out IncompleteShort)
+  nameWithType: Short.ReverseAnd(Short, out IncompleteShort)
+  fullName: NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Base.Short, out NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseAnd
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 90
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a reverse AND operation with another Short and returns the result as an IncompleteShort.
+  example: []
+  syntax:
+    content: public bool ReverseAnd(Short right, out IncompleteShort result)
+    parameters:
+    - id: right
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The Short to perform the operation with.
+    - id: result
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The result of the operation.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful, otherwise false.
+    content.vb: Public Function ReverseAnd(right As [Short], result As IncompleteShort) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Short.ReverseAnd*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  nameWithType.vb: Short.ReverseAnd(Short, IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Base.Short, NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  name.vb: ReverseAnd(Short, IncompleteShort)
+- uid: NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  id: ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: ReverseAnd(IncompleteShort, out IncompleteShort)
+  nameWithType: Short.ReverseAnd(IncompleteShort, out IncompleteShort)
+  fullName: NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort, out NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseAnd
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 110
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a reverse AND operation with an IncompleteShort and returns the result as an IncompleteShort.
+  example: []
+  syntax:
+    content: public bool ReverseAnd(IncompleteShort right, out IncompleteShort result)
+    parameters:
+    - id: right
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The IncompleteShort to perform the operation with.
+    - id: result
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The result of the operation.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful, otherwise false.
+    content.vb: Public Function ReverseAnd(right As IncompleteShort, result As IncompleteShort) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Short.ReverseAnd*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  nameWithType.vb: Short.ReverseAnd(IncompleteShort, IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Type.Base.Short.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  name.vb: ReverseAnd(IncompleteShort, IncompleteShort)
+- uid: NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  id: ReverseOr(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: ReverseOr(Short, out IncompleteShort)
+  nameWithType: Short.ReverseOr(Short, out IncompleteShort)
+  fullName: NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Base.Short, out NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseOr
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 130
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a reverse OR operation with another Short and returns the result as an IncompleteShort.
+  example: []
+  syntax:
+    content: public bool ReverseOr(Short right, out IncompleteShort result)
+    parameters:
+    - id: right
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The Short to perform the operation with.
+    - id: result
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The result of the operation.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful, otherwise false.
+    content.vb: Public Function ReverseOr(right As [Short], result As IncompleteShort) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Short.ReverseOr*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  nameWithType.vb: Short.ReverseOr(Short, IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Base.Short, NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  name.vb: ReverseOr(Short, IncompleteShort)
+- uid: NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  id: ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: ReverseOr(IncompleteShort, out IncompleteShort)
+  nameWithType: Short.ReverseOr(IncompleteShort, out IncompleteShort)
+  fullName: NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort, out NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseOr
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 150
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a reverse OR operation with an IncompleteShort and returns the result as an IncompleteShort.
+  example: []
+  syntax:
+    content: public bool ReverseOr(IncompleteShort right, out IncompleteShort result)
+    parameters:
+    - id: right
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The IncompleteShort to perform the operation with.
+    - id: result
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The result of the operation.
+    return:
+      type: System.Boolean
+      description: True if the operation was successful, otherwise false.
+    content.vb: Public Function ReverseOr(right As IncompleteShort, result As IncompleteShort) As Boolean
+  overload: NumeralSystems.Net.Type.Base.Short.ReverseOr*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  nameWithType.vb: Short.ReverseOr(IncompleteShort, IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Type.Base.Short.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  name.vb: ReverseOr(IncompleteShort, IncompleteShort)
+- uid: NumeralSystems.Net.Type.Base.Short.ToString
+  commentId: M:NumeralSystems.Net.Type.Base.Short.ToString
+  id: ToString
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: Short.ToString()
+  fullName: NumeralSystems.Net.Type.Base.Short.ToString()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToString
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 168
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Returns the string representation of the Short value.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: The string representation of the Short value.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: NumeralSystems.Net.Type.Base.Short.ToString*
+- uid: NumeralSystems.Net.Type.Base.Short.Not
+  commentId: M:NumeralSystems.Net.Type.Base.Short.Not
+  id: Not
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Not()
+  nameWithType: Short.Not()
+  fullName: NumeralSystems.Net.Type.Base.Short.Not()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Not
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 174
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a NOT operation on the Short and returns the result.
+  example: []
+  syntax:
+    content: public Short Not()
+    return:
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The result of the NOT operation.
+    content.vb: Public Function [Not]() As [Short]
+  overload: NumeralSystems.Net.Type.Base.Short.Not*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Not
+- uid: NumeralSystems.Net.Type.Base.Short.Xor(NumeralSystems.Net.Type.Base.Short)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.Xor(NumeralSystems.Net.Type.Base.Short)
+  id: Xor(NumeralSystems.Net.Type.Base.Short)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Xor(Short)
+  nameWithType: Short.Xor(Short)
+  fullName: NumeralSystems.Net.Type.Base.Short.Xor(NumeralSystems.Net.Type.Base.Short)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Xor
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 184
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an XOR operation with another Short and returns the result.
+  example: []
+  syntax:
+    content: public Short Xor(Short value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The Short to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The result of the XOR operation.
+    content.vb: Public Function [Xor](value As [Short]) As [Short]
+  overload: NumeralSystems.Net.Type.Base.Short.Xor*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Short)
+- uid: NumeralSystems.Net.Type.Base.Short.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  id: Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Xor(IncompleteShort)
+  nameWithType: Short.Xor(IncompleteShort)
+  fullName: NumeralSystems.Net.Type.Base.Short.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Xor
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 194
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an XOR operation with an IncompleteShort and returns the result.
+  example: []
+  syntax:
+    content: public IncompleteShort Xor(IncompleteShort value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The IncompleteShort to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The result of the XOR operation.
+    content.vb: Public Function [Xor](value As IncompleteShort) As IncompleteShort
+  overload: NumeralSystems.Net.Type.Base.Short.Xor*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+- uid: NumeralSystems.Net.Type.Base.Short.And(NumeralSystems.Net.Type.Base.Short)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.And(NumeralSystems.Net.Type.Base.Short)
+  id: And(NumeralSystems.Net.Type.Base.Short)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: And(Short)
+  nameWithType: Short.And(Short)
+  fullName: NumeralSystems.Net.Type.Base.Short.And(NumeralSystems.Net.Type.Base.Short)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: And
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 204
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an AND operation with another Short and returns the result.
+  example: []
+  syntax:
+    content: public Short And(Short value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The Short to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The result of the AND operation.
+    content.vb: Public Function [And](value As [Short]) As [Short]
+  overload: NumeralSystems.Net.Type.Base.Short.And*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Base.Short)
+- uid: NumeralSystems.Net.Type.Base.Short.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  id: And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: And(IncompleteShort)
+  nameWithType: Short.And(IncompleteShort)
+  fullName: NumeralSystems.Net.Type.Base.Short.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: And
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 214
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an AND operation with an IncompleteShort and returns the result.
+  example: []
+  syntax:
+    content: public IncompleteShort And(IncompleteShort value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The IncompleteShort to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The result of the AND operation.
+    content.vb: Public Function [And](value As IncompleteShort) As IncompleteShort
+  overload: NumeralSystems.Net.Type.Base.Short.And*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+- uid: NumeralSystems.Net.Type.Base.Short.Or(NumeralSystems.Net.Type.Base.Short)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.Or(NumeralSystems.Net.Type.Base.Short)
+  id: Or(NumeralSystems.Net.Type.Base.Short)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Or(Short)
+  nameWithType: Short.Or(Short)
+  fullName: NumeralSystems.Net.Type.Base.Short.Or(NumeralSystems.Net.Type.Base.Short)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Or
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 224
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an OR operation with another Short and returns the result.
+  example: []
+  syntax:
+    content: public Short Or(Short value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The Short to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The result of the OR operation.
+    content.vb: Public Function [Or](value As [Short]) As [Short]
+  overload: NumeralSystems.Net.Type.Base.Short.Or*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Short)
+- uid: NumeralSystems.Net.Type.Base.Short.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  id: Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Or(IncompleteShort)
+  nameWithType: Short.Or(IncompleteShort)
+  fullName: NumeralSystems.Net.Type.Base.Short.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Or
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 234
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs an OR operation with an IncompleteShort and returns the result.
+  example: []
+  syntax:
+    content: public IncompleteShort Or(IncompleteShort value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The IncompleteShort to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The result of the OR operation.
+    content.vb: Public Function [Or](value As IncompleteShort) As IncompleteShort
+  overload: NumeralSystems.Net.Type.Base.Short.Or*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+- uid: NumeralSystems.Net.Type.Base.Short.Nand(NumeralSystems.Net.Type.Base.Short)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.Nand(NumeralSystems.Net.Type.Base.Short)
+  id: Nand(NumeralSystems.Net.Type.Base.Short)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Nand(Short)
+  nameWithType: Short.Nand(Short)
+  fullName: NumeralSystems.Net.Type.Base.Short.Nand(NumeralSystems.Net.Type.Base.Short)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Nand
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 244
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a NAND operation with another Short and returns the result.
+  example: []
+  syntax:
+    content: public Short Nand(Short value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The Short to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Base.Short
+      description: The result of the NAND operation.
+    content.vb: Public Function Nand(value As [Short]) As [Short]
+  overload: NumeralSystems.Net.Type.Base.Short.Nand*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Short)
+- uid: NumeralSystems.Net.Type.Base.Short.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  commentId: M:NumeralSystems.Net.Type.Base.Short.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  id: Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Nand(IncompleteShort)
+  nameWithType: Short.Nand(IncompleteShort)
+  fullName: NumeralSystems.Net.Type.Base.Short.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Nand
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 254
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Performs a NAND operation with an IncompleteShort and returns the result.
+  example: []
+  syntax:
+    content: public IncompleteShort Nand(IncompleteShort value)
+    parameters:
+    - id: value
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The IncompleteShort to perform the operation with.
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The result of the NAND operation.
+    content.vb: Public Function Nand(value As IncompleteShort) As IncompleteShort
+  overload: NumeralSystems.Net.Type.Base.Short.Nand*
+  implements:
+  - NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+- uid: NumeralSystems.Net.Type.Base.Short.Incomplete
+  commentId: M:NumeralSystems.Net.Type.Base.Short.Incomplete
+  id: Incomplete
+  parent: NumeralSystems.Net.Type.Base.Short
+  langs:
+  - csharp
+  - vb
+  name: Incomplete()
+  nameWithType: Short.Incomplete()
+  fullName: NumeralSystems.Net.Type.Base.Short.Incomplete()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/Short.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Incomplete
+    path: NumeralSystems.Net/Type/Base/Short.cs
+    startLine: 263
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts the Short to an IncompleteShort.
+  example: []
+  syntax:
+    content: public IncompleteShort Incomplete()
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+      description: The IncompleteShort representation of the Short.
+    content.vb: Public Function Incomplete() As IncompleteShort
+  overload: NumeralSystems.Net.Type.Base.Short.Incomplete*
+  implements:
+  - NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Incomplete
+references:
+- uid: NumeralSystems.Net.Type.Base
+  commentId: N:NumeralSystems.Net.Type.Base
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Type.Base
+  nameWithType: NumeralSystems.Net.Type.Base
+  fullName: NumeralSystems.Net.Type.Base
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  commentId: T:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  parent: NumeralSystems.Net.Interface
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  name: IRegularOperable<IncompleteShort, Short, short, uint>
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger)
+  name.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: <
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - uid: System.Int16
+    name: short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - uid: System.Int16
+    name: Short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  commentId: T:NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  parent: NumeralSystems.Net.Interface
+  definition: NumeralSystems.Net.Interface.IIncompletable`4
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  name: IIncompletable<IncompleteShort, Short, short, uint>
+  nameWithType: IIncompletable<IncompleteShort, Short, short, uint>
+  fullName: NumeralSystems.Net.Interface.IIncompletable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>
+  nameWithType.vb: IIncompletable(Of IncompleteShort, Short, Short, UInteger)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger)
+  name.vb: IIncompletable(Of IncompleteShort, Short, Short, UInteger)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: <
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - uid: System.Int16
+    name: short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - uid: System.Int16
+    name: Short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}
+  commentId: T:NumeralSystems.Net.Interface.INumeralValue{System.Int16}
+  parent: NumeralSystems.Net.Interface
+  definition: NumeralSystems.Net.Interface.INumeralValue`1
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  name: INumeralValue<short>
+  nameWithType: INumeralValue<short>
+  fullName: NumeralSystems.Net.Interface.INumeralValue<short>
+  nameWithType.vb: INumeralValue(Of Short)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Short)
+  name.vb: INumeralValue(Of Short)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: <
+  - uid: System.Int16
+    name: short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int16
+    name: Short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  commentId: T:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  parent: NumeralSystems.Net.Interface
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  name: IRegularReversible<IncompleteShort, Short, short, uint>
+  nameWithType: IRegularReversible<IncompleteShort, Short, short, uint>
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>
+  nameWithType.vb: IRegularReversible(Of IncompleteShort, Short, Short, UInteger)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger)
+  name.vb: IRegularReversible(Of IncompleteShort, Short, Short, UInteger)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: <
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - uid: System.Int16
+    name: short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - uid: System.Int16
+    name: Short
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int16
+  - name: ','
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4
+  commentId: T:NumeralSystems.Net.Interface.IRegularOperable`4
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  name: IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  name.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4
+    name: IRegularOperable
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Interface
+  commentId: N:NumeralSystems.Net.Interface
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Interface
+  nameWithType: NumeralSystems.Net.Interface
+  fullName: NumeralSystems.Net.Interface
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+- uid: NumeralSystems.Net.Interface.IIncompletable`4
+  commentId: T:NumeralSystems.Net.Interface.IIncompletable`4
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  name: IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType: IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IIncompletable<TIncomplete, TValue, TType, TIndexer>
+  nameWithType.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  name.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4
+    name: IIncompletable
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TType
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Interface.INumeralValue`1
+  commentId: T:NumeralSystems.Net.Interface.INumeralValue`1
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  name: INumeralValue<TValue>
+  nameWithType: INumeralValue<TValue>
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>
+  nameWithType.vb: INumeralValue(Of TValue)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue)
+  name.vb: INumeralValue(Of TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1
+    name: INumeralValue
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4
+  commentId: T:NumeralSystems.Net.Interface.IRegularReversible`4
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  name: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer)
+  name.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: <
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: '>'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4
+    name: IRegularReversible
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: ','
+  - name: " "
+  - name: TIndexer
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.FromBinary*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.FromBinary
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_FromBinary_System_Boolean___
+  name: FromBinary
+  nameWithType: Short.FromBinary
+  fullName: NumeralSystems.Net.Type.Base.Short.FromBinary
+- uid: System.Boolean[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool[]
+  nameWithType: bool[]
+  fullName: bool[]
+  nameWithType.vb: Boolean()
+  fullName.vb: Boolean()
+  name.vb: Boolean()
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short
+  commentId: T:NumeralSystems.Net.Type.Base.Short
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Short.html
+  name: Short
+  nameWithType: Short
+  fullName: NumeralSystems.Net.Type.Base.Short
+- uid: NumeralSystems.Net.Type.Base.Short.Value*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.Value
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_Value
+  name: Value
+  nameWithType: Short.Value
+  fullName: NumeralSystems.Net.Type.Base.Short.Value
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Value
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Value
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Int16}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.Value
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Value
+  name: Value
+  nameWithType: INumeralValue<short>.Value
+  fullName: NumeralSystems.Net.Interface.INumeralValue<short>.Value
+  nameWithType.vb: INumeralValue(Of Short).Value
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Short).Value
+- uid: System.Int16
+  commentId: T:System.Int16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int16
+  name: short
+  nameWithType: short
+  fullName: short
+  nameWithType.vb: Short
+  fullName.vb: Short
+  name.vb: Short
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.Value
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.Value
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Value
+  name: Value
+  nameWithType: INumeralValue<TValue>.Value
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.Value
+  nameWithType.vb: INumeralValue(Of TValue).Value
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).Value
+- uid: NumeralSystems.Net.Type.Base.Short.Bytes*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.Bytes
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_Bytes
+  name: Bytes
+  nameWithType: Short.Bytes
+  fullName: NumeralSystems.Net.Type.Base.Short.Bytes
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Bytes
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Bytes
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Int16}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.Bytes
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Bytes
+  name: Bytes
+  nameWithType: INumeralValue<short>.Bytes
+  fullName: NumeralSystems.Net.Interface.INumeralValue<short>.Bytes
+  nameWithType.vb: INumeralValue(Of Short).Bytes
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Short).Bytes
+- uid: System.Byte[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte[]
+  nameWithType: byte[]
+  fullName: byte[]
+  nameWithType.vb: Byte()
+  fullName.vb: Byte()
+  name.vb: Byte()
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.Bytes
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.Bytes
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Bytes
+  name: Bytes
+  nameWithType: INumeralValue<TValue>.Bytes
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.Bytes
+  nameWithType.vb: INumeralValue(Of TValue).Bytes
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).Bytes
+- uid: NumeralSystems.Net.Type.Base.Short.BitLength*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.BitLength
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_BitLength
+  name: BitLength
+  nameWithType: Short.BitLength
+  fullName: NumeralSystems.Net.Type.Base.Short.BitLength
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}.BitLength
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Int16}.BitLength
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Int16}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.BitLength
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_BitLength
+  name: BitLength
+  nameWithType: INumeralValue<short>.BitLength
+  fullName: NumeralSystems.Net.Interface.INumeralValue<short>.BitLength
+  nameWithType.vb: INumeralValue(Of Short).BitLength
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Short).BitLength
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.BitLength
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.BitLength
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_BitLength
+  name: BitLength
+  nameWithType: INumeralValue<TValue>.BitLength
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.BitLength
+  nameWithType.vb: INumeralValue(Of TValue).BitLength
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).BitLength
+- uid: NumeralSystems.Net.Type.Base.Short.Binary*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.Binary
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_Binary
+  name: Binary
+  nameWithType: Short.Binary
+  fullName: NumeralSystems.Net.Type.Base.Short.Binary
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Binary
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Binary
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Int16}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.Binary
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Binary
+  name: Binary
+  nameWithType: INumeralValue<short>.Binary
+  fullName: NumeralSystems.Net.Interface.INumeralValue<short>.Binary
+  nameWithType.vb: INumeralValue(Of Short).Binary
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Short).Binary
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.Binary
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.Binary
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Binary
+  name: Binary
+  nameWithType: INumeralValue<TValue>.Binary
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.Binary
+  nameWithType.vb: INumeralValue(Of TValue).Binary
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).Binary
+- uid: NumeralSystems.Net.Type.Base.Short.Item*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.Item
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_Item_System_Int32_
+  name: this
+  nameWithType: Short.this
+  fullName: NumeralSystems.Net.Type.Base.Short.this
+  nameWithType.vb: Short.this[]
+  fullName.vb: NumeralSystems.Net.Type.Base.Short.this[]
+  name.vb: this[]
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Item(System.Int32)
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Item(System.Int32)
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Int16}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.Item(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: this[int]
+  nameWithType: INumeralValue<short>.this[int]
+  fullName: NumeralSystems.Net.Interface.INumeralValue<short>.this[int]
+  nameWithType.vb: INumeralValue(Of Short).this[](Integer)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Short).this[](Integer)
+  name.vb: this[](Integer)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ']'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}.Item(System.Int32)
+    name: this[]
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Item_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.Item(System.Int32)
+  commentId: P:NumeralSystems.Net.Interface.INumeralValue`1.Item(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: this[int]
+  nameWithType: INumeralValue<TValue>.this[int]
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.this[int]
+  nameWithType.vb: INumeralValue(Of TValue).this[](Integer)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).this[](Integer)
+  name.vb: this[](Integer)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ']'
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1.Item(System.Int32)
+    name: this[]
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_Item_System_Int32_
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.ToString*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.ToString
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_ToString_System_String_
+  name: ToString
+  nameWithType: Short.ToString
+  fullName: NumeralSystems.Net.Type.Base.Short.ToString
+- uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}.ToString(System.String)
+  commentId: M:NumeralSystems.Net.Interface.INumeralValue{System.Int16}.ToString(System.String)
+  parent: NumeralSystems.Net.Interface.INumeralValue{System.Int16}
+  definition: NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  name: ToString(string)
+  nameWithType: INumeralValue<short>.ToString(string)
+  fullName: NumeralSystems.Net.Interface.INumeralValue<short>.ToString(string)
+  nameWithType.vb: INumeralValue(Of Short).ToString(String)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of Short).ToString(String)
+  name.vb: ToString(String)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}.ToString(System.String)
+    name: ToString
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue{System.Int16}.ToString(System.String)
+    name: ToString
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+  commentId: M:NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+  isExternal: true
+  href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  name: ToString(string)
+  nameWithType: INumeralValue<TValue>.ToString(string)
+  fullName: NumeralSystems.Net.Interface.INumeralValue<TValue>.ToString(string)
+  nameWithType.vb: INumeralValue(Of TValue).ToString(String)
+  fullName.vb: NumeralSystems.Net.Interface.INumeralValue(Of TValue).ToString(String)
+  name.vb: ToString(String)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+    name: ToString
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  - name: (
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.INumeralValue`1.ToString(System.String)
+    name: ToString
+    href: NumeralSystems.Net.Interface.INumeralValue-1.html#NumeralSystems_Net_Interface_INumeralValue_1_ToString_System_String_
+  - name: (
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.ReverseAnd*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.ReverseAnd
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_ReverseAnd_NumeralSystems_Net_Type_Base_Short_NumeralSystems_Net_Type_Incomplete_IncompleteShort__
+  name: ReverseAnd
+  nameWithType: Short.ReverseAnd
+  fullName: NumeralSystems.Net.Type.Base.Short.ReverseAnd
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  parent: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  name: ReverseAnd(Short, out IncompleteShort)
+  nameWithType: IRegularReversible<IncompleteShort, Short, short, uint>.ReverseAnd(Short, out IncompleteShort)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.ReverseAnd(NumeralSystems.Net.Type.Base.Short, out NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  nameWithType.vb: IRegularReversible(Of IncompleteShort, Short, Short, UInteger).ReverseAnd(Short, IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).ReverseAnd(NumeralSystems.Net.Type.Base.Short, NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  name.vb: ReverseAnd(Short, IncompleteShort)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+  commentId: T:NumeralSystems.Net.Type.Incomplete.IncompleteShort
+  parent: NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  name: IncompleteShort
+  nameWithType: IncompleteShort
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  name: ReverseAnd(TNumaralValue, out TIncomplete)
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseAnd(TNumaralValue, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseAnd(TNumaralValue, out TIncomplete)
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseAnd(TNumaralValue, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseAnd(TNumaralValue, TIncomplete)
+  name.vb: ReverseAnd(TNumaralValue, TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  - name: (
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`1,`0@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__1__0__
+  - name: (
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Incomplete
+  commentId: N:NumeralSystems.Net.Type.Incomplete
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Type.Incomplete
+  nameWithType: NumeralSystems.Net.Type.Incomplete
+  fullName: NumeralSystems.Net.Type.Incomplete
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Type.Incomplete.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Type.Incomplete.html
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  parent: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  name: ReverseAnd(IncompleteShort, out IncompleteShort)
+  nameWithType: IRegularReversible<IncompleteShort, Short, short, uint>.ReverseAnd(IncompleteShort, out IncompleteShort)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort, out NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  nameWithType.vb: IRegularReversible(Of IncompleteShort, Short, Short, UInteger).ReverseAnd(IncompleteShort, IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  name.vb: ReverseAnd(IncompleteShort, IncompleteShort)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseAnd(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  name: ReverseAnd(TIncomplete, out TIncomplete)
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseAnd(TIncomplete, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseAnd(TIncomplete, out TIncomplete)
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseAnd(TIncomplete, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseAnd(TIncomplete, TIncomplete)
+  name.vb: ReverseAnd(TIncomplete, TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  - name: (
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseAnd(`0,`0@)
+    name: ReverseAnd
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseAnd__0__0__
+  - name: (
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.ReverseOr*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.ReverseOr
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_ReverseOr_NumeralSystems_Net_Type_Base_Short_NumeralSystems_Net_Type_Incomplete_IncompleteShort__
+  name: ReverseOr
+  nameWithType: Short.ReverseOr
+  fullName: NumeralSystems.Net.Type.Base.Short.ReverseOr
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  parent: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  name: ReverseOr(Short, out IncompleteShort)
+  nameWithType: IRegularReversible<IncompleteShort, Short, short, uint>.ReverseOr(Short, out IncompleteShort)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.ReverseOr(NumeralSystems.Net.Type.Base.Short, out NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  nameWithType.vb: IRegularReversible(Of IncompleteShort, Short, Short, UInteger).ReverseOr(Short, IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).ReverseOr(NumeralSystems.Net.Type.Base.Short, NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  name.vb: ReverseOr(Short, IncompleteShort)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Base.Short,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  name: ReverseOr(TNumaralValue, out TIncomplete)
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseOr(TNumaralValue, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseOr(TNumaralValue, out TIncomplete)
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseOr(TNumaralValue, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseOr(TNumaralValue, TIncomplete)
+  name.vb: ReverseOr(TNumaralValue, TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  - name: (
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`1,`0@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__1__0__
+  - name: (
+  - name: TNumaralValue
+  - name: ','
+  - name: " "
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+  parent: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  name: ReverseOr(IncompleteShort, out IncompleteShort)
+  nameWithType: IRegularReversible<IncompleteShort, Short, short, uint>.ReverseOr(IncompleteShort, out IncompleteShort)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort, out NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  nameWithType.vb: IRegularReversible(Of IncompleteShort, Short, Short, UInteger).ReverseOr(IncompleteShort, IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  name.vb: ReverseOr(IncompleteShort, IncompleteShort)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.ReverseOr(NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Incomplete.IncompleteShort@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+  href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  name: ReverseOr(TIncomplete, out TIncomplete)
+  nameWithType: IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseOr(TIncomplete, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularReversible<TIncomplete, TNumaralValue, TValue, TIndexer>.ReverseOr(TIncomplete, out TIncomplete)
+  nameWithType.vb: IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseOr(TIncomplete, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularReversible(Of TIncomplete, TNumaralValue, TValue, TIndexer).ReverseOr(TIncomplete, TIncomplete)
+  name.vb: ReverseOr(TIncomplete, TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  - name: (
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: out
+  - name: " "
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularReversible`4.ReverseOr(`0,`0@)
+    name: ReverseOr
+    href: NumeralSystems.Net.Interface.IRegularReversible-4.html#NumeralSystems_Net_Interface_IRegularReversible_4_ReverseOr__0__0__
+  - name: (
+  - name: TIncomplete
+  - name: ','
+  - name: " "
+  - name: TIncomplete
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.Not*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.Not
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_Not
+  name: Not
+  nameWithType: Short.Not
+  fullName: NumeralSystems.Net.Type.Base.Short.Not
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Not
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Not
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Not
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  name: Not()
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>.Not()
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.Not()
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger).Not()
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).Not()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Not
+    name: Not
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Not
+    name: Not
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Not
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Not
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  name: Not()
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Not()
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Not()
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Not()
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Not()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Not
+    name: Not
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Not
+    name: Not
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Not
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.Xor*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.Xor
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_Xor_NumeralSystems_Net_Type_Base_Short_
+  name: Xor
+  nameWithType: Short.Xor
+  fullName: NumeralSystems.Net.Type.Base.Short.Xor
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Short)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Short)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  name: Xor(Short)
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>.Xor(Short)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.Xor(NumeralSystems.Net.Type.Base.Short)
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger).Xor(Short)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).Xor(NumeralSystems.Net.Type.Base.Short)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Short)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Base.Short)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  name: Xor(TValue)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Xor(TValue)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Xor(TValue)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Xor(TValue)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Xor(TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`1)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__1_
+  - name: (
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  name: Xor(IncompleteShort)
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>.Xor(IncompleteShort)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger).Xor(IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Xor(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  name: Xor(TIncomplete)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Xor(TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Xor(TIncomplete)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Xor(TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Xor(TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Xor(`0)
+    name: Xor
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Xor__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.And*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.And
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_And_NumeralSystems_Net_Type_Base_Short_
+  name: And
+  nameWithType: Short.And
+  fullName: NumeralSystems.Net.Type.Base.Short.And
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Base.Short)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Base.Short)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  name: And(Short)
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>.And(Short)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.And(NumeralSystems.Net.Type.Base.Short)
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger).And(Short)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).And(NumeralSystems.Net.Type.Base.Short)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Base.Short)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Base.Short)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  name: And(TValue)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.And(TValue)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.And(TValue)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).And(TValue)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).And(TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`1)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__1_
+  - name: (
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  name: And(IncompleteShort)
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>.And(IncompleteShort)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger).And(IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.And(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  name: And(TIncomplete)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.And(TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.And(TIncomplete)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).And(TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).And(TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.And(`0)
+    name: And
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_And__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.Or*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.Or
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_Or_NumeralSystems_Net_Type_Base_Short_
+  name: Or
+  nameWithType: Short.Or
+  fullName: NumeralSystems.Net.Type.Base.Short.Or
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Short)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Short)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  name: Or(Short)
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>.Or(Short)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.Or(NumeralSystems.Net.Type.Base.Short)
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger).Or(Short)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).Or(NumeralSystems.Net.Type.Base.Short)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Short)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Base.Short)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  name: Or(TValue)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Or(TValue)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Or(TValue)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Or(TValue)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Or(TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`1)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__1_
+  - name: (
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  name: Or(IncompleteShort)
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>.Or(IncompleteShort)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger).Or(IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Or(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  name: Or(TIncomplete)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Or(TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Or(TIncomplete)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Or(TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Or(TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Or(`0)
+    name: Or
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Or__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.Nand*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.Nand
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_Nand_NumeralSystems_Net_Type_Base_Short_
+  name: Nand
+  nameWithType: Short.Nand
+  fullName: NumeralSystems.Net.Type.Base.Short.Nand
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Short)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Short)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  name: Nand(Short)
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>.Nand(Short)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.Nand(NumeralSystems.Net.Type.Base.Short)
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger).Nand(Short)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).Nand(NumeralSystems.Net.Type.Base.Short)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Short)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Base.Short)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Short
+    name: Short
+    href: NumeralSystems.Net.Type.Base.Short.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  name: Nand(TValue)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Nand(TValue)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Nand(TValue)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Nand(TValue)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Nand(TValue)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  - name: (
+  - name: TValue
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`1)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__1_
+  - name: (
+  - name: TValue
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  parent: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  name: Nand(IncompleteShort)
+  nameWithType: IRegularOperable<IncompleteShort, Short, short, uint>.Nand(IncompleteShort)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  nameWithType.vb: IRegularOperable(Of IncompleteShort, Short, Short, UInteger).Nand(IncompleteShort)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Nand(NumeralSystems.Net.Type.Incomplete.IncompleteShort)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  - name: (
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteShort
+    name: IncompleteShort
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteShort.html
+  - name: )
+- uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+  commentId: M:NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+  href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  name: Nand(TIncomplete)
+  nameWithType: IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Nand(TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRegularOperable<TIncomplete, TValue, TType, TIndexer>.Nand(TIncomplete)
+  nameWithType.vb: IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Nand(TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRegularOperable(Of TIncomplete, TValue, TType, TIndexer).Nand(TIncomplete)
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IRegularOperable`4.Nand(`0)
+    name: Nand
+    href: NumeralSystems.Net.Interface.IRegularOperable-4.html#NumeralSystems_Net_Interface_IRegularOperable_4_Nand__0_
+  - name: (
+  - name: TIncomplete
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Short.Incomplete*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Short.Incomplete
+  href: NumeralSystems.Net.Type.Base.Short.html#NumeralSystems_Net_Type_Base_Short_Incomplete
+  name: Incomplete
+  nameWithType: Short.Incomplete
+  fullName: NumeralSystems.Net.Type.Base.Short.Incomplete
+- uid: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Incomplete
+  commentId: M:NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Incomplete
+  parent: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}
+  definition: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  name: Incomplete()
+  nameWithType: IIncompletable<IncompleteShort, Short, short, uint>.Incomplete()
+  fullName: NumeralSystems.Net.Interface.IIncompletable<NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, short, uint>.Incomplete()
+  nameWithType.vb: IIncompletable(Of IncompleteShort, Short, Short, UInteger).Incomplete()
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of NumeralSystems.Net.Type.Incomplete.IncompleteShort, NumeralSystems.Net.Type.Base.Short, Short, UInteger).Incomplete()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompletable{NumeralSystems.Net.Type.Incomplete.IncompleteShort,NumeralSystems.Net.Type.Base.Short,System.Int16,System.UInt32}.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  commentId: M:NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+  href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  name: Incomplete()
+  nameWithType: IIncompletable<TIncomplete, TValue, TType, TIndexer>.Incomplete()
+  fullName: NumeralSystems.Net.Interface.IIncompletable<TIncomplete, TValue, TType, TIndexer>.Incomplete()
+  nameWithType.vb: IIncompletable(Of TIncomplete, TValue, TType, TIndexer).Incomplete()
+  fullName.vb: NumeralSystems.Net.Interface.IIncompletable(Of TIncomplete, TValue, TType, TIndexer).Incomplete()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: NumeralSystems.Net.Interface.IIncompletable`4.Incomplete
+    name: Incomplete
+    href: NumeralSystems.Net.Interface.IIncompletable-4.html#NumeralSystems_Net_Interface_IIncompletable_4_Incomplete
+  - name: (
+  - name: )

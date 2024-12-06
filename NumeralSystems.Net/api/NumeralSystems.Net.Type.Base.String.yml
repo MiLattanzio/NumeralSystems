@@ -1,0 +1,2313 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Type.Base.String
+  commentId: T:NumeralSystems.Net.Type.Base.String
+  id: String
+  parent: NumeralSystems.Net.Type.Base
+  children:
+  - NumeralSystems.Net.Type.Base.String.#ctor
+  - NumeralSystems.Net.Type.Base.String.#ctor(System.String)
+  - NumeralSystems.Net.Type.Base.String.Add(NumeralSystems.Net.Type.Base.Char)
+  - NumeralSystems.Net.Type.Base.String.Clear
+  - NumeralSystems.Net.Type.Base.String.Contains(NumeralSystems.Net.Type.Base.Char)
+  - NumeralSystems.Net.Type.Base.String.CopyTo(NumeralSystems.Net.Type.Base.Char[],System.Int32)
+  - NumeralSystems.Net.Type.Base.String.Count
+  - NumeralSystems.Net.Type.Base.String.DecodeFromBase(System.String,System.Int32,System.Int32)
+  - NumeralSystems.Net.Type.Base.String.EncodeToBase(System.String,System.Int32,System.Int32@)
+  - NumeralSystems.Net.Type.Base.String.FromIndicesOfBase(System.Collections.Generic.IEnumerable{System.UInt32[]},System.Int32)
+  - NumeralSystems.Net.Type.Base.String.GetEnumerator
+  - NumeralSystems.Net.Type.Base.String.GetSmallestBase(System.String)
+  - NumeralSystems.Net.Type.Base.String.IndexOf(NumeralSystems.Net.Type.Base.Char)
+  - NumeralSystems.Net.Type.Base.String.Insert(System.Int32,NumeralSystems.Net.Type.Base.Char)
+  - NumeralSystems.Net.Type.Base.String.IsReadOnly
+  - NumeralSystems.Net.Type.Base.String.Item(System.Int32)
+  - NumeralSystems.Net.Type.Base.String.Remove(NumeralSystems.Net.Type.Base.Char)
+  - NumeralSystems.Net.Type.Base.String.RemoveAt(System.Int32)
+  - NumeralSystems.Net.Type.Base.String.ToIndicesOfBase(System.String,System.Int32)
+  - NumeralSystems.Net.Type.Base.String.ToString
+  - NumeralSystems.Net.Type.Base.String.ToString(System.String)
+  langs:
+  - csharp
+  - vb
+  name: String
+  nameWithType: String
+  fullName: NumeralSystems.Net.Type.Base.String
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: String
+    path: NumeralSystems.Net/Type/Encode/String.cs
+    startLine: 6
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Represents a custom string type that implements the IList interface for Char objects.
+  example: []
+  syntax:
+    content: 'public class String : IList<Char>, ICollection<Char>, IEnumerable<Char>, IEnumerable'
+    content.vb: Public Class [String] Implements IList(Of Char), ICollection(Of Char), IEnumerable(Of Char), IEnumerable
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}
+  - System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  - System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Base.Char}
+  - System.Collections.IEnumerable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: NumeralSystems.Net.Type.Base.String.#ctor
+  commentId: M:NumeralSystems.Net.Type.Base.String.#ctor
+  id: '#ctor'
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: String()
+  nameWithType: String.String()
+  fullName: NumeralSystems.Net.Type.Base.String.String()
+  type: Constructor
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: .ctor
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 14
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Initializes a new instance of the String class.
+  example: []
+  syntax:
+    content: public String()
+    content.vb: Public Sub New()
+  overload: NumeralSystems.Net.Type.Base.String.#ctor*
+  nameWithType.vb: String.New()
+  fullName.vb: NumeralSystems.Net.Type.Base.String.New()
+  name.vb: New()
+- uid: NumeralSystems.Net.Type.Base.String.#ctor(System.String)
+  commentId: M:NumeralSystems.Net.Type.Base.String.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: String(string)
+  nameWithType: String.String(string)
+  fullName: NumeralSystems.Net.Type.Base.String.String(string)
+  type: Constructor
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: .ctor
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 23
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Initializes a new instance of the String class with the specified string value.
+  example: []
+  syntax:
+    content: public String(string value)
+    parameters:
+    - id: value
+      type: System.String
+      description: The string value to initialize the String instance with.
+    content.vb: Public Sub New(value As String)
+  overload: NumeralSystems.Net.Type.Base.String.#ctor*
+  nameWithType.vb: String.New(String)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.New(String)
+  name.vb: New(String)
+- uid: NumeralSystems.Net.Type.Base.String.GetEnumerator
+  commentId: M:NumeralSystems.Net.Type.Base.String.GetEnumerator
+  id: GetEnumerator
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: GetEnumerator()
+  nameWithType: String.GetEnumerator()
+  fullName: NumeralSystems.Net.Type.Base.String.GetEnumerator()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetEnumerator
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 37
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Returns an enumerator that iterates through the collection.
+  example: []
+  syntax:
+    content: public IEnumerator<Char> GetEnumerator()
+    return:
+      type: System.Collections.Generic.IEnumerator{NumeralSystems.Net.Type.Base.Char}
+      description: An enumerator for the collection.
+    content.vb: Public Function GetEnumerator() As IEnumerator(Of [Char])
+  overload: NumeralSystems.Net.Type.Base.String.GetEnumerator*
+  implements:
+  - System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Base.Char}.GetEnumerator
+- uid: NumeralSystems.Net.Type.Base.String.Add(NumeralSystems.Net.Type.Base.Char)
+  commentId: M:NumeralSystems.Net.Type.Base.String.Add(NumeralSystems.Net.Type.Base.Char)
+  id: Add(NumeralSystems.Net.Type.Base.Char)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: Add(Char)
+  nameWithType: String.Add(Char)
+  fullName: NumeralSystems.Net.Type.Base.String.Add(NumeralSystems.Net.Type.Base.Char)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Add
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 48
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Adds a Char object to the end of the String.
+  example: []
+  syntax:
+    content: public void Add(Char item)
+    parameters:
+    - id: item
+      type: NumeralSystems.Net.Type.Base.Char
+      description: The Char object to add.
+    content.vb: Public Sub Add(item As [Char])
+  overload: NumeralSystems.Net.Type.Base.String.Add*
+  implements:
+  - System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Add(NumeralSystems.Net.Type.Base.Char)
+- uid: NumeralSystems.Net.Type.Base.String.Clear
+  commentId: M:NumeralSystems.Net.Type.Base.String.Clear
+  id: Clear
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: String.Clear()
+  fullName: NumeralSystems.Net.Type.Base.String.Clear()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Clear
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 57
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Removes all elements from the String.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: NumeralSystems.Net.Type.Base.String.Clear*
+  implements:
+  - System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Clear
+- uid: NumeralSystems.Net.Type.Base.String.Contains(NumeralSystems.Net.Type.Base.Char)
+  commentId: M:NumeralSystems.Net.Type.Base.String.Contains(NumeralSystems.Net.Type.Base.Char)
+  id: Contains(NumeralSystems.Net.Type.Base.Char)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: Contains(Char)
+  nameWithType: String.Contains(Char)
+  fullName: NumeralSystems.Net.Type.Base.String.Contains(NumeralSystems.Net.Type.Base.Char)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Contains
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 64
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Determines whether the String contains a specific Char object.
+  example: []
+  syntax:
+    content: public bool Contains(Char item)
+    parameters:
+    - id: item
+      type: NumeralSystems.Net.Type.Base.Char
+      description: The Char object to locate in the String.
+    return:
+      type: System.Boolean
+      description: True if the Char object is found; otherwise, false.
+    content.vb: Public Function Contains(item As [Char]) As Boolean
+  overload: NumeralSystems.Net.Type.Base.String.Contains*
+  implements:
+  - System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Contains(NumeralSystems.Net.Type.Base.Char)
+- uid: NumeralSystems.Net.Type.Base.String.CopyTo(NumeralSystems.Net.Type.Base.Char[],System.Int32)
+  commentId: M:NumeralSystems.Net.Type.Base.String.CopyTo(NumeralSystems.Net.Type.Base.Char[],System.Int32)
+  id: CopyTo(NumeralSystems.Net.Type.Base.Char[],System.Int32)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: CopyTo(Char[], int)
+  nameWithType: String.CopyTo(Char[], int)
+  fullName: NumeralSystems.Net.Type.Base.String.CopyTo(NumeralSystems.Net.Type.Base.Char[], int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: CopyTo
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 71
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Copies the elements of the String to an array, starting at a particular array index.
+  example: []
+  syntax:
+    content: public void CopyTo(Char[] array, int arrayIndex)
+    parameters:
+    - id: array
+      type: NumeralSystems.Net.Type.Base.Char[]
+      description: The array to copy elements to.
+    - id: arrayIndex
+      type: System.Int32
+      description: The zero-based index in the array at which copying begins.
+    content.vb: Public Sub CopyTo(array As [Char](), arrayIndex As Integer)
+  overload: NumeralSystems.Net.Type.Base.String.CopyTo*
+  implements:
+  - System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.CopyTo(NumeralSystems.Net.Type.Base.Char[],System.Int32)
+  nameWithType.vb: String.CopyTo(Char(), Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.CopyTo(NumeralSystems.Net.Type.Base.Char(), Integer)
+  name.vb: CopyTo(Char(), Integer)
+- uid: NumeralSystems.Net.Type.Base.String.Remove(NumeralSystems.Net.Type.Base.Char)
+  commentId: M:NumeralSystems.Net.Type.Base.String.Remove(NumeralSystems.Net.Type.Base.Char)
+  id: Remove(NumeralSystems.Net.Type.Base.Char)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: Remove(Char)
+  nameWithType: String.Remove(Char)
+  fullName: NumeralSystems.Net.Type.Base.String.Remove(NumeralSystems.Net.Type.Base.Char)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Remove
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 78
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Removes the first occurrence of a specific Char object from the String.
+  example: []
+  syntax:
+    content: public bool Remove(Char item)
+    parameters:
+    - id: item
+      type: NumeralSystems.Net.Type.Base.Char
+      description: The Char object to remove.
+    return:
+      type: System.Boolean
+      description: True if the Char object was successfully removed; otherwise, false.
+    content.vb: Public Function Remove(item As [Char]) As Boolean
+  overload: NumeralSystems.Net.Type.Base.String.Remove*
+  implements:
+  - System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Remove(NumeralSystems.Net.Type.Base.Char)
+- uid: NumeralSystems.Net.Type.Base.String.Count
+  commentId: P:NumeralSystems.Net.Type.Base.String.Count
+  id: Count
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: String.Count
+  fullName: NumeralSystems.Net.Type.Base.String.Count
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Count
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 90
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets the number of elements contained in the String.
+  example: []
+  syntax:
+    content: public int Count { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Count As Integer
+  overload: NumeralSystems.Net.Type.Base.String.Count*
+  implements:
+  - System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Count
+- uid: NumeralSystems.Net.Type.Base.String.IsReadOnly
+  commentId: P:NumeralSystems.Net.Type.Base.String.IsReadOnly
+  id: IsReadOnly
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: IsReadOnly
+  nameWithType: String.IsReadOnly
+  fullName: NumeralSystems.Net.Type.Base.String.IsReadOnly
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: IsReadOnly
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 95
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets a value indicating whether the String is read-only.
+  example: []
+  syntax:
+    content: public bool IsReadOnly { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsReadOnly As Boolean
+  overload: NumeralSystems.Net.Type.Base.String.IsReadOnly*
+  implements:
+  - System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.IsReadOnly
+- uid: NumeralSystems.Net.Type.Base.String.IndexOf(NumeralSystems.Net.Type.Base.Char)
+  commentId: M:NumeralSystems.Net.Type.Base.String.IndexOf(NumeralSystems.Net.Type.Base.Char)
+  id: IndexOf(NumeralSystems.Net.Type.Base.Char)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: IndexOf(Char)
+  nameWithType: String.IndexOf(Char)
+  fullName: NumeralSystems.Net.Type.Base.String.IndexOf(NumeralSystems.Net.Type.Base.Char)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: IndexOf
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 102
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Determines the index of a specific Char object in the String.
+  example: []
+  syntax:
+    content: public int IndexOf(Char item)
+    parameters:
+    - id: item
+      type: NumeralSystems.Net.Type.Base.Char
+      description: The Char object to locate in the String.
+    return:
+      type: System.Int32
+      description: The index of the Char object if found; otherwise, -1.
+    content.vb: Public Function IndexOf(item As [Char]) As Integer
+  overload: NumeralSystems.Net.Type.Base.String.IndexOf*
+  implements:
+  - System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.IndexOf(NumeralSystems.Net.Type.Base.Char)
+- uid: NumeralSystems.Net.Type.Base.String.Insert(System.Int32,NumeralSystems.Net.Type.Base.Char)
+  commentId: M:NumeralSystems.Net.Type.Base.String.Insert(System.Int32,NumeralSystems.Net.Type.Base.Char)
+  id: Insert(System.Int32,NumeralSystems.Net.Type.Base.Char)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: Insert(int, Char)
+  nameWithType: String.Insert(int, Char)
+  fullName: NumeralSystems.Net.Type.Base.String.Insert(int, NumeralSystems.Net.Type.Base.Char)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Insert
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 112
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Inserts a Char object at the specified index in the String.
+  example: []
+  syntax:
+    content: public void Insert(int index, Char item)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index at which the Char object should be inserted.
+    - id: item
+      type: NumeralSystems.Net.Type.Base.Char
+      description: The Char object to insert.
+    content.vb: Public Sub Insert(index As Integer, item As [Char])
+  overload: NumeralSystems.Net.Type.Base.String.Insert*
+  implements:
+  - System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.Insert(System.Int32,NumeralSystems.Net.Type.Base.Char)
+  nameWithType.vb: String.Insert(Integer, Char)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.Insert(Integer, NumeralSystems.Net.Type.Base.Char)
+  name.vb: Insert(Integer, Char)
+- uid: NumeralSystems.Net.Type.Base.String.RemoveAt(System.Int32)
+  commentId: M:NumeralSystems.Net.Type.Base.String.RemoveAt(System.Int32)
+  id: RemoveAt(System.Int32)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: RemoveAt(int)
+  nameWithType: String.RemoveAt(int)
+  fullName: NumeralSystems.Net.Type.Base.String.RemoveAt(int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: RemoveAt
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 122
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Removes the Char object at the specified index.
+  example: []
+  syntax:
+    content: public void RemoveAt(int index)
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index of the Char object to remove.
+    content.vb: Public Sub RemoveAt(index As Integer)
+  overload: NumeralSystems.Net.Type.Base.String.RemoveAt*
+  implements:
+  - System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.RemoveAt(System.Int32)
+  nameWithType.vb: String.RemoveAt(Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.RemoveAt(Integer)
+  name.vb: RemoveAt(Integer)
+- uid: NumeralSystems.Net.Type.Base.String.Item(System.Int32)
+  commentId: P:NumeralSystems.Net.Type.Base.String.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: this[int]
+  nameWithType: String.this[int]
+  fullName: NumeralSystems.Net.Type.Base.String.this[int]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 132
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets or sets the Char object at the specified index.
+  example: []
+  syntax:
+    content: public Char this[int index] { get; set; }
+    parameters:
+    - id: index
+      type: System.Int32
+      description: The zero-based index of the Char object to get or set.
+    return:
+      type: NumeralSystems.Net.Type.Base.Char
+      description: The Char object at the specified index.
+    content.vb: Public Default Property this[](index As Integer) As [Char]
+  overload: NumeralSystems.Net.Type.Base.String.Item*
+  implements:
+  - System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.Item(System.Int32)
+  nameWithType.vb: String.this[](Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.this[](Integer)
+  name.vb: this[](Integer)
+- uid: NumeralSystems.Net.Type.Base.String.ToString
+  commentId: M:NumeralSystems.Net.Type.Base.String.ToString
+  id: ToString
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: String.ToString()
+  fullName: NumeralSystems.Net.Type.Base.String.ToString()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToString
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 146
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Returns the string representation of the String.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: The string representation of the String.
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: NumeralSystems.Net.Type.Base.String.ToString*
+- uid: NumeralSystems.Net.Type.Base.String.ToString(System.String)
+  commentId: M:NumeralSystems.Net.Type.Base.String.ToString(System.String)
+  id: ToString(System.String)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: ToString(string)
+  nameWithType: String.ToString(string)
+  fullName: NumeralSystems.Net.Type.Base.String.ToString(string)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Base/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToString
+    path: NumeralSystems.Net/Type/Base/String.cs
+    startLine: 153
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts the String to a string using the specified format.
+  example: []
+  syntax:
+    content: public string ToString(string format)
+    parameters:
+    - id: format
+      type: System.String
+      description: The format string.
+    return:
+      type: System.String
+      description: The formatted string representation of the String.
+    content.vb: Public Function ToString(format As String) As String
+  overload: NumeralSystems.Net.Type.Base.String.ToString*
+  nameWithType.vb: String.ToString(String)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.ToString(String)
+  name.vb: ToString(String)
+- uid: NumeralSystems.Net.Type.Base.String.EncodeToBase(System.String,System.Int32,System.Int32@)
+  commentId: M:NumeralSystems.Net.Type.Base.String.EncodeToBase(System.String,System.Int32,System.Int32@)
+  id: EncodeToBase(System.String,System.Int32,System.Int32@)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: EncodeToBase(string, int, out int)
+  nameWithType: String.EncodeToBase(string, int, out int)
+  fullName: NumeralSystems.Net.Type.Base.String.EncodeToBase(string, int, out int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: EncodeToBase
+    path: NumeralSystems.Net/Type/Encode/String.cs
+    startLine: 16
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Encodes a string to a specified base.
+  example: []
+  syntax:
+    content: public static string EncodeToBase(string s, int destinationBase, out int size)
+    parameters:
+    - id: s
+      type: System.String
+      description: The string to encode.
+    - id: destinationBase
+      type: System.Int32
+      description: The base to encode to.
+    - id: size
+      type: System.Int32
+      description: The size of the encoded string.
+    return:
+      type: System.String
+      description: The encoded string.
+    content.vb: Public Shared Function EncodeToBase(s As String, destinationBase As Integer, size As Integer) As String
+  overload: NumeralSystems.Net.Type.Base.String.EncodeToBase*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when the destination base is less than or equal to 0 or greater than char.MaxValue.
+  nameWithType.vb: String.EncodeToBase(String, Integer, Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.EncodeToBase(String, Integer, Integer)
+  name.vb: EncodeToBase(String, Integer, Integer)
+- uid: NumeralSystems.Net.Type.Base.String.DecodeFromBase(System.String,System.Int32,System.Int32)
+  commentId: M:NumeralSystems.Net.Type.Base.String.DecodeFromBase(System.String,System.Int32,System.Int32)
+  id: DecodeFromBase(System.String,System.Int32,System.Int32)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: DecodeFromBase(string, int, int)
+  nameWithType: String.DecodeFromBase(string, int, int)
+  fullName: NumeralSystems.Net.Type.Base.String.DecodeFromBase(string, int, int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: DecodeFromBase
+    path: NumeralSystems.Net/Type/Encode/String.cs
+    startLine: 35
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Decodes a string from a specified base.
+  example: []
+  syntax:
+    content: public static string DecodeFromBase(string s, int sourceBase, int size)
+    parameters:
+    - id: s
+      type: System.String
+      description: The string to decode.
+    - id: sourceBase
+      type: System.Int32
+      description: The base to decode from.
+    - id: size
+      type: System.Int32
+      description: The size of the encoded string.
+    return:
+      type: System.String
+      description: The decoded string.
+    content.vb: Public Shared Function DecodeFromBase(s As String, sourceBase As Integer, size As Integer) As String
+  overload: NumeralSystems.Net.Type.Base.String.DecodeFromBase*
+  exceptions:
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when the source base is less than or equal to 0 or greater than char.MaxValue.
+  nameWithType.vb: String.DecodeFromBase(String, Integer, Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.DecodeFromBase(String, Integer, Integer)
+  name.vb: DecodeFromBase(String, Integer, Integer)
+- uid: NumeralSystems.Net.Type.Base.String.ToIndicesOfBase(System.String,System.Int32)
+  commentId: M:NumeralSystems.Net.Type.Base.String.ToIndicesOfBase(System.String,System.Int32)
+  id: ToIndicesOfBase(System.String,System.Int32)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: ToIndicesOfBase(string, int)
+  nameWithType: String.ToIndicesOfBase(string, int)
+  fullName: NumeralSystems.Net.Type.Base.String.ToIndicesOfBase(string, int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIndicesOfBase
+    path: NumeralSystems.Net/Type/Encode/String.cs
+    startLine: 51
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts a string to its indices representation in a specified base.
+  example: []
+  syntax:
+    content: public static IEnumerable<uint[]> ToIndicesOfBase(string s, int destinationBase)
+    parameters:
+    - id: s
+      type: System.String
+      description: The string to convert.
+    - id: destinationBase
+      type: System.Int32
+      description: The base to convert to.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.UInt32[]}
+      description: An enumerable of uint arrays representing the indices.
+    content.vb: Public Shared Function ToIndicesOfBase(s As String, destinationBase As Integer) As IEnumerable(Of UInteger())
+  overload: NumeralSystems.Net.Type.Base.String.ToIndicesOfBase*
+  nameWithType.vb: String.ToIndicesOfBase(String, Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.ToIndicesOfBase(String, Integer)
+  name.vb: ToIndicesOfBase(String, Integer)
+- uid: NumeralSystems.Net.Type.Base.String.FromIndicesOfBase(System.Collections.Generic.IEnumerable{System.UInt32[]},System.Int32)
+  commentId: M:NumeralSystems.Net.Type.Base.String.FromIndicesOfBase(System.Collections.Generic.IEnumerable{System.UInt32[]},System.Int32)
+  id: FromIndicesOfBase(System.Collections.Generic.IEnumerable{System.UInt32[]},System.Int32)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: FromIndicesOfBase(IEnumerable<uint[]>, int)
+  nameWithType: String.FromIndicesOfBase(IEnumerable<uint[]>, int)
+  fullName: NumeralSystems.Net.Type.Base.String.FromIndicesOfBase(System.Collections.Generic.IEnumerable<uint[]>, int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: FromIndicesOfBase
+    path: NumeralSystems.Net/Type/Encode/String.cs
+    startLine: 59
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts indices representation in a specified base to a string.
+  example: []
+  syntax:
+    content: public static string FromIndicesOfBase(IEnumerable<uint[]> s, int sourceBase)
+    parameters:
+    - id: s
+      type: System.Collections.Generic.IEnumerable{System.UInt32[]}
+      description: The indices to convert.
+    - id: sourceBase
+      type: System.Int32
+      description: The base of the indices.
+    return:
+      type: System.String
+      description: The decoded string.
+    content.vb: Public Shared Function FromIndicesOfBase(s As IEnumerable(Of UInteger()), sourceBase As Integer) As String
+  overload: NumeralSystems.Net.Type.Base.String.FromIndicesOfBase*
+  nameWithType.vb: String.FromIndicesOfBase(IEnumerable(Of UInteger()), Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.FromIndicesOfBase(System.Collections.Generic.IEnumerable(Of UInteger()), Integer)
+  name.vb: FromIndicesOfBase(IEnumerable(Of UInteger()), Integer)
+- uid: NumeralSystems.Net.Type.Base.String.GetSmallestBase(System.String)
+  commentId: M:NumeralSystems.Net.Type.Base.String.GetSmallestBase(System.String)
+  id: GetSmallestBase(System.String)
+  parent: NumeralSystems.Net.Type.Base.String
+  langs:
+  - csharp
+  - vb
+  name: GetSmallestBase(string)
+  nameWithType: String.GetSmallestBase(string)
+  fullName: NumeralSystems.Net.Type.Base.String.GetSmallestBase(string)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/String.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: GetSmallestBase
+    path: NumeralSystems.Net/Type/Encode/String.cs
+    startLine: 66
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Gets the smallest base that can represent all characters in a string.
+  example: []
+  syntax:
+    content: public static int GetSmallestBase(string s)
+    parameters:
+    - id: s
+      type: System.String
+      description: The string to analyze.
+    return:
+      type: System.Int32
+      description: The smallest base that can represent all characters in the string.
+    content.vb: Public Shared Function GetSmallestBase(s As String) As Integer
+  overload: NumeralSystems.Net.Type.Base.String.GetSmallestBase*
+  nameWithType.vb: String.GetSmallestBase(String)
+  fullName.vb: NumeralSystems.Net.Type.Base.String.GetSmallestBase(String)
+  name.vb: GetSmallestBase(String)
+references:
+- uid: NumeralSystems.Net.Type.Base
+  commentId: N:NumeralSystems.Net.Type.Base
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Type.Base
+  nameWithType: NumeralSystems.Net.Type.Base
+  fullName: NumeralSystems.Net.Type.Base
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}
+  commentId: T:System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<Char>
+  nameWithType: IList<Char>
+  fullName: System.Collections.Generic.IList<NumeralSystems.Net.Type.Base.Char>
+  nameWithType.vb: IList(Of Char)
+  fullName.vb: System.Collections.Generic.IList(Of NumeralSystems.Net.Type.Base.Char)
+  name.vb: IList(Of Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+- uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  commentId: T:System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.ICollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<Char>
+  nameWithType: ICollection<Char>
+  fullName: System.Collections.Generic.ICollection<NumeralSystems.Net.Type.Base.Char>
+  nameWithType.vb: ICollection(Of Char)
+  fullName.vb: System.Collections.Generic.ICollection(Of NumeralSystems.Net.Type.Base.Char)
+  name.vb: ICollection(Of Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Base.Char}
+  commentId: T:System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Base.Char}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<Char>
+  nameWithType: IEnumerable<Char>
+  fullName: System.Collections.Generic.IEnumerable<NumeralSystems.Net.Type.Base.Char>
+  nameWithType.vb: IEnumerable(Of Char)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of NumeralSystems.Net.Type.Base.Char)
+  name.vb: IEnumerable(Of Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.ICollection`1
+  commentId: T:System.Collections.Generic.ICollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  name: ICollection<T>
+  nameWithType: ICollection<T>
+  fullName: System.Collections.Generic.ICollection<T>
+  nameWithType.vb: ICollection(Of T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T)
+  name.vb: ICollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1
+    name: ICollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: NumeralSystems.Net.Type.Base.String.#ctor*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.#ctor
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String__ctor
+  name: String
+  nameWithType: String.String
+  fullName: NumeralSystems.Net.Type.Base.String.String
+  nameWithType.vb: String.New
+  fullName.vb: NumeralSystems.Net.Type.Base.String.New
+  name.vb: New
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: NumeralSystems.Net.Type.Base.String.GetEnumerator*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.GetEnumerator
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_GetEnumerator
+  name: GetEnumerator
+  nameWithType: String.GetEnumerator
+  fullName: NumeralSystems.Net.Type.Base.String.GetEnumerator
+- uid: System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Base.Char}.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Base.Char}.GetEnumerator
+  parent: System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<Char>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<NumeralSystems.Net.Type.Base.Char>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of Char).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of NumeralSystems.Net.Type.Base.Char).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Base.Char}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable{NumeralSystems.Net.Type.Base.Char}.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator{NumeralSystems.Net.Type.Base.Char}
+  commentId: T:System.Collections.Generic.IEnumerator{NumeralSystems.Net.Type.Base.Char}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<Char>
+  nameWithType: IEnumerator<Char>
+  fullName: System.Collections.Generic.IEnumerator<NumeralSystems.Net.Type.Base.Char>
+  nameWithType.vb: IEnumerator(Of Char)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of NumeralSystems.Net.Type.Base.Char)
+  name.vb: IEnumerator(Of Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+  commentId: M:System.Collections.Generic.IEnumerable`1.GetEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  name: GetEnumerator()
+  nameWithType: IEnumerable<T>.GetEnumerator()
+  fullName: System.Collections.Generic.IEnumerable<T>.GetEnumerator()
+  nameWithType.vb: IEnumerable(Of T).GetEnumerator()
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T).GetEnumerator()
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1.GetEnumerator
+    name: GetEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1.getenumerator
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.Add*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.Add
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_Add_NumeralSystems_Net_Type_Base_Char_
+  name: Add
+  nameWithType: String.Add
+  fullName: NumeralSystems.Net.Type.Base.String.Add
+- uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Add(NumeralSystems.Net.Type.Base.Char)
+  commentId: M:System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Add(NumeralSystems.Net.Type.Base.Char)
+  parent: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.ICollection`1.Add(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  name: Add(Char)
+  nameWithType: ICollection<Char>.Add(Char)
+  fullName: System.Collections.Generic.ICollection<NumeralSystems.Net.Type.Base.Char>.Add(NumeralSystems.Net.Type.Base.Char)
+  nameWithType.vb: ICollection(Of Char).Add(Char)
+  fullName.vb: System.Collections.Generic.ICollection(Of NumeralSystems.Net.Type.Base.Char).Add(NumeralSystems.Net.Type.Base.Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Add(NumeralSystems.Net.Type.Base.Char)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Add(NumeralSystems.Net.Type.Base.Char)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Char
+  commentId: T:NumeralSystems.Net.Type.Base.Char
+  parent: NumeralSystems.Net.Type.Base
+  href: NumeralSystems.Net.Type.Base.Char.html
+  name: Char
+  nameWithType: Char
+  fullName: NumeralSystems.Net.Type.Base.Char
+- uid: System.Collections.Generic.ICollection`1.Add(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Add(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  name: Add(T)
+  nameWithType: ICollection<T>.Add(T)
+  fullName: System.Collections.Generic.ICollection<T>.Add(T)
+  nameWithType.vb: ICollection(Of T).Add(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Add(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Add(`0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Add(`0)
+    name: Add
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.add
+  - name: (
+  - name: T
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.Clear*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.Clear
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_Clear
+  name: Clear
+  nameWithType: String.Clear
+  fullName: NumeralSystems.Net.Type.Base.String.Clear
+- uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Clear
+  commentId: M:System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Clear
+  parent: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.ICollection`1.Clear
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  name: Clear()
+  nameWithType: ICollection<Char>.Clear()
+  fullName: System.Collections.Generic.ICollection<NumeralSystems.Net.Type.Base.Char>.Clear()
+  nameWithType.vb: ICollection(Of Char).Clear()
+  fullName.vb: System.Collections.Generic.ICollection(Of NumeralSystems.Net.Type.Base.Char).Clear()
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Clear
+  commentId: M:System.Collections.Generic.ICollection`1.Clear
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  name: Clear()
+  nameWithType: ICollection<T>.Clear()
+  fullName: System.Collections.Generic.ICollection<T>.Clear()
+  nameWithType.vb: ICollection(Of T).Clear()
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Clear()
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Clear
+    name: Clear
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.clear
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.Contains*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.Contains
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_Contains_NumeralSystems_Net_Type_Base_Char_
+  name: Contains
+  nameWithType: String.Contains
+  fullName: NumeralSystems.Net.Type.Base.String.Contains
+- uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Contains(NumeralSystems.Net.Type.Base.Char)
+  commentId: M:System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Contains(NumeralSystems.Net.Type.Base.Char)
+  parent: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.ICollection`1.Contains(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  name: Contains(Char)
+  nameWithType: ICollection<Char>.Contains(Char)
+  fullName: System.Collections.Generic.ICollection<NumeralSystems.Net.Type.Base.Char>.Contains(NumeralSystems.Net.Type.Base.Char)
+  nameWithType.vb: ICollection(Of Char).Contains(Char)
+  fullName.vb: System.Collections.Generic.ICollection(Of NumeralSystems.Net.Type.Base.Char).Contains(NumeralSystems.Net.Type.Base.Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Contains(NumeralSystems.Net.Type.Base.Char)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Contains(NumeralSystems.Net.Type.Base.Char)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Collections.Generic.ICollection`1.Contains(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Contains(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  name: Contains(T)
+  nameWithType: ICollection<T>.Contains(T)
+  fullName: System.Collections.Generic.ICollection<T>.Contains(T)
+  nameWithType.vb: ICollection(Of T).Contains(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Contains(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Contains(`0)
+    name: Contains
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.contains
+  - name: (
+  - name: T
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.CopyTo*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.CopyTo
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_CopyTo_NumeralSystems_Net_Type_Base_Char___System_Int32_
+  name: CopyTo
+  nameWithType: String.CopyTo
+  fullName: NumeralSystems.Net.Type.Base.String.CopyTo
+- uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.CopyTo(NumeralSystems.Net.Type.Base.Char[],System.Int32)
+  commentId: M:System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.CopyTo(NumeralSystems.Net.Type.Base.Char[],System.Int32)
+  parent: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  name: CopyTo(Char[], int)
+  nameWithType: ICollection<Char>.CopyTo(Char[], int)
+  fullName: System.Collections.Generic.ICollection<NumeralSystems.Net.Type.Base.Char>.CopyTo(NumeralSystems.Net.Type.Base.Char[], int)
+  nameWithType.vb: ICollection(Of Char).CopyTo(Char(), Integer)
+  fullName.vb: System.Collections.Generic.ICollection(Of NumeralSystems.Net.Type.Base.Char).CopyTo(NumeralSystems.Net.Type.Base.Char(), Integer)
+  name.vb: CopyTo(Char(), Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.CopyTo(NumeralSystems.Net.Type.Base.Char[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.CopyTo(NumeralSystems.Net.Type.Base.Char[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Char[]
+  isExternal: true
+  href: NumeralSystems.Net.Type.Base.Char.html
+  name: Char[]
+  nameWithType: Char[]
+  fullName: NumeralSystems.Net.Type.Base.Char[]
+  nameWithType.vb: Char()
+  fullName.vb: NumeralSystems.Net.Type.Base.Char()
+  name.vb: Char()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: (
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+  commentId: M:System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  name: CopyTo(T[], int)
+  nameWithType: ICollection<T>.CopyTo(T[], int)
+  fullName: System.Collections.Generic.ICollection<T>.CopyTo(T[], int)
+  nameWithType.vb: ICollection(Of T).CopyTo(T(), Integer)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).CopyTo(T(), Integer)
+  name.vb: CopyTo(T(), Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.CopyTo(`0[],System.Int32)
+    name: CopyTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.copyto
+  - name: (
+  - name: T
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.Remove*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.Remove
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_Remove_NumeralSystems_Net_Type_Base_Char_
+  name: Remove
+  nameWithType: String.Remove
+  fullName: NumeralSystems.Net.Type.Base.String.Remove
+- uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Remove(NumeralSystems.Net.Type.Base.Char)
+  commentId: M:System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Remove(NumeralSystems.Net.Type.Base.Char)
+  parent: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.ICollection`1.Remove(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  name: Remove(Char)
+  nameWithType: ICollection<Char>.Remove(Char)
+  fullName: System.Collections.Generic.ICollection<NumeralSystems.Net.Type.Base.Char>.Remove(NumeralSystems.Net.Type.Base.Char)
+  nameWithType.vb: ICollection(Of Char).Remove(Char)
+  fullName.vb: System.Collections.Generic.ICollection(Of NumeralSystems.Net.Type.Base.Char).Remove(NumeralSystems.Net.Type.Base.Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Remove(NumeralSystems.Net.Type.Base.Char)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Remove(NumeralSystems.Net.Type.Base.Char)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+- uid: System.Collections.Generic.ICollection`1.Remove(`0)
+  commentId: M:System.Collections.Generic.ICollection`1.Remove(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  name: Remove(T)
+  nameWithType: ICollection<T>.Remove(T)
+  fullName: System.Collections.Generic.ICollection<T>.Remove(T)
+  nameWithType.vb: ICollection(Of T).Remove(T)
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Remove(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.ICollection`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.ICollection`1.Remove(`0)
+    name: Remove
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.remove
+  - name: (
+  - name: T
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.Count*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.Count
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_Count
+  name: Count
+  nameWithType: String.Count
+  fullName: NumeralSystems.Net.Type.Base.String.Count
+- uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Count
+  commentId: P:System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.Count
+  parent: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.ICollection`1.Count
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
+  name: Count
+  nameWithType: ICollection<Char>.Count
+  fullName: System.Collections.Generic.ICollection<NumeralSystems.Net.Type.Base.Char>.Count
+  nameWithType.vb: ICollection(Of Char).Count
+  fullName.vb: System.Collections.Generic.ICollection(Of NumeralSystems.Net.Type.Base.Char).Count
+- uid: System.Collections.Generic.ICollection`1.Count
+  commentId: P:System.Collections.Generic.ICollection`1.Count
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.count
+  name: Count
+  nameWithType: ICollection<T>.Count
+  fullName: System.Collections.Generic.ICollection<T>.Count
+  nameWithType.vb: ICollection(Of T).Count
+  fullName.vb: System.Collections.Generic.ICollection(Of T).Count
+- uid: NumeralSystems.Net.Type.Base.String.IsReadOnly*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.IsReadOnly
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_IsReadOnly
+  name: IsReadOnly
+  nameWithType: String.IsReadOnly
+  fullName: NumeralSystems.Net.Type.Base.String.IsReadOnly
+- uid: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.IsReadOnly
+  commentId: P:System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}.IsReadOnly
+  parent: System.Collections.Generic.ICollection{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.ICollection`1.IsReadOnly
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.isreadonly
+  name: IsReadOnly
+  nameWithType: ICollection<Char>.IsReadOnly
+  fullName: System.Collections.Generic.ICollection<NumeralSystems.Net.Type.Base.Char>.IsReadOnly
+  nameWithType.vb: ICollection(Of Char).IsReadOnly
+  fullName.vb: System.Collections.Generic.ICollection(Of NumeralSystems.Net.Type.Base.Char).IsReadOnly
+- uid: System.Collections.Generic.ICollection`1.IsReadOnly
+  commentId: P:System.Collections.Generic.ICollection`1.IsReadOnly
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1.isreadonly
+  name: IsReadOnly
+  nameWithType: ICollection<T>.IsReadOnly
+  fullName: System.Collections.Generic.ICollection<T>.IsReadOnly
+  nameWithType.vb: ICollection(Of T).IsReadOnly
+  fullName.vb: System.Collections.Generic.ICollection(Of T).IsReadOnly
+- uid: NumeralSystems.Net.Type.Base.String.IndexOf*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.IndexOf
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_IndexOf_NumeralSystems_Net_Type_Base_Char_
+  name: IndexOf
+  nameWithType: String.IndexOf
+  fullName: NumeralSystems.Net.Type.Base.String.IndexOf
+- uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.IndexOf(NumeralSystems.Net.Type.Base.Char)
+  commentId: M:System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.IndexOf(NumeralSystems.Net.Type.Base.Char)
+  parent: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.IList`1.IndexOf(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.indexof
+  name: IndexOf(Char)
+  nameWithType: IList<Char>.IndexOf(Char)
+  fullName: System.Collections.Generic.IList<NumeralSystems.Net.Type.Base.Char>.IndexOf(NumeralSystems.Net.Type.Base.Char)
+  nameWithType.vb: IList(Of Char).IndexOf(Char)
+  fullName.vb: System.Collections.Generic.IList(Of NumeralSystems.Net.Type.Base.Char).IndexOf(NumeralSystems.Net.Type.Base.Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.IndexOf(NumeralSystems.Net.Type.Base.Char)
+    name: IndexOf
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.indexof
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.IndexOf(NumeralSystems.Net.Type.Base.Char)
+    name: IndexOf
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.indexof
+  - name: (
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+- uid: System.Collections.Generic.IList`1.IndexOf(`0)
+  commentId: M:System.Collections.Generic.IList`1.IndexOf(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.indexof
+  name: IndexOf(T)
+  nameWithType: IList<T>.IndexOf(T)
+  fullName: System.Collections.Generic.IList<T>.IndexOf(T)
+  nameWithType.vb: IList(Of T).IndexOf(T)
+  fullName.vb: System.Collections.Generic.IList(Of T).IndexOf(T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1.IndexOf(`0)
+    name: IndexOf
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.indexof
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1.IndexOf(`0)
+    name: IndexOf
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.indexof
+  - name: (
+  - name: T
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.Insert*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.Insert
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_Insert_System_Int32_NumeralSystems_Net_Type_Base_Char_
+  name: Insert
+  nameWithType: String.Insert
+  fullName: NumeralSystems.Net.Type.Base.String.Insert
+- uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.Insert(System.Int32,NumeralSystems.Net.Type.Base.Char)
+  commentId: M:System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.Insert(System.Int32,NumeralSystems.Net.Type.Base.Char)
+  parent: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.IList`1.Insert(System.Int32,`0)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.insert
+  name: Insert(int, Char)
+  nameWithType: IList<Char>.Insert(int, Char)
+  fullName: System.Collections.Generic.IList<NumeralSystems.Net.Type.Base.Char>.Insert(int, NumeralSystems.Net.Type.Base.Char)
+  nameWithType.vb: IList(Of Char).Insert(Integer, Char)
+  fullName.vb: System.Collections.Generic.IList(Of NumeralSystems.Net.Type.Base.Char).Insert(Integer, NumeralSystems.Net.Type.Base.Char)
+  name.vb: Insert(Integer, Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.Insert(System.Int32,NumeralSystems.Net.Type.Base.Char)
+    name: Insert
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.insert
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.Insert(System.Int32,NumeralSystems.Net.Type.Base.Char)
+    name: Insert
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.insert
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - uid: NumeralSystems.Net.Type.Base.Char
+    name: Char
+    href: NumeralSystems.Net.Type.Base.Char.html
+  - name: )
+- uid: System.Collections.Generic.IList`1.Insert(System.Int32,`0)
+  commentId: M:System.Collections.Generic.IList`1.Insert(System.Int32,`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.insert
+  name: Insert(int, T)
+  nameWithType: IList<T>.Insert(int, T)
+  fullName: System.Collections.Generic.IList<T>.Insert(int, T)
+  nameWithType.vb: IList(Of T).Insert(Integer, T)
+  fullName.vb: System.Collections.Generic.IList(Of T).Insert(Integer, T)
+  name.vb: Insert(Integer, T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1.Insert(System.Int32,`0)
+    name: Insert
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.insert
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1.Insert(System.Int32,`0)
+    name: Insert
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.insert
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ','
+  - name: " "
+  - name: T
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.RemoveAt*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.RemoveAt
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_RemoveAt_System_Int32_
+  name: RemoveAt
+  nameWithType: String.RemoveAt
+  fullName: NumeralSystems.Net.Type.Base.String.RemoveAt
+- uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.RemoveAt(System.Int32)
+  commentId: M:System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.RemoveAt(System.Int32)
+  parent: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.IList`1.RemoveAt(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.removeat
+  name: RemoveAt(int)
+  nameWithType: IList<Char>.RemoveAt(int)
+  fullName: System.Collections.Generic.IList<NumeralSystems.Net.Type.Base.Char>.RemoveAt(int)
+  nameWithType.vb: IList(Of Char).RemoveAt(Integer)
+  fullName.vb: System.Collections.Generic.IList(Of NumeralSystems.Net.Type.Base.Char).RemoveAt(Integer)
+  name.vb: RemoveAt(Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.RemoveAt(System.Int32)
+    name: RemoveAt
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.removeat
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.RemoveAt(System.Int32)
+    name: RemoveAt
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.removeat
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IList`1.RemoveAt(System.Int32)
+  commentId: M:System.Collections.Generic.IList`1.RemoveAt(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.removeat
+  name: RemoveAt(int)
+  nameWithType: IList<T>.RemoveAt(int)
+  fullName: System.Collections.Generic.IList<T>.RemoveAt(int)
+  nameWithType.vb: IList(Of T).RemoveAt(Integer)
+  fullName.vb: System.Collections.Generic.IList(Of T).RemoveAt(Integer)
+  name.vb: RemoveAt(Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1.RemoveAt(System.Int32)
+    name: RemoveAt
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.removeat
+  - name: (
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1.RemoveAt(System.Int32)
+    name: RemoveAt
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.removeat
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.Item*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.Item
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_Item_System_Int32_
+  name: this
+  nameWithType: String.this
+  fullName: NumeralSystems.Net.Type.Base.String.this
+  nameWithType.vb: String.this[]
+  fullName.vb: NumeralSystems.Net.Type.Base.String.this[]
+  name.vb: this[]
+- uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.Item(System.Int32)
+  commentId: P:System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.Item(System.Int32)
+  parent: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}
+  definition: System.Collections.Generic.IList`1.Item(System.Int32)
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: this[int]
+  nameWithType: IList<Char>.this[int]
+  fullName: System.Collections.Generic.IList<NumeralSystems.Net.Type.Base.Char>.this[int]
+  nameWithType.vb: IList(Of Char).this[](Integer)
+  fullName.vb: System.Collections.Generic.IList(Of NumeralSystems.Net.Type.Base.Char).this[](Integer)
+  name.vb: this[](Integer)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ']'
+  spec.vb:
+  - uid: System.Collections.Generic.IList{NumeralSystems.Net.Type.Base.Char}.Item(System.Int32)
+    name: this[]
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.item
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.IList`1.Item(System.Int32)
+  commentId: P:System.Collections.Generic.IList`1.Item(System.Int32)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: this[int]
+  nameWithType: IList<T>.this[int]
+  fullName: System.Collections.Generic.IList<T>.this[int]
+  nameWithType.vb: IList(Of T).this[](Integer)
+  fullName.vb: System.Collections.Generic.IList(Of T).this[](Integer)
+  name.vb: this[](Integer)
+  spec.csharp:
+  - name: this
+  - name: '['
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: ']'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1.Item(System.Int32)
+    name: this[]
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1.item
+  - name: (
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.ToString*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.ToString
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_ToString
+  name: ToString
+  nameWithType: String.ToString
+  fullName: NumeralSystems.Net.Type.Base.String.ToString
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: NumeralSystems.Net.Type.Base.String.EncodeToBase*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.EncodeToBase
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_EncodeToBase_System_String_System_Int32_System_Int32__
+  name: EncodeToBase
+  nameWithType: String.EncodeToBase
+  fullName: NumeralSystems.Net.Type.Base.String.EncodeToBase
+- uid: NumeralSystems.Net.Type.Base.String.DecodeFromBase*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.DecodeFromBase
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_DecodeFromBase_System_String_System_Int32_System_Int32_
+  name: DecodeFromBase
+  nameWithType: String.DecodeFromBase
+  fullName: NumeralSystems.Net.Type.Base.String.DecodeFromBase
+- uid: NumeralSystems.Net.Type.Base.String.ToIndicesOfBase*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.ToIndicesOfBase
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_ToIndicesOfBase_System_String_System_Int32_
+  name: ToIndicesOfBase
+  nameWithType: String.ToIndicesOfBase
+  fullName: NumeralSystems.Net.Type.Base.String.ToIndicesOfBase
+- uid: System.Collections.Generic.IEnumerable{System.UInt32[]}
+  commentId: T:System.Collections.Generic.IEnumerable{System.UInt32[]}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<uint[]>
+  nameWithType: IEnumerable<uint[]>
+  fullName: System.Collections.Generic.IEnumerable<uint[]>
+  nameWithType.vb: IEnumerable(Of UInteger())
+  fullName.vb: System.Collections.Generic.IEnumerable(Of UInteger())
+  name.vb: IEnumerable(Of UInteger())
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '['
+  - name: ']'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: (
+  - name: )
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.String.FromIndicesOfBase*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.FromIndicesOfBase
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_FromIndicesOfBase_System_Collections_Generic_IEnumerable_System_UInt32____System_Int32_
+  name: FromIndicesOfBase
+  nameWithType: String.FromIndicesOfBase
+  fullName: NumeralSystems.Net.Type.Base.String.FromIndicesOfBase
+- uid: NumeralSystems.Net.Type.Base.String.GetSmallestBase*
+  commentId: Overload:NumeralSystems.Net.Type.Base.String.GetSmallestBase
+  href: NumeralSystems.Net.Type.Base.String.html#NumeralSystems_Net_Type_Base_String_GetSmallestBase_System_String_
+  name: GetSmallestBase
+  nameWithType: String.GetSmallestBase
+  fullName: NumeralSystems.Net.Type.Base.String.GetSmallestBase

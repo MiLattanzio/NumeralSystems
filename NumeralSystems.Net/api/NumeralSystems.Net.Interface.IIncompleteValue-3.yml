@@ -1,0 +1,606 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3
+  commentId: T:NumeralSystems.Net.Interface.IIncompleteValue`3
+  id: IIncompleteValue`3
+  parent: NumeralSystems.Net.Interface
+  children:
+  - NumeralSystems.Net.Interface.IIncompleteValue`3.Binary
+  - NumeralSystems.Net.Interface.IIncompleteValue`3.ByteArray
+  - NumeralSystems.Net.Interface.IIncompleteValue`3.Enumerable
+  - NumeralSystems.Net.Interface.IIncompleteValue`3.IsComplete
+  - NumeralSystems.Net.Interface.IIncompleteValue`3.Item(`2)
+  - NumeralSystems.Net.Interface.IIncompleteValue`3.Permutations
+  - NumeralSystems.Net.Interface.IIncompleteValue`3.ToByteArray
+  - NumeralSystems.Net.Interface.IIncompleteValue`3.ToString(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IIncompleteValue<TValue, TType, TIndexer>
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>
+  type: Interface
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompleteValue.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: IIncompleteValue
+    path: NumeralSystems.Net/Interface/IIncompleteValue.cs
+    startLine: 11
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Represents a value that is not complete in its binary representation.
+  example: []
+  syntax:
+    content: 'public interface IIncompleteValue<out TValue, TType, TIndexer> where TValue : INumeralValue<TType> where TIndexer : struct'
+    typeParameters:
+    - id: TValue
+      description: The incomplete source type
+    - id: TType
+      description: The complete source type representation
+    - id: TIndexer
+      description: The type used to index the permutations
+    content.vb: Public Interface IIncompleteValue(Of Out TValue As INumeralValue(Of TType), TType, TIndexer As Structure)
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer)
+  name.vb: IIncompleteValue(Of TValue, TType, TIndexer)
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.Binary
+  commentId: P:NumeralSystems.Net.Interface.IIncompleteValue`3.Binary
+  id: Binary
+  parent: NumeralSystems.Net.Interface.IIncompleteValue`3
+  langs:
+  - csharp
+  - vb
+  name: Binary
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.Binary
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.Binary
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompleteValue.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Binary
+    path: NumeralSystems.Net/Interface/IIncompleteValue.cs
+    startLine: 16
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Incomplete binary representation of the value.
+  example: []
+  syntax:
+    content: bool?[] Binary { get; }
+    parameters: []
+    return:
+      type: System.Nullable{System.Boolean}[]
+    content.vb: ReadOnly Property Binary As Boolean?()
+  overload: NumeralSystems.Net.Interface.IIncompleteValue`3.Binary*
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).Binary
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).Binary
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.Permutations
+  commentId: P:NumeralSystems.Net.Interface.IIncompleteValue`3.Permutations
+  id: Permutations
+  parent: NumeralSystems.Net.Interface.IIncompleteValue`3
+  langs:
+  - csharp
+  - vb
+  name: Permutations
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.Permutations
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.Permutations
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompleteValue.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Permutations
+    path: NumeralSystems.Net/Interface/IIncompleteValue.cs
+    startLine: 20
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Permutations count of the incomplete value.
+  example: []
+  syntax:
+    content: TIndexer Permutations { get; }
+    parameters: []
+    return:
+      type: '{TIndexer}'
+    content.vb: ReadOnly Property Permutations As TIndexer
+  overload: NumeralSystems.Net.Interface.IIncompleteValue`3.Permutations*
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).Permutations
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).Permutations
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.IsComplete
+  commentId: P:NumeralSystems.Net.Interface.IIncompleteValue`3.IsComplete
+  id: IsComplete
+  parent: NumeralSystems.Net.Interface.IIncompleteValue`3
+  langs:
+  - csharp
+  - vb
+  name: IsComplete
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.IsComplete
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.IsComplete
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompleteValue.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: IsComplete
+    path: NumeralSystems.Net/Interface/IIncompleteValue.cs
+    startLine: 24
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: If the value is complete.
+  example: []
+  syntax:
+    content: bool IsComplete { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: ReadOnly Property IsComplete As Boolean
+  overload: NumeralSystems.Net.Interface.IIncompleteValue`3.IsComplete*
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).IsComplete
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).IsComplete
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.Item(`2)
+  commentId: P:NumeralSystems.Net.Interface.IIncompleteValue`3.Item(`2)
+  id: Item(`2)
+  parent: NumeralSystems.Net.Interface.IIncompleteValue`3
+  langs:
+  - csharp
+  - vb
+  name: this[TIndexer]
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.this[TIndexer]
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.this[TIndexer]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompleteValue.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/Interface/IIncompleteValue.cs
+    startLine: 29
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Gets the complete value representation at the given index.
+  example: []
+  syntax:
+    content: TValue this[TIndexer value] { get; }
+    parameters:
+    - id: value
+      type: '{TIndexer}'
+      description: Index used to fetch the nth representation of the value
+    return:
+      type: '{TValue}'
+    content.vb: ReadOnly Default Property this[](value As TIndexer) As TValue
+  overload: NumeralSystems.Net.Interface.IIncompleteValue`3.Item*
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).this[](TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).this[](TIndexer)
+  name.vb: this[](TIndexer)
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.Enumerable
+  commentId: P:NumeralSystems.Net.Interface.IIncompleteValue`3.Enumerable
+  id: Enumerable
+  parent: NumeralSystems.Net.Interface.IIncompleteValue`3
+  langs:
+  - csharp
+  - vb
+  name: Enumerable
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.Enumerable
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.Enumerable
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompleteValue.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Enumerable
+    path: NumeralSystems.Net/Interface/IIncompleteValue.cs
+    startLine: 33
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Enumerable of all possible values.
+  example: []
+  syntax:
+    content: IEnumerable<out TValue> Enumerable { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.IEnumerable{{TValue}}
+    content.vb: ReadOnly Property Enumerable As IEnumerable(Of Out TValue)
+  overload: NumeralSystems.Net.Interface.IIncompleteValue`3.Enumerable*
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).Enumerable
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).Enumerable
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.ByteArray
+  commentId: P:NumeralSystems.Net.Interface.IIncompleteValue`3.ByteArray
+  id: ByteArray
+  parent: NumeralSystems.Net.Interface.IIncompleteValue`3
+  langs:
+  - csharp
+  - vb
+  name: ByteArray
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.ByteArray
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.ByteArray
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompleteValue.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ByteArray
+    path: NumeralSystems.Net/Interface/IIncompleteValue.cs
+    startLine: 37
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Incomplete value as incomplete byte array pointing to the memory address of the incomplete value.
+  example: []
+  syntax:
+    content: IncompleteByte[] ByteArray { get; }
+    parameters: []
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteByte[]
+    content.vb: ReadOnly Property ByteArray As IncompleteByte()
+  overload: NumeralSystems.Net.Interface.IIncompleteValue`3.ByteArray*
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).ByteArray
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).ByteArray
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.ToByteArray
+  commentId: M:NumeralSystems.Net.Interface.IIncompleteValue`3.ToByteArray
+  id: ToByteArray
+  parent: NumeralSystems.Net.Interface.IIncompleteValue`3
+  langs:
+  - csharp
+  - vb
+  name: ToByteArray()
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.ToByteArray()
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.ToByteArray()
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompleteValue.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToByteArray
+    path: NumeralSystems.Net/Interface/IIncompleteValue.cs
+    startLine: 42
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Copy of the incomplete value as incomplete byte array.
+  example: []
+  syntax:
+    content: IncompleteByte[] ToByteArray()
+    return:
+      type: NumeralSystems.Net.Type.Incomplete.IncompleteByte[]
+      description: A copy of the incomplete byte array that represents the value
+    content.vb: Function ToByteArray() As IncompleteByte()
+  overload: NumeralSystems.Net.Interface.IIncompleteValue`3.ToByteArray*
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).ToByteArray()
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).ToByteArray()
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.ToString(System.String)
+  commentId: M:NumeralSystems.Net.Interface.IIncompleteValue`3.ToString(System.String)
+  id: ToString(System.String)
+  parent: NumeralSystems.Net.Interface.IIncompleteValue`3
+  langs:
+  - csharp
+  - vb
+  name: ToString(string)
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.ToString(string)
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.ToString(string)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IIncompleteValue.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToString
+    path: NumeralSystems.Net/Interface/IIncompleteValue.cs
+    startLine: 48
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: String representation of the incomplete value boolean array.
+  example: []
+  syntax:
+    content: string ToString(string missingSeparator = "*")
+    parameters:
+    - id: missingSeparator
+      type: System.String
+      description: Used to represent the null value
+    return:
+      type: System.String
+      description: A string representation for the incomplete value
+    content.vb: Function ToString(missingSeparator As String = "*") As String
+  overload: NumeralSystems.Net.Interface.IIncompleteValue`3.ToString*
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).ToString(String)
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).ToString(String)
+  name.vb: ToString(String)
+references:
+- uid: NumeralSystems.Net.Interface
+  commentId: N:NumeralSystems.Net.Interface
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Interface
+  nameWithType: NumeralSystems.Net.Interface
+  fullName: NumeralSystems.Net.Interface
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.Binary*
+  commentId: Overload:NumeralSystems.Net.Interface.IIncompleteValue`3.Binary
+  href: NumeralSystems.Net.Interface.IIncompleteValue-3.html#NumeralSystems_Net_Interface_IIncompleteValue_3_Binary
+  name: Binary
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.Binary
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.Binary
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).Binary
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).Binary
+- uid: System.Nullable{System.Boolean}[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool?[]
+  nameWithType: bool?[]
+  fullName: bool?[]
+  nameWithType.vb: Boolean?()
+  fullName.vb: Boolean?()
+  name.vb: Boolean?()
+  spec.csharp:
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '?'
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.Permutations*
+  commentId: Overload:NumeralSystems.Net.Interface.IIncompleteValue`3.Permutations
+  href: NumeralSystems.Net.Interface.IIncompleteValue-3.html#NumeralSystems_Net_Interface_IIncompleteValue_3_Permutations
+  name: Permutations
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.Permutations
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.Permutations
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).Permutations
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).Permutations
+- uid: '{TIndexer}'
+  commentId: '!:TIndexer'
+  definition: TIndexer
+  name: TIndexer
+  nameWithType: TIndexer
+  fullName: TIndexer
+- uid: TIndexer
+  name: TIndexer
+  nameWithType: TIndexer
+  fullName: TIndexer
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.IsComplete*
+  commentId: Overload:NumeralSystems.Net.Interface.IIncompleteValue`3.IsComplete
+  href: NumeralSystems.Net.Interface.IIncompleteValue-3.html#NumeralSystems_Net_Interface_IIncompleteValue_3_IsComplete
+  name: IsComplete
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.IsComplete
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.IsComplete
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).IsComplete
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).IsComplete
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.Item*
+  commentId: Overload:NumeralSystems.Net.Interface.IIncompleteValue`3.Item
+  href: NumeralSystems.Net.Interface.IIncompleteValue-3.html#NumeralSystems_Net_Interface_IIncompleteValue_3_Item__2_
+  name: this
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.this
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.this
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).this[]
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).this[]
+  name.vb: this[]
+- uid: '{TValue}'
+  commentId: '!:TValue'
+  definition: TValue
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue
+- uid: TValue
+  name: TValue
+  nameWithType: TValue
+  fullName: TValue
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.Enumerable*
+  commentId: Overload:NumeralSystems.Net.Interface.IIncompleteValue`3.Enumerable
+  href: NumeralSystems.Net.Interface.IIncompleteValue-3.html#NumeralSystems_Net_Interface_IIncompleteValue_3_Enumerable
+  name: Enumerable
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.Enumerable
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.Enumerable
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).Enumerable
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).Enumerable
+- uid: System.Collections.Generic.IEnumerable{{TValue}}
+  commentId: T:System.Collections.Generic.IEnumerable{`0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<TValue>
+  nameWithType: IEnumerable<TValue>
+  fullName: System.Collections.Generic.IEnumerable<TValue>
+  nameWithType.vb: IEnumerable(Of TValue)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of TValue)
+  name.vb: IEnumerable(Of TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.ByteArray*
+  commentId: Overload:NumeralSystems.Net.Interface.IIncompleteValue`3.ByteArray
+  href: NumeralSystems.Net.Interface.IIncompleteValue-3.html#NumeralSystems_Net_Interface_IIncompleteValue_3_ByteArray
+  name: ByteArray
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.ByteArray
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.ByteArray
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).ByteArray
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).ByteArray
+- uid: NumeralSystems.Net.Type.Incomplete.IncompleteByte[]
+  isExternal: true
+  href: NumeralSystems.Net.Type.Incomplete.IncompleteByte.html
+  name: IncompleteByte[]
+  nameWithType: IncompleteByte[]
+  fullName: NumeralSystems.Net.Type.Incomplete.IncompleteByte[]
+  nameWithType.vb: IncompleteByte()
+  fullName.vb: NumeralSystems.Net.Type.Incomplete.IncompleteByte()
+  name.vb: IncompleteByte()
+  spec.csharp:
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteByte
+    name: IncompleteByte
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteByte.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: NumeralSystems.Net.Type.Incomplete.IncompleteByte
+    name: IncompleteByte
+    href: NumeralSystems.Net.Type.Incomplete.IncompleteByte.html
+  - name: (
+  - name: )
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.ToByteArray*
+  commentId: Overload:NumeralSystems.Net.Interface.IIncompleteValue`3.ToByteArray
+  href: NumeralSystems.Net.Interface.IIncompleteValue-3.html#NumeralSystems_Net_Interface_IIncompleteValue_3_ToByteArray
+  name: ToByteArray
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.ToByteArray
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.ToByteArray
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).ToByteArray
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).ToByteArray
+- uid: NumeralSystems.Net.Interface.IIncompleteValue`3.ToString*
+  commentId: Overload:NumeralSystems.Net.Interface.IIncompleteValue`3.ToString
+  href: NumeralSystems.Net.Interface.IIncompleteValue-3.html#NumeralSystems_Net_Interface_IIncompleteValue_3_ToString_System_String_
+  name: ToString
+  nameWithType: IIncompleteValue<TValue, TType, TIndexer>.ToString
+  fullName: NumeralSystems.Net.Interface.IIncompleteValue<TValue, TType, TIndexer>.ToString
+  nameWithType.vb: IIncompleteValue(Of TValue, TType, TIndexer).ToString
+  fullName.vb: NumeralSystems.Net.Interface.IIncompleteValue(Of TValue, TType, TIndexer).ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String

@@ -1,0 +1,1342 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Utils.Sequence
+  commentId: T:NumeralSystems.Net.Utils.Sequence
+  id: Sequence
+  parent: NumeralSystems.Net.Utils
+  children:
+  - NumeralSystems.Net.Utils.Sequence.CombinationsCount(System.Int32,System.Int32,System.Boolean)
+  - NumeralSystems.Net.Utils.Sequence.CountToUInt(System.Collections.IEnumerable)
+  - NumeralSystems.Net.Utils.Sequence.CountToULong(System.Collections.IEnumerable)
+  - NumeralSystems.Net.Utils.Sequence.Group``1(``0[],System.Int32)
+  - NumeralSystems.Net.Utils.Sequence.IdentityEnumerableOfSize``1(System.Collections.Generic.List{``0},System.Int32)
+  - NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.Int32,System.Int32,System.Boolean)
+  - NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Boolean)
+  - NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.UInt32,System.UInt32,System.Boolean)
+  - NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.UInt64,System.UInt64,System.Boolean)
+  - NumeralSystems.Net.Utils.Sequence.Range(System.Numerics.BigInteger,System.Numerics.BigInteger)
+  - NumeralSystems.Net.Utils.Sequence.Range(System.UInt32,System.UInt32)
+  - NumeralSystems.Net.Utils.Sequence.Range(System.UInt64,System.UInt64)
+  - NumeralSystems.Net.Utils.Sequence.SequenceOfIdentityAtIndex``1(System.Collections.Generic.List{``0},System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: Sequence
+  nameWithType: Sequence
+  fullName: NumeralSystems.Net.Utils.Sequence
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Sequence
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 11
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: This class provides utility methods for working with sequences of different types.
+  example: []
+  syntax:
+    content: public static class Sequence
+    content.vb: Public Module Sequence
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: NumeralSystems.Net.Utils.Sequence.SequenceOfIdentityAtIndex``1(System.Collections.Generic.List{``0},System.Int32)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.SequenceOfIdentityAtIndex``1(System.Collections.Generic.List{``0},System.Int32)
+  id: SequenceOfIdentityAtIndex``1(System.Collections.Generic.List{``0},System.Int32)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: SequenceOfIdentityAtIndex<T>(List<T>, int)
+  nameWithType: Sequence.SequenceOfIdentityAtIndex<T>(List<T>, int)
+  fullName: NumeralSystems.Net.Utils.Sequence.SequenceOfIdentityAtIndex<T>(System.Collections.Generic.List<T>, int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SequenceOfIdentityAtIndex
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 20
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Returns an enumerable sequence of identity values at the given index.
+  example: []
+  syntax:
+    content: public static IEnumerable<T> SequenceOfIdentityAtIndex<T>(List<T> identity, int index)
+    parameters:
+    - id: identity
+      type: System.Collections.Generic.List{{T}}
+      description: The list of identity values.
+    - id: index
+      type: System.Int32
+      description: The index for which to get the identity sequence.
+    typeParameters:
+    - id: T
+      description: The type of the elements in the identity list.
+    return:
+      type: System.Collections.Generic.IEnumerable{{T}}
+      description: An enumerable sequence of identity values.
+    content.vb: Public Shared Function SequenceOfIdentityAtIndex(Of T)(identity As List(Of T), index As Integer) As IEnumerable(Of T)
+  overload: NumeralSystems.Net.Utils.Sequence.SequenceOfIdentityAtIndex*
+  nameWithType.vb: Sequence.SequenceOfIdentityAtIndex(Of T)(List(Of T), Integer)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.SequenceOfIdentityAtIndex(Of T)(System.Collections.Generic.List(Of T), Integer)
+  name.vb: SequenceOfIdentityAtIndex(Of T)(List(Of T), Integer)
+- uid: NumeralSystems.Net.Utils.Sequence.IdentityEnumerableOfSize``1(System.Collections.Generic.List{``0},System.Int32)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.IdentityEnumerableOfSize``1(System.Collections.Generic.List{``0},System.Int32)
+  id: IdentityEnumerableOfSize``1(System.Collections.Generic.List{``0},System.Int32)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: IdentityEnumerableOfSize<T>(List<T>, int)
+  nameWithType: Sequence.IdentityEnumerableOfSize<T>(List<T>, int)
+  fullName: NumeralSystems.Net.Utils.Sequence.IdentityEnumerableOfSize<T>(System.Collections.Generic.List<T>, int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: IdentityEnumerableOfSize
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 38
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Returns an enumerable sequence of identity values of a given size.
+  example: []
+  syntax:
+    content: public static IEnumerable<IEnumerable<T>> IdentityEnumerableOfSize<T>(List<T> identity, int size)
+    parameters:
+    - id: identity
+      type: System.Collections.Generic.List{{T}}
+      description: The list of identity values.
+    - id: size
+      type: System.Int32
+      description: The size of the identity sequence.
+    typeParameters:
+    - id: T
+      description: The type of the elements in the identity list.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{{T}}}
+      description: An enumerable sequence of identity values.
+    content.vb: Public Shared Function IdentityEnumerableOfSize(Of T)(identity As List(Of T), size As Integer) As IEnumerable(Of IEnumerable(Of T))
+  overload: NumeralSystems.Net.Utils.Sequence.IdentityEnumerableOfSize*
+  nameWithType.vb: Sequence.IdentityEnumerableOfSize(Of T)(List(Of T), Integer)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.IdentityEnumerableOfSize(Of T)(System.Collections.Generic.List(Of T), Integer)
+  name.vb: IdentityEnumerableOfSize(Of T)(List(Of T), Integer)
+- uid: NumeralSystems.Net.Utils.Sequence.Range(System.UInt32,System.UInt32)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.Range(System.UInt32,System.UInt32)
+  id: Range(System.UInt32,System.UInt32)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: Range(uint, uint)
+  nameWithType: Sequence.Range(uint, uint)
+  fullName: NumeralSystems.Net.Utils.Sequence.Range(uint, uint)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Range
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 66
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Provides functionality to determine if a given value falls within a specified range.
+  example: []
+  syntax:
+    content: public static IEnumerable<uint> Range(uint start, uint end)
+    parameters:
+    - id: start
+      type: System.UInt32
+    - id: end
+      type: System.UInt32
+    return:
+      type: System.Collections.Generic.IEnumerable{System.UInt32}
+      description: True if the value falls within the specified range, otherwise false.
+    content.vb: Public Shared Function Range(start As UInteger, [end] As UInteger) As IEnumerable(Of UInteger)
+  overload: NumeralSystems.Net.Utils.Sequence.Range*
+  nameWithType.vb: Sequence.Range(UInteger, UInteger)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.Range(UInteger, UInteger)
+  name.vb: Range(UInteger, UInteger)
+- uid: NumeralSystems.Net.Utils.Sequence.CountToUInt(System.Collections.IEnumerable)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.CountToUInt(System.Collections.IEnumerable)
+  id: CountToUInt(System.Collections.IEnumerable)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: CountToUInt(IEnumerable)
+  nameWithType: Sequence.CountToUInt(IEnumerable)
+  fullName: NumeralSystems.Net.Utils.Sequence.CountToUInt(System.Collections.IEnumerable)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: CountToUInt
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 79
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Counts the number of items in the given sequence and returns it as an unsigned integer.
+  example: []
+  syntax:
+    content: public static uint CountToUInt(IEnumerable sequence)
+    parameters:
+    - id: sequence
+      type: System.Collections.IEnumerable
+      description: The sequence of items.
+    return:
+      type: System.UInt32
+      description: The count of items in the sequence as an unsigned integer.
+    content.vb: Public Shared Function CountToUInt(sequence As IEnumerable) As UInteger
+  overload: NumeralSystems.Net.Utils.Sequence.CountToUInt*
+- uid: NumeralSystems.Net.Utils.Sequence.CountToULong(System.Collections.IEnumerable)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.CountToULong(System.Collections.IEnumerable)
+  id: CountToULong(System.Collections.IEnumerable)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: CountToULong(IEnumerable)
+  nameWithType: Sequence.CountToULong(IEnumerable)
+  fullName: NumeralSystems.Net.Utils.Sequence.CountToULong(System.Collections.IEnumerable)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: CountToULong
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 94
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Counts the number of elements in the given sequence and returns the count as an ulong.
+  example: []
+  syntax:
+    content: public static ulong CountToULong(IEnumerable sequence)
+    parameters:
+    - id: sequence
+      type: System.Collections.IEnumerable
+      description: The sequence to count the elements of.
+    return:
+      type: System.UInt64
+      description: The count of elements in the sequence.
+    content.vb: Public Shared Function CountToULong(sequence As IEnumerable) As ULong
+  overload: NumeralSystems.Net.Utils.Sequence.CountToULong*
+- uid: NumeralSystems.Net.Utils.Sequence.Range(System.Numerics.BigInteger,System.Numerics.BigInteger)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.Range(System.Numerics.BigInteger,System.Numerics.BigInteger)
+  id: Range(System.Numerics.BigInteger,System.Numerics.BigInteger)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: Range(BigInteger, BigInteger)
+  nameWithType: Sequence.Range(BigInteger, BigInteger)
+  fullName: NumeralSystems.Net.Utils.Sequence.Range(System.Numerics.BigInteger, System.Numerics.BigInteger)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Range
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 104
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static IEnumerable<BigInteger> Range(BigInteger start, BigInteger end)
+    parameters:
+    - id: start
+      type: System.Numerics.BigInteger
+    - id: end
+      type: System.Numerics.BigInteger
+    return:
+      type: System.Collections.Generic.IEnumerable{System.Numerics.BigInteger}
+    content.vb: Public Shared Function Range(start As BigInteger, [end] As BigInteger) As IEnumerable(Of BigInteger)
+  overload: NumeralSystems.Net.Utils.Sequence.Range*
+- uid: NumeralSystems.Net.Utils.Sequence.Range(System.UInt64,System.UInt64)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.Range(System.UInt64,System.UInt64)
+  id: Range(System.UInt64,System.UInt64)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: Range(ulong, ulong)
+  nameWithType: Sequence.Range(ulong, ulong)
+  fullName: NumeralSystems.Net.Utils.Sequence.Range(ulong, ulong)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Range
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 118
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Generates a sequence of unsigned integers within a specified range.
+  example: []
+  syntax:
+    content: public static IEnumerable<ulong> Range(ulong start, ulong end)
+    parameters:
+    - id: start
+      type: System.UInt64
+      description: The starting value of the range.
+    - id: end
+      type: System.UInt64
+      description: The ending value of the range.
+    return:
+      type: System.Collections.Generic.IEnumerable{System.UInt64}
+      description: An IEnumerable of unsigned integers within the specified range.
+    content.vb: Public Shared Function Range(start As ULong, [end] As ULong) As IEnumerable(Of ULong)
+  overload: NumeralSystems.Net.Utils.Sequence.Range*
+  nameWithType.vb: Sequence.Range(ULong, ULong)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.Range(ULong, ULong)
+  name.vb: Range(ULong, ULong)
+- uid: NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Boolean)
+  id: PermutationsCount(System.Numerics.BigInteger,System.Numerics.BigInteger,System.Boolean)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: PermutationsCount(BigInteger, BigInteger, bool)
+  nameWithType: Sequence.PermutationsCount(BigInteger, BigInteger, bool)
+  fullName: NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.Numerics.BigInteger, System.Numerics.BigInteger, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: PermutationsCount
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 133
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Calculates the number of permutations of a given size from a given identity.
+  example: []
+  syntax:
+    content: public static BigInteger PermutationsCount(BigInteger identity, BigInteger size, bool repetition = false)
+    parameters:
+    - id: identity
+      type: System.Numerics.BigInteger
+      description: The value representing the number of elements in the identity.
+    - id: size
+      type: System.Numerics.BigInteger
+      description: The size of the permutation.
+    - id: repetition
+      type: System.Boolean
+      description: A flag indicating whether repetition is allowed in the permutation.
+    return:
+      type: System.Numerics.BigInteger
+      description: The number of permutations of the given size from the given identity.
+    content.vb: Public Shared Function PermutationsCount(identity As BigInteger, size As BigInteger, repetition As Boolean = False) As BigInteger
+  overload: NumeralSystems.Net.Utils.Sequence.PermutationsCount*
+  nameWithType.vb: Sequence.PermutationsCount(BigInteger, BigInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.Numerics.BigInteger, System.Numerics.BigInteger, Boolean)
+  name.vb: PermutationsCount(BigInteger, BigInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.UInt64,System.UInt64,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.UInt64,System.UInt64,System.Boolean)
+  id: PermutationsCount(System.UInt64,System.UInt64,System.Boolean)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: PermutationsCount(ulong, ulong, bool)
+  nameWithType: Sequence.PermutationsCount(ulong, ulong, bool)
+  fullName: NumeralSystems.Net.Utils.Sequence.PermutationsCount(ulong, ulong, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: PermutationsCount
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 143
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Calculates the number of permutations given an identity, size, and repetition option.
+  example: []
+  syntax:
+    content: public static ulong PermutationsCount(ulong identity, ulong size, bool repetition = false)
+    parameters:
+    - id: identity
+      type: System.UInt64
+      description: The number of distinct elements in the identity set.
+    - id: size
+      type: System.UInt64
+      description: The number of elements selected from the identity set.
+    - id: repetition
+      type: System.Boolean
+      description: 'Indicates whether repetition is allowed (default: false).'
+    return:
+      type: System.UInt64
+      description: The number of permutations.
+    content.vb: Public Shared Function PermutationsCount(identity As ULong, size As ULong, repetition As Boolean = False) As ULong
+  overload: NumeralSystems.Net.Utils.Sequence.PermutationsCount*
+  nameWithType.vb: Sequence.PermutationsCount(ULong, ULong, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.PermutationsCount(ULong, ULong, Boolean)
+  name.vb: PermutationsCount(ULong, ULong, Boolean)
+- uid: NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.Int32,System.Int32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.Int32,System.Int32,System.Boolean)
+  id: PermutationsCount(System.Int32,System.Int32,System.Boolean)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: PermutationsCount(int, int, bool)
+  nameWithType: Sequence.PermutationsCount(int, int, bool)
+  fullName: NumeralSystems.Net.Utils.Sequence.PermutationsCount(int, int, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: PermutationsCount
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 145
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static int PermutationsCount(int identity, int size, bool repetition = false)
+    parameters:
+    - id: identity
+      type: System.Int32
+    - id: size
+      type: System.Int32
+    - id: repetition
+      type: System.Boolean
+    return:
+      type: System.Int32
+    content.vb: Public Shared Function PermutationsCount(identity As Integer, size As Integer, repetition As Boolean = False) As Integer
+  overload: NumeralSystems.Net.Utils.Sequence.PermutationsCount*
+  nameWithType.vb: Sequence.PermutationsCount(Integer, Integer, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.PermutationsCount(Integer, Integer, Boolean)
+  name.vb: PermutationsCount(Integer, Integer, Boolean)
+- uid: NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.UInt32,System.UInt32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.PermutationsCount(System.UInt32,System.UInt32,System.Boolean)
+  id: PermutationsCount(System.UInt32,System.UInt32,System.Boolean)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: PermutationsCount(uint, uint, bool)
+  nameWithType: Sequence.PermutationsCount(uint, uint, bool)
+  fullName: NumeralSystems.Net.Utils.Sequence.PermutationsCount(uint, uint, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: PermutationsCount
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 155
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Calculates the number of permutations for a given identity and size.
+  example: []
+  syntax:
+    content: public static uint PermutationsCount(uint identity, uint size, bool repetition = false)
+    parameters:
+    - id: identity
+      type: System.UInt32
+      description: The identity value.
+    - id: size
+      type: System.UInt32
+      description: The size of the permutation.
+    - id: repetition
+      type: System.Boolean
+      description: Optional. Specifies whether repetition is allowed in the permutation. Default is false.
+    return:
+      type: System.UInt32
+      description: The number of permutations.
+    content.vb: Public Shared Function PermutationsCount(identity As UInteger, size As UInteger, repetition As Boolean = False) As UInteger
+  overload: NumeralSystems.Net.Utils.Sequence.PermutationsCount*
+  nameWithType.vb: Sequence.PermutationsCount(UInteger, UInteger, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.PermutationsCount(UInteger, UInteger, Boolean)
+  name.vb: PermutationsCount(UInteger, UInteger, Boolean)
+- uid: NumeralSystems.Net.Utils.Sequence.CombinationsCount(System.Int32,System.Int32,System.Boolean)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.CombinationsCount(System.Int32,System.Int32,System.Boolean)
+  id: CombinationsCount(System.Int32,System.Int32,System.Boolean)
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: CombinationsCount(int, int, bool)
+  nameWithType: Sequence.CombinationsCount(int, int, bool)
+  fullName: NumeralSystems.Net.Utils.Sequence.CombinationsCount(int, int, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: CombinationsCount
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 179
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  summary: Calculates the number of combinations of a given size that can be formed from a given set of elements.
+  example: []
+  syntax:
+    content: public static int CombinationsCount(int identity, int size, bool repetition = false)
+    parameters:
+    - id: identity
+      type: System.Int32
+      description: The number of elements in the set
+    - id: size
+      type: System.Int32
+      description: The size of each combination
+    - id: repetition
+      type: System.Boolean
+      description: Specifies whether repetition is allowed in the combinations
+    return:
+      type: System.Int32
+      description: The number of combinations
+    content.vb: Public Shared Function CombinationsCount(identity As Integer, size As Integer, repetition As Boolean = False) As Integer
+  overload: NumeralSystems.Net.Utils.Sequence.CombinationsCount*
+  nameWithType.vb: Sequence.CombinationsCount(Integer, Integer, Boolean)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.CombinationsCount(Integer, Integer, Boolean)
+  name.vb: CombinationsCount(Integer, Integer, Boolean)
+- uid: NumeralSystems.Net.Utils.Sequence.Group``1(``0[],System.Int32)
+  commentId: M:NumeralSystems.Net.Utils.Sequence.Group``1(``0[],System.Int32)
+  id: Group``1(``0[],System.Int32)
+  isExtensionMethod: true
+  parent: NumeralSystems.Net.Utils.Sequence
+  langs:
+  - csharp
+  - vb
+  name: Group<T>(T[], int)
+  nameWithType: Sequence.Group<T>(T[], int)
+  fullName: NumeralSystems.Net.Utils.Sequence.Group<T>(T[], int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Utils/Sequence.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Group
+    path: NumeralSystems.Net/Utils/Sequence.cs
+    startLine: 287
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Utils
+  syntax:
+    content: public static T[][] Group<T>(this T[] sequence, int count)
+    parameters:
+    - id: sequence
+      type: '{T}[]'
+    - id: count
+      type: System.Int32
+    typeParameters:
+    - id: T
+    return:
+      type: '{T}[][]'
+    content.vb: Public Shared Function Group(Of T)(sequence As T(), count As Integer) As T()()
+  overload: NumeralSystems.Net.Utils.Sequence.Group*
+  nameWithType.vb: Sequence.Group(Of T)(T(), Integer)
+  fullName.vb: NumeralSystems.Net.Utils.Sequence.Group(Of T)(T(), Integer)
+  name.vb: Group(Of T)(T(), Integer)
+references:
+- uid: NumeralSystems.Net.Utils
+  commentId: N:NumeralSystems.Net.Utils
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Utils
+  nameWithType: NumeralSystems.Net.Utils
+  fullName: NumeralSystems.Net.Utils
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Utils
+    name: Utils
+    href: NumeralSystems.Net.Utils.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Utils
+    name: Utils
+    href: NumeralSystems.Net.Utils.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.Utils.Sequence.SequenceOfIdentityAtIndex*
+  commentId: Overload:NumeralSystems.Net.Utils.Sequence.SequenceOfIdentityAtIndex
+  href: NumeralSystems.Net.Utils.Sequence.html#NumeralSystems_Net_Utils_Sequence_SequenceOfIdentityAtIndex__1_System_Collections_Generic_List___0__System_Int32_
+  name: SequenceOfIdentityAtIndex
+  nameWithType: Sequence.SequenceOfIdentityAtIndex
+  fullName: NumeralSystems.Net.Utils.Sequence.SequenceOfIdentityAtIndex
+- uid: System.Collections.Generic.List{{T}}
+  commentId: T:System.Collections.Generic.List{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Collections.Generic.IEnumerable{{T}}
+  commentId: T:System.Collections.Generic.IEnumerable{``0}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: NumeralSystems.Net.Utils.Sequence.IdentityEnumerableOfSize*
+  commentId: Overload:NumeralSystems.Net.Utils.Sequence.IdentityEnumerableOfSize
+  href: NumeralSystems.Net.Utils.Sequence.html#NumeralSystems_Net_Utils_Sequence_IdentityEnumerableOfSize__1_System_Collections_Generic_List___0__System_Int32_
+  name: IdentityEnumerableOfSize
+  nameWithType: Sequence.IdentityEnumerableOfSize
+  fullName: NumeralSystems.Net.Utils.Sequence.IdentityEnumerableOfSize
+- uid: System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{{T}}}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Collections.Generic.IEnumerable{``0}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IEnumerable<T>>
+  nameWithType: IEnumerable<IEnumerable<T>>
+  fullName: System.Collections.Generic.IEnumerable<System.Collections.Generic.IEnumerable<T>>
+  nameWithType.vb: IEnumerable(Of IEnumerable(Of T))
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Collections.Generic.IEnumerable(Of T))
+  name.vb: IEnumerable(Of IEnumerable(Of T))
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+  - name: )
+- uid: NumeralSystems.Net.Utils.Sequence.Range*
+  commentId: Overload:NumeralSystems.Net.Utils.Sequence.Range
+  href: NumeralSystems.Net.Utils.Sequence.html#NumeralSystems_Net_Utils_Sequence_Range_System_UInt32_System_UInt32_
+  name: Range
+  nameWithType: Sequence.Range
+  fullName: NumeralSystems.Net.Utils.Sequence.Range
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System.Collections.Generic.IEnumerable{System.UInt32}
+  commentId: T:System.Collections.Generic.IEnumerable{System.UInt32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<uint>
+  nameWithType: IEnumerable<uint>
+  fullName: System.Collections.Generic.IEnumerable<uint>
+  nameWithType.vb: IEnumerable(Of UInteger)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of UInteger)
+  name.vb: IEnumerable(Of UInteger)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.UInt32
+    name: uint
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.UInt32
+    name: UInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint32
+  - name: )
+- uid: NumeralSystems.Net.Utils.Sequence.CountToUInt*
+  commentId: Overload:NumeralSystems.Net.Utils.Sequence.CountToUInt
+  href: NumeralSystems.Net.Utils.Sequence.html#NumeralSystems_Net_Utils_Sequence_CountToUInt_System_Collections_IEnumerable_
+  name: CountToUInt
+  nameWithType: Sequence.CountToUInt
+  fullName: NumeralSystems.Net.Utils.Sequence.CountToUInt
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: NumeralSystems.Net.Utils.Sequence.CountToULong*
+  commentId: Overload:NumeralSystems.Net.Utils.Sequence.CountToULong
+  href: NumeralSystems.Net.Utils.Sequence.html#NumeralSystems_Net_Utils_Sequence_CountToULong_System_Collections_IEnumerable_
+  name: CountToULong
+  nameWithType: Sequence.CountToULong
+  fullName: NumeralSystems.Net.Utils.Sequence.CountToULong
+- uid: System.UInt64
+  commentId: T:System.UInt64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint64
+  name: ulong
+  nameWithType: ulong
+  fullName: ulong
+  nameWithType.vb: ULong
+  fullName.vb: ULong
+  name.vb: ULong
+- uid: System.Numerics.BigInteger
+  commentId: T:System.Numerics.BigInteger
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.biginteger
+  name: BigInteger
+  nameWithType: BigInteger
+  fullName: System.Numerics.BigInteger
+- uid: System.Collections.Generic.IEnumerable{System.Numerics.BigInteger}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Numerics.BigInteger}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<BigInteger>
+  nameWithType: IEnumerable<BigInteger>
+  fullName: System.Collections.Generic.IEnumerable<System.Numerics.BigInteger>
+  nameWithType.vb: IEnumerable(Of BigInteger)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Numerics.BigInteger)
+  name.vb: IEnumerable(Of BigInteger)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Numerics.BigInteger
+    name: BigInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.biginteger
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Numerics.BigInteger
+    name: BigInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.biginteger
+  - name: )
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: System.Collections.Generic.IEnumerable{System.UInt64}
+  commentId: T:System.Collections.Generic.IEnumerable{System.UInt64}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<ulong>
+  nameWithType: IEnumerable<ulong>
+  fullName: System.Collections.Generic.IEnumerable<ulong>
+  nameWithType.vb: IEnumerable(Of ULong)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of ULong)
+  name.vb: IEnumerable(Of ULong)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.UInt64
+    name: ulong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.UInt64
+    name: ULong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: )
+- uid: NumeralSystems.Net.Utils.Sequence.PermutationsCount*
+  commentId: Overload:NumeralSystems.Net.Utils.Sequence.PermutationsCount
+  href: NumeralSystems.Net.Utils.Sequence.html#NumeralSystems_Net_Utils_Sequence_PermutationsCount_System_Numerics_BigInteger_System_Numerics_BigInteger_System_Boolean_
+  name: PermutationsCount
+  nameWithType: Sequence.PermutationsCount
+  fullName: NumeralSystems.Net.Utils.Sequence.PermutationsCount
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: NumeralSystems.Net.Utils.Sequence.CombinationsCount*
+  commentId: Overload:NumeralSystems.Net.Utils.Sequence.CombinationsCount
+  href: NumeralSystems.Net.Utils.Sequence.html#NumeralSystems_Net_Utils_Sequence_CombinationsCount_System_Int32_System_Int32_System_Boolean_
+  name: CombinationsCount
+  nameWithType: Sequence.CombinationsCount
+  fullName: NumeralSystems.Net.Utils.Sequence.CombinationsCount
+- uid: NumeralSystems.Net.Utils.Sequence.Group*
+  commentId: Overload:NumeralSystems.Net.Utils.Sequence.Group
+  href: NumeralSystems.Net.Utils.Sequence.html#NumeralSystems_Net_Utils_Sequence_Group__1___0___System_Int32_
+  name: Group
+  nameWithType: Sequence.Group
+  fullName: NumeralSystems.Net.Utils.Sequence.Group
+- uid: '{T}[]'
+  isExternal: true
+  name: T[]
+  nameWithType: T[]
+  fullName: T[]
+  nameWithType.vb: T()
+  fullName.vb: T()
+  name.vb: T()
+  spec.csharp:
+  - name: T
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: T
+  - name: (
+  - name: )
+- uid: '{T}[][]'
+  isExternal: true
+  name: T[][]
+  nameWithType: T[][]
+  fullName: T[][]
+  nameWithType.vb: T()()
+  fullName.vb: T()()
+  name.vb: T()()
+  spec.csharp:
+  - name: T
+  - name: '['
+  - name: ']'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - name: T
+  - name: (
+  - name: )
+  - name: (
+  - name: )

@@ -1,0 +1,132 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net
+  commentId: N:NumeralSystems.Net
+  id: NumeralSystems.Net
+  children:
+  - NumeralSystems.Net.Numeral
+  - NumeralSystems.Net.Numeral.System
+  - NumeralSystems.Net.Numeral.System.Characters
+  - NumeralSystems.Net.NumeralSystem
+  - NumeralSystems.Net.NumeralSystem.SerializationInfo
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystems.Net
+  nameWithType: NumeralSystems.Net
+  fullName: NumeralSystems.Net
+  type: Namespace
+  assemblies:
+  - NumeralSystems.Net
+references:
+- uid: NumeralSystems.Net.Numeral
+  commentId: T:NumeralSystems.Net.Numeral
+  parent: NumeralSystems.Net
+  href: NumeralSystems.Net.Numeral.html
+  name: Numeral
+  nameWithType: Numeral
+  fullName: NumeralSystems.Net.Numeral
+- uid: NumeralSystems.Net.Numeral.System
+  commentId: T:NumeralSystems.Net.Numeral.System
+  href: NumeralSystems.Net.Numeral.html
+  name: Numeral.System
+  nameWithType: Numeral.System
+  fullName: NumeralSystems.Net.Numeral.System
+  spec.csharp:
+  - uid: NumeralSystems.Net.Numeral
+    name: Numeral
+    href: NumeralSystems.Net.Numeral.html
+  - name: .
+  - uid: NumeralSystems.Net.Numeral.System
+    name: System
+    href: NumeralSystems.Net.Numeral.System.html
+  spec.vb:
+  - uid: NumeralSystems.Net.Numeral
+    name: Numeral
+    href: NumeralSystems.Net.Numeral.html
+  - name: .
+  - uid: NumeralSystems.Net.Numeral.System
+    name: System
+    href: NumeralSystems.Net.Numeral.System.html
+- uid: NumeralSystems.Net.Numeral.System.Characters
+  commentId: T:NumeralSystems.Net.Numeral.System.Characters
+  href: NumeralSystems.Net.Numeral.html
+  name: Numeral.System.Characters
+  nameWithType: Numeral.System.Characters
+  fullName: NumeralSystems.Net.Numeral.System.Characters
+  spec.csharp:
+  - uid: NumeralSystems.Net.Numeral
+    name: Numeral
+    href: NumeralSystems.Net.Numeral.html
+  - name: .
+  - uid: NumeralSystems.Net.Numeral.System
+    name: System
+    href: NumeralSystems.Net.Numeral.System.html
+  - name: .
+  - uid: NumeralSystems.Net.Numeral.System.Characters
+    name: Characters
+    href: NumeralSystems.Net.Numeral.System.Characters.html
+  spec.vb:
+  - uid: NumeralSystems.Net.Numeral
+    name: Numeral
+    href: NumeralSystems.Net.Numeral.html
+  - name: .
+  - uid: NumeralSystems.Net.Numeral.System
+    name: System
+    href: NumeralSystems.Net.Numeral.System.html
+  - name: .
+  - uid: NumeralSystems.Net.Numeral.System.Characters
+    name: Characters
+    href: NumeralSystems.Net.Numeral.System.Characters.html
+- uid: NumeralSystems.Net.NumeralSystem
+  commentId: T:NumeralSystems.Net.NumeralSystem
+  parent: NumeralSystems.Net
+  href: NumeralSystems.Net.NumeralSystem.html
+  name: NumeralSystem
+  nameWithType: NumeralSystem
+  fullName: NumeralSystems.Net.NumeralSystem
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  commentId: T:NumeralSystems.Net.NumeralSystem.SerializationInfo
+  parent: NumeralSystems.Net
+  href: NumeralSystems.Net.NumeralSystem.html
+  name: NumeralSystem.SerializationInfo
+  nameWithType: NumeralSystem.SerializationInfo
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  spec.csharp:
+  - uid: NumeralSystems.Net.NumeralSystem
+    name: NumeralSystem
+    href: NumeralSystems.Net.NumeralSystem.html
+  - name: .
+  - uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+    name: SerializationInfo
+    href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html
+  spec.vb:
+  - uid: NumeralSystems.Net.NumeralSystem
+    name: NumeralSystem
+    href: NumeralSystems.Net.NumeralSystem.html
+  - name: .
+  - uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+    name: SerializationInfo
+    href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html
+- uid: NumeralSystems.Net
+  commentId: N:NumeralSystems.Net
+  href: NumeralSystems.html
+  name: NumeralSystems.Net
+  nameWithType: NumeralSystems.Net
+  fullName: NumeralSystems.Net
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html

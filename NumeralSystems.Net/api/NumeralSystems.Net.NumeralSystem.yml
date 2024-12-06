@@ -1,0 +1,2295 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.NumeralSystem
+  commentId: T:NumeralSystems.Net.NumeralSystem
+  id: NumeralSystem
+  parent: NumeralSystems.Net
+  children:
+  - NumeralSystems.Net.NumeralSystem.#ctor(System.Int32)
+  - NumeralSystems.Net.NumeralSystem.Contains(System.Collections.Generic.IList{System.Int32})
+  - NumeralSystems.Net.NumeralSystem.Item(System.Byte)
+  - NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IEnumerable{System.Byte})
+  - NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IEnumerable{System.Char})
+  - NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IEnumerable{System.Int32})
+  - NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IList{System.Byte})
+  - NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IList{System.Char})
+  - NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.List{System.Int32})
+  - NumeralSystems.Net.NumeralSystem.Item(System.Decimal)
+  - NumeralSystems.Net.NumeralSystem.Item(System.Double)
+  - NumeralSystems.Net.NumeralSystem.Item(System.Int16)
+  - NumeralSystems.Net.NumeralSystem.Item(System.Int32)
+  - NumeralSystems.Net.NumeralSystem.Item(System.Int64)
+  - NumeralSystems.Net.NumeralSystem.Item(System.SByte)
+  - NumeralSystems.Net.NumeralSystem.Item(System.UInt16)
+  - NumeralSystems.Net.NumeralSystem.Item(System.UInt32)
+  - NumeralSystems.Net.NumeralSystem.Item(System.UInt64)
+  - NumeralSystems.Net.NumeralSystem.Parse(System.String)
+  - NumeralSystems.Net.NumeralSystem.Parse(System.String,NumeralSystems.Net.NumeralSystem.SerializationInfo)
+  - NumeralSystems.Net.NumeralSystem.Parse(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String)
+  - NumeralSystems.Net.NumeralSystem.Size
+  - NumeralSystems.Net.NumeralSystem.SkipUnknownValues
+  - NumeralSystems.Net.NumeralSystem.TryCharOf(System.Collections.Generic.IList{System.Int32},System.Char@,System.Boolean)
+  - NumeralSystems.Net.NumeralSystem.TryFromIndices(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.String@,System.Boolean)
+  - NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList{System.Int32},System.Int32@,System.Boolean)
+  - NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.Int32@,System.Boolean)
+  - NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.Int32@,System.Boolean)
+  - NumeralSystems.Net.NumeralSystem.TryParse(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,NumeralSystems.Net.Numeral@)
+  - NumeralSystems.Net.NumeralSystem.TrySplitNumberIndices(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}@)
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystem
+  nameWithType: NumeralSystem
+  fullName: NumeralSystems.Net.NumeralSystem
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: NumeralSystem
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 21
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  example: []
+  syntax:
+    content: public class NumeralSystem
+    content.vb: Public Class NumeralSystem
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: NumeralSystems.Net.NumeralSystem.Size
+  commentId: P:NumeralSystems.Net.NumeralSystem.Size
+  id: Size
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: Size
+  nameWithType: NumeralSystem.Size
+  fullName: NumeralSystems.Net.NumeralSystem.Size
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Size
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 27
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public int Size { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property Size As Integer
+  overload: NumeralSystems.Net.NumeralSystem.Size*
+- uid: NumeralSystems.Net.NumeralSystem.SkipUnknownValues
+  commentId: P:NumeralSystems.Net.NumeralSystem.SkipUnknownValues
+  id: SkipUnknownValues
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: SkipUnknownValues
+  nameWithType: NumeralSystem.SkipUnknownValues
+  fullName: NumeralSystems.Net.NumeralSystem.SkipUnknownValues
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SkipUnknownValues
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 32
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public bool SkipUnknownValues { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property SkipUnknownValues As Boolean
+  overload: NumeralSystems.Net.NumeralSystem.SkipUnknownValues*
+- uid: NumeralSystems.Net.NumeralSystem.#ctor(System.Int32)
+  commentId: M:NumeralSystems.Net.NumeralSystem.#ctor(System.Int32)
+  id: '#ctor(System.Int32)'
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystem(int)
+  nameWithType: NumeralSystem.NumeralSystem(int)
+  fullName: NumeralSystems.Net.NumeralSystem.NumeralSystem(int)
+  type: Constructor
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: .ctor
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 38
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: The <code>NumeralSystem</code> class represents a numeral system with a specific size. It provides functionality to convert numbers to and from the indices of the digits in the numeral system.
+  example: []
+  syntax:
+    content: public NumeralSystem(int size)
+    parameters:
+    - id: size
+      type: System.Int32
+    content.vb: Public Sub New(size As Integer)
+  overload: NumeralSystems.Net.NumeralSystem.#ctor*
+  nameWithType.vb: NumeralSystem.New(Integer)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.New(Integer)
+  name.vb: New(Integer)
+- uid: NumeralSystems.Net.NumeralSystem.TrySplitNumberIndices(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}@)
+  commentId: M:NumeralSystems.Net.NumeralSystem.TrySplitNumberIndices(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}@)
+  id: TrySplitNumberIndices(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}@)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: TrySplitNumberIndices(string, IList<string>, string, string, string, out (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional))
+  nameWithType: NumeralSystem.TrySplitNumberIndices(string, IList<string>, string, string, string, out (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional))
+  fullName: NumeralSystems.Net.NumeralSystem.TrySplitNumberIndices(string, System.Collections.Generic.IList<string>, string, string, string, out (bool positive, System.Collections.Generic.List<int> integralIndices, System.Collections.Generic.List<int> fractionalIndices, string integral, string fractional))
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: TrySplitNumberIndices
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 58
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public bool TrySplitNumberIndices(string val, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional) result)
+    parameters:
+    - id: val
+      type: System.String
+    - id: identity
+      type: System.Collections.Generic.IList{System.String}
+    - id: separator
+      type: System.String
+    - id: negativeSign
+      type: System.String
+    - id: numberDecimalSeparator
+      type: System.String
+    - id: result
+      type: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}
+    return:
+      type: System.Boolean
+    content.vb: Public Function TrySplitNumberIndices(val As String, identity As IList(Of String), separator As String, negativeSign As String, numberDecimalSeparator As String, result As (positive As Boolean, integralIndices As List(Of Integer), fractionalIndices As List(Of Integer), integral As String, fractional As String)) As Boolean
+  overload: NumeralSystems.Net.NumeralSystem.TrySplitNumberIndices*
+  nameWithType.vb: NumeralSystem.TrySplitNumberIndices(String, IList(Of String), String, String, String, (positive As Boolean, integralIndices As List(Of Integer), fractionalIndices As List(Of Integer), integral As String, fractional As String))
+  fullName.vb: NumeralSystems.Net.NumeralSystem.TrySplitNumberIndices(String, System.Collections.Generic.IList(Of String), String, String, String, (positive As Boolean, integralIndices As System.Collections.Generic.List(Of Integer), fractionalIndices As System.Collections.Generic.List(Of Integer), integral As String, fractional As String))
+  name.vb: TrySplitNumberIndices(String, IList(Of String), String, String, String, (positive As Boolean, integralIndices As List(Of Integer), fractionalIndices As List(Of Integer), integral As String, fractional As String))
+- uid: NumeralSystems.Net.NumeralSystem.TryFromIndices(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.String@,System.Boolean)
+  commentId: M:NumeralSystems.Net.NumeralSystem.TryFromIndices(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.String@,System.Boolean)
+  id: TryFromIndices(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.String@,System.Boolean)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: TryFromIndices(List<int>, List<int>, IList<string>, string, string, string, out string, bool)
+  nameWithType: NumeralSystem.TryFromIndices(List<int>, List<int>, IList<string>, string, string, string, out string, bool)
+  fullName: NumeralSystems.Net.NumeralSystem.TryFromIndices(System.Collections.Generic.List<int>, System.Collections.Generic.List<int>, System.Collections.Generic.IList<string>, string, string, string, out string, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: TryFromIndices
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 107
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public bool TryFromIndices(List<int> integralIndices, List<int> fractionalIndices, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out string result, bool positive = true)
+    parameters:
+    - id: integralIndices
+      type: System.Collections.Generic.List{System.Int32}
+    - id: fractionalIndices
+      type: System.Collections.Generic.List{System.Int32}
+    - id: identity
+      type: System.Collections.Generic.IList{System.String}
+    - id: separator
+      type: System.String
+    - id: negativeSign
+      type: System.String
+    - id: numberDecimalSeparator
+      type: System.String
+    - id: result
+      type: System.String
+    - id: positive
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryFromIndices(integralIndices As List(Of Integer), fractionalIndices As List(Of Integer), identity As IList(Of String), separator As String, negativeSign As String, numberDecimalSeparator As String, result As String, positive As Boolean = True) As Boolean
+  overload: NumeralSystems.Net.NumeralSystem.TryFromIndices*
+  nameWithType.vb: NumeralSystem.TryFromIndices(List(Of Integer), List(Of Integer), IList(Of String), String, String, String, String, Boolean)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.TryFromIndices(System.Collections.Generic.List(Of Integer), System.Collections.Generic.List(Of Integer), System.Collections.Generic.IList(Of String), String, String, String, String, Boolean)
+  name.vb: TryFromIndices(List(Of Integer), List(Of Integer), IList(Of String), String, String, String, String, Boolean)
+- uid: NumeralSystems.Net.NumeralSystem.Parse(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String)
+  commentId: M:NumeralSystems.Net.NumeralSystem.Parse(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String)
+  id: Parse(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: Parse(string, IList<string>, string, string, string)
+  nameWithType: NumeralSystem.Parse(string, IList<string>, string, string, string)
+  fullName: NumeralSystems.Net.NumeralSystem.Parse(string, System.Collections.Generic.IList<string>, string, string, string)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Parse
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 141
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Parses a string representation of a numeral into a Numeral object using the specified identity, separator, negative sign, and number decimal separator.
+  example: []
+  syntax:
+    content: public Numeral Parse(string val, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator)
+    parameters:
+    - id: val
+      type: System.String
+      description: The string representation of the numeral
+    - id: identity
+      type: System.Collections.Generic.IList{System.String}
+      description: The list of characters that represent the digits of the numeral system
+    - id: separator
+      type: System.String
+      description: The separator used to separate integral and fractional parts of the numeral
+    - id: negativeSign
+      type: System.String
+      description: The character that represents negative sign in the numeral
+    - id: numberDecimalSeparator
+      type: System.String
+      description: The character that represents the decimal point in the numeral
+    return:
+      type: NumeralSystems.Net.Numeral
+      description: A Numeral object representing the parsed numeral
+    content.vb: Public Function Parse(val As String, identity As IList(Of String), separator As String, negativeSign As String, numberDecimalSeparator As String) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Parse*
+  nameWithType.vb: NumeralSystem.Parse(String, IList(Of String), String, String, String)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.Parse(String, System.Collections.Generic.IList(Of String), String, String, String)
+  name.vb: Parse(String, IList(Of String), String, String, String)
+- uid: NumeralSystems.Net.NumeralSystem.TryParse(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,NumeralSystems.Net.Numeral@)
+  commentId: M:NumeralSystems.Net.NumeralSystem.TryParse(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,NumeralSystems.Net.Numeral@)
+  id: TryParse(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,NumeralSystems.Net.Numeral@)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: TryParse(string, IList<string>, string, string, string, out Numeral)
+  nameWithType: NumeralSystem.TryParse(string, IList<string>, string, string, string, out Numeral)
+  fullName: NumeralSystems.Net.NumeralSystem.TryParse(string, System.Collections.Generic.IList<string>, string, string, string, out NumeralSystems.Net.Numeral)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: TryParse
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 157
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public bool TryParse(string value, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out Numeral result)
+    parameters:
+    - id: value
+      type: System.String
+    - id: identity
+      type: System.Collections.Generic.IList{System.String}
+    - id: separator
+      type: System.String
+    - id: negativeSign
+      type: System.String
+    - id: numberDecimalSeparator
+      type: System.String
+    - id: result
+      type: NumeralSystems.Net.Numeral
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryParse(value As String, identity As IList(Of String), separator As String, negativeSign As String, numberDecimalSeparator As String, result As Numeral) As Boolean
+  overload: NumeralSystems.Net.NumeralSystem.TryParse*
+  nameWithType.vb: NumeralSystem.TryParse(String, IList(Of String), String, String, String, Numeral)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.TryParse(String, System.Collections.Generic.IList(Of String), String, String, String, NumeralSystems.Net.Numeral)
+  name.vb: TryParse(String, IList(Of String), String, String, String, Numeral)
+- uid: NumeralSystems.Net.NumeralSystem.Contains(System.Collections.Generic.IList{System.Int32})
+  commentId: M:NumeralSystems.Net.NumeralSystem.Contains(System.Collections.Generic.IList{System.Int32})
+  id: Contains(System.Collections.Generic.IList{System.Int32})
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: Contains(IList<int>)
+  nameWithType: NumeralSystem.Contains(IList<int>)
+  fullName: NumeralSystems.Net.NumeralSystem.Contains(System.Collections.Generic.IList<int>)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Contains
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 169
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public bool Contains(IList<int> value)
+    parameters:
+    - id: value
+      type: System.Collections.Generic.IList{System.Int32}
+    return:
+      type: System.Boolean
+    content.vb: Public Function Contains(value As IList(Of Integer)) As Boolean
+  overload: NumeralSystems.Net.NumeralSystem.Contains*
+  nameWithType.vb: NumeralSystem.Contains(IList(Of Integer))
+  fullName.vb: NumeralSystems.Net.NumeralSystem.Contains(System.Collections.Generic.IList(Of Integer))
+  name.vb: Contains(IList(Of Integer))
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Int32)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Int32)
+  id: Item(System.Int32)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[int]
+  nameWithType: NumeralSystem.this[int]
+  fullName: NumeralSystems.Net.NumeralSystem.this[int]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 171
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public Numeral this[int index] { get; }
+    parameters:
+    - id: index
+      type: System.Int32
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As Integer) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](Integer)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](Integer)
+  name.vb: this[](Integer)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Double)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Double)
+  id: Item(System.Double)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[double]
+  nameWithType: NumeralSystem.this[double]
+  fullName: NumeralSystems.Net.NumeralSystem.this[double]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 187
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Represents a numeral system with a specified size.
+  remarks: >-
+    The <code>NumeralSystem</code> class allows operations on numbers in a specific numeral system.
+
+    It provides methods to retrieve numerals at different indices in different data types.
+  example: []
+  syntax:
+    content: public Numeral this[double index] { get; }
+    parameters:
+    - id: index
+      type: System.Double
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As Double) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](Double)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](Double)
+  name.vb: this[](Double)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Decimal)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Decimal)
+  id: Item(System.Decimal)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[decimal]
+  nameWithType: NumeralSystem.this[decimal]
+  fullName: NumeralSystems.Net.NumeralSystem.this[decimal]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 199
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Represents a numeral system.
+  example: []
+  syntax:
+    content: public Numeral this[decimal index] { get; }
+    parameters:
+    - id: index
+      type: System.Decimal
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As Decimal) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](Decimal)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](Decimal)
+  name.vb: this[](Decimal)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Int64)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Int64)
+  id: Item(System.Int64)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[long]
+  nameWithType: NumeralSystem.this[long]
+  fullName: NumeralSystems.Net.NumeralSystem.this[long]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 214
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Represents a numeral system with a specified size.
+  remarks: The NumeralSystem class provides functionality for converting numbers to and from a specified numeral system.
+  example: []
+  syntax:
+    content: public Numeral this[long index] { get; }
+    parameters:
+    - id: index
+      type: System.Int64
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As Long) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](Long)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](Long)
+  name.vb: this[](Long)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.UInt64)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.UInt64)
+  id: Item(System.UInt64)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[ulong]
+  nameWithType: NumeralSystem.this[ulong]
+  fullName: NumeralSystems.Net.NumeralSystem.this[ulong]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 226
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Gets the size of the numeral system.
+  example: []
+  syntax:
+    content: public Numeral this[ulong index] { get; }
+    parameters:
+    - id: index
+      type: System.UInt64
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As ULong) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](ULong)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](ULong)
+  name.vb: this[](ULong)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.UInt32)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.UInt32)
+  id: Item(System.UInt32)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[uint]
+  nameWithType: NumeralSystem.this[uint]
+  fullName: NumeralSystems.Net.NumeralSystem.this[uint]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 238
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Gets the size of the numeral system.
+  example: []
+  syntax:
+    content: public Numeral this[uint index] { get; }
+    parameters:
+    - id: index
+      type: System.UInt32
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As UInteger) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](UInteger)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](UInteger)
+  name.vb: this[](UInteger)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Int16)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Int16)
+  id: Item(System.Int16)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[short]
+  nameWithType: NumeralSystem.this[short]
+  fullName: NumeralSystems.Net.NumeralSystem.this[short]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 250
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Gets the size of the numeral system.
+  example: []
+  syntax:
+    content: public Numeral this[short index] { get; }
+    parameters:
+    - id: index
+      type: System.Int16
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As Short) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](Short)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](Short)
+  name.vb: this[](Short)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.UInt16)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.UInt16)
+  id: Item(System.UInt16)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[ushort]
+  nameWithType: NumeralSystem.this[ushort]
+  fullName: NumeralSystems.Net.NumeralSystem.this[ushort]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 262
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  example: []
+  syntax:
+    content: public Numeral this[ushort index] { get; }
+    parameters:
+    - id: index
+      type: System.UInt16
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As UShort) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](UShort)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](UShort)
+  name.vb: this[](UShort)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.SByte)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.SByte)
+  id: Item(System.SByte)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[sbyte]
+  nameWithType: NumeralSystem.this[sbyte]
+  fullName: NumeralSystems.Net.NumeralSystem.this[sbyte]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 274
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  example: []
+  syntax:
+    content: public Numeral this[sbyte index] { get; }
+    parameters:
+    - id: index
+      type: System.SByte
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As SByte) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](SByte)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](SByte)
+  name.vb: this[](SByte)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Byte)
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Byte)
+  id: Item(System.Byte)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[byte]
+  nameWithType: NumeralSystem.this[byte]
+  fullName: NumeralSystems.Net.NumeralSystem.this[byte]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 284
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  example: []
+  syntax:
+    content: public Numeral this[byte index] { get; }
+    parameters:
+    - id: index
+      type: System.Byte
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As Byte) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](Byte)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](Byte)
+  name.vb: this[](Byte)
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IEnumerable{System.Byte})
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IEnumerable{System.Byte})
+  id: Item(System.Collections.Generic.IEnumerable{System.Byte})
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[IEnumerable<byte>]
+  nameWithType: NumeralSystem.this[IEnumerable<byte>]
+  fullName: NumeralSystems.Net.NumeralSystem.this[System.Collections.Generic.IEnumerable<byte>]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 299
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Represents a numeral system.
+  remarks: This class provides functionality to define and manipulate numeral systems.
+  example: []
+  syntax:
+    content: public Numeral this[IEnumerable<byte> index] { get; }
+    parameters:
+    - id: index
+      type: System.Collections.Generic.IEnumerable{System.Byte}
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As IEnumerable(Of Byte)) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](IEnumerable(Of Byte))
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](System.Collections.Generic.IEnumerable(Of Byte))
+  name.vb: this[](IEnumerable(Of Byte))
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IEnumerable{System.Char})
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IEnumerable{System.Char})
+  id: Item(System.Collections.Generic.IEnumerable{System.Char})
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[IEnumerable<char>]
+  nameWithType: NumeralSystem.this[IEnumerable<char>]
+  fullName: NumeralSystems.Net.NumeralSystem.this[System.Collections.Generic.IEnumerable<char>]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 310
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  example: []
+  syntax:
+    content: public Numeral this[IEnumerable<char> index] { get; }
+    parameters:
+    - id: index
+      type: System.Collections.Generic.IEnumerable{System.Char}
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As IEnumerable(Of Char)) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](IEnumerable(Of Char))
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](System.Collections.Generic.IEnumerable(Of Char))
+  name.vb: this[](IEnumerable(Of Char))
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.List{System.Int32})
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.List{System.Int32})
+  id: Item(System.Collections.Generic.List{System.Int32})
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[List<int>]
+  nameWithType: NumeralSystem.this[List<int>]
+  fullName: NumeralSystems.Net.NumeralSystem.this[System.Collections.Generic.List<int>]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 315
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  example: []
+  syntax:
+    content: public Numeral this[List<int> index] { get; }
+    parameters:
+    - id: index
+      type: System.Collections.Generic.List{System.Int32}
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As List(Of Integer)) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](List(Of Integer))
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](System.Collections.Generic.List(Of Integer))
+  name.vb: this[](List(Of Integer))
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IList{System.Char})
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IList{System.Char})
+  id: Item(System.Collections.Generic.IList{System.Char})
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[IList<char>]
+  nameWithType: NumeralSystem.this[IList<char>]
+  fullName: NumeralSystems.Net.NumeralSystem.this[System.Collections.Generic.IList<char>]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 434
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public Numeral this[IList<char> index] { get; }
+    parameters:
+    - id: index
+      type: System.Collections.Generic.IList{System.Char}
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As IList(Of Char)) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](IList(Of Char))
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](System.Collections.Generic.IList(Of Char))
+  name.vb: this[](IList(Of Char))
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IList{System.Byte})
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IList{System.Byte})
+  id: Item(System.Collections.Generic.IList{System.Byte})
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[IList<byte>]
+  nameWithType: NumeralSystem.this[IList<byte>]
+  fullName: NumeralSystems.Net.NumeralSystem.this[System.Collections.Generic.IList<byte>]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 437
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  example: []
+  syntax:
+    content: public Numeral this[IList<byte> index] { get; }
+    parameters:
+    - id: index
+      type: System.Collections.Generic.IList{System.Byte}
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As IList(Of Byte)) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](IList(Of Byte))
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](System.Collections.Generic.IList(Of Byte))
+  name.vb: this[](IList(Of Byte))
+- uid: NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IEnumerable{System.Int32})
+  commentId: P:NumeralSystems.Net.NumeralSystem.Item(System.Collections.Generic.IEnumerable{System.Int32})
+  id: Item(System.Collections.Generic.IEnumerable{System.Int32})
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: this[IEnumerable<int>]
+  nameWithType: NumeralSystem.this[IEnumerable<int>]
+  fullName: NumeralSystems.Net.NumeralSystem.this[System.Collections.Generic.IEnumerable<int>]
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: this[]
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 439
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public Numeral this[IEnumerable<int> index] { get; }
+    parameters:
+    - id: index
+      type: System.Collections.Generic.IEnumerable{System.Int32}
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public ReadOnly Default Property this[](index As IEnumerable(Of Integer)) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Item*
+  nameWithType.vb: NumeralSystem.this[](IEnumerable(Of Integer))
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[](System.Collections.Generic.IEnumerable(Of Integer))
+  name.vb: this[](IEnumerable(Of Integer))
+- uid: NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList{System.Int32},System.Int32@,System.Boolean)
+  commentId: M:NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList{System.Int32},System.Int32@,System.Boolean)
+  id: TryIntegerOf(System.Collections.Generic.IList{System.Int32},System.Int32@,System.Boolean)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: TryIntegerOf(IList<int>, out int, bool)
+  nameWithType: NumeralSystem.TryIntegerOf(IList<int>, out int, bool)
+  fullName: NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList<int>, out int, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: TryIntegerOf
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 448
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Try to get the integer value of the indices.
+  example: []
+  syntax:
+    content: public bool TryIntegerOf(IList<int> indices, out int result, bool positive = true)
+    parameters:
+    - id: indices
+      type: System.Collections.Generic.IList{System.Int32}
+      description: Indices of the digits of the number.
+    - id: result
+      type: System.Int32
+      description: Integer value representing the indices of the digits.
+    - id: positive
+      type: System.Boolean
+      description: Flag indicating if the resulting integer should be positive (default is true).
+    return:
+      type: System.Boolean
+      description: True if the conversion succeeds, false if it was approximated to the nearest possible 0 value.
+    content.vb: Public Function TryIntegerOf(indices As IList(Of Integer), result As Integer, positive As Boolean = True) As Boolean
+  overload: NumeralSystems.Net.NumeralSystem.TryIntegerOf*
+  nameWithType.vb: NumeralSystem.TryIntegerOf(IList(Of Integer), Integer, Boolean)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList(Of Integer), Integer, Boolean)
+  name.vb: TryIntegerOf(IList(Of Integer), Integer, Boolean)
+- uid: NumeralSystems.Net.NumeralSystem.TryCharOf(System.Collections.Generic.IList{System.Int32},System.Char@,System.Boolean)
+  commentId: M:NumeralSystems.Net.NumeralSystem.TryCharOf(System.Collections.Generic.IList{System.Int32},System.Char@,System.Boolean)
+  id: TryCharOf(System.Collections.Generic.IList{System.Int32},System.Char@,System.Boolean)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: TryCharOf(IList<int>, out char, bool)
+  nameWithType: NumeralSystem.TryCharOf(IList<int>, out char, bool)
+  fullName: NumeralSystems.Net.NumeralSystem.TryCharOf(System.Collections.Generic.IList<int>, out char, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: TryCharOf
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 474
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  summary: Try to get the char value of the indices
+  example: []
+  syntax:
+    content: public bool TryCharOf(IList<int> indices, out char result, bool positive = true)
+    parameters:
+    - id: indices
+      type: System.Collections.Generic.IList{System.Int32}
+      description: Indices of the digits of the number
+    - id: result
+      type: System.Char
+      description: Char value representing the indices of the digits
+    - id: positive
+      type: System.Boolean
+      description: Boolean indicating if it is a positive number or not
+    return:
+      type: System.Boolean
+      description: True if the conversion succeeds, False if it was approximated to the nearest possible value
+    content.vb: Public Function TryCharOf(indices As IList(Of Integer), result As Char, positive As Boolean = True) As Boolean
+  overload: NumeralSystems.Net.NumeralSystem.TryCharOf*
+  nameWithType.vb: NumeralSystem.TryCharOf(IList(Of Integer), Char, Boolean)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.TryCharOf(System.Collections.Generic.IList(Of Integer), Char, Boolean)
+  name.vb: TryCharOf(IList(Of Integer), Char, Boolean)
+- uid: NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.Int32@,System.Boolean)
+  commentId: M:NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.Int32@,System.Boolean)
+  id: TryIntegerOf(System.Collections.Generic.IList{System.String},System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.Int32@,System.Boolean)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: TryIntegerOf(IList<string>, IList<string>, string, string, string, out int, bool)
+  nameWithType: NumeralSystem.TryIntegerOf(IList<string>, IList<string>, string, string, string, out int, bool)
+  fullName: NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList<string>, System.Collections.Generic.IList<string>, string, string, string, out int, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: TryIntegerOf
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 496
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public bool TryIntegerOf(IList<string> indices, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out int result, bool positive = true)
+    parameters:
+    - id: indices
+      type: System.Collections.Generic.IList{System.String}
+    - id: identity
+      type: System.Collections.Generic.IList{System.String}
+    - id: separator
+      type: System.String
+    - id: negativeSign
+      type: System.String
+    - id: numberDecimalSeparator
+      type: System.String
+    - id: result
+      type: System.Int32
+    - id: positive
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryIntegerOf(indices As IList(Of String), identity As IList(Of String), separator As String, negativeSign As String, numberDecimalSeparator As String, result As Integer, positive As Boolean = True) As Boolean
+  overload: NumeralSystems.Net.NumeralSystem.TryIntegerOf*
+  nameWithType.vb: NumeralSystem.TryIntegerOf(IList(Of String), IList(Of String), String, String, String, Integer, Boolean)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.Collections.Generic.IList(Of String), System.Collections.Generic.IList(Of String), String, String, String, Integer, Boolean)
+  name.vb: TryIntegerOf(IList(Of String), IList(Of String), String, String, String, Integer, Boolean)
+- uid: NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.Int32@,System.Boolean)
+  commentId: M:NumeralSystems.Net.NumeralSystem.TryIntegerOf(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.Int32@,System.Boolean)
+  id: TryIntegerOf(System.String,System.Collections.Generic.IList{System.String},System.String,System.String,System.String,System.Int32@,System.Boolean)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: TryIntegerOf(string, IList<string>, string, string, string, out int, bool)
+  nameWithType: NumeralSystem.TryIntegerOf(string, IList<string>, string, string, string, out int, bool)
+  fullName: NumeralSystems.Net.NumeralSystem.TryIntegerOf(string, System.Collections.Generic.IList<string>, string, string, string, out int, bool)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: TryIntegerOf
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 522
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public bool TryIntegerOf(string value, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out int integral, bool positive = true)
+    parameters:
+    - id: value
+      type: System.String
+    - id: identity
+      type: System.Collections.Generic.IList{System.String}
+    - id: separator
+      type: System.String
+    - id: negativeSign
+      type: System.String
+    - id: numberDecimalSeparator
+      type: System.String
+    - id: integral
+      type: System.Int32
+    - id: positive
+      type: System.Boolean
+    return:
+      type: System.Boolean
+    content.vb: Public Function TryIntegerOf(value As String, identity As IList(Of String), separator As String, negativeSign As String, numberDecimalSeparator As String, integral As Integer, positive As Boolean = True) As Boolean
+  overload: NumeralSystems.Net.NumeralSystem.TryIntegerOf*
+  nameWithType.vb: NumeralSystem.TryIntegerOf(String, IList(Of String), String, String, String, Integer, Boolean)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.TryIntegerOf(String, System.Collections.Generic.IList(Of String), String, String, String, Integer, Boolean)
+  name.vb: TryIntegerOf(String, IList(Of String), String, String, String, Integer, Boolean)
+- uid: NumeralSystems.Net.NumeralSystem.Parse(System.String,NumeralSystems.Net.NumeralSystem.SerializationInfo)
+  commentId: M:NumeralSystems.Net.NumeralSystem.Parse(System.String,NumeralSystems.Net.NumeralSystem.SerializationInfo)
+  id: Parse(System.String,NumeralSystems.Net.NumeralSystem.SerializationInfo)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: Parse(string, SerializationInfo)
+  nameWithType: NumeralSystem.Parse(string, NumeralSystem.SerializationInfo)
+  fullName: NumeralSystems.Net.NumeralSystem.Parse(string, NumeralSystems.Net.NumeralSystem.SerializationInfo)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Parse
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 598
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public Numeral Parse(string toString, NumeralSystem.SerializationInfo serializationInfo)
+    parameters:
+    - id: toString
+      type: System.String
+    - id: serializationInfo
+      type: NumeralSystems.Net.NumeralSystem.SerializationInfo
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public Function Parse(toString As String, serializationInfo As NumeralSystem.SerializationInfo) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Parse*
+  nameWithType.vb: NumeralSystem.Parse(String, NumeralSystem.SerializationInfo)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.Parse(String, NumeralSystems.Net.NumeralSystem.SerializationInfo)
+  name.vb: Parse(String, SerializationInfo)
+- uid: NumeralSystems.Net.NumeralSystem.Parse(System.String)
+  commentId: M:NumeralSystems.Net.NumeralSystem.Parse(System.String)
+  id: Parse(System.String)
+  parent: NumeralSystems.Net.NumeralSystem
+  langs:
+  - csharp
+  - vb
+  name: Parse(string)
+  nameWithType: NumeralSystem.Parse(string)
+  fullName: NumeralSystems.Net.NumeralSystem.Parse(string)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Parse
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 604
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public Numeral Parse(string toString)
+    parameters:
+    - id: toString
+      type: System.String
+    return:
+      type: NumeralSystems.Net.Numeral
+    content.vb: Public Function Parse(toString As String) As Numeral
+  overload: NumeralSystems.Net.NumeralSystem.Parse*
+  nameWithType.vb: NumeralSystem.Parse(String)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.Parse(String)
+  name.vb: Parse(String)
+references:
+- uid: NumeralSystems.Net
+  commentId: N:NumeralSystems.Net
+  href: NumeralSystems.html
+  name: NumeralSystems.Net
+  nameWithType: NumeralSystems.Net
+  fullName: NumeralSystems.Net
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.NumeralSystem.Size*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.Size
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_Size
+  name: Size
+  nameWithType: NumeralSystem.Size
+  fullName: NumeralSystems.Net.NumeralSystem.Size
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: NumeralSystems.Net.NumeralSystem.SkipUnknownValues*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.SkipUnknownValues
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_SkipUnknownValues
+  name: SkipUnknownValues
+  nameWithType: NumeralSystem.SkipUnknownValues
+  fullName: NumeralSystems.Net.NumeralSystem.SkipUnknownValues
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: NumeralSystems.Net.NumeralSystem.#ctor*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.#ctor
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem__ctor_System_Int32_
+  name: NumeralSystem
+  nameWithType: NumeralSystem.NumeralSystem
+  fullName: NumeralSystems.Net.NumeralSystem.NumeralSystem
+  nameWithType.vb: NumeralSystem.New
+  fullName.vb: NumeralSystems.Net.NumeralSystem.New
+  name.vb: New
+- uid: NumeralSystems.Net.NumeralSystem.TrySplitNumberIndices*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.TrySplitNumberIndices
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_TrySplitNumberIndices_System_String_System_Collections_Generic_IList_System_String__System_String_System_String_System_String_System_ValueTuple_System_Boolean_System_Collections_Generic_List_System_Int32__System_Collections_Generic_List_System_Int32__System_String_System_String___
+  name: TrySplitNumberIndices
+  nameWithType: NumeralSystem.TrySplitNumberIndices
+  fullName: NumeralSystems.Net.NumeralSystem.TrySplitNumberIndices
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Collections.Generic.IList{System.String}
+  commentId: T:System.Collections.Generic.IList{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<string>
+  nameWithType: IList<string>
+  fullName: System.Collections.Generic.IList<string>
+  nameWithType.vb: IList(Of String)
+  fullName.vb: System.Collections.Generic.IList(Of String)
+  name.vb: IList(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}
+  commentId: T:System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}
+  parent: System
+  definition: System.ValueTuple`5
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional)
+  nameWithType: (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional)
+  fullName: (bool positive, System.Collections.Generic.List<int> integralIndices, System.Collections.Generic.List<int> fractionalIndices, string integral, string fractional)
+  nameWithType.vb: (positive As Boolean, integralIndices As List(Of Integer), fractionalIndices As List(Of Integer), integral As String, fractional As String)
+  fullName.vb: (positive As Boolean, integralIndices As System.Collections.Generic.List(Of Integer), fractionalIndices As System.Collections.Generic.List(Of Integer), integral As String, fractional As String)
+  name.vb: (positive As Boolean, integralIndices As List(Of Integer), fractionalIndices As List(Of Integer), integral As String, fractional As String)
+  spec.csharp:
+  - name: (
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.positive
+    name: positive
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.positive
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.integralIndices
+    name: integralIndices
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.integralindices
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.fractionalIndices
+    name: fractionalIndices
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.fractionalindices
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.integral
+    name: integral
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.integral
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.fractional
+    name: fractional
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.fractional
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.positive
+    name: positive
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.positive
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.integralIndices
+    name: integralIndices
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.integralindices
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.fractionalIndices
+    name: fractionalIndices
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.fractionalindices
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.integral
+    name: integral
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.integral
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.String,System.String}.fractional
+    name: fractional
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.boolean,system.collections.generic.list-system.int32-,system.collections.generic.list-system.int32-,system.string,system.string-.fractional
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.IList`1
+  commentId: T:System.Collections.Generic.IList`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<T>
+  nameWithType: IList<T>
+  fullName: System.Collections.Generic.IList<T>
+  nameWithType.vb: IList(Of T)
+  fullName.vb: System.Collections.Generic.IList(Of T)
+  name.vb: IList(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.ValueTuple`5
+  commentId: T:System.ValueTuple`5
+  name: (T1, T2, T3, T4, T5)
+  nameWithType: (T1, T2, T3, T4, T5)
+  fullName: (T1, T2, T3, T4, T5)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: ','
+  - name: " "
+  - name: T4
+  - name: ','
+  - name: " "
+  - name: T5
+  - name: )
+- uid: NumeralSystems.Net.NumeralSystem.TryFromIndices*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.TryFromIndices
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_TryFromIndices_System_Collections_Generic_List_System_Int32__System_Collections_Generic_List_System_Int32__System_Collections_Generic_IList_System_String__System_String_System_String_System_String_System_String__System_Boolean_
+  name: TryFromIndices
+  nameWithType: NumeralSystem.TryFromIndices
+  fullName: NumeralSystems.Net.NumeralSystem.TryFromIndices
+- uid: System.Collections.Generic.List{System.Int32}
+  commentId: T:System.Collections.Generic.List{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<int>
+  nameWithType: List<int>
+  fullName: System.Collections.Generic.List<int>
+  nameWithType.vb: List(Of Integer)
+  fullName.vb: System.Collections.Generic.List(Of Integer)
+  name.vb: List(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: NumeralSystems.Net.NumeralSystem.Parse*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.Parse
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_Parse_System_String_System_Collections_Generic_IList_System_String__System_String_System_String_System_String_
+  name: Parse
+  nameWithType: NumeralSystem.Parse
+  fullName: NumeralSystems.Net.NumeralSystem.Parse
+- uid: NumeralSystems.Net.Numeral
+  commentId: T:NumeralSystems.Net.Numeral
+  parent: NumeralSystems.Net
+  href: NumeralSystems.Net.Numeral.html
+  name: Numeral
+  nameWithType: Numeral
+  fullName: NumeralSystems.Net.Numeral
+- uid: NumeralSystems.Net.NumeralSystem.TryParse*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.TryParse
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_TryParse_System_String_System_Collections_Generic_IList_System_String__System_String_System_String_System_String_NumeralSystems_Net_Numeral__
+  name: TryParse
+  nameWithType: NumeralSystem.TryParse
+  fullName: NumeralSystems.Net.NumeralSystem.TryParse
+- uid: NumeralSystems.Net.NumeralSystem.Contains*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.Contains
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_Contains_System_Collections_Generic_IList_System_Int32__
+  name: Contains
+  nameWithType: NumeralSystem.Contains
+  fullName: NumeralSystems.Net.NumeralSystem.Contains
+- uid: System.Collections.Generic.IList{System.Int32}
+  commentId: T:System.Collections.Generic.IList{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<int>
+  nameWithType: IList<int>
+  fullName: System.Collections.Generic.IList<int>
+  nameWithType.vb: IList(Of Integer)
+  fullName.vb: System.Collections.Generic.IList(Of Integer)
+  name.vb: IList(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: NumeralSystems.Net.NumeralSystem.Item*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.Item
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_Item_System_Int32_
+  name: this
+  nameWithType: NumeralSystem.this
+  fullName: NumeralSystems.Net.NumeralSystem.this
+  nameWithType.vb: NumeralSystem.this[]
+  fullName.vb: NumeralSystems.Net.NumeralSystem.this[]
+  name.vb: this[]
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: System.UInt64
+  commentId: T:System.UInt64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint64
+  name: ulong
+  nameWithType: ulong
+  fullName: ulong
+  nameWithType.vb: ULong
+  fullName.vb: ULong
+  name.vb: ULong
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System.Int16
+  commentId: T:System.Int16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int16
+  name: short
+  nameWithType: short
+  fullName: short
+  nameWithType.vb: Short
+  fullName.vb: Short
+  name.vb: Short
+- uid: System.UInt16
+  commentId: T:System.UInt16
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint16
+  name: ushort
+  nameWithType: ushort
+  fullName: ushort
+  nameWithType.vb: UShort
+  fullName.vb: UShort
+  name.vb: UShort
+- uid: System.SByte
+  commentId: T:System.SByte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.sbyte
+  name: sbyte
+  nameWithType: sbyte
+  fullName: sbyte
+  nameWithType.vb: SByte
+  fullName.vb: SByte
+  name.vb: SByte
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: System.Collections.Generic.IEnumerable{System.Byte}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Byte}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<byte>
+  nameWithType: IEnumerable<byte>
+  fullName: System.Collections.Generic.IEnumerable<byte>
+  nameWithType.vb: IEnumerable(Of Byte)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Byte)
+  name.vb: IEnumerable(Of Byte)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Char}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Char}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<char>
+  nameWithType: IEnumerable<char>
+  fullName: System.Collections.Generic.IEnumerable<char>
+  nameWithType.vb: IEnumerable(Of Char)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Char)
+  name.vb: IEnumerable(Of Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+- uid: System.Collections.Generic.IList{System.Char}
+  commentId: T:System.Collections.Generic.IList{System.Char}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<char>
+  nameWithType: IList<char>
+  fullName: System.Collections.Generic.IList<char>
+  nameWithType.vb: IList(Of Char)
+  fullName.vb: System.Collections.Generic.IList(Of Char)
+  name.vb: IList(Of Char)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.Char
+    name: char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Char
+    name: Char
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.char
+  - name: )
+- uid: System.Collections.Generic.IList{System.Byte}
+  commentId: T:System.Collections.Generic.IList{System.Byte}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IList`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  name: IList<byte>
+  nameWithType: IList<byte>
+  fullName: System.Collections.Generic.IList<byte>
+  nameWithType.vb: IList(Of Byte)
+  fullName.vb: System.Collections.Generic.IList(Of Byte)
+  name.vb: IList(Of Byte)
+  spec.csharp:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: <
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IList`1
+    name: IList
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: )
+- uid: System.Collections.Generic.IEnumerable{System.Int32}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Int32}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<int>
+  nameWithType: IEnumerable<int>
+  fullName: System.Collections.Generic.IEnumerable<int>
+  nameWithType.vb: IEnumerable(Of Integer)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Integer)
+  name.vb: IEnumerable(Of Integer)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: NumeralSystems.Net.NumeralSystem.TryIntegerOf*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.TryIntegerOf
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_TryIntegerOf_System_Collections_Generic_IList_System_Int32__System_Int32__System_Boolean_
+  name: TryIntegerOf
+  nameWithType: NumeralSystem.TryIntegerOf
+  fullName: NumeralSystems.Net.NumeralSystem.TryIntegerOf
+- uid: NumeralSystems.Net.NumeralSystem.TryCharOf*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.TryCharOf
+  href: NumeralSystems.Net.NumeralSystem.html#NumeralSystems_Net_NumeralSystem_TryCharOf_System_Collections_Generic_IList_System_Int32__System_Char__System_Boolean_
+  name: TryCharOf
+  nameWithType: NumeralSystem.TryCharOf
+  fullName: NumeralSystems.Net.NumeralSystem.TryCharOf
+- uid: System.Char
+  commentId: T:System.Char
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.char
+  name: char
+  nameWithType: char
+  fullName: char
+  nameWithType.vb: Char
+  fullName.vb: Char
+  name.vb: Char
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  commentId: T:NumeralSystems.Net.NumeralSystem.SerializationInfo
+  parent: NumeralSystems.Net
+  href: NumeralSystems.Net.NumeralSystem.html
+  name: NumeralSystem.SerializationInfo
+  nameWithType: NumeralSystem.SerializationInfo
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  spec.csharp:
+  - uid: NumeralSystems.Net.NumeralSystem
+    name: NumeralSystem
+    href: NumeralSystems.Net.NumeralSystem.html
+  - name: .
+  - uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+    name: SerializationInfo
+    href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html
+  spec.vb:
+  - uid: NumeralSystems.Net.NumeralSystem
+    name: NumeralSystem
+    href: NumeralSystems.Net.NumeralSystem.html
+  - name: .
+  - uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+    name: SerializationInfo
+    href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html

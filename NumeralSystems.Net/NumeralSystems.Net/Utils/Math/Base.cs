@@ -5,6 +5,12 @@
     /// </summary>
     internal static partial class Math
     {
+        /// <summary>
+        /// Calculates the number of digits needed to represent a given number in a specified base.
+        /// </summary>
+        /// <param name="number">The number to calculate the number of digits for.</param>
+        /// <param name="numeralBase">The base to represent the number in.</param>
+        /// <returns>The number of digits needed to represent the given number in the specified base.</returns>
         public static int DigitsInBase(int number, int numeralBase) => (int) System.Math.Ceiling(System.Math.Log(number + 1, numeralBase));
 
         /// <summary>

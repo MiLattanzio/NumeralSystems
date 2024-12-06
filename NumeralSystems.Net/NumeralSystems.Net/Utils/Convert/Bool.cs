@@ -15,6 +15,12 @@ namespace NumeralSystems.Net.Utils
             return (b & (1 << (int)index)) != 0;
         }
 
+        /// <summary>
+        /// Gets the boolean value at the specified index in a short.
+        /// </summary>
+        /// <param name="b">The short value.</param>
+        /// <param name="index">The index of the bit.</param>
+        /// <returns>The boolean value at the specified index.</returns>
         public static bool GetBoolAtIndex(this short b, uint index)
         {
             var bytes = b.ToByteArray();

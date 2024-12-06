@@ -11,6 +11,11 @@ namespace NumeralSystems.Net.Utils
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public static partial class Convert
     {
+        /// <summary>
+        /// Converts an enumerable of <see cref="IncompleteByte"/> to an array of <see cref="IncompleteLong"/>.
+        /// </summary>
+        /// <param name="s">The enumerable of <see cref="IncompleteByte"/> to convert.</param>
+        /// <returns>An array of <see cref="IncompleteLong"/> representing the converted values.</returns>
         public static IncompleteLong[] ToIncompleteInt64Array(this IEnumerable<IncompleteByte> s) => ToIncompleteInt64Array(new IncompleteByteArray() {
             Binary = s.Select(x => x.Binary).SelectMany(x => x).ToArray(),
         });

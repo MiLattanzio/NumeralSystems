@@ -1,0 +1,628 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  commentId: T:NumeralSystems.Net.NumeralSystem.SerializationInfo
+  id: NumeralSystem.SerializationInfo
+  parent: NumeralSystems.Net
+  children:
+  - NumeralSystems.Net.NumeralSystem.SerializationInfo.Identity
+  - NumeralSystems.Net.NumeralSystem.SerializationInfo.NegativeSign
+  - NumeralSystems.Net.NumeralSystem.SerializationInfo.NumberDecimalSeparator
+  - NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase(System.Int32)
+  - NumeralSystems.Net.NumeralSystem.SerializationInfo.Separator
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystem.SerializationInfo
+  nameWithType: NumeralSystem.SerializationInfo
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: SerializationInfo
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 537
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public class NumeralSystem.SerializationInfo
+    content.vb: Public Class NumeralSystem.SerializationInfo
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.Identity
+  commentId: P:NumeralSystems.Net.NumeralSystem.SerializationInfo.Identity
+  id: Identity
+  parent: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  langs:
+  - csharp
+  - vb
+  name: Identity
+  nameWithType: NumeralSystem.SerializationInfo.Identity
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.Identity
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Identity
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 539
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public List<string> Identity { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Property Identity As List(Of String)
+  overload: NumeralSystems.Net.NumeralSystem.SerializationInfo.Identity*
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.Separator
+  commentId: P:NumeralSystems.Net.NumeralSystem.SerializationInfo.Separator
+  id: Separator
+  parent: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  langs:
+  - csharp
+  - vb
+  name: Separator
+  nameWithType: NumeralSystem.SerializationInfo.Separator
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.Separator
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Separator
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 540
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public string Separator { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Separator As String
+  overload: NumeralSystems.Net.NumeralSystem.SerializationInfo.Separator*
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.NegativeSign
+  commentId: P:NumeralSystems.Net.NumeralSystem.SerializationInfo.NegativeSign
+  id: NegativeSign
+  parent: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  langs:
+  - csharp
+  - vb
+  name: NegativeSign
+  nameWithType: NumeralSystem.SerializationInfo.NegativeSign
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.NegativeSign
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: NegativeSign
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 541
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public string NegativeSign { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property NegativeSign As String
+  overload: NumeralSystems.Net.NumeralSystem.SerializationInfo.NegativeSign*
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.NumberDecimalSeparator
+  commentId: P:NumeralSystems.Net.NumeralSystem.SerializationInfo.NumberDecimalSeparator
+  id: NumberDecimalSeparator
+  parent: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  langs:
+  - csharp
+  - vb
+  name: NumberDecimalSeparator
+  nameWithType: NumeralSystem.SerializationInfo.NumberDecimalSeparator
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.NumberDecimalSeparator
+  type: Property
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: NumberDecimalSeparator
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 546
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public string NumberDecimalSeparator { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property NumberDecimalSeparator As String
+  overload: NumeralSystems.Net.NumeralSystem.SerializationInfo.NumberDecimalSeparator*
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase(System.Int32)
+  commentId: M:NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase(System.Int32)
+  id: OfBase(System.Int32)
+  parent: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  langs:
+  - csharp
+  - vb
+  name: OfBase(int)
+  nameWithType: NumeralSystem.SerializationInfo.OfBase(int)
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase(int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/NumeralSystem.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: OfBase
+    path: NumeralSystems.Net/NumeralSystem.cs
+    startLine: 552
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net
+  syntax:
+    content: public static NumeralSystem.SerializationInfo OfBase(int size)
+    parameters:
+    - id: size
+      type: System.Int32
+    return:
+      type: NumeralSystems.Net.NumeralSystem.SerializationInfo
+    content.vb: Public Shared Function OfBase(size As Integer) As NumeralSystem.SerializationInfo
+  overload: NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase*
+  nameWithType.vb: NumeralSystem.SerializationInfo.OfBase(Integer)
+  fullName.vb: NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase(Integer)
+  name.vb: OfBase(Integer)
+references:
+- uid: NumeralSystems.Net
+  commentId: N:NumeralSystems.Net
+  href: NumeralSystems.html
+  name: NumeralSystems.Net
+  nameWithType: NumeralSystems.Net
+  fullName: NumeralSystems.Net
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.Identity*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.SerializationInfo.Identity
+  href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html#NumeralSystems_Net_NumeralSystem_SerializationInfo_Identity
+  name: Identity
+  nameWithType: NumeralSystem.SerializationInfo.Identity
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.Identity
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.Separator*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.SerializationInfo.Separator
+  href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html#NumeralSystems_Net_NumeralSystem_SerializationInfo_Separator
+  name: Separator
+  nameWithType: NumeralSystem.SerializationInfo.Separator
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.Separator
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.NegativeSign*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.SerializationInfo.NegativeSign
+  href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html#NumeralSystems_Net_NumeralSystem_SerializationInfo_NegativeSign
+  name: NegativeSign
+  nameWithType: NumeralSystem.SerializationInfo.NegativeSign
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.NegativeSign
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.NumberDecimalSeparator*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.SerializationInfo.NumberDecimalSeparator
+  href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html#NumeralSystems_Net_NumeralSystem_SerializationInfo_NumberDecimalSeparator
+  name: NumberDecimalSeparator
+  nameWithType: NumeralSystem.SerializationInfo.NumberDecimalSeparator
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.NumberDecimalSeparator
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase*
+  commentId: Overload:NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase
+  href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html#NumeralSystems_Net_NumeralSystem_SerializationInfo_OfBase_System_Int32_
+  name: OfBase
+  nameWithType: NumeralSystem.SerializationInfo.OfBase
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  commentId: T:NumeralSystems.Net.NumeralSystem.SerializationInfo
+  parent: NumeralSystems.Net
+  href: NumeralSystems.Net.NumeralSystem.html
+  name: NumeralSystem.SerializationInfo
+  nameWithType: NumeralSystem.SerializationInfo
+  fullName: NumeralSystems.Net.NumeralSystem.SerializationInfo
+  spec.csharp:
+  - uid: NumeralSystems.Net.NumeralSystem
+    name: NumeralSystem
+    href: NumeralSystems.Net.NumeralSystem.html
+  - name: .
+  - uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+    name: SerializationInfo
+    href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html
+  spec.vb:
+  - uid: NumeralSystems.Net.NumeralSystem
+    name: NumeralSystem
+    href: NumeralSystems.Net.NumeralSystem.html
+  - name: .
+  - uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
+    name: SerializationInfo
+    href: NumeralSystems.Net.NumeralSystem.SerializationInfo.html

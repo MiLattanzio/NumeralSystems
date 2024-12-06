@@ -1,0 +1,294 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Interface.IRregularReversible`4
+  commentId: T:NumeralSystems.Net.Interface.IRregularReversible`4
+  id: IRregularReversible`4
+  parent: NumeralSystems.Net.Interface
+  children:
+  - NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd(`0,`0@)
+  - NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd(`1,`0@)
+  - NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr(`0,`0@)
+  - NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr(`1,`0@)
+  langs:
+  - csharp
+  - vb
+  name: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>
+  nameWithType: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>
+  fullName: NumeralSystems.Net.Interface.IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>
+  type: Interface
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IRregularReversible.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: IRregularReversible
+    path: NumeralSystems.Net/Interface/IRregularReversible.cs
+    startLine: 9
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Interface for reverse operations on a incomplete value.
+  example: []
+  syntax:
+    content: 'public interface IRregularReversible<TIncomplete, in TNumeralValue, TValue, TIndexer> where TIncomplete : IIncompleteValue<in TNumeralValue, TValue, TIndexer> where TNumeralValue : INumeralValue<TValue> where TIndexer : struct'
+    typeParameters:
+    - id: TIncomplete
+      description: Incomplete type representation of the type value
+    - id: TNumeralValue
+    - id: TValue
+      description: Native type representation of the value
+    - id: TIndexer
+      description: Type used to index the incomplete permutation of the incomplete value type
+    content.vb: Public Interface IRregularReversible(Of TIncomplete As IIncompleteValue(Of In TNumeralValue, TValue, TIndexer), In TNumeralValue As INumeralValue(Of TValue), TValue, TIndexer As Structure)
+  nameWithType.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer)
+  fullName.vb: NumeralSystems.Net.Interface.IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer)
+  name.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer)
+- uid: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd(`1,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd(`1,`0@)
+  id: ReverseAnd(`1,`0@)
+  parent: NumeralSystems.Net.Interface.IRregularReversible`4
+  langs:
+  - csharp
+  - vb
+  name: ReverseAnd(TNumeralValue, out TIncomplete)
+  nameWithType: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseAnd(TNumeralValue, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseAnd(TNumeralValue, out TIncomplete)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IRregularReversible.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseAnd
+    path: NumeralSystems.Net/Interface/IRregularReversible.cs
+    startLine: 17
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Reverse operation for the bitwise and operation.
+  example: []
+  syntax:
+    content: bool ReverseAnd(TNumeralValue right, out TIncomplete result)
+    parameters:
+    - id: right
+      type: '{TNumeralValue}'
+      description: Second parameter of the operation
+    - id: result
+      type: '{TIncomplete}'
+      description: Result of the operation if any
+    return:
+      type: System.Boolean
+      description: True if the operation was successful otherwise false
+    content.vb: Function ReverseAnd(right As TNumeralValue, result As TIncomplete) As Boolean
+  overload: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd*
+  nameWithType.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseAnd(TNumeralValue, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseAnd(TNumeralValue, TIncomplete)
+  name.vb: ReverseAnd(TNumeralValue, TIncomplete)
+- uid: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd(`0,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd(`0,`0@)
+  id: ReverseAnd(`0,`0@)
+  parent: NumeralSystems.Net.Interface.IRregularReversible`4
+  langs:
+  - csharp
+  - vb
+  name: ReverseAnd(TIncomplete, out TIncomplete)
+  nameWithType: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseAnd(TIncomplete, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseAnd(TIncomplete, out TIncomplete)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IRregularReversible.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseAnd
+    path: NumeralSystems.Net/Interface/IRregularReversible.cs
+    startLine: 24
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Reverse operation for the bitwise and operation.
+  example: []
+  syntax:
+    content: bool ReverseAnd(TIncomplete right, out TIncomplete result)
+    parameters:
+    - id: right
+      type: '{TIncomplete}'
+      description: Second parameter of the operation
+    - id: result
+      type: '{TIncomplete}'
+      description: Result of the operation if any
+    return:
+      type: System.Boolean
+      description: True if the operation was successful otherwise false
+    content.vb: Function ReverseAnd(right As TIncomplete, result As TIncomplete) As Boolean
+  overload: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd*
+  nameWithType.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseAnd(TIncomplete, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseAnd(TIncomplete, TIncomplete)
+  name.vb: ReverseAnd(TIncomplete, TIncomplete)
+- uid: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr(`1,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr(`1,`0@)
+  id: ReverseOr(`1,`0@)
+  parent: NumeralSystems.Net.Interface.IRregularReversible`4
+  langs:
+  - csharp
+  - vb
+  name: ReverseOr(TNumeralValue, out TIncomplete)
+  nameWithType: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseOr(TNumeralValue, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseOr(TNumeralValue, out TIncomplete)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IRregularReversible.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseOr
+    path: NumeralSystems.Net/Interface/IRregularReversible.cs
+    startLine: 31
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Reverse operation for the bitwise or operation.
+  example: []
+  syntax:
+    content: bool ReverseOr(TNumeralValue right, out TIncomplete result)
+    parameters:
+    - id: right
+      type: '{TNumeralValue}'
+      description: Second parameter of the operation
+    - id: result
+      type: '{TIncomplete}'
+      description: Result of the operation if any
+    return:
+      type: System.Boolean
+      description: True if the operation was successful otherwise false
+    content.vb: Function ReverseOr(right As TNumeralValue, result As TIncomplete) As Boolean
+  overload: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr*
+  nameWithType.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseOr(TNumeralValue, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseOr(TNumeralValue, TIncomplete)
+  name.vb: ReverseOr(TNumeralValue, TIncomplete)
+- uid: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr(`0,`0@)
+  commentId: M:NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr(`0,`0@)
+  id: ReverseOr(`0,`0@)
+  parent: NumeralSystems.Net.Interface.IRregularReversible`4
+  langs:
+  - csharp
+  - vb
+  name: ReverseOr(TIncomplete, out TIncomplete)
+  nameWithType: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseOr(TIncomplete, out TIncomplete)
+  fullName: NumeralSystems.Net.Interface.IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseOr(TIncomplete, out TIncomplete)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Interface/IRregularReversible.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ReverseOr
+    path: NumeralSystems.Net/Interface/IRregularReversible.cs
+    startLine: 38
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Interface
+  summary: Reverse operation for the bitwise or operation.
+  example: []
+  syntax:
+    content: bool ReverseOr(TIncomplete right, out TIncomplete result)
+    parameters:
+    - id: right
+      type: '{TIncomplete}'
+      description: Second parameter of the operation
+    - id: result
+      type: '{TIncomplete}'
+      description: Result of the operation if any
+    return:
+      type: System.Boolean
+      description: True if the operation was successful otherwise false
+    content.vb: Function ReverseOr(right As TIncomplete, result As TIncomplete) As Boolean
+  overload: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr*
+  nameWithType.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseOr(TIncomplete, TIncomplete)
+  fullName.vb: NumeralSystems.Net.Interface.IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseOr(TIncomplete, TIncomplete)
+  name.vb: ReverseOr(TIncomplete, TIncomplete)
+references:
+- uid: NumeralSystems.Net.Interface
+  commentId: N:NumeralSystems.Net.Interface
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Interface
+  nameWithType: NumeralSystems.Net.Interface
+  fullName: NumeralSystems.Net.Interface
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Interface
+    name: Interface
+    href: NumeralSystems.Net.Interface.html
+- uid: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd*
+  commentId: Overload:NumeralSystems.Net.Interface.IRregularReversible`4.ReverseAnd
+  href: NumeralSystems.Net.Interface.IRregularReversible-4.html#NumeralSystems_Net_Interface_IRregularReversible_4_ReverseAnd__1__0__
+  name: ReverseAnd
+  nameWithType: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseAnd
+  fullName: NumeralSystems.Net.Interface.IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseAnd
+  nameWithType.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseAnd
+  fullName.vb: NumeralSystems.Net.Interface.IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseAnd
+- uid: '{TNumeralValue}'
+  commentId: '!:TNumeralValue'
+  definition: TNumeralValue
+  name: TNumeralValue
+  nameWithType: TNumeralValue
+  fullName: TNumeralValue
+- uid: '{TIncomplete}'
+  commentId: '!:TIncomplete'
+  definition: TIncomplete
+  name: TIncomplete
+  nameWithType: TIncomplete
+  fullName: TIncomplete
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: TNumeralValue
+  name: TNumeralValue
+  nameWithType: TNumeralValue
+  fullName: TNumeralValue
+- uid: TIncomplete
+  name: TIncomplete
+  nameWithType: TIncomplete
+  fullName: TIncomplete
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr*
+  commentId: Overload:NumeralSystems.Net.Interface.IRregularReversible`4.ReverseOr
+  href: NumeralSystems.Net.Interface.IRregularReversible-4.html#NumeralSystems_Net_Interface_IRregularReversible_4_ReverseOr__1__0__
+  name: ReverseOr
+  nameWithType: IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseOr
+  fullName: NumeralSystems.Net.Interface.IRregularReversible<TIncomplete, TNumeralValue, TValue, TIndexer>.ReverseOr
+  nameWithType.vb: IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseOr
+  fullName.vb: NumeralSystems.Net.Interface.IRregularReversible(Of TIncomplete, TNumeralValue, TValue, TIndexer).ReverseOr

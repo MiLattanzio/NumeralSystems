@@ -79,6 +79,12 @@ namespace NumeralSystems.Net.Utils
         /// The byte array representation of the given value.
         /// </returns>
         public static byte[] ToByteArray(this long s) => BitConverter.GetBytes(s);
+
+        /// <summary>
+        /// Converts a boolean array to a byte array.
+        /// </summary>
+        /// <param name="s">The boolean array to convert.</param>
+        /// <returns>A byte array representing the boolean values.</returns>
         public static byte[] ToByteArray(this double s) => BitConverter.GetBytes(s);
 
         /// <summary>

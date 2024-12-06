@@ -37,7 +37,7 @@ namespace NumeralConverter
             }
 
             var inputBase = Numeral.System.OfBase(inputBaseInteger);
-            Numeral inputValue;
+            var inputValue = Value.FromString()
             try
             {
                 inputValue = inputBase.Parse(InputNumber?.Text);

@@ -1,0 +1,640 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Type.Base.Decimal
+  commentId: T:NumeralSystems.Net.Type.Base.Decimal
+  id: Decimal
+  parent: NumeralSystems.Net.Type.Base
+  children:
+  - NumeralSystems.Net.Type.Base.Decimal.From(System.Double)
+  - NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase(System.UInt64[],System.UInt64[],System.Boolean,System.Int32)
+  - NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase(System.Decimal,System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: Decimal
+  nameWithType: Decimal
+  fullName: NumeralSystems.Net.Type.Base.Decimal
+  type: Class
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/Decimal.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: Decimal
+    path: NumeralSystems.Net/Type/Encode/Decimal.cs
+    startLine: 6
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  syntax:
+    content: public class Decimal
+    content.vb: Public Class [Decimal]
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase(System.Decimal,System.Int32)
+  commentId: M:NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase(System.Decimal,System.Int32)
+  id: ToIndicesOfBase(System.Decimal,System.Int32)
+  parent: NumeralSystems.Net.Type.Base.Decimal
+  langs:
+  - csharp
+  - vb
+  name: ToIndicesOfBase(decimal, int)
+  nameWithType: Decimal.ToIndicesOfBase(decimal, int)
+  fullName: NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase(decimal, int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/Decimal.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: ToIndicesOfBase
+    path: NumeralSystems.Net/Type/Encode/Decimal.cs
+    startLine: 14
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts a decimal value to its indices representation in a specified base.
+  example: []
+  syntax:
+    content: public static (ulong[] Integral, ulong[] Fractional, bool positive) ToIndicesOfBase(decimal val, int destinationBase)
+    parameters:
+    - id: val
+      type: System.Decimal
+      description: The decimal value to convert.
+    - id: destinationBase
+      type: System.Int32
+      description: The base to convert to.
+    return:
+      type: System.ValueTuple{System.UInt64[],System.UInt64[],System.Boolean}
+      description: A tuple containing the integral part, fractional part, and a boolean indicating if the value is positive.
+    content.vb: Public Shared Function ToIndicesOfBase(val As Decimal, destinationBase As Integer) As (Integral As ULong(), Fractional As ULong(), positive As Boolean)
+  overload: NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase*
+  nameWithType.vb: Decimal.ToIndicesOfBase(Decimal, Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase(Decimal, Integer)
+  name.vb: ToIndicesOfBase(Decimal, Integer)
+- uid: NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase(System.UInt64[],System.UInt64[],System.Boolean,System.Int32)
+  commentId: M:NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase(System.UInt64[],System.UInt64[],System.Boolean,System.Int32)
+  id: FromIndicesOfBase(System.UInt64[],System.UInt64[],System.Boolean,System.Int32)
+  parent: NumeralSystems.Net.Type.Base.Decimal
+  langs:
+  - csharp
+  - vb
+  name: FromIndicesOfBase(ulong[], ulong[], bool, int)
+  nameWithType: Decimal.FromIndicesOfBase(ulong[], ulong[], bool, int)
+  fullName: NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase(ulong[], ulong[], bool, int)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/Decimal.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: FromIndicesOfBase
+    path: NumeralSystems.Net/Type/Encode/Decimal.cs
+    startLine: 32
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts indices representation in a specified base to a decimal value.
+  example: []
+  syntax:
+    content: public static decimal FromIndicesOfBase(ulong[] integral, ulong[] fractional, bool positive, int sourceBase)
+    parameters:
+    - id: integral
+      type: System.UInt64[]
+      description: The integral part indices.
+    - id: fractional
+      type: System.UInt64[]
+      description: The fractional part indices.
+    - id: positive
+      type: System.Boolean
+      description: Indicates if the value is positive.
+    - id: sourceBase
+      type: System.Int32
+      description: The base of the indices.
+    return:
+      type: System.Decimal
+      description: The decimal value.
+    content.vb: Public Shared Function FromIndicesOfBase(integral As ULong(), fractional As ULong(), positive As Boolean, sourceBase As Integer) As Decimal
+  overload: NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase*
+  nameWithType.vb: Decimal.FromIndicesOfBase(ULong(), ULong(), Boolean, Integer)
+  fullName.vb: NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase(ULong(), ULong(), Boolean, Integer)
+  name.vb: FromIndicesOfBase(ULong(), ULong(), Boolean, Integer)
+- uid: NumeralSystems.Net.Type.Base.Decimal.From(System.Double)
+  commentId: M:NumeralSystems.Net.Type.Base.Decimal.From(System.Double)
+  id: From(System.Double)
+  parent: NumeralSystems.Net.Type.Base.Decimal
+  langs:
+  - csharp
+  - vb
+  name: From(double)
+  nameWithType: Decimal.From(double)
+  fullName: NumeralSystems.Net.Type.Base.Decimal.From(double)
+  type: Method
+  source:
+    remote:
+      path: NumeralSystems.Net/NumeralSystems.Net/Type/Encode/Decimal.cs
+      branch: master
+      repo: https://github.com/MiLattanzio/NumeralSystems.git
+    id: From
+    path: NumeralSystems.Net/Type/Encode/Decimal.cs
+    startLine: 89
+  assemblies:
+  - NumeralSystems.Net
+  namespace: NumeralSystems.Net.Type.Base
+  summary: Converts a double value to a decimal value.
+  example: []
+  syntax:
+    content: public static decimal From(double val)
+    parameters:
+    - id: val
+      type: System.Double
+      description: The double value to convert.
+    return:
+      type: System.Decimal
+      description: The decimal value.
+    content.vb: Public Shared Function From(val As Double) As Decimal
+  overload: NumeralSystems.Net.Type.Base.Decimal.From*
+  nameWithType.vb: Decimal.From(Double)
+  fullName.vb: NumeralSystems.Net.Type.Base.Decimal.From(Double)
+  name.vb: From(Double)
+references:
+- uid: NumeralSystems.Net.Type.Base
+  commentId: N:NumeralSystems.Net.Type.Base
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Type.Base
+  nameWithType: NumeralSystems.Net.Type.Base
+  fullName: NumeralSystems.Net.Type.Base
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Type
+    name: Type
+    href: NumeralSystems.Net.Type.html
+  - name: .
+  - uid: NumeralSystems.Net.Type.Base
+    name: Base
+    href: NumeralSystems.Net.Type.Base.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase
+  href: NumeralSystems.Net.Type.Base.Decimal.html#NumeralSystems_Net_Type_Base_Decimal_ToIndicesOfBase_System_Decimal_System_Int32_
+  name: ToIndicesOfBase
+  nameWithType: Decimal.ToIndicesOfBase
+  fullName: NumeralSystems.Net.Type.Base.Decimal.ToIndicesOfBase
+- uid: System.Decimal
+  commentId: T:System.Decimal
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.decimal
+  name: decimal
+  nameWithType: decimal
+  fullName: decimal
+  nameWithType.vb: Decimal
+  fullName.vb: Decimal
+  name.vb: Decimal
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.ValueTuple{System.UInt64[],System.UInt64[],System.Boolean}
+  commentId: T:System.ValueTuple{System.UInt64[],System.UInt64[],System.Boolean}
+  parent: System
+  definition: System.ValueTuple`3
+  href: https://learn.microsoft.com/dotnet/api/system.uint64
+  name: (ulong[] Integral, ulong[] Fractional, bool positive)
+  nameWithType: (ulong[] Integral, ulong[] Fractional, bool positive)
+  fullName: (ulong[] Integral, ulong[] Fractional, bool positive)
+  nameWithType.vb: (Integral As ULong(), Fractional As ULong(), positive As Boolean)
+  fullName.vb: (Integral As ULong(), Fractional As ULong(), positive As Boolean)
+  name.vb: (Integral As ULong(), Fractional As ULong(), positive As Boolean)
+  spec.csharp:
+  - name: (
+  - uid: System.UInt64
+    name: ulong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: '['
+  - name: ']'
+  - name: " "
+  - uid: System.ValueTuple{System.UInt64[],System.UInt64[],System.Boolean}.Integral
+    name: Integral
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint64[],system.uint64[],system.boolean-.integral
+  - name: ','
+  - name: " "
+  - uid: System.UInt64
+    name: ulong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: '['
+  - name: ']'
+  - name: " "
+  - uid: System.ValueTuple{System.UInt64[],System.UInt64[],System.Boolean}.Fractional
+    name: Fractional
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint64[],system.uint64[],system.boolean-.fractional
+  - name: ','
+  - name: " "
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: " "
+  - uid: System.ValueTuple{System.UInt64[],System.UInt64[],System.Boolean}.positive
+    name: positive
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint64[],system.uint64[],system.boolean-.positive
+  - name: )
+  spec.vb:
+  - name: (
+  - uid: System.ValueTuple{System.UInt64[],System.UInt64[],System.Boolean}.Integral
+    name: Integral
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint64[],system.uint64[],system.boolean-.integral
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.UInt64
+    name: ULong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.UInt64[],System.UInt64[],System.Boolean}.Fractional
+    name: Fractional
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint64[],system.uint64[],system.boolean-.fractional
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.UInt64
+    name: ULong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: (
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.ValueTuple{System.UInt64[],System.UInt64[],System.Boolean}.positive
+    name: positive
+    href: https://learn.microsoft.com/dotnet/api/system.valuetuple-system.uint64[],system.uint64[],system.boolean-.positive
+  - name: " "
+  - name: As
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: System.ValueTuple`3
+  commentId: T:System.ValueTuple`3
+  name: (T1, T2, T3)
+  nameWithType: (T1, T2, T3)
+  fullName: (T1, T2, T3)
+  spec.csharp:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+  spec.vb:
+  - name: (
+  - name: T1
+  - name: ','
+  - name: " "
+  - name: T2
+  - name: ','
+  - name: " "
+  - name: T3
+  - name: )
+- uid: NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase
+  href: NumeralSystems.Net.Type.Base.Decimal.html#NumeralSystems_Net_Type_Base_Decimal_FromIndicesOfBase_System_UInt64___System_UInt64___System_Boolean_System_Int32_
+  name: FromIndicesOfBase
+  nameWithType: Decimal.FromIndicesOfBase
+  fullName: NumeralSystems.Net.Type.Base.Decimal.FromIndicesOfBase
+- uid: System.UInt64[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint64
+  name: ulong[]
+  nameWithType: ulong[]
+  fullName: ulong[]
+  nameWithType.vb: ULong()
+  fullName.vb: ULong()
+  name.vb: ULong()
+  spec.csharp:
+  - uid: System.UInt64
+    name: ulong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.UInt64
+    name: ULong
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.uint64
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: NumeralSystems.Net.Type.Base.Decimal.From*
+  commentId: Overload:NumeralSystems.Net.Type.Base.Decimal.From
+  href: NumeralSystems.Net.Type.Base.Decimal.html#NumeralSystems_Net_Type_Base_Decimal_From_System_Double_
+  name: From
+  nameWithType: Decimal.From
+  fullName: NumeralSystems.Net.Type.Base.Decimal.From
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double

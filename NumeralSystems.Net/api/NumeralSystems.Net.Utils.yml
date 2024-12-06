@@ -1,0 +1,68 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Utils
+  commentId: N:NumeralSystems.Net.Utils
+  id: NumeralSystems.Net.Utils
+  children:
+  - NumeralSystems.Net.Utils.Convert
+  - NumeralSystems.Net.Utils.Sequence
+  - NumeralSystems.Net.Utils.StringExtensions
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystems.Net.Utils
+  nameWithType: NumeralSystems.Net.Utils
+  fullName: NumeralSystems.Net.Utils
+  type: Namespace
+  assemblies:
+  - NumeralSystems.Net
+references:
+- uid: NumeralSystems.Net.Utils.Convert
+  commentId: T:NumeralSystems.Net.Utils.Convert
+  parent: NumeralSystems.Net.Utils
+  href: NumeralSystems.Net.Utils.Convert.html
+  name: Convert
+  nameWithType: Convert
+  fullName: NumeralSystems.Net.Utils.Convert
+- uid: NumeralSystems.Net.Utils.Sequence
+  commentId: T:NumeralSystems.Net.Utils.Sequence
+  href: NumeralSystems.Net.Utils.Sequence.html
+  name: Sequence
+  nameWithType: Sequence
+  fullName: NumeralSystems.Net.Utils.Sequence
+- uid: NumeralSystems.Net.Utils.StringExtensions
+  commentId: T:NumeralSystems.Net.Utils.StringExtensions
+  href: NumeralSystems.Net.Utils.StringExtensions.html
+  name: StringExtensions
+  nameWithType: StringExtensions
+  fullName: NumeralSystems.Net.Utils.StringExtensions
+- uid: NumeralSystems.Net.Utils
+  commentId: N:NumeralSystems.Net.Utils
+  href: NumeralSystems.html
+  name: NumeralSystems.Net.Utils
+  nameWithType: NumeralSystems.Net.Utils
+  fullName: NumeralSystems.Net.Utils
+  spec.csharp:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Utils
+    name: Utils
+    href: NumeralSystems.Net.Utils.html
+  spec.vb:
+  - uid: NumeralSystems
+    name: NumeralSystems
+    href: NumeralSystems.html
+  - name: .
+  - uid: NumeralSystems.Net
+    name: Net
+    href: NumeralSystems.Net.html
+  - name: .
+  - uid: NumeralSystems.Net.Utils
+    name: Utils
+    href: NumeralSystems.Net.Utils.html

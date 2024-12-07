@@ -21,6 +21,26 @@ namespace NumeralSystem.Net.NUnit.Ecoding
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' 
         };
         
+        private static readonly NumeralSystems.Net.NumeralSystem YoutubeNumeralSystem = Numeral.System.OfBase(YoutubeIdChars.Length);
+        private static readonly NumeralSystems.Net.NumeralSystem NumeralSystem = Numeral.System.OfBase(CleanYoutubeIdChars.Length);
+
+        private static string EncodeIdNumeral(string youtubeId)
+        {
+        
+            var number = YoutubeNumeralSystem.Parse(youtubeId, YoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");
+            var cleanNumber = number.To(NumeralSystem);
+            var result = cleanNumber.ToString(CleanYoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");
+            return result;
+        }
+
+        private static string DecodeIdNumeral(string cleanId)
+        {
+            var cleanNumber = NumeralSystem.Parse(cleanId, CleanYoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");
+            var youtubeNumber = cleanNumber.To(YoutubeNumeralSystem);
+            var youtubeId = youtubeNumber.ToString(YoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");
+            return youtubeId;
+        }
+        
 
         private static string EncodeId(string youtubeId)
         {
@@ -42,11 +62,13 @@ namespace NumeralSystem.Net.NUnit.Ecoding
         [Test]
         public void TestVideoIdEncoding()
         {
-            var id = "-uQi0vJK9lk";
+            var id = "0SerEuqAlAA";
             var encoded = EncodeId(id);
             var decoded = DecodeId(encoded);
             Assert.AreEqual(id, decoded);
-            
+            var encodedNumeral  = EncodeIdNumeral(id);
+            var decodedNumeral = DecodeIdNumeral(encodedNumeral);
+            Assert.AreEqual(id, decodedNumeral);
         }
         
         [Test]

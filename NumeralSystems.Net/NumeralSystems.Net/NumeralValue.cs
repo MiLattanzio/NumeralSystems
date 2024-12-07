@@ -159,14 +159,13 @@ namespace NumeralSystems.Net
         /// as indices in a base-10 system.</returns>
         public Value ToValue() => new Value(Integral.ToList(), 10);
 
-        /// Converts the current numeral value to a different base, specified by the parameter.
-        /// <param name="baseValue">The target base to which the numeral value should be converted. Must be greater than zero.</param>
-        /// <returns>A new instance of NumeralValue representing the converted value in the specified base.</returns>
-        /// <exception cref="ArgumentException">Thrown when the provided baseValue is less than or equal to zero.</exception>
-        public NumeralValue ToBase(int baseValue)
+        public NumeralValue ToBase(int baseValue, bool removeFirstZeros = true)
         {
             if (baseValue <= 0)
                 throw new ArgumentException("baseValue must be greater than zero.");
+
+            var frontIntegralZeros = Integral.AsEnumerable().TakeWhile(x => x == 0).Count();
+            var frontFractionalZeros = Decimals.AsEnumerable().TakeWhile(x => x == 0).Count();
 
             var integrals = new List<int>();
             var currentIntegrals = new List<int>(Integral); // Work with a copy of the indices
@@ -195,7 +194,10 @@ namespace NumeralSystems.Net
             // If the value is zero, represent it correctly
             if (fractionals.Count == 0)
                 fractionals.Add(0);
-
+            
+            if (!removeFirstZeros) integrals = Enumerable.Repeat(0, frontIntegralZeros).Concat(integrals).ToList();
+            fractionals = Enumerable.Repeat(0, frontFractionalZeros).Concat(fractionals).ToList();
+            
             return new NumeralValue(integrals, fractionals, Negative, baseValue);
         }
 

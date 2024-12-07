@@ -93,5 +93,27 @@ namespace NumeralSystem.Net.NUnit
             var valueString = ValueToString(value);
             Assert.That(sourceString, Is.EqualTo(valueString));
         }
+
+        [Test]
+        public void SubZeroNumeralValueSpecificTest1()
+        {
+            var zerozeroone = NumeralValue.FromDecimal(0.01m);
+            var binary = zerozeroone.ToBase(2);
+            Assert.That(zerozeroone.ToDecimal(), Is.EqualTo(binary.ToDecimal()));
+            var original = binary.ToBase(zerozeroone.Base);
+            Assert.That(original.ToDecimal(), Is.EqualTo(zerozeroone.ToDecimal()));
+        }
+        
+        [Test]
+        public void NumeralValueGeneralTest()
+        {
+            var sourceNumber = Random.Next() + Random.NextDouble();
+            var number = NumeralValue.FromDouble(sourceNumber);
+            var binary = number.ToBase(2);
+            Assert.That(number.ToDecimal(), Is.EqualTo(binary.ToDecimal()));
+            var original = binary.ToBase(number.Base);
+            Assert.That(original.ToDecimal(), Is.EqualTo(number.ToDecimal()));
+            Assert.That(sourceNumber, Is.EqualTo(original.ToDouble()));
+        }
     }
 }

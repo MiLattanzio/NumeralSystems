@@ -42,7 +42,7 @@ namespace NumeralSystem.Net.NUnit.Ecoding
         [Test]
         public void TestVideoIdEncoding()
         {
-            var id = "0SerEuqAlAA";
+            var id = "-uQi0vJK9lk";
             var encoded = EncodeId(id);
             var decoded = DecodeId(encoded);
             Assert.AreEqual(id, decoded);

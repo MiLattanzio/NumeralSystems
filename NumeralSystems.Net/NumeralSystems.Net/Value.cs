@@ -16,6 +16,7 @@ namespace NumeralSystems.Net
         /// </summary>
         public Value(List<int> indices, int baseValue)
         {
+            if (null == indices) throw new ArgumentException("Indices cannot be null");
             if (baseValue <= 0) throw new ArgumentException("baseValue must be greater than zero."); 
             Indices = indices.AsReadOnly();
             if (!Indices.All(x => baseValue > x)) throw new ArgumentException($"All indices must be within the range [0,{baseValue-1}].");
@@ -70,16 +71,13 @@ namespace NumeralSystems.Net
             return new Value(indices, identity);
         }
 
-        /// <summary>
-        /// Converts the current numerical value represented by a list of indices in its original base to a specified base.
-        /// </summary>
-        /// <param name="baseValue">The base to which the numerical value should be converted. Must be greater than zero.</param>
-        /// <returns>A new Value object representing the converted numerical value in the specified base.</returns>
-        /// <exception cref="ArgumentException">Thrown when the specified baseValue is less than or equal to zero.</exception>
-        public Value ToBase(int baseValue)
+        
+        public Value ToBase(int baseValue, bool removeFirstZeros = false)
         {
             if (baseValue <= 0)
                 throw new ArgumentException("baseValue must be greater than zero.");
+
+            var frontZeros = Indices.AsEnumerable().TakeWhile(x => x == 0).Count();
 
             var result = new List<int>();
             var currentValue = new List<int>(Indices); // Work with a copy of the indices
@@ -94,6 +92,8 @@ namespace NumeralSystems.Net
             // If the value is zero, represent it correctly
             if (result.Count == 0)
                 result.Add(0);
+            
+            if (!removeFirstZeros) result = Enumerable.Repeat(0, frontZeros).Concat(result).ToList();
 
             return new Value(result, baseValue);
         }

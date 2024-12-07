@@ -4,15 +4,15 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <LangVersion>9</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>4.4.0.0</PackageVersion>
+        <PackageVersion>4.4.0.1</PackageVersion>
         <Title>NumericalSystems.Net</Title>
         <Authors>Polecola</Authors>
         <Description>Helper library to manage/create numeral systems, perform uncommon numeral operations</Description>
         <Copyright>MIT</Copyright>
         <RepositoryUrl>https://github.com/MiLattanzio/NumeralSystems</RepositoryUrl>
         <Company>PastaSoftware</Company>
-        <AssemblyVersion>4.4.0.0</AssemblyVersion>
-        <FileVersion>4.4.0.0</FileVersion>
+        <AssemblyVersion>4.4.0.1</AssemblyVersion>
+        <FileVersion>4.4.0.1</FileVersion>
         <NeutralLanguage>en</NeutralLanguage>
         <PackageLicenseUrl>https://raw.githubusercontent.com/MiLattanzio/NumeralSystems/master/LICENSE.txt</PackageLicenseUrl>
         <PackageProjectUrl>polecola.it</PackageProjectUrl>

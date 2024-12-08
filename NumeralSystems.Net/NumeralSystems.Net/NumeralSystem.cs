@@ -16,47 +16,61 @@ using Double = System.Double;
 // ReSharper disable MemberCanBePrivate.Global
 namespace NumeralSystems.Net
 {
-    /// The `NumeralSystem` class represents a numeral system with a specified size.
-    /// It provides various methods to parse and manipulate numbers in the numeral system.
-    /// /
+    /// The `NumeralSystem` class defines a numeral system with a specified base size.
+    /// It offers functionalities to parse, convert, and manipulate numerals in various formats and representations.
+    /// Properties:
+    /// - `Size`: Represents the size or base of the numeral system.
+    /// - `SkipUnknownValues`: Determines whether unknown values should be skipped during processing.
+    /// Methods:
+    /// - `TrySplitNumberIndices`: Attempts to split a number into integral and fractional parts and returns indices corresponding to these parts.
+    /// - `TryFromIndices`: Attempts to construct a string representation from given integral and fractional indices.
+    /// - `Parse`: Converts a string representation of a numeral into a `Numeral` object based on the system's specifications.
+    /// - `TryParse`: Attempts to parse a numeral from a string, outputting whether it was successful.
+    /// - `Contains`: Checks if a given list of indices are valid within the numeral system.
+    /// - Indexers: Provides access to numerals using various index types (e.g., int, double, IEnumerable) supported by the numeral system.
+    /// - `TryIntegerOf`: Attempts to convert a list of numeral indices into an integer value.
+    /// - `TryCharOf`: Attempts to convert a list of numeral indices into a character.
+    /// Nested Types:
+    /// - `SerializationInfo`: Accompanies numeral parsing by providing additional configuration such as identity, separators, and signs for conversion.
     [SuppressMessage("ReSharper", "HeapView.ClosureAllocation")]
     // ReSharper disable once ClassNeverInstantiated.Global
     public class NumeralSystem
     {
+        /// <summary>
         /// Gets the size of the numeral system.
         /// </summary>
         public int Size { get; }
 
 
-        /// Gets or sets a value indicating whether unknown values should be skipped when splitting or converting numbers.
-        /// </summary>
+        /// Determines whether unknown values in the numeral system should be skipped or handled.
+        /// When set to true, unknown values encountered are ignored, otherwise they are processed.
+        /// This property modifies the behavior of numeral parsing and representation.
         public bool SkipUnknownValues { get; set; }
 
         // ReSharper disable once SuggestBaseTypeForParameterInConstructor
         /// <summary>
-        /// The <c>NumeralSystem</c> class represents a numeral system with a specific size. It provides functionality to convert numbers to and from the indices of the digits in the numeral system.
+        /// The <c>NumeralSystem</c> class represents a numeral system with a specified size and provides functionality to convert numbers to and from the indices of the digits in this numeral system.
         /// </summary>
         public NumeralSystem(int size)
         {
             if (size <= 0) throw new Exception("Size cannot be less than 1");
-           Size = size;
+            Size = size;
         }
 
-        /// Tries to split the number string into its integral and fractional parts using given parameters
+        /// <summary>
+        /// Attempts to split a given number string into integral and fractional parts and their respective indices within a specified numeral system identity list.
         /// </summary>
-        /// <param name="val">The number string to split</param>
-        /// <param name="identity">The list of strings representing the numeral system identity</param>
-        /// <param name="separator">The separator string to split the integral and fractional parts. If null or empty, the identity strings will be used instead</param>
-        /// <param name="negativeSign">The string representing the negative sign</param>
-        /// <param name="numberDecimalSeparator">The string representing the decimal separator</param>
-        /// <param name="result">Tuple containing the splitting results:
-        /// - positive: boolean representing the sign of the number
-        /// - integralIndices: list of integral indices representing the digits
-        /// - fractionalIndices: list of fractional indices representing the digits
-        /// - integral: string representing the integral part of the number
-        /// - fractional: string representing the fractional part of the number</param>
-        /// <returns>True if the splitting was successful, otherwise false</returns>
-        public bool TrySplitNumberIndices(string val, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string fractional) result)
+        /// <param name="val">The string representation of the number to be split.</param>
+        /// <param name="identity">A list of strings representing the numeral system identity to map each character in the number string.</param>
+        /// <param name="separator">The string separator used to split digit characters in the integral and fractional parts, if any.</param>
+        /// <param name="negativeSign">The string representing the negative sign to identify if the number is negative.</param>
+        /// <param name="numberDecimalSeparator">The string used as a decimal separator in the number string.</param>
+        /// <param name="result">A tuple containing the split results: a boolean indicating if the number is positive, lists of indices for integral and fractional parts, and the integral and fractional strings.</param>
+        /// <returns>Returns true if the number string was successfully split into indices; otherwise, false.</returns>
+        public bool TrySplitNumberIndices(string val, IList<string> identity, string separator, string negativeSign,
+            string numberDecimalSeparator,
+            out (bool positive, List<int> integralIndices, List<int> fractionalIndices, string integral, string
+                fractional) result)
         {
             var sucess = true;
             result = (true, new List<int>(), new List<int>(), identity[0], identity[0]);
@@ -70,6 +84,7 @@ namespace NumeralSystems.Net
                 var idx = val.IndexOf(negativeSign, StringComparison.Ordinal);
                 input = val[(idx + 1)..];
             }
+
             var floatString = input.Split(numberDecimalSeparator);
             var integralString = floatString[0];
             var fractionalString = (floatString.Length == 1 ? string.Empty : floatString[1]);
@@ -94,18 +109,21 @@ namespace NumeralSystems.Net
             return sucess;
         }
 
+        /// <summary>
         /// Tries to convert a list of integral and fractional indices to a string representation in a given numeral system.
         /// </summary>
-        /// <param name="integralIndices">A list of integral indices representing the digits of the number</param>
-        /// <param name="fractionalIndices">A list of fractional indices representing the digits after the decimal separator</param>
-        /// <param name="identity">A list of strings representing the symbols or digits in the numeral system</param>
-        /// <param name="separator">The separator used between integral and fractional parts of the number</param>
-        /// <param name="negativeSign">The string representing the negative sign</param>
-        /// <param name="numberDecimalSeparator">The string representing the decimal separator</param>
-        /// <param name="result">The string representation of the number in the given numeral system</param>
-        /// <param name="positive">A boolean value indicating whether the number is positive or negative (default is true)</param>
-        /// <returns>True if the conversion succeeds, False if the conversion was approximate</returns>
-        public bool TryFromIndices(List<int> integralIndices, List<int> fractionalIndices, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out string result, bool positive = true)
+        /// <param name="integralIndices">A list of integral indices representing the digits of the number.</param>
+        /// <param name="fractionalIndices">A list of fractional indices representing the digits after the decimal separator.</param>
+        /// <param name="identity">A list of strings representing the symbols or digits in the numeral system.</param>
+        /// <param name="separator">The separator used between integral and fractional parts of the number.</param>
+        /// <param name="negativeSign">The string representing the negative sign.</param>
+        /// <param name="numberDecimalSeparator">The string representing the decimal separator.</param>
+        /// <param name="result">The string representation of the number in the given numeral system.</param>
+        /// <param name="positive">A boolean value indicating whether the number is positive or negative (default is true).</param>
+        /// <returns>True if the conversion succeeds, False if the conversion was approximate.</returns>
+        public bool TryFromIndices(List<int> integralIndices, List<int> fractionalIndices, IList<string> identity,
+            string separator, string negativeSign, string numberDecimalSeparator, out string result,
+            bool positive = true)
         {
             var success = true;
             var integralList = (integralIndices ?? new List<int>())
@@ -139,14 +157,17 @@ namespace NumeralSystems.Net
         /// <param name="negativeSign">The character that represents negative sign in the numeral</param>
         /// <param name="numberDecimalSeparator">The character that represents the decimal point in the numeral</param>
         /// <returns>A Numeral object representing the parsed numeral</returns>
-        public Numeral Parse(string val, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator)
+        public Numeral Parse(string val, IList<string> identity, string separator, string negativeSign,
+            string numberDecimalSeparator)
         {
-            if (!TrySplitNumberIndices(val, identity, separator, negativeSign, numberDecimalSeparator,  out var result)) throw new InvalidOperationException($"'{val}' is not a valid numeral");
+            if (!TrySplitNumberIndices(val, identity, separator, negativeSign, numberDecimalSeparator, out var result))
+                throw new InvalidOperationException($"'{val}' is not a valid numeral");
             var (positive, integralIndices, fractionalIndices, _, _) = result;
             return new Numeral(this, integralIndices, fractionalIndices, positive);
         }
 
         // <summary>
+        /// <summary>
         /// Tries to parse a string representation of a number using the given numeral system.
         /// </summary>
         /// <param name="value">The string value to parse.</param>
@@ -156,21 +177,33 @@ namespace NumeralSystems.Net
         /// <param name="numberDecimalSeparator">The decimal separator used in the string value.</param>
         /// <param name="result">The parsed Numeral object if successful, otherwise null.</param>
         /// <returns>True if the parsing was successful, otherwise false.</returns>
-        public bool TryParse(string value, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out Numeral result)
+        public bool TryParse(string value, IList<string> identity, string separator, string negativeSign,
+            string numberDecimalSeparator, out Numeral result)
         {
-            var success = TrySplitNumberIndices(value, identity, separator, negativeSign, numberDecimalSeparator, out var r);
+            var success = TrySplitNumberIndices(value, identity, separator, negativeSign, numberDecimalSeparator,
+                out var r);
             var (positive, integralIndices, fractionalIndices, _, _) = r;
             result = new Numeral(this, integralIndices, fractionalIndices, positive);
             return success;
         }
 
         // <summary>
+        /// <summary>
         /// Determines whether the given list of indices is a valid representation in the numeral system.
         /// </summary>
-        /// <param name="value">The list of indices</param>
-        /// <returns>True if the list of indices represents a valid value in the numeral system, false otherwise</returns>
+        /// <param name="value">The list of indices to be validated.</param>
+        /// <returns>True if the list of indices represents a valid value in the numeral system, false otherwise.</returns>
         public bool Contains(IList<int> value) => (null != value && value.ToList().All(x => x >= 0 && x < Size));
 
+        /// Indexer for accessing a `Numeral` object based on an integer index.
+        /// Converts the given integer index into a numeral representation using the size
+        /// of the numeral system. The index is converted into a list of integral indices
+        /// corresponding to the base of the numeral system.
+        /// Parameters:
+        /// index: An integer index to be converted into a `Numeral`.
+        /// Returns:
+        /// A `Numeral` object that represents the given index within this numeral
+        /// system.
         public Numeral this[int index]
         {
             get
@@ -181,24 +214,31 @@ namespace NumeralSystems.Net
         }
 
         /// <summary>
-        /// Represents a numeral system with a specified size.
+        /// Indexer that allows accessing the <see cref="Numeral"/> representation of a double-precision floating-point number.
         /// </summary>
-        /// <remarks>
-        /// The <c>NumeralSystem</c> class allows operations on numbers in a specific numeral system.
-        /// It provides methods to retrieve numerals at different indices in different data types.
-        /// </remarks>
+        /// <param name="index">A double-precision floating-point number to be converted into a <see cref="Numeral"/>.</param>
+        /// <returns>A <see cref="Numeral"/> representation of the given double-precision floating-point number.</returns>
         public Numeral this[double index]
         {
             get
             {
                 var (integral, fractional, positive) = Type.Base.Double.ToIndicesOfBase(index, Size);
-                return new Numeral(this, integral.Select(x => (int)x).ToList(), fractional.Select(x => (int)x).ToList(), positive);
+                return new Numeral(this, integral.Select(x => (int)x).ToList(), fractional.Select(x => (int)x).ToList(),
+                    positive);
             }
         }
 
-        /// <summary>
-        /// Represents a numeral system.
-        /// </summary>
+        /// Provides indexing capabilities for accessing numeral representations within a numeral system.
+        /// Allows access by various numeric index types. The indexer retrieves the numeral representation
+        /// of a given index in the specific numeral system. The supported numeric types for indexing
+        /// include decimal, int, double, long, ulong, uint, short, ushort, sbyte, and byte.
+        /// - Use this indexer to obtain the numeral from a decimal index. The index is converted
+        /// to the numeral system using the base size of the system.
+        /// Note:
+        /// This feature is particularly useful when needing to interact with numeral systems of
+        /// arbitrary bases and perform conversions accordingly.
+        /// param name="index"
+        /// The decimal index value to convert and retrieve as a Numeral.
         public Numeral this[decimal index]
         {
             get
@@ -208,12 +248,9 @@ namespace NumeralSystems.Net
             }
         }
 
-        /// <summary>
-        /// Represents a numeral system with a specified size.
-        /// </summary>
-        /// <remarks>
-        /// The NumeralSystem class provides functionality for converting numbers to and from a specified numeral system.
-        /// </remarks>
+        /// Provides methods and properties for working with numeral systems and their representation.
+        /// The class supports different types of indices to access numerals based on the specified numeral system.
+        /// It includes functionality to handle numeral system size and skipping unknown values.
         public Numeral this[long index]
         {
             get
@@ -223,9 +260,8 @@ namespace NumeralSystems.Net
             }
         }
 
-        /// <summary>
-        /// Gets the size of the numeral system.
-        /// </summary>
+        /// Represents a numeral system and provides functionality to work with various numeral bases.
+        /// This class supports indexing operations to access numerals based on different types of indices.
         public Numeral this[ulong index]
         {
             get
@@ -236,8 +272,14 @@ namespace NumeralSystems.Net
         }
 
         /// <summary>
-        /// Gets the size of the numeral system.
+        /// Provides access to various numeral representations within a numeral system using
+        /// an indexer based on varying types of indices including integers, floating points,
+        /// and collections of numeric types.
         /// </summary>
+        /// <param name="index">The index used to select the numeral, which can be of multiple types
+        /// such as int, double, decimal, long, ulong, uint, short, ushort, sbyte, byte,
+        /// IEnumerable<int>, IEnumerable<byte>, IEnumerable<char>, IList<int>, IList<byte>, and IList<char>.</param>
+        /// <returns>A <see cref="Numeral"/> instance corresponding to the specified index within the numeral system.</returns>
         public Numeral this[uint index]
         {
             get
@@ -247,9 +289,7 @@ namespace NumeralSystems.Net
             }
         }
 
-        /// <summary>
-        /// Gets the size of the numeral system.
-        /// </summary>
+        /// Represents a numeral system with a defined size and behavior for handling unknown values.
         public Numeral this[short index]
         {
             get
@@ -259,9 +299,15 @@ namespace NumeralSystems.Net
             }
         }
 
-        /// The `NumeralSystem` class represents a numeral system with a specified size.
-        /// It is used to parse and format numbers in the specified numeral system.
-        /// /
+        /// Provides access to numerals at the specified index within a numeral system.
+        /// This property allows for retrieving a `Numeral` object using various index types,
+        /// such as `int`, `double`, `decimal`, `long`, `ulong`, `uint`, `short`, `ushort`,
+        /// `sbyte`, `byte`, and various collection types containing `byte`, `char`, and `int`.
+        /// Each index type corresponds to an overload of the indexer, enabling flexible access
+        /// to numeral representations within the system.
+        /// The indexer utilizes the specified index to calculate and return the corresponding
+        /// `Numeral` object, which represents a particular value within the numeral system's size
+        /// and rules of conversion.
         public Numeral this[ushort index]
         {
             get
@@ -271,19 +317,25 @@ namespace NumeralSystems.Net
             }
         }
 
-        /// The `NumeralSystem` class represents a numeral system used for converting numbers to and from different bases.
-        /// It provides methods for splitting numbers into integral and fractional parts, parsing numbers from string representations,
-        /// and accessing numerals using different index types.
+        /// Represents a numeral system with specified properties and methods for handling numerals.
+        /// Provides access to numerals using various index types including integers, decimals, and collections.
         public Numeral this[sbyte index]
         {
-            get 
+            get
             {
                 var integral = ULong.ToIndicesOfBase((ulong)index, Size);
                 return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
             }
         }
 
-        /// *Properties:**
+        /// <summary>
+        /// Numeral indexer that accepts an input of type <c>byte</c>.
+        /// </summary>
+        /// <param name="index">The byte value used to index into the numeral system.</param>
+        /// <returns>The <see cref="Numeral"/> representation corresponding to the specified byte index.</returns>
+        /// <remarks>
+        /// Utilizes the base size of the numeral system to convert the byte index into a numeral.
+        /// </remarks>
         public Numeral this[byte index]
         {
             get
@@ -293,161 +345,43 @@ namespace NumeralSystems.Net
             }
         }
 
-        /// <summary>
-        /// Represents a numeral system.
-        /// </summary>
-        /// <remarks>
-        /// This class provides functionality to define and manipulate numeral systems.
-        /// </remarks>
+        /// Represents a numeral system, which allows conversion and parsing of numbers based on custom sets of numeral identities.
         public Numeral this[IEnumerable<byte> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
 
-        /// The `NumeralSystem` class represents a numeral system with a specified base size.
-        /// @remarks
-        /// This class provides methods to perform operations on numbers in the specified numeral system.
-        /// @example
-        /// ```csharp
-        /// var numeralSystem = new NumeralSystem(16);
-        /// var numeral = numeralSystem.Parse("1A");
-        /// ```
-        /// /
+        /// Represents a numeral system used for parsing and handling numbers with a given size.
         public Numeral this[IEnumerable<char> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
 
-        /// The `NumeralSystem` class represents a numeral system that can be used to parse and manipulate numbers in different bases.
-        /// @since 1.0.0
-        /// /
+        /// Represents a numerical system that provides operations for parsing
+        /// and converting numeral representations utilizing a specified identity and delimiter settings.
         public Numeral this[List<int> index] => new(this, index, positive: true);
 
-        /// The `NumeralSystem` class represents a numeral system with a specified size.
-        /// It provides methods to parse and manipulate numbers in the given numeral system.
-        /// @constructor NumeralSystem
-        /// @param {number} size - The size of the numeral system.
-        /// @property {number} Size - The size of the numeral system.
-        /// @property {boolean} SkipUnknownValues - A flag indicating whether to skip unknown values.
-        /// @method TrySplitNumberIndices - Tries to split a number string into its integral and fractional parts and returns the result.
-        /// @param {string} val - The number string to split.
-        /// @param {Array<string>} identity - The identity list of the numeral system.
-        /// @param {string} separator - The separator character or string.
-        /// @param {string} negativeSign - The negative sign character or string.
-        /// @param {string} numberDecimalSeparator - The decimal separator character or string.
-        /// @returns {Object} - An object containing the split result.
-        /// @method TryFromIndices - Tries to construct a number string from its integral and fractional parts using the given indices and returns the result.
-        /// @param {Array<number>} integralIndices - The indices of the integral part.
-        /// @param {Array<number>} fractionalIndices - The indices of the fractional part.
-        /// @param {Array<string>} identity - The identity list of the numeral system.
-        /// @param {string} separator - The separator character or string.
-        /// @param {string} negativeSign - The negative sign character or string.
-        /// @param {string} numberDecimalSeparator - The decimal separator character or string.
-        /// @param {boolean} positive - A flag indicating whether the constructed number is positive. Default is `true`.
-        /// @returns {string} - The constructed number string.
-        /// @method Parse - Parses a number string in the given numeral system and returns a `Numeral` object.
-        /// @param {string} val - The number string to parse.
-        /// @param {Array<string>} identity - The identity list of the numeral system.
-        /// @param {string} separator - The separator character or string.
-        /// @param {string} negativeSign - The negative sign character or string.
-        /// @param {string} numberDecimalSeparator - The decimal separator character or string.
-        /// @returns {Numeral} - The parsed `Numeral` object.
-        /// @method TryParse - Tries to parse a number string in the given numeral system and returns a boolean indicating whether the parsing was successful.
-        /// @param {string} value - The number string to parse.
-        /// @param {Array<string>} identity - The identity list of the numeral system.
-        /// @param {string} separator - The separator character or string.
-        /// @param {string} negativeSign - The negative sign character or string.
-        /// @param {string} numberDecimalSeparator - The decimal separator character or string.
-        /// @param {Numeral} result - The parsed `Numeral` object.
-        /// @returns {boolean} - A boolean indicating whether the parsing was successful.
-        /// @method Contains - Checks if the given list of indices is valid for the numeral system.
-        /// @param {Array<number>} value - The list of indices to check.
-        /// @returns {boolean} - A boolean indicating whether the indices are valid.
-        /// @method this[int index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[double index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[decimal index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[long index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[ulong index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[uint index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[short index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[ushort index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[sbyte index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[byte index] - Gets the `Numeral` object at the specified index.
-        /// @param {number} index - The index of the `Numeral` object to get.
-        /// @returns {Numeral} - The `Numeral` object at the specified index.
-        /// @method this[IEnumerable<byte> index] - Gets a new `Numeral` object using the specified indices.
-        /// @param {Iterable<number>} index - The indices of the `Numeral` object to get.
-        /// @returns {Numeral} - A new `Numeral` object.
-        /// @method this[IEnumerable<char> index] - Gets a new `Numeral` object using the specified indices.
-        /// @param {Iterable<number>} index - The indices of the `Numeral` object to get.
-        /// @returns {Numeral} - A new `Numeral` object.
-        /// @method this[List<int> index] - Gets a new `Numeral` object using the specified indices.
-        /// @param {Array<number>} index - The indices of the `Numeral` object to get.
-        /// @returns {Numeral} - A new `Numeral` object.
-        /// @method this[IList<char> index] - Gets a new `Numeral` object using the specified indices.
-        /// @param {Array<number>} index - The indices of the `Numeral` object to get.
-        /// @returns {Numeral} - A new `Numeral` object.
-        /// @method this[IList<byte> index] - Gets a new `Numeral` object using the specified indices.
-        /// @param {Array<number>} index - The indices of the `Numeral` object to get.
-        /// @returns {Numeral} - A new `Numeral` object.
-        /// @method this[IEnumerable<int> index] - Gets a new `Numeral` object using the specified indices.
-        /// @param {Iterable<number>} index - The indices of the `Numeral` object to get.
-        /// @returns {Numeral} - A new `Numeral` object.
-        /// @method TryIntegerOf - Tries to convert a list of indices to an integer value and returns the result.
-        /// @param {Array<number>} indices - The indices to convert.
-        /// @param {number} result - The result of the conversion.
-        /// @param {boolean} positive - A flag indicating whether the resulting integer value should be positive. Default is `true`.
-        /// @returns {boolean} - A boolean indicating whether the conversion was successful.
-        /// @method TryCharOf - Tries to convert a list of indices to a character value and returns the result.
-        /// @param {Array<number>} indices - The indices to convert.
-        /// @param {string} result - The result of the conversion.
-        /// @param {boolean} positive - A flag indicating whether the resulting character value should be positive. Default is `true`.
-        /// @returns {boolean} - A boolean indicating whether the conversion was successful.
-        /// @method TryIntegerOf - Tries to convert a list of indices to an integer value and returns the result.
-        /// @param {Array<string>} indices - The indices to convert.
-        /// @param {Array<string>} identity - The identity list of the numeral system.
-        /// @param {string} separator - The separator character or string.
-        /// @param {string} negativeSign - The negative sign character or string.
-        /// @param {string} numberDecimalSeparator - The decimal separator character or string.
-        /// @param {number} result - The result of the conversion.
-        /// @param {boolean} positive - A flag indicating whether the resulting integer value should be positive. Default is `true`.
-        /// @returns {boolean} - A boolean indicating whether the conversion was successful.
-        /// @method TryIntegerOf - Tries to convert a number string to an integer value and returns the result.
-        /// @param {string} value - The number string to convert.
-        /// @param {Array<string>} identity - The identity list of the numeral system.
-        /// @param {string} separator - The separator character or string.
-        /// @param {string} negativeSign - The negative sign character or string.
-        /// @param {string} numberDecimalSeparator - The decimal separator character or string.
-        /// @param {number} integral - The integral part of the converted value.
-        /// @param {boolean} positive - A flag indicating whether the resulting integer value should be positive. Default is `true`.
-        /// @returns {boolean} - A boolean indicating whether the conversion was successful.
-        /// /
+        /// <summary>
+        /// Represents a numeral system with customizable settings for numeral parsing and conversion.
+        /// </summary>
         public Numeral this[IList<char> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
 
-        /// *NumeralSystems.Net.NumeralSystem**
+        /// <summary>
+        /// Accesses a numeral in the numeral system using an integer index.
+        /// </summary>
+        /// <remarks>
+        /// The index must be within the bounds of the numeral system.
+        /// </remarks>
+        /// <param name="index">The integer index to access the numeral.</param>
+        /// <returns>The numeral corresponding to the specified index.</returns>
         public Numeral this[IList<byte> index] => new(this, index.Select(x => (int)x).ToList(), positive: true);
 
+        /// Provides a means to work with different numeral systems, allowing for parsing, indexing, and conversion operations
+        /// within a specified numeral system size.
         public Numeral this[IEnumerable<int> index] => new(this, index.ToList(), positive: true);
 
         /// <summary>
-        /// Try to get the integer value of the indices.
+        /// Attempts to convert a list of indices representing the digits of a number
+        /// within this numeral system to its corresponding integer value.
         /// </summary>
-        /// <param name="indices">Indices of the digits of the number.</param>
-        /// <param name="result">Integer value representing the indices of the digits.</param>
-        /// <param name="positive">Flag indicating if the resulting integer should be positive (default is true).</param>
-        /// <returns>True if the conversion succeeds, false if it was approximated to the nearest possible 0 value.</returns>
+        /// <param name="indices">A list of integers representing the indices of the digits.</param>
+        /// <param name="result">The integer value obtained from the indices if conversion is successful; otherwise, zero.</param>
+        /// <param name="positive">Determines whether the resulting integer should be positive; defaults to true.</param>
+        /// <returns>True if the conversion is successful and no adjustments were necessary; otherwise, false if adjusted to the nearest possible value.</returns>
         public bool TryIntegerOf(IList<int> indices, out int result, bool positive = true)
         {
             result = 0;
@@ -462,18 +396,19 @@ namespace NumeralSystems.Net
                 ind = indices.Select(x => x < Size && x >= 0 ? x : 0).ToList();
                 success = false;
             }
+
             result = ind.Select((t, i) => t * Convert.ToInt32(Math.Pow(Size, (ind.Count() - 1 - i)))).Sum();
             result = positive ? result : -result;
             return success;
         }
 
         /// <summary>
-        /// Try to get the char value of the indices
+        /// Attempts to convert the given indices of numeric digits into a character representation.
         /// </summary>
-        /// <param name="indices">Indices of the digits of the number</param>
-        /// <param name="result">Char value representing the indices of the digits</param>
-        /// <param name="positive">Boolean indicating if it is a positive number or not</param>
-        /// <returns>True if the conversion succeeds, False if it was approximated to the nearest possible value</returns>
+        /// <param name="indices">A list containing the indices of the digits in the numeral system.</param>
+        /// <param name="result">The resulting character representation of the indices if the conversion is successful.</param>
+        /// <param name="positive">A boolean indicating whether the number represented by the indices is positive.</param>
+        /// <returns>True if the conversion is successful; otherwise, false if it was only approximated to the nearest possible char value.</returns>
         public bool TryCharOf(IList<int> indices, out char result, bool positive = true)
         {
             result = char.MinValue;
@@ -486,16 +421,21 @@ namespace NumeralSystems.Net
             return success;
         }
 
-        /// Try to get the integer value of the indices
+        /// <summary>
+        /// Tries to convert a list of string indices into their corresponding integer value,
+        /// using specified numeral system configuration settings such as identity mappings
+        /// and separators.
         /// </summary>
-        /// <param name="indices">Indices of the digits of the number</param>
-        /// <param name="result">Integer value representing the indices of the digits</param>
-        /// <param name="positive">If the number is greater than 0</param>
-        /// <param name="identity">The identity that represents the number at each index</param>
-        /// <param name="separator">The separator of each number</param>
-        /// <param name="negativeSign">The negative sign symbol</param>
-        /// <param name="numberDecimalSeparator">The separator for integral and fractional part in a float</param>
-        /// <returns>True If the conversion succeds, False if it was approssimated to the nearest 0 possible value</returns>
+        /// <param name="indices">A list of string representations of numeral indices.</param>
+        /// <param name="identity">A list of strings that represent the numeral mappings in the system.</param>
+        /// <param name="separator">The character used to separate numerals in the input list.</param>
+        /// <param name="negativeSign">The symbol that denotes a negative number.</param>
+        /// <param name="numberDecimalSeparator">The character used to separate the integer and fractional parts of a number.</param>
+        /// <param name="result">Outputs the integer value derived from the provided indices.</param>
+        /// <param name="positive">A boolean flag indicating whether the result should be positive;
+        /// defaults to true.</param>
+        /// <returns>True if the indices successfully convert to an integer; false if the conversion fails or
+        /// has to be approximated to the nearest zero value.</returns>
         public bool TryIntegerOf(IList<string> indices, IList<string> identity, string separator, string negativeSign,
             string numberDecimalSeparator, out int result, bool positive = true)
         {
@@ -521,37 +461,65 @@ namespace NumeralSystems.Net
 
             return TryIntegerOf(ind.Select(identity.IndexOf).ToList(), out result, positive);
         }
-        
-        public bool TryIntegerOf(string value, IList<string> identity, string separator, string negativeSign, string numberDecimalSeparator, out int integral, bool positive = true)
+
+        /// <summary>
+        /// Attempts to convert a string representation of a number in a given numeral system to its integer equivalent.
+        /// </summary>
+        /// <param name="value">The string representation of the number to convert.</param>
+        /// <param name="identity">The list of string representations of each digit in the numeral system.</param>
+        /// <param name="separator">The separator used between digits in the string representation.</param>
+        /// <param name="negativeSign">The character representing a negative sign in the numeral system.</param>
+        /// <param name="numberDecimalSeparator">The character used as the decimal separator in the string representation.</param>
+        /// <param name="integral">If the conversion is successful, this will contain the integer equivalent of the number.</param>
+        /// <param name="positive">Indicates whether the number should be treated as positive if no negative sign is found.</param>
+        /// <returns>True if the string was converted successfully; otherwise, false.</returns>
+        public bool TryIntegerOf(string value, IList<string> identity, string separator, string negativeSign,
+            string numberDecimalSeparator, out int integral, bool positive = true)
         {
             integral = 0;
             if (string.IsNullOrEmpty(value))
             {
                 return false;
             }
-            
+
             //var integral = string.Join(string.Empty, value.Split(NumberDecimalSeparator).First());
             //var test = integral.SplitAndKeep(Identity.ToArray());
-            var success = TrySplitNumberIndices(value, identity, separator, negativeSign, numberDecimalSeparator, out var result);
+            var success = TrySplitNumberIndices(value, identity, separator, negativeSign, numberDecimalSeparator,
+                out var result);
             var test = TryIntegerOf(result.integralIndices, out integral, result.positive | positive);
             return success && test;
         }
-        
+
+        /// The `SerializationInfo` class contains information necessary for the serialization
+        /// and deserialization of numerals in a given numeral system. It maintains the identity
+        /// components and formatting details such as separators and signs used in numerical representations.
         public class SerializationInfo
         {
-            public List<string> Identity { get; set; } = new ();
+            /// Gets or sets the identity of the numeral system used for serialization.
+            /// The identity represents a list of characters or strings that uniquely define
+            /// the numerals in the system.
+            public List<string> Identity { get; set; } = new();
+
+            /// <summary>
+            /// Gets or sets the separator string used in the numeral system.
+            /// </summary>
             public string Separator { get; set; } = string.Empty;
+
+            /// <summary>
+            /// Gets or sets the string used to denote negative numbers in the numeral system.
+            /// </summary>
             public string NegativeSign { get; set; } = string.Empty;
 
-            /// The string used to separate the whole number part from the fractional part of a decimal number.
-            /// <para>For example, in the number 3.14, the decimal separator is ".".</para>
+            /// <summary>
+            /// Gets or sets the string that represents the decimal separator in a numeral system.
             /// </summary>
             public string NumberDecimalSeparator { get; set; } = string.Empty;
 
+            /// <summary>
             /// Generates the serialization information for a numeral system of the given size.
             /// </summary>
-            /// <param name="size">The size of the numeral system</param>
-            /// <returns>The serialization information for the numeral system</returns>
+            /// <param name="size">The size of the numeral system.</param>
+            /// <returns>The serialization information for the numeral system.</returns>
             public static SerializationInfo OfBase(int size)
             {
                 var printableIdentity = Numeral.System.Characters.Printable.ToList();
@@ -569,8 +537,10 @@ namespace NumeralSystems.Net
                     .Select(c => c.ToString(cultureInfo)).ToList();
                 if (identity.Count() < size)
                 {
-                    identity = identity.Concat(Enumerable.Range(identity.Count(), size - identity.Count()).Select(i => i.ToString(cultureInfo))).ToList();
+                    identity = identity.Concat(Enumerable.Range(identity.Count(), size - identity.Count())
+                        .Select(i => i.ToString(cultureInfo))).ToList();
                 }
+
                 return new SerializationInfo
                 {
                     Identity = identity,
@@ -581,6 +551,7 @@ namespace NumeralSystems.Net
             }
         }
 
+        /// <summary>
         /// Parses a string representation of a number into a Numeral object.
         /// </summary>
         /// <param name="val">The string representation of the number to parse.</param>
@@ -589,12 +560,15 @@ namespace NumeralSystems.Net
         /// <param name="negativeSign">The string representation of the negative sign.</param>
         /// <param name="numberDecimalSeparator">The decimal separator used in the number string.</param>
         /// <returns>A Numeral object representing the parsed number.</returns>
-        public Numeral Parse(string toString, SerializationInfo serializationInfo) => Parse(toString, serializationInfo.Identity, serializationInfo.Separator, serializationInfo.NegativeSign, serializationInfo.NumberDecimalSeparator);
+        public Numeral Parse(string toString, SerializationInfo serializationInfo) => Parse(toString,
+            serializationInfo.Identity, serializationInfo.Separator, serializationInfo.NegativeSign,
+            serializationInfo.NumberDecimalSeparator);
 
+        /// <summary>
         /// Parses a string representation of a numeral in the current numeral system.
         /// </summary>
-        /// <param name="toString">String representation of the numeral</param>
-        /// <returns>A Numeral object representing the parsed numeral</returns>
+        /// <param name="toString">The string representation of the numeral.</param>
+        /// <returns>A Numeral object representing the parsed numeral.</returns>
         public Numeral Parse(string toString)
         {
             var serializationInfo = SerializationInfo.OfBase(Size);

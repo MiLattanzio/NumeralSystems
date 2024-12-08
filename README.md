@@ -449,3 +449,52 @@ La classe `Sequence` fornisce metodi utili per la generazione e manipolazione di
 Questi metodi sono utili per applicazioni matematiche e logiche, coinvolgendo la combinazione, il conteggio e la gestione di sequenze e insiemi.
 
 
+### Classe Numeral
+La classe `Numeral` rappresenta un numero espresso in un sistema numerico specificato. Fornisce metodi per ottenere e impostare le parti integrali e frazionarie del numero, nonché per convertirlo in diversi tipi.
+#### Proprietà
+- **Positive**: Indica se il numero è positivo o negativo.
+- **Base**: Rappresenta il sistema numerico in cui è espresso il numero.
+- **FractionalIndices**: Ottiene o imposta la lista degli indici frazionari per il numero.
+- **IntegralIndices**: Ottiene o imposta la lista degli indici integrali per il numero.
+
+#### Metodi
+- **GetFractionalStrings(IList identity) **: Ritorna la parte frazionaria del numero come una lista di stringhe.
+- **GetFractionalString(IList identity, string separator) **: Ritorna la parte frazionaria come stringa, usando un separatore specificato.
+- **GetIntegralStrings(IList identity) **: Restituisce le cifre integrali del numero come una lista di rappresentazioni stringa.
+- **GetIntegralString(IList identity, string separator) **: Ritorna la parte integrale come stringa usando un separatore specifico.
+- **TrySetValue(List value) **: Prova a impostare il valore del numero usando una lista di indici interi.
+- **To(NumeralSystem baseSystem)**: Converte il valore numerico nel sistema numerico specificato.
+
+#### Costruttori
+- **Numeral()**: Inizializza un nuovo oggetto `Numeral` con base 10.
+- **Numeral(NumeralSystem numericSystem)**: Inizializza un nuovo oggetto `Numeral` con il sistema numerico specificato.
+- **Numeral(NumeralSystem numericSystem, List integral, List  fractional, bool positive)  **: Inizializza con parti integrale e frazionaria specificate e segno.
+
+#### Altre Proprietà per Conversioni
+- **Integer**: Rappresenta un valore intero nel sistema numerico specificato.
+- **Char**: Rappresenta il numero come carattere.
+- **Double**: Rappresenta il numero come numero in virgola mobile a doppia precisione.
+- **Decimal**: Rappresenta il numero come tipo `decimal`.
+- **Float**: Rappresenta il numero come tipo `float`.
+- **Bytes**: Ottiene o imposta la rappresentazione come array di byte.
+
+### Classe NumeralSystem
+La classe `NumeralSystem` definisce un sistema numerico con una base specificata. Offre funzionalità per analizzare, convertire e manipolare numeri in vari formati e rappresentazioni.
+#### Proprietà
+- **Size**: Rappresenta la dimensione o base del sistema numerico.
+- **SkipUnknownValues**: Determina se i valori sconosciuti devono essere saltati durante l'elaborazione.
+
+#### Metodi
+- **TrySplitNumberIndices**: Prova a dividere un numero nelle parti integrale e frazionaria restituendo gli indici.
+- **TryFromIndices**: Prova a costruire una rappresentazione stringa dagli indici forniti.
+- **Parse**: Converte una rappresentazione stringa di un numero in un oggetto `Numeral`.
+- **TryParse**: Prova a convertire una stringa in un numero, restituendo un risultato di successo.
+- **Contains**: Controlla se una lista di indici è valida nel sistema numerico.
+- **TryIntegerOf**: Prova a convertire una lista di indici in un valore intero.
+- **TryCharOf**: Prova a convertire una lista di indici in un carattere.
+
+#### Costruttori
+- **NumeralSystem(int size)**: Inizializza un sistema numerico con la dimensione specificata.
+
+Utilizza queste descrizioni nel tuo file di documentazione per fornire un riepilogo dettagliato delle due classi e delle loro rispettive responsabilità all'interno del progetto.
+

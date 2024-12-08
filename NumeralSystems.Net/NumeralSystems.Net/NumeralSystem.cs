@@ -41,11 +41,22 @@ namespace NumeralSystems.Net
         /// </summary>
         public int Size { get; }
 
+        /// <summary>
+        /// Gets the length of a numeral representation, calculated as the ceiling of the logarithm of
+        /// the maximum byte value plus one, with the base equal to the size of the numeral system.
+        /// </summary>
+        public int Length => (int)Math.Ceiling(Math.Log(byte.MaxValue + 1, Size));
 
         /// Determines whether unknown values in the numeral system should be skipped or handled.
         /// When set to true, unknown values encountered are ignored, otherwise they are processed.
         /// This property modifies the behavior of numeral parsing and representation.
         public bool SkipUnknownValues { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the numeral system should adjust the number representation
+        /// to fit the integral length specified by the system's settings.
+        /// </summary>
+        public bool AdjustToFitIntegralLength { get; set; } = true;
 
         // ReSharper disable once SuggestBaseTypeForParameterInConstructor
         /// <summary>

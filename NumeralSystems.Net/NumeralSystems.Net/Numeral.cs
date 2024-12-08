@@ -171,6 +171,12 @@ namespace NumeralSystems.Net
             IntegralIndices = integral;
             FractionalIndices = fractional;
             Positive = positive;
+            if (!Base.AdjustToFitIntegralLength) return;
+            var difference = Base.Length - IntegralIndices.Count;
+            if (difference > 0)
+            {
+                IntegralIndices = Enumerable.Repeat(0, difference).Concat(IntegralIndices).ToList();
+            }
         }
 
         /// <summary>

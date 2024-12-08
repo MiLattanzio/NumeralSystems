@@ -1,4 +1,5 @@
 using System;
+using BigInt = System.Numerics.BigInteger;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -247,7 +248,7 @@ namespace NumeralSystems.Net
             {
                 var integralEnumerable = IntegralIndices.Select((t, i) =>
                         (ulong)t *
-                        Convert.ToUInt64(Math.Pow(Base.Size, (IntegralIndices.Count - 1 - i))))
+                        BigInt.Pow(Base.Size, (IntegralIndices.Count - 1 - i)))
                     .ToList();
                 var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
                 var fractionalEnumerable = FractionalIndices.Select((t, i) =>
@@ -264,7 +265,7 @@ namespace NumeralSystems.Net
                 if (integral == 0 && fractional == 0) Positive = true;
                 var digitsInBase = (int)Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
                 var div = (decimal)Math.Pow(10, digitsInBase);
-                return ((Positive ? 1 : -1) * (integral + (decimal.Divide(fractional, div))));
+                return ((Positive ? 1 : -1) * ((decimal)integral + (decimal.Divide(fractional, div))));
             }
             set
             {

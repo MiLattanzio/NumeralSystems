@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using NumeralSystems.Net;
 using NUnit.Framework;
@@ -28,10 +29,10 @@ namespace NumeralSystem.Net.NUnit
         }
 
         [Test]
-        public void Base64Tests()
+        public void ChangeBase()
         {
-            var value = "test";
-            var identity = new[]
+            var sourceString = "test";
+            var sourceBase = new[]
             {
                 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -40,11 +41,21 @@ namespace NumeralSystem.Net.NUnit
                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                 '+', '/'
             }.Select(x => x.ToString()).ToArray();
-            var base64 = Numeral.System.OfBase(identity.Length);
-            var re = base64.Parse("dGVzdA");
-            var result = re.To(Numeral.System.OfBase(char.MaxValue));
-            var youtubeId = string.Concat(result.IntegralIndices.Select(x => (char)x).ToList());
-
+            var destinationBase = new[]
+            {
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
+            }.Select(x => x.ToString()).ToArray();
+            var source = Numeral.System.OfBase(sourceBase.Length);
+            var destination = Numeral.System.OfBase(destinationBase.Length);
+            var re = source.Parse(sourceString, sourceBase, string.Empty, "-", ".");
+            var result = re.To(destination);
+            var destinationString = result.ToString(destinationBase, string.Empty, "-", ".");
+            Assert.That(sourceString, Is.Not.EqualTo(destinationString));
+            var back = result.To(source);
+            var backString = back.ToString(sourceBase, string.Empty, "-", ".");
+            Assert.That(backString, Is.EqualTo(sourceString));
 
         }
         

@@ -26,7 +26,6 @@ namespace NumeralSystem.Net.NUnit.Ecoding
 
         private static string EncodeIdNumeral(string youtubeId)
         {
-        
             var number = YoutubeNumeralSystem.Parse(youtubeId, YoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");
             var cleanNumber = number.To(NumeralSystem);
             var result = cleanNumber.ToString(CleanYoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");

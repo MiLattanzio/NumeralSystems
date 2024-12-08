@@ -26,6 +26,27 @@ namespace NumeralSystem.Net.NUnit
             Assert.That(Numeral.System.Characters.NotPrintable.Count(), Is.EqualTo(Numeral.System.Characters.NotPrintable.Distinct().Count()));
             Assert.That(Numeral.System.Characters.All.Count(), Is.EqualTo(Numeral.System.Characters.All.Distinct().Count()));
         }
+
+        [Test]
+        public void Base64Tests()
+        {
+            var value = "test";
+            var identity = new[]
+            {
+                'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+                'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+                'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+                '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                '+', '/'
+            }.Select(x => x.ToString()).ToArray();
+            var base64 = Numeral.System.OfBase(identity.Length);
+            var re = base64.Parse("dGVzdA");
+            var result = re.To(Numeral.System.OfBase(char.MaxValue));
+            var youtubeId = string.Concat(result.IntegralIndices.Select(x => (char)x).ToList());
+
+
+        }
         
         
     }

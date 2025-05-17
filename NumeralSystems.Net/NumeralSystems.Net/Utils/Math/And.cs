@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using Polecola.Primitive;
 
 namespace NumeralSystems.Net.Utils
 {

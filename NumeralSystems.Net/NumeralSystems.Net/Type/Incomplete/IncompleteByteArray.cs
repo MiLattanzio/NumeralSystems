@@ -2,6 +2,7 @@
 using System.Linq;
 using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
+using Polecola.Primitive;
 using Convert = System.Convert;
 using Math = System.Math;
 

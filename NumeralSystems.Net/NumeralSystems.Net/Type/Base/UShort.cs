@@ -3,6 +3,7 @@ using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Incomplete;
 using NumeralSystems.Net.Utils;
+using Polecola.Primitive;
 
 namespace NumeralSystems.Net.Type.Base
 {

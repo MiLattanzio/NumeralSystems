@@ -4,7 +4,7 @@ using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Utils;
 using Math = NumeralSystems.Net.Utils.Math;
-using Convert = NumeralSystems.Net.Utils.Convert;
+using Convert = Polecola.Primitive.Convert;
 using Decimal = NumeralSystems.Net.Type.Base.Decimal;
 
 namespace NumeralSystems.Net.Type.Incomplete

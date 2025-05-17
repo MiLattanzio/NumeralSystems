@@ -3,7 +3,8 @@ using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Incomplete;
 using NumeralSystems.Net.Utils;
-using Convert = NumeralSystems.Net.Utils.Convert;
+using Polecola.Primitive;
+using Convert = Polecola.Primitive.Convert;
 using Math = NumeralSystems.Net.Utils.Math;
 
 namespace NumeralSystems.Net.Type.Base

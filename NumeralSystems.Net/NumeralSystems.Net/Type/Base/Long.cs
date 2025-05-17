@@ -3,7 +3,7 @@ using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Incomplete;
 using Math = NumeralSystems.Net.Utils.Math;
-using Convert = NumeralSystems.Net.Utils.Convert;
+using Convert = Polecola.Primitive.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
@@ -19,7 +19,7 @@ namespace NumeralSystems.Net.Type.Base
         /// <returns>A new Long instance.</returns>
         public static Long FromBinary(bool[] binary) => new ()
         {
-            Value = Utils.Convert.ToLong(binary)
+            Value = Polecola.Primitive.Convert.ToLong(binary)
         };
 
         /// <summary>

@@ -3,7 +3,9 @@ using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
-using Convert = NumeralSystems.Net.Utils.Convert;
+using Convert = Polecola.Primitive.Convert;
+using Polecola.Primitive;
+using Float = NumeralSystems.Net.Type.Base.Float;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {

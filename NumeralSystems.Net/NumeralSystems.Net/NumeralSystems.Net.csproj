@@ -23,6 +23,10 @@
       <Folder Include="Type\Enumerable\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Polecola.Primitive" Version="1.0.0" />
+    </ItemGroup>
+
 
 
 </Project>

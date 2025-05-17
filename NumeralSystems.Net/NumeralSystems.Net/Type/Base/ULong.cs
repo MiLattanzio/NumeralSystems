@@ -17,7 +17,7 @@ namespace NumeralSystems.Net.Type.Base
         /// <returns>A new ULong instance.</returns>
         public static ULong FromBinary(bool[] binary) => new ()
         {
-            Value = Utils.Convert.ToULong(binary)
+            Value = Polecola.Primitive.Convert.ToULong(binary)
         };
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace NumeralSystems.Net.Type.Base
         /// </summary>
         public bool[] Binary
         {
-            get => Utils.Convert.ToBoolArray(Value);
-            set => Value = value.Length * 8 >= sizeof(ulong) ? Utils.Convert.ToULong(value) : Utils.Convert.ToULong(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(ulong) * 8 - value.Length * 8)).ToArray());
+            get => Polecola.Primitive.Convert.ToBoolArray(Value);
+            set => Value = value.Length * 8 >= sizeof(ulong) ? Polecola.Primitive.Convert.ToULong(value) : Polecola.Primitive.Convert.ToULong(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(ulong) * 8 - value.Length * 8)).ToArray());
         }
 
         /// <summary>

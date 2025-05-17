@@ -2,6 +2,7 @@
 using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Incomplete;
+using Polecola.Primitive;
 using Math = NumeralSystems.Net.Utils.Math;
 
 namespace NumeralSystems.Net.Type.Base
@@ -18,7 +19,7 @@ namespace NumeralSystems.Net.Type.Base
         /// <returns>A new Double instance.</returns>
         public static Double FromBinary(bool[] binary) => new ()
         {
-            Value = Utils.Convert.ToDouble(binary)
+            Value = binary.ToDouble()
         };
 
         /// <summary>
@@ -45,8 +46,8 @@ namespace NumeralSystems.Net.Type.Base
         /// </summary>
         public bool[] Binary
         {
-            get => Utils.Convert.ToBoolArray(Value);
-            set => Value = value.Length * 8 >= sizeof(double) ? Utils.Convert.ToDouble(value) : Utils.Convert.ToDouble(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(double)*8 - value.Length*8)).ToArray());
+            get => Value.ToBoolArray();
+            set => Value = value.Length * 8 >= sizeof(double) ? value.ToDouble() : value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(double)*8 - value.Length*8)).ToArray().ToDouble();
         }
 
         /// <summary>

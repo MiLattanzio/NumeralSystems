@@ -1,6 +1,7 @@
 ﻿using System;
 using NumeralSystems.Net.Utils;
 using NUnit.Framework;
+using Polecola.Primitive;
 
 namespace NumeralSystem.Net.NUnit.Type
 {

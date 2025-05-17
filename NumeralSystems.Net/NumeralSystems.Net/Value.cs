@@ -71,7 +71,14 @@ namespace NumeralSystems.Net
             return new Value(indices, identity);
         }
 
-        
+
+        /// <summary>
+        /// Converts the current numeral value to a representation in a specified base.
+        /// </summary>
+        /// <param name="baseValue">The base to which the numeral value will be converted. Must be greater than zero.</param>
+        /// <param name="removeFirstZeros">Indicates whether leading zeros should be removed from the result. Default is false.</param>
+        /// <returns>A new <see cref="Value"/> instance representing the number in the specified base.</returns>
+        /// <exception cref="ArgumentException">Thrown when <paramref name="baseValue"/> is less than or equal to zero.</exception>
         public Value ToBase(int baseValue, bool removeFirstZeros = false)
         {
             if (baseValue <= 0)

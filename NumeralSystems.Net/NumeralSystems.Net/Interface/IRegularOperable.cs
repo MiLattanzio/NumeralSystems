@@ -62,6 +62,7 @@
         /// <param name="value">Second parameter of the operation</param>
         /// <returns>Bitwise nand on the second parameter</returns>
         public TIncomplete Nand(TIncomplete value);
+        
     }
     
 }

@@ -4,9 +4,10 @@ using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
+using Polecola.Primitive;
 using Char = NumeralSystems.Net.Type.Base.Char;
 using Math = NumeralSystems.Net.Utils.Math;
-using Convert = NumeralSystems.Net.Utils.Convert;
+using Convert = Polecola.Primitive.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {

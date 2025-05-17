@@ -2,6 +2,7 @@
 using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Incomplete;
+using Polecola.Primitive;
 
 namespace NumeralSystems.Net.Type.Base
 {
@@ -35,8 +36,8 @@ namespace NumeralSystems.Net.Type.Base
         /// </summary>
         public bool[] Binary
         {
-            get => Utils.Convert.ToBoolArray(Value);
-            set => Value = value.Length * 8 >= sizeof(uint) ? Utils.Convert.ToUInt(value.Take(sizeof(uint)*8).ToArray()) : Utils.Convert.ToUInt(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(uint)*8 - value.Length*8)).ToArray());
+            get => Polecola.Primitive.Convert.ToBoolArray(Value);
+            set => Value = value.Length * 8 >= sizeof(uint) ? Polecola.Primitive.Convert.ToUInt(value.Take(sizeof(uint)*8).ToArray()) : value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(uint)*8 - value.Length*8)).ToArray().ToUInt();
         }
 
         /// <summary>

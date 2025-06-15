@@ -1,3 +1,4 @@
+[English README](README.en.md)
 Il progetto `NumeralSystems.Net` contiene due classi principali che gestiscono valori numerici rappresentati in diversi sistemi numerici. Ecco una panoramica delle classi `Value` e `NumeralValue` e delle loro funzionalità.
 #### Classe `Value`
 La classe `Value` rappresenta un valore numerico in un sistema numerico specifico, con una base definita. Include:

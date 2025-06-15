@@ -1,7 +1,7 @@
-﻿using NumeralSystems.Net.Ecoding;
+﻿using NumeralSystems.Net.Encoding;
 using NUnit.Framework;
 
-namespace NumeralSystem.Net.NUnit.Ecoding
+namespace NumeralSystem.Net.NUnit.Encoding
 {
     [TestFixture]
     [TestOf(typeof(String))]

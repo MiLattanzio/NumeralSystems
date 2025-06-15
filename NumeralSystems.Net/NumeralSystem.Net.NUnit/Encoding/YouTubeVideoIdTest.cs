@@ -3,7 +3,7 @@ using System.Linq;
 using NumeralSystems.Net;
 using NUnit.Framework;
 
-namespace NumeralSystem.Net.NUnit.Ecoding
+namespace NumeralSystem.Net.NUnit.Encoding
 {
     [TestFixture]
     public class YouTubeVideoIdTest

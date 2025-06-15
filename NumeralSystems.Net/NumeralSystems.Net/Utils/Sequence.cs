@@ -192,7 +192,9 @@ namespace NumeralSystems.Net.Utils
         /// <param name="repetition">Specifies whether repetition is allowed in the combinations</param>
         /// <returns>The number of combinations</returns>
         public static int CombinationsCount(int identity, int size, bool repetition = false)
-            => repetition ? ((Factorial(identity + size - 1))/(Factorial(size)*(identity-1))) : (Factorial(identity) / ((Factorial(identity))/(Factorial(size)*(identity-1))));
+            => repetition
+                ? (Factorial(identity + size - 1) / (Factorial(size) * Factorial(identity - 1)))
+                : (Factorial(identity) / (Factorial(size) * Factorial(identity - size)));
 
         /// <summary>
         /// Calculates the exponentiation of the base number by the exponent using binary exponentiation algorithm.

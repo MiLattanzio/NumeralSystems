@@ -469,8 +469,10 @@ namespace NumeralSystems.Net
                 /// <summary>
                 /// The set of printable characters.
                 /// </summary>
-                public static readonly IEnumerable<char> Printable = Numbers.Concat(UpperLetters).Concat(LowerLetters)
-                    .Concat(Symbols);
+                public static readonly IEnumerable<char> Printable = Numbers.Concat(UpperLetters)
+                    .Concat(LowerLetters)
+                    .Concat(Symbols)
+                    .Distinct();
 
                 /// <summary>
                 /// Characters that can't be printed

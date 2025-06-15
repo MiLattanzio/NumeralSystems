@@ -1,4 +1,3 @@
-using System.Linq;
 using NumeralSystems.Net;
 using NUnit.Framework;
 
@@ -15,8 +14,8 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void Count()
         {
-            Assert.IsTrue(Numeral.System.Characters.Printable.Count() == Numeral.System.Characters.Printable.Distinct().Count());
-            Assert.IsTrue(Numeral.System.Characters.NotPrintable.Count() == Numeral.System.Characters.NotPrintable.Distinct().Count());
+            Assert.That(Numeral.System.Characters.Printable, Is.Unique);
+            Assert.That(Numeral.System.Characters.NotPrintable, Is.Unique);
         }
     }
 }

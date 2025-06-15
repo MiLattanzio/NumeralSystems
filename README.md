@@ -498,3 +498,15 @@ La classe `NumeralSystem` definisce un sistema numerico con una base specificata
 
 Utilizza queste descrizioni nel tuo file di documentazione per fornire un riepilogo dettagliato delle due classi e delle loro rispettive responsabilità all'interno del progetto.
 
+## Build & Test
+
+Per compilare e testare il progetto sono necessari gli strumenti .NET. Tutte le operazioni vanno eseguite nella cartella `NumeralSystems.Net`:
+
+```bash
+cd NumeralSystems.Net
+dotnet restore      # ripristina i pacchetti NuGet
+dotnet build        # compila la soluzione
+dotnet test         # esegue i test unitari
+docfx build         # genera la documentazione in _site
+```
+

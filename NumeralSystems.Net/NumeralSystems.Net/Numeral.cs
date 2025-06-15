@@ -12,7 +12,6 @@ using Convert = System.Convert;
 namespace NumeralSystems.Net
 {
     /// Represents a numeral in a specific numeral system.
-    /// /
     public class Numeral
     {
         // ReSharper disable once MemberCanBePrivate.Global
@@ -507,7 +506,12 @@ namespace NumeralSystems.Net
                 /// </summary>
                 public const char Minus = '-';
 
-                /// *Remarks:**
+                /// <summary>
+                /// Represents the semicolon character (;).
+                /// </summary>
+                /// <remarks>
+                /// Used to separate items in numeral formats.
+                /// </remarks>
                 public const char Semicolon = ';';
             }
 

@@ -13,10 +13,10 @@ items:
     name: NumeralSystem
   - uid: NumeralSystems.Net.NumeralSystem.SerializationInfo
     name: NumeralSystem.SerializationInfo
-- uid: NumeralSystems.Net.Ecoding
-  name: NumeralSystems.Net.Ecoding
+- uid: NumeralSystems.Net.Encoding
+  name: NumeralSystems.Net.Encoding
   items:
-  - uid: NumeralSystems.Net.Ecoding.String
+  - uid: NumeralSystems.Net.Encoding.String
     name: String
 - uid: NumeralSystems.Net.Interface
   name: NumeralSystems.Net.Interface

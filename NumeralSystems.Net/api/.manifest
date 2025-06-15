@@ -1,8 +1,8 @@
 {
   "NumeralSystems.Net": "NumeralSystems.Net.yml",
-  "NumeralSystems.Net.Ecoding": "NumeralSystems.Net.Ecoding.yml",
-  "NumeralSystems.Net.Ecoding.String": "NumeralSystems.Net.Ecoding.String.yml",
-  "NumeralSystems.Net.Ecoding.String.GetIdentity(System.String)": "NumeralSystems.Net.Ecoding.String.yml",
+  "NumeralSystems.Net.Encoding": "NumeralSystems.Net.Encoding.yml",
+  "NumeralSystems.Net.Encoding.String": "NumeralSystems.Net.Encoding.String.yml",
+  "NumeralSystems.Net.Encoding.String.GetIdentity(System.String)": "NumeralSystems.Net.Encoding.String.yml",
   "NumeralSystems.Net.Interface": "NumeralSystems.Net.Interface.yml",
   "NumeralSystems.Net.Interface.IIRregularOperable`4": "NumeralSystems.Net.Interface.IIRregularOperable-4.yml",
   "NumeralSystems.Net.Interface.IIRregularOperable`4.And(`0)": "NumeralSystems.Net.Interface.IIRregularOperable-4.yml",

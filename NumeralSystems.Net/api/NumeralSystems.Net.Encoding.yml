@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: NumeralSystems.Net.Encoding
+  commentId: N:NumeralSystems.Net.Encoding
+  id: NumeralSystems.Net.Encoding
+  children:
+  - NumeralSystems.Net.Encoding.String
+  langs:
+  - csharp
+  - vb
+  name: NumeralSystems.Net.Encoding
+  nameWithType: NumeralSystems.Net.Encoding
+  fullName: NumeralSystems.Net.Encoding
+  type: Namespace
+  assemblies:
+  - NumeralSystems.Net
+references:
+- uid: NumeralSystems.Net.Encoding.String
+  commentId: T:NumeralSystems.Net.Encoding.String
+  href: NumeralSystems.Net.Encoding.String.html
+  name: String
+  nameWithType: String
+  fullName: NumeralSystems.Net.Encoding.String

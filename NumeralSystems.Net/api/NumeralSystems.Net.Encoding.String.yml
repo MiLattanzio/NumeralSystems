@@ -1,29 +1,29 @@
 ### YamlMime:ManagedReference
 items:
-- uid: NumeralSystems.Net.Ecoding.String
-  commentId: T:NumeralSystems.Net.Ecoding.String
+- uid: NumeralSystems.Net.Encoding.String
+  commentId: T:NumeralSystems.Net.Encoding.String
   id: String
-  parent: NumeralSystems.Net.Ecoding
+  parent: NumeralSystems.Net.Encoding
   children:
-  - NumeralSystems.Net.Ecoding.String.GetIdentity(System.String)
+  - NumeralSystems.Net.Encoding.String.GetIdentity(System.String)
   langs:
   - csharp
   - vb
   name: String
   nameWithType: String
-  fullName: NumeralSystems.Net.Ecoding.String
+  fullName: NumeralSystems.Net.Encoding.String
   type: Class
   source:
     remote:
-      path: NumeralSystems.Net/NumeralSystems.Net/Ecoding/String.cs
+      path: NumeralSystems.Net/NumeralSystems.Net/Encoding/String.cs
       branch: master
       repo: https://github.com/MiLattanzio/NumeralSystems.git
     id: String
-    path: NumeralSystems.Net/Ecoding/String.cs
+    path: NumeralSystems.Net/Encoding/String.cs
     startLine: 8
   assemblies:
   - NumeralSystems.Net
-  namespace: NumeralSystems.Net.Ecoding
+  namespace: NumeralSystems.Net.Encoding
   summary: String encoding utilities.
   example: []
   syntax:
@@ -39,28 +39,28 @@ items:
   - System.Object.MemberwiseClone
   - System.Object.ReferenceEquals(System.Object,System.Object)
   - System.Object.ToString
-- uid: NumeralSystems.Net.Ecoding.String.GetIdentity(System.String)
-  commentId: M:NumeralSystems.Net.Ecoding.String.GetIdentity(System.String)
+- uid: NumeralSystems.Net.Encoding.String.GetIdentity(System.String)
+  commentId: M:NumeralSystems.Net.Encoding.String.GetIdentity(System.String)
   id: GetIdentity(System.String)
-  parent: NumeralSystems.Net.Ecoding.String
+  parent: NumeralSystems.Net.Encoding.String
   langs:
   - csharp
   - vb
   name: GetIdentity(string)
   nameWithType: String.GetIdentity(string)
-  fullName: NumeralSystems.Net.Ecoding.String.GetIdentity(string)
+  fullName: NumeralSystems.Net.Encoding.String.GetIdentity(string)
   type: Method
   source:
     remote:
-      path: NumeralSystems.Net/NumeralSystems.Net/Ecoding/String.cs
+      path: NumeralSystems.Net/NumeralSystems.Net/Encoding/String.cs
       branch: master
       repo: https://github.com/MiLattanzio/NumeralSystems.git
     id: GetIdentity
-    path: NumeralSystems.Net/Ecoding/String.cs
+    path: NumeralSystems.Net/Encoding/String.cs
     startLine: 16
   assemblies:
   - NumeralSystems.Net
-  namespace: NumeralSystems.Net.Ecoding
+  namespace: NumeralSystems.Net.Encoding
   summary: Extracts the distinct characters from the string ordered by count.
   remarks: For the Numeral type usage
   example: []
@@ -74,17 +74,17 @@ items:
       type: System.Collections.Generic.IList{System.Char}
       description: The identity of the value
     content.vb: Public Function GetIdentity(value As String) As IList(Of Char)
-  overload: NumeralSystems.Net.Ecoding.String.GetIdentity*
+  overload: NumeralSystems.Net.Encoding.String.GetIdentity*
   nameWithType.vb: String.GetIdentity(String)
-  fullName.vb: NumeralSystems.Net.Ecoding.String.GetIdentity(String)
+  fullName.vb: NumeralSystems.Net.Encoding.String.GetIdentity(String)
   name.vb: GetIdentity(String)
 references:
-- uid: NumeralSystems.Net.Ecoding
-  commentId: N:NumeralSystems.Net.Ecoding
+- uid: NumeralSystems.Net.Encoding
+  commentId: N:NumeralSystems.Net.Encoding
   href: NumeralSystems.html
-  name: NumeralSystems.Net.Ecoding
-  nameWithType: NumeralSystems.Net.Ecoding
-  fullName: NumeralSystems.Net.Ecoding
+  name: NumeralSystems.Net.Encoding
+  nameWithType: NumeralSystems.Net.Encoding
+  fullName: NumeralSystems.Net.Encoding
   spec.csharp:
   - uid: NumeralSystems
     name: NumeralSystems
@@ -94,9 +94,9 @@ references:
     name: Net
     href: NumeralSystems.Net.html
   - name: .
-  - uid: NumeralSystems.Net.Ecoding
-    name: Ecoding
-    href: NumeralSystems.Net.Ecoding.html
+  - uid: NumeralSystems.Net.Encoding
+    name: Encoding
+    href: NumeralSystems.Net.Encoding.html
   spec.vb:
   - uid: NumeralSystems
     name: NumeralSystems
@@ -106,9 +106,9 @@ references:
     name: Net
     href: NumeralSystems.Net.html
   - name: .
-  - uid: NumeralSystems.Net.Ecoding
-    name: Ecoding
-    href: NumeralSystems.Net.Ecoding.html
+  - uid: NumeralSystems.Net.Encoding
+    name: Encoding
+    href: NumeralSystems.Net.Encoding.html
 - uid: System.Object
   commentId: T:System.Object
   parent: System
@@ -346,12 +346,12 @@ references:
   name: System
   nameWithType: System
   fullName: System
-- uid: NumeralSystems.Net.Ecoding.String.GetIdentity*
-  commentId: Overload:NumeralSystems.Net.Ecoding.String.GetIdentity
-  href: NumeralSystems.Net.Ecoding.String.html#NumeralSystems_Net_Ecoding_String_GetIdentity_System_String_
+- uid: NumeralSystems.Net.Encoding.String.GetIdentity*
+  commentId: Overload:NumeralSystems.Net.Encoding.String.GetIdentity
+  href: NumeralSystems.Net.Encoding.String.html#NumeralSystems_Net_Encoding_String_GetIdentity_System_String_
   name: GetIdentity
   nameWithType: String.GetIdentity
-  fullName: NumeralSystems.Net.Ecoding.String.GetIdentity
+  fullName: NumeralSystems.Net.Encoding.String.GetIdentity
 - uid: System.String
   commentId: T:System.String
   parent: System

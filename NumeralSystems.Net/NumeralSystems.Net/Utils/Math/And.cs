@@ -10,12 +10,13 @@ namespace NumeralSystems.Net.Utils
     [SuppressMessage("ReSharper", "UnusedMember.Global")]
     internal static partial class Math
     {
+        /// <summary>
         /// Performs a bitwise AND operation on two boolean arrays.
-        /// @param a The first boolean array.
-        /// @param b The second boolean array.
-        /// @return The result of the bitwise AND operation as a boolean array.
-        /// @throws ArgumentException if the lengths of the input arrays are not equal.
-        /// /
+        /// </summary>
+        /// <param name="a">The first boolean array.</param>
+        /// <param name="b">The second boolean array.</param>
+        /// <returns>The result of the bitwise AND operation as a boolean array.</returns>
+        /// <exception cref="ArgumentException">Thrown when the input arrays are not of equal length.</exception>
         public static bool[] And(this bool[] a, bool[] b)
         {
             if (a.Length != b.Length) throw new ArgumentException("Arrays must be of equal length");
@@ -43,12 +44,13 @@ namespace NumeralSystems.Net.Utils
             return result;
         }
 
+        /// <summary>
         /// Performs the logical AND operation on two boolean arrays and returns the result.
-        /// Throws an ArgumentException if the arrays are not of equal length.
-        /// @param a - The first boolean array.
-        /// @param b - The second boolean array.
-        /// @return The result of the logical AND operation as a boolean array.
-        /// /
+        /// </summary>
+        /// <remarks>Throws an <see cref="ArgumentException"/> if the arrays are not of equal length.</remarks>
+        /// <param name="a">The first boolean array.</param>
+        /// <param name="b">The second boolean array.</param>
+        /// <returns>The result of the logical AND operation as a boolean array.</returns>
         public static bool?[] And(this bool[] a, bool?[] b)
         {
             if (a.Length != b.Length) throw new ArgumentException("Arrays must be of equal length");

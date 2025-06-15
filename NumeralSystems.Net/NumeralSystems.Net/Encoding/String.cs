@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace NumeralSystems.Net.Ecoding
+namespace NumeralSystems.Net.Encoding
 {
     /// <summary>
     /// String encoding utilities.

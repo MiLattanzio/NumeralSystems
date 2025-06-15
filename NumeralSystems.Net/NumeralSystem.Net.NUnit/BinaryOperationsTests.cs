@@ -7,13 +7,19 @@ namespace NumeralSystem.Net.NUnit
     [TestFixture]
     public class BinaryOperationsTests
     {
-        public Random Random = new ();
+        private Random _random;
+
+        [SetUp]
+        public void Setup()
+        {
+            _random = new Random(42);
+        }
       
         [Test]
         public void AndTest()
         {
-            var numberA = Random.Next(0, int.MaxValue);
-            var numberB = Random.Next(0, int.MaxValue);
+            var numberA = _random.Next(0, int.MaxValue);
+            var numberB = _random.Next(0, int.MaxValue);
             var a = new Int() { Value = numberA };
             var b = new Int() { Value = numberB };
             var numberC = numberA & numberB;
@@ -24,8 +30,8 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void OrTest()
         {
-            var numberA = Random.Next(0, int.MaxValue);
-            var numberB = Random.Next(0, int.MaxValue);
+            var numberA = _random.Next(0, int.MaxValue);
+            var numberB = _random.Next(0, int.MaxValue);
             var a = new Int() { Value = numberA };
             var b = new Int() { Value = numberB };
             var numberC = numberA | numberB;

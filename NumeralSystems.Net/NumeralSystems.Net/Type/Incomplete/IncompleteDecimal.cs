@@ -4,12 +4,12 @@ using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Utils;
 using Math = NumeralSystems.Net.Utils.Math;
+using Polecola.Primitive;
 using Convert = Polecola.Primitive.Convert;
 using Decimal = NumeralSystems.Net.Type.Base.Decimal;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    /* TODO: Implement IncompleteDecimal
     public class IncompleteDecimal: IIRregularOperable<IncompleteDecimal, Decimal, decimal, ulong>
     {
         private bool?[] _binary;
@@ -78,7 +78,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         public string ToString(string missingSeparator = "*") => string.Join(string.Empty, Binary.Group(8).Select(x => x.Reverse().ToArray()).SelectMany(x => x).Select(x => null == x ? missingSeparator : (x.Value ? 1 : 0).ToString()));
         public IncompleteDecimal Or(Decimal other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         public bool Contains(Decimal value)
@@ -128,7 +128,7 @@ namespace NumeralSystems.Net.Type.Incomplete
 
         public IncompleteDecimal Or(IncompleteDecimal other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         public bool ReverseAnd(Decimal right, out IncompleteDecimal result)
@@ -187,5 +187,4 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
     }
-    */
 }

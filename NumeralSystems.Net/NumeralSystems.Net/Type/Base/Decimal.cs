@@ -3,32 +3,32 @@ using System.Linq;
 using NumeralSystems.Net.Interface;
 using NumeralSystems.Net.Type.Incomplete;
 using Math = NumeralSystems.Net.Utils.Math;
+using Convert = Polecola.Primitive.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    /* TODO: Implement Decimal
     public partial class Decimal: IRegularOperable<IncompleteDecimal, Decimal, decimal, ulong>
     {
         public static Decimal FromBinary(bool[] binary) => new ()
         {
-            Value = Utils.Convert.ToDecimal(binary)
+            Value = Convert.ToDecimal(binary)
         };
         
         public virtual decimal Value { get; set; }
         
         public byte[] Bytes
         {
-            get => Utils.Convert.ToByteArray(Value);
+            get => Convert.ToByteArray(Value);
             // ReSharper disable once UnusedMember.Local
-            set => Value = value.Length >= sizeof(decimal) ? Utils.Convert.ToDecimal(value) : Utils.Convert.ToDecimal(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(decimal) - value.Length)).ToArray());
+            set => Value = value.Length >= sizeof(decimal) ? Convert.ToDecimal(value) : Convert.ToDecimal(value.Concat(System.Linq.Enumerable.Repeat((byte)0, sizeof(decimal) - value.Length)).ToArray());
         }
 
         public int BitLength => sizeof(decimal) * 8;
 
         public bool[] Binary
         {
-            get => Utils.Convert.ToBoolArray(Value);
-            set => Value = value.Length * 8 >= sizeof(decimal) ?  Utils.Convert.ToDecimal(value) : Utils.Convert.ToDecimal(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(decimal)*8 - value.Length*8)).ToArray());
+            get => Convert.ToBoolArray(Value);
+            set => Value = value.Length * 8 >= sizeof(decimal) ?  Convert.ToDecimal(value) : Convert.ToDecimal(value.Concat(System.Linq.Enumerable.Repeat(false, sizeof(decimal)*8 - value.Length*8)).ToArray());
         }
         
         public bool this[int index]
@@ -151,5 +151,4 @@ namespace NumeralSystems.Net.Type.Base
 
         public string ToString(string format) => Value.ToString(format);
     }
-    */
 }

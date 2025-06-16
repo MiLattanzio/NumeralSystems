@@ -464,8 +464,6 @@ namespace NumeralSystems.Net
                 public static IEnumerable<char> AlphanumericSymbols =
                     Numbers.Concat(UpperLetters).Concat(LowerLetters)
                         .Concat(Symbols);
-
-                //TODO: Remove duplicates
                 /// <summary>
                 /// The set of printable characters.
                 /// </summary>

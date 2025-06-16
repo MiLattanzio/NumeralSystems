@@ -55,6 +55,54 @@
         /// <returns>Bitwise or on the second parameter</returns>
         TIncomplete Or(TValue other);
         /// <summary>
+        /// Bitwise nand operation.
+        /// </summary>
+        /// <param name="other">Second parameter of the operation</param>
+        /// <returns>Bitwise nand on the second parameter</returns>
+        TIncomplete Nand(TIncomplete other);
+        /// <summary>
+        /// Bitwise nand operation.
+        /// </summary>
+        /// <param name="other">Second parameter of the operation</param>
+        /// <returns>Bitwise nand on the second parameter</returns>
+        TIncomplete Nand(TValue other);
+        /// <summary>
+        /// Bitwise nor operation.
+        /// </summary>
+        /// <param name="other">Second parameter of the operation</param>
+        /// <returns>Bitwise nor on the second parameter</returns>
+        TIncomplete Nor(TIncomplete other);
+        /// <summary>
+        /// Bitwise nor operation.
+        /// </summary>
+        /// <param name="other">Second parameter of the operation</param>
+        /// <returns>Bitwise nor on the second parameter</returns>
+        TIncomplete Nor(TValue other);
+        /// <summary>
+        /// Bitwise xnor operation.
+        /// </summary>
+        /// <param name="other">Second parameter of the operation</param>
+        /// <returns>Bitwise xnor on the second parameter</returns>
+        TIncomplete Xnor(TIncomplete other);
+        /// <summary>
+        /// Bitwise xnor operation.
+        /// </summary>
+        /// <param name="other">Second parameter of the operation</param>
+        /// <returns>Bitwise xnor on the second parameter</returns>
+        TIncomplete Xnor(TValue other);
+        /// <summary>
+        /// Shifts the bits to the left.
+        /// </summary>
+        /// <param name="count">Number of bits to shift</param>
+        /// <returns>The shifted incomplete value</returns>
+        TIncomplete ShiftLeft(int count);
+        /// <summary>
+        /// Shifts the bits to the right.
+        /// </summary>
+        /// <param name="count">Number of bits to shift</param>
+        /// <returns>The shifted incomplete value</returns>
+        TIncomplete ShiftRight(int count);
+        /// <summary>
         /// Checks if the incomplete value contains the given value.
         /// </summary>
         /// <param name="value">The value to check</param>

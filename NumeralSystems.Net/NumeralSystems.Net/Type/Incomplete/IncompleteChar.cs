@@ -211,6 +211,46 @@ namespace NumeralSystems.Net.Type.Incomplete
             Binary = Binary.Or(other.Binary)
         };
 
+        public IncompleteChar Nand(IncompleteChar other) => new()
+        {
+            Binary = Binary.Nand(other.Binary)
+        };
+
+        public IncompleteChar Nand(Char other) => new()
+        {
+            Binary = Binary.Nand(other.Binary)
+        };
+
+        public IncompleteChar Nor(IncompleteChar other) => new()
+        {
+            Binary = Binary.Nor(other.Binary)
+        };
+
+        public IncompleteChar Nor(Char other) => new()
+        {
+            Binary = Binary.Nor(other.Binary)
+        };
+
+        public IncompleteChar Xnor(IncompleteChar other) => new()
+        {
+            Binary = Binary.Xnor(other.Binary)
+        };
+
+        public IncompleteChar Xnor(Char other) => new()
+        {
+            Binary = Binary.Xnor(other.Binary)
+        };
+
+        public IncompleteChar ShiftLeft(int count) => new()
+        {
+            Binary = Binary.ShiftLeft(count)
+        };
+
+        public IncompleteChar ShiftRight(int count) => new()
+        {
+            Binary = Binary.ShiftRight(count)
+        };
+
         /// <summary>
         /// Performs a reverse bitwise AND operation with the specified character.
         /// </summary>

@@ -207,6 +207,46 @@ namespace NumeralSystems.Net.Type.Incomplete
             Binary = Binary.And(other.Binary)
         };
 
+        public IncompleteFloat Nand(IncompleteFloat other) => new()
+        {
+            Binary = Binary.Nand(other.Binary)
+        };
+
+        public IncompleteFloat Nand(Float other) => new()
+        {
+            Binary = Binary.Nand(other.Binary)
+        };
+
+        public IncompleteFloat Nor(IncompleteFloat other) => new()
+        {
+            Binary = Binary.Nor(other.Binary)
+        };
+
+        public IncompleteFloat Nor(Float other) => new()
+        {
+            Binary = Binary.Nor(other.Binary)
+        };
+
+        public IncompleteFloat Xnor(IncompleteFloat other) => new()
+        {
+            Binary = Binary.Xnor(other.Binary)
+        };
+
+        public IncompleteFloat Xnor(Float other) => new()
+        {
+            Binary = Binary.Xnor(other.Binary)
+        };
+
+        public IncompleteFloat ShiftLeft(int count) => new()
+        {
+            Binary = Binary.ShiftLeft(count)
+        };
+
+        public IncompleteFloat ShiftRight(int count) => new()
+        {
+            Binary = Binary.ShiftRight(count)
+        };
+
         /// <summary>
         /// Performs a reverse bitwise AND operation with the specified float.
         /// </summary>

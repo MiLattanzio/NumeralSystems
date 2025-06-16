@@ -131,6 +131,46 @@ namespace NumeralSystems.Net.Type.Incomplete
             Binary = Binary.Or(other.Binary)
         };
 
+        public IncompleteDecimal Nand(IncompleteDecimal other) => new()
+        {
+            Binary = Math.Nand(Binary, other.Binary)
+        };
+
+        public IncompleteDecimal Nand(Decimal other) => new()
+        {
+            Binary = Math.Nand(Binary, other.Binary)
+        };
+
+        public IncompleteDecimal Nor(IncompleteDecimal other) => new()
+        {
+            Binary = Math.Nor(Binary, other.Binary)
+        };
+
+        public IncompleteDecimal Nor(Decimal other) => new()
+        {
+            Binary = Math.Nor(Binary, other.Binary)
+        };
+
+        public IncompleteDecimal Xnor(IncompleteDecimal other) => new()
+        {
+            Binary = Math.Xnor(Binary, other.Binary)
+        };
+
+        public IncompleteDecimal Xnor(Decimal other) => new()
+        {
+            Binary = Math.Xnor(Binary, other.Binary)
+        };
+
+        public IncompleteDecimal ShiftLeft(int count) => new()
+        {
+            Binary = Binary.ShiftLeft(count)
+        };
+
+        public IncompleteDecimal ShiftRight(int count) => new()
+        {
+            Binary = Binary.ShiftRight(count)
+        };
+
         public bool ReverseAnd(Decimal right, out IncompleteDecimal result)
         {
             if (!Binary.CanReverseAnd(right.Binary))

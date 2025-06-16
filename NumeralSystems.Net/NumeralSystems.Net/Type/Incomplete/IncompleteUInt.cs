@@ -215,6 +215,46 @@ namespace NumeralSystems.Net.Type.Incomplete
             Binary = Binary.And(other.Binary)
         };
 
+        public IncompleteUInt Nand(IncompleteUInt other) => new()
+        {
+            Binary = Binary.Nand(other.Binary)
+        };
+
+        public IncompleteUInt Nand(UInt other) => new()
+        {
+            Binary = Binary.Nand(other.Binary)
+        };
+
+        public IncompleteUInt Nor(IncompleteUInt other) => new()
+        {
+            Binary = Binary.Nor(other.Binary)
+        };
+
+        public IncompleteUInt Nor(UInt other) => new()
+        {
+            Binary = Binary.Nor(other.Binary)
+        };
+
+        public IncompleteUInt Xnor(IncompleteUInt other) => new()
+        {
+            Binary = Binary.Xnor(other.Binary)
+        };
+
+        public IncompleteUInt Xnor(UInt other) => new()
+        {
+            Binary = Binary.Xnor(other.Binary)
+        };
+
+        public IncompleteUInt ShiftLeft(int count) => new()
+        {
+            Binary = Binary.ShiftLeft(count)
+        };
+
+        public IncompleteUInt ShiftRight(int count) => new()
+        {
+            Binary = Binary.ShiftRight(count)
+        };
+
         /// <summary>
         /// Performs a reverse bitwise AND operation with the specified unsigned integer.
         /// </summary>

@@ -212,6 +212,46 @@ namespace NumeralSystems.Net.Type.Incomplete
             Binary = Binary.Or(other.Binary)
         };
 
+        public IncompleteUShort Nand(IncompleteUShort other) => new()
+        {
+            Binary = Binary.Nand(other.Binary)
+        };
+
+        public IncompleteUShort Nand(UShort other) => new()
+        {
+            Binary = Binary.Nand(other.Binary)
+        };
+
+        public IncompleteUShort Nor(IncompleteUShort other) => new()
+        {
+            Binary = Binary.Nor(other.Binary)
+        };
+
+        public IncompleteUShort Nor(UShort other) => new()
+        {
+            Binary = Binary.Nor(other.Binary)
+        };
+
+        public IncompleteUShort Xnor(IncompleteUShort other) => new()
+        {
+            Binary = Binary.Xnor(other.Binary)
+        };
+
+        public IncompleteUShort Xnor(UShort other) => new()
+        {
+            Binary = Binary.Xnor(other.Binary)
+        };
+
+        public IncompleteUShort ShiftLeft(int count) => new()
+        {
+            Binary = Binary.ShiftLeft(count)
+        };
+
+        public IncompleteUShort ShiftRight(int count) => new()
+        {
+            Binary = Binary.ShiftRight(count)
+        };
+
         /// <summary>
         /// Performs a bitwise reverse AND operation on the binary representations of two UShort objects.
         /// </summary>

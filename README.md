@@ -22,9 +22,9 @@ La libreria è adatta quando serve:
 - .NET 8 SDK per compilare la soluzione ed eseguire i test;
 - un runtime compatibile con .NET Standard 2.1 per usare la libreria.
 
-Il repository contiene il progetto della libreria e la suite NUnit. Gli artefatti
-NuGet vengono prodotti dalla build, ma non è necessario installare un pacchetto
-per provare il progetto.
+Il repository contiene il progetto della libreria e la suite NUnit. Un pacchetto
+NuGet viene prodotto e pubblicato automaticamente quando viene pubblicata una
+GitHub Release valida, ma non è necessario installarlo per provare il progetto.
 
 ## Avvio rapido
 
@@ -127,7 +127,8 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [primitive e operazioni bitwise](NumeralSystems.Net/docs/bitwise-values.md);
 - [valori incompleti e operazioni inverse](NumeralSystems.Net/docs/incomplete-values.md);
 - [codifica delle stringhe](NumeralSystems.Net/docs/string-encoding.md);
-- [riferimento API](NumeralSystems.Net/docs/api-reference.md).
+- [riferimento API](NumeralSystems.Net/docs/api-reference.md);
+- [processo di release e pubblicazione NuGet](NumeralSystems.Net/docs/releasing.md).
 
 Tutta la documentazione è scritta in Markdown e viene versionata insieme al
 codice. Non sono necessari generatori o tool aggiuntivi per leggerla e

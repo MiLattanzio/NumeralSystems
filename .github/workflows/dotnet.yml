@@ -1,28 +1,133 @@
-name: .NET NUnit
+name: .NET CI and NuGet release
 
 on:
   push:
-    branches: [ master, develop ]
+    branches:
+      - master
+      - develop
   pull_request:
-    branches: [ master, develop ]
+    branches:
+      - master
+      - develop
+  release:
+    types:
+      - published
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+  DOTNET_NOLOGO: "1"
 
 jobs:
-  build:
-
+  build-and-test:
+    name: Build and test
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      working-directory: ./NumeralSystems.Net
-      run: dotnet restore
-    - name: Build
-      working-directory: ./NumeralSystems.Net
-      run: dotnet build --no-restore
-    - name: Test
-      working-directory: ./NumeralSystems.Net
-      run: dotnet test --no-build --verbosity normal
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore dependencies
+        working-directory: NumeralSystems.Net
+        run: dotnet restore NumeralSystems.Net.sln
+
+      - name: Build
+        working-directory: NumeralSystems.Net
+        run: >-
+          dotnet build NumeralSystems.Net.sln
+          --configuration Release
+          --no-restore
+          -p:GeneratePackageOnBuild=false
+
+      - name: Test
+        working-directory: NumeralSystems.Net
+        run: >-
+          dotnet test NumeralSystems.Net.sln
+          --configuration Release
+          --no-build
+          --verbosity normal
+
+  publish-nuget:
+    name: Package and publish to NuGet.org
+    if: github.event_name == 'release'
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    environment: nuget-release
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Check out release tag
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Validate release tag
+        id: package-version
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+
+          version="${RELEASE_TAG#v}"
+          version_pattern='^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z]+([.-][0-9A-Za-z]+)*)?$'
+
+          if [[ ! "$version" =~ $version_pattern ]]; then
+            echo "::error title=Invalid NuGet release tag::Use vMAJOR.MINOR.PATCH or vMAJOR.MINOR.PATCH-prerelease."
+            exit 1
+          fi
+
+          echo "value=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Restore package dependencies
+        working-directory: NumeralSystems.Net
+        run: dotnet restore NumeralSystems.Net/NumeralSystems.Net.csproj
+
+      - name: Create NuGet package
+        working-directory: NumeralSystems.Net
+        run: >-
+          dotnet pack NumeralSystems.Net/NumeralSystems.Net.csproj
+          --configuration Release
+          --no-restore
+          --output artifacts
+          -p:PackageVersion=${{ steps.package-version.outputs.value }}
+          -p:ContinuousIntegrationBuild=true
+          -p:GeneratePackageOnBuild=false
+
+      - name: Upload NuGet package artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: NumeralSystems.Net-${{ steps.package-version.outputs.value }}
+          path: NumeralSystems.Net/artifacts/*.nupkg
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Authenticate to NuGet.org with OIDC
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ vars.NUGET_USER }}
+
+      - name: Publish package to NuGet.org
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          dotnet nuget push NumeralSystems.Net/artifacts/*.nupkg \
+            --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" \
+            --source "https://api.nuget.org/v3/index.json" \
+            --skip-duplicate

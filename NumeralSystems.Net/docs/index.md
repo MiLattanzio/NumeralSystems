@@ -5,7 +5,8 @@
 [Bitwise values](bitwise-values.md) ·
 [Incomplete values](incomplete-values.md) ·
 [String encoding](string-encoding.md) ·
-[API reference](api-reference.md)
+[API reference](api-reference.md) ·
+[Releasing](releasing.md)
 
 NumeralSystems.Net is a .NET Standard 2.1 library for working with positional
 number systems and bit-level representations. The repository documentation is
@@ -69,6 +70,8 @@ index from `0` through `base - 1`.
   their constraints.
 - [API reference](api-reference.md) catalogs the public namespaces, types, and
   common member families.
+- [Releasing](releasing.md) documents package versioning and automated
+  publication to NuGet.org.
 
 ## Project status
 

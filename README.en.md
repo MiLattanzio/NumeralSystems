@@ -22,9 +22,9 @@ Use the library when you need to:
 - .NET 8 SDK to build the solution and run its tests;
 - a .NET Standard 2.1-compatible runtime to consume the library.
 
-The repository contains the library project and its NUnit test suite. The build
-produces NuGet artifacts, but installing a package is not required to try the
-project.
+The repository contains the library project and its NUnit test suite. A NuGet
+package is built and published automatically for a valid published GitHub
+Release, but installing it is not required to try the project.
 
 ## Quick start
 
@@ -127,7 +127,8 @@ The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/
 - [primitive wrappers and bitwise operations](NumeralSystems.Net/docs/bitwise-values.md);
 - [incomplete values and reverse operations](NumeralSystems.Net/docs/incomplete-values.md);
 - [string encoding](NumeralSystems.Net/docs/string-encoding.md);
-- [API reference](NumeralSystems.Net/docs/api-reference.md).
+- [API reference](NumeralSystems.Net/docs/api-reference.md);
+- [release and NuGet publishing process](NumeralSystems.Net/docs/releasing.md).
 
 All documentation is maintained as Markdown and versioned with the code. No
 documentation generator or additional tool is required to read or edit it.

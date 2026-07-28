@@ -109,6 +109,13 @@ reviewer should be able to determine:
 Keep generated build output, IDE files, credentials, and unrelated changes out
 of the commit. Maintainers may request changes before merging.
 
+## Releases
+
+Package publication is automated and must not be run from a contributor pull
+request. Maintainers should follow
+[`NumeralSystems.Net/docs/releasing.md`](NumeralSystems.Net/docs/releasing.md)
+to create the release tag and publish the GitHub Release.
+
 ## License
 
 By submitting a contribution, you confirm that you have the right to provide it

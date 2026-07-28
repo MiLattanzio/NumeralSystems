@@ -1,35 +1,39 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
-
+about: Report reproducible incorrect behavior in NumeralSystems.Net
+title: "[Bug] "
+labels: bug
+assignees: ""
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+<!-- Do not report vulnerabilities here. Follow SECURITY.md instead. -->
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## Description
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+Describe the problem and why it is unexpected.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Minimal reproduction
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Version [e.g. 22]
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Version [e.g. 22]
+```csharp
+// Include a complete, minimal example.
+```
 
-**Additional context**
-Add any other context about the problem here.
+## Expected behavior
+
+What should happen?
+
+## Actual behavior
+
+What happens instead? Include the complete exception and stack trace when
+applicable.
+
+## Environment
+
+- NumeralSystems.Net version or commit:
+- .NET SDK/runtime:
+- Operating system and architecture:
+- Culture, base, alphabet, and separators (when relevant):
+
+## Additional context
+
+Add any information that may help reproduce or diagnose the problem.

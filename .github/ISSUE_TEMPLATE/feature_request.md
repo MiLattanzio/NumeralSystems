@@ -1,20 +1,36 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
-
+about: Propose a focused capability or API improvement
+title: "[Feature] "
+labels: enhancement
+assignees: ""
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## Use case
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+What are you trying to accomplish, and who benefits?
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+## Current limitation
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+Show why the existing API cannot solve the use case.
+
+```csharp
+// Optional example of the current approach.
+```
+
+## Proposed behavior
+
+Describe the result you want. Include a small API sketch when useful.
+
+```csharp
+// Optional API sketch.
+```
+
+## Alternatives and trade-offs
+
+Which alternatives did you consider? Note compatibility, performance, or
+complexity concerns.
+
+## Additional context
+
+Link related issues, specifications, or prior art.

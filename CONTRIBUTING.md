@@ -1,143 +1,115 @@
-<!-- omit in toc -->
-# Contributing to NumeralSystems
+# Contributing to NumeralSystems.Net
 
-First off, thanks for taking the time to contribute! ❤️
+Thank you for improving NumeralSystems.Net. Contributions can include bug fixes,
+tests, documentation, performance work, and focused feature proposals.
 
-All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution. It will make it a lot easier for us maintainers and smooth out the experience for all involved. The community looks forward to your contributions. 🎉
+By participating, you agree to follow the
+[Code of Conduct](CODE_OF_CONDUCT.md). Do not disclose vulnerabilities in a
+public issue; use the process in [SECURITY.md](SECURITY.md).
 
-> And if you like the project, but just don't have time to contribute, that's fine. There are other easy ways to support the project and show your appreciation, which we would also be very happy about:
-> - Star the project
-> - Tweet about it
-> - Refer this project in your project's readme
-> - Mention the project at local meetups and tell your friends/colleagues
+## Before opening an issue
 
-<!-- omit in toc -->
-## Table of Contents
+Search the [existing issues](https://github.com/MiLattanzio/NumeralSystems/issues)
+and read the [documentation](NumeralSystems.Net/docs/index.md).
 
-- [I Have a Question](#i-have-a-question)
-- [I Want To Contribute](#i-want-to-contribute)
-  - [Reporting Bugs](#reporting-bugs)
-  - [Suggesting Enhancements](#suggesting-enhancements)
-  - [Make Changes](#make-changes)
-  - [Commit your update](#commit-your-update)
-  - [Pull Request](#pull-request)
+For a bug, include:
 
+- the NumeralSystems.Net version or commit;
+- your .NET SDK/runtime and operating system;
+- the smallest code sample that reproduces the behavior;
+- the expected result and the actual result;
+- the full exception and stack trace, when applicable.
 
+For a feature, describe the use case before proposing an API. Explain why the
+existing types cannot solve it and identify compatibility or performance
+constraints.
 
-## I Have a Question
+## Development setup
 
-> If you want to ask a question, we assume that you have read the available [Documentation](https://github.com/MiLattanzio/NumeralSystems/blob/master/README.md).
+Install the .NET 8 SDK, then clone and restore the solution:
 
-Before you ask a question, it is best to search for existing [Issues](https://github.com/MiLattanzio/NumeralSystemsissues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue. It is also advisable to search the internet for answers first.
+```bash
+git clone https://github.com/MiLattanzio/NumeralSystems.git
+cd NumeralSystems/NumeralSystems.Net
+dotnet restore
+```
 
-If you then still feel the need to ask a question and need clarification, we recommend the following:
+Build and run the tests:
 
-- Open an [Issue](https://github.com/MiLattanzio/NumeralSystemsissues/new).
-- Provide as much context as you can about what you're running into.
-- Provide project and platform versions (nodejs, npm, etc), depending on what seems relevant.
+```bash
+dotnet build --configuration Release --no-restore
+dotnet test --configuration Release --no-build
+```
 
-We will then take care of the issue as soon as possible.
+The library targets .NET Standard 2.1. The test project targets .NET 8 and uses
+NUnit.
 
-<!--
-You might want to create a separate issue tag for questions and include it in this description. People should then tag their issues accordingly.
+## Making a change
 
-Depending on how large the project is, you may want to outsource the questioning, e.g. to Stack Overflow or Gitter. You may add additional contact and information possibilities:
-- IRC
-- Slack
-- Gitter
-- Stack Overflow tag
-- Blog
-- FAQ
-- Roadmap
-- E-Mail List
-- Forum
--->
+1. Create a short-lived branch from `master`.
+2. Keep the change focused on one problem.
+3. Add or update NUnit tests for observable behavior.
+4. Update the relevant guide and XML API comments when public behavior changes.
+5. Run the build and tests, then review the rendered Markdown on GitHub.
+6. Review the complete diff before committing.
 
-## I Want To Contribute
+Follow the existing C# style:
 
-> ### Legal Notice <!-- omit in toc -->
-> When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
+- four spaces for indentation;
+- braces on their own lines;
+- descriptive names over abbreviations;
+- explicit aliases when a library type conflicts with a `System` type;
+- no unrelated formatting in a focused pull request.
 
-### Reporting Bugs
+Public APIs should validate arguments consistently and include valid XML
+documentation for public types, members, parameters, return values, and thrown
+exceptions.
 
-<!-- omit in toc -->
-#### Before Submitting a Bug Report
+## Tests
 
-A good bug report shouldn't leave others needing to chase you up for more information. Therefore, we ask you to investigate carefully, collect information and describe the issue in detail in your report. Please complete the following steps in advance to help us fix any potential bug as fast as possible.
+Place tests in `NumeralSystems.Net/NumeralSystem.Net.NUnit` next to the closest
+existing fixture. A useful test is deterministic and covers:
 
-- Make sure that you are using the latest version.
-- Determine if your bug is really a bug and not an error on your side e.g. using incompatible environment components/versions (Make sure that you have read the [documentation](https://github.com/MiLattanzio/NumeralSystems/blob/master/README.md). If you are looking for support, you might want to check [this section](#i-have-a-question)).
-- To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the [bug tracker](https://github.com/MiLattanzio/NumeralSystemsissues?q=label%3Abug).
-- Also make sure to search the internet (including Stack Overflow) to see if users outside of the GitHub community have discussed the issue.
-- Collect information about the bug:
-  - Stack trace (Traceback)
-  - OS, Platform and Version (Windows, Linux, macOS, x86, ARM)
-  - Version of the interpreter, compiler, SDK, runtime environment, package manager, depending on what seems relevant.
-  - Possibly your input and the output
-  - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
+- the successful path;
+- invalid input or an impossible reverse operation;
+- boundary values for the primitive width or numeral base;
+- round trips when adding a conversion or encoding.
 
-<!-- omit in toc -->
-#### How Do I Submit a Good Bug Report?
+Avoid random-only assertions. If randomness is required, use a fixed seed and
+include the failing input in the assertion message.
 
-> You must never report security related issues, vulnerabilities or bugs to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to <michelangelolattanzio@gmail.com>.
-<!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
+## Documentation
 
-We use GitHub issues to track bugs and errors. If you run into an issue with the project:
+Documentation is in `NumeralSystems.Net/docs` and consists entirely of Markdown
+files. Update `docs/index.md` and the navigation block in affected pages when
+adding, renaming, or removing a guide. Keep `docs/api-reference.md` aligned with
+the public surface of the C# project.
 
-- Open an [Issue](https://github.com/MiLattanzio/NumeralSystemsissues/new). (Since we can't be sure at this point whether it is a bug or not, we ask you not to talk about a bug yet and not to label the issue.)
-- Explain the behavior you would expect and the actual behavior.
-- Please provide as much context as possible and describe the *reproduction steps* that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
-- Provide the information you collected in the previous section.
+Preview the changed files in a Markdown renderer and check headings, tables,
+code blocks, and relative links.
 
-Once it's filed:
+When editing examples:
 
-- The project team will label the issue accordingly.
-- A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps and mark the issue as `needs-repro`. Bugs with the `needs-repro` tag will not be addressed until they are reproduced.
-- If the team is able to reproduce the issue, it will be marked `needs-fix`, as well as possibly other tags (such as `critical`), and the issue will be left to be [implemented by someone](#your-first-code-contribution).
+- include all required `using` directives;
+- avoid culture-dependent expected strings unless culture is the subject;
+- say when binary arrays are least-significant-bit first;
+- keep the base, alphabet, separators, and encoded width explicit.
 
-<!-- You might want to create an issue template for bugs and errors that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
+## Pull requests
 
+Open a pull request against `master` and complete the repository template. A
+reviewer should be able to determine:
 
-### Suggesting Enhancements
+- what changed and why;
+- which public behavior is affected;
+- how the change was tested;
+- whether compatibility or documentation changes;
+- which issue is fixed, when applicable.
 
-This section guides you through submitting an enhancement suggestion for NumeralSystems, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
+Keep generated build output, IDE files, credentials, and unrelated changes out
+of the commit. Maintainers may request changes before merging.
 
-<!-- omit in toc -->
-#### Before Submitting an Enhancement
+## License
 
-- Make sure that you are using the latest version.
-- Read the [documentation](https://github.com/MiLattanzio/NumeralSystems/blob/master/README.md) carefully and find out if the functionality is already covered, maybe by an individual configuration.
-- Perform a [search](https://github.com/MiLattanzio/NumeralSystemsissues) to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
-- Find out whether your idea fits with the scope and aims of the project. It's up to you to make a strong case to convince the project's developers of the merits of this feature. Keep in mind that we want features that will be useful to the majority of our users and not just a small subset. If you're just targeting a minority of users, consider writing an add-on/plugin library.
-
-<!-- omit in toc -->
-#### How Do I Submit a Good Enhancement Suggestion?
-
-Enhancement suggestions are tracked as [GitHub issues](https://github.com/MiLattanzio/NumeralSystemsissues).
-
-- Use a **clear and descriptive title** for the issue to identify the suggestion.
-- Provide a **step-by-step description of the suggested enhancement** in as many details as possible.
-- **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
-- You may want to **include screenshots and animated GIFs** which help you demonstrate the steps or point out the part which the suggestion is related to. You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) or [this tool](https://github.com/GNOME/byzanz) on Linux. <!-- this should only be included if the project has a GUI -->
-- **Explain why this enhancement would be useful** to most NumeralSystems users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
-
-
-#### Solve an issue
-
-Scan through our existing issues to find one that interests you. As a general rule, we don’t assign issues to anyone. If you find an issue to work on, you are welcome to open a PR with a fix.
-
-### Make Changes
-
-1. Fork the repository.
-2. Create a working branch and write your changes!
-3. Perform NUnit tests and write new ones if needed
-
-### Commit your update
-
-Commit the changes once you are happy with them. 
-Once your changes are ready, don't forget to self-review to speed up the review process:zap:
-
-### Pull Request
-
-When you're finished with the changes, create a pull request, also known as a PR.
-Once you submit your PR, a Docs team member will review your proposal. We may ask questions or request for additional information.
+By submitting a contribution, you confirm that you have the right to provide it
+under the repository's [MIT License](LICENSE.txt).

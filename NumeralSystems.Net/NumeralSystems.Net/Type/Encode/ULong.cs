@@ -14,23 +14,11 @@ namespace NumeralSystems.Net.Type.Base
         /// <param name="val">The unsigned long value to convert.</param>
         /// <param name="destinationBase">The base to convert to.</param>
         /// <returns>An array of unsigned long representing the indices in the specified base.</returns>
-        /// <exception cref="ArgumentException">Thrown when the destination base is less than or equal to 0.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the destination base is less than 2.</exception>
         public static ulong[] ToIndicesOfBase(ulong val, int destinationBase)
         {
-            if (destinationBase <= 0)
-            {
-                throw new ArgumentException("Destination base must be greater than 0");
-            }
-            if (destinationBase == 1)
-            {
-                if (val == 0) return new ulong[] { 0 }; // Special handling for 0 in base 1
-                var array = new ulong[val];
-                for (ulong i = 0; i < val; i++)
-                {
-                    array[i] = 1;
-                }
-                return array;
-            }
+            if (destinationBase < 2)
+                throw new ArgumentOutOfRangeException(nameof(destinationBase), "Base must be at least 2.");
             if (val == 0) return new ulong[] { 0 };
 
             List<ulong> result = new List<ulong>();
@@ -49,17 +37,14 @@ namespace NumeralSystems.Net.Type.Base
         /// <param name="val">The array of unsigned long representing the indices.</param>
         /// <param name="sourceBase">The base of the indices.</param>
         /// <returns>The unsigned long value.</returns>
-        /// <exception cref="ArgumentException">Thrown when the source base is less than or equal to 0.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the source base is less than 2.</exception>
         public static ulong FromIndicesOfBase(ulong[] val, int sourceBase)
         {
-            if (sourceBase <= 0)
-            {
-                throw new ArgumentException("Source base must be greater than 0");
-            }
-            if (sourceBase == 1)
-            {
-                return (ulong)new System.Numerics.BigInteger(val.Length);
-            }
+            if (sourceBase < 2)
+                throw new ArgumentOutOfRangeException(nameof(sourceBase), "Base must be at least 2.");
+            if (val is null) throw new ArgumentNullException(nameof(val));
+            if (val.Any(index => index >= (ulong)sourceBase))
+                throw new ArgumentOutOfRangeException(nameof(val), "Every digit must be smaller than the source base.");
 
             System.Numerics.BigInteger result = 0;
             for (var i = 0; i < val.Length; i++)

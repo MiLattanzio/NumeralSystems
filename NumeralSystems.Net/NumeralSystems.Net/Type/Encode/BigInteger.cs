@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 // ReSharper disable once CheckNamespace
 using System;
+using System.Linq;
 
 namespace NumeralSystems.Net.Type.Base
 {
@@ -39,21 +40,16 @@ namespace NumeralSystems.Net.Type.Base
         /// <summary>
         /// Converts an indices representation in a specified base to a BigInteger value.
         /// </summary>
-        /// <param name="integral">The indices representing the integral part.</param>
-        /// <param name="fractional">The indices representing the fractional part.</param>
-        /// <param name="positive">A boolean indicating whether the number is positive.</param>
+        /// <param name="val">The indices representing the integral value.</param>
         /// <param name="sourceBase">The base of the numeral system represented by the indices.</param>
-        /// <returns>A BigInteger value constructed from the specified integral and fractional parts.</returns>
+        /// <returns>A BigInteger value constructed from the specified indices.</returns>
         public static System.Numerics.BigInteger FromIndicesOfBase(ulong[] val, int sourceBase)
         {
-            if (sourceBase <= 0)
-            {
-                throw new ArgumentException("Source base must be greater than 0");
-            }
-            if (sourceBase == 1)
-            {
-                return new System.Numerics.BigInteger(val.Length);
-            }
+            if (sourceBase < 2)
+                throw new ArgumentOutOfRangeException(nameof(sourceBase), "Base must be at least 2.");
+            if (val is null) throw new ArgumentNullException(nameof(val));
+            if (val.Any(index => index >= (ulong)sourceBase))
+                throw new ArgumentOutOfRangeException(nameof(val), "Every digit must be smaller than the source base.");
 
             System.Numerics.BigInteger result = 0;
             for (var i = 0; i < val.Length; i++)
@@ -67,25 +63,14 @@ namespace NumeralSystems.Net.Type.Base
         /// Converts a given BigInteger into its indices representation in the specified base.
         /// </summary>
         /// <param name="val">The BigInteger value to be converted.</param>
-        /// <param name="destinationBase">The base to convert the BigInteger into. Must be greater than 0.</param>
+        /// <param name="destinationBase">The base to convert the BigInteger into. It must be at least 2.</param>
         /// <returns>An array of BigInteger values representing the indices of the original value in the specified base.</returns>
-        /// <exception cref="ArgumentException">Thrown when the destination base is less than or equal to 0.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the destination base is less than 2.</exception>
         public static System.Numerics.BigInteger[] ToIndicesOfBase(System.Numerics.BigInteger val, int destinationBase)
         {
-            if (destinationBase <= 0)
-            {
-                throw new ArgumentException("Destination base must be greater than 0");
-            }
-            if (destinationBase == 1)
-            {
-                if (val == 0) return new System.Numerics.BigInteger[] { 0 }; // Special handling for 0 in base 1
-                var array = new System.Numerics.BigInteger[(ulong)val];
-                for (ulong i = 0; i < val; i++)
-                {
-                    array[i] = 1;
-                }
-                return array;
-            }
+            if (destinationBase < 2)
+                throw new ArgumentOutOfRangeException(nameof(destinationBase), "Base must be at least 2.");
+            val = System.Numerics.BigInteger.Abs(val);
             if (val == 0) return new System.Numerics.BigInteger[] { 0 };
 
             var result = new List<System.Numerics.BigInteger>();

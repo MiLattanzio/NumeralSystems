@@ -134,9 +134,19 @@ Tutta la documentazione è scritta in Markdown e viene versionata insieme al
 codice. Non sono necessari generatori o tool aggiuntivi per leggerla e
 modificarla.
 
+## Benchmark
+
+I benchmark prestazionali vivono in un progetto separato, così non influenzano
+la scoperta o l'esecuzione dei test:
+
+```bash
+dotnet run --configuration Release \
+  --project NumeralSystems.Net.Benchmarks/NumeralSystems.Net.Benchmarks.csproj
+```
+
 ## Note importanti
 
-- Una base posizionale utile è normalmente maggiore o uguale a 2.
+- Una base posizionale deve essere maggiore o uguale a 2.
 - Le cifre sono indici interi nell'intervallo `0..base-1`.
 - `Value` non memorizza segno o parte frazionaria; usare `NumeralValue` o
   `Numeral` quando servono.

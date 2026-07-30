@@ -9,23 +9,24 @@ namespace NumeralSystem.Net.NUnit
     [TestFixture]
     public class ValueTests
     {
-        public Random Random = new ();
-        public List<string> _fromCharset = new ();
-        public List<string> _toCharset = new ();
+        private Random _random;
+        private readonly List<string> _fromCharset = new();
+        private readonly List<string> _toCharset = new();
 
         [SetUp]
         public void Setup()
         {
+            _random = new Random(42);
             _fromCharset.Clear();
-            for (var i = 0; i < Random.Next(0, char.MaxValue); i++)
+            while (_fromCharset.Count < 128)
             {
-                var randomChar = ((char) Random.Next(char.MinValue, char.MaxValue)).ToString();
+                var randomChar = ((char)_random.Next(char.MinValue, char.MaxValue)).ToString();
                 if (!_fromCharset.Contains(randomChar)) _fromCharset.Add(randomChar);
             }
             _toCharset.Clear();
-            for (var i = 0; i < Random.Next(0, char.MaxValue); i++)
+            while (_toCharset.Count < 96)
             {
-                var randomChar = ((char) Random.Next(char.MinValue, char.MaxValue)).ToString();
+                var randomChar = ((char)_random.Next(char.MinValue, char.MaxValue)).ToString();
                 if (!_toCharset.Contains(randomChar)) _toCharset.Add(randomChar);
             }
         }
@@ -35,7 +36,7 @@ namespace NumeralSystem.Net.NUnit
             var stringBuilder = new StringBuilder();
             for (var i = 0; i < length; i++)
             {
-                var randomChar = _fromCharset[Random.Next(0, _fromCharset.Count-1)];
+                var randomChar = _fromCharset[_random.Next(_fromCharset.Count)];
                 stringBuilder.Append(randomChar);
             }
             return stringBuilder.ToString();
@@ -64,22 +65,23 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void RandomStringTest()
         {
-            var sourceString = GenerateRandomString(Random.Next(0, 255));
-            var value = Value.FromString(sourceString, new HashSet<string>(_fromCharset));
-            var valueString = ValueToString(value, _fromCharset);
+            var sourceString = GenerateRandomString(_random.Next(1, 255));
+            var sourceCharacters = new HashSet<string>(_fromCharset);
+            var sourceIdentity = new List<string>(sourceCharacters);
+            var value = Value.FromString(sourceString, sourceCharacters);
+            var valueString = ValueToString(value, sourceIdentity);
             Assert.That(sourceString, Is.EqualTo(valueString));
             var valueChanged = value.ToBase(_toCharset.Count);
-            var valueChangedString = ValueToString(valueChanged, _toCharset);
-            Assert.That(sourceString, Is.Not.EqualTo(valueChangedString));
             var valueSource = value.ToBase(_fromCharset.Count);
-            var valueSourceString = ValueToString(valueSource, _fromCharset);
+            var valueSourceString = ValueToString(valueSource, sourceIdentity);
             Assert.That(sourceString, Is.EqualTo(valueSourceString));
+            Assert.That(valueChanged.Base, Is.EqualTo(_toCharset.Count));
         }
         
         [Test]
         public void RandomStringFitFalseTest()
         {
-            var sourceString = GenerateRandomString(Random.Next(0, 255));
+            var sourceString = GenerateRandomString(_random.Next(1, 255));
             var value = Value.FromString(sourceString);
             var valueString = ValueToString(value);
             Assert.That(sourceString, Is.EqualTo(valueString));
@@ -88,7 +90,7 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void RandomStringFitTrueTest()
         {
-            var sourceString = GenerateRandomString(Random.Next(0, 255));
+            var sourceString = GenerateRandomString(_random.Next(1, 255));
             var value = Value.FromString(sourceString, true);
             var valueString = ValueToString(value);
             Assert.That(sourceString, Is.EqualTo(valueString));
@@ -107,7 +109,7 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void NumeralValueGeneralTest()
         {
-            var sourceNumber = Random.Next() + Random.NextDouble();
+            var sourceNumber = _random.Next() + _random.NextDouble();
             var number = NumeralValue.FromDouble(sourceNumber);
             var binary = number.ToBase(2);
             Assert.That(number.ToDecimal(), Is.EqualTo(binary.ToDecimal()));

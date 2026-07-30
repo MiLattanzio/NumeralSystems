@@ -56,14 +56,11 @@ namespace NumeralSystems.Net.Utils
         }
 
         /// <summary>
-        /// Provides functionality to determine if a given value falls within a specified range.
+        /// Enumerates an inclusive range of unsigned integers.
         /// </summary>
-        /// <param name="value">The value to check.</param>
-        /// <param name="min">The minimum value of the range (inclusive).</param>
-        /// <param name="max">The maximum value of the range (inclusive).</param>
-        /// <returns>
-        /// True if the value falls within the specified range, otherwise false.
-        /// </returns>
+        /// <param name="start">The first value to return.</param>
+        /// <param name="end">The last value to return.</param>
+        /// <returns>The values from <paramref name="start"/> through <paramref name="end"/>.</returns>
         public static IEnumerable<uint> Range(uint start, uint end)
         {
             for (var i = start; i <= end; i++)

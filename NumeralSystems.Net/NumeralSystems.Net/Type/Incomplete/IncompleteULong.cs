@@ -7,11 +7,9 @@ using Polecola.Primitive;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    /// The IncompleteULong class represents an incomplete binary representation of an unsigned long integer.
-    /// It implements the IIncompleteValue, IRregularReversible, and IIRregularOperable interfaces.
-    /// This class provides methods for performing bitwise operations and checking containment of values.
-    /// It also provides methods for converting the binary representation to other forms, such as a byte array or a string.
-    /// @typeparam name="IncompleteULong">The type of the incomplete unsigned long integer.</typeparam> @typeparam name="ULong">The type of the complete unsigned long integer.</typeparam> @typeparam name="ulong">The underlying type of the incomplete unsigned long integer.</typeparam> @typeparam name="ulong">The underlying type of the complete unsigned long integer.</typeparam>
+    /// <summary>
+    /// Represents an unsigned 64-bit value whose individual bits may be unknown.
+    /// </summary>
     /// @see IIncompleteValue
     /// @see IRregularReversible
     /// @see IIRregularOperable
@@ -64,15 +62,13 @@ namespace NumeralSystems.Net.Type.Incomplete
                 var lastValueBinaryIndex = 0;
                 for (var i = 0; i < binary.Length; i++)
                 {
-                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    if (binary[i] is null)
                     {
-                        if (binary[i] is null)
-                        {
-                            resultBinary[i] = valueBinary[i1];
-                            lastValueBinaryIndex = i1 + 1;
-                            break;
-                        }
-                        resultBinary[i] = binary[i] ?? false;
+                        resultBinary[i] = valueBinary[lastValueBinaryIndex++];
+                    }
+                    else
+                    {
+                        resultBinary[i] = binary[i].Value;
                     }
                 }
                 return new ULong()
@@ -181,7 +177,9 @@ namespace NumeralSystems.Net.Type.Incomplete
             Binary = Binary.And(other.Binary)
         };
 
-        /// Or operation between an IncompleteULong and an ULong.</summary>
+        /// <summary>
+        /// Performs an OR operation between this incomplete value and a complete unsigned long value.
+        /// </summary>
         /// <param name="other">The ULong value to perform the Or operation with</param> <returns>A new IncompleteULong object representing the result of the Or operation</returns>
         /// <remarks>
         /// This method performs the logical Or operation between the Binary property of the current IncompleteULong object and the Binary property of the ULong value passed as the other parameter. The result is stored in a new IncompleteULong object, with the Binary property set to the result of the Or operation.

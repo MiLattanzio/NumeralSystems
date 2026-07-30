@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
-using BenchmarkDotNet.Running;
 using NumeralSystems.Net;
 using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
@@ -13,9 +10,6 @@ using Math = System.Math;
 
 namespace NumeralSystem.Net.NUnit
 {
-    [MemoryDiagnoser()]
-    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    [RankColumn()]
     public class NumeralTests
     {
         private Random _random;
@@ -26,7 +20,7 @@ namespace NumeralSystem.Net.NUnit
         [SetUp]
         public void Setup()
         {
-            _random = new Random();
+            _random = new Random(42);
             _base2 = Numeral.System.OfBase(2);
             _base10 = Numeral.System.OfBase(10);
         }
@@ -105,7 +99,7 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void CultureInfoTest()
         {
-            var random = new Random();
+            var random = new Random(42);
             var value = random.Next();
             var base10 = Numeral.System.OfBase(10);
             var decimalValue = base10[value];
@@ -113,11 +107,10 @@ namespace NumeralSystem.Net.NUnit
             Assert.AreEqual(decimalValue.ToString(), value.ToString());
         }
 
-        [Benchmark]
         [Test]
         public void RandomAlphanumericTest()
         {
-            var random = new Random();
+            var random = new Random(42);
             var r = random.Next(2, 2000);
             var difficulty = Numeral.System.Characters.Alphanumeric.Count();
             for (int i = 0; i < r; i++)
@@ -136,12 +129,11 @@ namespace NumeralSystem.Net.NUnit
         }
         
         
-        [Benchmark]
         [Test]
         public void Base10Test()
         {
             // ReSharper disable once HeapView.ObjectAllocation.Evident
-            var random = new Random();
+            var random = new Random(42);
             for (var i = 0; i < 10; i++)
             {
                 var value = random.Next();
@@ -150,11 +142,10 @@ namespace NumeralSystem.Net.NUnit
             }
         }
 
-        [Benchmark]
         [Test]
         public void BinaryTest()
         {
-            var random = new Random();
+            var random = new Random(42);
             for (var i = 0; i < 10; i++)
             {
                 var value = random.Next();
@@ -166,12 +157,11 @@ namespace NumeralSystem.Net.NUnit
             }
         }
         
-        [Benchmark]
         [Test]
         public void BinaryParseTest()
         {
             // ReSharper disable once HeapView.ObjectAllocation.Evident
-            var random = new Random();
+            var random = new Random(42);
             for (var i = 0; i < 10; i++)
             {
                 var value = random.Next();
@@ -182,11 +172,10 @@ namespace NumeralSystem.Net.NUnit
             }
         }
 
-        [Benchmark]
         [Test]
         public void DoubleTest()
         {
-            var random = new Random();
+            var random = new Random(42);
             for (var i = 0; i < 20; i++)
             {
                 var value = random.NextDouble();
@@ -199,11 +188,10 @@ namespace NumeralSystem.Net.NUnit
             
         }
 
-        [Benchmark]
         [Test]
         public void DecimalTest()
         {
-            var random = new Random();
+            var random = new Random(42);
             for (var i = 0; i < 20; i++)
             {
                 var value = (decimal)random.NextDouble();

@@ -1,17 +1,12 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Order;
 using NumeralSystems.Net;
 using NumeralSystems.Net.Type.Base;
 using NUnit.Framework;
 
 namespace NumeralSystem.Net.NUnit
 {
-    [MemoryDiagnoser()]
-    [Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    [RankColumn()]
     public class TypeTests
     {
         [SetUp]
@@ -24,7 +19,7 @@ namespace NumeralSystem.Net.NUnit
         public void Random()
         {
             
-            var random = new Random();
+            var random = new Random(42);
             var base2 = Numeral.System.OfBase(10);
             var serializationInfo = NumeralSystems.Net.NumeralSystem.SerializationInfo.OfBase(10);
             for (var i = 0; i < 20; i++)

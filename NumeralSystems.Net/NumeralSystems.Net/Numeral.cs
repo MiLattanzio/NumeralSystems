@@ -337,7 +337,6 @@ namespace NumeralSystems.Net
                         // Truncate to 4 int long
                         //intArray = intArray.Take(4).ToArray();
                         throw new ArgumentOutOfRangeException(nameof(value), "Byte array is too long");
-                        break;
                 }
 
                 var result = new decimal(intArray);
@@ -394,6 +393,7 @@ namespace NumeralSystems.Net
             /// <seealso cref="NumeralSystems.Net.Numeral.System"/>
             public static class Characters
             {
+                /// <summary>
                 /// Collection of numeric characters.
                 /// </summary>
                 public static readonly IEnumerable<char> Numbers = Enumerable.Range(char.MinValue, char.MaxValue + 1)

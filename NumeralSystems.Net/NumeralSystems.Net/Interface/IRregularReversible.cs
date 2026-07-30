@@ -4,7 +4,7 @@
     /// Interface for reverse operations on a incomplete value.
     /// </summary>
     /// <typeparam name="TIncomplete">Incomplete type representation of the type value</typeparam>
-    /// <typeparam name="TNumaralValue">Complete representation of the value</typeparam>
+    /// <typeparam name="TNumeralValue">Complete representation of the value</typeparam>
     /// <typeparam name="TValue">Native type representation of the value</typeparam>
     /// <typeparam name="TIndexer"> Type used to index the incomplete permutation of the incomplete value type</typeparam>
     public interface IRregularReversible<TIncomplete, in TNumeralValue, TValue, TIndexer> where TNumeralValue : INumeralValue<TValue> where TIncomplete: IIncompleteValue<TNumeralValue, TValue, TIndexer> where TIndexer : struct

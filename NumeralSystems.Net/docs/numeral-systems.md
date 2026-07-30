@@ -206,9 +206,8 @@ you also need custom symbol parsing and formatting.
 
 ## Validation and failure behavior
 
-- The base must be positive; positional use normally requires a base of at
-  least 2.
-- Every digit must be smaller than its base.
+- The base must be at least 2.
+- Every digit must be in the range `0..base-1`.
 - `Parse` throws `InvalidOperationException` for an invalid textual numeral.
 - `TryParse` returns `false` and still assigns a result object.
 - `SkipUnknownValues` controls whether unknown input symbols are ignored or

@@ -13,11 +13,12 @@ namespace NumeralSystems.Net.Type.Base
         /// <param name="destinationBase">The base to encode to.</param>
         /// <param name="size">The size of the encoded string.</param>
         /// <returns>The encoded string.</returns>
-        /// <exception cref="System.ArgumentException">Thrown when the destination base is less than or equal to 0 or greater than char.MaxValue.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">Thrown when the destination base is less than 2 or greater than char.MaxValue.</exception>
         public static string EncodeToBase(string s, int destinationBase, out int size)
         {
-            if (destinationBase <= 0 || destinationBase > char.MaxValue)
-                throw new System.ArgumentException("Destination base must be greater than 0 and less than or equal to " + char.MaxValue);
+            if (destinationBase < 2 || destinationBase > char.MaxValue)
+                throw new System.ArgumentOutOfRangeException(nameof(destinationBase),
+                    "Destination base must be between 2 and " + char.MaxValue + ".");
             var indices = ToIndicesOfBase(s, destinationBase).ToList();
             var len = indices.Max(x => x.Length);
             var adjustedIndices = indices.Select(x => x.Length < len ? System.Linq.Enumerable.Repeat(0U, len - x.Length).Concat(x).ToArray() : x).ToArray();
@@ -32,11 +33,12 @@ namespace NumeralSystems.Net.Type.Base
         /// <param name="sourceBase">The base to decode from.</param>
         /// <param name="size">The size of the encoded string.</param>
         /// <returns>The decoded string.</returns>
-        /// <exception cref="System.ArgumentException">Thrown when the source base is less than or equal to 0 or greater than char.MaxValue.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">Thrown when the source base is less than 2 or greater than char.MaxValue.</exception>
         public static string DecodeFromBase(string s, int sourceBase, int size)
         {
-            if (sourceBase <= 0 || sourceBase > char.MaxValue)
-                throw new System.ArgumentException("Source base must be greater than 0 and less than or equal to " + char.MaxValue);
+            if (sourceBase < 2 || sourceBase > char.MaxValue)
+                throw new System.ArgumentOutOfRangeException(nameof(sourceBase),
+                    "Source base must be between 2 and " + char.MaxValue + ".");
             var indices = s.Select(c => (uint)c).ToArray();
             var len = indices.Length / size;
             var adjustedIndices = System.Linq.Enumerable.Range(0, len).Select(x => indices.Skip(x * size).Take(size).ToArray()).ToArray();

@@ -133,9 +133,19 @@ The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/
 All documentation is maintained as Markdown and versioned with the code. No
 documentation generator or additional tool is required to read or edit it.
 
+## Benchmarks
+
+Performance benchmarks live in a separate project so they do not affect test
+discovery or execution:
+
+```bash
+dotnet run --configuration Release \
+  --project NumeralSystems.Net.Benchmarks/NumeralSystems.Net.Benchmarks.csproj
+```
+
 ## Important behavior
 
-- A useful positional base is normally 2 or greater.
+- A positional base must be 2 or greater.
 - Every digit is an integer index in the range `0..base-1`.
 - `Value` does not preserve a sign or a fractional part; use `NumeralValue` or
   `Numeral` when those are required.

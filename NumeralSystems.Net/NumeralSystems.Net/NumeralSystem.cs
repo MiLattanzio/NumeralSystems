@@ -64,7 +64,8 @@ namespace NumeralSystems.Net
         /// </summary>
         public NumeralSystem(int size)
         {
-            if (size <= 0) throw new Exception("Size cannot be less than 1");
+            if (size < 2)
+                throw new ArgumentOutOfRangeException(nameof(size), "A positional numeral system requires a base of at least 2.");
             Size = size;
         }
 
@@ -287,9 +288,7 @@ namespace NumeralSystems.Net
         /// an indexer based on varying types of indices including integers, floating points,
         /// and collections of numeric types.
         /// </summary>
-        /// <param name="index">The index used to select the numeral, which can be of multiple types
-        /// such as int, double, decimal, long, ulong, uint, short, ushort, sbyte, byte,
-        /// IEnumerable<int>, IEnumerable<byte>, IEnumerable<char>, IList<int>, IList<byte>, and IList<char>.</param>
+        /// <param name="index">The unsigned integer to represent in this numeral system.</param>
         /// <returns>A <see cref="Numeral"/> instance corresponding to the specified index within the numeral system.</returns>
         public Numeral this[uint index]
         {
@@ -565,11 +564,8 @@ namespace NumeralSystems.Net
         /// <summary>
         /// Parses a string representation of a number into a Numeral object.
         /// </summary>
-        /// <param name="val">The string representation of the number to parse.</param>
-        /// <param name="identity">The list of strings representing the identity of the numeral system.</param>
-        /// <param name="separator">The separator used to distinguish separate digits in the number string.</param>
-        /// <param name="negativeSign">The string representation of the negative sign.</param>
-        /// <param name="numberDecimalSeparator">The decimal separator used in the number string.</param>
+        /// <param name="toString">The string representation of the number to parse.</param>
+        /// <param name="serializationInfo">The alphabet and separators used during parsing.</param>
         /// <returns>A Numeral object representing the parsed number.</returns>
         public Numeral Parse(string toString, SerializationInfo serializationInfo) => Parse(toString,
             serializationInfo.Identity, serializationInfo.Separator, serializationInfo.NegativeSign,

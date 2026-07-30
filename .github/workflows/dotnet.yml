@@ -44,6 +44,7 @@ jobs:
           dotnet build NumeralSystems.Net.sln
           --configuration Release
           --no-restore
+          --warnaserror
           -p:GeneratePackageOnBuild=false
 
       - name: Test
@@ -52,7 +53,19 @@ jobs:
           dotnet test NumeralSystems.Net.sln
           --configuration Release
           --no-build
+          --no-restore
           --verbosity normal
+
+      - name: Validate NuGet package
+        working-directory: NumeralSystems.Net
+        run: >-
+          dotnet pack NumeralSystems.Net/NumeralSystems.Net.csproj
+          --configuration Release
+          --no-build
+          --no-restore
+          --output artifacts/validation
+          -p:ContinuousIntegrationBuild=true
+          -p:GeneratePackageOnBuild=false
 
   publish-nuget:
     name: Package and publish to NuGet.org
@@ -112,7 +125,9 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: NumeralSystems.Net-${{ steps.package-version.outputs.value }}
-          path: NumeralSystems.Net/artifacts/*.nupkg
+          path: |
+            NumeralSystems.Net/artifacts/*.nupkg
+            NumeralSystems.Net/artifacts/*.snupkg
           if-no-files-found: error
           retention-days: 30
 

@@ -8,7 +8,7 @@ namespace NumeralSystems.Net.Utils
     internal partial class Math
     {
         /// <summary>
-        /// Performs the logical OR operation between two nullable boolean values.
+        /// Reverses a logical OR operation for two nullable Boolean values.
         /// </summary>
         /// <param name="left">The left nullable boolean value.</param>
         /// <param name="right">The right nullable boolean value.</param>
@@ -36,7 +36,8 @@ namespace NumeralSystems.Net.Utils
             (true, true) => null
         };
 
-        /// Performs the logical OR operation between two nullable boolean values.
+        /// <summary>
+        /// Reverses a logical OR operation for two Boolean arrays.
         /// </summary>
         /// <param name="left">The left nullable boolean value.</param>
         /// <param name="right">The right nullable boolean value.</param>

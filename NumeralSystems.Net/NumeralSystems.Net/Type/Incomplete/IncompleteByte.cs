@@ -67,16 +67,13 @@ namespace NumeralSystems.Net.Type.Incomplete
                 var lastValueBinaryIndex = 0;
                 for (var i = 0; i < binary.Length; i++)
                 {
-                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    if (binary[i] is null)
                     {
-                        if (binary[i] is null)
-                        {
-                            resultBinary[i] = valueBinary[i1];
-                            lastValueBinaryIndex = i1 + 1;
-                            break;
-                        }
+                        resultBinary[i] = valueBinary[lastValueBinaryIndex++];
+                    }
+                    else
+                    {
                         resultBinary[i] = binary[i].Value;
-                        break;
                     }
                 }
                 return new Byte()

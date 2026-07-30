@@ -16,10 +16,12 @@ namespace NumeralSystems.Net
         /// </summary>
         public Value(List<int> indices, int baseValue)
         {
-            if (null == indices) throw new ArgumentException("Indices cannot be null");
-            if (baseValue <= 0) throw new ArgumentException("baseValue must be greater than zero."); 
+            if (indices is null) throw new ArgumentNullException(nameof(indices));
+            if (baseValue < 2) throw new ArgumentOutOfRangeException(nameof(baseValue), "Base must be at least 2.");
             Indices = indices.AsReadOnly();
-            if (!Indices.All(x => baseValue > x)) throw new ArgumentException($"All indices must be within the range [0,{baseValue-1}].");
+            if (!Indices.All(x => x >= 0 && x < baseValue))
+                throw new ArgumentOutOfRangeException(nameof(indices),
+                    $"All indices must be within the range [0,{baseValue - 1}].");
             Base = baseValue;
         }
 
@@ -75,14 +77,14 @@ namespace NumeralSystems.Net
         /// <summary>
         /// Converts the current numeral value to a representation in a specified base.
         /// </summary>
-        /// <param name="baseValue">The base to which the numeral value will be converted. Must be greater than zero.</param>
+        /// <param name="baseValue">The base to which the numeral value will be converted. It must be at least 2.</param>
         /// <param name="removeFirstZeros">Indicates whether leading zeros should be removed from the result. Default is false.</param>
         /// <returns>A new <see cref="Value"/> instance representing the number in the specified base.</returns>
-        /// <exception cref="ArgumentException">Thrown when <paramref name="baseValue"/> is less than or equal to zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="baseValue"/> is less than 2.</exception>
         public Value ToBase(int baseValue, bool removeFirstZeros = false)
         {
-            if (baseValue <= 0)
-                throw new ArgumentException("baseValue must be greater than zero.");
+            if (baseValue < 2)
+                throw new ArgumentOutOfRangeException(nameof(baseValue), "Base must be at least 2.");
 
             var frontZeros = Indices.AsEnumerable().TakeWhile(x => x == 0).Count();
 
@@ -109,7 +111,7 @@ namespace NumeralSystems.Net
         /// Divides a number, represented as a list of indices, by a specified base value.
         /// </summary>
         /// <param name="number">A list of integers representing the number in the current base system.</param>
-        /// <param name="baseValue">The base value to divide the number by. Must be greater than zero.</param>
+        /// <param name="baseValue">The base value to divide the number by. It must be at least 2.</param>
         /// <returns>A tuple containing the quotient as a list of integers and the remainder as an integer.</returns>
         private (List<int> Quotient, int Remainder) DivideByBase(List<int> number, int baseValue)
         {

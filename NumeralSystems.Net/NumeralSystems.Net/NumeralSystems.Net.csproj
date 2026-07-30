@@ -5,7 +5,8 @@
         <LangVersion>9</LangVersion>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageId>NumeralSystems.Net</PackageId>
-        <PackageVersion>4.5.1</PackageVersion>
+        <Version>4.5.2</Version>
+        <PackageVersion>4.5.2</PackageVersion>
         <Title>NumeralSystems.Net</Title>
         <Authors>Polecola</Authors>
         <Description>Work with arbitrary numeral systems, primitive bit representations, incomplete values, and reverse bitwise operations.</Description>
@@ -13,15 +14,24 @@
         <RepositoryUrl>https://github.com/MiLattanzio/NumeralSystems</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <Company>PastaSoftware</Company>
-        <AssemblyVersion>4.5.1.0</AssemblyVersion>
-        <FileVersion>4.5.1.0</FileVersion>
+        <AssemblyVersion>4.5.2.0</AssemblyVersion>
+        <FileVersion>4.5.2.0</FileVersion>
         <NeutralLanguage>en</NeutralLanguage>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/MiLattanzio/NumeralSystems</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>numeral-systems;base-conversion;bitwise;incomplete-values</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        <PackageReleaseNotes>Improves validation, build quality, deterministic testing, and package metadata.</PackageReleaseNotes>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <EnablePackageValidation>true</EnablePackageValidation>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <!-- Public API documentation is maintained in docs/api-reference.md. Keep malformed XML warnings enabled. -->
+        <NoWarn>$(NoWarn);CS1591</NoWarn>
     </PropertyGroup>
 
     <ItemGroup>

@@ -44,7 +44,7 @@ namespace NumeralSystems.Net
         /// Gets the base of the numeral system used to represent the numeric value.
         /// </summary>
         /// <remarks>
-        /// The base value must be greater than 0. It is used as the numeric base for
+        /// The base value must be at least 2. It is used as the numeric base for
         /// the integral and decimal parts of the value, determining how numbers
         /// are interpreted and displayed in their respective numeral systems.
         /// </remarks>
@@ -56,9 +56,16 @@ namespace NumeralSystems.Net
         /// bases.
         public NumeralValue(List<int> integral, List<int> decimals, bool negative, int baseValue)
         {
-            if (baseValue < 1) throw new ArgumentOutOfRangeException(nameof(baseValue));
-            if (null == integral || !integral.TrueForAll(x => baseValue > x)) throw new ArgumentOutOfRangeException(nameof(baseValue));
-            if (null == decimals || !decimals.TrueForAll(x => baseValue > x)) throw new ArgumentOutOfRangeException(nameof(baseValue));
+            if (baseValue < 2)
+                throw new ArgumentOutOfRangeException(nameof(baseValue), "Base must be at least 2.");
+            if (integral is null) throw new ArgumentNullException(nameof(integral));
+            if (decimals is null) throw new ArgumentNullException(nameof(decimals));
+            if (!integral.TrueForAll(x => x >= 0 && x < baseValue))
+                throw new ArgumentOutOfRangeException(nameof(integral),
+                    $"All integral digits must be within the range [0,{baseValue - 1}].");
+            if (!decimals.TrueForAll(x => x >= 0 && x < baseValue))
+                throw new ArgumentOutOfRangeException(nameof(decimals),
+                    $"All fractional digits must be within the range [0,{baseValue - 1}].");
             Integral = integral.AsReadOnly();
             Decimals = decimals.AsReadOnly();
             Negative = negative;
@@ -122,7 +129,7 @@ namespace NumeralSystems.Net
         /// The conversion takes into account the integral and decimal parts of the NumeralValue,
         /// as well as its base and sign (negative or positive).
         /// <returns>A BigInteger representation of the NumeralValue, computed from its integral parts,
-        /// decimal parts, base, and sign.
+        /// decimal parts, base, and sign.</returns>
         public BigInteger ToBigInteger() => Type.Base.BigInteger.FromIndicesOfBase(Integral.Select(x => (ulong)x).ToArray(), Decimals.Select(x => (ulong)x).ToArray(), !Negative, Base);
 
         /// Converts the current numeral value to its decimal representation.
@@ -152,17 +159,21 @@ namespace NumeralSystems.Net
         public double ToDouble() => (double)ToDecimal();
 
         /// <summary>
-        /// Converts the current NumeralValue instance to a Value object that represents
-        /// the numeral system with a base of 10.
+        /// Converts the integral part of the current NumeralValue instance to a Value object.
         /// </summary>
-        /// <returns>A Value object that contains the integral parts of the NumeralValue
-        /// as indices in a base-10 system.</returns>
-        public Value ToValue() => new Value(Integral.ToList(), 10);
+        /// <returns>A Value object that preserves the current base and integral digits.</returns>
+        public Value ToValue() => new Value(Integral.ToList(), Base);
 
+        /// <summary>
+        /// Converts this value to another numeral base.
+        /// </summary>
+        /// <param name="baseValue">The destination base. It must be at least 2.</param>
+        /// <param name="removeFirstZeros">Whether to remove leading zeroes from the integral part.</param>
+        /// <returns>A new value represented in <paramref name="baseValue"/>.</returns>
         public NumeralValue ToBase(int baseValue, bool removeFirstZeros = true)
         {
-            if (baseValue <= 0)
-                throw new ArgumentException("baseValue must be greater than zero.");
+            if (baseValue < 2)
+                throw new ArgumentOutOfRangeException(nameof(baseValue), "Base must be at least 2.");
 
             var frontIntegralZeros = Integral.AsEnumerable().TakeWhile(x => x == 0).Count();
             var frontFractionalZeros = Decimals.AsEnumerable().TakeWhile(x => x == 0).Count();

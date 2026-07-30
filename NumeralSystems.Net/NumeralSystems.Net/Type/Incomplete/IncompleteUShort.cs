@@ -56,9 +56,6 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// <summary>
         /// Represents an incomplete ushort value that can be used for bitwise operations.
         /// </summary>
-        /// <typeparam name="TValue">The type of numeral value.</typeparam>
-        /// <typeparam name="TType">The underlying type of the numeral value.</typeparam>
-        /// <typeparam name="TIndexer">The type of the indexer for the incomplete value.</typeparam>
         /// <remarks>
         /// This class implements the <see cref="Interface.IIncompleteValue{TValue, TType, TIndexer}"/> interface.
         /// </remarks>
@@ -72,15 +69,13 @@ namespace NumeralSystems.Net.Type.Incomplete
                 var lastValueBinaryIndex = 0;
                 for (var i = 0; i < binary.Length; i++)
                 {
-                    for (var i1 = lastValueBinaryIndex; i1 < valueBinary.Length; i1++)
+                    if (binary[i] is null)
                     {
-                        if (binary[i] is null)
-                        {
-                            resultBinary[i] = valueBinary[i1];
-                            lastValueBinaryIndex = i1 + 1;
-                            break;
-                        }
-                        resultBinary[i] = binary[i] ?? false;
+                        resultBinary[i] = valueBinary[lastValueBinaryIndex++];
+                    }
+                    else
+                    {
+                        resultBinary[i] = binary[i].Value;
                     }
                 }
                 return new UShort
@@ -134,6 +129,7 @@ namespace NumeralSystems.Net.Type.Incomplete
             return !bytes.Where((t, i) => t is not null && t != bytesBinary[i]).Any();
         }
 
+        /// <summary>
         /// Determines whether the IncompleteUShort object contains the specified value.
         /// </summary>
         /// <param name="value">The value to check for containment.</param>
@@ -254,6 +250,7 @@ namespace NumeralSystems.Net.Type.Incomplete
             return true;
         }
 
+        /// <summary>
         /// Reverses the or operation between the binary representations of two IncompleteUShort values.
         /// </summary>
         /// <param name="right">The IncompleteUShort value to perform the operation with.</param>

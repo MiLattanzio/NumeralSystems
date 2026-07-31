@@ -93,6 +93,26 @@ For a release, the workflow:
 8. publishes the standalone Blazor WebAssembly project;
 9. attaches benchmark and playground archives to the GitHub Release.
 
+Benchmark execution always passes `--filter '*'`. Without an explicit filter,
+BenchmarkDotNet prompts for a benchmark class when the assembly contains more
+than one group, exits without running anything in a non-interactive job, and
+therefore produces no archive input. The workflow also verifies that at least
+one GitHub Markdown report and one JSON report exist before creating archives.
+
+## Rebuild release assets without republishing NuGet packages
+
+The workflow supports a manual `workflow_dispatch` run for an existing release:
+
+1. open **Actions > .NET CI and NuGet release > Run workflow**;
+2. select the default branch containing the workflow fix;
+3. enter the existing tag, for example `v5.1.0`;
+4. start the workflow.
+
+The normal build-and-test job first checks out and verifies the requested tag.
+`Package and publish to NuGet.org` is skipped for a manual run, while
+`Publish benchmarks and playground` recreates both archives from that same tag
+and uploads them to the GitHub Release with `--clobber`.
+
 `--skip-duplicate` makes a repeated run harmless when the same package version
 already exists. NuGet packages are immutable, so code changes require a new
 version rather than overwriting a published package.
@@ -109,6 +129,7 @@ version rather than overwriting a published package.
   the final tag, update its project metadata and this guide, and rerun CI.
 - **Benchmark/playground asset failure:** download the job log, reproduce with
   the commands in [Architecture](architecture.md) and
-  [Tool and playground](tool-and-playground.md), then rerun the failed job.
+  [Tool and playground](tool-and-playground.md), then manually dispatch the
+  workflow for the same release tag.
 - **Build or test failure:** fix the failure on `master`, then create a new tag
   and release from the corrected commit.

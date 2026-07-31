@@ -12,6 +12,12 @@ on:
   release:
     types:
       - published
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Existing release tag whose benchmark and playground assets must be rebuilt
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -28,6 +34,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.release_tag || github.sha }}
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v6
@@ -176,22 +184,40 @@ jobs:
 
   publish-release-assets:
     name: Publish benchmarks and playground
-    if: github.event_name == 'release'
+    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
     needs: build-and-test
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag }}
 
     steps:
       - name: Check out release tag
         uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ env.RELEASE_TAG }}
 
       - name: Set up .NET
         uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 8.0.x
+
+      - name: Validate target release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          version="${RELEASE_TAG#v}"
+          version_pattern='^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z]+([.-][0-9A-Za-z]+)*)?$'
+          if [[ ! "$version" =~ $version_pattern ]]; then
+            echo "::error title=Invalid release tag::Use vMAJOR.MINOR.PATCH or vMAJOR.MINOR.PATCH-prerelease."
+            exit 1
+          fi
+
+          gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json tagName --jq .tagName
 
       - name: Restore release projects
         working-directory: NumeralSystems.Net
@@ -208,6 +234,23 @@ jobs:
           --job short
           --exporters json
           --artifacts artifacts/benchmarks
+          --filter '*'
+
+      - name: Verify benchmark exports
+        working-directory: NumeralSystems.Net
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          markdown_reports=(artifacts/benchmarks/results/*-report-github.md)
+          json_reports=(artifacts/benchmarks/results/*-report-full-compressed.json)
+          if (( ${#markdown_reports[@]} == 0 || ${#json_reports[@]} == 0 )); then
+            echo "::error title=Missing benchmark exports::BenchmarkDotNet did not create both GitHub Markdown and JSON reports."
+            exit 1
+          fi
+
+          echo "Found ${#markdown_reports[@]} Markdown and ${#json_reports[@]} JSON benchmark report(s)."
 
       - name: Publish WebAssembly playground
         working-directory: NumeralSystems.Net
@@ -220,8 +263,6 @@ jobs:
       - name: Create release archives
         working-directory: NumeralSystems.Net
         shell: bash
-        env:
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
           set -euo pipefail
 
@@ -234,7 +275,7 @@ jobs:
       - name: Upload release asset artifact
         uses: actions/upload-artifact@v7
         with:
-          name: NumeralSystems.Net-release-assets-${{ github.event.release.tag_name }}
+          name: NumeralSystems.Net-release-assets-${{ env.RELEASE_TAG }}
           path: |
             NumeralSystems.Net/artifacts/NumeralSystems.Net-benchmarks-*.tar.gz
             NumeralSystems.Net/artifacts/NumeralSystems.Net-playground-*.zip
@@ -245,7 +286,6 @@ jobs:
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: >-
           gh release upload "$RELEASE_TAG"
           NumeralSystems.Net/artifacts/NumeralSystems.Net-benchmarks-*.tar.gz

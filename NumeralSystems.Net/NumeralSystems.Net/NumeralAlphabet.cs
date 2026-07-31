@@ -342,6 +342,39 @@ namespace NumeralSystems.Net
             return true;
         }
 
+#if NET8_0_OR_GREATER
+        /// <summary>Encodes into a caller-provided character span.</summary>
+        public bool TryEncode(
+            BigInteger value,
+            Span<char> destination,
+            out int charactersWritten,
+            string separator = "",
+            string negativeSign = "-")
+        {
+            var encoded = Encode(value, separator, negativeSign);
+            charactersWritten = 0;
+            if (encoded.Length > destination.Length) return false;
+            encoded.AsSpan().CopyTo(destination);
+            charactersWritten = encoded.Length;
+            return true;
+        }
+
+        /// <summary>Decodes a character span on modern .NET targets.</summary>
+        public BigInteger Decode(
+            ReadOnlySpan<char> value,
+            string separator = "",
+            string negativeSign = "-") =>
+            Decode(value.ToString(), separator, negativeSign);
+
+        /// <summary>Attempts to decode a character span on modern .NET targets.</summary>
+        public bool TryDecode(
+            ReadOnlySpan<char> value,
+            out BigInteger result,
+            string separator = "",
+            string negativeSign = "-") =>
+            TryDecode(value.ToString(), out result, separator, negativeSign);
+#endif
+
         internal bool TryReadDigits(
             string value,
             int start,

@@ -12,7 +12,14 @@ using Convert = System.Convert;
 namespace NumeralSystems.Net
 {
     /// Represents a numeral in a specific numeral system.
-    public class Numeral
+#if NET8_0_OR_GREATER
+    [global::System.Text.Json.Serialization.JsonConverter(
+        typeof(NumeralSystems.Net.Serialization.NumeralJsonConverter))]
+#endif
+    public class Numeral : IFormattable
+#if NET8_0_OR_GREATER
+        , ISpanFormattable
+#endif
     {
         // ReSharper disable once MemberCanBePrivate.Global
         /// <summary>
@@ -455,6 +462,60 @@ namespace NumeralSystems.Net
             var serializationInfo = NumeralSystem.SerializationInfo.OfBase(Base.Size);
             return ToString(serializationInfo);
         }
+
+        /// <summary>
+        /// Formats using a standard numeral format. <c>G</c> uses the supplied
+        /// provider; <c>R</c> uses the invariant default alphabet and tokens.
+        /// </summary>
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            var normalized = string.IsNullOrEmpty(format)
+                ? "G"
+                : format.ToUpperInvariant();
+            switch (normalized)
+            {
+                case "G":
+                {
+                    var information = NumeralFormatInfo.Resolve(Base.Size, formatProvider);
+                    return ToString(
+                        information.Alphabet,
+                        information.DigitSeparator,
+                        information.NegativeSign,
+                        information.DecimalSeparator);
+                }
+                case "R":
+                    return ToString(
+                        NumeralAlphabet.CreateDefault(Base.Size),
+                        string.Empty,
+                        CultureInfo.InvariantCulture.NumberFormat.NegativeSign,
+                        CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
+                default:
+                    throw new FormatException(
+                        $"Format '{format}' is not supported. Use G or R.");
+            }
+        }
+
+        /// <summary>Formats with a provider using the general (<c>G</c>) format.</summary>
+        public string ToString(IFormatProvider formatProvider) => ToString("G", formatProvider);
+
+#if NET8_0_OR_GREATER
+        /// <summary>
+        /// Attempts to format into a caller-provided span on modern .NET targets.
+        /// </summary>
+        public bool TryFormat(
+            Span<char> destination,
+            out int charsWritten,
+            ReadOnlySpan<char> format,
+            IFormatProvider provider)
+        {
+            var formatted = ToString(format.Length == 0 ? null : format.ToString(), provider);
+            charsWritten = 0;
+            if (formatted.Length > destination.Length) return false;
+            formatted.AsSpan().CopyTo(destination);
+            charsWritten = formatted.Length;
+            return true;
+        }
+#endif
 
         private void EnsureAlphabet(NumeralAlphabet alphabet)
         {

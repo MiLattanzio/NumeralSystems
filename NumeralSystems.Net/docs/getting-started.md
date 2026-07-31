@@ -3,6 +3,7 @@
 [Documentation home](index.md) ·
 [Numeral systems](numeral-systems.md) ·
 [Numeral alphabets](numeral-alphabets.md) ·
+[Formatting and JSON](formatting-and-serialization.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [API reference](api-reference.md)
@@ -10,11 +11,13 @@
 ## Requirements
 
 - .NET 8 SDK for the repository solution and test project;
-- a .NET Standard 2.1-compatible runtime for applications that consume the
-  library;
+- a .NET Standard 2.1-compatible runtime for portable consumers, or .NET 8 for
+  Rune, Span, and built-in JSON integration;
 - Git if you are building from the repository.
 
 The SDK version policy is recorded in `NumeralSystems.Net/global.json`.
+The package contains both `netstandard2.1` and `net8.0` assets; NuGet selects
+the closest compatible target automatically.
 
 ## Clone, build, and test
 
@@ -195,6 +198,10 @@ var value = new IntValue { Value = 42 };
 Continue with:
 
 - [Numeral systems](numeral-systems.md) for custom alphabets and conversion;
+- [Text and binary encodings](string-encoding.md) for standard codecs,
+  UTF-16, Rune, and streaming;
+- [Formatting and JSON](formatting-and-serialization.md) for providers, Span,
+  and serialization;
 - [Arithmetic](arithmetic.md) for calculations and comparison;
 - [Cookbook](cookbook.md) for task-oriented examples;
 - [Troubleshooting](troubleshooting.md) for common errors.

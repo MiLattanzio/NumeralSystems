@@ -6,6 +6,9 @@ namespace NumeralSystems.Net.Encoding
     /// <summary>
     /// String encoding utilities.
     /// </summary>
+    [System.Obsolete(
+        "This legacy name extracts UTF-16 code units; it does not encode text. " +
+        "Use CharacterIdentity.GetUtf16CodeUnits or CharacterIdentity.GetRunes.")]
     public class String
     {
         /// <summary>
@@ -16,12 +19,7 @@ namespace NumeralSystems.Net.Encoding
         /// <remarks>For the Numeral type usage</remarks>
         public IList<char> GetIdentity(string value)
         {
-            var identity = new List<char>();
-            foreach (var c in value.Where(c => !identity.Contains(c)))
-            {
-                identity.Add(c);
-            }
-            return identity;
+            return CharacterIdentity.GetUtf16CodeUnits(value).ToList();
         }
     }
 }

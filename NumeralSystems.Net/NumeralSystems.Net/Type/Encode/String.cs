@@ -13,17 +13,16 @@ namespace NumeralSystems.Net.Type.Base
         /// <param name="destinationBase">The base to encode to.</param>
         /// <param name="size">The size of the encoded string.</param>
         /// <returns>The encoded string.</returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">Thrown when the destination base is less than 2 or greater than char.MaxValue.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">Thrown when the destination base is outside [2, 65536].</exception>
+        [System.Obsolete(
+            "This is an experimental UTF-16 code-unit transform, not a standard base encoding. " +
+            "Use CharacterRadixTransform.EncodeUtf16.")]
         public static string EncodeToBase(string s, int destinationBase, out int size)
         {
-            if (destinationBase < 2 || destinationBase > char.MaxValue)
-                throw new System.ArgumentOutOfRangeException(nameof(destinationBase),
-                    "Destination base must be between 2 and " + char.MaxValue + ".");
-            var indices = ToIndicesOfBase(s, destinationBase).ToList();
-            var len = indices.Max(x => x.Length);
-            var adjustedIndices = indices.Select(x => x.Length < len ? System.Linq.Enumerable.Repeat(0U, len - x.Length).Concat(x).ToArray() : x).ToArray();
-            size = len;
-            return string.Concat(adjustedIndices.SelectMany(x => x.Select(y => (char)y)));
+            return NumeralSystems.Net.Encoding.CharacterRadixTransform.EncodeUtf16(
+                s,
+                destinationBase,
+                out size);
         }
 
         /// <summary>
@@ -33,16 +32,16 @@ namespace NumeralSystems.Net.Type.Base
         /// <param name="sourceBase">The base to decode from.</param>
         /// <param name="size">The size of the encoded string.</param>
         /// <returns>The decoded string.</returns>
-        /// <exception cref="System.ArgumentOutOfRangeException">Thrown when the source base is less than 2 or greater than char.MaxValue.</exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">Thrown when the source base is outside [2, 65536].</exception>
+        [System.Obsolete(
+            "This is an experimental UTF-16 code-unit transform, not a standard base encoding. " +
+            "Use CharacterRadixTransform.DecodeUtf16.")]
         public static string DecodeFromBase(string s, int sourceBase, int size)
         {
-            if (sourceBase < 2 || sourceBase > char.MaxValue)
-                throw new System.ArgumentOutOfRangeException(nameof(sourceBase),
-                    "Source base must be between 2 and " + char.MaxValue + ".");
-            var indices = s.Select(c => (uint)c).ToArray();
-            var len = indices.Length / size;
-            var adjustedIndices = System.Linq.Enumerable.Range(0, len).Select(x => indices.Skip(x * size).Take(size).ToArray()).ToArray();
-            return FromIndicesOfBase(adjustedIndices, sourceBase);
+            return NumeralSystems.Net.Encoding.CharacterRadixTransform.DecodeUtf16(
+                s,
+                sourceBase,
+                size);
         }
 
         /// <summary>
@@ -51,6 +50,9 @@ namespace NumeralSystems.Net.Type.Base
         /// <param name="s">The string to convert.</param>
         /// <param name="destinationBase">The base to convert to.</param>
         /// <returns>An enumerable of uint arrays representing the indices.</returns>
+        [System.Obsolete(
+            "This is an experimental UTF-16 code-unit transform. " +
+            "Use CharacterRadixTransform or Value.FromUtf16String.")]
         public static IEnumerable<uint[]> ToIndicesOfBase(string s, int destinationBase) => s.Select(c => UInt.ToIndicesOfBase(c, destinationBase, out var _));
 
         /// <summary>
@@ -59,24 +61,24 @@ namespace NumeralSystems.Net.Type.Base
         /// <param name="s">The indices to convert.</param>
         /// <param name="sourceBase">The base of the indices.</param>
         /// <returns>The decoded string.</returns>
+        [System.Obsolete(
+            "This is an experimental UTF-16 code-unit transform. " +
+            "Use CharacterRadixTransform or Value.ToUtf16String.")]
         public static string FromIndicesOfBase(IEnumerable<uint[]> s, int sourceBase) => string.Concat(s.Select(c => (char)UInt.FromIndicesOfBase(c, sourceBase, true)));
 
         /// <summary>
         /// Gets the smallest base that can represent all characters in a string.
         /// </summary>
         /// <param name="s">The string to analyze.</param>
-        /// <returns>The smallest base that can represent all characters in the string.</returns>
+        /// <returns>
+        /// The smallest base strictly greater than the maximum UTF-16 code-unit
+        /// value, or 2 for an empty string.
+        /// </returns>
+        [System.Obsolete(
+            "Use CharacterRadixTransform.GetSmallestBaseUtf16; the result is max digit + 1.")]
         public static int GetSmallestBase(string s)
         {
-            var smallestBase = 0;
-            foreach (var c in s)
-            {
-                if (c > smallestBase)
-                {
-                    smallestBase = c;
-                }
-            }
-            return smallestBase;
+            return NumeralSystems.Net.Encoding.CharacterRadixTransform.GetSmallestBaseUtf16(s);
         }
     }
 }

@@ -84,11 +84,16 @@ namespace NumeralSystem.Net.NUnit.Utils
         {
             var nBase = _random.Next(2, char.MaxValue);
             var testString = "Hello World!";
-            var encoded = NumeralSystems.Net.Type.Base.String.ToIndicesOfBase(testString, nBase);
-            var decoded = NumeralSystems.Net.Type.Base.String.FromIndicesOfBase(encoded, nBase);
-            var e = NumeralSystems.Net.Type.Base.String.EncodeToBase(testString, nBase, out var size);
-            var d = NumeralSystems.Net.Type.Base.String.DecodeFromBase(e, nBase, size);
-            Assert.That(testString, Is.EqualTo(decoded));
+            var value = NumeralSystems.Net.Value.FromUtf16String(testString);
+            var e = NumeralSystems.Net.Encoding.CharacterRadixTransform.EncodeUtf16(
+                testString,
+                nBase,
+                out var size);
+            var d = NumeralSystems.Net.Encoding.CharacterRadixTransform.DecodeUtf16(
+                e,
+                nBase,
+                size);
+            Assert.That(testString, Is.EqualTo(value.ToUtf16String()));
             Assert.That(testString, Is.EqualTo(d));
         }
         

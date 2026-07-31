@@ -231,6 +231,66 @@ namespace NumeralSystems.Net
         }
 
         /// <summary>
+        /// Parses using an <see cref="IFormatProvider"/>. A
+        /// <see cref="NumeralFormatInfo"/> can supply a custom alphabet;
+        /// culture providers supply sign and decimal tokens.
+        /// </summary>
+        public ParseResult TryParse(string value, IFormatProvider formatProvider)
+        {
+            NumeralFormatInfo information;
+            try
+            {
+                information = NumeralFormatInfo.Resolve(Size, formatProvider);
+            }
+            catch (Exception exception) when (
+                exception is ArgumentException || exception is FormatException)
+            {
+                return ParseResult.Failed(
+                    ParseErrorReason.InvalidConfiguration,
+                    0,
+                    exception.Message,
+                    0);
+            }
+
+            return TryParse(
+                value,
+                information.Alphabet,
+                information.DigitSeparator,
+                information.NegativeSign,
+                information.DecimalSeparator);
+        }
+
+        /// <summary>Parses using an <see cref="IFormatProvider"/>.</summary>
+        public Numeral Parse(string value, IFormatProvider formatProvider)
+        {
+            var parsed = TryParse(value, formatProvider);
+            if (parsed.Success) return parsed.Value;
+            throw new InvalidOperationException(
+                $"{parsed.Message} Position: {parsed.Position}. Reason: {parsed.Reason}.");
+        }
+
+#if NET8_0_OR_GREATER
+        /// <summary>
+        /// Parses a character span with an ordered alphabet on modern .NET
+        /// targets.
+        /// </summary>
+        public ParseResult TryParse(
+            ReadOnlySpan<char> value,
+            NumeralAlphabet alphabet,
+            string separator = "",
+            string negativeSign = "-",
+            string numberDecimalSeparator = ".") =>
+            TryParse(value.ToString(), alphabet, separator, negativeSign, numberDecimalSeparator);
+
+        /// <summary>
+        /// Parses a character span using an <see cref="IFormatProvider"/> on
+        /// modern .NET targets.
+        /// </summary>
+        public ParseResult TryParse(ReadOnlySpan<char> value, IFormatProvider formatProvider) =>
+            TryParse(value.ToString(), formatProvider);
+#endif
+
+        /// <summary>
         /// Tries to format indices with an ordered alphabet.
         /// </summary>
         public bool TryFromIndices(

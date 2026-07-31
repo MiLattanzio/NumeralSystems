@@ -3,6 +3,7 @@
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
 [Numeral alphabets](numeral-alphabets.md) ·
+[Formatting and JSON](formatting-and-serialization.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [API reference](api-reference.md)
@@ -223,9 +224,10 @@ var value = Value.FromString("00FF", NumeralAlphabet.Base16);
 var text = value.ToString(NumeralAlphabet.Base16);
 ```
 
-`Value.FromString(string, bool)` treats UTF-16 character values as digit
-indices. With `fit: true`, the instance uses the smallest base that can contain
-the largest character index in that input.
+The old `Value.FromString(string, bool)` character transform is also
+deprecated because its unit is ambiguous. Use `FromUtf16String` explicitly, or
+`FromRunes` on .NET 8. With `fit: true`, both select `maxDigit + 1` with a
+minimum base of 2. See [Text and binary encodings](string-encoding.md).
 
 `Value` does not preserve a sign or fractional digits.
 
@@ -266,6 +268,10 @@ you also need custom symbol parsing and formatting.
 - `Parse` throws `InvalidOperationException` for an invalid textual numeral.
 - `TryParse(value, NumeralAlphabet, ...)` returns `ParseResult` with an error
   reason and UTF-16 position.
+- `Parse`/`TryParse` accept `IFormatProvider`; `NumeralFormatInfo` supplies a
+  validated alphabet and tokens as one immutable object.
+- `Numeral` implements standard `G` and invariant `R` formats. Span parsing and
+  formatting are available in the .NET 8 asset.
 - The legacy `TryParse` overload returns `false` and still assigns a result
   object.
 

@@ -3,6 +3,7 @@
 [Getting started](getting-started.md) ·
 [Numeral systems](numeral-systems.md) ·
 [Numeral alphabets](numeral-alphabets.md) ·
+[Formatting and JSON](formatting-and-serialization.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [Bitwise values](bitwise-values.md) ·
@@ -14,8 +15,9 @@
 [Architecture](architecture.md) ·
 [Releasing](releasing.md)
 
-NumeralSystems.Net is a .NET Standard 2.1 library for working with positional
-number systems, cross-base rational arithmetic, and bit-level representations.
+NumeralSystems.Net targets .NET Standard 2.1 and .NET 8 for working with
+positional number systems, text/binary encodings, cross-base rational
+arithmetic, and bit-level representations.
 The repository documentation is plain Markdown: every guide can be read
 directly on GitHub and changed without a documentation generator.
 
@@ -25,13 +27,15 @@ directly on GitHub and changed without a documentation generator.
 | --- | --- |
 | Convert and format a .NET number in another base | `NumeralSystem` and `Numeral` |
 | Encode text with a stable ordered symbol mapping | `NumeralAlphabet` |
+| Encode bytes with standard Base16, Base32, or Base64 | `StandardBaseCodec` |
+| Process UTF-16 units or Unicode scalars explicitly | `CharacterIdentity` and `CharacterRadixTransform` |
 | Convert an existing sequence of non-negative digits | `Value` |
 | Preserve a sign and fractional digits while changing base | `NumeralValue` |
 | Calculate or compare signed values in different bases | `NumeralValue` arithmetic |
 | Run logical operations on primitive representations | `NumeralSystems.Net.Type.Base` |
 | Represent or solve for unknown bits | `NumeralSystems.Net.Type.Incomplete` |
 | Work with bounded, immutable unknown-bit sets | `BitPattern` |
-| Convert string character values into another positional base | `NumeralSystems.Net.Type.Base.String` |
+| Format with culture/custom tokens or serialize JSON | `NumeralFormatInfo` and `Numeral` |
 
 ## Minimal example
 
@@ -75,6 +79,8 @@ index from `0` through `base - 1`.
   formatting, and conversion.
 - [Numeral alphabets](numeral-alphabets.md) covers immutable symbol order,
   presets, validation, exact integer round trips, and structured parse errors.
+- [Formatting and JSON](formatting-and-serialization.md) covers
+  `IFormatProvider`, standard formats, Span APIs, JSON, and the target matrix.
 - [Arithmetic](arithmetic.md) covers exact rational operations, result bases,
   bounded fractional expansions, operators, and numeric comparison.
 - [Cookbook](cookbook.md) provides task-oriented recipes across the library.
@@ -85,8 +91,8 @@ index from `0` through `base - 1`.
   constraint solving.
 - [Incomplete values](incomplete-values.md) covers unknown bits, candidate
   enumeration, wrapper compatibility, and reverse operations.
-- [String encoding](string-encoding.md) explains the two string-related APIs and
-  their constraints.
+- [String encoding](string-encoding.md) separates numeral text, RFC byte
+  codecs, UTF-16 code units, Unicode Runes, and streaming.
 - [Troubleshooting](troubleshooting.md) maps common symptoms and exceptions to
   concrete fixes.
 - [API reference](api-reference.md) catalogs the public namespaces, types, and
@@ -95,6 +101,8 @@ index from `0` through `base - 1`.
   tests, benchmarks, and contributor expectations.
 - [Migrating to 4.7.0](migration-4.7.md) covers fractional behavior,
   `BigInteger`, arithmetic, comparison, and upgrade tests.
+- [Migrating to 4.8.0](migration-4.8.md) covers explicit Unicode units,
+  standard codecs, smallest-base behavior, providers, JSON, and multi-targeting.
 - [Releasing](releasing.md) documents package versioning and automated
   publication to NuGet.org.
 

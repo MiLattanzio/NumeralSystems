@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using NumeralSystems.Net;
+using NumeralSystems.Net.Encoding;
 using NumeralSystems.Net.Type.Incomplete;
 using NUnit.Framework;
 using BaseByte = NumeralSystems.Net.Type.Base.Byte;
 using BaseBigInteger = NumeralSystems.Net.Type.Base.BigInteger;
-using BaseString = NumeralSystems.Net.Type.Base.String;
 using BaseULong = NumeralSystems.Net.Type.Base.ULong;
 
 namespace NumeralSystem.Net.NUnit
@@ -25,7 +25,8 @@ namespace NumeralSystem.Net.NUnit
                 new NumeralValue(new List<int> { 0 }, new List<int>(), false, baseValue));
             Assert.Throws<ArgumentOutOfRangeException>(() => BaseULong.ToIndicesOfBase(10, baseValue));
             Assert.Throws<ArgumentOutOfRangeException>(() => BaseBigInteger.ToIndicesOfBase(10, baseValue));
-            Assert.Throws<ArgumentOutOfRangeException>(() => BaseString.EncodeToBase("value", baseValue, out _));
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                CharacterRadixTransform.EncodeUtf16("value", baseValue, out _));
         }
 
         [Test]

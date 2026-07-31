@@ -82,7 +82,7 @@ namespace NumeralSystem.Net.NUnit
         public void RandomStringFitFalseTest()
         {
             var sourceString = GenerateRandomString(_random.Next(1, 255));
-            var value = Value.FromString(sourceString);
+            var value = Value.FromUtf16String(sourceString);
             var valueString = ValueToString(value);
             Assert.That(sourceString, Is.EqualTo(valueString));
         }
@@ -91,7 +91,7 @@ namespace NumeralSystem.Net.NUnit
         public void RandomStringFitTrueTest()
         {
             var sourceString = GenerateRandomString(_random.Next(1, 255));
-            var value = Value.FromString(sourceString, true);
+            var value = Value.FromUtf16String(sourceString, true);
             var valueString = ValueToString(value);
             Assert.That(sourceString, Is.EqualTo(valueString));
         }

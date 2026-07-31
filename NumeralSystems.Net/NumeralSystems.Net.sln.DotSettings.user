@@ -104,11 +104,15 @@
     &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.EncodingTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f3878cf7_002D5c2c_002D43d3_002D8e38_002D18d635ea6626/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="IntTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f3878cf7_002D5c2c_002D43d3_002D8e38_002D18d635ea6626/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="IntTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net5.0::NumeralSystem.Net.NUnit.NumeralTests.IntTest&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net8.0::NumeralSystem.Net.NUnit.Encoding.YouTubeVideoIdTest.TestVideoIdEncoding&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net8.0::NumeralSystem.Net.NUnit.Utils.EncodeTests.String&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net8.0::NumeralSystem.Net.NUnit.Encoding48Tests.SmallestBaseIsStrictlyGreaterThanMaximumDigit&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fecce2bd_002Db9b9_002D4f5a_002D99ef_002Da1aecd4d8839/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Unknown" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="C:\Users\miche\Repo\NumeralSystems\NumeralSystems.Net\NumeralSystem.Net.NUnit" Presentation="&amp;lt;NumeralSystem.Net.NUnit&amp;gt;" /&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fecce2bd_002Db9b9_002D4f5a_002D99ef_002Da1aecd4d8839/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Unknown" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::53C7C998-E2B3-4C60-9480-34822AC4AF14::net8.0::NumeralSystem.Net.NUnit.Encoding.YouTubeVideoIdTest.TestVideoIdEncoding&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

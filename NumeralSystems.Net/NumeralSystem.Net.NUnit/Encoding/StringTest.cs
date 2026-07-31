@@ -4,15 +4,14 @@ using NUnit.Framework;
 namespace NumeralSystem.Net.NUnit.Encoding
 {
     [TestFixture]
-    [TestOf(typeof(String))]
+    [TestOf(typeof(CharacterIdentity))]
     public class StringTest
     {
 
         [Test]
         public void GetIdentity()
         {
-            var str = new String();
-            var identity = str.GetIdentity("Hello World");
+            var identity = CharacterIdentity.GetUtf16CodeUnits("Hello World");
             Assert.AreEqual(identity.Count, 8);
             Assert.AreEqual(identity[0], 'H');
             Assert.AreEqual(identity[1], 'e');

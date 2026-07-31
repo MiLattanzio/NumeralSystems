@@ -16,6 +16,9 @@ La libreria è adatta quando serve:
 - calcolare e confrontare valori con segno scritti in basi differenti;
 - usare alfabeti ordinati, validati e immutabili;
 - ottenere errori di parsing strutturati con posizione UTF-16 esatta;
+- codificare byte con Base16, Base32 o Base64 standard, anche in streaming;
+- elaborare esplicitamente unità UTF-16 o valori scalari Unicode;
+- formattare tramite `IFormatProvider` e serializzare numerali esatti in JSON;
 - ispezionare e modificare la rappresentazione binaria dei tipi primitivi;
 - descrivere valori parziali con bit `0`, `1` o sconosciuti;
 - ricavare i possibili operandi di `AND`, `OR`, `XOR` e `NAND`;
@@ -25,7 +28,8 @@ La libreria è adatta quando serve:
 ## Requisiti
 
 - .NET 8 SDK per compilare la soluzione ed eseguire i test;
-- un runtime compatibile con .NET Standard 2.1 per usare la libreria.
+- un runtime compatibile con .NET Standard 2.1 per l'API portabile;
+- .NET 8 per Rune, Span e integrazione `System.Text.Json` incorporata.
 
 Il repository contiene il progetto della libreria e la suite NUnit. Un pacchetto
 NuGet viene prodotto e pubblicato automaticamente quando viene pubblicata una
@@ -81,7 +85,9 @@ esplicitamente alfabeto e separatori.
 | Valori con segno e frazioni | `NumeralValue` | Conversione, calcolo e confronto con precisione limitata e verificabile |
 | Primitive bitwise | `Type.Base.*` | Wrapper per byte, interi, caratteri e numeri floating point |
 | Bit indeterminati | `BitPattern`, `Type.Incomplete.*` | Pattern ternari, vincoli, operazioni inverse ed enumerazione limitata |
-| Codifica | `Type.Base.String`, `Encoding.String` | Conversione di stringhe in cifre di un'altra base ed estrazione dell'alfabeto |
+| Codec standard | `StandardBaseCodec` | Base16/Base32/Base64 RFC con API in memoria, Span e streaming |
+| Caratteri | `CharacterIdentity`, `CharacterRadixTransform` | Identità UTF-16/Rune e trasformazioni sperimentali esplicite |
+| Formattazione e JSON | `NumeralFormatInfo`, `NumeralJsonConverter` | Provider, formati `G`/`R`, Span e JSON strutturato esatto |
 
 ### Alfabeto personalizzato
 
@@ -120,6 +126,26 @@ Console.WriteLine(decoded == value); // True
 Sono disponibili alfabeti predefiniti per le basi 2, 8, 10, 16, 32, 36, 58,
 62 e 64. Il parsing strutturato restituisce `ParseResult` con `Reason`,
 `Position`, `ErrorLength` e `Message`.
+
+### Codec standard e unità Unicode
+
+I codec byte standard sono separati dagli alfabeti numerici:
+
+```csharp
+using NumeralSystems.Net.Encoding;
+
+var encoded = StandardBaseCodec.EncodeBase64(bytes);
+var decoded = StandardBaseCodec.DecodeBase64(encoded);
+```
+
+Per la trasformazione sperimentale dei caratteri occorre scegliere l'unità:
+`EncodeUtf16` conserva i singoli `char`, mentre su .NET 8 `EncodeRunes` tratta
+i caratteri supplementari come singoli valori scalari Unicode. Sono disponibili
+anche API streaming a memoria costante.
+
+`Numeral` implementa `IFormattable` con formati `G` dipendente dal provider e
+`R` invariante. Il target .NET 8 aggiunge overload Span e serializzazione
+`System.Text.Json` esatta di base, segno e array di cifre.
 
 ### Aritmetica tra basi diverse
 
@@ -196,6 +222,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [avvio e integrazione](NumeralSystems.Net/docs/getting-started.md);
 - [sistemi numerici e alfabeti](NumeralSystems.Net/docs/numeral-systems.md);
 - [alfabeti ordinati, preset e diagnostica del parsing](NumeralSystems.Net/docs/numeral-alphabets.md);
+- [provider di formattazione, Span e JSON](NumeralSystems.Net/docs/formatting-and-serialization.md);
 - [aritmetica, precisione, operatori e confronto](NumeralSystems.Net/docs/arithmetic.md);
 - [ricettario con esempi pratici](NumeralSystems.Net/docs/cookbook.md);
 - [primitive e operazioni bitwise](NumeralSystems.Net/docs/bitwise-values.md);
@@ -206,6 +233,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [riferimento API](NumeralSystems.Net/docs/api-reference.md);
 - [architettura e note per i contributori](NumeralSystems.Net/docs/architecture.md);
 - [migrazione alla 4.7.0](NumeralSystems.Net/docs/migration-4.7.md);
+- [migrazione alla 4.8.0](NumeralSystems.Net/docs/migration-4.8.md);
 - [processo di release e pubblicazione NuGet](NumeralSystems.Net/docs/releasing.md).
 
 Tutta la documentazione è scritta in Markdown e viene versionata insieme al
@@ -234,8 +262,10 @@ dotnet run --configuration Release \
   `Numeral` quando servono.
 - Gli array `Binary` dei wrapper primitivi sono indicizzati dal bit meno
   significativo; `ToString()` produce invece una vista leggibile.
-- La codifica di `Type.Base.String` non è Base64 e può produrre caratteri di
-  controllo. Conservare sempre base e larghezza insieme al testo codificato.
+- `NumeralAlphabet.Base64`, Base64 RFC standard e la trasformazione
+  sperimentale dei caratteri sono API separate con modelli dati differenti.
+- Rune, Span e JSON incorporato sono disponibili nel target .NET 8; UTF-16,
+  provider, codec e streaming restano disponibili in .NET Standard 2.1.
 
 ## Contribuire e sicurezza
 

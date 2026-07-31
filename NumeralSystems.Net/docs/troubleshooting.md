@@ -252,16 +252,67 @@ task is only to test whether one known value is compatible.
 
 ## String encoding produced control characters
 
-`NumeralSystems.Net.Type.Base.String` maps UTF-16 code units to positional
-digits. The encoded string is not designed to be printable, URL-safe, or
-interoperable with Base64.
+`CharacterRadixTransform.EncodeUtf16` and the obsolete forwarding
+`Type.Base.String` members map character values to raw positional digits. The
+encoded string is not designed to be printable, URL-safe, or interoperable
+with Base64.
 
 Retain both:
 
 - the base;
-- the width returned by `EncodeToBase`.
+- the width returned by `EncodeUtf16`.
 
-Use standard .NET Base64 APIs when a standardized text transport is required.
+Use `StandardBaseCodec.EncodeBase64` when a standardized text transport is
+required.
+
+## `NumeralAlphabet.Base64` does not match Base64 output
+
+`NumeralAlphabet.Base64` represents an integer with 64 ordered digit symbols.
+It does not group bytes into six-bit chunks or apply RFC padding.
+
+Choose based on the input model:
+
+```csharp
+var numericText = NumeralAlphabet.Base64.Encode(bigInteger);
+var binaryText = StandardBaseCodec.EncodeBase64(bytes);
+```
+
+The same distinction applies to Base16 and Base32.
+
+## Emoji became two values
+
+UTF-16 APIs intentionally expose surrogate code units, so many supplementary
+characters contribute two digits. On .NET 8, choose the Rune API when one
+Unicode scalar should be one value:
+
+```csharp
+var utf16 = Value.FromUtf16String("😀"); // two digits
+var runes = Value.FromRunes("😀");       // one digit
+```
+
+Rune APIs reject unpaired surrogates. Fix or sanitize malformed input before
+retrying; replacement is never silent.
+
+## `GetSmallestBase` is one larger after upgrading
+
+This is the corrected contract. A digit equal to its base is invalid, so the
+smallest legal base is `maximum digit + 1`. Do not increment the 4.8 result a
+second time. Empty input returns base 2.
+
+## JSON did not preserve my custom alphabet
+
+The .NET 8 `Numeral` JSON converter persists numeric structure—base, sign, and
+digit arrays—not presentation. Send a separate alphabet or alphabet identifier
+when a protocol needs a custom mapping. The digit arrays and leading zeros are
+preserved exactly.
+
+## Rune, Span, or JSON APIs are missing
+
+These members are exposed by the `net8.0` package asset. A project targeting
+only .NET Standard 2.1 receives the portable API, including UTF-16,
+`IFormatProvider`, standard codecs, and streaming, but not framework types that
+are unavailable in that target. Retarget the consuming application to .NET 8
+or multi-target it when these APIs are required.
 
 ## NuGet publishing fails before contacting NuGet.org
 

@@ -114,8 +114,9 @@ if (NumeralAlphabet.TryForBase(58, out var base58))
 64`.
 
 Base64 here is an integer radix alphabet. It does not add RFC 4648 byte
-grouping or `=` padding; use `Convert.ToBase64String` when the standardized byte
-transport is required.
+grouping or `=` padding; use `StandardBaseCodec.EncodeBase64` when the
+standardized byte transport is required. Likewise, this Base32 alphabet is
+Crockford-style while the standard byte codec uses RFC 4648 `A-Z2-7`.
 
 ## Deterministic alphabets for other bases
 

@@ -1,110 +1,199 @@
-# String encoding
+# Text, numeral, and binary encodings
 
 [Documentation home](index.md) ·
-[Numeral systems](numeral-systems.md) ·
+[Numeral alphabets](numeral-alphabets.md) ·
+[Formatting and JSON](formatting-and-serialization.md) ·
 [Cookbook](cookbook.md) ·
-[Troubleshooting](troubleshooting.md) ·
 [API reference](api-reference.md)
 
-NumeralSystems.Net exposes two unrelated types named `String`. Use aliases to
-make the intent clear:
+Version 4.8 separates three operations that previously looked similar but have
+different data models and interoperability guarantees.
+
+| Operation | Input model | API | Interoperable standard |
+| --- | --- | --- | --- |
+| Represent a number | Numeric digits and an ordered alphabet | `NumeralAlphabet`, `Numeral`, `NumeralSystem` | Application-defined |
+| Encode bytes as text | Arbitrary bytes | `StandardBaseCodec` | RFC 4648 Base16/Base32/Base64 |
+| Transform characters into radix digits | UTF-16 units or Unicode scalars | `CharacterRadixTransform` | No; experimental |
+
+Do not use one layer as a substitute for another. In particular,
+`NumeralAlphabet.Base64` is a 64-symbol numeral alphabet; it does not implement
+the byte grouping, padding, or wire format of RFC Base64.
+
+## Standard Base16, Base32, and Base64
+
+`StandardBaseCodec` operates on bytes:
 
 ```csharp
-using IdentityBuilder = NumeralSystems.Net.Encoding.String;
-using BaseString = NumeralSystems.Net.Type.Base.String;
+using System.Text;
+using NumeralSystems.Net.Encoding;
+
+var bytes = Encoding.UTF8.GetBytes("Hello, 🌍");
+
+var hex = StandardBaseCodec.EncodeBase16(bytes);
+var base32 = StandardBaseCodec.EncodeBase32(bytes);
+var base64 = StandardBaseCodec.EncodeBase64(bytes);
+
+var original = Encoding.UTF8.GetString(
+    StandardBaseCodec.DecodeBase64(base64));
 ```
 
-## Extract an identity
+The encodings are deliberately specific:
 
-`NumeralSystems.Net.Encoding.String.GetIdentity` returns the distinct
-characters in first-occurrence order:
+- Base16 writes uppercase `0-9A-F` and accepts uppercase or lowercase input;
+- Base32 uses the RFC 4648 `A-Z2-7` alphabet, not the Crockford-style numeral
+  alphabet exposed by `NumeralAlphabet.Base32`;
+- Base64 uses the RFC 4648 `A-Z`, `a-z`, `0-9`, `+`, `/` alphabet;
+- Base32 and Base64 encode with padding by default and decode either padded or
+  unpadded input;
+- decoding ignores Unicode whitespace but rejects invalid symbols, padding,
+  final-block lengths, and non-zero unused bits;
+- empty byte sequences encode to empty text and decode back to zero bytes.
+
+Padding can be omitted explicitly:
 
 ```csharp
-var builder = new IdentityBuilder();
-var identity = builder.GetIdentity("Hello World");
-
-Console.WriteLine(string.Concat(identity)); // Helo Wrd
+var compact32 = StandardBaseCodec.EncodeBase32(bytes, includePadding: false);
+var compact64 = StandardBaseCodec.EncodeBase64(bytes, includePadding: false);
 ```
 
-This can be used to inspect an input alphabet. The returned identity contains
-`char` values, while `NumeralSystem.Parse` expects `IList<string>`:
+## Stream large inputs
+
+The stream APIs keep a small fixed buffer and preserve partial bit groups
+between reads. They do not materialize the complete input or output:
 
 ```csharp
-var symbols = identity.Select(c => c.ToString()).ToList();
+await using var input = File.OpenRead("archive.bin");
+await using var outputStream = File.Create("archive.b64");
+using var writer = new StreamWriter(outputStream, Encoding.ASCII);
+
+StandardBaseCodec.Encode(
+    input,
+    writer,
+    StandardBaseEncoding.Base64);
+
+writer.Flush();
 ```
 
-An identity derived from one message is not a stable interchange format unless
-it is stored or agreed on separately.
-
-## The mutable string wrapper
-
-`NumeralSystems.Net.Type.Base.String` implements
-`IList<NumeralSystems.Net.Type.Base.Char>`:
+Decoding uses a `TextReader` and a writable `Stream`:
 
 ```csharp
-var value = new BaseString("Hello");
+using var reader = File.OpenText("archive.b64");
+await using var decoded = File.Create("archive.bin");
 
-Console.WriteLine(value.Count);    // 5
-Console.WriteLine(value[0].Value); // H
-
-value.Add(new NumeralSystems.Net.Type.Base.Char { Value = '!' });
-Console.WriteLine(value); // Hello!
+StandardBaseCodec.Decode(
+    reader,
+    decoded,
+    StandardBaseEncoding.Base64);
 ```
 
-It supports the normal mutable list operations plus `ToString()` and
-`ToString(format)`.
+The caller owns every stream, reader, and writer; codec methods leave them
+open. `bufferSize` is configurable and must be positive.
 
-## Encode characters into another base
+## UTF-16 code-unit transformation
 
-The static partial `Base.String` API can convert each UTF-16 code unit into a
-fixed-width sequence of digits in another base:
+`CharacterRadixTransform.EncodeUtf16` preserves the historical behavior: each
+.NET `char` is treated as a numeric value and expanded to a fixed-width digit
+sequence. Digit values are stored directly in UTF-16 code units.
 
 ```csharp
-var encoded = BaseString.EncodeToBase(
-    s: "Hello",
+var encoded = CharacterRadixTransform.EncodeUtf16(
+    "Hello",
     destinationBase: 64,
-    size: out var width);
+    digitsPerCodeUnit: out var width);
 
-var decoded = BaseString.DecodeFromBase(
-    s: encoded,
+var decoded = CharacterRadixTransform.DecodeUtf16(
+    encoded,
     sourceBase: 64,
-    size: width);
-
-Console.WriteLine(decoded); // Hello
+    digitsPerCodeUnit: width);
 ```
 
-`width` is the number of base digits allocated to every input character. It is
-required for decoding and must be stored with the encoded value.
+This result is not normal printable text. It may contain nulls, controls,
+unpaired surrogates, or characters changed by a transport. Store the base and
+width with the transformed value.
 
-### This is not Base64
-
-The encoded string stores digit values directly as UTF-16 characters. It can
-therefore contain nulls, control characters, separators, or characters that are
-altered by text transports. Do not send the result through systems that assume
-printable Unicode without an additional binary-safe encoding.
-
-If you need standard Base64, use `System.Convert.ToBase64String`.
-
-## Work with digit arrays directly
-
-Use the lower-level methods when a textual container is inappropriate:
+Defined empty behavior:
 
 ```csharp
-var digits = BaseString.ToIndicesOfBase("Hi", destinationBase: 16).ToArray();
-var decoded = BaseString.FromIndicesOfBase(digits, sourceBase: 16);
+var encoded = CharacterRadixTransform.EncodeUtf16("", 16, out var width);
+// encoded == "", width == 0
+
+var decoded = CharacterRadixTransform.DecodeUtf16("", 16, 0);
+// decoded == ""
 ```
 
-Each element in `digits` corresponds to one UTF-16 code unit.
+## Rune transformation on .NET 8
 
-## Constraints
+The Rune API operates on Unicode scalar values. A supplementary character such
+as `😀` is one value instead of two UTF-16 surrogate code units:
 
-- The implementation accepts bases up to `char.MaxValue` (65,535).
-- Use a positional base of at least 2.
-- `DecodeFromBase` needs the exact base and width used by `EncodeToBase`.
-- The API operates on UTF-16 `char` values, not Unicode scalar values. A
-  supplementary character is encoded as its two surrogate code units.
-- `GetSmallestBase` reports the largest character value encountered by the
-  current implementation. A positional base must be greater than every digit,
-  so validate or increment that result before using it as a base.
-- Empty input is not accepted by `EncodeToBase` because it computes the maximum
-  encoded width.
+```csharp
+var encoded = CharacterRadixTransform.EncodeRunes(
+    "A😀𝄞",
+    destinationBase: 256,
+    digitsPerRune: out var width);
+
+var decoded = CharacterRadixTransform.DecodeRunes(
+    encoded,
+    sourceBase: 256,
+    digitsPerRune: width);
+```
+
+Unpaired surrogates are rejected with an exception. Rune digit bases are
+limited to 55,296 so every emitted digit is itself a valid Unicode scalar.
+Normal bases such as 2, 16, 32, 64, or 256 are unaffected by that limit.
+
+Streaming UTF-16 and Rune overloads accept a caller-selected width. A fixed
+width is required because a one-pass stream cannot first inspect the complete
+input to find its maximum value.
+
+## Extract distinct text units
+
+Use `CharacterIdentity` instead of the old misleading `Encoding.String` name:
+
+```csharp
+var codeUnits = CharacterIdentity.GetUtf16CodeUnits("😀😀"); // two surrogates
+var runes = CharacterIdentity.GetRunes("😀😀");             // one scalar
+```
+
+Both methods preserve first-occurrence order and return read-only lists. The
+Rune member is available on .NET 8 and validates surrogate pairing.
+
+## Convert text units to `Value`
+
+These APIs are explicit about their unit:
+
+```csharp
+var utf16 = Value.FromUtf16String("A😀", fit: true);
+var runeValue = Value.FromRunes("A😀", fit: true); // .NET 8
+
+Console.WriteLine(utf16.ToUtf16String()); // A😀
+Console.WriteLine(runeValue.ToRuneString()); // A😀
+```
+
+`fit: true` selects `maxDigit + 1`, with a minimum base of 2. Without fitting,
+UTF-16 uses base 65,536 and Rune values use base 1,114,112.
+
+The old `Value.FromString(string, bool)`, `Encoding.String`, and static
+`Type.Base.String` transformation members remain as obsolete forwarding APIs.
+They are retained for compatibility, not recommended for new code.
+
+## Smallest-base contract
+
+For positional digits, every digit must satisfy `0 <= digit < base`.
+Therefore the smallest valid base is one greater than the maximum digit:
+
+```csharp
+CharacterRadixTransform.GetSmallestBaseUtf16("A"); // 66, because 'A' is 65
+CharacterRadixTransform.GetSmallestBaseRunes("😀"); // 128513
+CharacterRadixTransform.GetSmallestBaseUtf16("");  // 2
+```
+
+The historical `Type.Base.String.GetSmallestBase` now follows this corrected
+contract while forwarding to `GetSmallestBaseUtf16`.
+
+## Modern Span overloads
+
+On .NET 8, `StandardBaseCodec` supports `ReadOnlySpan<byte>`, `Span<char>`,
+`ReadOnlySpan<char>`, and `Span<byte>`. Numeral parsing and formatting expose
+matching Span entry points. See [Formatting and JSON](formatting-and-serialization.md)
+for examples and target-specific availability.

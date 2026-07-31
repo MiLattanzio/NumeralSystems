@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using NumeralSystems.Net.Encoding;
 using NumeralSystems.Net.Utils;
 using BigInteger = System.Numerics.BigInteger;
 
@@ -70,7 +72,7 @@ namespace NumeralSystems.Net
             string separator = "")
         {
             if (alphabet == null) throw new ArgumentNullException(nameof(alphabet));
-            if (value == null) return new Value(new List<int>(), alphabet.Count);
+            if (string.IsNullOrEmpty(value)) return new Value(new List<int>(), alphabet.Count);
             if (!alphabet.TryReadDigits(
                     value,
                     0,
@@ -90,12 +92,64 @@ namespace NumeralSystems.Net
         /// <param name="value">The string representation to convert into a <see cref="Value"/>.</param>
         /// <param name="fit">A boolean indicating whether to fit the value within the smallest possible base.</param>
         /// <returns>A <see cref="Value"/> instance that represents the given string.</returns>
-        public static Value FromString(string value, bool fit = false)
+        [Obsolete(
+            "This API transforms UTF-16 code units and is not a standard text encoding. " +
+            "Use FromUtf16String, FromRunes, NumeralAlphabet, or StandardBaseCodec explicitly.")]
+        public static Value FromString(string value, bool fit = false) =>
+            FromUtf16String(value, fit);
+
+        /// <summary>
+        /// Creates an experimental value whose digits are individual UTF-16 code
+        /// units. This is distinct from numeral text and standard byte encodings.
+        /// </summary>
+        public static Value FromUtf16String(string value, bool fit = false)
         {
+            if (value == null) throw new ArgumentNullException(nameof(value));
             var indices = value.ToCharArray().Select(x => (int)x).ToList();
-            var identity = fit ? indices.Max() + 1 : char.MaxValue;
-            return new Value(indices, identity);
+            var baseValue = fit
+                ? CharacterRadixTransform.GetSmallestBaseUtf16(value)
+                : char.MaxValue + 1;
+            return new Value(indices, baseValue);
         }
+
+        /// <summary>Reconstructs UTF-16 code units stored by <see cref="FromUtf16String"/>.</summary>
+        public string ToUtf16String()
+        {
+            if (Indices.Any(index => index > char.MaxValue))
+                throw new InvalidOperationException("The value contains a digit outside the UTF-16 code-unit range.");
+            return new string(Indices.Select(index => (char)index).ToArray());
+        }
+
+#if NET8_0_OR_GREATER
+        /// <summary>
+        /// Creates a value from Unicode scalar values. Unlike UTF-16 processing,
+        /// a supplementary character contributes one digit rather than two.
+        /// </summary>
+        public static Value FromRunes(string value, bool fit = false)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            var smallestBase = CharacterRadixTransform.GetSmallestBaseRunes(value);
+            var baseValue = fit
+                ? smallestBase
+                : 0x110000;
+            var indices = value.EnumerateRunes().Select(rune => rune.Value).ToList();
+            return new Value(indices, baseValue);
+        }
+
+        /// <summary>Reconstructs Unicode scalars stored by <see cref="FromRunes"/>.</summary>
+        public string ToRuneString()
+        {
+            var builder = new StringBuilder();
+            foreach (var index in Indices)
+            {
+                if (!Rune.IsValid(index))
+                    throw new InvalidOperationException(
+                        $"Digit U+{index:X} is not a Unicode scalar value.");
+                builder.Append(new Rune(index).ToString());
+            }
+            return builder.ToString();
+        }
+#endif
 
         /// <summary>
         /// Creates a non-negative value from an arbitrary-precision integer.

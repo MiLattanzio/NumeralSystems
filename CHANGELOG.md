@@ -4,6 +4,43 @@ All notable changes to NumeralSystems.Net are documented in this file.
 
 The project follows [Semantic Versioning](https://semver.org/).
 
+## [4.8.0] - 2026-07-31
+
+### Added
+
+- Add explicit UTF-16 code-unit and Unicode `Rune` APIs through
+  `CharacterIdentity`, `CharacterRadixTransform`, and `Value.FromRunes`.
+- Add RFC-compatible byte-oriented `StandardBaseCodec` support for Base16,
+  Base32, and Base64, including padded and unpadded decoding.
+- Add constant-memory `Stream`/`TextReader`/`TextWriter` encoding and decoding
+  for standard codecs and the experimental character transformation.
+- Add immutable `NumeralFormatInfo` support through `IFormatProvider`, with
+  general (`G`) and invariant round-trip (`R`) formats.
+- Add `System.Text.Json` serialization for `Numeral` on .NET 8, preserving the
+  base, sign, integral digits, fractional digits, and leading zeros.
+- Add `Span`/`ReadOnlySpan` formatting, parsing, and codec overloads on .NET 8.
+- Add RFC vectors, malformed-input checks, supplementary Unicode tests,
+  streaming tests, provider tests, JSON tests, and Span tests.
+
+### Changed
+
+- Multi-target the package for .NET Standard 2.1 and .NET 8.0.
+- Separate numeral representation (`NumeralAlphabet`), standard binary-to-text
+  codecs (`StandardBaseCodec`), and the experimental character-radix transform
+  (`CharacterRadixTransform`) into distinct APIs.
+- Deprecate ambiguous legacy string entry points while retaining forwarding
+  behavior for source and binary compatibility.
+- Define empty character and byte inputs as successful empty transformations.
+- Make `GetSmallestBase` return a base strictly greater than the maximum digit;
+  empty input returns the minimum positional base, 2.
+- Make the un-fitted UTF-16 `Value` base 65,536 so U+FFFF is representable.
+
+### Fixed
+
+- Reject unpaired UTF-16 surrogates in Rune-based operations.
+- Validate standard Base16/Base32/Base64 final blocks, padding, symbols, and
+  unused bits consistently in both in-memory and streaming paths.
+
 ## [4.7.0] - 2026-07-31
 
 ### Added

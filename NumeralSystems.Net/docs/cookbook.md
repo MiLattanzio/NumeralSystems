@@ -364,24 +364,66 @@ var rotated = pattern.RotateRight(1);
 All results retain the original width. Arithmetic right shift copies the
 highest bit, including an unknown highest bit.
 
-## Convert string code units to another base
+## Encode bytes with standard Base64
 
 ```csharp
-var encoded = NumeralSystems.Net.Type.Base.String.EncodeToBase(
-    "Hello",
-    destinationBase: 16,
-    size: out var width);
+var bytes = Encoding.UTF8.GetBytes("Hello 🌍");
+var encoded = StandardBaseCodec.EncodeBase64(bytes);
+var decoded = StandardBaseCodec.DecodeBase64(encoded);
 
-var decoded = NumeralSystems.Net.Type.Base.String.DecodeFromBase(
-    encoded,
-    sourceBase: 16,
-    size: width);
-
-Console.WriteLine(decoded); // Hello
+Console.WriteLine(Encoding.UTF8.GetString(decoded)); // Hello 🌍
 ```
 
-This API converts UTF-16 code units. It is not Base64 and should not be used as
-a cryptographic or standardized transport encoding.
+Use `StandardBaseCodec` for interoperable byte encodings. It is distinct from
+formatting an integer with `NumeralAlphabet.Base64`.
+
+## Convert Unicode scalars to radix digits
+
+On .NET 8:
+
+```csharp
+var encoded = CharacterRadixTransform.EncodeRunes(
+    "A😀𝄞",
+    destinationBase: 256,
+    digitsPerRune: out var width);
+
+var decoded = CharacterRadixTransform.DecodeRunes(
+    encoded,
+    sourceBase: 256,
+    digitsPerRune: width);
+
+Console.WriteLine(decoded); // A😀𝄞
+```
+
+Choose `EncodeUtf16`/`DecodeUtf16` when preserving individual .NET `char` code
+units is the actual requirement.
+
+## Stream a large Base32 payload
+
+```csharp
+using var input = File.OpenRead("payload.bin");
+using var writer = File.CreateText("payload.b32");
+
+StandardBaseCodec.Encode(
+    input,
+    writer,
+    StandardBaseEncoding.Base32);
+```
+
+The method keeps only bounded buffers and leaves both objects open.
+
+## Serialize a numeral without losing its digits
+
+On .NET 8:
+
+```csharp
+var json = JsonSerializer.Serialize(numeral);
+var restored = JsonSerializer.Deserialize<Numeral>(json);
+```
+
+JSON persists base, sign, integral digits, and fractional digits. Use
+`NumeralFormatInfo` plus `ToString("G", provider)` when the goal is human text
+with a custom alphabet instead.
 
 ## Validate the package before a release
 

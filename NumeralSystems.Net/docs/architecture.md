@@ -3,8 +3,9 @@
 [Documentation home](index.md) ·
 [API reference](api-reference.md) ·
 [Numeral alphabets](numeral-alphabets.md) ·
+[Formatting and JSON](formatting-and-serialization.md) ·
 [BitPattern engine](bit-patterns.md) ·
-[Migration guide](migration-4.7.md) ·
+[Migration guide](migration-4.8.md) ·
 [Contributing](../../CONTRIBUTING.md)
 
 ## Solution layout
@@ -20,12 +21,12 @@ NumeralSystems.Net/
 ```
 
 The library intentionally keeps runtime dependencies small. Repository tooling,
-tests, and benchmarks target .NET 8, while the package remains consumable from
-any .NET Standard 2.1-compatible runtime.
+tests, and benchmarks target .NET 8. The package contains a portable .NET
+Standard 2.1 asset plus a .NET 8 asset for Rune, Span, and JSON integration.
 
 ## Domain layers
 
-The public API has four main layers:
+The numeral API has four main layers:
 
 ```text
 Text and alphabets
@@ -39,6 +40,22 @@ Value + NumeralValue
         ▼
 Positional conversion core
 ```
+
+Text and binary encoding form explicit sibling branches rather than flowing
+through numeral representation:
+
+```text
+bytes ---- StandardBaseCodec ---- RFC Base16 / Base32 / Base64 text
+
+text ---- CharacterIdentity ----- ordered UTF-16 units or Runes
+  |
+  +------ CharacterRadixTransform ---- experimental raw radix digits
+```
+
+This boundary prevents a numeral alphabet named `Base64` from being mistaken
+for an RFC Base64 byte codec. `NumeralAlphabet` maps digit values to symbols;
+`StandardBaseCodec` groups bits from bytes; `CharacterRadixTransform` maps
+character numeric values to fixed-width raw digits.
 
 Bitwise primitive wrappers and incomplete values form a separate branch:
 
@@ -59,6 +76,31 @@ Owns base-level behavior:
 - conversion from digit indices to integer views.
 
 It does not own a particular numeric value.
+
+### Formatting and serialization
+
+`NumeralFormatInfo` is the immutable bridge to `IFormatProvider`. `Numeral`
+implements `IFormattable` on all targets and `ISpanFormattable` on .NET 8.
+Provider parsing routes back through the same validated `NumeralAlphabet`
+scanner, so there is no second text grammar.
+
+On .NET 8, `NumeralJsonConverter` serializes numeric structure rather than
+formatted text:
+
+```text
+Numeral -> { base, positive, integral[], fractional[] }
+```
+
+That representation preserves leading/trailing digit zeros and is independent
+of culture. Presentation alphabets remain an application/protocol concern.
+
+### Streaming encodings
+
+`StandardBaseCodec` maintains only a small byte/character buffer plus the
+partial bit group spanning reads. Character-transform streaming requires a
+caller-selected fixed width because a one-pass reader cannot inspect the
+complete input to infer its maximum scalar first. All streaming APIs leave
+caller-owned streams, readers, and writers open.
 
 ### `NumeralAlphabet`
 

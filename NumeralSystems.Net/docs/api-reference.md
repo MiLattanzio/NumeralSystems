@@ -4,6 +4,7 @@
 [Getting started](getting-started.md) ·
 [Numeral systems](numeral-systems.md) ·
 [Numeral alphabets](numeral-alphabets.md) ·
+[Formatting and JSON](formatting-and-serialization.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [Bitwise values](bitwise-values.md) ·
@@ -27,10 +28,13 @@ Represents a non-negative integral value as digit indices in one base.
 | `int Base` | Source base |
 | `FromString(string, NumeralAlphabet, separator)` | Maps ordered symbols to indices deterministically |
 | `FromString(string, HashSet<string>)` | Obsolete compatibility overload; ordinally sorts the set |
-| `FromString(string, bool fit = false)` | Uses UTF-16 character values as digit indices |
+| `FromUtf16String(string, bool fit = false)` | Uses UTF-16 code units as digit indices |
+| `FromRunes(string, bool fit = false)` | Uses Unicode scalar values as digits on .NET 8 |
+| `FromString(string, bool fit = false)` | Obsolete compatibility alias for `FromUtf16String` |
 | `FromBigInteger(BigInteger, int baseValue = 10)` | Creates a digit sequence without an integer-size limit |
 | `ToBigInteger()` | Returns the complete non-negative integer value |
 | `ToString(NumeralAlphabet, separator)` | Formats stored digits with an ordered alphabet |
+| `ToUtf16String()` / `ToRuneString()` | Reconstructs explicitly selected text units |
 | `ToBase(int, bool removeFirstZeros = false)` | Returns the same integral value in another base |
 
 `Value` does not represent a sign or fractional digits.
@@ -72,7 +76,7 @@ instances.
 | Member family | Members |
 | --- | --- |
 | Configuration | `Size`, `Length`, `SkipUnknownValues`, `AdjustToFitIntegralLength` |
-| Parsing | `Parse`, structured and Boolean `TryParse`, `TrySplitNumberIndices` |
+| Parsing | `Parse`, structured and Boolean `TryParse`, provider and .NET 8 Span overloads, `TrySplitNumberIndices` |
 | Formatting | `TryFromIndices`, including `NumeralAlphabet` overloads |
 | Validation/conversion | `Contains`, `TryBigIntegerOf`, `TryIntegerOf`, `TryCharOf` |
 | Numeric indexers | `BigInteger`, `int`, `double`, `decimal`, `long`, `ulong`, `uint`, `short`, `ushort`, `sbyte`, `byte` |
@@ -94,7 +98,7 @@ Stores one value in a `NumeralSystem`.
 | Primitive views | `BigInteger`, `Integer`, `Char`, `Double`, `Decimal`, `Float`, `Bytes` |
 | Mutation | property setters, `TrySetValue` |
 | Conversion | `To(NumeralSystem)` |
-| Formatting | `ToString()`, `ToString(identity, separator, negativeSign, decimalSeparator)` |
+| Formatting | `ToString()`, alphabet/identity overloads, `IFormattable.ToString(G/R, provider)`, .NET 8 `TryFormat` |
 
 `Numeral` also provides `NumeralAlphabet` overloads for digit access and
 formatting, plus `ToString(SerializationInfo)`.
@@ -111,6 +115,7 @@ An ordered immutable `IReadOnlyList<string>` with ordinal symbol lookup.
 | Symbols | `Count`, indexer, `Symbols`, `IndexOf`, `Contains` |
 | Validation | `ValidateFormat` |
 | Integer codec | `Encode`, `Decode`, `TryDecode` |
+| Modern target | .NET 8 Span-based `TryEncode`, `Decode`, and `TryDecode` |
 
 Construction rejects empty, duplicate, and prefix-ambiguous symbols. Formatting
 validation rejects conflicts among symbols, separators, and signs.
@@ -132,6 +137,13 @@ Reasons distinguish null/empty input, alphabet size/configuration problems,
 unknown symbols, missing digits or separators, unexpected separators,
 misplaced signs, and repeated decimal separators.
 
+### `NumeralFormatInfo`
+
+Immutable `IFormatProvider` carrying an alphabet, digit separator, negative
+sign, and decimal separator. `ForBase` and `ForAlphabet` combine deterministic
+alphabets with tokens from another culture/provider. `Numeral` supports `G`
+(provider-driven) and `R` (invariant round-trip) standard formats.
+
 `Numeral.System.OfBase(int)` is the convenience factory. The nested
 `Numeral.System.Characters` type exposes:
 
@@ -140,6 +152,39 @@ misplaced signs, and repeated decimal separators.
   `AlphanumericSymbols`;
 - `Printable`, `NotPrintable`, `All`, and `WhiteSpaces`;
 - `Point`, `Comma`, `Minus`, and `Semicolon`.
+
+## `NumeralSystems.Net.Encoding`
+
+### `StandardBaseCodec`
+
+RFC-compatible byte encoding, separate from numeral alphabets:
+
+| Member family | Members |
+| --- | --- |
+| In-memory | `Encode`, `Decode`, `EncodeBase16/32/64`, `DecodeBase16/32/64` |
+| Selection | `StandardBaseEncoding.Base16`, `Base32`, `Base64` |
+| Streaming | `Encode(Stream, TextWriter, ...)`, `Decode(TextReader, Stream, ...)` |
+| .NET 8 Span | `Encode(ReadOnlySpan<byte>)`, `TryEncode`, `Decode(ReadOnlySpan<char>)`, `TryDecode` |
+
+Base32 uses RFC 4648 `A-Z2-7`; Base64 uses the standard `+/` alphabet.
+Decoding accepts padded or unpadded input and validates final unused bits.
+
+### `CharacterRadixTransform` and `CharacterIdentity`
+
+`CharacterRadixTransform` exposes explicit UTF-16 code-unit operations on all
+targets and Unicode Rune operations on .NET 8. Both variants support in-memory
+and reader/writer streaming. `GetSmallestBaseUtf16` and
+`GetSmallestBaseRunes` return `maxDigit + 1`, with a minimum of 2.
+
+`CharacterIdentity.GetUtf16CodeUnits` and the .NET 8 `GetRunes` member return
+distinct units in first-occurrence order. The old `Encoding.String` class is
+obsolete and forwards to the UTF-16 API.
+
+## `NumeralSystems.Net.Serialization` (.NET 8)
+
+`NumeralJsonConverter` integrates `Numeral` with `System.Text.Json`. It writes
+`base`, `positive`, `integral`, and `fractional`, preserving exact digit arrays
+without depending on culture or presentation alphabets.
 
 ## `NumeralSystems.Net.Type.Base`
 
@@ -190,13 +235,14 @@ The following partial classes expose static conversion methods:
 | `Float` | `FromIndicesOfBase`, `ToIndicesOfBase` |
 | `UInt` | `FromIndicesOfBase`, `ToIndicesOfBase` |
 | `ULong` | `FromIndicesOfBase`, `ToIndicesOfBase` |
-| `String` | `EncodeToBase`, `DecodeFromBase`, `ToIndicesOfBase`, `FromIndicesOfBase`, `GetSmallestBase` |
+| `String` | Obsolete UTF-16 forwarding members: `EncodeToBase`, `DecodeFromBase`, `ToIndicesOfBase`, `FromIndicesOfBase`, `GetSmallestBase` |
 
 ### `String`
 
 The instance API implements `IList<Type.Base.Char>` and includes the normal
 mutable collection members plus `ToString()` and `ToString(format)`. Its static
-base-conversion methods are described in [String encoding](string-encoding.md).
+base-conversion methods remain for compatibility; use the explicit APIs in
+[String encoding](string-encoding.md) for new code.
 
 ## `NumeralSystems.Net.Type.Incomplete`
 

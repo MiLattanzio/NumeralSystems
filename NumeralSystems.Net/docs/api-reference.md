@@ -23,6 +23,8 @@ Represents a non-negative integral value as digit indices in one base.
 | `int Base` | Source base |
 | `FromString(string, HashSet<string>)` | Maps symbols to indices using set enumeration order |
 | `FromString(string, bool fit = false)` | Uses UTF-16 character values as digit indices |
+| `FromBigInteger(BigInteger, int baseValue = 10)` | Creates a digit sequence without an integer-size limit |
+| `ToBigInteger()` | Returns the complete non-negative integer value |
 | `ToBase(int, bool removeFirstZeros = false)` | Returns the same integral value in another base |
 
 `Value` does not represent a sign or fractional digits.
@@ -34,9 +36,13 @@ Represents integral and fractional digit lists, a sign, and a base.
 | Member family | Members |
 | --- | --- |
 | State | `Integral`, `Decimals`, `Negative`, `Base` |
-| Construction | constructor, `FromDecimal`, `FromBigInteger`, `FromInt`, `FromFloat`, `FromDouble`, `FromValue` |
+| Precision | `DefaultMaxFractionalDigits` |
+| Construction | constructor, `FromDecimal`, `FromBigInteger` (optionally with a base), `FromInt`, `FromFloat`, `FromDouble`, `FromValue` |
 | Primitive conversion | `ToBigInteger`, `ToDecimal`, `ToInt`, `ToFloat`, `ToDouble`, `ToValue` |
-| Base conversion | `ToBase` |
+| Base conversion | `ToBase`, `TryToBase` |
+
+`TryToBase` returns `false` when a repeating fractional expansion reaches the
+requested digit limit. Its output still contains the truncated conversion.
 
 ### `NumeralSystem`
 
@@ -48,8 +54,8 @@ instances.
 | Configuration | `Size`, `Length`, `SkipUnknownValues`, `AdjustToFitIntegralLength` |
 | Parsing | `Parse`, `TryParse`, `TrySplitNumberIndices` |
 | Formatting | `TryFromIndices` |
-| Validation/conversion | `Contains`, `TryIntegerOf`, `TryCharOf` |
-| Numeric indexers | `int`, `double`, `decimal`, `long`, `ulong`, `uint`, `short`, `ushort`, `sbyte`, `byte` |
+| Validation/conversion | `Contains`, `TryBigIntegerOf`, `TryIntegerOf`, `TryCharOf` |
+| Numeric indexers | `BigInteger`, `int`, `double`, `decimal`, `long`, `ulong`, `uint`, `short`, `ushort`, `sbyte`, `byte` |
 | Sequence indexers | `IEnumerable<byte>`, `IEnumerable<char>`, `IEnumerable<int>`, `IList<byte>`, `IList<char>`, `List<int>` |
 
 `NumeralSystem.SerializationInfo` holds `Identity`, `Separator`,
@@ -64,7 +70,7 @@ Stores one value in a `NumeralSystem`.
 | --- | --- |
 | State | `Positive`, `Base`, `IntegralIndices`, `FractionalIndices` |
 | Text components | `GetIntegralStrings`, `GetIntegralString`, `GetFractionalStrings`, `GetFractionalString` |
-| Primitive views | `Integer`, `Char`, `Double`, `Decimal`, `Float`, `Bytes` |
+| Primitive views | `BigInteger`, `Integer`, `Char`, `Double`, `Decimal`, `Float`, `Bytes` |
 | Mutation | property setters, `TrySetValue` |
 | Conversion | `To(NumeralSystem)` |
 | Formatting | `ToString()`, `ToString(identity, separator, negativeSign, decimalSeparator)` |
@@ -120,7 +126,7 @@ The following partial classes expose static conversion methods:
 | Type | Methods |
 | --- | --- |
 | `BigInteger` | `FromIndicesOfBase`, `ToIndicesOfBase` |
-| `Decimal` | `FromIndicesOfBase`, `ToIndicesOfBase`, `From(double)` |
+| `Decimal` | `FromIndicesOfBase`, `ToIndicesOfBase` (including a precision-aware overload), `From(double)` |
 | `Double` | `FromIndicesOfBase`, `ToIndicesOfBase` |
 | `Float` | `FromIndicesOfBase`, `ToIndicesOfBase` |
 | `UInt` | `FromIndicesOfBase`, `ToIndicesOfBase` |

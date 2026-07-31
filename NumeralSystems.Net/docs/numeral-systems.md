@@ -37,8 +37,8 @@ var base16 = new NumeralSystem(16);
 
 `NumeralSystem` validates digit indices, parses text, formats digits, converts
 indices to primitive values, and exposes indexers for common numeric types.
-`Numeral` stores a value in one system and exposes views such as `Integer`,
-`Decimal`, `Double`, `Float`, `Char`, and `Bytes`.
+`Numeral` stores a value in one system and exposes views such as `BigInteger`,
+`Integer`, `Decimal`, `Double`, `Float`, `Char`, and `Bytes`.
 
 ```csharp
 var base16 = Numeral.System.OfBase(16);
@@ -142,8 +142,8 @@ var parsed = hexadecimal.Parse("7B", format);
 
 ## Converting a `Numeral`
 
-`Numeral.To` converts through the numeric value and returns a new numeral in the
-target system:
+`Numeral.To` converts the stored positional digits and returns a new numeral in
+the target system. Integral values use arbitrary-precision arithmetic:
 
 ```csharp
 var decimalSystem = Numeral.System.OfBase(10);
@@ -155,9 +155,45 @@ var destination = source.To(hexadecimal);
 Console.WriteLine(destination); // FFFF
 ```
 
-Floating-point and decimal conversions are bounded by the range and precision
-of the underlying .NET type. Test round trips for values where exact fractional
-representation matters.
+Fractional conversions generate at most
+`NumeralValue.DefaultMaxFractionalDigits` digits (128 by default). Use
+`NumeralValue.TryToBase` when the distinction between an exact terminating
+expansion and a truncated repeating expansion matters. Primitive `decimal`,
+`double`, and `float` views remain bounded by their underlying .NET type.
+
+### Controlling fractional precision
+
+Each fractional position has the normal positional meaning. For example,
+`0.1` in base 2 is `1 × 2⁻¹`, or `0.5` in base 10:
+
+```csharp
+var oneHalf = new NumeralValue(
+    integral: new List<int> { 0 },
+    decimals: new List<int> { 1 },
+    negative: false,
+    baseValue: 2);
+
+Console.WriteLine(oneHalf.ToDecimal()); // 0.5
+```
+
+Some expansions repeat in the destination base. The Boolean result indicates
+whether the expansion terminated within the supplied limit:
+
+```csharp
+var oneThird = new NumeralValue(
+    integral: new List<int> { 0 },
+    decimals: new List<int> { 1 },
+    negative: false,
+    baseValue: 3);
+
+var exact = oneThird.TryToBase(
+    baseValue: 10,
+    maxFractionalDigits: 6,
+    result: out var converted);
+
+Console.WriteLine(exact);                         // False
+Console.WriteLine(string.Concat(converted.Decimals)); // 333333
+```
 
 ## Using `Value`
 
@@ -199,7 +235,12 @@ Console.WriteLine(value.ToDecimal()); // 10.625
 ```
 
 Factory methods accept `decimal`, `BigInteger`, `int`, `float`, `double`, and
-`Value`. Conversion methods return those primitive views or another base.
+`Value`. `FromBigInteger` can create the digits directly in a requested base,
+and `FromValue` preserves the source base. Conversion methods return primitive
+views or another base.
+
+`Value.FromBigInteger` and `Value.ToBigInteger` provide the same
+arbitrary-precision round trip for non-negative integral digit sequences.
 
 Use `NumeralValue` when the digit lists themselves matter. Use `Numeral` when
 you also need custom symbol parsing and formatting.

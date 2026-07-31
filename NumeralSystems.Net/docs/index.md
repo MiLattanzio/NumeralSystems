@@ -77,5 +77,5 @@ index from `0` through `base - 1`.
 
 The solution is a community-maintained library. Consult the test suite for
 additional executable examples and verify edge cases that are important to your
-application, especially fractional base conversion and very large candidate
-sets.
+application, especially precision limits for repeating fractions and very large
+candidate sets.

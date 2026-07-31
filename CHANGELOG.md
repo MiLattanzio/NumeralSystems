@@ -4,6 +4,34 @@ All notable changes to NumeralSystems.Net are documented in this file.
 
 The project follows [Semantic Versioning](https://semver.org/).
 
+## [4.6.0] - 2026-07-31
+
+### Added
+
+- Add arbitrary-precision integer conversion to `Value`, `NumeralValue`,
+  `Numeral`, and `NumeralSystem`.
+- Add bounded fractional conversion through `NumeralValue.TryToBase` and the
+  `ToBase` overload that accepts `maxFractionalDigits`.
+- Add a precision-aware `Decimal.ToIndicesOfBase` overload that reports whether
+  a fractional expansion terminated exactly.
+
+### Changed
+
+- Interpret fractional digits according to their declared positional base, so
+  values such as `0.1` in base 2 correctly evaluate to one half.
+- Convert `Numeral` instances directly through their digit representation,
+  avoiding a lossy intermediate primitive value.
+- Use an arbitrary-precision conversion core for integral `Value` conversions.
+
+### Fixed
+
+- Preserve the magnitude of negative `long`, `int`, `short`, and `sbyte`
+  minimum values in `NumeralSystem` indexers.
+- Preserve the source base in `NumeralValue.FromValue`.
+- Preserve leading-zero width without adding an extra zero for all-zero values.
+- Make signed numeral property setters update the stored sign.
+- Respect the parsed negative sign in textual `TryIntegerOf` conversions.
+
 ## [4.5.2] - 2026-07-31
 
 ### Fixed
@@ -23,4 +51,5 @@ The project follows [Semantic Versioning](https://semver.org/).
 - Produce repository metadata and symbol packages alongside the NuGet package.
 - Treat compiler warnings as errors in the library, tests, and benchmarks.
 
+[4.6.0]: https://github.com/MiLattanzio/NumeralSystems/compare/v4.5.2...v4.6.0
 [4.5.2]: https://github.com/MiLattanzio/NumeralSystems/releases/tag/v4.5.2

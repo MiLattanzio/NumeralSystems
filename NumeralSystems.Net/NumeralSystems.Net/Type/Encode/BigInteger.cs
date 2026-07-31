@@ -12,29 +12,17 @@ namespace NumeralSystems.Net.Type.Base
     /// </summary>
     public partial class BigInteger
     {
-        /// Converts an integral and fractional part, given as indices of a specified base, into a BigInteger representation.
+        /// Converts positional digits to a BigInteger by truncating any fractional part toward zero.
         /// <param name="integral">An array of unsigned long integers representing the integral part's digits in the specified base.</param>
         /// <param name="fractional">An array of unsigned long integers representing the fractional part's digits in the specified base.</param>
         /// <param name="positive">A boolean indicating whether the resulting number should be positive or negative.</param>
         /// <param name="sourceBase">The base in which the integral and fractional parts are expressed.</param>
-        /// <returns>A BigInteger representation of the number formed by the integral and fractional parts in the specified base, with consideration to its sign.</returns>
+        /// <returns>The signed integral value represented by <paramref name="integral"/>.</returns>
         public static System.Numerics.BigInteger FromIndicesOfBase(ulong[] integral, ulong[] fractional, bool positive, int sourceBase)
         {
             var integralPart = FromIndicesOfBase(integral, sourceBase);
-            var fractionalPart = FromIndicesOfBase(fractional, sourceBase);
-            var fractionalPats = ToIndicesOfBase(fractionalPart, 10);
-            var result = fractionalPart / System.Numerics.BigInteger.Pow(10, fractionalPats.Length);
-            var zeros = 0;
-            while (fractional.Length > zeros && fractional[zeros] == 0)
-            {
-                zeros++;
-            }
-            if (zeros > 0)
-            {
-                result /= System.Numerics.BigInteger.Pow(10, zeros);
-            }
-            result += integralPart;
-            return positive ? result : - result;
+            _ = FromIndicesOfBase(fractional, sourceBase);
+            return positive ? integralPart : -integralPart;
         }
 
         /// <summary>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
+using BigInteger = System.Numerics.BigInteger;
 using Math = System.Math;
 using Convert = System.Convert;
 using Decimal = System.Decimal;
@@ -218,11 +219,7 @@ namespace NumeralSystems.Net
         /// system.
         public Numeral this[int index]
         {
-            get
-            {
-                var integral = UInt.ToIndicesOfBase(index, Size, out var positive);
-                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
-            }
+            get => this[new BigInteger(index)];
         }
 
         /// <summary>
@@ -260,27 +257,32 @@ namespace NumeralSystems.Net
             }
         }
 
+        /// <summary>
+        /// Converts an arbitrary-precision integer to a numeral in this system.
+        /// </summary>
+        /// <param name="index">The integer value to represent.</param>
+        public Numeral this[BigInteger index]
+        {
+            get
+            {
+                var integral = PositionalNotation.ToDigits(BigInteger.Abs(index), Size);
+                return new Numeral(this, integral, new List<int>(), index >= 0);
+            }
+        }
+
         /// Provides methods and properties for working with numeral systems and their representation.
         /// The class supports different types of indices to access numerals based on the specified numeral system.
         /// It includes functionality to handle numeral system size and skipping unknown values.
         public Numeral this[long index]
         {
-            get
-            {
-                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
-                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
-            }
+            get => this[new BigInteger(index)];
         }
 
         /// Represents a numeral system and provides functionality to work with various numeral bases.
         /// This class supports indexing operations to access numerals based on different types of indices.
         public Numeral this[ulong index]
         {
-            get
-            {
-                var integral = ULong.ToIndicesOfBase(index, Size);
-                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
-            }
+            get => this[new BigInteger(index)];
         }
 
         /// <summary>
@@ -292,21 +294,13 @@ namespace NumeralSystems.Net
         /// <returns>A <see cref="Numeral"/> instance corresponding to the specified index within the numeral system.</returns>
         public Numeral this[uint index]
         {
-            get
-            {
-                var integral = ULong.ToIndicesOfBase(index, Size);
-                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
-            }
+            get => this[new BigInteger(index)];
         }
 
         /// Represents a numeral system with a defined size and behavior for handling unknown values.
         public Numeral this[short index]
         {
-            get
-            {
-                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
-                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
-            }
+            get => this[new BigInteger(index)];
         }
 
         /// Provides access to numerals at the specified index within a numeral system.
@@ -320,22 +314,14 @@ namespace NumeralSystems.Net
         /// and rules of conversion.
         public Numeral this[ushort index]
         {
-            get
-            {
-                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
-                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
-            }
+            get => this[new BigInteger(index)];
         }
 
         /// Represents a numeral system with specified properties and methods for handling numerals.
         /// Provides access to numerals using various index types including integers, decimals, and collections.
         public Numeral this[sbyte index]
         {
-            get
-            {
-                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
-                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), index >= 0);
-            }
+            get => this[new BigInteger(index)];
         }
 
         /// <summary>
@@ -348,11 +334,7 @@ namespace NumeralSystems.Net
         /// </remarks>
         public Numeral this[byte index]
         {
-            get
-            {
-                var integral = ULong.ToIndicesOfBase((ulong)index, Size);
-                return new Numeral(this, integral.Select(x => (int)x).ToList(), new List<int>(), true);
-            }
+            get => this[new BigInteger(index)];
         }
 
         /// Represents a numeral system, which allows conversion and parsing of numbers based on custom sets of numeral identities.
@@ -385,30 +367,61 @@ namespace NumeralSystems.Net
         public Numeral this[IEnumerable<int> index] => new(this, index.ToList(), positive: true);
 
         /// <summary>
+        /// Attempts to convert digit indices to an arbitrary-precision integer.
+        /// </summary>
+        /// <param name="indices">The integral digits to convert.</param>
+        /// <param name="result">The converted integer.</param>
+        /// <param name="positive">Whether the result is positive.</param>
+        /// <returns>
+        /// <c>true</c> when every input digit is valid; otherwise, <c>false</c> and invalid digits are
+        /// interpreted as zero.
+        /// </returns>
+        public bool TryBigIntegerOf(IList<int> indices, out BigInteger result, bool positive = true)
+        {
+            var success = true;
+            IList<int> digits = indices;
+            if (null == indices || indices.Count == 0)
+            {
+                digits = new List<int> { 0 };
+            }
+            else if (!Contains(indices))
+            {
+                digits = indices.Select(x => x < Size && x >= 0 ? x : 0).ToList();
+                success = false;
+            }
+
+            result = PositionalNotation.FromDigits(digits, Size);
+            if (!positive) result = -result;
+            return success;
+        }
+
+        /// <summary>
         /// Attempts to convert a list of indices representing the digits of a number
         /// within this numeral system to its corresponding integer value.
         /// </summary>
         /// <param name="indices">A list of integers representing the indices of the digits.</param>
-        /// <param name="result">The integer value obtained from the indices if conversion is successful; otherwise, zero.</param>
+        /// <param name="result">The integer value obtained from the indices if conversion is successful.</param>
         /// <param name="positive">Determines whether the resulting integer should be positive; defaults to true.</param>
-        /// <returns>True if the conversion is successful and no adjustments were necessary; otherwise, false if adjusted to the nearest possible value.</returns>
+        /// <returns>
+        /// <c>true</c> when the digits are valid and the result fits in <see cref="int"/>; otherwise,
+        /// <c>false</c>. An out-of-range result is clamped to the nearest <see cref="int"/> boundary.
+        /// </returns>
         public bool TryIntegerOf(IList<int> indices, out int result, bool positive = true)
         {
-            result = 0;
-            var success = true;
-            var ind = indices;
-            if (null == indices || indices.Count == 0)
+            var success = TryBigIntegerOf(indices, out var bigInteger, positive);
+            if (bigInteger > int.MaxValue)
             {
-                ind = new List<int> { 0 };
-            }
-            else if (!Contains(indices))
-            {
-                ind = indices.Select(x => x < Size && x >= 0 ? x : 0).ToList();
-                success = false;
+                result = int.MaxValue;
+                return false;
             }
 
-            result = ind.Select((t, i) => t * Convert.ToInt32(Math.Pow(Size, (ind.Count() - 1 - i)))).Sum();
-            result = positive ? result : -result;
+            if (bigInteger < int.MinValue)
+            {
+                result = int.MinValue;
+                return false;
+            }
+
+            result = (int)bigInteger;
             return success;
         }
 
@@ -496,7 +509,7 @@ namespace NumeralSystems.Net
             //var test = integral.SplitAndKeep(Identity.ToArray());
             var success = TrySplitNumberIndices(value, identity, separator, negativeSign, numberDecimalSeparator,
                 out var result);
-            var test = TryIntegerOf(result.integralIndices, out integral, result.positive | positive);
+            var test = TryIntegerOf(result.integralIndices, out integral, result.positive && positive);
             return success && test;
         }
 

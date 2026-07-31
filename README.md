@@ -71,8 +71,8 @@ esplicitamente alfabeto e separatori.
 | Area | Tipi | Scopo |
 | --- | --- | --- |
 | Sistemi numerici | `NumeralSystem`, `Numeral` | Creazione, parsing, formattazione e conversione tra basi |
-| Cifre non negative | `Value` | Sequenze di cifre intere e conversione di base |
-| Valori con segno e frazioni | `NumeralValue` | Parti intera e frazionaria, segno e conversioni da/verso tipi .NET |
+| Cifre non negative | `Value` | Sequenze intere, inclusi valori a precisione arbitraria |
+| Valori con segno e frazioni | `NumeralValue` | Conversioni frazionarie con precisione limitata e verificabile |
 | Primitive bitwise | `Type.Base.*` | Wrapper per byte, interi, caratteri e numeri floating point |
 | Bit indeterminati | `Type.Incomplete.*` | Pattern ternari, enumerazione dei candidati e verifica con `Contains` |
 | Codifica | `Type.Base.String`, `Encoding.String` | Conversione di stringhe in cifre di un'altra base ed estrazione dell'alfabeto |
@@ -148,6 +148,9 @@ dotnet run --configuration Release \
 
 - Una base posizionale deve essere maggiore o uguale a 2.
 - Le cifre sono indici interi nell'intervallo `0..base-1`.
+- Le cifre frazionarie hanno il significato posizionale della base dichiarata;
+  `TryToBase` segnala quando un'espansione periodica raggiunge il limite.
+- Gli indexer e le viste `BigInteger` non hanno i limiti dei tipi interi primitivi.
 - `Value` non memorizza segno o parte frazionaria; usare `NumeralValue` o
   `Numeral` quando servono.
 - Gli array `Binary` dei wrapper primitivi sono indicizzati dal bit meno

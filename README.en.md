@@ -71,8 +71,8 @@ formats and protocols.
 | Area | Types | Purpose |
 | --- | --- | --- |
 | Numeral systems | `NumeralSystem`, `Numeral` | Create, parse, format, and convert values between bases |
-| Non-negative digits | `Value` | Store integral digit sequences and convert their base |
-| Signed and fractional values | `NumeralValue` | Store integral/fractional parts and convert to or from .NET values |
+| Non-negative digits | `Value` | Store integral digit sequences, including arbitrary-precision integers |
+| Signed and fractional values | `NumeralValue` | Convert signed fractions with bounded, observable precision |
 | Bitwise primitives | `Type.Base.*` | Wrap bytes, integers, characters, and floating-point values |
 | Unknown bits | `Type.Incomplete.*` | Represent ternary bit patterns, enumerate candidates, and test them with `Contains` |
 | Encoding | `Type.Base.String`, `Encoding.String` | Convert strings to digits in another base and derive symbol identities |
@@ -147,6 +147,9 @@ dotnet run --configuration Release \
 
 - A positional base must be 2 or greater.
 - Every digit is an integer index in the range `0..base-1`.
+- Fractional digits have positional meaning in their declared base;
+  `TryToBase` reports when a repeating expansion reaches its precision limit.
+- `BigInteger` indexers and views avoid primitive integer-size limits.
 - `Value` does not preserve a sign or a fractional part; use `NumeralValue` or
   `Numeral` when those are required.
 - Primitive-wrapper `Binary` arrays are indexed from the least-significant bit;

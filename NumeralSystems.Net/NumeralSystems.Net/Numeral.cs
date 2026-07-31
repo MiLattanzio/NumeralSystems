@@ -202,8 +202,30 @@ namespace NumeralSystems.Net
             }
             set
             {
-                IntegralIndices = Base[value].IntegralIndices;
+                var numeral = Base[value];
+                IntegralIndices = numeral.IntegralIndices;
                 FractionalIndices = new List<int>();
+                Positive = numeral.Positive;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the arbitrary-precision integral value of this numeral.
+        /// Fractional digits are truncated when reading the property.
+        /// </summary>
+        public BigInt BigInteger
+        {
+            get
+            {
+                Base.TryBigIntegerOf(IntegralIndices, out var result, Positive);
+                return result;
+            }
+            set
+            {
+                var numeral = Base[value];
+                IntegralIndices = numeral.IntegralIndices;
+                FractionalIndices = new List<int>();
+                Positive = numeral.Positive;
             }
         }
 
@@ -221,6 +243,7 @@ namespace NumeralSystems.Net
             {
                 IntegralIndices = Base[value].IntegralIndices;
                 FractionalIndices = new List<int>();
+                Positive = true;
             }
         }
 
@@ -249,29 +272,11 @@ namespace NumeralSystems.Net
         /// </summary>
         public decimal Decimal
         {
-            get
-            {
-                var integralEnumerable = IntegralIndices.Select((t, i) =>
-                        (ulong)t *
-                        BigInt.Pow(Base.Size, (IntegralIndices.Count - 1 - i)))
-                    .ToList();
-                var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
-                var fractionalEnumerable = FractionalIndices.Select((t, i) =>
-                    (ulong)t *
-                    Convert.ToUInt64(Math.Pow(Base.Size, (FractionalIndices.Count - 1 - i)))).ToList();
-                var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
-                var frontZeros = 0;
-                foreach (var t in FractionalIndices)
-                {
-                    if (t == 0) frontZeros++;
-                    else break;
-                }
-
-                if (integral == 0 && fractional == 0) Positive = true;
-                var digitsInBase = (int)Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
-                var div = (decimal)Math.Pow(10, digitsInBase);
-                return ((Positive ? 1 : -1) * ((decimal)integral + (decimal.Divide(fractional, div))));
-            }
+            get => Type.Base.Decimal.FromIndicesOfBase(
+                IntegralIndices.Select(x => (ulong)x).ToArray(),
+                FractionalIndices.Select(x => (ulong)x).ToArray(),
+                Positive,
+                Base.Size);
             set
             {
                 var temp = Base[value];
@@ -295,30 +300,7 @@ namespace NumeralSystems.Net
         /// </summary>
         public byte[] Bytes
         {
-            get
-            {
-                var integralEnumerable = IntegralIndices.Select((t, i) =>
-                        (ulong)t *
-                        Convert.ToUInt64(Math.Pow(Base.Size, (IntegralIndices.Count - 1 - i))))
-                    .ToList();
-                var integral = integralEnumerable.Any() ? integralEnumerable.Aggregate((a, c) => a + c) : 0;
-                var fractionalEnumerable = FractionalIndices.Select((t, i) =>
-                    (ulong)t *
-                    Convert.ToUInt64(Math.Pow(Base.Size, (FractionalIndices.Count - 1 - i)))).ToList();
-                var fractional = fractionalEnumerable.Any() ? fractionalEnumerable.Aggregate((a, c) => a + c) : 0;
-                var frontZeros = 0;
-                foreach (var t in FractionalIndices)
-                {
-                    if (t == 0) frontZeros++;
-                    else break;
-                }
-
-                if (integral == 0 && fractional == 0) Positive = true;
-                var digitsInBase = (int)Utils.Math.DigitsInBase(fractional, 10) + frontZeros;
-                var div = (decimal)Math.Pow(10, digitsInBase);
-                var result = ((Positive ? 1 : -1) * (integral + (decimal.Divide(fractional, div))));
-                return decimal.GetBits(result).SelectMany(BitConverter.GetBytes).ToArray();
-            }
+            get => decimal.GetBits(Decimal).SelectMany(BitConverter.GetBytes).ToArray();
             set
             {
                 // Byte array to int array
@@ -349,7 +331,22 @@ namespace NumeralSystems.Net
         /// </summary>
         /// <param name="baseSystem">The target numeral system to convert the value to.</param>
         /// <returns>A new Numeral object representing the converted value in the specified numeral system.</returns>
-        public Numeral To(NumeralSystem baseSystem) => baseSystem[Decimal];
+        public Numeral To(NumeralSystem baseSystem)
+        {
+            if (baseSystem is null) throw new ArgumentNullException(nameof(baseSystem));
+
+            var converted = new NumeralValue(
+                    IntegralIndices.ToList(),
+                    FractionalIndices.ToList(),
+                    !Positive,
+                    Base.Size)
+                .ToBase(baseSystem.Size);
+            return new Numeral(
+                baseSystem,
+                converted.Integral.ToList(),
+                converted.Decimals.ToList(),
+                !converted.Negative);
+        }
 
         /// <summary>
         /// Represents a numeral in a specific numeral system.

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
+using BigInteger = System.Numerics.BigInteger;
 
 namespace NumeralSystems.Net
 {
@@ -73,6 +73,25 @@ namespace NumeralSystems.Net
             return new Value(indices, identity);
         }
 
+        /// <summary>
+        /// Creates a non-negative value from an arbitrary-precision integer.
+        /// </summary>
+        /// <param name="value">The non-negative integer to represent.</param>
+        /// <param name="baseValue">The base used by the resulting digits.</param>
+        /// <returns>A value containing the digits of <paramref name="value"/>.</returns>
+        public static Value FromBigInteger(BigInteger value, int baseValue = 10)
+        {
+            if (value < 0)
+                throw new ArgumentOutOfRangeException(nameof(value), "Value cannot represent a negative integer.");
+
+            return new Value(PositionalNotation.ToDigits(value, baseValue), baseValue);
+        }
+
+        /// <summary>
+        /// Returns the arbitrary-precision integer represented by the current digits.
+        /// </summary>
+        public BigInteger ToBigInteger() => PositionalNotation.FromDigits(Indices, Base);
+
 
         /// <summary>
         /// Converts the current numeral value to a representation in a specified base.
@@ -83,67 +102,16 @@ namespace NumeralSystems.Net
         /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="baseValue"/> is less than 2.</exception>
         public Value ToBase(int baseValue, bool removeFirstZeros = false)
         {
-            if (baseValue < 2)
-                throw new ArgumentOutOfRangeException(nameof(baseValue), "Base must be at least 2.");
-
-            var frontZeros = Indices.AsEnumerable().TakeWhile(x => x == 0).Count();
-
-            var result = new List<int>();
-            var currentValue = new List<int>(Indices); // Work with a copy of the indices
-
-            while (currentValue.Count > 0 && !IsZero(currentValue))
+            var result = PositionalNotation.ToDigits(ToBigInteger(), baseValue);
+            if (!removeFirstZeros)
             {
-                var (quotient, remainder) = DivideByBase(currentValue, baseValue);
-                result.Insert(0, remainder); // Insert remainder at the front
-                currentValue = quotient; // Continue with the quotient
+                var leadingZeros = Indices.TakeWhile(x => x == 0).Count();
+                if (leadingZeros == Indices.Count) leadingZeros = System.Math.Max(0, leadingZeros - 1);
+                result = Enumerable.Repeat(0, leadingZeros).Concat(result).ToList();
             }
-
-            // If the value is zero, represent it correctly
-            if (result.Count == 0)
-                result.Add(0);
-            
-            if (!removeFirstZeros) result = Enumerable.Repeat(0, frontZeros).Concat(result).ToList();
 
             return new Value(result, baseValue);
         }
 
-        /// <summary>
-        /// Divides a number, represented as a list of indices, by a specified base value.
-        /// </summary>
-        /// <param name="number">A list of integers representing the number in the current base system.</param>
-        /// <param name="baseValue">The base value to divide the number by. It must be at least 2.</param>
-        /// <returns>A tuple containing the quotient as a list of integers and the remainder as an integer.</returns>
-        private (List<int> Quotient, int Remainder) DivideByBase(List<int> number, int baseValue)
-        {
-            var quotient = new List<int>();
-            var remainder = 0;
-
-            foreach (var current in number.Select(digit => remainder * Base + digit))
-            {
-                quotient.Add(current / baseValue);
-                remainder = current % baseValue;
-            }
-
-            // Remove leading zeroes from the quotient
-            while (quotient.Count > 0 && quotient[0] == 0)
-            {
-                quotient.RemoveAt(0);
-            }
-
-            return (quotient, remainder);
-        }
-
-        // Helper method to check if a number is zero in the current base
-        /// <summary>
-        /// Determines if a number, represented as a list of integers in a specific base, is zero.
-        /// </summary>
-        /// <param name="number">The list of integers representing the number to be checked, where each integer is a digit in the given base.</param>
-        /// <returns>True if the number is zero; otherwise, false.</returns>
-        private static bool IsZero(List<int> number)
-        {
-            return !number.Any() || number.TrueForAll(digit => digit == 0);
-        }
-        
-        
     }
 }

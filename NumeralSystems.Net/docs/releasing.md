@@ -7,7 +7,9 @@
 
 The `.github/workflows/dotnet.yml` workflow builds and tests every push and pull
 request targeting `master` or `develop`. It also packages and publishes
-`NumeralSystems.Net` when a GitHub Release is published.
+`NumeralSystems.Net`, `NumeralSystems.Net.Json`, and `dotnet-numeralsystems`
+when a GitHub Release is published. A second release job exports benchmarks
+and the static WebAssembly playground.
 
 ## One-time repository setup
 
@@ -15,7 +17,8 @@ NuGet publication uses Trusted Publishing and GitHub OpenID Connect (OIDC).
 There is no long-lived API key to create, store, or rotate.
 
 1. Sign in to NuGet.org with the account or organization that owns
-   `NumeralSystems.Net`.
+   `NumeralSystems.Net`. Before the first 5.1 release, confirm that the same
+   owner can publish `NumeralSystems.Net.Json` and `dotnet-numeralsystems`.
 2. Open **Trusted Publishing** and create a GitHub Actions policy with these
    values:
 
@@ -48,8 +51,8 @@ vMAJOR.MINOR.PATCH-prerelease
 Examples:
 
 ```text
-v5.0.0
-v5.0.0-beta.1
+v5.1.0
+v5.1.0-beta.1
 ```
 
 The leading `v` is removed before setting `PackageVersion`. A prerelease GitHub
@@ -66,8 +69,9 @@ are rejected by the workflow.
 3. Update release notes and choose the next semantic version.
 4. Create a GitHub Release from the `master` commit with a valid tag.
 5. Publish the release.
-6. Wait for both workflow jobs to finish.
-7. Verify the new version on NuGet.org and install it in a clean sample project.
+6. Wait for build, NuGet publication, and release-asset publication to finish.
+7. Verify all three packages on NuGet.org, install the tool in a clean
+   directory, and open the playground archive from a static HTTP server.
 
 Publishing a draft release does not trigger deployment. The workflow starts on
 the `release.published` event and checks out the exact release tag.
@@ -79,10 +83,15 @@ For a release, the workflow:
 1. builds the solution in `Release`;
 2. runs the complete NUnit suite;
 3. validates and extracts the package version from the tag;
-4. creates `NumeralSystems.Net.<version>.nupkg`;
-5. uploads the package as a GitHub Actions artifact for 30 days;
-6. authenticates to NuGet.org through OIDC Trusted Publishing;
-7. pushes it to `https://api.nuget.org/v3/index.json`.
+4. creates `NumeralSystems.Net.<version>.nupkg`,
+   `NumeralSystems.Net.Json.<version>.nupkg`, and
+   `dotnet-numeralsystems.<version>.nupkg`;
+5. uploads packages and symbols as a GitHub Actions artifact for 30 days;
+6. authenticates to NuGet.org through OIDC Trusted Publishing and pushes all
+   three packages to `https://api.nuget.org/v3/index.json`;
+7. runs the short BenchmarkDotNet suite with GitHub Markdown and JSON exporters;
+8. publishes the standalone Blazor WebAssembly project;
+9. attaches benchmark and playground archives to the GitHub Release.
 
 `--skip-duplicate` makes a repeated run harmless when the same package version
 already exists. NuGet packages are immutable, so code changes require a new
@@ -96,5 +105,10 @@ version rather than overwriting a published package.
   then rerun the failed job.
 - **Version already exists:** choose a new version. Do not attempt to replace
   the existing package.
+- **One package ID is unavailable:** choose a new package ID before creating
+  the final tag, update its project metadata and this guide, and rerun CI.
+- **Benchmark/playground asset failure:** download the job log, reproduce with
+  the commands in [Architecture](architecture.md) and
+  [Tool and playground](tool-and-playground.md), then rerun the failed job.
 - **Build or test failure:** fix the failure on `master`, then create a new tag
   and release from the corrected commit.

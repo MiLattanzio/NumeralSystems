@@ -62,6 +62,38 @@ namespace NumeralSystems.Net.Type.Incomplete
         }
 
         /// <summary>
+        /// Parses a most-significant-bit-first pattern containing <c>0</c>,
+        /// <c>1</c>, and <c>?</c>. Underscores and whitespace are ignored.
+        /// </summary>
+        public static BitPattern Parse(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            if (TryParse(value, out var pattern)) return pattern;
+            throw new FormatException("A bit pattern may contain only 0, 1, ?, underscores, and whitespace.");
+        }
+
+        /// <summary>
+        /// Attempts to parse a most-significant-bit-first pattern containing
+        /// <c>0</c>, <c>1</c>, and <c>?</c>.
+        /// </summary>
+        public static bool TryParse(string value, out BitPattern pattern)
+        {
+            pattern = null;
+            if (value == null) return false;
+
+            var symbols = value
+                .Where(symbol => symbol != '_' && !char.IsWhiteSpace(symbol))
+                .ToArray();
+            if (symbols.Length == 0 || symbols.Any(symbol => symbol != '0' && symbol != '1' && symbol != '?'))
+                return false;
+
+            pattern = new BitPattern(symbols
+                .Reverse()
+                .Select(symbol => symbol == '?' ? (bool?)null : symbol == '1'));
+            return true;
+        }
+
+        /// <summary>
         /// Gets the fixed width of the pattern.
         /// </summary>
         public int Count => _bits.Length;

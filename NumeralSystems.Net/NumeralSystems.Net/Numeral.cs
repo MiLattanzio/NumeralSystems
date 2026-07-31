@@ -7,40 +7,25 @@ using System.Linq;
 using NumeralSystems.Net.Type.Base;
 using NumeralSystems.Net.Utils;
 using Math = System.Math;
-using Convert = System.Convert;
 
 #nullable enable annotations
-#pragma warning disable CS0618 // The type implements its own 4.x migration setters.
 
 namespace NumeralSystems.Net
 {
     /// Represents a numeral in a specific numeral system.
-#if NET8_0_OR_GREATER
-    [global::System.Text.Json.Serialization.JsonConverter(
-        typeof(NumeralSystems.Net.Serialization.NumeralJsonConverter))]
-#endif
     public class Numeral : IFormattable
 #if NET8_0_OR_GREATER
         , ISpanFormattable
 #endif
     {
-        private bool _positive = true;
-        private RationalValue? _exactValueOverride;
+        private readonly bool _positive = true;
+        private readonly RationalValue? _exactValueOverride;
 
         // ReSharper disable once MemberCanBePrivate.Global
         /// <summary>
         /// Gets a value indicating whether the number is positive or negative.
         /// </summary>
-        public bool Positive
-        {
-            get => _positive;
-            [Obsolete("Use WithExactValue(...) or Numeral.FromRational(...) to create a new immutable value projection.")]
-            set
-            {
-                _positive = value;
-                _exactValueOverride = null;
-            }
-        }
+        public bool Positive => _positive;
 
         // ReSharper disable once MemberCanBePrivate.Global
         /// <summary>
@@ -64,27 +49,12 @@ namespace NumeralSystems.Net
 
         // ReSharper disable once MemberCanBePrivate.Global
         /// <summary>
-        /// Gets or sets the list of fractional indices for the numeral.
+        /// Gets a copy of the fractional indices for the numeral.
         /// </summary>
         /// <remarks>
         /// The fractional indices represent the positions of the fractional part of the numeral in the identity list.
         /// </remarks>
-        public List<int> FractionalIndices
-        {
-            get => new List<int>(_fractionalIndices);
-            [Obsolete("Use WithExactValue(...) or Numeral.FromRational(...) to create a new immutable value projection.")]
-            set
-            {
-                _exactValueOverride = null;
-                if (null == value || value.Count == 0)
-                    _fractionalIndices.Clear();
-                else if (Base.Contains(value))
-                {
-                    _fractionalIndices.Clear();
-                    value.ForEach(_fractionalIndices.Add);
-                }
-            }
-        }
+        public List<int> FractionalIndices => new List<int>(_fractionalIndices);
 
         // ReSharper disable once MemberCanBePrivate.Global
         /// <summary>
@@ -139,29 +109,13 @@ namespace NumeralSystems.Net
 
         // ReSharper disable once MemberCanBePrivate.Global
         /// <summary>
-        /// Gets or sets the list of integral indices representing a numeral system's number.
+        /// Gets a copy of the integral indices representing a numeral system's number.
         /// </summary>
         /// <remarks>
         /// The integral indices represent the positions of the digits in a number within a specific numeral system.
         /// The indices are stored as a list of integers.
         /// </remarks>
-        public List<int> IntegralIndices
-        {
-            get => new List<int>(_integralIndices);
-            // ReSharper disable once MemberCanBePrivate.Global
-            [Obsolete("Use WithExactValue(...) or Numeral.FromRational(...) to create a new immutable value projection.")]
-            set
-            {
-                _exactValueOverride = null;
-                if (null == value || value.Count == 0)
-                    _integralIndices.Clear();
-                else if (Base.Contains(value))
-                {
-                    _integralIndices.Clear();
-                    value.ForEach(_integralIndices.Add);
-                }
-            }
-        }
+        public List<int> IntegralIndices => new List<int>(_integralIndices);
 
         /// <summary>
         /// Gets the integral digits of a numeral as a list of string representations.
@@ -209,7 +163,7 @@ namespace NumeralSystems.Net
         }
 
         /// The `Numeral` class represents a numeral in a specific numeral system.
-        /// It provides methods to get and set the integral and fractional parts of the numeral, as well as converting the numeral to different types.
+        /// It provides immutable integral and fractional views and conversions to different types.
         /// @constructor Numeral
         /// @param numericSystem - The numeral system that the numeral belongs to.
         /// @param integral - The list of indices representing the integral part of the numeral.
@@ -228,167 +182,113 @@ namespace NumeralSystems.Net
         /// /
         public Numeral(NumeralSystem numericSystem)
         {
-            Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
+            Base = numericSystem ?? throw new ArgumentNullException(nameof(numericSystem));
         }
 
         /// <summary>
         /// Represents a numerical value in a specific numeral system.
         /// </summary>
-        public Numeral(NumeralSystem numericSystem, List<int> integral, List<int> fractional = null,
+        public Numeral(
+            NumeralSystem numericSystem,
+            List<int> integral,
+            List<int>? fractional = null,
             bool positive = true)
+            : this(numericSystem, integral, fractional, positive, null)
         {
-            Base = numericSystem ?? throw new Exception("Cannot build a number without Its numeric system");
-            if (!Base.Contains(integral)) throw new Exception("Cannot build a number without a valid representation");
-            if (!Base.Contains(fractional)) fractional = null;
-            IntegralIndices = integral;
-            FractionalIndices = fractional;
-            Positive = positive;
-            if (!Base.AdjustToFitIntegralLength) return;
-            var difference = Base.Length - IntegralIndices.Count;
-            if (difference > 0)
-            {
-                IntegralIndices = Enumerable.Repeat(0, difference).Concat(IntegralIndices).ToList();
-            }
         }
 
         /// <summary>
-        /// Tries to set the value of the Numeral object using the provided list of integers as indices.
+        /// Creates an immutable numeral projection while optionally preserving a
+        /// separate exact rational value, such as for a repeating expansion.
         /// </summary>
-        /// <param name="value">The list of integer indices representing a value in the NumeralSystem</param>
-        /// <returns>True if the value was set successfully, false otherwise</returns>
-        [Obsolete("Use WithExactValue(...) to create a new Numeral. This mutating method remains for 4.x source compatibility.")]
-        public bool TrySetValue(List<int> value)
+        public static Numeral FromRepresentation(
+            NumeralSystem numeralSystem,
+            IEnumerable<int> integral,
+            IEnumerable<int>? fractional,
+            bool positive,
+            RationalValue? exactValue = null)
         {
-            if (!Base.Contains(value)) return false;
-            IntegralIndices = value;
-            return true;
+            if (integral is null) throw new ArgumentNullException(nameof(integral));
+            return new Numeral(
+                numeralSystem,
+                integral.ToList(),
+                fractional?.ToList(),
+                positive,
+                exactValue);
+        }
+
+        private Numeral(
+            NumeralSystem numericSystem,
+            List<int> integral,
+            List<int>? fractional,
+            bool positive,
+            RationalValue? exactValue)
+        {
+            Base = numericSystem ?? throw new ArgumentNullException(nameof(numericSystem));
+            if (integral is null) throw new ArgumentNullException(nameof(integral));
+            if (!Base.Contains(integral))
+                throw new ArgumentOutOfRangeException(nameof(integral), "The integral digits are invalid for the numeral base.");
+            if (fractional is not null && !Base.Contains(fractional))
+                throw new ArgumentOutOfRangeException(nameof(fractional), "The fractional digits are invalid for the numeral base.");
+            if (exactValue is not null && !exactValue.IsZero && (exactValue.Sign > 0) != positive)
+                throw new ArgumentException("The exact value sign must agree with the representation sign.", nameof(exactValue));
+
+            _integralIndices.AddRange(integral);
+            if (fractional is not null) _fractionalIndices.AddRange(fractional);
+            _positive = positive;
+            _exactValueOverride = exactValue;
+
+            if (!Base.AdjustToFitIntegralLength) return;
+            var difference = Base.Length - _integralIndices.Count;
+            if (difference > 0)
+                _integralIndices.InsertRange(0, Enumerable.Repeat(0, difference));
         }
 
         /// <summary>
         /// Represents a numeral value in a specific numeral system.
         /// </summary>
         public int Integer
-        {
-            get => checked((int)ExactValue.Truncate());
-            [Obsolete("Use WithExactValue(RationalValue.FromInteger(value)) instead of mutating a Numeral.")]
-            set
-            {
-                var numeral = Base[value];
-                IntegralIndices = numeral.IntegralIndices;
-                FractionalIndices = new List<int>();
-                Positive = numeral.Positive;
-            }
-        }
+            => checked((int)ExactValue.Truncate());
 
         /// <summary>
-        /// Gets or sets the arbitrary-precision integral value of this numeral.
+        /// Gets the arbitrary-precision integral value of this numeral.
         /// Fractional digits are truncated when reading the property.
         /// </summary>
         public BigInt BigInteger
-        {
-            get => ExactValue.Truncate();
-            [Obsolete("Use WithExactValue(RationalValue.FromInteger(value)) instead of mutating a Numeral.")]
-            set
-            {
-                var numeral = Base[value];
-                IntegralIndices = numeral.IntegralIndices;
-                FractionalIndices = new List<int>();
-                Positive = numeral.Positive;
-            }
-        }
+            => ExactValue.Truncate();
 
         /// <summary>
         /// Represents a numeral in a specific numeral system.
         /// </summary>
         public char Char
-        {
-            get => checked((char)(ushort)ExactValue.Truncate());
-            [Obsolete("Use WithExactValue(RationalValue.FromInteger(value)) instead of mutating a Numeral.")]
-            set
-            {
-                IntegralIndices = Base[value].IntegralIndices;
-                FractionalIndices = new List<int>();
-                Positive = true;
-            }
-        }
+            => checked((char)(ushort)ExactValue.Truncate());
 
         /// <summary>
         /// Represents a double-precision floating-point number.
         /// </summary>
         /// <remarks>
-        /// The Double property is used to get or set the value of the Numeral in the form of a double-precision floating-point number.
-        /// It converts the Numeral to a double value and vice versa.
+        /// Converts the exact numeral value to a double-precision floating-point number.
         /// </remarks>
         public double Double
-        {
-            get => (double)ExactValue.Numerator / (double)ExactValue.Denominator;
-            [Obsolete("Create a RationalValue explicitly and use WithExactValue(...) instead of mutating a Numeral.")]
-            set
-            {
-                var temp = Base[value];
-                IntegralIndices = temp.IntegralIndices;
-                FractionalIndices = temp.FractionalIndices;
-                Positive = value >= 0;
-            }
-        }
+            => (double)ExactValue.Numerator / (double)ExactValue.Denominator;
 
         /// <summary>
         /// Represents a numeral in a number system.
         /// </summary>
         public decimal Decimal
-        {
-            get => ExactValue.ToDecimal();
-            [Obsolete("Use WithExactValue(RationalValue.FromDecimal(value)) instead of mutating a Numeral.")]
-            set
-            {
-                var temp = Base[value];
-                IntegralIndices = temp.IntegralIndices;
-                FractionalIndices = temp.FractionalIndices;
-                Positive = value >= 0;
-            }
-        }
+            => ExactValue.ToDecimal();
 
         /// <summary>
         /// Represents a numeral object that can store and manipulate numbers in different numeral systems.
         /// </summary>
         public float Float
-        {
-            get => decimal.ToSingle(Decimal);
-            [Obsolete("Create a RationalValue explicitly and use WithExactValue(...) instead of mutating a Numeral.")]
-            set => Decimal = Convert.ToDecimal(value);
-        }
+            => decimal.ToSingle(Decimal);
 
         /// <summary>
-        /// Gets or sets the byte array representation of the Numeral value.
+        /// Gets the decimal byte-array representation of the Numeral value.
         /// </summary>
         public byte[] Bytes
-        {
-            get => decimal.GetBits(Decimal).SelectMany(BitConverter.GetBytes).ToArray();
-            [Obsolete("Construct a decimal or RationalValue and use WithExactValue(...) instead of mutating a Numeral.")]
-            set
-            {
-                // Byte array to int array
-                var intArray = new int[value.Length / 4];
-                Buffer.BlockCopy(value, 0, intArray, 0, value.Length);
-                switch (intArray.Length)
-                {
-                    case < 4:
-                        // Pad so it's 4 int long
-                        Enumerable.Range(0, 4 - intArray.Length).ToList()
-                            .ForEach(i => intArray = intArray.Append(0).ToArray());
-                        break;
-                    case 4:
-                        break;
-                    case > 4:
-                        // Truncate to 4 int long
-                        //intArray = intArray.Take(4).ToArray();
-                        throw new ArgumentOutOfRangeException(nameof(value), "Byte array is too long");
-                }
-
-                var result = new decimal(intArray);
-                Decimal = result;
-            }
-        }
+            => decimal.GetBits(Decimal).SelectMany(BitConverter.GetBytes).ToArray();
 
         /// <summary>
         /// Creates a numeral as an immutable projection of an exact rational value.
@@ -405,13 +305,12 @@ namespace NumeralSystems.Net
                 value,
                 numeralSystem.Size,
                 options ?? NumeralConversionOptions.Default);
-            var result = new Numeral(
+            return new Numeral(
                 numeralSystem,
                 converted.Integral.ToList(),
                 converted.Decimals.ToList(),
-                !converted.Negative);
-            result._exactValueOverride = value;
-            return result;
+                !converted.Negative,
+                value);
         }
 
         /// <summary>Returns a new numeral in the same system with a different exact value.</summary>
@@ -419,20 +318,6 @@ namespace NumeralSystems.Net
             RationalValue value,
             NumeralConversionOptions? options = null) =>
             FromRational(Base, value, options);
-
-        internal void RestoreExactValue(RationalValue value)
-        {
-            _exactValueOverride = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        /// <summary>
-        /// Converts the numerical value of the Numeral object to the specified numeral system.
-        /// </summary>
-        /// <param name="baseSystem">The target numeral system to convert the value to.</param>
-        /// <returns>A new Numeral object representing the converted value in the specified numeral system.</returns>
-        [Obsolete("Use To(NumeralSystem, NumeralConversionOptions) to select period, rounding, and infinite-expansion behavior explicitly.")]
-        public Numeral To(NumeralSystem baseSystem)
-            => To(baseSystem, NumeralConversionOptions.Legacy);
 
         /// <summary>
         /// Converts the exact rational value to another numeral system without a
@@ -742,4 +627,3 @@ namespace NumeralSystems.Net
         }
     }
 }
-#pragma warning restore CS0618

@@ -18,7 +18,8 @@ La libreria è adatta quando serve:
 - ottenere errori di parsing strutturati con posizione UTF-16 esatta;
 - codificare byte con Base16, Base32 o Base64 standard, anche in streaming;
 - elaborare esplicitamente unità UTF-16 o valori scalari Unicode;
-- formattare tramite `IFormatProvider` e serializzare numerali esatti in JSON;
+- formattare tramite `IFormatProvider` e serializzare numerali esatti con il
+  pacchetto opzionale `NumeralSystems.Net.Json`;
 - ispezionare e modificare la rappresentazione binaria dei tipi primitivi;
 - descrivere valori parziali con bit `0`, `1` o sconosciuti;
 - ricavare i possibili operandi di `AND`, `OR`, `XOR` e `NAND`;
@@ -29,11 +30,11 @@ La libreria è adatta quando serve:
 
 - .NET 8 SDK per compilare la soluzione ed eseguire i test;
 - un runtime compatibile con .NET Standard 2.1 per l'API portabile;
-- .NET 8 per Rune, Span e integrazione `System.Text.Json` incorporata.
+- .NET 8 per Rune, Span, playground WebAssembly e `NumeralSystems.Net.Json`.
 
-Il repository contiene il progetto della libreria e la suite NUnit. Un pacchetto
-NuGet viene prodotto e pubblicato automaticamente quando viene pubblicata una
-GitHub Release valida, ma non è necessario installarlo per provare il progetto.
+Il repository contiene libreria, pacchetto JSON, tool globale, playground,
+esempi, benchmark e suite NUnit. I tre pacchetti distribuibili vengono prodotti
+e pubblicati automaticamente da una GitHub Release valida.
 
 ## Avvio rapido
 
@@ -43,6 +44,18 @@ cd NumeralSystems/NumeralSystems.Net
 dotnet restore
 dotnet build --configuration Release --no-restore
 dotnet test --configuration Release --no-build
+```
+
+Installazione da NuGet e uso del tool globale:
+
+```bash
+dotnet add package NumeralSystems.Net --version 5.1.0
+dotnet add package NumeralSystems.Net.Json --version 5.1.0
+dotnet tool install --global dotnet-numeralsystems --version 5.1.0
+
+numsys convert FF --from 16 --to 2
+numsys inspect "1100????" --type byte
+numsys solve "x & 10101010 = 10001000"
 ```
 
 Per usare il progetto direttamente da un'altra soluzione:
@@ -88,7 +101,8 @@ esplicitamente alfabeto e separatori.
 | Bit indeterminati | `BitPattern`, `Type.Incomplete.*` | Pattern ternari, vincoli, operazioni inverse ed enumerazione limitata |
 | Codec standard | `StandardBaseCodec` | Base16/Base32/Base64 RFC con API in memoria, Span e streaming |
 | Caratteri | `CharacterIdentity`, `CharacterRadixTransform` | Identità UTF-16/Rune e trasformazioni sperimentali esplicite |
-| Formattazione e JSON | `NumeralFormatInfo`, `NumeralJsonConverter` | Provider, formati `G`/`R`, Span e JSON strutturato esatto |
+| Formattazione | `NumeralFormatInfo` | Provider, formati `G`/`R` e Span |
+| JSON opzionale | `NumeralSystems.Net.Json`, `NumeralJsonConverter` | Registrazione esplicita e JSON strutturato esatto |
 
 ### Alfabeto personalizzato
 
@@ -145,8 +159,21 @@ i caratteri supplementari come singoli valori scalari Unicode. Sono disponibili
 anche API streaming a memoria costante.
 
 `Numeral` implementa `IFormattable` con formati `G` dipendente dal provider e
-`R` invariante. Il target .NET 8 aggiunge overload Span e serializzazione
-`System.Text.Json` esatta di base, segno, numeratore/denominatore e array di cifre.
+`R` invariante. Il target .NET 8 aggiunge overload Span. La serializzazione
+`System.Text.Json` esatta vive nel pacchetto separato `NumeralSystems.Net.Json`
+ed è attivata esplicitamente con `options.AddNumeralSystems()`.
+
+### Tool e playground
+
+`numsys` rende disponibili conversione, ispezione limitata dei candidati e
+risoluzione di vincoli AND dalla shell. Il progetto
+`NumeralSystems.Net.Playground` è un'app Blazor WebAssembly senza backend con
+convertitore, grafico dei periodi e visualizzatore dei bit sconosciuti:
+
+```bash
+dotnet run --project NumeralSystems.Net/NumeralSystems.Net.Playground
+dotnet run --project NumeralSystems.Net/NumeralSystems.Net.Examples -- all
+```
 
 ### Aritmetica tra basi diverse
 
@@ -225,6 +252,8 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [sistemi numerici e alfabeti](NumeralSystems.Net/docs/numeral-systems.md);
 - [alfabeti ordinati, preset e diagnostica del parsing](NumeralSystems.Net/docs/numeral-alphabets.md);
 - [provider di formattazione, Span e JSON](NumeralSystems.Net/docs/formatting-and-serialization.md);
+- [tool globale e playground WebAssembly](NumeralSystems.Net/docs/tool-and-playground.md);
+- [esempi eseguibili e notebook](NumeralSystems.Net/docs/examples-and-notebooks.md);
 - [aritmetica, precisione, operatori e confronto](NumeralSystems.Net/docs/arithmetic.md);
 - [razionali esatti, periodi e arrotondamento](NumeralSystems.Net/docs/exact-rationals.md);
 - [ricettario con esempi pratici](NumeralSystems.Net/docs/cookbook.md);
@@ -239,6 +268,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [migrazione alla 4.8.0](NumeralSystems.Net/docs/migration-4.8.md);
 - [migrazione alla 4.8.1](NumeralSystems.Net/docs/migration-4.8.1.md);
 - [migrazione dalla 4.8.1 alla 5.0.0](NumeralSystems.Net/docs/migration-5.0.md);
+- [migrazione dalla 5.0.0 alla 5.1.0](NumeralSystems.Net/docs/migration-5.1.md);
 - [processo di release e pubblicazione NuGet](NumeralSystems.Net/docs/releasing.md).
 
 Tutta la documentazione è scritta in Markdown e viene versionata insieme al
@@ -256,6 +286,9 @@ dotnet run --configuration Release \
   --project NumeralSystems.Net.Benchmarks/NumeralSystems.Net.Benchmarks.csproj
 ```
 
+Ogni GitHub Release allega gli export Markdown/JSON completi dei benchmark e
+un archivio statico pronto da distribuire del playground WebAssembly.
+
 ## Note importanti
 
 - Una base posizionale deve essere maggiore o uguale a 2.
@@ -272,8 +305,9 @@ dotnet run --configuration Release \
   significativo; `ToString()` produce invece una vista leggibile.
 - `NumeralAlphabet.Base64`, Base64 RFC standard e la trasformazione
   sperimentale dei caratteri sono API separate con modelli dati differenti.
-- Rune, Span e JSON incorporato sono disponibili nel target .NET 8; UTF-16,
-  provider, codec e streaming restano disponibili in .NET Standard 2.1.
+- Rune e Span sono disponibili nel target .NET 8; UTF-16, provider, codec e
+  streaming restano disponibili in .NET Standard 2.1. JSON è un pacchetto
+  .NET 8 separato per non imporre dipendenze di serializzazione al core.
 
 ## Contribuire e sicurezza
 

@@ -397,8 +397,11 @@ The method keeps only bounded buffers and leaves both objects open.
 On .NET 8:
 
 ```csharp
-var json = JsonSerializer.Serialize(numeral);
-var restored = JsonSerializer.Deserialize<Numeral>(json);
+using NumeralSystems.Net.Json;
+
+var options = new JsonSerializerOptions().AddNumeralSystems();
+var json = JsonSerializer.Serialize(numeral, options);
+var restored = JsonSerializer.Deserialize<Numeral>(json, options);
 ```
 
 JSON persists base, sign, integral digits, and fractional digits. Use

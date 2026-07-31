@@ -51,10 +51,13 @@ Complete values can be created without manually expanding bits:
 ```csharp
 var mask = BitPattern.FromUnsigned(0b1111_0000, width: 8);
 var anyByte = BitPattern.Unknown(width: 8);
+var readable = BitPattern.Parse("1100_????");
 ```
 
 `FromUnsigned` rejects negative values and values that do not fit the requested
-width.
+width. `Parse` and `TryParse` read the same MSB-first form produced by
+`ToString`; whitespace and `_` separators are ignored, while any other
+character is rejected.
 
 ## Size, bounds, and membership
 

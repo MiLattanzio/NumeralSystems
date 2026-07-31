@@ -116,11 +116,20 @@ For byte encodings, `StandardBaseCodec.TryEncode` and `TryDecode` write into
 caller-provided spans and return `false` when the destination is too small.
 Malformed decode input also returns `false` from `TryDecode`.
 
-## JSON serialization on .NET 8
+## Optional JSON serialization on .NET 8
 
-`Numeral` has a built-in `System.Text.Json` converter on the .NET 8 target:
+Install the separate package so applications that do not serialize numerals do
+not carry JSON integration:
+
+```console
+dotnet add package NumeralSystems.Net.Json --version 5.1.0
+```
+
+Register the converter on the `JsonSerializerOptions` used by the application:
 
 ```csharp
+using NumeralSystems.Net.Json;
+
 var system = Numeral.System.OfBase(16);
 system.AdjustToFitIntegralLength = false;
 
@@ -130,9 +139,14 @@ var value = new Numeral(
     fractional: new List<int> { 0, 1 },
     positive: false);
 
-var json = JsonSerializer.Serialize(value);
-var restored = JsonSerializer.Deserialize<Numeral>(json);
+var options = new JsonSerializerOptions().AddNumeralSystems();
+var json = JsonSerializer.Serialize(value, options);
+var restored = JsonSerializer.Deserialize<Numeral>(json, options);
 ```
+
+`AddNumeralSystems` is idempotent. The converter type remains available as
+`NumeralSystems.Net.Serialization.NumeralJsonConverter` when a framework or
+dependency-injection layer requires direct converter construction.
 
 The JSON shape is intentionally alphabet- and culture-independent:
 
@@ -178,7 +192,8 @@ identifier separately when the wire protocol requires one.
 | `IFormatProvider` and `IFormattable` | Yes | Yes |
 | Rune APIs | No | Yes |
 | Span APIs | No | Yes |
-| Built-in `System.Text.Json` converter | No | Yes |
+| `NumeralSystems.Net.Json` package | No | Yes |
 
-The package contains both target-framework assemblies; NuGet selects the most
-specific compatible implementation automatically.
+The core package contains both target-framework assemblies; NuGet selects the
+most specific compatible implementation automatically. JSON support is a
+separate .NET 8 package.

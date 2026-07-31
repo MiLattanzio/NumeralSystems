@@ -1,0 +1,303 @@
+@page "/"
+
+<PageTitle>NumeralSystems.Net Playground</PageTitle>
+
+<header class="hero">
+    <div class="hero-copy">
+        <p class="eyebrow">NumeralSystems.Net 5.1</p>
+        <h1>Numbers are exact.<br />Representations are choices.</h1>
+        <p class="lead">
+            Convert alphabets, explore repeating fractions, and inspect unknown bits.
+            Everything runs locally in WebAssembly.
+        </p>
+    </div>
+    <div class="hero-mark" aria-hidden="true">
+        <span>1</span><span>0</span><span>?</span><span>1</span>
+    </div>
+</header>
+
+<main>
+    <section class="tool-grid" aria-label="Numeral tools">
+        <article class="panel converter-panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="kicker">Base converter</p>
+                    <h2>Translate an integer</h2>
+                </div>
+                <span class="badge">BigInteger</span>
+            </div>
+
+            <label for="convert-value">Value</label>
+            <input id="convert-value" class="primary-input" @bind="_convertInput" @bind:event="oninput" @onkeyup="ConvertOnEnter" />
+            <div class="field-row">
+                <div>
+                    <label for="from-base">From base</label>
+                    <input id="from-base" type="number" min="2" max="256" @bind="_fromBase" @bind:event="oninput" />
+                </div>
+                <div class="swap" aria-hidden="true">→</div>
+                <div>
+                    <label for="to-base">To base</label>
+                    <input id="to-base" type="number" min="2" max="256" @bind="_toBase" @bind:event="oninput" />
+                </div>
+            </div>
+            <button class="action" @onclick="ConvertValue">Convert</button>
+
+            <div class="result-block" aria-live="polite">
+                <span class="result-label">Result</span>
+                <output>@_convertOutput</output>
+                @if (!string.IsNullOrEmpty(_convertError))
+                {
+                    <p class="error">@_convertError</p>
+                }
+            </div>
+        </article>
+
+        <article class="panel fraction-panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="kicker">Exact rational</p>
+                    <h2>Follow the repeating period</h2>
+                </div>
+                <span class="badge amber">remainder graph</span>
+            </div>
+
+            <div class="fraction-inputs">
+                <input aria-label="Numerator" @bind="_numeratorText" @bind:event="oninput" />
+                <span>/</span>
+                <input aria-label="Denominator" @bind="_denominatorText" @bind:event="oninput" />
+                <span class="base-prefix">base</span>
+                <input aria-label="Expansion base" type="number" min="2" max="64" @bind="_fractionBase" @bind:event="oninput" />
+                <button class="small-action" @onclick="UpdateFraction">Explore</button>
+            </div>
+
+            @if (_fractionExpansion is not null)
+            {
+                <div class="fraction-summary">
+                    <strong>@_fractionExpansion.ToString(NumeralAlphabet.CreateDefault(_fractionExpansion.Base))</strong>
+                    <span>@(_fractionExpansion.IsTerminating ? "terminating" : $"period {_fractionExpansion.RepeatingLength}")</span>
+                </div>
+                <div class="digit-strip" aria-label="Fractional digits">
+                    @for (var index = 0; index < _fractionExpansion.FractionalDigits.Count; index++)
+                    {
+                        var period = IsPeriodDigit(index);
+                        <span class="@(period ? "period-digit" : "prefix-digit")">@_fractionExpansion.FractionalDigits[index]</span>
+                    }
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(_fractionError))
+            {
+                <p class="error">@_fractionError</p>
+            }
+
+            <div class="chart-heading">
+                <span>Period length of 1/d in base @(_fractionExpansion?.Base ?? _fractionBase)</span>
+                <span>d = 2…@_chartDenominatorLimit</span>
+            </div>
+            <div class="chart-scroll">
+                <svg class="period-chart" viewBox="0 0 760 230" role="img" aria-label="Period lengths by denominator">
+                    <line x1="34" y1="196" x2="744" y2="196" class="axis" />
+                    @foreach (var bar in _periodBars)
+                    {
+                        <g>
+                            <rect x="@bar.X" y="@bar.Y" width="@bar.Width" height="@bar.Height" class="@(bar.Length == 0 ? "terminating-bar" : "period-bar")" rx="2">
+                                <title>1/@bar.Denominator: @(bar.Length == 0 ? "terminating" : $"period {bar.Length}")</title>
+                            </rect>
+                            @if (bar.Denominator % 5 == 0)
+                            {
+                                @((MarkupString)$"<text x=\"{bar.X + bar.Width / 2}\" y=\"216\" text-anchor=\"middle\">{bar.Denominator}</text>")
+                            }
+                        </g>
+                    }
+                </svg>
+            </div>
+        </article>
+
+        <article class="panel bits-panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="kicker">Unknown bits</p>
+                    <h2>See the candidate space</h2>
+                </div>
+                <span class="badge mint">bounded</span>
+            </div>
+
+            <label for="bit-pattern">Pattern (MSB → LSB)</label>
+            <div class="inline-action">
+                <input id="bit-pattern" class="primary-input mono" @bind="_patternText" @bind:event="oninput" />
+                <button class="small-action" @onclick="UpdatePattern">Inspect</button>
+            </div>
+
+            @if (_bitPattern is not null)
+            {
+                <div class="bit-cells">
+                    @foreach (var bit in _bitPattern.ToArray().Reverse())
+                    {
+                        <span class="@BitClass(bit)">@(bit.HasValue ? (bit.Value ? "1" : "0") : "?")</span>
+                    }
+                </div>
+                <dl class="metrics">
+                    <div><dt>Unknown</dt><dd>@_bitPattern.UnknownBitCount</dd></div>
+                    <div><dt>Candidates</dt><dd>@_bitPattern.CandidateCount</dd></div>
+                    <div><dt>Unsigned</dt><dd>@_bitPattern.MinValue…@_bitPattern.MaxValue</dd></div>
+                    <div><dt>Signed</dt><dd>@_bitPattern.SignedMinValue…@_bitPattern.SignedMaxValue</dd></div>
+                </dl>
+                <div class="candidate-list">
+                    @foreach (var candidate in _bitPattern.EnumerateCandidates(16))
+                    {
+                        <span>@candidate</span>
+                    }
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(_patternError))
+            {
+                <p class="error">@_patternError</p>
+            }
+        </article>
+    </section>
+</main>
+
+<footer>
+    <span>NumeralSystems.Net</span>
+    <span>Exact arithmetic · explicit limits · no server round-trips</span>
+</footer>
+
+@code {
+    private string _convertInput = "FF";
+    private int _fromBase = 16;
+    private int _toBase = 2;
+    private string _convertOutput = "11111111";
+    private string? _convertError;
+
+    private string _numeratorText = "1";
+    private string _denominatorText = "7";
+    private int _fractionBase = 10;
+    private readonly int _chartDenominatorLimit = 40;
+    private NumeralExpansion? _fractionExpansion;
+    private string? _fractionError;
+    private List<PeriodBar> _periodBars = new();
+
+    private string _patternText = "1100????";
+    private BitPattern? _bitPattern;
+    private string? _patternError;
+
+    protected override void OnInitialized()
+    {
+        ConvertValue();
+        UpdateFraction();
+        UpdatePattern();
+    }
+
+    private void ConvertOnEnter(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter") ConvertValue();
+    }
+
+    private void ConvertValue()
+    {
+        try
+        {
+            var source = NumeralAlphabet.CreateDefault(_fromBase);
+            var destination = NumeralAlphabet.CreateDefault(_toBase);
+            _convertOutput = destination.Encode(source.Decode(_convertInput));
+            _convertError = null;
+        }
+        catch (Exception exception)
+        {
+            _convertOutput = "—";
+            _convertError = exception.Message;
+        }
+    }
+
+    private void UpdateFraction()
+    {
+        try
+        {
+            var numerator = BigInteger.Parse(_numeratorText, CultureInfo.InvariantCulture);
+            var denominator = BigInteger.Parse(_denominatorText, CultureInfo.InvariantCulture);
+            var value = new RationalValue(numerator, denominator);
+            var options = new NumeralConversionOptions(
+                2048,
+                NumeralRoundingMode.ToNearestEven,
+                true,
+                InfiniteExpansionBehavior.PreservePeriod);
+            _fractionExpansion = value.Expand(_fractionBase, options);
+            _periodBars = BuildPeriodBars(_fractionBase, _chartDenominatorLimit);
+            _fractionError = null;
+        }
+        catch (Exception exception)
+        {
+            _fractionExpansion = null;
+            _periodBars.Clear();
+            _fractionError = exception.Message;
+        }
+    }
+
+    private bool IsPeriodDigit(int index) =>
+        _fractionExpansion?.RepeatingStartIndex is int start &&
+        index >= start &&
+        index < start + _fractionExpansion.RepeatingLength;
+
+    private static List<PeriodBar> BuildPeriodBars(int baseValue, int maximumDenominator)
+    {
+        var lengths = new List<(int Denominator, int Length)>();
+        var maximumLength = 1;
+        var options = new NumeralConversionOptions(
+            2048,
+            NumeralRoundingMode.ToNearestEven,
+            true,
+            InfiniteExpansionBehavior.PreservePeriod);
+
+        for (var denominator = 2; denominator <= maximumDenominator; denominator++)
+        {
+            var expansion = new RationalValue(1, denominator).Expand(baseValue, options);
+            var length = expansion.RepeatingLength;
+            maximumLength = Math.Max(maximumLength, length);
+            lengths.Add((denominator, length));
+        }
+
+        const double left = 38;
+        const double bottom = 196;
+        const double chartHeight = 160;
+        var slot = 700d / lengths.Count;
+        return lengths.Select((item, index) =>
+        {
+            var height = item.Length == 0 ? 4 : chartHeight * item.Length / maximumLength;
+            return new PeriodBar(
+                item.Denominator,
+                item.Length,
+                left + index * slot,
+                bottom - height,
+                Math.Max(3, slot - 3),
+                height);
+        }).ToList();
+    }
+
+    private void UpdatePattern()
+    {
+        try
+        {
+            _bitPattern = BitPattern.Parse(_patternText);
+            _patternError = null;
+        }
+        catch (Exception exception)
+        {
+            _bitPattern = null;
+            _patternError = exception.Message;
+        }
+    }
+
+    private static string BitClass(bool? bit) => bit switch
+    {
+        true => "bit bit-one",
+        false => "bit bit-zero",
+        null => "bit bit-unknown"
+    };
+
+    private sealed record PeriodBar(
+        int Denominator,
+        int Length,
+        double X,
+        double Y,
+        double Width,
+        double Height);
+}

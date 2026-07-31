@@ -108,6 +108,10 @@ On .NET 8, `JsonSerializer.Serialize(numeral)` now uses the built-in converter.
 The JSON representation is structured and exact; it is not the output of
 `ToString()` and does not include a presentation alphabet.
 
+> **5.1 note:** built-in registration described in this historical guide was
+> removed in 5.1. Install `NumeralSystems.Net.Json` and call
+> `JsonSerializerOptions.AddNumeralSystems()` when upgrading beyond 5.0.
+
 If an older application serialized public properties incidentally, treat the
 new `{ base, positive, integral, fractional }` object as a versioned wire-format
 change and migrate stored payloads explicitly.

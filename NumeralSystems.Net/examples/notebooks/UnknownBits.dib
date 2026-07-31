@@ -1,0 +1,37 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":["c#","C#"],"name":"csharp"},{"name":"markdown"}]}}
+
+#!markdown
+
+# Unknown bits and constraints
+
+`?` represents a bit that may independently be zero or one. Candidate counts
+use `BigInteger`; enumeration is always given an explicit upper bound.
+
+#!csharp
+
+#r "nuget: NumeralSystems.Net, 5.1.0"
+using NumeralSystems.Net.Type.Incomplete;
+
+var pattern = BitPattern.Parse("1100????");
+new {
+    Pattern = pattern.ToString(),
+    pattern.UnknownBitCount,
+    pattern.CandidateCount,
+    pattern.MinValue,
+    pattern.MaxValue,
+    Preview = pattern.EnumerateCandidates(8).ToArray()
+}
+
+#!markdown
+
+Solve the constraint `x & 10101010 = 10001000`. The result is another pattern
+describing every valid value of `x`.
+
+#!csharp
+
+var solution = BitPattern.SolveAnd(
+    BitPattern.Parse("10101010"),
+    BitPattern.Parse("10001000"));
+solution.ToString()

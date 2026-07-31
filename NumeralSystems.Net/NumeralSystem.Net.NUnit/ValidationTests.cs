@@ -17,22 +17,32 @@ namespace NumeralSystem.Net.NUnit
     public class ValidationTests
     {
         [Test]
-        public void PublicApiContainsDocumentedFiveZeroMigrationLayer()
+        public void PublicApiContainsNoObsoleteMembers()
         {
-            var constructor = typeof(NumeralValue).GetConstructor(new[]
+            var publicTypes = typeof(Value).Assembly.GetExportedTypes();
+            var obsoleteTypes = publicTypes
+                .Where(type => type.GetCustomAttribute<ObsoleteAttribute>() != null)
+                .Select(type => type.FullName);
+            var obsoleteMembers = publicTypes
+                .SelectMany(type => type.GetMembers(
+                    BindingFlags.Public |
+                    BindingFlags.Instance |
+                    BindingFlags.Static |
+                    BindingFlags.DeclaredOnly))
+                .Where(member => member.GetCustomAttribute<ObsoleteAttribute>() != null)
+                .Select(member => $"{member.DeclaringType?.FullName}.{member.Name}");
+
+            Assert.That(obsoleteTypes.Concat(obsoleteMembers), Is.Empty);
+            Assert.That(typeof(NumeralValue).GetConstructor(new[]
             {
                 typeof(List<int>), typeof(List<int>), typeof(bool), typeof(int)
-            });
-            var legacyToBase = typeof(NumeralValue).GetMethod(
+            }), Is.Null);
+            Assert.That(typeof(NumeralValue).GetMethod(
                 nameof(NumeralValue.ToBase),
-                new[] { typeof(int), typeof(bool) });
-            var legacyNumeralTo = typeof(Numeral).GetMethod(
+                new[] { typeof(int), typeof(bool) }), Is.Null);
+            Assert.That(typeof(Numeral).GetMethod(
                 nameof(Numeral.To),
-                new[] { typeof(NumeralSystems.Net.NumeralSystem) });
-
-            Assert.That(constructor?.GetCustomAttribute<ObsoleteAttribute>(), Is.Not.Null);
-            Assert.That(legacyToBase?.GetCustomAttribute<ObsoleteAttribute>(), Is.Not.Null);
-            Assert.That(legacyNumeralTo?.GetCustomAttribute<ObsoleteAttribute>(), Is.Not.Null);
+                new[] { typeof(NumeralSystems.Net.NumeralSystem) }), Is.Null);
         }
 
         [TestCase(0)]

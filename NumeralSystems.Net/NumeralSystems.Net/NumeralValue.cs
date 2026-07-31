@@ -87,31 +87,6 @@ namespace NumeralSystems.Net
         /// </summary>
         public bool IsZero => _exactValue.IsZero;
 
-        /// Represents a numeral value composed of integral and decimal parts, with
-        /// an optional negative sign and a specified base. Provides functionality
-        /// to convert from various numeric types and between different numeral
-        /// bases.
-        [Obsolete("Use NumeralValue.FromDigits(...) or NumeralValue.FromRational(...) in 5.0. This constructor remains for 4.x source compatibility.")]
-        public NumeralValue(List<int> integral, List<int> decimals, bool negative, int baseValue)
-        {
-            if (baseValue < 2)
-                throw new ArgumentOutOfRangeException(nameof(baseValue), "Base must be at least 2.");
-            if (integral is null) throw new ArgumentNullException(nameof(integral));
-            if (decimals is null) throw new ArgumentNullException(nameof(decimals));
-            if (!integral.TrueForAll(x => x >= 0 && x < baseValue))
-                throw new ArgumentOutOfRangeException(nameof(integral),
-                    $"All integral digits must be within the range [0,{baseValue - 1}].");
-            if (!decimals.TrueForAll(x => x >= 0 && x < baseValue))
-                throw new ArgumentOutOfRangeException(nameof(decimals),
-                    $"All fractional digits must be within the range [0,{baseValue - 1}].");
-            Integral = integral.AsReadOnly();
-            Decimals = decimals.AsReadOnly();
-            Negative = negative;
-            Base = baseValue;
-            _exactValue = RationalValue.FromDigits(integral, decimals, negative, baseValue);
-            IsExactRepresentation = true;
-        }
-
         private NumeralValue(
             RationalValue exactValue,
             int baseValue,
@@ -301,19 +276,6 @@ namespace NumeralSystems.Net
         public Value ToValue() => new Value(Integral.ToList(), Base);
 
         /// <summary>
-        /// Converts this value to another numeral base.
-        /// </summary>
-        /// <param name="baseValue">The destination base. It must be at least 2.</param>
-        /// <param name="removeFirstZeros">Whether to remove leading zeroes from the integral part.</param>
-        /// <returns>
-        /// A new value represented in <paramref name="baseValue"/>, using at most
-        /// <see cref="DefaultMaxFractionalDigits"/> fractional digits.
-        /// </returns>
-        [Obsolete("Use ToBase(int, NumeralConversionOptions) to choose period, rounding, and infinite-expansion behavior explicitly.")]
-        public NumeralValue ToBase(int baseValue, bool removeFirstZeros = true)
-            => ToBase(baseValue, DefaultMaxFractionalDigits, removeFirstZeros);
-
-        /// <summary>
         /// Converts this exact value to another positional base using explicit,
         /// immutable expansion options.
         /// </summary>
@@ -321,70 +283,6 @@ namespace NumeralSystems.Net
         {
             if (options is null) throw new ArgumentNullException(nameof(options));
             return FromExpansion(_exactValue.Expand(baseValue, options));
-        }
-
-        /// <summary>
-        /// Converts this value to another base using at most the requested number of fractional digits.
-        /// </summary>
-        /// <param name="baseValue">The destination base.</param>
-        /// <param name="maxFractionalDigits">The maximum number of fractional digits to generate.</param>
-        /// <param name="removeFirstZeros">Whether to remove leading zeroes from the integral part.</param>
-        /// <returns>The converted value. Repeating fractions are truncated at the requested limit.</returns>
-        [Obsolete("Use ToBase(int, NumeralConversionOptions). The 4.x overload truncates repeating expansions and is retained for migration.")]
-        public NumeralValue ToBase(
-            int baseValue,
-            int maxFractionalDigits,
-            bool removeFirstZeros = true)
-        {
-            TryToBase(baseValue, maxFractionalDigits, out var result, removeFirstZeros);
-            return result;
-        }
-
-        /// <summary>
-        /// Attempts an exact base conversion within a fractional digit limit.
-        /// </summary>
-        /// <param name="baseValue">The destination base.</param>
-        /// <param name="maxFractionalDigits">The maximum number of fractional digits to generate.</param>
-        /// <param name="result">The converted value, truncated if the method returns <c>false</c>.</param>
-        /// <param name="removeFirstZeros">Whether to remove leading zeroes from the integral part.</param>
-        /// <returns>
-        /// <c>true</c> when the fractional expansion terminates within the limit; otherwise, <c>false</c>.
-        /// </returns>
-        [Obsolete("Use Expand(int, NumeralConversionOptions) and inspect NumeralExpansion.IsTerminating/HasRepeatingPeriod.")]
-        public bool TryToBase(
-            int baseValue,
-            int maxFractionalDigits,
-            out NumeralValue result,
-            bool removeFirstZeros = true)
-        {
-            var options = new NumeralConversionOptions(
-                maxFractionalDigits,
-                NumeralRoundingMode.ToZero,
-                false,
-                InfiniteExpansionBehavior.Truncate);
-            var expansion = _exactValue.Expand(baseValue, options);
-            var integrals = expansion.IntegralDigits.ToList();
-            if (!removeFirstZeros)
-            {
-                var leadingZeros = Integral.TakeWhile(x => x == 0).Count();
-                if (leadingZeros == Integral.Count) leadingZeros = System.Math.Max(0, leadingZeros - 1);
-                integrals = Enumerable.Repeat(0, leadingZeros).Concat(integrals).ToList();
-            }
-
-            var fractionals = expansion.FractionalDigits.ToList();
-            if (Decimals.Count > 0 && maxFractionalDigits > 0 && fractionals.Count == 0)
-                fractionals.Add(0);
-
-            result = new NumeralValue(
-                _exactValue,
-                baseValue,
-                integrals,
-                fractionals,
-                null,
-                0,
-                expansion.IsTerminating,
-                false);
-            return expansion.IsTerminating;
         }
 
         /// <summary>

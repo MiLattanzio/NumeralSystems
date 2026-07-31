@@ -68,7 +68,8 @@ namespace NumeralSystem.Net.NUnit
             Assert.AreEqual(-1, minusOne.Decimal);
             Assert.Throws(typeof(InvalidOperationException), () => _base10.Parse("a", identity, separator, negativeSign, numberDecimalSeparator));
             Assert.Throws(typeof(InvalidOperationException), () => _base10.Parse("1.a", identity, separator, negativeSign, numberDecimalSeparator));
-            Assert.Throws(typeof(Exception), () => new Numeral(_base10, new List<int>(){-1}));
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                new Numeral(_base10, new List<int>() { -1 }));
         }
 
         [Test]

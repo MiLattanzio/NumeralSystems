@@ -10,6 +10,18 @@ namespace NumeralSystem.Net.NUnit
     public class BitPatternTests
     {
         [Test]
+        public void ParseUsesReadableMostSignificantBitOrder()
+        {
+            var pattern = BitPattern.Parse("1100_????");
+
+            Assert.That(pattern.ToString(), Is.EqualTo("1100????"));
+            Assert.That(pattern.Count, Is.EqualTo(8));
+            Assert.That(pattern.UnknownBitCount, Is.EqualTo(4));
+            Assert.That(pattern.MinValue, Is.EqualTo(new BigInteger(192)));
+            Assert.That(BitPattern.TryParse("10x1", out _), Is.False);
+        }
+
+        [Test]
         public void MetadataAndBoundedEnumerationAreExact()
         {
             var pattern = new BitPattern(new bool?[] { null, true, false, null });

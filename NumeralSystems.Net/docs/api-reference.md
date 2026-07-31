@@ -126,14 +126,14 @@ Stores one value in a `NumeralSystem`.
 | State | `Positive`, `Base`, copied `IntegralIndices`/`FractionalIndices`, `ExactValue` |
 | Text components | `GetIntegralStrings`, `GetIntegralString`, `GetFractionalStrings`, `GetFractionalString` |
 | Primitive views | `BigInteger`, `Integer`, `Char`, `Double`, `Decimal`, `Float`, `Bytes` |
-| Immutable creation | `FromRational`, `WithExactValue` |
-| Compatibility mutation | obsolete property setters and `TrySetValue` |
+| Immutable creation | `FromRational`, `FromRepresentation`, `WithExactValue` |
 | Conversion | `To(NumeralSystem, NumeralConversionOptions)` |
 | Formatting | `ToString()`, alphabet/identity overloads, `IFormattable.ToString(G/R, provider)`, .NET 8 `TryFormat` |
 
 `Numeral` also provides `NumeralAlphabet` overloads for digit access and
-formatting, plus `ToString(SerializationInfo)`. The parameterless conversion
-and mutating 4.x surface remain as a warning-based migration layer.
+formatting, plus `ToString(SerializationInfo)`. State and primitive views are
+read-only; create a replacement value when the exact value or representation
+must change.
 
 ### `NumeralAlphabet`
 
@@ -211,12 +211,14 @@ and reader/writer streaming. `GetSmallestBaseUtf16` and
 `CharacterIdentity.GetUtf16CodeUnits` and the .NET 8 `GetRunes` member return
 distinct units in first-occurrence order.
 
-## `NumeralSystems.Net.Serialization` (.NET 8)
+## `NumeralSystems.Net.Json` package (.NET 8)
 
-`NumeralJsonConverter` integrates `Numeral` with `System.Text.Json`. It writes
+`AddNumeralSystems(JsonSerializerOptions)` registers
+`NumeralSystems.Net.Serialization.NumeralJsonConverter`. The converter writes
 `base`, `positive`, `numerator`, `denominator`, `integral`, and `fractional`.
 Exact integers are strings to avoid JSON precision limits. The reader remains
-compatible with 4.8 digit-only JSON.
+compatible with 4.8 digit-only JSON. The core assembly has no converter
+attribute and does not register JSON behavior implicitly.
 
 ## `NumeralSystems.Net.Type.Base`
 
@@ -284,7 +286,7 @@ implements `IReadOnlyList<bool?>`.
 
 | Member family | Members |
 | --- | --- |
-| Construction | constructors from `IEnumerable<bool?>` or `IEnumerable<bool>`, `FromUnsigned`, `Unknown` |
+| Construction | constructors from `IEnumerable<bool?>` or `IEnumerable<bool>`, `Parse`, `TryParse`, `FromUnsigned`, `Unknown` |
 | Shape | `Count`, indexer, `ToArray`, `ToString` |
 | Cardinality | `UnknownBitCount`, `CandidateCount` |
 | Bounds | `MinValue`, `MaxValue`, `SignedMinValue`, `SignedMaxValue` |

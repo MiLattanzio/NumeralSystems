@@ -12,6 +12,8 @@
 [BitPattern engine](bit-patterns.md) ·
 [Incomplete values](incomplete-values.md) ·
 [String encoding](string-encoding.md) ·
+[Tool and playground](tool-and-playground.md) ·
+[Examples and notebooks](examples-and-notebooks.md) ·
 [Troubleshooting](troubleshooting.md) ·
 [API reference](api-reference.md) ·
 [Architecture](architecture.md) ·
@@ -39,7 +41,10 @@ directly on GitHub and changed without a documentation generator.
 | Run logical operations on primitive representations | `NumeralSystems.Net.Type.Base` |
 | Represent or solve for unknown bits | `NumeralSystems.Net.Type.Incomplete` |
 | Work with bounded, immutable unknown-bit sets | `BitPattern` |
-| Format with culture/custom tokens or serialize JSON | `NumeralFormatInfo` and `Numeral` |
+| Format with culture/custom tokens | `NumeralFormatInfo` and `Numeral` |
+| Serialize an exact numeral as JSON | `NumeralSystems.Net.Json` |
+| Convert or inspect from a shell | the `numsys` global tool |
+| Explore periods or unknown bits in a browser | the WebAssembly playground |
 
 ## Minimal example
 
@@ -103,6 +108,10 @@ factories. A digit is stored as an integer index from `0` through `base - 1`.
   enumeration, wrapper compatibility, and reverse operations.
 - [String encoding](string-encoding.md) separates numeral text, RFC byte
   codecs, UTF-16 code units, Unicode Runes, and streaming.
+- [Global tool and WebAssembly playground](tool-and-playground.md) documents
+  `numsys`, its exit codes, interactive visualizations, and static publishing.
+- [Executable examples and notebooks](examples-and-notebooks.md) maps runnable
+  console topics and educational `.dib` notebooks.
 - [Troubleshooting](troubleshooting.md) maps common symptoms and exceptions to
   concrete fixes.
 - [API reference](api-reference.md) catalogs the public namespaces, types, and
@@ -117,6 +126,8 @@ factories. A digit is stored as an integer index from `0` through `base - 1`.
   API to its explicit ordered-alphabet, UTF-16, Rune, or byte-codec replacement.
 - [Migrating to 5.0.0](migration-5.0.md) maps the warning-based 4.x layer to
   exact rational factories, immutable replacement, and explicit policies.
+- [Migrating to 5.1.0](migration-5.1.md) covers removal of obsolete members,
+  explicit JSON registration, and the new package/tool layout.
 - [Releasing](releasing.md) documents package versioning and automated
   publication to NuGet.org.
 

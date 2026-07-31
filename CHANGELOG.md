@@ -4,6 +4,44 @@ All notable changes to NumeralSystems.Net are documented in this file.
 
 The project follows [Semantic Versioning](https://semver.org/).
 
+## [5.1.0] - 2026-08-01
+
+### Added
+
+- Add the `dotnet-numeralsystems` global tool with the `numsys convert`,
+  `numsys inspect`, and `numsys solve` commands.
+- Add `BitPattern.Parse` and `TryParse` for readable MSB-first `0`/`1`/`?`
+  patterns with optional whitespace and `_` separators.
+- Add a standalone Blazor WebAssembly playground with arbitrary-base integer
+  conversion, exact fraction-period exploration and graphing, and a bounded
+  unknown-bit candidate visualizer.
+- Add the separately versioned `NumeralSystems.Net.Json` package with explicit,
+  idempotent `JsonSerializerOptions.AddNumeralSystems()` registration.
+- Add a compiled console examples project and educational .NET Interactive
+  notebooks for exact rationals, periods, unknown bits, and constraints.
+- Add CLI, playground, examples, notebook, JSON, and 5.1 migration guides.
+- Add exhaustive CLI tests alongside the existing 256-combination byte tests
+  and larger property-oriented bit-pattern tests.
+
+### Changed
+
+- Make `Numeral` state and primitive views read-only; immutable factories and
+  replacement methods are now the only mutation path.
+- Move `NumeralJsonConverter` out of the core assembly while retaining its
+  namespace and its exact, backward-readable JSON shape.
+- Extend the release pipeline to validate and publish the core, JSON, and tool
+  packages, validate a WebAssembly publish, export BenchmarkDotNet Markdown and
+  JSON results, and attach benchmark/playground archives to every release.
+- Compile the playground and executable examples as part of the solution and
+  CI warning-as-error build.
+
+### Removed
+
+- Remove every API marked obsolete in 5.0: mutating `Numeral` setters,
+  `TrySetValue`, the implicit-options `Numeral.To` overload, the list-based
+  `NumeralValue` constructor, legacy `ToBase` overloads, and `TryToBase`.
+- Remove implicit JSON converter registration from `Numeral`.
+
 ## [5.0.0] - 2026-07-31
 
 ### Added

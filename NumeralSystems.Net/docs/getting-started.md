@@ -12,12 +12,13 @@
 
 - .NET 8 SDK for the repository solution and test project;
 - a .NET Standard 2.1-compatible runtime for portable consumers, or .NET 8 for
-  Rune, Span, and built-in JSON integration;
+  Rune, Span, the playground, and optional JSON integration;
 - Git if you are building from the repository.
 
 The SDK version policy is recorded in `NumeralSystems.Net/global.json`.
-The package contains both `netstandard2.1` and `net8.0` assets; NuGet selects
-the closest compatible target automatically.
+The core package contains both `netstandard2.1` and `net8.0` assets; NuGet
+selects the closest compatible target automatically. JSON and tool packages
+target .NET 8.
 
 ## Clone, build, and test
 
@@ -36,8 +37,13 @@ The solution contains:
 ```text
 NumeralSystems.Net/
 ├── NumeralSystems.Net/            # .NET Standard 2.1 library
+├── NumeralSystems.Net.Json/       # optional System.Text.Json package
+├── NumeralSystems.Net.Tool/       # dotnet-numeralsystems / numsys
+├── NumeralSystems.Net.Playground/ # standalone Blazor WebAssembly app
+├── NumeralSystems.Net.Examples/   # compiled runnable examples
 ├── NumeralSystem.Net.NUnit/       # NUnit tests on .NET 8
 ├── NumeralSystems.Net.Benchmarks/ # BenchmarkDotNet performance suite
+├── examples/notebooks/            # educational .dib notebooks
 ├── docs/                          # Markdown documentation
 ├── NumeralSystems.Net.sln
 └── global.json

@@ -6,6 +6,8 @@ using System.Numerics;
 using System.Text.Json;
 using NumeralSystems.Net;
 using NumeralSystems.Net.Encoding;
+using NumeralSystems.Net.Json;
+using NumeralSystems.Net.Serialization;
 using NUnit.Framework;
 
 namespace NumeralSystem.Net.NUnit
@@ -13,6 +15,29 @@ namespace NumeralSystem.Net.NUnit
     [TestFixture]
     public class Encoding48Tests
     {
+        private static JsonSerializerOptions NumeralJsonOptions() =>
+            new JsonSerializerOptions().AddNumeralSystems();
+
+        [Test]
+        public void JsonRegistrationIsExplicitAndIdempotent()
+        {
+            var options = new JsonSerializerOptions();
+
+            options.AddNumeralSystems().AddNumeralSystems();
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(
+                    typeof(Numeral).GetCustomAttributes(
+                        typeof(System.Text.Json.Serialization.JsonConverterAttribute),
+                        inherit: true),
+                    Is.Empty);
+                Assert.That(
+                    options.Converters.Count(converter => converter is NumeralJsonConverter),
+                    Is.EqualTo(1));
+            });
+        }
+
         [Test]
         public void EmptyInputsHaveDefinedResults()
         {
@@ -263,8 +288,9 @@ namespace NumeralSystem.Net.NUnit
             system.AdjustToFitIntegralLength = false;
             var value = new Numeral(system, new[] { 0, 15 }.ToList(), new[] { 0, 1 }.ToList(), false);
 
-            var json = JsonSerializer.Serialize(value);
-            var roundTrip = JsonSerializer.Deserialize<Numeral>(json);
+            var options = NumeralJsonOptions();
+            var json = JsonSerializer.Serialize(value, options);
+            var roundTrip = JsonSerializer.Deserialize<Numeral>(json, options);
 
             Assert.That(roundTrip, Is.Not.Null);
             Assert.Multiple(() =>
@@ -283,8 +309,9 @@ namespace NumeralSystem.Net.NUnit
             system.AdjustToFitIntegralLength = false;
             var value = Numeral.FromRational(system, new RationalValue(1, 3));
 
-            var json = JsonSerializer.Serialize(value);
-            var roundTrip = JsonSerializer.Deserialize<Numeral>(json);
+            var options = NumeralJsonOptions();
+            var json = JsonSerializer.Serialize(value, options);
+            var roundTrip = JsonSerializer.Deserialize<Numeral>(json, options);
 
             Assert.That(roundTrip, Is.Not.Null);
             Assert.That(roundTrip.ExactValue, Is.EqualTo(new RationalValue(1, 3)));
@@ -296,14 +323,18 @@ namespace NumeralSystem.Net.NUnit
         {
             const string json =
                 "{\"base\":2,\"positive\":true,\"integral\":[2],\"fractional\":[]}";
-            Assert.Throws<JsonException>(() => JsonSerializer.Deserialize<Numeral>(json));
+            Assert.Throws<JsonException>(() =>
+                JsonSerializer.Deserialize<Numeral>(json, NumeralJsonOptions()));
         }
 
         [Test]
         public void JsonSerializationPreservesEmptyDigitArrays()
         {
             var value = new Numeral();
-            var roundTrip = JsonSerializer.Deserialize<Numeral>(JsonSerializer.Serialize(value));
+            var options = NumeralJsonOptions();
+            var roundTrip = JsonSerializer.Deserialize<Numeral>(
+                JsonSerializer.Serialize(value, options),
+                options);
 
             Assert.That(roundTrip, Is.Not.Null);
             Assert.Multiple(() =>

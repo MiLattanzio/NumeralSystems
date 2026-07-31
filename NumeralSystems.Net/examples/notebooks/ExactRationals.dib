@@ -1,0 +1,47 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":["c#","C#"],"name":"csharp"},{"name":"markdown"}]}}
+
+#!markdown
+
+# Exact fractions and repeating periods
+
+This notebook keeps `1/10` as the exact rational `1/10`, then asks for a binary
+representation. The repeated block is metadata, not a rounded `decimal` value.
+
+#!csharp
+
+#r "nuget: NumeralSystems.Net, 5.1.0"
+using NumeralSystems.Net;
+
+var options = new NumeralConversionOptions(
+    256,
+    NumeralRoundingMode.ToNearestEven,
+    detectRepeatingPeriod: true,
+    InfiniteExpansionBehavior.PreservePeriod);
+
+var oneTenth = new RationalValue(1, 10);
+var binary = oneTenth.Expand(2, options);
+new {
+    Text = binary.ToString(NumeralAlphabet.Base2),
+    binary.RepeatingStartIndex,
+    binary.RepeatingLength,
+    Exact = binary.Value.ToString()
+}
+
+#!markdown
+
+Compare bases. A denominator terminates exactly when all of its reduced prime
+factors also divide the destination base.
+
+#!csharp
+
+Enumerable.Range(2, 19)
+    .Select(denominator => {
+        var expansion = new RationalValue(1, denominator).Expand(10, options);
+        return new {
+            Denominator = denominator,
+            expansion.IsTerminating,
+            expansion.RepeatingLength
+        };
+    })

@@ -84,8 +84,8 @@ implements `IFormattable` on all targets and `ISpanFormattable` on .NET 8.
 Provider parsing routes back through the same validated `NumeralAlphabet`
 scanner, so there is no second text grammar.
 
-On .NET 8, `NumeralJsonConverter` serializes numeric structure rather than
-formatted text:
+On .NET 8, the optional `NumeralSystems.Net.Json` package serializes numeric
+structure rather than formatted text through `NumeralJsonConverter`:
 
 ```text
 Numeral -> { base, positive, numerator, denominator, integral[], fractional[] }
@@ -136,13 +136,13 @@ Combines a `NumeralSystem` reference with:
 
 - integral digits;
 - fractional digits;
-- a sign.
+- a sign;
 - an exact `RationalValue` snapshot when created through the 5.0 factories.
 
 It is the appropriate type when parsing, formatting, and custom alphabets are
-part of the operation. Digit getters return copies. The 4.x mutation surface is
-retained with migration warnings; new code creates replacement values with
-`FromRational` and `WithExactValue`.
+part of the operation. Digit getters return copies. The 4.x mutation surface
+was removed in 5.1; create replacement values with `FromRational`,
+`FromRepresentation`, and `WithExactValue`.
 
 ### `Value`
 

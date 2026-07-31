@@ -56,16 +56,34 @@ jobs:
           --no-restore
           --verbosity normal
 
-      - name: Validate NuGet package
+      - name: Validate NuGet packages
+        working-directory: NumeralSystems.Net
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for project in \
+            NumeralSystems.Net/NumeralSystems.Net.csproj \
+            NumeralSystems.Net.Json/NumeralSystems.Net.Json.csproj \
+            NumeralSystems.Net.Tool/NumeralSystems.Net.Tool.csproj
+          do
+            dotnet pack "$project" \
+              --configuration Release \
+              --no-build \
+              --no-restore \
+              --output artifacts/validation \
+              -p:ContinuousIntegrationBuild=true \
+              -p:GeneratePackageOnBuild=false
+          done
+
+      - name: Validate WebAssembly publish
         working-directory: NumeralSystems.Net
         run: >-
-          dotnet pack NumeralSystems.Net/NumeralSystems.Net.csproj
+          dotnet publish NumeralSystems.Net.Playground/NumeralSystems.Net.Playground.csproj
           --configuration Release
           --no-build
           --no-restore
-          --output artifacts/validation
-          -p:ContinuousIntegrationBuild=true
-          -p:GeneratePackageOnBuild=false
+          --output artifacts/playground-validation
 
   publish-nuget:
     name: Package and publish to NuGet.org
@@ -108,23 +126,32 @@ jobs:
 
       - name: Restore package dependencies
         working-directory: NumeralSystems.Net
-        run: dotnet restore NumeralSystems.Net/NumeralSystems.Net.csproj
+        run: dotnet restore NumeralSystems.Net.sln
 
-      - name: Create NuGet package
+      - name: Create NuGet packages
         working-directory: NumeralSystems.Net
-        run: >-
-          dotnet pack NumeralSystems.Net/NumeralSystems.Net.csproj
-          --configuration Release
-          --no-restore
-          --output artifacts
-          -p:PackageVersion=${{ steps.package-version.outputs.value }}
-          -p:ContinuousIntegrationBuild=true
-          -p:GeneratePackageOnBuild=false
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for project in \
+            NumeralSystems.Net/NumeralSystems.Net.csproj \
+            NumeralSystems.Net.Json/NumeralSystems.Net.Json.csproj \
+            NumeralSystems.Net.Tool/NumeralSystems.Net.Tool.csproj
+          do
+            dotnet pack "$project" \
+              --configuration Release \
+              --no-restore \
+              --output artifacts \
+              -p:PackageVersion=${{ steps.package-version.outputs.value }} \
+              -p:ContinuousIntegrationBuild=true \
+              -p:GeneratePackageOnBuild=false
+          done
 
       - name: Upload NuGet package artifact
         uses: actions/upload-artifact@v7
         with:
-          name: NumeralSystems.Net-${{ steps.package-version.outputs.value }}
+          name: NumeralSystems.Net-packages-${{ steps.package-version.outputs.value }}
           path: |
             NumeralSystems.Net/artifacts/*.nupkg
             NumeralSystems.Net/artifacts/*.snupkg
@@ -137,7 +164,7 @@ jobs:
         with:
           user: ${{ vars.NUGET_USER }}
 
-      - name: Publish package to NuGet.org
+      - name: Publish packages to NuGet.org
         shell: bash
         run: |
           set -euo pipefail
@@ -146,3 +173,81 @@ jobs:
             --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" \
             --source "https://api.nuget.org/v3/index.json" \
             --skip-duplicate
+
+  publish-release-assets:
+    name: Publish benchmarks and playground
+    if: github.event_name == 'release'
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out release tag
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore release projects
+        working-directory: NumeralSystems.Net
+        run: dotnet restore NumeralSystems.Net.sln
+
+      - name: Run and export benchmarks
+        working-directory: NumeralSystems.Net
+        run: >-
+          dotnet run
+          --project NumeralSystems.Net.Benchmarks/NumeralSystems.Net.Benchmarks.csproj
+          --configuration Release
+          --no-restore
+          --
+          --job short
+          --exporters json
+          --artifacts artifacts/benchmarks
+
+      - name: Publish WebAssembly playground
+        working-directory: NumeralSystems.Net
+        run: >-
+          dotnet publish NumeralSystems.Net.Playground/NumeralSystems.Net.Playground.csproj
+          --configuration Release
+          --no-restore
+          --output artifacts/playground
+
+      - name: Create release archives
+        working-directory: NumeralSystems.Net
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+
+          version="${RELEASE_TAG#v}"
+          tar -czf "artifacts/NumeralSystems.Net-benchmarks-$version.tar.gz" \
+            -C artifacts/benchmarks .
+          cd artifacts/playground/wwwroot
+          zip -qr "../../NumeralSystems.Net-playground-$version.zip" .
+
+      - name: Upload release asset artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: NumeralSystems.Net-release-assets-${{ github.event.release.tag_name }}
+          path: |
+            NumeralSystems.Net/artifacts/NumeralSystems.Net-benchmarks-*.tar.gz
+            NumeralSystems.Net/artifacts/NumeralSystems.Net-playground-*.zip
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Attach assets to GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: >-
+          gh release upload "$RELEASE_TAG"
+          NumeralSystems.Net/artifacts/NumeralSystems.Net-benchmarks-*.tar.gz
+          NumeralSystems.Net/artifacts/NumeralSystems.Net-playground-*.zip
+          --clobber

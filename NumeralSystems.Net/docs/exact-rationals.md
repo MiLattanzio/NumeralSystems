@@ -210,10 +210,10 @@ Console.WriteLine(numeral.ExactValue); // 1/3
 Console.WriteLine(changed.ExactValue); // 2/3
 ```
 
-The 4.x mutating setters remain available with `Obsolete` migration warnings.
-Digit getters return copies, so modifying a returned `List<int>` no longer
-changes the numeral. Prefer replacement through `FromRational`,
-`WithExactValue`, and `To(system, options)`.
+The old 4.x mutating setters were removed in 5.1. Digit getters return copies,
+so modifying a returned `List<int>` never changes the numeral. Use immutable
+replacement through `FromRational`, `FromRepresentation`, `WithExactValue`,
+and `To(system, options)`.
 
 ## Decimal conversion
 
@@ -222,13 +222,15 @@ changes the numeral. Prefer replacement through `FromRational`,
 separately. Values outside the final `decimal` range throw `OverflowException`.
 The optional rounding mode uses the same enum as positional expansion.
 
-## JSON on .NET 8
+## JSON package on .NET 8
 
-`NumeralJsonConverter` writes the exact numerator and denominator as decimal
-strings in addition to the base, sign, and digit arrays. Strings avoid JSON
-number precision limits. The reader still accepts 4.8 JSON that contains only
-digits; 5.0 JSON round-trips a rational value even when its displayed digits
-are a finite projection of a repeating expansion.
+The optional `NumeralSystems.Net.Json` package provides
+`NumeralJsonConverter`. It writes the exact numerator and denominator as
+decimal strings in addition to the base, sign, and digit arrays. Strings avoid
+JSON number precision limits. The reader still accepts 4.8 JSON that contains
+only digits; exact JSON round-trips a rational value even when its displayed
+digits are a finite projection of a repeating expansion. Register it through
+`new JsonSerializerOptions().AddNumeralSystems()`.
 
 ## Safety and performance
 
@@ -238,4 +240,3 @@ untrusted denominators. `Truncate` and `Round` with detection disabled use
 constant auxiliary state. Integral conversion and arithmetic remain
 arbitrary-precision operations and can consume memory proportional to input
 size.
-

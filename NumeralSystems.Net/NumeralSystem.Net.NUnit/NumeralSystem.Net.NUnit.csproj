@@ -17,6 +17,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\NumeralSystems.Net\NumeralSystems.Net.csproj" />
+      <ProjectReference Include="..\NumeralSystems.Net.Json\NumeralSystems.Net.Json.csproj" />
+      <ProjectReference Include="..\NumeralSystems.Net.Tool\NumeralSystems.Net.Tool.csproj" />
     </ItemGroup>
 
 </Project>

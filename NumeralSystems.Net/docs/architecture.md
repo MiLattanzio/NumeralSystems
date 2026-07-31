@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [API reference](api-reference.md) ·
+[BitPattern engine](bit-patterns.md) ·
 [Migration guide](migration-4.7.md) ·
 [Contributing](../../CONTRIBUTING.md)
 
@@ -184,11 +185,30 @@ Incomplete types use `bool?`:
 | `true` | known one |
 | `null` | unknown bit |
 
-Candidate count grows exponentially. New APIs should avoid eager enumeration
-unless the caller explicitly requests it.
+`BitPattern` owns the shared set logic, exact `BigInteger` cardinality,
+bounded candidate enumeration, compatibility/intersection, shifts, rotations,
+and reverse constraints. `IncompleteBitPattern<TSelf>` adapts that immutable
+engine to every legacy mutable `Incomplete*` wrapper.
+`CompleteBitPattern<TSelf, TIncomplete>` exposes reverse XOR/NAND on the
+complete primitive wrappers through the same engine.
 
-Reverse logical operations produce an incomplete operand that describes every
-compatible complete value.
+```text
+IncompleteInt / IncompleteLong / ...
+                 |
+                 v
+      IncompleteBitPattern<TSelf>
+                 |
+                 v
+             BitPattern
+```
+
+Candidate count grows exponentially. New APIs use
+`EnumerateCandidates(limit)` so callers must choose an explicit upper bound.
+The historical unbounded `Enumerable` properties remain for compatibility.
+
+Reverse logical operations produce a pattern containing the per-bit projection
+of every compatible complete value. The representation intentionally cannot
+encode correlations between different bit positions.
 
 ## Test organization
 

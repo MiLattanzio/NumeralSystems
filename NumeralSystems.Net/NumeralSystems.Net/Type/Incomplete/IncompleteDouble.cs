@@ -9,7 +9,7 @@ using Double = NumeralSystems.Net.Type.Base.Double;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteDouble: IIRregularOperable<IncompleteDouble, Double, double, ulong>
+    public partial class IncompleteDouble: IncompleteBitPattern<IncompleteDouble>, IIRregularOperable<IncompleteDouble, Double, double, ulong>
     {
         private bool?[] _binary;
 
@@ -111,7 +111,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// <returns>The result of the OR operation.</returns>
         public IncompleteDouble Or(Double other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// <returns>The result of the OR operation.</returns>
         public IncompleteDouble Or(IncompleteDouble other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>

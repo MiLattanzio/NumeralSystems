@@ -18,14 +18,14 @@ namespace NumeralSystems.Net.Type.Incomplete
     /// The <c>IncompleteUShort</c> class implements the <c>IIRregularOperable</c> interface, which defines the operations that can be performed on incomplete values.
     /// </para>
     /// </remarks>
-    public class IncompleteUShort : IIRregularOperable<IncompleteUShort, UShort, ushort, uint>
+    public partial class IncompleteUShort : IncompleteBitPattern<IncompleteUShort>, IIRregularOperable<IncompleteUShort, UShort, ushort, uint>
     {
         private bool?[] _binary;
 
         public bool?[] Binary
         {
             get => _binary ?? System.Linq.Enumerable.Repeat(false, 8 * sizeof(ushort)).Select(x => x as bool?).ToArray();
-            internal set
+            set
             {
                 if (null == value)
                 {

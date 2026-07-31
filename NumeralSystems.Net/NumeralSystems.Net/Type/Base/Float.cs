@@ -12,7 +12,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Represents a single-precision floating-point number with various binary operations.
     /// </summary>
-    public sealed partial class Float : IRegularOperable<IncompleteFloat, Float, float, uint>
+    public sealed partial class Float : CompleteBitPattern<Float, IncompleteFloat>, IRegularOperable<IncompleteFloat, Float, float, uint>
     {
         /// <summary>
         /// Creates a Float instance from a binary array.

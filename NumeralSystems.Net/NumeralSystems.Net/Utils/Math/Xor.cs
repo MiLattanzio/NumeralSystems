@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Utils
 {
@@ -81,11 +82,7 @@ namespace NumeralSystems.Net.Utils
         /// </returns>
         public static bool?[] Xor(this bool[] left, bool?[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[left.Length];
-            for (var i = 0; i < left.Length; i++)
-                result[i] = left[i].Xor(right[i]);
-            return result;
+            return new BitPattern(left).Xor(new BitPattern(right)).ToArray();
         }
 
         /// <summary>
@@ -112,11 +109,7 @@ namespace NumeralSystems.Net.Utils
         /// <exception cref="ArgumentException">Thrown when the lengths of the input arrays are not equal.</exception>
         public static bool?[] Xor(this bool?[] left, bool?[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[left.Length];
-            for (var i = 0; i < left.Length; i++)
-                result[i] = left[i].Xor(right[i]);
-            return result;
+            return new BitPattern(left).Xor(new BitPattern(right)).ToArray();
         }
 
         /// <summary>
@@ -127,11 +120,7 @@ namespace NumeralSystems.Net.Utils
         /// <returns>The result of the XOR operation between the left and right operands. The result is null if any of the operands is null.</returns>
         public static bool?[] Xor(this bool?[] left, bool[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[left.Length];
-            for (var i = 0; i < left.Length; i++)
-                result[i] = left[i].Xor(right[i]);
-            return result;
+            return new BitPattern(left).Xor(new BitPattern(right)).ToArray();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace NumeralSystems.Net.Type.Incomplete
     /// <summary>
     /// Represents an incomplete float with various bitwise operations.
     /// </summary>
-    public class IncompleteFloat: IIRregularOperable<IncompleteFloat, Float, float, uint>
+    public partial class IncompleteFloat: IncompleteBitPattern<IncompleteFloat>, IIRregularOperable<IncompleteFloat, Float, float, uint>
     {
         private bool?[] _binary;
 
@@ -113,7 +113,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// <returns>The result of the OR operation.</returns>
         public IncompleteFloat Or(Float other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// <returns>The result of the OR operation.</returns>
         public IncompleteFloat Or(IncompleteFloat other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>

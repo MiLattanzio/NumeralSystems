@@ -1,5 +1,7 @@
 ﻿using System;
 
+using NumeralSystems.Net.Type.Incomplete;
+
 namespace NumeralSystems.Net.Utils
 {
     /// <summary>
@@ -78,11 +80,7 @@ namespace NumeralSystems.Net.Utils
         /// <returns>The result of the logical NAND operation.</returns>
         public static bool?[] Nand(this bool[] left, bool?[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[left.Length];
-            for (var i = 0; i < left.Length; i++)
-                result[i] = left[i].Nand(right[i]);
-            return result;
+            return new BitPattern(left).Nand(new BitPattern(right)).ToArray();
         }
 
         /// <summary>
@@ -95,11 +93,7 @@ namespace NumeralSystems.Net.Utils
         /// </returns>
         public static bool?[] Nand(this bool?[] left, bool?[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[left.Length];
-            for (var i = 0; i < left.Length; i++)
-                result[i] = left[i].Nand(right[i]);
-            return result;
+            return new BitPattern(left).Nand(new BitPattern(right)).ToArray();
         }
 
         /// <summary>
@@ -110,11 +104,7 @@ namespace NumeralSystems.Net.Utils
         /// <returns>The logical NAND of the two boolean values. Returns true if any of the values are false, otherwise returns false.</returns>
         public static bool?[] Nand(this bool?[] left, bool[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[left.Length];
-            for (var i = 0; i < left.Length; i++)
-                result[i] = left[i].Nand(right[i]);
-            return result;
+            return new BitPattern(left).Nand(new BitPattern(right)).ToArray();
         }
     }
 }

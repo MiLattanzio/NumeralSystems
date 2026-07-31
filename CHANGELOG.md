@@ -8,6 +8,16 @@ The project follows [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Add the immutable `BitPattern` engine shared by every `Incomplete*` wrapper.
+- Add exact `BigInteger` candidate counts, unsigned and two's-complement bounds,
+  membership checks, and explicitly bounded candidate enumeration.
+- Add three-valued masks, logical and arithmetic shifts, rotate-left and
+  rotate-right operations.
+- Add pattern compatibility, intersection, reverse XOR/NAND, and APIs for
+  solving constraints such as `x & mask == result`.
+- Add exhaustive coverage for every pair of byte values and every byte
+  shift/rotation, plus deterministic property tests for 32-bit and 64-bit
+  patterns.
 - Add exact-rational `Add`, `Subtract`, `Multiply`, and `Divide` operations to
   `NumeralValue`, including overloads that report whether the destination
   expansion terminated within a configurable digit limit.
@@ -17,13 +27,17 @@ The project follows [Semantic Versioning](https://semver.org/).
   `NumericallyEquals`, and relational operators.
 - Add BenchmarkDotNet coverage for same-base arithmetic, cross-base arithmetic,
   repeating division, and large-value comparison.
-- Add dedicated guides for arithmetic, recipes, troubleshooting, migration, and
-  project architecture.
+- Add dedicated guides for the `BitPattern` engine, arithmetic, recipes,
+  troubleshooting, migration, and project architecture.
 - Include the complete Markdown guide set, changelog, contribution policy,
   security policy, code of conduct, and license in the NuGet package.
 
 ### Changed
 
+- Route nullable Boolean operations and legacy incomplete wrappers through the
+  shared set-based ternary logic.
+- Make `Binary` setters consistently public across incomplete wrapper types
+  while retaining their existing members and construction patterns.
 - Perform arithmetic with reduced arbitrary-precision rational intermediates,
   converting to a finite positional representation only for the final result.
 - Expand both READMEs, the documentation index, getting-started guide, numeral

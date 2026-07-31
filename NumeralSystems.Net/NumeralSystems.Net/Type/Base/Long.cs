@@ -10,7 +10,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Represents a 64-bit signed integer with various binary operations.
     /// </summary>
-    public sealed class Long : IRegularOperable<IncompleteLong, Long, long, ulong>
+    public sealed partial class Long : CompleteBitPattern<Long, IncompleteLong>, IRegularOperable<IncompleteLong, Long, long, ulong>
     {
         /// <summary>
         /// Creates a Long instance from a binary array.

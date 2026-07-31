@@ -6,6 +6,7 @@
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [Bitwise values](bitwise-values.md) ·
+[BitPattern engine](bit-patterns.md) ·
 [Incomplete values](incomplete-values.md)
 
 This Markdown reference catalogs the public surface by namespace and member
@@ -128,12 +129,14 @@ Numeric wrappers share these member families:
 | `BitLength` | Return the primitive width |
 | `this[index]` | Access one bit |
 | `Not`, `And`, `Or`, `Xor`, `Nand` | Return a new logical result |
-| `ReverseAnd`, `ReverseOr` | Solve for possible left operands |
+| `ReverseAnd`, `ReverseOr`, `ReverseXor`, `ReverseNand` | Solve for possible left operands |
 | `Incomplete` | Convert to the corresponding fully known incomplete value |
 | `ToString()` | Format the binary representation |
 | `ToString(format)` | Delegate formatting to the underlying primitive |
 
 Overloads accept either a complete wrapper or the matching incomplete type.
+The wrappers derive reverse XOR/NAND behavior and immutable `Pattern` snapshots
+from `CompleteBitPattern<TSelf, TIncomplete>`.
 
 ### Base-conversion helpers
 
@@ -157,6 +160,32 @@ base-conversion methods are described in [String encoding](string-encoding.md).
 
 ## `NumeralSystems.Net.Type.Incomplete`
 
+### `BitPattern`
+
+The immutable shared engine uses least-significant-bit-first `bool?` values and
+implements `IReadOnlyList<bool?>`.
+
+| Member family | Members |
+| --- | --- |
+| Construction | constructors from `IEnumerable<bool?>` or `IEnumerable<bool>`, `FromUnsigned`, `Unknown` |
+| Shape | `Count`, indexer, `ToArray`, `ToString` |
+| Cardinality | `UnknownBitCount`, `CandidateCount` |
+| Bounds | `MinValue`, `MaxValue`, `SignedMinValue`, `SignedMaxValue` |
+| Membership | `IsMatch`, `IsSignedMatch` |
+| Enumeration | `EnumerateCandidates`, `EnumerateBitArrays` |
+| Logic | `Not`, `And`, `ApplyMask`, `Or`, `Xor`, `Nand` |
+| Compatibility | `IsCompatibleWith`, `TryIntersect`, `Intersect` |
+| Reverse logic | `TryReverseAnd`, `TryReverseOr`, `TryReverseXor`, `ReverseXor`, `TryReverseNand`, `ReverseNand` |
+| Constraints | `TrySolveAnd`, `SolveAnd` |
+| Shifts | `ShiftLeft`, `LogicalShiftLeft`, `ArithmeticShiftLeft`, `LogicalShiftRight`, `ArithmeticShiftRight` |
+| Rotations | `RotateLeft`, `RotateRight` |
+
+Candidate counts, encoded bounds, candidate values, and limits use
+`System.Numerics.BigInteger`. See the [BitPattern guide](bit-patterns.md) for
+set semantics and examples.
+
+### Incomplete primitive wrappers
+
 Incomplete primitive types store `bool?[] Binary`. Most expose:
 
 | Member | Purpose |
@@ -164,15 +193,26 @@ Incomplete primitive types store `bool?[] Binary`. Most expose:
 | `Binary` | Ternary bit array: zero, one, or unknown |
 | `IsComplete` | Whether every bit is known |
 | `Permutations` | Candidate count implied by unknown bits |
+| `Pattern` | Immutable `BitPattern` snapshot |
+| `UnknownBitCount` / `CandidateCount` | Safe cardinality metadata |
+| `MinValue` / `MaxValue` | Unsigned encoded bounds |
+| `SignedMinValue` / `SignedMaxValue` | Two's-complement bounds |
+| `IsMatch` / `IsSignedMatch` | Test encoded candidate membership |
+| `EnumerateCandidates(limit)` | Lazily enumerate at most the requested number |
 | `this[index]` | Materialize one candidate |
 | `Enumerable` | Enumerate all candidates |
 | `ByteArray` / `ToByteArray` | Split into incomplete bytes |
 | `Contains` | Test complete or incomplete compatibility |
-| `Not`, `And`, `Or`, `Xor` | Three-valued logical operations |
-| `ReverseAnd`, `ReverseOr` | Solve a logical equation when possible |
+| `Not`, `And`, `Or`, `Xor`, `Nand`, `ApplyMask` | Three-valued logical operations |
+| `ReverseAnd`, `ReverseOr`, `ReverseXor`, `ReverseNand` | Solve a logical equation when possible |
+| `IsCompatibleWith`, `TryIntersect`, `Intersect` | Compare and combine constraints |
+| shift and rotate methods | Transform patterns while retaining their width |
+| `TrySolveAnd` | Solve `x AND mask == result` |
 | `ToString(missingSeparator)` | Format unknown bits with a chosen marker |
 
 `IncompleteByteArray` groups and converts arrays of ternary bits.
+The wrapper family shares the members above through
+`IncompleteBitPattern<TSelf>`.
 
 ## `NumeralSystems.Net.Encoding`
 

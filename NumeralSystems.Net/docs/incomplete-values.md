@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [Bitwise values](bitwise-values.md) ·
+[BitPattern engine](bit-patterns.md) ·
 [Cookbook](cookbook.md) ·
 [Troubleshooting](troubleshooting.md) ·
 [API reference](api-reference.md)
@@ -15,6 +16,10 @@ array:
 
 This model is useful for partial binary data and for the result of solving a
 logical operation backwards.
+
+Version 4.7 centralizes these rules in the immutable
+[`BitPattern`](bit-patterns.md) engine. The existing `Incomplete*` classes keep
+their constructors and legacy members while inheriting the new shared API.
 
 ## Supported types
 
@@ -50,6 +55,8 @@ pattern.Binary[1] = null;
 
 Console.WriteLine(pattern.IsComplete);   // False
 Console.WriteLine(pattern.Permutations); // 4
+Console.WriteLine(pattern.UnknownBitCount); // 2
+Console.WriteLine(pattern.CandidateCount);  // 4 as BigInteger
 Console.WriteLine(pattern.ToString("?"));
 ```
 
@@ -94,23 +101,47 @@ Console.WriteLine(pattern.Contains(new ByteValue { Value = 0 })); // False
 ```
 
 Two incomplete patterns are compatible when no position requires conflicting
-known bits.
+known bits. New code can make that intent explicit with `IsCompatibleWith` and
+can combine constraints with `TryIntersect` or `Intersect`.
 
 ## Enumerate candidates
 
-`Permutations` is the count implied by the unknown bits. The indexer selects one
-candidate, and `Enumerable` walks all candidates:
+`CandidateCount` is the exact count implied by the unknown bits and uses
+`BigInteger`. Unlike the older fixed-width `Permutations` property, it cannot
+overflow at 32 or 64 bits.
+
+New code should enumerate with an explicit upper bound:
 
 ```csharp
-foreach (var candidate in pattern.Enumerable)
+foreach (var encodedCandidate in pattern.EnumerateCandidates(limit: 100))
 {
-    Console.WriteLine(candidate.Value);
+    Console.WriteLine(encodedCandidate);
 }
 ```
 
-The candidate count grows as `2^unknownBits`. Enumerating a pattern with many
-unknown bits is expensive and can be impractical. Prefer `Contains` when you
-only need to test a known value.
+The method yields at most `limit` unsigned encoded `BigInteger` values. The
+candidate count grows as `2^unknownBits`, so a bounded API prevents an
+accidental traversal of billions of combinations.
+
+The indexer and `Enumerable` remain available for compatibility and materialize
+the wrapper's complete counterpart. Prefer `IsMatch`, `IsSignedMatch`, or
+`Contains` when only membership is needed.
+
+## Bounds
+
+Every incomplete wrapper exposes both encoded and signed bounds:
+
+```csharp
+Console.WriteLine(pattern.MinValue);
+Console.WriteLine(pattern.MaxValue);
+Console.WriteLine(pattern.SignedMinValue);
+Console.WriteLine(pattern.SignedMaxValue);
+```
+
+`MinValue` and `MaxValue` interpret the bits as an unsigned encoding.
+`SignedMinValue` and `SignedMaxValue` use two's complement. For floating-point
+and decimal wrappers, these are bit-pattern bounds rather than mathematical
+numeric bounds.
 
 ## Reverse `AND`
 
@@ -159,11 +190,81 @@ if (result.ReverseOr(right, out var possibleLeft))
 Both the result and right operand can be incomplete. The library propagates
 unknown bits through its three-valued logical rules.
 
+## Reverse `XOR` and `NAND`
+
+The shared wrapper API also solves:
+
+```text
+left XOR right = result
+left NAND right = result
+```
+
+```csharp
+var left = new NumeralSystems.Net.Type.Base.Int { Value = 0b1100 }.Incomplete();
+var right = new NumeralSystems.Net.Type.Base.Int { Value = 0b1010 }.Incomplete();
+var xorResult = left.Xor(right);
+
+if (xorResult.ReverseXor(right, out var possibleLeft))
+{
+    Console.WriteLine(possibleLeft.IsMatch(0b1100)); // True
+}
+```
+
+`ReverseNand` has the same Boolean-returning shape. The direct `BitPattern`
+engine additionally offers throwing `ReverseXor` and `ReverseNand` methods.
+
+## Shifts, rotations, and masks
+
+Each `Incomplete*` wrapper now exposes:
+
+- `LogicalShiftLeft` and `ArithmeticShiftLeft`;
+- `LogicalShiftRight` and `ArithmeticShiftRight`;
+- `RotateLeft` and `RotateRight`;
+- `ApplyMask`.
+
+The width never changes. Logical shifts fill with known zeroes, arithmetic right
+shift extends the highest bit, and rotations wrap bits. Unknown states move
+with their positions.
+
+```csharp
+var mask = pattern;
+var shifted = pattern.LogicalShiftRight(3);
+var rotated = pattern.RotateLeft(5);
+var masked = pattern.ApplyMask(mask);
+```
+
+## Solve mask constraints
+
+Treat the current wrapper as the desired result and call `TrySolveAnd`:
+
+```csharp
+var mask = new NumeralSystems.Net.Type.Base.Int
+{
+    Value = unchecked((int)0xFFFF0000)
+}.Incomplete();
+
+var result = new NumeralSystems.Net.Type.Base.Int
+{
+    Value = unchecked((int)0x12340000)
+}.Incomplete();
+
+if (result.TrySolveAnd(mask, out var x))
+{
+    Console.WriteLine(x.UnknownBitCount); // 16
+}
+```
+
+This represents `x & mask == result`. It returns `false` when the result
+requires a one where the complete mask has a zero.
+
 ## Logical operations on patterns
 
-Incomplete values support `Not`, `And`, `Or`, `Xor`, reverse `And`, and reverse
-`Or`. Most complete wrappers also support `Nand` with an incomplete operand.
+Incomplete values support `Not`, `And`, `Or`, `Xor`, `Nand`, reverse
+`And`/`Or`/`Xor`/`Nand`, masks, shifts, rotations, and pattern intersection.
 Operations return new objects.
 
 When a protocol or algorithm gives unknown bits a meaning other than "either
 zero or one," convert that state before using these APIs.
+
+For the complete engine reference, safety rules, exception behavior, and the
+independent-bit expressiveness limit, see [BitPattern engine](bit-patterns.md).

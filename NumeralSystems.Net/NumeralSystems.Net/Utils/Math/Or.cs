@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Utils
 {
@@ -78,11 +79,7 @@ namespace NumeralSystems.Net.Utils
         
         public static bool?[] Or(this bool?[] left, bool?[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[left.Length];
-            for (var i = 0; i < left.Length; i++)
-                result[i] = left[i].Or(right[i]);
-            return result;
+            return new BitPattern(left).Or(new BitPattern(right)).ToArray();
         }
 
         /// Performs a logical OR operation between two nullable boolean values.
@@ -99,11 +96,7 @@ namespace NumeralSystems.Net.Utils
         /// /
         public static bool?[] Or(this bool?[] left, bool[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[left.Length];
-            for (var i = 0; i < left.Length; i++)
-                result[i] = left[i].Or(right[i]);
-            return result;
+            return new BitPattern(left).Or(new BitPattern(right)).ToArray();
         }
 
         /// <summary>
@@ -124,11 +117,7 @@ namespace NumeralSystems.Net.Utils
         /// </returns>
         public static bool?[] Or(this bool[] left, bool?[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[left.Length];
-            for (var i = 0; i < left.Length; i++)
-                result[i] = left[i].Or(right[i]);
-            return result;
+            return new BitPattern(left).Or(new BitPattern(right)).ToArray();
         }
 
         /// <summary>

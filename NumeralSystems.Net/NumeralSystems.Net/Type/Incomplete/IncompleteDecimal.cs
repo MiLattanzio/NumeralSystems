@@ -10,13 +10,13 @@ using Decimal = NumeralSystems.Net.Type.Base.Decimal;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteDecimal: IIRregularOperable<IncompleteDecimal, Decimal, decimal, ulong>
+    public partial class IncompleteDecimal: IncompleteBitPattern<IncompleteDecimal>, IIRregularOperable<IncompleteDecimal, Decimal, decimal, ulong>
     {
         private bool?[] _binary;
         public bool?[] Binary
         {
             get => _binary ?? System.Linq.Enumerable.Repeat(false, 8 * sizeof(decimal)).Select(x => x as bool?).ToArray();
-            internal set
+            set
             {
                 if (null == value)
                 {

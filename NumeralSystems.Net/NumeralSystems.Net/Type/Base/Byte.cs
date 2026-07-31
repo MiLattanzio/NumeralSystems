@@ -9,7 +9,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Class representing a byte.
     /// </summary>
-    public sealed class Byte : IRegularOperable<IncompleteByte, Byte, byte, uint>
+    public sealed partial class Byte : CompleteBitPattern<Byte, IncompleteByte>, IRegularOperable<IncompleteByte, Byte, byte, uint>
     {
         /// <summary>
         /// Value of the byte.

@@ -2,12 +2,13 @@
 
 [Documentation home](index.md) ·
 [Arithmetic](arithmetic.md) ·
+[BitPattern engine](bit-patterns.md) ·
 [Troubleshooting](troubleshooting.md) ·
 [Changelog](../../CHANGELOG.md)
 
 This guide covers the behavioral corrections introduced in 4.6.0 and the
-arithmetic API added in 4.7.0. Read both sections when upgrading directly from
-4.5.2 or earlier.
+`BitPattern` and arithmetic APIs added in 4.7.0. Read all sections when
+upgrading directly from 4.5.2 or earlier.
 
 ## Upgrade checklist
 
@@ -19,6 +20,66 @@ arithmetic API added in 4.7.0. Read both sections when upgrading directly from
 6. Replace primitive intermediate conversions with `BigInteger` or
    `NumeralValue` arithmetic where appropriate.
 7. Confirm persistent text uses an explicit alphabet and separators.
+8. Replace new uses of unbounded `Incomplete*.Enumerable` with
+   `EnumerateCandidates(limit)`.
+9. Test ternary `AND`, `OR`, and `NAND` cases where one operand is unknown.
+
+## Shared `BitPattern` engine in 4.7.0
+
+All `Incomplete*` wrappers now inherit their new behavior from one immutable
+engine:
+
+```csharp
+using NumeralSystems.Net.Type.Incomplete;
+
+var pattern = BitPattern.Unknown(64);
+
+Console.WriteLine(pattern.UnknownBitCount); // 64
+Console.WriteLine(pattern.CandidateCount);  // 18446744073709551616
+
+foreach (var candidate in pattern.EnumerateCandidates(limit: 10))
+{
+    // Explicitly bounded.
+}
+```
+
+Existing wrapper members remain available. The following additions do not
+require replacing `IncompleteInt`, `IncompleteLong`, or the other concrete
+types:
+
+- immutable `Pattern` snapshots;
+- exact `BigInteger` candidate counts and bounds;
+- `IsMatch` / `IsSignedMatch`;
+- bounded enumeration;
+- masks, shifts, rotations, compatibility, and intersection;
+- reverse XOR/NAND and `TrySolveAnd`.
+
+`Binary` setters are now public consistently across the incomplete family.
+
+### Ternary logic correction
+
+Nullable array operations now use set-based three-valued logic from the shared
+engine:
+
+```text
+false AND unknown = false
+true  OR  unknown = true
+false NAND unknown = true
+```
+
+Several `IncompleteLong`, `IncompleteULong`, `IncompleteUInt`, `IncompleteFloat`,
+and `IncompleteDouble` `Or` overloads previously delegated to `And`; 4.7.0
+corrects those implementations. Add regression tests if an application worked
+around the old result.
+
+### Signed and unsigned bounds
+
+`MinValue` and `MaxValue` are unsigned encoded bounds. Use `SignedMinValue`,
+`SignedMaxValue`, and `IsSignedMatch` when a signed integer wrapper should use
+two's-complement meaning.
+
+The bounds of `IncompleteFloat`, `IncompleteDouble`, and `IncompleteDecimal`
+describe raw encodings and are not floating-point numeric intervals.
 
 ## Fractional semantics corrected in 4.6.0
 
@@ -174,6 +235,10 @@ counterpart.
 | arithmetic result conversion | negative fractional limit | `ArgumentOutOfRangeException` |
 | `Divide` or `/` | divisor is zero | `DivideByZeroException` |
 | bounded primitive view | value outside target range | overflow exception from the target type |
+| `BitPattern.FromUnsigned` | negative value, negative width, or value wider than the width | `ArgumentOutOfRangeException` |
+| bit-pattern binary operation | operand widths differ | `ArgumentException` |
+| `EnumerateCandidates` | negative limit | `ArgumentOutOfRangeException` |
+| throwing intersection/reverse/solver | constraint has no solution | `InvalidOperationException` |
 
 A repeating result is not exceptional. It is returned with `exact == false`.
 
@@ -191,7 +256,13 @@ cross-base addition
 division by three with a bounded result
 comparison of equal values in bases 2 and 10
 zero sign after subtraction
+bounded enumeration of a pattern with 64 unknown bits
+false AND unknown and true OR unknown
+compatible and contradictory pattern intersections
+logical/arithmetic shifts and rotations
+reverse XOR and reverse NAND
+x & mask == result, including an impossible result
 ```
 
 See the repository's `NumeralValueArithmeticTests` and
-`PositionalConversionTests` for executable examples.
+`BitPatternTests` for executable examples.

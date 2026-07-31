@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using NumeralSystems.Net.Type.Incomplete;
 using Polecola.Primitive;
 
 namespace NumeralSystems.Net.Utils
@@ -34,14 +35,7 @@ namespace NumeralSystems.Net.Utils
         /// <returns>A new boolean array containing the result of the bitwise AND operation.</returns>
         public static bool?[] And(this bool?[] a, bool?[] b)
         {
-            if (a.Length != b.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[a.Length];
-            for (var i = 0; i < a.Length; i++)
-                if (null == a[i] || null == b[i])
-                    result[i] = null;
-                else
-                    result[i] = a[i].Value && b[i].Value;
-            return result;
+            return new BitPattern(a).And(new BitPattern(b)).ToArray();
         }
 
         /// <summary>
@@ -53,14 +47,7 @@ namespace NumeralSystems.Net.Utils
         /// <returns>The result of the logical AND operation as a boolean array.</returns>
         public static bool?[] And(this bool[] a, bool?[] b)
         {
-            if (a.Length != b.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[a.Length];
-            for (var i = 0; i < a.Length; i++)
-                if (null == b[i])
-                    result[i] = null;
-                else
-                    result[i] = a[i] && b[i].Value;
-            return result;
+            return new BitPattern(a).And(new BitPattern(b)).ToArray();
         }
 
         /// <summary>
@@ -71,14 +58,7 @@ namespace NumeralSystems.Net.Utils
         /// <returns>A boolean array that represents the result of the AND operation between the two input arrays.</returns>
         public static bool?[] And(this bool?[] a, bool[] b)
         {
-            if (a.Length != b.Length) throw new ArgumentException("Arrays must be of equal length");
-            var result = new bool?[a.Length];
-            for (var i = 0; i < a.Length; i++)
-                if (null == a[i])
-                    result[i] = null;
-                else
-                    result[i] = a[i].Value && b[i];
-            return result;
+            return new BitPattern(a).And(new BitPattern(b)).ToArray();
         }
 
         public static decimal And(this decimal a, decimal b) =>

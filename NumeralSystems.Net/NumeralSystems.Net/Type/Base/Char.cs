@@ -12,7 +12,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Represents a character with various binary operations.
     /// </summary>
-    public sealed class Char : IRegularOperable<IncompleteChar, Char, char, uint>
+    public sealed partial class Char : CompleteBitPattern<Char, IncompleteChar>, IRegularOperable<IncompleteChar, Char, char, uint>
     {
         /// <summary>
         /// Creates a Char instance from a binary array.

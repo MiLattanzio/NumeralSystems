@@ -13,7 +13,7 @@ namespace NumeralSystems.Net.Type.Incomplete
     /// <summary>
     /// Represents an incomplete long integer with various bitwise operations.
     /// </summary>
-    public class IncompleteLong : IIRregularOperable<IncompleteLong, Long, long, ulong>
+    public partial class IncompleteLong : IncompleteBitPattern<IncompleteLong>, IIRregularOperable<IncompleteLong, Long, long, ulong>
     {
         private bool?[] _binary;
 
@@ -116,7 +116,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// <returns>The result of the OR operation.</returns>
         public IncompleteLong Or(Long other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// <returns>The result of the OR operation.</returns>
         public IncompleteLong Or(IncompleteLong other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>

@@ -11,7 +11,7 @@ using Convert = Polecola.Primitive.Convert;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteByte : IIRregularOperable<IncompleteByte, Byte, byte, uint>
+    public partial class IncompleteByte : IncompleteBitPattern<IncompleteByte>, IIRregularOperable<IncompleteByte, Byte, byte, uint>
     {
         private bool?[] _binary;
 
@@ -21,7 +21,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         public bool?[] Binary
         {
             get => _binary ?? System.Linq.Enumerable.Repeat(false, 8).Select(x => x as bool?).ToArray();
-            internal set
+            set
             {
                 if (null == value)
                 {

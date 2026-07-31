@@ -14,7 +14,7 @@ namespace NumeralSystems.Net.Type.Incomplete
     /// @see IRregularReversible
     /// @see IIRregularOperable
     /// /
-    public class IncompleteULong: IIRregularOperable<IncompleteULong, ULong, ulong, ulong>
+    public partial class IncompleteULong: IncompleteBitPattern<IncompleteULong>, IIRregularOperable<IncompleteULong, ULong, ulong, ulong>
     {
         private bool?[] _binary;
 
@@ -101,7 +101,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         public string ToString(string missingSeparator) => string.Join(string.Empty, Binary.Group(8).Select(x => x.Reverse().ToArray()).SelectMany(x => x).Select(x => null == x ? missingSeparator : (x.Value ? 1 : 0).ToString()));
         public IncompleteULong Or(ULong other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// </remarks>*/
         public IncompleteULong Or(IncompleteULong other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>

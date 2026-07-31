@@ -8,7 +8,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Represents a 64-bit unsigned integer with various binary operations.
     /// </summary>
-    public sealed partial class ULong: IRegularOperable<IncompleteULong, ULong, ulong, ulong>
+    public sealed partial class ULong: CompleteBitPattern<ULong, IncompleteULong>, IRegularOperable<IncompleteULong, ULong, ulong, ulong>
     {
         /// <summary>
         /// Creates a ULong instance from a binary array.

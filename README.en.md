@@ -17,7 +17,8 @@ Use the library when you need to:
 - format digits with a custom alphabet;
 - inspect and modify the binary representation of primitive values;
 - describe partial values whose bits can be `0`, `1`, or unknown;
-- recover possible operands of an `AND` or `OR` operation.
+- recover possible operands of `AND`, `OR`, `XOR`, and `NAND`;
+- combine bit constraints, apply masks, and safely enumerate bounded candidates.
 
 ## Requirements
 
@@ -76,7 +77,7 @@ formats and protocols.
 | Non-negative digits | `Value` | Store integral digit sequences, including arbitrary-precision integers |
 | Signed and fractional values | `NumeralValue` | Convert, calculate, and compare values with bounded, observable precision |
 | Bitwise primitives | `Type.Base.*` | Wrap bytes, integers, characters, and floating-point values |
-| Unknown bits | `Type.Incomplete.*` | Represent ternary bit patterns, enumerate candidates, and test them with `Contains` |
+| Unknown bits | `BitPattern`, `Type.Incomplete.*` | Represent ternary patterns, combine constraints, solve reverse operations, and enumerate with an explicit limit |
 | Encoding | `Type.Base.String`, `Encoding.String` | Convert strings to digits in another base and derive symbol identities |
 
 ### Custom alphabet
@@ -143,6 +144,31 @@ if (result.ReverseAnd(right, out var possibleLeft))
 }
 ```
 
+### Immutable bit patterns and constraints
+
+`BitPattern` is the shared engine used by all `Incomplete*` wrappers. Candidate
+counts and encoded bounds use `BigInteger`, while enumeration always accepts an
+explicit limit:
+
+```csharp
+using NumeralSystems.Net.Type.Incomplete;
+
+var mask = BitPattern.FromUnsigned(0b1111_0000, width: 8);
+var required = BitPattern.FromUnsigned(0b1010_0000, width: 8);
+
+if (BitPattern.TrySolveAnd(mask, required, out var input))
+{
+    Console.WriteLine(input);                 // 1010????
+    Console.WriteLine(input.CandidateCount);  // 16
+
+    foreach (var candidate in input.EnumerateCandidates(limit: 4))
+        Console.WriteLine(candidate);
+}
+```
+
+The engine also provides compatibility/intersection, reverse XOR/NAND, logical
+and arithmetic shifts, rotate-left/right, and three-valued masks.
+
 ## Documentation
 
 The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/index.md):
@@ -152,6 +178,7 @@ The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/
 - [arithmetic, precision, operators, and comparison](NumeralSystems.Net/docs/arithmetic.md);
 - [task-oriented cookbook](NumeralSystems.Net/docs/cookbook.md);
 - [primitive wrappers and bitwise operations](NumeralSystems.Net/docs/bitwise-values.md);
+- [the immutable BitPattern engine and constraint solving](NumeralSystems.Net/docs/bit-patterns.md);
 - [incomplete values and reverse operations](NumeralSystems.Net/docs/incomplete-values.md);
 - [string encoding](NumeralSystems.Net/docs/string-encoding.md);
 - [troubleshooting](NumeralSystems.Net/docs/troubleshooting.md);

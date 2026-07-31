@@ -5,6 +5,7 @@
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [Bitwise values](bitwise-values.md) ·
+[BitPattern engine](bit-patterns.md) ·
 [Incomplete values](incomplete-values.md) ·
 [String encoding](string-encoding.md) ·
 [Troubleshooting](troubleshooting.md) ·
@@ -27,6 +28,7 @@ directly on GitHub and changed without a documentation generator.
 | Calculate or compare signed values in different bases | `NumeralValue` arithmetic |
 | Run logical operations on primitive representations | `NumeralSystems.Net.Type.Base` |
 | Represent or solve for unknown bits | `NumeralSystems.Net.Type.Incomplete` |
+| Work with bounded, immutable unknown-bit sets | `BitPattern` |
 | Convert string character values into another positional base | `NumeralSystems.Net.Type.Base.String` |
 
 ## Minimal example
@@ -74,8 +76,11 @@ index from `0` through `base - 1`.
 - [Cookbook](cookbook.md) provides task-oriented recipes across the library.
 - [Bitwise values](bitwise-values.md) covers primitive wrappers and logical
   operations.
+- [BitPattern engine](bit-patterns.md) covers immutable patterns, exact
+  candidate counts, bounded enumeration, shifts, rotations, intersections, and
+  constraint solving.
 - [Incomplete values](incomplete-values.md) covers unknown bits, candidate
-  enumeration, and reverse `AND`/`OR`.
+  enumeration, wrapper compatibility, and reverse operations.
 - [String encoding](string-encoding.md) explains the two string-related APIs and
   their constraints.
 - [Troubleshooting](troubleshooting.md) maps common symptoms and exceptions to

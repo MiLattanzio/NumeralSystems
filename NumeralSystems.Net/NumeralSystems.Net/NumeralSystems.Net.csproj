@@ -9,7 +9,7 @@
         <PackageVersion>4.7.0</PackageVersion>
         <Title>NumeralSystems.Net</Title>
         <Authors>Polecola</Authors>
-        <Description>Work with arbitrary numeral systems, cross-base rational arithmetic, primitive bit representations, incomplete values, and reverse bitwise operations.</Description>
+        <Description>Work with arbitrary numeral systems, cross-base rational arithmetic, immutable bit patterns, incomplete values, and bitwise constraint solving.</Description>
         <Copyright>Copyright © MiLattanzio and contributors</Copyright>
         <RepositoryUrl>https://github.com/MiLattanzio/NumeralSystems</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
@@ -20,9 +20,9 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/MiLattanzio/NumeralSystems</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageTags>numeral-systems;base-conversion;rational-arithmetic;big-integer;bitwise;incomplete-values</PackageTags>
+        <PackageTags>numeral-systems;base-conversion;rational-arithmetic;big-integer;bit-pattern;bitwise;constraint-solving;incomplete-values</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageReleaseNotes>Adds cross-base rational arithmetic, numeric comparison, C# operators, benchmarks, and expanded documentation.</PackageReleaseNotes>
+        <PackageReleaseNotes>Adds the shared BitPattern engine, BigInteger candidate metadata, bounded enumeration, shifts, rotations, masks, intersections, reverse XOR/NAND, AND constraint solving, cross-base rational arithmetic, tests, benchmarks, and expanded documentation.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>

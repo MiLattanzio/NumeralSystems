@@ -9,7 +9,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Represents a 32-bit unsigned integer with various binary operations.
     /// </summary>
-    public sealed partial class UInt: IRegularOperable<IncompleteUInt, UInt, uint, uint>
+    public sealed partial class UInt: CompleteBitPattern<UInt, IncompleteUInt>, IRegularOperable<IncompleteUInt, UInt, uint, uint>
     {
         /// <summary>
         /// Gets or sets the unsigned integer value.

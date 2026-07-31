@@ -8,7 +8,7 @@ using Math = System.Math;
 
 namespace NumeralSystems.Net.Type.Incomplete
 {
-    public class IncompleteByteArray
+    public partial class IncompleteByteArray : IncompleteBitPattern<IncompleteByteArray>
     {
         private bool?[] _binary;
 
@@ -18,9 +18,9 @@ namespace NumeralSystems.Net.Type.Incomplete
         public bool?[] Binary
         {
             get => _binary ?? System.Linq.Enumerable.Repeat(false, 8).Select(x => x as bool?).ToArray();
-            internal set
+            set
             {
-                if (null == _binary)
+                if (null == value)
                 {
                     _binary = System.Linq.Enumerable.Repeat(false, 8).Select(x => x as bool?).ToArray();
                 }

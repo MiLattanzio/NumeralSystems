@@ -13,7 +13,7 @@ namespace NumeralSystems.Net.Type.Incomplete
     /// <summary>
     /// Represents an incomplete integer with various bitwise operations.
     /// </summary>
-    public class IncompleteInt: IIRregularOperable<IncompleteInt, Int, int, uint>
+    public partial class IncompleteInt: IncompleteBitPattern<IncompleteInt>, IIRregularOperable<IncompleteInt, Int, int, uint>
     {
         private bool?[] _binary;
 

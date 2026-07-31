@@ -1,6 +1,7 @@
 # Primitive wrappers and bitwise operations
 
 [Documentation home](index.md) ·
+[BitPattern engine](bit-patterns.md) ·
 [Incomplete values](incomplete-values.md) ·
 [Cookbook](cookbook.md) ·
 [Troubleshooting](troubleshooting.md) ·
@@ -142,11 +143,14 @@ subject.
 
 ## Reverse operations
 
-`ReverseAnd` and `ReverseOr` solve for a possible left operand:
+`ReverseAnd`, `ReverseOr`, `ReverseXor`, and `ReverseNand` solve for a possible
+left operand:
 
 ```text
 left AND right = result
 left OR  right = result
+left XOR right = result
+left NAND right = result
 ```
 
 The solution is an incomplete value because some bits may be unconstrained. A
@@ -164,3 +168,7 @@ if (result.ReverseAnd(right, out var candidates))
     Console.WriteLine(candidates.Contains(left)); // True
 }
 ```
+
+The immutable [BitPattern engine](bit-patterns.md) also supplies logical and
+arithmetic shifts, rotations, masks, compatibility/intersection, bounded
+candidate enumeration, and direct constraint solving.

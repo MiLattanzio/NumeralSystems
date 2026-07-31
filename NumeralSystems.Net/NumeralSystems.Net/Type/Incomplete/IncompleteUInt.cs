@@ -10,7 +10,7 @@ namespace NumeralSystems.Net.Type.Incomplete
     /// <summary>
     /// Represents an incomplete unsigned integer with various bitwise operations.
     /// </summary>
-    public class IncompleteUInt: IIRregularOperable<IncompleteUInt, UInt, uint, uint>
+    public partial class IncompleteUInt: IncompleteBitPattern<IncompleteUInt>, IIRregularOperable<IncompleteUInt, UInt, uint, uint>
     {
         private bool?[] _binary;
 
@@ -119,7 +119,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// <returns>The result of the OR operation.</returns>
         public IncompleteUInt Or(UInt other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         /// <returns>The result of the OR operation.</returns>
         public IncompleteUInt Or(IncompleteUInt other) => new()
         {
-            Binary = Binary.And(other.Binary)
+            Binary = Binary.Or(other.Binary)
         };
 
         /// <summary>

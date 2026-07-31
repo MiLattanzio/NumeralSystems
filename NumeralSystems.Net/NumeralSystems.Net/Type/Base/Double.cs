@@ -10,7 +10,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Represents a double-precision floating-point number with various binary operations.
     /// </summary>
-    public sealed partial class Double : IRegularOperable<IncompleteDouble, Double, double, ulong>
+    public sealed partial class Double : CompleteBitPattern<Double, IncompleteDouble>, IRegularOperable<IncompleteDouble, Double, double, ulong>
     {
         /// <summary>
         /// Creates a Double instance from a binary array.

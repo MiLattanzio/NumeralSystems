@@ -7,7 +7,7 @@ using Convert = Polecola.Primitive.Convert;
 
 namespace NumeralSystems.Net.Type.Base
 {
-    public partial class Decimal: IRegularOperable<IncompleteDecimal, Decimal, decimal, ulong>
+    public partial class Decimal: CompleteBitPattern<Decimal, IncompleteDecimal>, IRegularOperable<IncompleteDecimal, Decimal, decimal, ulong>
     {
         public static Decimal FromBinary(bool[] binary) => new ()
         {

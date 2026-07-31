@@ -10,7 +10,7 @@ namespace NumeralSystems.Net.Type.Incomplete
     /// <summary>
     /// Represents an incomplete short integer with various bitwise operations.
     /// </summary>
-    public class IncompleteShort : IIRregularOperable<IncompleteShort, Short, short, uint>
+    public partial class IncompleteShort : IncompleteBitPattern<IncompleteShort>, IIRregularOperable<IncompleteShort, Short, short, uint>
     {
         private bool?[] _binary;
 
@@ -20,7 +20,7 @@ namespace NumeralSystems.Net.Type.Incomplete
         public bool?[] Binary
         {
             get => _binary ?? System.Linq.Enumerable.Repeat(false, 8 * sizeof(short)).Select(x => x as bool?).ToArray();
-            internal set
+            set
             {
                 if (null == value)
                 {

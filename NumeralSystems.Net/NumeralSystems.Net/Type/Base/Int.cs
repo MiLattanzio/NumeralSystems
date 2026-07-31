@@ -10,7 +10,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Represents a 32-bit signed integer with various binary operations.
     /// </summary>
-    public sealed class Int: IRegularOperable<IncompleteInt, Int, int, uint>
+    public sealed partial class Int: CompleteBitPattern<Int, IncompleteInt>, IRegularOperable<IncompleteInt, Int, int, uint>
     {
         /// <summary>
         /// Gets or sets the integer value.

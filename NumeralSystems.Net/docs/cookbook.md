@@ -3,6 +3,7 @@
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
 [Arithmetic](arithmetic.md) ·
+[BitPattern engine](bit-patterns.md) ·
 [Troubleshooting](troubleshooting.md) ·
 [API reference](api-reference.md)
 
@@ -265,16 +266,73 @@ var incomplete = new NumeralSystems.Net.Type.Base.Byte
 incomplete.Binary[0] = null;
 incomplete.Binary[2] = null;
 
-Console.WriteLine(incomplete.Permutations); // 4
+Console.WriteLine(incomplete.CandidateCount); // 4
 
-foreach (var candidate in incomplete.Enumerable)
+foreach (var candidate in incomplete.EnumerateCandidates(limit: 16))
 {
-    Console.WriteLine(candidate.Value);
+    Console.WriteLine(candidate);
 }
 ```
 
-Candidate count grows as `2^unknownBits`. Check `Permutations` before
-enumerating a large incomplete value.
+Candidate count grows as `2^unknownBits`. `CandidateCount` uses `BigInteger`,
+and `EnumerateCandidates` never returns more than its explicit limit.
+
+## Combine two partial bit constraints
+
+```csharp
+using NumeralSystems.Net.Type.Incomplete;
+
+var header = new BitPattern(new bool?[]
+{
+    true, null, false, null, null, null, true, false
+});
+
+var subtype = new BitPattern(new bool?[]
+{
+    null, true, false, null, true, null, null, false
+});
+
+if (header.TryIntersect(subtype, out var combined))
+{
+    Console.WriteLine(combined);
+    Console.WriteLine(combined.CandidateCount);
+}
+```
+
+Use `IsCompatibleWith` when only the Boolean answer is required.
+
+## Solve an AND mask constraint
+
+```csharp
+using NumeralSystems.Net.Type.Incomplete;
+
+var mask = BitPattern.FromUnsigned(0b1111_0000, 8);
+var required = BitPattern.FromUnsigned(0b1010_0000, 8);
+
+if (BitPattern.TrySolveAnd(mask, required, out var input))
+{
+    foreach (var candidate in input.EnumerateCandidates(limit: 8))
+    {
+        Console.WriteLine(candidate);
+    }
+}
+```
+
+The solution is `1010????`: the low four input bits are unconstrained.
+
+## Shift or rotate an incomplete pattern
+
+```csharp
+var pattern = new NumeralSystems.Net.Type.Incomplete.BitPattern(
+    new bool?[] { true, null, false, true, false, false, false, false });
+
+var logical = pattern.LogicalShiftRight(1);
+var arithmetic = pattern.ArithmeticShiftRight(1);
+var rotated = pattern.RotateRight(1);
+```
+
+All results retain the original width. Arithmetic right shift copies the
+highest bit, including an unknown highest bit.
 
 ## Convert string code units to another base
 

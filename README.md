@@ -17,7 +17,9 @@ La libreria è adatta quando serve:
 - usare alfabeti personalizzati per rappresentare le cifre;
 - ispezionare e modificare la rappresentazione binaria dei tipi primitivi;
 - descrivere valori parziali con bit `0`, `1` o sconosciuti;
-- ricavare i possibili operandi di un'operazione `AND` o `OR`.
+- ricavare i possibili operandi di `AND`, `OR`, `XOR` e `NAND`;
+- combinare vincoli sui bit, applicare maschere ed enumerare candidati con un
+  limite esplicito.
 
 ## Requisiti
 
@@ -76,7 +78,7 @@ esplicitamente alfabeto e separatori.
 | Cifre non negative | `Value` | Sequenze intere, inclusi valori a precisione arbitraria |
 | Valori con segno e frazioni | `NumeralValue` | Conversione, calcolo e confronto con precisione limitata e verificabile |
 | Primitive bitwise | `Type.Base.*` | Wrapper per byte, interi, caratteri e numeri floating point |
-| Bit indeterminati | `Type.Incomplete.*` | Pattern ternari, enumerazione dei candidati e verifica con `Contains` |
+| Bit indeterminati | `BitPattern`, `Type.Incomplete.*` | Pattern ternari, vincoli, operazioni inverse ed enumerazione limitata |
 | Codifica | `Type.Base.String`, `Encoding.String` | Conversione di stringhe in cifre di un'altra base ed estrazione dell'alfabeto |
 
 ### Alfabeto personalizzato
@@ -144,6 +146,31 @@ if (result.ReverseAnd(right, out var possibleLeft))
 }
 ```
 
+### Pattern immutabili e vincoli
+
+`BitPattern` è il motore condiviso da tutti i wrapper `Incomplete*`. Conteggio
+dei candidati e limiti codificati usano `BigInteger`; l'enumerazione richiede
+sempre un limite esplicito:
+
+```csharp
+using NumeralSystems.Net.Type.Incomplete;
+
+var mask = BitPattern.FromUnsigned(0b1111_0000, width: 8);
+var required = BitPattern.FromUnsigned(0b1010_0000, width: 8);
+
+if (BitPattern.TrySolveAnd(mask, required, out var input))
+{
+    Console.WriteLine(input);                // 1010????
+    Console.WriteLine(input.CandidateCount); // 16
+
+    foreach (var candidate in input.EnumerateCandidates(limit: 4))
+        Console.WriteLine(candidate);
+}
+```
+
+Il motore comprende anche compatibilità e intersezione, reverse XOR/NAND, shift
+logici e aritmetici, rotate-left/right e maschere con logica ternaria.
+
 ## Documentazione
 
 La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/index.md):
@@ -153,6 +180,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [aritmetica, precisione, operatori e confronto](NumeralSystems.Net/docs/arithmetic.md);
 - [ricettario con esempi pratici](NumeralSystems.Net/docs/cookbook.md);
 - [primitive e operazioni bitwise](NumeralSystems.Net/docs/bitwise-values.md);
+- [motore immutabile BitPattern e risoluzione dei vincoli](NumeralSystems.Net/docs/bit-patterns.md);
 - [valori incompleti e operazioni inverse](NumeralSystems.Net/docs/incomplete-values.md);
 - [codifica delle stringhe](NumeralSystems.Net/docs/string-encoding.md);
 - [risoluzione dei problemi](NumeralSystems.Net/docs/troubleshooting.md);

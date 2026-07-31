@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Utils
 {
@@ -45,16 +46,9 @@ namespace NumeralSystems.Net.Utils
         /// <returns>The result after performing the reverse AND operation element-wise on the two arrays.</returns>
         public static bool?[] ReverseAnd(this bool[] left, bool?[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("left and right must be the same length");
-
-            var result = new bool?[left.Length];
-            
-            for (var i = 0; i < result.Length; i++)
-            {
-                result[i] = ReverseAnd(left[i], right[i]);
-            }
-
-            return result;
+            if (new BitPattern(left).TryReverseAnd(new BitPattern(right), out var result))
+                return result.ToArray();
+            throw new InvalidOperationException("The reverse AND constraint has no solution.");
         }
 
         /// Reverses the logical AND operation between two boolean values and returns the result.
@@ -70,16 +64,9 @@ namespace NumeralSystems.Net.Utils
         /// /
         public static bool?[] ReverseAnd(this bool[] left, bool[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("left and right must be the same length");
-
-            var result = new bool?[left.Length];
-            
-            for (var i = 0; i < result.Length; i++)
-            {
-                result[i] = ReverseAnd(left[i], right[i]);
-            }
-
-            return result;
+            if (new BitPattern(left).TryReverseAnd(new BitPattern(right), out var result))
+                return result.ToArray();
+            throw new InvalidOperationException("The reverse AND constraint has no solution.");
         }
 
         /// <summary>
@@ -90,16 +77,9 @@ namespace NumeralSystems.Net.Utils
         /// <returns>An array of nullable boolean values representing the result of the bitwise AND operation.</returns>
         public static bool?[] ReverseAnd(this bool?[] left, bool[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("left and right must be the same length");
-
-            var result = new bool?[left.Length];
-            
-            for (var i = 0; i < result.Length; i++)
-            {
-                result[i] = ReverseAnd(left[i], right[i]);
-            }
-
-            return result;
+            if (new BitPattern(left).TryReverseAnd(new BitPattern(right), out var result))
+                return result.ToArray();
+            throw new InvalidOperationException("The reverse AND constraint has no solution.");
         }
 
         /// Reverses the bits in the given arrays and performs a bitwise AND operation on the corresponding bits.
@@ -110,16 +90,9 @@ namespace NumeralSystems.Net.Utils
         /// /
         public static bool?[] ReverseAnd(this bool?[] left, bool?[] right)
         {
-            if (left.Length != right.Length) throw new ArgumentException("left and right must be the same length");
-
-            var result = new bool?[left.Length];
-            
-            for (var i = 0; i < result.Length; i++)
-            {
-                result[i] = ReverseAnd(left[i], right[i]);
-            }
-
-            return result;
+            if (new BitPattern(left).TryReverseAnd(new BitPattern(right), out var result))
+                return result.ToArray();
+            throw new InvalidOperationException("The reverse AND constraint has no solution.");
         }
         
         public static bool CanReverseAnd(this bool? left, bool? right) => (left, right) switch 
@@ -139,7 +112,7 @@ namespace NumeralSystems.Net.Utils
         public static bool CanReverseAnd(this bool?[] left, bool?[] right)
         {
             if (left.Length != right.Length) return false;
-            return !left.Where((t, i) => !CanReverseAnd(t, right[i])).Any();
+            return new BitPattern(left).TryReverseAnd(new BitPattern(right), out _);
         }
 
         /// Reverses the logical AND operation between two boolean values and returns the result.
@@ -150,7 +123,7 @@ namespace NumeralSystems.Net.Utils
         public static bool CanReverseAnd(this bool[] left, bool?[] right)
         {
             if (left.Length != right.Length) return false;
-            return !left.Where((t, i) => !CanReverseAnd(t, right[i])).Any();
+            return new BitPattern(left).TryReverseAnd(new BitPattern(right), out _);
         }
 
         /// <summary>
@@ -172,7 +145,7 @@ namespace NumeralSystems.Net.Utils
         public static bool CanReverseAnd(this bool[] left, bool[] right)
         {
             if (left.Length != right.Length) return false;
-            return !left.Where((t, i) => !CanReverseAnd(t, right[i])).Any();
+            return new BitPattern(left).TryReverseAnd(new BitPattern(right), out _);
         }
 
         /// Determines whether two boolean values can be reversed and.
@@ -183,7 +156,7 @@ namespace NumeralSystems.Net.Utils
         public static bool CanReverseAnd(this bool?[] left, bool[] right)
         {
             if (left.Length != right.Length) return false;
-            return !left.Where((t, i) => !CanReverseAnd(t, right[i])).Any();
+            return new BitPattern(left).TryReverseAnd(new BitPattern(right), out _);
         }
     }
 }

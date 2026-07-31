@@ -10,7 +10,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Represents a 16-bit signed integer with various binary operations.
     /// </summary>
-    public sealed partial class Short: IRegularOperable<IncompleteShort, Short, short, uint>
+    public sealed partial class Short: CompleteBitPattern<Short, IncompleteShort>, IRegularOperable<IncompleteShort, Short, short, uint>
     {
         /// <summary>
         /// Creates a Short instance from a binary array.

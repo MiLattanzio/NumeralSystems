@@ -2,6 +2,8 @@
 
 [Documentation home](index.md) ·
 [Bitwise values](bitwise-values.md) ·
+[Cookbook](cookbook.md) ·
+[Troubleshooting](troubleshooting.md) ·
 [API reference](api-reference.md)
 
 An incomplete value represents a set of primitive values with one ternary bit

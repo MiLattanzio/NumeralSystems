@@ -5,24 +5,24 @@
         <LangVersion>9</LangVersion>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageId>NumeralSystems.Net</PackageId>
-        <Version>4.6.0</Version>
-        <PackageVersion>4.6.0</PackageVersion>
+        <Version>4.7.0</Version>
+        <PackageVersion>4.7.0</PackageVersion>
         <Title>NumeralSystems.Net</Title>
         <Authors>Polecola</Authors>
-        <Description>Work with arbitrary numeral systems, primitive bit representations, incomplete values, and reverse bitwise operations.</Description>
+        <Description>Work with arbitrary numeral systems, cross-base rational arithmetic, primitive bit representations, incomplete values, and reverse bitwise operations.</Description>
         <Copyright>Copyright © MiLattanzio and contributors</Copyright>
         <RepositoryUrl>https://github.com/MiLattanzio/NumeralSystems</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <Company>PastaSoftware</Company>
-        <AssemblyVersion>4.6.0.0</AssemblyVersion>
-        <FileVersion>4.6.0.0</FileVersion>
+        <AssemblyVersion>4.7.0.0</AssemblyVersion>
+        <FileVersion>4.7.0.0</FileVersion>
         <NeutralLanguage>en</NeutralLanguage>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/MiLattanzio/NumeralSystems</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageTags>numeral-systems;base-conversion;bitwise;incomplete-values</PackageTags>
+        <PackageTags>numeral-systems;base-conversion;rational-arithmetic;big-integer;bitwise;incomplete-values</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageReleaseNotes>Adds exact positional fraction conversion with configurable precision and end-to-end BigInteger support.</PackageReleaseNotes>
+        <PackageReleaseNotes>Adds cross-base rational arithmetic, numeric comparison, C# operators, benchmarks, and expanded documentation.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -44,6 +44,12 @@
 
     <ItemGroup>
       <None Include="..\..\README.en.md" Pack="true" PackagePath="README.md" />
+      <None Include="..\docs\**\*.md" Pack="true" PackagePath="NumeralSystems.Net\docs\%(RecursiveDir)" />
+      <None Include="..\..\CHANGELOG.md" Pack="true" PackagePath="" />
+      <None Include="..\..\CODE_OF_CONDUCT.md" Pack="true" PackagePath="" />
+      <None Include="..\..\CONTRIBUTING.md" Pack="true" PackagePath="" />
+      <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="" />
+      <None Include="..\..\SECURITY.md" Pack="true" PackagePath="" />
     </ItemGroup>
 
 

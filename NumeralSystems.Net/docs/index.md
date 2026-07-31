@@ -2,16 +2,20 @@
 
 [Getting started](getting-started.md) ·
 [Numeral systems](numeral-systems.md) ·
+[Arithmetic](arithmetic.md) ·
+[Cookbook](cookbook.md) ·
 [Bitwise values](bitwise-values.md) ·
 [Incomplete values](incomplete-values.md) ·
 [String encoding](string-encoding.md) ·
+[Troubleshooting](troubleshooting.md) ·
 [API reference](api-reference.md) ·
+[Architecture](architecture.md) ·
 [Releasing](releasing.md)
 
 NumeralSystems.Net is a .NET Standard 2.1 library for working with positional
-number systems and bit-level representations. The repository documentation is
-plain Markdown: every guide can be read directly on GitHub and changed without a
-documentation generator.
+number systems, cross-base rational arithmetic, and bit-level representations.
+The repository documentation is plain Markdown: every guide can be read
+directly on GitHub and changed without a documentation generator.
 
 ## Choose the right abstraction
 
@@ -20,6 +24,7 @@ documentation generator.
 | Convert and format a .NET number in another base | `NumeralSystem` and `Numeral` |
 | Convert an existing sequence of non-negative digits | `Value` |
 | Preserve a sign and fractional digits while changing base | `NumeralValue` |
+| Calculate or compare signed values in different bases | `NumeralValue` arithmetic |
 | Run logical operations on primitive representations | `NumeralSystems.Net.Type.Base` |
 | Represent or solve for unknown bits | `NumeralSystems.Net.Type.Incomplete` |
 | Convert string character values into another positional base | `NumeralSystems.Net.Type.Base.String` |
@@ -52,6 +57,8 @@ index from `0` through `base - 1`.
   culture's sign and decimal separator.
 - For stable storage or a wire format, always pass an explicit alphabet,
   digit separator, negative sign, and decimal separator.
+- Fractional conversion and arithmetic generate at most 128 fractional digits
+  by default. Use precision-aware overloads when truncation must be observable.
 - Primitive-wrapper `Binary` arrays are indexed from the least-significant bit.
 - Incomplete values use `bool?`: `false` means zero, `true` means one, and
   `null` means unknown.
@@ -62,14 +69,23 @@ index from `0` through `base - 1`.
   referencing the project.
 - [Numeral systems](numeral-systems.md) covers bases, alphabets, parsing,
   formatting, and conversion.
+- [Arithmetic](arithmetic.md) covers exact rational operations, result bases,
+  bounded fractional expansions, operators, and numeric comparison.
+- [Cookbook](cookbook.md) provides task-oriented recipes across the library.
 - [Bitwise values](bitwise-values.md) covers primitive wrappers and logical
   operations.
 - [Incomplete values](incomplete-values.md) covers unknown bits, candidate
   enumeration, and reverse `AND`/`OR`.
 - [String encoding](string-encoding.md) explains the two string-related APIs and
   their constraints.
+- [Troubleshooting](troubleshooting.md) maps common symptoms and exceptions to
+  concrete fixes.
 - [API reference](api-reference.md) catalogs the public namespaces, types, and
   common member families.
+- [Architecture](architecture.md) explains internal layers, mathematical flow,
+  tests, benchmarks, and contributor expectations.
+- [Migrating to 4.7.0](migration-4.7.md) covers fractional behavior,
+  `BigInteger`, arithmetic, comparison, and upgrade tests.
 - [Releasing](releasing.md) documents package versioning and automated
   publication to NuGet.org.
 

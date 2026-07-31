@@ -6,12 +6,14 @@
 [English](README.en.md) · Italiano
 
 NumeralSystems.Net è una libreria .NET per rappresentare, convertire e formattare
-valori in sistemi di numerazione arbitrari. Include inoltre tipi primitivi
-orientati ai bit, valori con bit indeterminati e operazioni logiche inverse.
+valori in sistemi di numerazione arbitrari ed eseguire aritmetica razionale tra
+basi diverse. Include inoltre tipi primitivi orientati ai bit, valori con bit
+indeterminati e operazioni logiche inverse.
 
 La libreria è adatta quando serve:
 
 - convertire numeri interi o frazionari tra basi diverse;
+- calcolare e confrontare valori con segno scritti in basi differenti;
 - usare alfabeti personalizzati per rappresentare le cifre;
 - ispezionare e modificare la rappresentazione binaria dei tipi primitivi;
 - descrivere valori parziali con bit `0`, `1` o sconosciuti;
@@ -72,7 +74,7 @@ esplicitamente alfabeto e separatori.
 | --- | --- | --- |
 | Sistemi numerici | `NumeralSystem`, `Numeral` | Creazione, parsing, formattazione e conversione tra basi |
 | Cifre non negative | `Value` | Sequenze intere, inclusi valori a precisione arbitraria |
-| Valori con segno e frazioni | `NumeralValue` | Conversioni frazionarie con precisione limitata e verificabile |
+| Valori con segno e frazioni | `NumeralValue` | Conversione, calcolo e confronto con precisione limitata e verificabile |
 | Primitive bitwise | `Type.Base.*` | Wrapper per byte, interi, caratteri e numeri floating point |
 | Bit indeterminati | `Type.Incomplete.*` | Pattern ternari, enumerazione dei candidati e verifica con `Contains` |
 | Codifica | `Type.Base.String`, `Encoding.String` | Conversione di stringhe in cifre di un'altra base ed estrazione dell'alfabeto |
@@ -99,6 +101,30 @@ Console.WriteLine(text); // YY
 Console.WriteLine(dozenal.Parse(text, digits, "", "-", ".").Integer); // 143
 ```
 
+### Aritmetica tra basi diverse
+
+`NumeralValue` calcola usando valori razionali intermedi esatti. Gli operandi
+possono avere basi differenti:
+
+```csharp
+var metaBinaria = new NumeralValue(
+    new List<int> { 0 },
+    new List<int> { 1 },
+    false,
+    2);
+
+var quartoDecimale = NumeralValue.FromDecimal(0.25m);
+var somma = metaBinaria.Add(quartoDecimale, out var esatto);
+
+Console.WriteLine(esatto);            // True
+Console.WriteLine(somma.Base);        // 2
+Console.WriteLine(somma.ToDecimal()); // 0.75
+```
+
+Gli operatori `+`, `-`, `*` e `/` usano la base dell'operando sinistro. I
+metodi con precisione esplicita segnalano quando un'espansione periodica deve
+essere troncata.
+
 ### Operazioni bitwise inverse
 
 Le operazioni inverse restituiscono un valore incompleto perché più operandi
@@ -124,10 +150,15 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 
 - [avvio e integrazione](NumeralSystems.Net/docs/getting-started.md);
 - [sistemi numerici e alfabeti](NumeralSystems.Net/docs/numeral-systems.md);
+- [aritmetica, precisione, operatori e confronto](NumeralSystems.Net/docs/arithmetic.md);
+- [ricettario con esempi pratici](NumeralSystems.Net/docs/cookbook.md);
 - [primitive e operazioni bitwise](NumeralSystems.Net/docs/bitwise-values.md);
 - [valori incompleti e operazioni inverse](NumeralSystems.Net/docs/incomplete-values.md);
 - [codifica delle stringhe](NumeralSystems.Net/docs/string-encoding.md);
+- [risoluzione dei problemi](NumeralSystems.Net/docs/troubleshooting.md);
 - [riferimento API](NumeralSystems.Net/docs/api-reference.md);
+- [architettura e note per i contributori](NumeralSystems.Net/docs/architecture.md);
+- [migrazione alla 4.7.0](NumeralSystems.Net/docs/migration-4.7.md);
 - [processo di release e pubblicazione NuGet](NumeralSystems.Net/docs/releasing.md).
 
 Tutta la documentazione è scritta in Markdown e viene versionata insieme al
@@ -137,7 +168,8 @@ modificarla.
 ## Benchmark
 
 I benchmark prestazionali vivono in un progetto separato, così non influenzano
-la scoperta o l'esecuzione dei test:
+la scoperta o l'esecuzione dei test. Coprono formattazione, parsing, conversione,
+aritmetica razionale, divisioni periodiche e confronto di grandi valori:
 
 ```bash
 dotnet run --configuration Release \

@@ -1,0 +1,260 @@
+# Troubleshooting
+
+[Documentation home](index.md) ·
+[Getting started](getting-started.md) ·
+[Arithmetic](arithmetic.md) ·
+[Cookbook](cookbook.md) ·
+[Releasing](releasing.md)
+
+## `ArgumentOutOfRangeException`: base must be at least 2
+
+Positional bases 0 and 1 are not accepted. The validation applies consistently
+to:
+
+- `NumeralSystem`;
+- `Value` and `NumeralValue`;
+- base-conversion helpers;
+- arithmetic result bases.
+
+Use base 2 or greater:
+
+```csharp
+var binary = Numeral.System.OfBase(2);
+```
+
+Unary or non-positional representations need a different model.
+
+## A digit is rejected
+
+Every digit is an integer index in `0..base-1`. In base 16, for example, valid
+indices are 0 through 15:
+
+```csharp
+var valid = new Value(new List<int> { 15, 15 }, 16);
+
+// Throws: digit 16 does not exist in base 16.
+var invalid = new Value(new List<int> { 1, 16 }, 16);
+```
+
+An alphabet changes how a digit is printed; it does not change its numeric
+index.
+
+## Binary output contains leading zeroes
+
+`NumeralSystem.AdjustToFitIntegralLength` defaults to `true`. It pads newly
+constructed numerals to the system's byte-oriented width:
+
+```csharp
+var binary = Numeral.System.OfBase(2);
+binary.AdjustToFitIntegralLength = false;
+
+Console.WriteLine(binary[5]); // 101
+```
+
+Set the option before constructing or parsing the numeral.
+
+For `Value.ToBase`, pass `removeFirstZeros: true` when a canonical minimal-width
+digit list is required.
+
+## A fraction is much longer than expected
+
+The fraction may repeat in the destination base. For example, one third repeats
+in base 10, while one tenth repeats in base 2.
+
+Use a bounded conversion and inspect its Boolean result:
+
+```csharp
+var exact = value.TryToBase(
+    baseValue: 10,
+    maxFractionalDigits: 32,
+    result: out var converted);
+```
+
+If `exact` is `false`, `converted` contains a truncated expansion. Increase the
+limit, select a more suitable base, or reject the value according to application
+requirements.
+
+## Arithmetic returned `exact == false`
+
+Arithmetic is performed on an exact rational value first. The flag describes
+only the final representation in the result base.
+
+Common causes:
+
+- division produced a repeating fraction;
+- operands in different bases created a denominator that does not terminate in
+  the chosen result base;
+- `maxFractionalDigits` is smaller than a terminating expansion requires.
+
+Pass an explicit `resultBase` and limit:
+
+```csharp
+var result = left.Divide(
+    right,
+    exact: out var exact,
+    resultBase: 3,
+    maxFractionalDigits: 128);
+```
+
+See [Arithmetic](arithmetic.md) for the complete precision contract.
+
+## The result of `a + b` uses an unexpected base
+
+Operators and short arithmetic methods use the left operand's base:
+
+```csharp
+var result = left + right;
+Console.WriteLine(result.Base == left.Base); // True
+```
+
+Use the precision-aware method when a specific result base is required:
+
+```csharp
+var result = left.Add(
+    right,
+    exact: out var exact,
+    resultBase: 16);
+```
+
+## `ToBigInteger()` lost the fractional part
+
+This is intentional. `BigInteger` cannot represent a fractional component, so
+conversion truncates toward zero:
+
+```csharp
+var value = NumeralValue.FromDecimal(-12.75m);
+Console.WriteLine(value.ToBigInteger()); // -12
+```
+
+Use `ToDecimal`, `ToDouble`, the digit lists, or rational arithmetic when the
+fraction must be retained.
+
+## `ToDecimal()` throws `OverflowException`
+
+`NumeralValue` and integral arithmetic can exceed the range of `decimal`.
+`ToDecimal()` is a bounded view, not the storage limit.
+
+For an integral value, use:
+
+```csharp
+BigInteger integer = value.ToBigInteger();
+```
+
+For a very large fractional value, keep it as `NumeralValue` and operate on its
+digits instead of requesting a primitive view.
+
+## Two numerically equal values do not pass `object.Equals`
+
+`NumeralValue` retains normal reference equality. Use the numeric APIs:
+
+```csharp
+var same = left.NumericallyEquals(right);
+var order = left.CompareTo(right);
+```
+
+This avoids changing dictionary and set behavior for existing applications.
+
+## Division throws `DivideByZeroException`
+
+A divisor is zero when all integral and fractional digits are zero. Its stored
+sign does not matter.
+
+Check `IsZero` before dividing when zero is an expected input:
+
+```csharp
+if (!divisor.IsZero)
+{
+    var quotient = dividend / divisor;
+}
+```
+
+## Parsing works on one machine but fails on another
+
+The convenient `Parse(string)` and `ToString()` methods use
+`CultureInfo.CurrentCulture` for the negative sign and decimal separator.
+
+For stable files, tests, and protocols, pass an explicit:
+
+- ordered identity/alphabet;
+- digit separator;
+- negative sign;
+- decimal separator.
+
+The [numeral systems guide](numeral-systems.md) contains a complete
+`SerializationInfo` example.
+
+## A multi-character alphabet parses ambiguously
+
+Use a non-empty digit separator when symbols overlap or have different lengths:
+
+```csharp
+var identity = new List<string> { "zero", "one", "two" };
+var parsed = ternary.Parse("one|two", identity, "|", "-", ".");
+```
+
+Keep formatting tokens out of the identity list.
+
+## `Binary[0]` appears to be reversed
+
+Primitive wrappers store bit arrays least-significant bit first:
+
+```text
+Binary[0] = least-significant bit
+Binary[BitLength - 1] = most-significant bit
+```
+
+`ToString()` produces the normal human-readable order.
+
+## Incomplete-value enumeration is too slow or large
+
+Each unknown bit doubles the candidate count:
+
+```text
+candidate count = 2^unknownBits
+```
+
+Inspect `Permutations` before iterating `Enumerable`. Prefer `Contains` when the
+task is only to test whether one known value is compatible.
+
+## String encoding produced control characters
+
+`NumeralSystems.Net.Type.Base.String` maps UTF-16 code units to positional
+digits. The encoded string is not designed to be printable, URL-safe, or
+interoperable with Base64.
+
+Retain both:
+
+- the base;
+- the width returned by `EncodeToBase`.
+
+Use standard .NET Base64 APIs when a standardized text transport is required.
+
+## NuGet publishing fails before contacting NuGet.org
+
+If `NuGet/login@v1` reports:
+
+```text
+Input required and not supplied: user
+```
+
+create the GitHub Actions variable `NUGET_USER` and set it to the NuGet.org
+profile name, not an email address. Then rerun the failed job.
+
+For OIDC policy mismatches and the complete release checklist, see
+[Releasing](releasing.md).
+
+## Build fails while treating warnings as errors
+
+The library, tests, and benchmark projects enable `TreatWarningsAsErrors`.
+Resolve the first compiler warning rather than suppressing the build globally.
+
+Run:
+
+```bash
+dotnet build NumeralSystems.Net.sln \
+  --configuration Release \
+  --verbosity minimal
+```
+
+The library intentionally suppresses only missing public XML comments
+(`CS1591`); malformed XML documentation remains an error.

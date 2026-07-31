@@ -3,6 +3,8 @@
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
 [Numeral systems](numeral-systems.md) ·
+[Arithmetic](arithmetic.md) ·
+[Cookbook](cookbook.md) ·
 [Bitwise values](bitwise-values.md) ·
 [Incomplete values](incomplete-values.md)
 
@@ -35,14 +37,28 @@ Represents integral and fractional digit lists, a sign, and a base.
 
 | Member family | Members |
 | --- | --- |
-| State | `Integral`, `Decimals`, `Negative`, `Base` |
+| State | `Integral`, `Decimals`, `Negative`, `Base`, `IsZero` |
 | Precision | `DefaultMaxFractionalDigits` |
 | Construction | constructor, `FromDecimal`, `FromBigInteger` (optionally with a base), `FromInt`, `FromFloat`, `FromDouble`, `FromValue` |
 | Primitive conversion | `ToBigInteger`, `ToDecimal`, `ToInt`, `ToFloat`, `ToDouble`, `ToValue` |
 | Base conversion | `ToBase`, `TryToBase` |
+| Arithmetic | `Add`, `Subtract`, `Multiply`, `Divide`, `Negate`, `Abs` |
+| Comparison | `CompareTo`, `NumericallyEquals` |
+| Operators | binary `+`, `-`, `*`, `/`; unary `-`; `<`, `>`, `<=`, `>=` |
 
 `TryToBase` returns `false` when a repeating fractional expansion reaches the
 requested digit limit. Its output still contains the truncated conversion.
+
+Arithmetic methods have:
+
+- a short overload that returns a result in the current instance's base;
+- a precision-aware overload with `out bool exact`, optional `resultBase`, and
+  `maxFractionalDigits`.
+
+Operators use the left operand's base and
+`DefaultMaxFractionalDigits`. Division by zero throws
+`DivideByZeroException`. `NumericallyEquals` compares exact numeric magnitude
+without changing the reference-equality behavior of `object.Equals`.
 
 ### `NumeralSystem`
 

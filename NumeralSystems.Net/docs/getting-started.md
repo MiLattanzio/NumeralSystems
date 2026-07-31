@@ -2,6 +2,8 @@
 
 [Documentation home](index.md) ·
 [Numeral systems](numeral-systems.md) ·
+[Arithmetic](arithmetic.md) ·
+[Cookbook](cookbook.md) ·
 [API reference](api-reference.md)
 
 ## Requirements
@@ -31,6 +33,7 @@ The solution contains:
 NumeralSystems.Net/
 ├── NumeralSystems.Net/            # .NET Standard 2.1 library
 ├── NumeralSystem.Net.NUnit/       # NUnit tests on .NET 8
+├── NumeralSystems.Net.Benchmarks/ # BenchmarkDotNet performance suite
 ├── docs/                          # Markdown documentation
 ├── NumeralSystems.Net.sln
 └── global.json
@@ -128,6 +131,32 @@ Console.WriteLine(hexValue); // FF
 
 Conversion creates a new `Numeral`; the source object's base is unchanged.
 
+## Calculate with values
+
+`NumeralValue` performs arithmetic without converting through a bounded
+primitive type:
+
+```csharp
+var left = NumeralValue.FromDecimal(10.5m);
+var right = new NumeralValue(
+    integral: new List<int> { 10 },
+    decimals: new List<int> { 8 },
+    negative: false,
+    baseValue: 16);
+
+var sum = left.Add(
+    right,
+    exact: out var exact,
+    resultBase: 10);
+
+Console.WriteLine(exact);           // True
+Console.WriteLine(sum.ToDecimal()); // 21.0
+```
+
+The hexadecimal operand is `A.8`, which is decimal `10.5`. Arithmetic accepts
+different operand bases. See [Arithmetic](arithmetic.md) for division,
+precision, operators, and comparison.
+
 ## Common setup problems
 
 ### The value contains unexpected leading zeroes
@@ -156,5 +185,9 @@ using IntValue = NumeralSystems.Net.Type.Base.Int;
 var value = new IntValue { Value = 42 };
 ```
 
-Continue with [Numeral systems](numeral-systems.md) for custom alphabets and
-conversion behavior.
+Continue with:
+
+- [Numeral systems](numeral-systems.md) for custom alphabets and conversion;
+- [Arithmetic](arithmetic.md) for calculations and comparison;
+- [Cookbook](cookbook.md) for task-oriented examples;
+- [Troubleshooting](troubleshooting.md) for common errors.

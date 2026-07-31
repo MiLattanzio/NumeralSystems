@@ -2,6 +2,8 @@
 
 [Documentation home](index.md) ·
 [Incomplete values](incomplete-values.md) ·
+[Cookbook](cookbook.md) ·
+[Troubleshooting](troubleshooting.md) ·
 [API reference](api-reference.md)
 
 The `NumeralSystems.Net.Type.Base` namespace wraps several .NET primitive types

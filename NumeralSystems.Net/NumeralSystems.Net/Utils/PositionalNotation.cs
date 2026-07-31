@@ -55,6 +55,53 @@ namespace NumeralSystems.Net.Utils
             return Reduce(numerator, denominator);
         }
 
+        internal static (BigInteger Numerator, BigInteger Denominator) ToRatio(
+            IEnumerable<int> integral,
+            IEnumerable<int> fractional,
+            bool negative,
+            int baseValue)
+        {
+            var integralMagnitude = FromDigits(integral, baseValue);
+            var (fractionalNumerator, denominator) = FractionToRatio(fractional, baseValue);
+            var numerator = integralMagnitude * denominator + fractionalNumerator;
+            if (negative) numerator = -numerator;
+            return Reduce(numerator, denominator);
+        }
+
+        internal static (
+            List<int> Integral,
+            List<int> Fractional,
+            bool Negative,
+            bool Exact) FromRatio(
+            BigInteger numerator,
+            BigInteger denominator,
+            int baseValue,
+            int maxFractionalDigits)
+        {
+            ValidateBase(baseValue);
+            ValidateFractionalDigitLimit(maxFractionalDigits);
+            if (denominator.IsZero)
+                throw new DivideByZeroException("The rational denominator cannot be zero.");
+            if (denominator < 0)
+            {
+                numerator = -numerator;
+                denominator = -denominator;
+            }
+
+            (numerator, denominator) = Reduce(numerator, denominator);
+            var negative = numerator < 0;
+            var magnitude = BigInteger.Abs(numerator);
+            var integralValue = BigInteger.DivRem(magnitude, denominator, out var fractionalNumerator);
+            var fractional = FractionFromRatio(
+                fractionalNumerator,
+                denominator,
+                baseValue,
+                maxFractionalDigits,
+                out var exact);
+
+            return (ToDigits(integralValue, baseValue), fractional, negative, exact);
+        }
+
         internal static List<int> FractionFromRatio(
             BigInteger numerator,
             BigInteger denominator,
@@ -189,6 +236,13 @@ namespace NumeralSystems.Net.Utils
             BigInteger numerator,
             BigInteger denominator)
         {
+            if (denominator.IsZero)
+                throw new DivideByZeroException("The rational denominator cannot be zero.");
+            if (denominator < 0)
+            {
+                numerator = -numerator;
+                denominator = -denominator;
+            }
             if (numerator.IsZero) return (BigInteger.Zero, BigInteger.One);
 
             var divisor = BigInteger.GreatestCommonDivisor(numerator, denominator);

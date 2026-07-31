@@ -2,6 +2,8 @@
 
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
+[Arithmetic](arithmetic.md) ·
+[Cookbook](cookbook.md) ·
 [API reference](api-reference.md)
 
 ## Representation model
@@ -241,6 +243,11 @@ views or another base.
 
 `Value.FromBigInteger` and `Value.ToBigInteger` provide the same
 arbitrary-precision round trip for non-negative integral digit sequences.
+
+`NumeralValue` also supports cross-base addition, subtraction, multiplication,
+division, sign helpers, and numeric comparison. These operations use an exact
+rational intermediate and a bounded destination-base expansion. See
+[Arithmetic](arithmetic.md) for the complete contract.
 
 Use `NumeralValue` when the digit lists themselves matter. Use `Numeral` when
 you also need custom symbol parsing and formatting.

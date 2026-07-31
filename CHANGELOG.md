@@ -4,6 +4,31 @@ All notable changes to NumeralSystems.Net are documented in this file.
 
 The project follows [Semantic Versioning](https://semver.org/).
 
+## [4.7.0] - 2026-07-31
+
+### Added
+
+- Add exact-rational `Add`, `Subtract`, `Multiply`, and `Divide` operations to
+  `NumeralValue`, including overloads that report whether the destination
+  expansion terminated within a configurable digit limit.
+- Add binary `+`, `-`, `*`, and `/` operators, unary negation, `Negate`, `Abs`,
+  and `IsZero`.
+- Add base-independent numeric comparison through `CompareTo`,
+  `NumericallyEquals`, and relational operators.
+- Add BenchmarkDotNet coverage for same-base arithmetic, cross-base arithmetic,
+  repeating division, and large-value comparison.
+- Add dedicated guides for arithmetic, recipes, troubleshooting, migration, and
+  project architecture.
+- Include the complete Markdown guide set, changelog, contribution policy,
+  security policy, code of conduct, and license in the NuGet package.
+
+### Changed
+
+- Perform arithmetic with reduced arbitrary-precision rational intermediates,
+  converting to a finite positional representation only for the final result.
+- Expand both READMEs, the documentation index, getting-started guide, numeral
+  guide, API reference, and cross-links between topic guides.
+
 ## [4.6.0] - 2026-07-31
 
 ### Added
@@ -51,5 +76,6 @@ The project follows [Semantic Versioning](https://semver.org/).
 - Produce repository metadata and symbol packages alongside the NuGet package.
 - Treat compiler warnings as errors in the library, tests, and benchmarks.
 
+[4.7.0]: https://github.com/MiLattanzio/NumeralSystems/compare/v4.6.0...v4.7.0
 [4.6.0]: https://github.com/MiLattanzio/NumeralSystems/compare/v4.5.2...v4.6.0
 [4.5.2]: https://github.com/MiLattanzio/NumeralSystems/releases/tag/v4.5.2

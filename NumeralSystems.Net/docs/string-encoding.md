@@ -2,6 +2,8 @@
 
 [Documentation home](index.md) ·
 [Numeral systems](numeral-systems.md) ·
+[Cookbook](cookbook.md) ·
+[Troubleshooting](troubleshooting.md) ·
 [API reference](api-reference.md)
 
 NumeralSystems.Net exposes two unrelated types named `String`. Use aliases to

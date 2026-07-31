@@ -6,12 +6,14 @@
 English · [Italiano](README.md)
 
 NumeralSystems.Net is a .NET library for representing, converting, and
-formatting values in arbitrary numeral systems. It also provides bit-oriented
-primitive wrappers, values with unknown bits, and reverse logical operations.
+formatting values in arbitrary numeral systems and performing cross-base
+rational arithmetic. It also provides bit-oriented primitive wrappers, values
+with unknown bits, and reverse logical operations.
 
 Use the library when you need to:
 
 - convert integral or fractional values between bases;
+- calculate and compare signed values written in different bases;
 - format digits with a custom alphabet;
 - inspect and modify the binary representation of primitive values;
 - describe partial values whose bits can be `0`, `1`, or unknown;
@@ -72,7 +74,7 @@ formats and protocols.
 | --- | --- | --- |
 | Numeral systems | `NumeralSystem`, `Numeral` | Create, parse, format, and convert values between bases |
 | Non-negative digits | `Value` | Store integral digit sequences, including arbitrary-precision integers |
-| Signed and fractional values | `NumeralValue` | Convert signed fractions with bounded, observable precision |
+| Signed and fractional values | `NumeralValue` | Convert, calculate, and compare values with bounded, observable precision |
 | Bitwise primitives | `Type.Base.*` | Wrap bytes, integers, characters, and floating-point values |
 | Unknown bits | `Type.Incomplete.*` | Represent ternary bit patterns, enumerate candidates, and test them with `Contains` |
 | Encoding | `Type.Base.String`, `Encoding.String` | Convert strings to digits in another base and derive symbol identities |
@@ -99,6 +101,29 @@ Console.WriteLine(text); // YY
 Console.WriteLine(dozenal.Parse(text, digits, "", "-", ".").Integer); // 143
 ```
 
+### Cross-base arithmetic
+
+`NumeralValue` calculates through exact rational intermediates. Operands may use
+different bases:
+
+```csharp
+var binaryHalf = new NumeralValue(
+    new List<int> { 0 },
+    new List<int> { 1 },
+    false,
+    2);
+
+var decimalQuarter = NumeralValue.FromDecimal(0.25m);
+var sum = binaryHalf.Add(decimalQuarter, out var exact);
+
+Console.WriteLine(exact);           // True
+Console.WriteLine(sum.Base);        // 2
+Console.WriteLine(sum.ToDecimal()); // 0.75
+```
+
+Operators `+`, `-`, `*`, and `/` use the left operand's base. Precision-aware
+methods report when the result requires a truncated repeating expansion.
+
 ### Reverse bitwise operations
 
 Reverse operations return an incomplete value because multiple operands can
@@ -124,10 +149,15 @@ The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/
 
 - [getting started and integration](NumeralSystems.Net/docs/getting-started.md);
 - [numeral systems and alphabets](NumeralSystems.Net/docs/numeral-systems.md);
+- [arithmetic, precision, operators, and comparison](NumeralSystems.Net/docs/arithmetic.md);
+- [task-oriented cookbook](NumeralSystems.Net/docs/cookbook.md);
 - [primitive wrappers and bitwise operations](NumeralSystems.Net/docs/bitwise-values.md);
 - [incomplete values and reverse operations](NumeralSystems.Net/docs/incomplete-values.md);
 - [string encoding](NumeralSystems.Net/docs/string-encoding.md);
+- [troubleshooting](NumeralSystems.Net/docs/troubleshooting.md);
 - [API reference](NumeralSystems.Net/docs/api-reference.md);
+- [architecture and contributor notes](NumeralSystems.Net/docs/architecture.md);
+- [migration to 4.7.0](NumeralSystems.Net/docs/migration-4.7.md);
 - [release and NuGet publishing process](NumeralSystems.Net/docs/releasing.md).
 
 All documentation is maintained as Markdown and versioned with the code. No
@@ -136,7 +166,8 @@ documentation generator or additional tool is required to read or edit it.
 ## Benchmarks
 
 Performance benchmarks live in a separate project so they do not affect test
-discovery or execution:
+discovery or execution. They cover formatting, parsing, conversion, rational
+arithmetic, repeating division, and large-value comparison:
 
 ```bash
 dotnet run --configuration Release \

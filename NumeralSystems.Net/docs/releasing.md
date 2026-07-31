@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
+[Troubleshooting](troubleshooting.md) ·
 [API reference](api-reference.md)
 
 The `.github/workflows/dotnet.yml` workflow builds and tests every push and pull
@@ -47,8 +48,8 @@ vMAJOR.MINOR.PATCH-prerelease
 Examples:
 
 ```text
-v4.6.0
-v4.6.0-beta.1
+v4.7.0
+v4.7.0-beta.1
 ```
 
 The leading `v` is removed before setting `PackageVersion`. A prerelease GitHub

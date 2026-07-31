@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [Numeral systems](numeral-systems.md) ·
+[Numeral alphabets](numeral-alphabets.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [API reference](api-reference.md)
@@ -98,23 +99,27 @@ var parsed = hex.Parse("FF");
 Console.WriteLine(parsed.Integer); // 255
 ```
 
-Use `TryParse` when invalid input is expected. The explicit overload requires an
-alphabet and formatting tokens:
+Use the `ParseResult` overload when invalid input is expected:
 
 ```csharp
 var decimalSystem = Numeral.System.OfBase(10);
-var digits = "0123456789".Select(c => c.ToString()).ToList();
+var parsed = decimalSystem.TryParse(
+    "-12.5",
+    NumeralAlphabet.Base10);
 
-var success = decimalSystem.TryParse(
-    value: "-12.5",
-    identity: digits,
-    separator: "",
-    negativeSign: "-",
-    numberDecimalSeparator: ".",
-    result: out var parsed);
+Console.WriteLine(parsed.Success);       // True
+Console.WriteLine(parsed.Value.Decimal); // -12.5
+```
 
-Console.WriteLine(success);       // True
-Console.WriteLine(parsed.Decimal); // -12.5
+Failures include a reason and exact UTF-16 position:
+
+```csharp
+var invalid = decimalSystem.TryParse(
+    "12X",
+    NumeralAlphabet.Base10);
+
+Console.WriteLine(invalid.Reason);   // UnknownSymbol
+Console.WriteLine(invalid.Position); // 2
 ```
 
 ## Convert between systems
@@ -166,13 +171,15 @@ numeral.
 
 ### Parsing changes between machines
 
-The parameterless overload uses `CultureInfo.CurrentCulture`. Use the explicit
-serialization overload for deterministic text.
+The parameterless overload uses predefined/deterministic alphabets but takes
+its sign and decimal separator from `CultureInfo.CurrentCulture`. Pass
+`NumeralAlphabet` and explicit formatting tokens for deterministic text.
 
 ### A custom alphabet is rejected
 
-The alphabet must contain at least `NumeralSystem.Size` entries. Each digit in
-the input must map to exactly one entry.
+The alphabet size must equal `NumeralSystem.Size`. Symbols must be non-empty,
+unique, and prefix-free, and cannot conflict with separators or the negative
+sign.
 
 ### A type name conflicts with `System`
 

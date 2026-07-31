@@ -14,7 +14,8 @@ La libreria è adatta quando serve:
 
 - convertire numeri interi o frazionari tra basi diverse;
 - calcolare e confrontare valori con segno scritti in basi differenti;
-- usare alfabeti personalizzati per rappresentare le cifre;
+- usare alfabeti ordinati, validati e immutabili;
+- ottenere errori di parsing strutturati con posizione UTF-16 esatta;
 - ispezionare e modificare la rappresentazione binaria dei tipi primitivi;
 - descrivere valori parziali con bit `0`, `1` o sconosciuti;
 - ricavare i possibili operandi di `AND`, `OR`, `XOR` e `NAND`;
@@ -75,6 +76,7 @@ esplicitamente alfabeto e separatori.
 | Area | Tipi | Scopo |
 | --- | --- | --- |
 | Sistemi numerici | `NumeralSystem`, `Numeral` | Creazione, parsing, formattazione e conversione tra basi |
+| Alfabeti ordinati | `NumeralAlphabet`, `ParseResult` | Codifica deterministica, validazione e diagnostica del parsing |
 | Cifre non negative | `Value` | Sequenze intere, inclusi valori a precisione arbitraria |
 | Valori con segno e frazioni | `NumeralValue` | Conversione, calcolo e confronto con precisione limitata e verificabile |
 | Primitive bitwise | `Type.Base.*` | Wrapper per byte, interi, caratteri e numeri floating point |
@@ -92,16 +94,32 @@ using NumeralSystems.Net;
 var dozenal = Numeral.System.OfBase(12);
 dozenal.AdjustToFitIntegralLength = false;
 
-var digits = "0123456789XY"
-    .Select(character => character.ToString())
-    .ToList();
+var alphabet = new NumeralAlphabet(
+    "0123456789XY".Select(character => character.ToString()));
 
 var value = dozenal[143];
-var text = value.ToString(digits, separator: "", negativeSign: "-", numberDecimalSeparator: ".");
+var text = value.ToString(alphabet, separator: "", negativeSign: "-", numberDecimalSeparator: ".");
 
 Console.WriteLine(text); // YY
-Console.WriteLine(dozenal.Parse(text, digits, "", "-", ".").Integer); // 143
+Console.WriteLine(dozenal.Parse(text, alphabet, "", "-", ".").Integer); // 143
 ```
+
+`NumeralAlphabet` rifiuta simboli duplicati, vuoti o con prefissi ambigui e
+conflitti con separatori e segni.
+
+### Round-trip esatti degli alfabeti
+
+```csharp
+BigInteger value = BigInteger.Pow(2, 256) + 42;
+var text = NumeralAlphabet.Base62.Encode(value);
+var decoded = NumeralAlphabet.Base62.Decode(text);
+
+Console.WriteLine(decoded == value); // True
+```
+
+Sono disponibili alfabeti predefiniti per le basi 2, 8, 10, 16, 32, 36, 58,
+62 e 64. Il parsing strutturato restituisce `ParseResult` con `Reason`,
+`Position`, `ErrorLength` e `Message`.
 
 ### Aritmetica tra basi diverse
 
@@ -177,6 +195,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 
 - [avvio e integrazione](NumeralSystems.Net/docs/getting-started.md);
 - [sistemi numerici e alfabeti](NumeralSystems.Net/docs/numeral-systems.md);
+- [alfabeti ordinati, preset e diagnostica del parsing](NumeralSystems.Net/docs/numeral-alphabets.md);
 - [aritmetica, precisione, operatori e confronto](NumeralSystems.Net/docs/arithmetic.md);
 - [ricettario con esempi pratici](NumeralSystems.Net/docs/cookbook.md);
 - [primitive e operazioni bitwise](NumeralSystems.Net/docs/bitwise-values.md);

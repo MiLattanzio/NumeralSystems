@@ -8,6 +8,16 @@ The project follows [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Add ordered immutable `NumeralAlphabet` values with duplicate, prefix, and
+  formatting-token conflict validation.
+- Add predefined alphabets for bases 2, 8, 10, 16, 32, 36, 58, 62, and 64,
+  plus deterministic fixed-width alphabets for other bases.
+- Add exact signed `BigInteger` `Encode`/`Decode` round trips and ordered
+  alphabet overloads across `Value`, `Numeral`, and `NumeralSystem`.
+- Add structured `ParseResult` diagnostics with `ParseErrorReason`, UTF-16
+  position, error length, and message.
+- Add generated round-trip properties for bases 2 through 128 and pairwise
+  conversion properties across every predefined base.
 - Add the immutable `BitPattern` engine shared by every `Incomplete*` wrapper.
 - Add exact `BigInteger` candidate counts, unsigned and two's-complement bounds,
   membership checks, and explicitly bounded candidate enumeration.
@@ -34,6 +44,10 @@ The project follows [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Deprecate `Value.FromString(string, HashSet<string>)`; its compatibility path
+  now sorts symbols ordinally instead of relying on set enumeration order.
+- Make default serialization use predefined alphabets when available and
+  deterministic fixed-width alphabets otherwise.
 - Route nullable Boolean operations and legacy incomplete wrappers through the
   shared set-based ternary logic.
 - Make `Binary` setters consistently public across incomplete wrapper types

@@ -2,6 +2,7 @@
 
 [Getting started](getting-started.md) ·
 [Numeral systems](numeral-systems.md) ·
+[Numeral alphabets](numeral-alphabets.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [Bitwise values](bitwise-values.md) ·
@@ -23,6 +24,7 @@ directly on GitHub and changed without a documentation generator.
 | Need | Start with |
 | --- | --- |
 | Convert and format a .NET number in another base | `NumeralSystem` and `Numeral` |
+| Encode text with a stable ordered symbol mapping | `NumeralAlphabet` |
 | Convert an existing sequence of non-negative digits | `Value` |
 | Preserve a sign and fractional digits while changing base | `NumeralValue` |
 | Calculate or compare signed values in different bases | `NumeralValue` arithmetic |
@@ -71,6 +73,8 @@ index from `0` through `base - 1`.
   referencing the project.
 - [Numeral systems](numeral-systems.md) covers bases, alphabets, parsing,
   formatting, and conversion.
+- [Numeral alphabets](numeral-alphabets.md) covers immutable symbol order,
+  presets, validation, exact integer round trips, and structured parse errors.
 - [Arithmetic](arithmetic.md) covers exact rational operations, result bases,
   bounded fractional expansions, operators, and numeric comparison.
 - [Cookbook](cookbook.md) provides task-oriented recipes across the library.

@@ -66,9 +66,9 @@ namespace NumeralSystem.Net.NUnit
         public void RandomStringTest()
         {
             var sourceString = GenerateRandomString(_random.Next(1, 255));
-            var sourceCharacters = new HashSet<string>(_fromCharset);
-            var sourceIdentity = new List<string>(sourceCharacters);
-            var value = Value.FromString(sourceString, sourceCharacters);
+            var alphabet = new NumeralAlphabet(_fromCharset);
+            var sourceIdentity = new List<string>(alphabet.Symbols);
+            var value = Value.FromString(sourceString, alphabet);
             var valueString = ValueToString(value, sourceIdentity);
             Assert.That(sourceString, Is.EqualTo(valueString));
             var valueChanged = value.ToBase(_toCharset.Count);

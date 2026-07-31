@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
+[Numeral alphabets](numeral-alphabets.md) ·
 [Arithmetic](arithmetic.md) ·
 [BitPattern engine](bit-patterns.md) ·
 [Troubleshooting](troubleshooting.md) ·
@@ -36,7 +37,7 @@ hexadecimal.AdjustToFitIntegralLength = false;
 
 var format = new NumeralSystem.SerializationInfo
 {
-    Identity = "0123456789ABCDEF".Select(c => c.ToString()).ToList(),
+    Alphabet = NumeralAlphabet.Base16,
     Separator = "",
     NegativeSign = "-",
     NumberDecimalSeparator = "."
@@ -191,10 +192,10 @@ Use a non-empty separator when symbols have variable length:
 var ternary = Numeral.System.OfBase(3);
 ternary.AdjustToFitIntegralLength = false;
 
-var identity = new List<string> { "zero", "one", "two" };
+var alphabet = new NumeralAlphabet(new[] { "zero", "one", "two" });
 var parsed = ternary.Parse(
     "one|two",
-    identity,
+    alphabet,
     separator: "|",
     negativeSign: "-",
     numberDecimalSeparator: ".");
@@ -202,25 +203,54 @@ var parsed = ternary.Parse(
 Console.WriteLine(parsed.Integer); // 5
 ```
 
-Without a separator, overlapping symbols can be ambiguous.
+Prefix-overlapping symbols are rejected when the alphabet is constructed.
 
 ## Use a stable alphabet for data exchange
 
 ```csharp
 var base32 = Numeral.System.OfBase(32);
-var alphabet = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
-    .Select(c => c.ToString())
-    .ToList();
+var alphabet = NumeralAlphabet.Base32;
 
 var encoded = base32[123456789];
-var text = encoded.ToString(alphabet, "", "-", ".");
-var decoded = base32.Parse(text, alphabet, "", "-", ".");
+var text = encoded.ToString(alphabet);
+var decoded = base32.Parse(text, alphabet);
 
 Console.WriteLine(decoded.BigInteger); // 123456789
 ```
 
-The example alphabet omits visually ambiguous characters, but it is not a
-standard Base32 implementation.
+The predefined alphabet follows the Crockford-style ordering and omits
+visually ambiguous characters.
+
+## Decode with an exact error position
+
+```csharp
+var hexadecimal = Numeral.System.OfBase(16);
+var parsed = hexadecimal.TryParse("CAFX", NumeralAlphabet.Base16);
+
+if (!parsed.Success)
+{
+    Console.WriteLine(parsed.Reason);   // UnknownSymbol
+    Console.WriteLine(parsed.Position); // 3
+}
+```
+
+Use the machine-readable `Reason` for program flow and `Message` for logs or
+user interfaces.
+
+## Verify an exact integer round trip
+
+```csharp
+BigInteger value = BigInteger.Pow(2, 512) + 42;
+var alphabet = NumeralAlphabet.Base62;
+
+var encoded = alphabet.Encode(value);
+var decoded = alphabet.Decode(encoded);
+
+Console.WriteLine(decoded == value); // True
+```
+
+The conversion stays in `BigInteger`; it does not pass through a bounded
+primitive.
 
 ## Inspect and modify primitive bits
 

@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [Arithmetic](arithmetic.md) ·
+[Numeral alphabets](numeral-alphabets.md) ·
 [BitPattern engine](bit-patterns.md) ·
 [Troubleshooting](troubleshooting.md) ·
 [Changelog](../../CHANGELOG.md)
@@ -23,6 +24,54 @@ upgrading directly from 4.5.2 or earlier.
 8. Replace new uses of unbounded `Incomplete*.Enumerable` with
    `EnumerateCandidates(limit)`.
 9. Test ternary `AND`, `OR`, and `NAND` cases where one operand is unknown.
+10. Replace `HashSet<string>` alphabets with `NumeralAlphabet`.
+11. Use structured `ParseResult` diagnostics where invalid input is expected.
+
+## Ordered alphabets in 4.7.0
+
+`NumeralAlphabet` replaces implicit collection enumeration with an immutable
+numeric order:
+
+```csharp
+var alphabet = new NumeralAlphabet(orderedSymbols);
+var value = Value.FromString(text, alphabet);
+```
+
+The `Value.FromString(string, HashSet<string>)` overload remains binary/source
+compatible but is marked `Obsolete`. Its remaining behavior sorts the set
+ordinally; applications must not rely on a previous runtime-specific set order.
+
+Construction now detects:
+
+- duplicate or empty symbols;
+- symbols that are prefixes of other symbols;
+- fewer than two symbols.
+
+Parsing/formatting with a `NumeralAlphabet` also detects conflicts with the
+digit separator, negative sign, and decimal separator.
+
+### Default text changes
+
+`SerializationInfo.OfBase` now uses predefined alphabets for bases 2, 8, 10,
+16, 32, 36, 58, 62, and 64. Other bases use deterministic fixed-width decimal
+symbols. Text produced by parameterless `ToString()` can therefore differ from
+older versions even though its numeric value is unchanged.
+
+Persisted formats should always retain their explicit alphabet and formatting
+tokens. To preserve an older mapping, construct `NumeralAlphabet` from the old
+ordered `Identity` list.
+
+### Structured parsing
+
+Use:
+
+```csharp
+ParseResult parsed = system.TryParse(text, alphabet);
+```
+
+On failure, inspect `Reason`, `Position`, `ErrorLength`, and `Message`. Position
+is a zero-based UTF-16 offset. The existing Boolean/out overload remains
+available.
 
 ## Shared `BitPattern` engine in 4.7.0
 
@@ -239,6 +288,10 @@ counterpart.
 | bit-pattern binary operation | operand widths differ | `ArgumentException` |
 | `EnumerateCandidates` | negative limit | `ArgumentOutOfRangeException` |
 | throwing intersection/reverse/solver | constraint has no solution | `InvalidOperationException` |
+| `NumeralAlphabet` construction | duplicate, empty, or prefix-ambiguous symbols | `ArgumentException` |
+| alphabet formatting | separator/sign conflicts with symbols | `ArgumentException` |
+| `NumeralAlphabet.Decode` | invalid numeral text | `FormatException` |
+| `NumeralSystem.Parse` with alphabet | unsuccessful `ParseResult` | `InvalidOperationException` |
 
 A repeating result is not exceptional. It is returned with `exact == false`.
 
@@ -262,7 +315,11 @@ compatible and contradictory pattern intersections
 logical/arithmetic shifts and rotations
 reverse XOR and reverse NAND
 x & mask == result, including an impossible result
+signed BigInteger encode/decode for every application alphabet
+pairwise conversion among all predefined bases
+duplicate and ambiguous-prefix alphabet rejection
+parse error reason and UTF-16 position
 ```
 
 See the repository's `NumeralValueArithmeticTests` and
-`BitPatternTests` for executable examples.
+`BitPatternTests` and `NumeralAlphabetTests` for executable examples.

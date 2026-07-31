@@ -52,12 +52,36 @@ namespace NumeralSystems.Net
         /// <param name="value">The string representation from which to create the Value. If the string is null, an empty Value object will be created.</param>
         /// <param name="baseIndices">A set of valid characters that define the base indices. Each character in the input string is matched against this set to form numerical indices.</param>
         /// <returns>A Value object representing the parsed input string with numerical indices based on the provided base indices set.</returns>
+        [Obsolete(
+            "HashSet<string> does not define numeric symbol order. Use FromString(string, NumeralAlphabet, string) instead.")]
         public static Value FromString(string value, HashSet<string> baseIndices)
         {
-            var identity = baseIndices.ToList();
-            if (null == value) return new Value(Array.Empty<int>().ToList(), baseIndices.Count);
-            var indices = value.SplitAndKeep(baseIndices.ToArray()).Select(x => identity.IndexOf(x)).ToList();
-            return new Value(indices, baseIndices.Count);
+            if (baseIndices == null) throw new ArgumentNullException(nameof(baseIndices));
+            var alphabet = new NumeralAlphabet(baseIndices.OrderBy(symbol => symbol, StringComparer.Ordinal));
+            return FromString(value, alphabet);
+        }
+
+        /// <summary>
+        /// Creates a value by decoding symbols with an ordered immutable alphabet.
+        /// </summary>
+        public static Value FromString(
+            string value,
+            NumeralAlphabet alphabet,
+            string separator = "")
+        {
+            if (alphabet == null) throw new ArgumentNullException(nameof(alphabet));
+            if (value == null) return new Value(new List<int>(), alphabet.Count);
+            if (!alphabet.TryReadDigits(
+                    value,
+                    0,
+                    value.Length,
+                    separator ?? throw new ArgumentNullException(nameof(separator)),
+                    out var indices,
+                    out var errorPosition,
+                    out var reason))
+                throw new FormatException(
+                    $"Invalid numeral at position {errorPosition}. Reason: {reason}.");
+            return new Value(indices, alphabet.Count);
         }
 
         /// <summary>
@@ -91,6 +115,20 @@ namespace NumeralSystems.Net
         /// Returns the arbitrary-precision integer represented by the current digits.
         /// </summary>
         public BigInteger ToBigInteger() => PositionalNotation.FromDigits(Indices, Base);
+
+        /// <summary>
+        /// Formats the stored digits with an ordered immutable alphabet.
+        /// </summary>
+        public string ToString(NumeralAlphabet alphabet, string separator = "")
+        {
+            if (alphabet == null) throw new ArgumentNullException(nameof(alphabet));
+            if (separator == null) throw new ArgumentNullException(nameof(separator));
+            if (alphabet.Count != Base)
+                throw new ArgumentOutOfRangeException(
+                    nameof(alphabet),
+                    "Alphabet size must equal the value's base.");
+            return string.Join(separator, Indices.Select(index => alphabet[index]));
+        }
 
 
         /// <summary>

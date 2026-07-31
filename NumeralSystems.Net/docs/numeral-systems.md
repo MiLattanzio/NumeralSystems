@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
+[Numeral alphabets](numeral-alphabets.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [API reference](api-reference.md)
@@ -71,19 +72,19 @@ integral indices, not only a display option.
 
 ## Custom alphabets
 
-Pass an ordered `IList<string>` whose position is the numeric value of a digit:
+Use an ordered immutable `NumeralAlphabet` whose position is the numeric value
+of a digit:
 
 ```csharp
 var dozenal = Numeral.System.OfBase(12);
 dozenal.AdjustToFitIntegralLength = false;
 
-var identity = "0123456789XY"
-    .Select(c => c.ToString())
-    .ToList();
+var alphabet = new NumeralAlphabet(
+    "0123456789XY".Select(c => c.ToString()));
 
 var numeral = dozenal[143];
 var text = numeral.ToString(
-    identity,
+    alphabet,
     separator: "",
     negativeSign: "-",
     numberDecimalSeparator: ".");
@@ -92,7 +93,7 @@ Console.WriteLine(text); // YY
 
 var roundTrip = dozenal.Parse(
     text,
-    identity,
+    alphabet,
     separator: "",
     negativeSign: "-",
     numberDecimalSeparator: ".");
@@ -100,29 +101,31 @@ var roundTrip = dozenal.Parse(
 Console.WriteLine(roundTrip.Integer); // 143
 ```
 
-Symbols may contain more than one character. When symbols are ambiguous or
-variable length, use a non-empty digit separator:
+Symbols may contain more than one character. Duplicate and prefix-ambiguous
+symbols are rejected at construction. A separator can still improve
+readability:
 
 ```csharp
-var identity = new List<string> { "zero", "one", "two" };
+var alphabet = new NumeralAlphabet(new[] { "zero", "one", "two" });
 var ternary = Numeral.System.OfBase(3);
 ternary.AdjustToFitIntegralLength = false;
 
-var text = ternary[5].ToString(identity, "|", "-", ".");
+var text = ternary[5].ToString(alphabet, "|", "-", ".");
 Console.WriteLine(text); // one|two
 ```
 
-Avoid reusing the negative sign, decimal separator, or digit separator as a
-digit symbol.
+`ValidateFormat` and the parsing/formatting APIs reject conflicts between digit
+symbols, the negative sign, decimal separator, and digit separator.
 
 ## Default serialization
 
 `Numeral.ToString()` and `NumeralSystem.Parse(string)` call
 `NumeralSystem.SerializationInfo.OfBase`. That method:
 
-- builds an identity from printable characters;
-- reads the negative sign and decimal separator from the current culture;
-- chooses a separator when the base is larger than the printable identity.
+- uses a predefined `NumeralAlphabet` for bases 2, 8, 10, 16, 32, 36, 58, 62,
+  and 64;
+- generates deterministic fixed-width symbols for other bases;
+- reads the negative sign and decimal separator from the current culture.
 
 This is convenient for display, but explicit settings are safer for files,
 tests, hashes, and network protocols.
@@ -132,7 +135,7 @@ You can retain a configuration:
 ```csharp
 var format = new NumeralSystem.SerializationInfo
 {
-    Identity = "0123456789ABCDEF".Select(c => c.ToString()).ToList(),
+    Alphabet = NumeralAlphabet.Base16,
     Separator = "",
     NegativeSign = "-",
     NumberDecimalSeparator = "."
@@ -212,9 +215,13 @@ var text = string.Concat(hexadecimalDigits.Indices.Select(i => i.ToString("X")))
 Console.WriteLine(text); // FF
 ```
 
-`Value.FromString(string, HashSet<string>)` creates an identity by enumerating
-the set. That enumeration order defines the numeric value of each symbol. Use a
-stable set construction and keep the same mapping for decoding.
+`Value.FromString(string, HashSet<string>)` is deprecated because a set cannot
+define numeric symbol order. Use the ordered overload:
+
+```csharp
+var value = Value.FromString("00FF", NumeralAlphabet.Base16);
+var text = value.ToString(NumeralAlphabet.Base16);
+```
 
 `Value.FromString(string, bool)` treats UTF-16 character values as digit
 indices. With `fit: true`, the instance uses the smallest base that can contain
@@ -257,7 +264,13 @@ you also need custom symbol parsing and formatting.
 - The base must be at least 2.
 - Every digit must be in the range `0..base-1`.
 - `Parse` throws `InvalidOperationException` for an invalid textual numeral.
-- `TryParse` returns `false` and still assigns a result object.
+- `TryParse(value, NumeralAlphabet, ...)` returns `ParseResult` with an error
+  reason and UTF-16 position.
+- The legacy `TryParse` overload returns `false` and still assigns a result
+  object.
+
+See [Ordered numeral alphabets](numeral-alphabets.md) for all predefined
+alphabets, exact integer round trips, and the complete diagnostic contract.
 - `SkipUnknownValues` controls whether unknown input symbols are ignored or
   represented by zero while parsing.
 - `TryFromIndices`, `TryIntegerOf`, and `TryCharOf` report whether conversion was

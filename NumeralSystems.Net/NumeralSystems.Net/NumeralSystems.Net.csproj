@@ -9,7 +9,7 @@
         <PackageVersion>4.7.0</PackageVersion>
         <Title>NumeralSystems.Net</Title>
         <Authors>Polecola</Authors>
-        <Description>Work with arbitrary numeral systems, cross-base rational arithmetic, immutable bit patterns, incomplete values, and bitwise constraint solving.</Description>
+        <Description>Work with arbitrary numeral systems, ordered alphabets, exact cross-base round trips, rational arithmetic, immutable bit patterns, and constraint solving.</Description>
         <Copyright>Copyright © MiLattanzio and contributors</Copyright>
         <RepositoryUrl>https://github.com/MiLattanzio/NumeralSystems</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
@@ -20,9 +20,9 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/MiLattanzio/NumeralSystems</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageTags>numeral-systems;base-conversion;rational-arithmetic;big-integer;bit-pattern;bitwise;constraint-solving;incomplete-values</PackageTags>
+        <PackageTags>numeral-systems;numeral-alphabet;base-conversion;round-trip;parser;parse-result;rational-arithmetic;big-integer;bit-pattern;bitwise;constraint-solving;incomplete-values</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageReleaseNotes>Adds the shared BitPattern engine, BigInteger candidate metadata, bounded enumeration, shifts, rotations, masks, intersections, reverse XOR/NAND, AND constraint solving, cross-base rational arithmetic, tests, benchmarks, and expanded documentation.</PackageReleaseNotes>
+        <PackageReleaseNotes>Adds ordered immutable NumeralAlphabet presets, exact BigInteger text round trips, structured ParseResult diagnostics, the shared BitPattern engine, bounded candidate enumeration, shifts, rotations, masks, intersections, reverse XOR/NAND, AND constraint solving, cross-base rational arithmetic, tests, benchmarks, and expanded documentation.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>

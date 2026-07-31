@@ -23,20 +23,24 @@ namespace NumeralSystem.Net.NUnit.Encoding
         
         private static readonly NumeralSystems.Net.NumeralSystem YoutubeNumeralSystem = Numeral.System.OfBase(YoutubeIdChars.Length);
         private static readonly NumeralSystems.Net.NumeralSystem NumeralSystem = Numeral.System.OfBase(CleanYoutubeIdChars.Length);
+        private static readonly NumeralAlphabet YoutubeAlphabet =
+            new(YoutubeIdChars.Select(character => character.ToString()));
+        private static readonly NumeralAlphabet CleanYoutubeAlphabet =
+            new(CleanYoutubeIdChars.Select(character => character.ToString()));
 
         private static string EncodeIdNumeral(string youtubeId)
         {
-            var number = YoutubeNumeralSystem.Parse(youtubeId, YoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");
+            var number = YoutubeNumeralSystem.Parse(youtubeId, YoutubeAlphabet, string.Empty, "#", "^");
             var cleanNumber = number.To(NumeralSystem);
-            var result = cleanNumber.ToString(CleanYoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");
+            var result = cleanNumber.ToString(CleanYoutubeAlphabet, string.Empty, "#", "^");
             return result;
         }
 
         private static string DecodeIdNumeral(string cleanId)
         {
-            var cleanNumber = NumeralSystem.Parse(cleanId, CleanYoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");
+            var cleanNumber = NumeralSystem.Parse(cleanId, CleanYoutubeAlphabet, string.Empty, "#", "^");
             var youtubeNumber = cleanNumber.To(YoutubeNumeralSystem);
-            var youtubeId = youtubeNumber.ToString(YoutubeIdChars.Select(x => x.ToString()).ToList(), string.Empty, "#", "^");
+            var youtubeId = youtubeNumber.ToString(YoutubeAlphabet, string.Empty, "#", "^");
             return youtubeId;
         }
         
@@ -44,7 +48,7 @@ namespace NumeralSystem.Net.NUnit.Encoding
         private static string EncodeId(string youtubeId)
         {
         
-            var number = Value.FromString(youtubeId, new HashSet<string>(YoutubeIdChars.Select(x => x.ToString()).ToList()));
+            var number = Value.FromString(youtubeId, YoutubeAlphabet);
             var cleanNumber = number.ToBase(CleanYoutubeIdChars.Length);
             var result = string.Concat(cleanNumber.Indices.Select(x => CleanYoutubeIdChars[x].ToString()));
             return result;
@@ -52,7 +56,7 @@ namespace NumeralSystem.Net.NUnit.Encoding
 
         private static string DecodeId(string cleanId)
         {
-            var cleanNumber = Value.FromString(cleanId, new HashSet<string>(CleanYoutubeIdChars.Select(x => x.ToString()).ToList()));
+            var cleanNumber = Value.FromString(cleanId, CleanYoutubeAlphabet);
             var youtubeNumber = cleanNumber.ToBase(YoutubeIdChars.Length);
             var youtubeId = string.Concat(youtubeNumber.Indices.Select(x => YoutubeIdChars[x].ToString()));
             return youtubeId;
@@ -74,7 +78,7 @@ namespace NumeralSystem.Net.NUnit.Encoding
         public void TestVideoIdEval()
         {
             var id = "0SerEuqAlAA";
-            var value = Value.FromString(id, new HashSet<string>(YoutubeIdChars.Select(x => x.ToString())));
+            var value = Value.FromString(id, YoutubeAlphabet);
             var numeralValue = NumeralValue.FromValue(value);
             var valueFromNumeral = numeralValue.ToValue().ToBase(YoutubeIdChars.Length);
             var youtubeId = string.Concat(valueFromNumeral.Indices.Select(x => YoutubeIdChars[x].ToString()));

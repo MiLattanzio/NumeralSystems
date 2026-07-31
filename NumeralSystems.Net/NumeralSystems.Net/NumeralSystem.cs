@@ -71,6 +71,198 @@ namespace NumeralSystems.Net
         }
 
         /// <summary>
+        /// Parses a numeral with an ordered alphabet and returns structured
+        /// diagnostics instead of throwing for input errors.
+        /// </summary>
+        public ParseResult TryParse(
+            string value,
+            NumeralAlphabet alphabet,
+            string separator = "",
+            string negativeSign = "-",
+            string numberDecimalSeparator = ".")
+        {
+            if (alphabet == null)
+                return ParseResult.Failed(
+                    ParseErrorReason.InvalidConfiguration,
+                    0,
+                    "The numeral alphabet cannot be null.",
+                    0);
+            if (alphabet.Count != Size)
+                return ParseResult.Failed(
+                    ParseErrorReason.AlphabetSizeMismatch,
+                    0,
+                    $"The alphabet contains {alphabet.Count} symbols but the numeral system has base {Size}.",
+                    0);
+
+            try
+            {
+                alphabet.ValidateFormat(separator, negativeSign, numberDecimalSeparator);
+            }
+            catch (ArgumentException exception)
+            {
+                return ParseResult.Failed(
+                    ParseErrorReason.InvalidConfiguration,
+                    0,
+                    exception.Message,
+                    0);
+            }
+
+            if (value == null)
+                return ParseResult.Failed(
+                    ParseErrorReason.NullInput,
+                    0,
+                    "The numeral text cannot be null.",
+                    0);
+            if (value.Length == 0)
+                return ParseResult.Failed(
+                    ParseErrorReason.EmptyInput,
+                    0,
+                    "The numeral text cannot be empty.",
+                    0);
+
+            var positive = true;
+            var start = 0;
+            if (value.StartsWith(negativeSign, StringComparison.Ordinal))
+            {
+                positive = false;
+                start = negativeSign.Length;
+                if (start == value.Length)
+                    return ParseResult.Failed(
+                        ParseErrorReason.MissingDigit,
+                        start,
+                        "A digit is required after the negative sign.",
+                        0);
+            }
+
+            var misplacedSign = value.IndexOf(negativeSign, start, StringComparison.Ordinal);
+            if (misplacedSign >= 0)
+                return ParseResult.Failed(
+                    ParseErrorReason.MisplacedNegativeSign,
+                    misplacedSign,
+                    "The negative sign is only valid at position zero.",
+                    negativeSign.Length);
+
+            var decimalPosition = value.IndexOf(
+                numberDecimalSeparator,
+                start,
+                StringComparison.Ordinal);
+            if (decimalPosition >= 0)
+            {
+                var repeatedPosition = value.IndexOf(
+                    numberDecimalSeparator,
+                    decimalPosition + numberDecimalSeparator.Length,
+                    StringComparison.Ordinal);
+                if (repeatedPosition >= 0)
+                    return ParseResult.Failed(
+                        ParseErrorReason.RepeatedDecimalSeparator,
+                        repeatedPosition,
+                        "A numeral can contain only one decimal separator.",
+                        numberDecimalSeparator.Length);
+            }
+
+            var integralEnd = decimalPosition >= 0 ? decimalPosition : value.Length;
+            if (!alphabet.TryReadDigits(
+                    value,
+                    start,
+                    integralEnd,
+                    separator,
+                    out var integral,
+                    out var errorPosition,
+                    out var reason))
+                return ParseResult.Failed(
+                    reason,
+                    errorPosition,
+                    MessageFor(reason),
+                    ErrorLengthFor(value, errorPosition));
+
+            var fractional = new List<int>();
+            if (decimalPosition >= 0)
+            {
+                var fractionalStart = decimalPosition + numberDecimalSeparator.Length;
+                if (!alphabet.TryReadDigits(
+                        value,
+                        fractionalStart,
+                        value.Length,
+                        separator,
+                        out fractional,
+                        out errorPosition,
+                        out reason))
+                    return ParseResult.Failed(
+                        reason,
+                        errorPosition,
+                        MessageFor(reason),
+                        ErrorLengthFor(value, errorPosition));
+            }
+
+            return ParseResult.Succeeded(new Numeral(this, integral, fractional, positive));
+        }
+
+        /// <summary>
+        /// Parses a numeral with an ordered alphabet.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">The input is not a valid numeral.</exception>
+        public Numeral Parse(
+            string value,
+            NumeralAlphabet alphabet,
+            string separator = "",
+            string negativeSign = "-",
+            string numberDecimalSeparator = ".")
+        {
+            var parsed = TryParse(value, alphabet, separator, negativeSign, numberDecimalSeparator);
+            if (parsed.Success) return parsed.Value;
+            throw new InvalidOperationException(
+                $"{parsed.Message} Position: {parsed.Position}. Reason: {parsed.Reason}.");
+        }
+
+        /// <summary>
+        /// Tries to parse a numeral with an ordered alphabet.
+        /// </summary>
+        public bool TryParse(
+            string value,
+            NumeralAlphabet alphabet,
+            out Numeral result,
+            string separator = "",
+            string negativeSign = "-",
+            string numberDecimalSeparator = ".")
+        {
+            var parsed = TryParse(value, alphabet, separator, negativeSign, numberDecimalSeparator);
+            result = parsed.Value;
+            return parsed.Success;
+        }
+
+        /// <summary>
+        /// Tries to format indices with an ordered alphabet.
+        /// </summary>
+        public bool TryFromIndices(
+            List<int> integralIndices,
+            List<int> fractionalIndices,
+            NumeralAlphabet alphabet,
+            string separator,
+            string negativeSign,
+            string numberDecimalSeparator,
+            out string result,
+            bool positive = true)
+        {
+            if (alphabet == null) throw new ArgumentNullException(nameof(alphabet));
+            if (alphabet.Count != Size)
+            {
+                result = string.Empty;
+                return false;
+            }
+
+            alphabet.ValidateFormat(separator, negativeSign, numberDecimalSeparator);
+            return TryFromIndices(
+                integralIndices,
+                fractionalIndices,
+                alphabet.Symbols.ToList(),
+                separator,
+                negativeSign,
+                numberDecimalSeparator,
+                out result,
+                positive);
+        }
+
+        /// <summary>
         /// Attempts to split a given number string into integral and fractional parts and their respective indices within a specified numeral system identity list.
         /// </summary>
         /// <param name="val">The string representation of the number to be split.</param>
@@ -513,11 +705,31 @@ namespace NumeralSystems.Net
             return success && test;
         }
 
+        private static string MessageFor(ParseErrorReason reason) => reason switch
+        {
+            ParseErrorReason.UnknownSymbol => "The text contains a symbol that is not in the alphabet.",
+            ParseErrorReason.MissingDigit => "A digit is required at this position.",
+            ParseErrorReason.UnexpectedSeparator => "The digit separator is not valid at this position.",
+            ParseErrorReason.MissingSeparator => "A digit separator is required at this position.",
+            ParseErrorReason.MisplacedNegativeSign => "The negative sign is only valid at position zero.",
+            ParseErrorReason.RepeatedDecimalSeparator => "A numeral can contain only one decimal separator.",
+            _ => "The numeral is invalid."
+        };
+
+        private static int ErrorLengthFor(string value, int position) =>
+            position >= 0 && position < value.Length ? 1 : 0;
+
         /// The `SerializationInfo` class contains information necessary for the serialization
         /// and deserialization of numerals in a given numeral system. It maintains the identity
         /// components and formatting details such as separators and signs used in numerical representations.
         public class SerializationInfo
         {
+            /// <summary>
+            /// Gets or sets the ordered immutable alphabet. When present, parsing
+            /// and formatting prefer it over <see cref="Identity"/>.
+            /// </summary>
+            public NumeralAlphabet Alphabet { get; set; }
+
             /// Gets or sets the identity of the numeral system used for serialization.
             /// The identity represents a list of characters or strings that uniquely define
             /// the numerals in the system.
@@ -545,28 +757,17 @@ namespace NumeralSystems.Net
             /// <returns>The serialization information for the numeral system.</returns>
             public static SerializationInfo OfBase(int size)
             {
-                var printableIdentity = Numeral.System.Characters.Printable.ToList();
                 var cultureInfo = CultureInfo.CurrentCulture;
                 var negativeSign = cultureInfo.NumberFormat.NegativeSign;
                 var numberDecimalSeparator = cultureInfo.NumberFormat.NumberDecimalSeparator;
-                var separator = size < printableIdentity.Count ? string.Empty : printableIdentity[^1].ToString();
-                var identity = printableIdentity
-                    .Take(size)
-                    .Where(x =>
-                        !negativeSign.Contains(x) &&
-                        !numberDecimalSeparator.Contains(x) &&
-                        !separator.Contains(x)
-                    )
-                    .Select(c => c.ToString(cultureInfo)).ToList();
-                if (identity.Count() < size)
-                {
-                    identity = identity.Concat(Enumerable.Range(identity.Count(), size - identity.Count())
-                        .Select(i => i.ToString(cultureInfo))).ToList();
-                }
+                var alphabet = NumeralAlphabet.CreateDefault(size);
+                var separator = string.Empty;
+                alphabet.ValidateFormat(separator, negativeSign, numberDecimalSeparator);
 
                 return new SerializationInfo
                 {
-                    Identity = identity,
+                    Alphabet = alphabet,
+                    Identity = alphabet.Symbols.ToList(),
                     Separator = separator,
                     NegativeSign = negativeSign,
                     NumberDecimalSeparator = numberDecimalSeparator
@@ -580,9 +781,73 @@ namespace NumeralSystems.Net
         /// <param name="toString">The string representation of the number to parse.</param>
         /// <param name="serializationInfo">The alphabet and separators used during parsing.</param>
         /// <returns>A Numeral object representing the parsed number.</returns>
-        public Numeral Parse(string toString, SerializationInfo serializationInfo) => Parse(toString,
-            serializationInfo.Identity, serializationInfo.Separator, serializationInfo.NegativeSign,
-            serializationInfo.NumberDecimalSeparator);
+        public Numeral Parse(string toString, SerializationInfo serializationInfo)
+        {
+            if (serializationInfo == null) throw new ArgumentNullException(nameof(serializationInfo));
+            var useAlphabet =
+                serializationInfo.Alphabet != null &&
+                (serializationInfo.Identity == null ||
+                 serializationInfo.Identity.Count == 0 ||
+                 serializationInfo.Identity.SequenceEqual(
+                     serializationInfo.Alphabet.Symbols,
+                     StringComparer.Ordinal));
+            return useAlphabet
+                ? Parse(
+                    toString,
+                    serializationInfo.Alphabet,
+                    serializationInfo.Separator,
+                    serializationInfo.NegativeSign,
+                    serializationInfo.NumberDecimalSeparator)
+                : Parse(
+                    toString,
+                    serializationInfo.Identity,
+                    serializationInfo.Separator,
+                    serializationInfo.NegativeSign,
+                    serializationInfo.NumberDecimalSeparator);
+        }
+
+        /// <summary>
+        /// Parses with serialization settings and returns structured diagnostics.
+        /// </summary>
+        public ParseResult TryParse(string value, SerializationInfo serializationInfo)
+        {
+            if (serializationInfo == null)
+                return ParseResult.Failed(
+                    ParseErrorReason.InvalidConfiguration,
+                    0,
+                    "Serialization information cannot be null.",
+                    0);
+
+            NumeralAlphabet alphabet;
+            try
+            {
+                var useAlphabet =
+                    serializationInfo.Alphabet != null &&
+                    (serializationInfo.Identity == null ||
+                     serializationInfo.Identity.Count == 0 ||
+                     serializationInfo.Identity.SequenceEqual(
+                         serializationInfo.Alphabet.Symbols,
+                         StringComparer.Ordinal));
+                alphabet = useAlphabet
+                    ? serializationInfo.Alphabet
+                    : new NumeralAlphabet(serializationInfo.Identity);
+            }
+            catch (ArgumentException exception)
+            {
+                return ParseResult.Failed(
+                    ParseErrorReason.InvalidConfiguration,
+                    0,
+                    exception.Message,
+                    0);
+            }
+
+            return TryParse(
+                value,
+                alphabet,
+                serializationInfo.Separator,
+                serializationInfo.NegativeSign,
+                serializationInfo.NumberDecimalSeparator);
+        }
 
         /// <summary>
         /// Parses a string representation of a numeral in the current numeral system.

@@ -68,6 +68,15 @@ namespace NumeralSystems.Net
         }
 
         /// <summary>
+        /// Gets fractional digit symbols from an ordered alphabet.
+        /// </summary>
+        public List<string> GetFractionalStrings(NumeralAlphabet alphabet)
+        {
+            EnsureAlphabet(alphabet);
+            return FractionalIndices.Select(index => alphabet[index]).ToList();
+        }
+
+        /// <summary>
         /// Gets the fractional part of the identity as a string, using the provided separator.
         /// </summary>
         /// <param name="identity">The list of strings representing the identity.</param>
@@ -77,6 +86,16 @@ namespace NumeralSystems.Net
         {
             var result = string.Join(separator, GetFractionalStrings(identity));
             return string.IsNullOrEmpty(result) ? identity[0] : result;
+        }
+
+        /// <summary>
+        /// Gets the formatted fractional digit sequence.
+        /// </summary>
+        public string GetFractionalString(NumeralAlphabet alphabet, string separator = "")
+        {
+            if (separator == null) throw new ArgumentNullException(nameof(separator));
+            var result = string.Join(separator, GetFractionalStrings(alphabet));
+            return string.IsNullOrEmpty(result) ? alphabet[0] : result;
         }
 
 
@@ -122,6 +141,15 @@ namespace NumeralSystems.Net
             return IntegralIndices.Select(identity.ElementAt).ToList();
         }
 
+        /// <summary>
+        /// Gets integral digit symbols from an ordered alphabet.
+        /// </summary>
+        public List<string> GetIntegralStrings(NumeralAlphabet alphabet)
+        {
+            EnsureAlphabet(alphabet);
+            return IntegralIndices.Select(index => alphabet[index]).ToList();
+        }
+
         /// Returns the integral part of a number represented in a given numeral system as a string.
         /// If the integral part is empty, it returns the first element of the identity.
         /// @param identity The identity of the numeral system represented as a list of strings.
@@ -133,6 +161,16 @@ namespace NumeralSystems.Net
         {
             var result = string.Join(separator, GetIntegralStrings(identity));
             return string.IsNullOrEmpty(result) ? identity[0] : result;
+        }
+
+        /// <summary>
+        /// Gets the formatted integral digit sequence.
+        /// </summary>
+        public string GetIntegralString(NumeralAlphabet alphabet, string separator = "")
+        {
+            if (separator == null) throw new ArgumentNullException(nameof(separator));
+            var result = string.Join(separator, GetIntegralStrings(alphabet));
+            return string.IsNullOrEmpty(result) ? alphabet[0] : result;
         }
 
         /// The `Numeral` class represents a numeral in a specific numeral system.
@@ -360,14 +398,71 @@ namespace NumeralSystems.Net
         }
 
         /// <summary>
+        /// Formats this numeral with an ordered immutable alphabet.
+        /// </summary>
+        public string ToString(
+            NumeralAlphabet alphabet,
+            string separator = "",
+            string negativeSign = "-",
+            string numberDecimalSeparator = ".")
+        {
+            if (alphabet == null) throw new ArgumentNullException(nameof(alphabet));
+            if (!Base.TryFromIndices(
+                    IntegralIndices,
+                    FractionalIndices,
+                    alphabet,
+                    separator,
+                    negativeSign,
+                    numberDecimalSeparator,
+                    out var result,
+                    Positive))
+                throw new InvalidOperationException("The numeral contains a digit outside the alphabet.");
+            return result;
+        }
+
+        /// <summary>
+        /// Formats this numeral with serialization settings.
+        /// </summary>
+        public string ToString(NumeralSystem.SerializationInfo serializationInfo)
+        {
+            if (serializationInfo == null) throw new ArgumentNullException(nameof(serializationInfo));
+            var useAlphabet =
+                serializationInfo.Alphabet != null &&
+                (serializationInfo.Identity == null ||
+                 serializationInfo.Identity.Count == 0 ||
+                 serializationInfo.Identity.SequenceEqual(
+                     serializationInfo.Alphabet.Symbols,
+                     StringComparer.Ordinal));
+            return useAlphabet
+                ? ToString(
+                    serializationInfo.Alphabet,
+                    serializationInfo.Separator,
+                    serializationInfo.NegativeSign,
+                    serializationInfo.NumberDecimalSeparator)
+                : ToString(
+                    serializationInfo.Identity,
+                    serializationInfo.Separator,
+                    serializationInfo.NegativeSign,
+                    serializationInfo.NumberDecimalSeparator);
+        }
+
+        /// <summary>
         /// Returns a string that represents the current object in a specific format using the default identity, separator, negative sign, and number decimal separator.
         /// </summary>
         /// <returns>A string that represents the current object.</returns>
         public override string ToString()
         {
             var serializationInfo = NumeralSystem.SerializationInfo.OfBase(Base.Size);
-            return ToString(serializationInfo.Identity, serializationInfo.Separator, serializationInfo.NegativeSign,
-                serializationInfo.NumberDecimalSeparator);
+            return ToString(serializationInfo);
+        }
+
+        private void EnsureAlphabet(NumeralAlphabet alphabet)
+        {
+            if (alphabet == null) throw new ArgumentNullException(nameof(alphabet));
+            if (alphabet.Count != Base.Size)
+                throw new ArgumentOutOfRangeException(
+                    nameof(alphabet),
+                    "Alphabet size must equal the numeral-system base.");
         }
 
         /// The `System` class is a collection of static nested classes that provides various properties related to numeral systems.

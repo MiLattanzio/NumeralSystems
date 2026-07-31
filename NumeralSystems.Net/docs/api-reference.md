@@ -3,6 +3,7 @@
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
 [Numeral systems](numeral-systems.md) ·
+[Numeral alphabets](numeral-alphabets.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [Bitwise values](bitwise-values.md) ·
@@ -24,10 +25,12 @@ Represents a non-negative integral value as digit indices in one base.
 | `Value(List<int> indices, int baseValue)` | Creates a value after validating the base and digits |
 | `IReadOnlyList<int> Indices` | Digits from most significant to least significant |
 | `int Base` | Source base |
-| `FromString(string, HashSet<string>)` | Maps symbols to indices using set enumeration order |
+| `FromString(string, NumeralAlphabet, separator)` | Maps ordered symbols to indices deterministically |
+| `FromString(string, HashSet<string>)` | Obsolete compatibility overload; ordinally sorts the set |
 | `FromString(string, bool fit = false)` | Uses UTF-16 character values as digit indices |
 | `FromBigInteger(BigInteger, int baseValue = 10)` | Creates a digit sequence without an integer-size limit |
 | `ToBigInteger()` | Returns the complete non-negative integer value |
+| `ToString(NumeralAlphabet, separator)` | Formats stored digits with an ordered alphabet |
 | `ToBase(int, bool removeFirstZeros = false)` | Returns the same integral value in another base |
 
 `Value` does not represent a sign or fractional digits.
@@ -69,15 +72,16 @@ instances.
 | Member family | Members |
 | --- | --- |
 | Configuration | `Size`, `Length`, `SkipUnknownValues`, `AdjustToFitIntegralLength` |
-| Parsing | `Parse`, `TryParse`, `TrySplitNumberIndices` |
-| Formatting | `TryFromIndices` |
+| Parsing | `Parse`, structured and Boolean `TryParse`, `TrySplitNumberIndices` |
+| Formatting | `TryFromIndices`, including `NumeralAlphabet` overloads |
 | Validation/conversion | `Contains`, `TryBigIntegerOf`, `TryIntegerOf`, `TryCharOf` |
 | Numeric indexers | `BigInteger`, `int`, `double`, `decimal`, `long`, `ulong`, `uint`, `short`, `ushort`, `sbyte`, `byte` |
 | Sequence indexers | `IEnumerable<byte>`, `IEnumerable<char>`, `IEnumerable<int>`, `IList<byte>`, `IList<char>`, `List<int>` |
 
-`NumeralSystem.SerializationInfo` holds `Identity`, `Separator`,
-`NegativeSign`, and `NumberDecimalSeparator`. `OfBase(int)` creates
-culture-aware defaults.
+`NumeralSystem.SerializationInfo` holds the preferred `Alphabet`, legacy
+`Identity`, `Separator`, `NegativeSign`, and `NumberDecimalSeparator`.
+`OfBase(int)` combines a deterministic alphabet with culture-aware sign and
+decimal tokens.
 
 ### `Numeral`
 
@@ -91,6 +95,42 @@ Stores one value in a `NumeralSystem`.
 | Mutation | property setters, `TrySetValue` |
 | Conversion | `To(NumeralSystem)` |
 | Formatting | `ToString()`, `ToString(identity, separator, negativeSign, decimalSeparator)` |
+
+`Numeral` also provides `NumeralAlphabet` overloads for digit access and
+formatting, plus `ToString(SerializationInfo)`.
+
+### `NumeralAlphabet`
+
+An ordered immutable `IReadOnlyList<string>` with ordinal symbol lookup.
+
+| Member family | Members |
+| --- | --- |
+| Construction | constructor from `IEnumerable<string>`, `CreateDefault` |
+| Presets | `Base2`, `Base8`, `Base10`, `Base16`, `Base32`, `Base36`, `Base58`, `Base62`, `Base64` |
+| Preset lookup | `PredefinedBases`, `ForBase`, `TryForBase` |
+| Symbols | `Count`, indexer, `Symbols`, `IndexOf`, `Contains` |
+| Validation | `ValidateFormat` |
+| Integer codec | `Encode`, `Decode`, `TryDecode` |
+
+Construction rejects empty, duplicate, and prefix-ambiguous symbols. Formatting
+validation rejects conflicts among symbols, separators, and signs.
+
+### `ParseResult` and `ParseErrorReason`
+
+The structured `NumeralSystem.TryParse` overload returns `ParseResult`:
+
+| Property | Purpose |
+| --- | --- |
+| `Success` | Reports whether parsing succeeded |
+| `Value` | Parsed `Numeral`, or `null` |
+| `Position` | Zero-based UTF-16 error position, or `-1` |
+| `ErrorLength` | Length of the offending range |
+| `Reason` | Machine-readable `ParseErrorReason` |
+| `Message` | Human-readable diagnostic |
+
+Reasons distinguish null/empty input, alphabet size/configuration problems,
+unknown symbols, missing digits or separators, unexpected separators,
+misplaced signs, and repeated decimal separators.
 
 `Numeral.System.OfBase(int)` is the convenience factory. The nested
 `Numeral.System.Characters` type exposes:

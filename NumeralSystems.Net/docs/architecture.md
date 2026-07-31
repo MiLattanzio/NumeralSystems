@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [API reference](api-reference.md) ·
+[Numeral alphabets](numeral-alphabets.md) ·
 [BitPattern engine](bit-patterns.md) ·
 [Migration guide](migration-4.7.md) ·
 [Contributing](../../CONTRIBUTING.md)
@@ -58,6 +59,32 @@ Owns base-level behavior:
 - conversion from digit indices to integer views.
 
 It does not own a particular numeric value.
+
+### `NumeralAlphabet`
+
+Owns the ordered text-to-digit mapping:
+
+- immutable ordinal symbols;
+- duplicate and prefix validation;
+- separator/sign conflict validation;
+- exact signed `BigInteger` encoding and decoding;
+- predefined and deterministic generated alphabets.
+
+Parsing scans the input against this mapping and returns a `ParseResult` with a
+UTF-16 position and `ParseErrorReason`. Legacy list-based overloads remain
+available, while the `HashSet<string>` `Value.FromString` overload is obsolete.
+
+```text
+text + NumeralAlphabet + formatting tokens
+                    |
+                    v
+          validated token scanner
+                    |
+          +---------+---------+
+          |                   |
+          v                   v
+       Numeral          ParseResult error
+```
 
 ### `Numeral`
 

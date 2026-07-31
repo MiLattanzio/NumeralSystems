@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
+[Numeral alphabets](numeral-alphabets.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
 [Releasing](releasing.md)
@@ -175,7 +176,7 @@ The convenient `Parse(string)` and `ToString()` methods use
 
 For stable files, tests, and protocols, pass an explicit:
 
-- ordered identity/alphabet;
+- `NumeralAlphabet`;
 - digit separator;
 - negative sign;
 - decimal separator.
@@ -183,16 +184,49 @@ For stable files, tests, and protocols, pass an explicit:
 The [numeral systems guide](numeral-systems.md) contains a complete
 `SerializationInfo` example.
 
-## A multi-character alphabet parses ambiguously
+## A custom alphabet is rejected
 
-Use a non-empty digit separator when symbols overlap or have different lengths:
+`NumeralAlphabet` rejects duplicate, empty, and prefix-ambiguous symbols:
 
 ```csharp
-var identity = new List<string> { "zero", "one", "two" };
-var parsed = ternary.Parse("one|two", identity, "|", "-", ".");
+// "a" is a prefix of "ab".
+var invalid = new NumeralAlphabet(new[] { "a", "ab" });
 ```
 
-Keep formatting tokens out of the identity list.
+Symbols also cannot conflict with the configured digit separator, negative
+sign, or decimal separator. Use distinct tokens:
+
+```csharp
+var alphabet = new NumeralAlphabet(new[] { "zero", "one", "two" });
+var parsed = ternary.Parse("one|two", alphabet, "|", "-", ".");
+```
+
+## Parsing failed but a Boolean is not enough
+
+Use the structured overload:
+
+```csharp
+var result = hexadecimal.TryParse("1G", NumeralAlphabet.Base16);
+
+Console.WriteLine(result.Reason);   // UnknownSymbol
+Console.WriteLine(result.Position); // 1
+Console.WriteLine(result.Message);
+```
+
+`Position` is a zero-based UTF-16 index. `ErrorLength` identifies how much text
+belongs to the error.
+
+## HashSet alphabet order changed
+
+`Value.FromString(string, HashSet<string>)` is deprecated. A set does not define
+which symbol means zero, one, or any other digit.
+
+Create the alphabet from an ordered sequence:
+
+```csharp
+var alphabet = new NumeralAlphabet(orderedSymbols);
+var value = Value.FromString(text, alphabet);
+```
 
 ## `Binary[0]` appears to be reversed
 

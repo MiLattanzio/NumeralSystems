@@ -1,6 +1,8 @@
 #if NET8_0_OR_GREATER
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Numerics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -36,7 +38,30 @@ namespace NumeralSystems.Net.Serialization
 
             var system = Numeral.System.OfBase(baseValue);
             system.AdjustToFitIntegralLength = false;
-            return new Numeral(system, integral, fractional, positiveProperty.GetBoolean());
+            var result = new Numeral(system, integral, fractional, positiveProperty.GetBoolean());
+            var hasNumerator = root.TryGetProperty("numerator", out var numeratorProperty);
+            var hasDenominator = root.TryGetProperty("denominator", out var denominatorProperty);
+            if (hasNumerator != hasDenominator)
+                throw new JsonException("The exact numerator and denominator must be provided together.");
+            if (hasNumerator)
+            {
+                if (numeratorProperty.ValueKind != JsonValueKind.String ||
+                    denominatorProperty.ValueKind != JsonValueKind.String ||
+                    !BigInteger.TryParse(
+                        numeratorProperty.GetString(),
+                        NumberStyles.Integer,
+                        CultureInfo.InvariantCulture,
+                        out var numerator) ||
+                    !BigInteger.TryParse(
+                        denominatorProperty.GetString(),
+                        NumberStyles.Integer,
+                        CultureInfo.InvariantCulture,
+                        out var denominator) ||
+                    denominator <= 0)
+                    throw new JsonException("The exact rational value is invalid.");
+                result.RestoreExactValue(new RationalValue(numerator, denominator));
+            }
+            return result;
         }
 
         /// <inheritdoc />
@@ -54,6 +79,12 @@ namespace NumeralSystems.Net.Serialization
             writer.WriteStartObject();
             writer.WriteNumber("base", value.Base.Size);
             writer.WriteBoolean("positive", value.Positive);
+            writer.WriteString(
+                "numerator",
+                value.ExactValue.Numerator.ToString(CultureInfo.InvariantCulture));
+            writer.WriteString(
+                "denominator",
+                value.ExactValue.Denominator.ToString(CultureInfo.InvariantCulture));
             WriteDigits(writer, "integral", value.IntegralIndices);
             WriteDigits(writer, "fractional", value.FractionalIndices);
             writer.WriteEndObject();

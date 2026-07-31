@@ -35,7 +35,7 @@ namespace NumeralSystem.Net.NUnit
             //Check that the Numeral is equal to the integer
             Assert.AreEqual(randomInt, randomNumeral.Integer);
             //Check that the Numeral is equal to the integer after conversion
-            randomNumeral.Integer = randomInt;
+            randomNumeral = randomNumeral.WithExactValue(RationalValue.FromInteger(randomInt));
             Assert.AreEqual(randomInt, randomNumeral.Integer);
             //Create a Int32 from randomInt
             var randomInt32 = new Int()
@@ -121,11 +121,12 @@ namespace NumeralSystem.Net.NUnit
                 var numeral = numerals[r3];
                 Assert.AreEqual(r3, numeral.Decimal);
                 Assert.AreEqual(numerals.Parse(numeral.ToString()).ToString(), numeral.ToString());
-                var r3Bytes = decimal.GetBits(r3).SelectMany(BitConverter.GetBytes).ToArray();
                 var numeralBits = new int[4];
                 Buffer.BlockCopy(numeral.Bytes, 0, numeralBits, 0, numeral.Bytes.Length);
                 Assert.AreEqual(r3, new decimal(numeralBits));
-                numeral.Bytes = r3Bytes;
+                numeral = numeral.WithExactValue(
+                    RationalValue.FromDecimal(r3),
+                    NumeralConversionOptions.Legacy);
                 Assert.AreEqual(r3, numeral.Decimal);
             }
         }

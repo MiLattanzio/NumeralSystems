@@ -95,11 +95,7 @@ Pass `removeFirstZeros: true` for the canonical minimal-width result.
 Digits after the separator use negative powers of their declared base:
 
 ```csharp
-var binaryHalf = new NumeralValue(
-    integral: new List<int> { 0 },
-    decimals: new List<int> { 1 },
-    negative: false,
-    baseValue: 2);
+var binaryHalf = NumeralValue.FromRational(1, 2, baseValue: 2);
 
 Console.WriteLine(binaryHalf.ToDecimal()); // 0.5
 ```
@@ -109,37 +105,26 @@ Do not read `Decimals` as decimal text unless `Base == 10`.
 ## Detect a repeating conversion
 
 ```csharp
-var oneThird = new NumeralValue(
-    new List<int> { 0 },
-    new List<int> { 1 },
-    false,
-    3);
+var oneThird = NumeralValue.FromRational(1, 3, baseValue: 3);
+var expansion = oneThird.Expand(10, NumeralConversionOptions.Default);
 
-var exact = oneThird.TryToBase(
-    baseValue: 10,
-    maxFractionalDigits: 12,
-    result: out var converted);
-
-Console.WriteLine(exact); // False
-Console.WriteLine(string.Concat(converted.Decimals)); // 333333333333
+Console.WriteLine(expansion.IsTerminating);       // False
+Console.WriteLine(expansion.HasRepeatingPeriod);  // True
+Console.WriteLine(expansion.ToString(NumeralAlphabet.Base10)); // 0.(3)
 ```
 
-Store the `exact` flag or reject the conversion when truncation is not allowed.
+Choose `Throw`, `Truncate`, `Round`, or `PreservePeriod` explicitly at the
+application boundary.
 
 ## Add values written in different bases
 
 ```csharp
-var binaryHalf = new NumeralValue(
-    new List<int> { 0 },
-    new List<int> { 1 },
-    false,
-    2);
+var binaryHalf = NumeralValue.FromRational(1, 2, baseValue: 2);
 
 var decimalQuarter = NumeralValue.FromDecimal(0.25m);
 
-var sum = binaryHalf.Add(decimalQuarter, out var exact);
+var sum = binaryHalf.Add(decimalQuarter, NumeralConversionOptions.Default);
 
-Console.WriteLine(exact);           // True
 Console.WriteLine(sum.Base);        // 2
 Console.WriteLine(sum.ToDecimal()); // 0.75
 ```
@@ -156,11 +141,10 @@ var three = NumeralValue.FromInt(3);
 
 var result = one.Divide(
     three,
-    exact: out var exact,
-    resultBase: 3,
-    maxFractionalDigits: 8);
+    NumeralConversionOptions.Default,
+    resultBase: 3);
 
-Console.WriteLine(exact);                         // True
+Console.WriteLine(result.IsExactRepresentation);  // True
 Console.WriteLine(string.Concat(result.Decimals)); // 1
 ```
 
@@ -170,11 +154,7 @@ non-decimal radix.
 ## Compare equivalent values from different bases
 
 ```csharp
-var binaryHalf = new NumeralValue(
-    new List<int> { 0 },
-    new List<int> { 1 },
-    false,
-    2);
+var binaryHalf = NumeralValue.FromRational(1, 2, baseValue: 2);
 
 var decimalHalf = NumeralValue.FromDecimal(0.5m);
 

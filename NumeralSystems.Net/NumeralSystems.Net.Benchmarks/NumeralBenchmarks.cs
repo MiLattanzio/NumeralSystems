@@ -30,6 +30,7 @@ namespace NumeralSystems.Net.Benchmarks
         public Numeral ParseBinary() => _binary.Parse(_binaryText);
 
         [Benchmark]
-        public Numeral ConvertHexadecimalToBinary() => _hexadecimal[Value].To(_binary);
+        public Numeral ConvertHexadecimalToBinary() =>
+            _hexadecimal[Value].To(_binary, NumeralConversionOptions.Default);
     }
 }

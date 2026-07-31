@@ -98,7 +98,8 @@ namespace NumeralSystem.Net.NUnit
 
             Assert.That(exact, Is.False);
             Assert.That(result.Decimals, Is.EqualTo(new[] { 3, 3, 3, 3, 3, 3 }));
-            Assert.That(result.ToDecimal(), Is.EqualTo(0.333333m));
+            Assert.That(result.ExactValue, Is.EqualTo(new RationalValue(1, 3)));
+            Assert.That(result.Denominator, Is.EqualTo(new BigInteger(3)));
         }
 
         [Test]
@@ -187,10 +188,6 @@ namespace NumeralSystem.Net.NUnit
             IEnumerable<int> fractional,
             bool negative = false,
             int baseValue = 10)
-            => new NumeralValue(
-                new List<int>(integral),
-                new List<int>(fractional),
-                negative,
-                baseValue);
+            => NumeralValue.FromDigits(integral, fractional, negative, baseValue);
     }
 }

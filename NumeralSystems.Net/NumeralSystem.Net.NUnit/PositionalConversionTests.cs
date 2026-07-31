@@ -15,11 +15,7 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void FractionalDigitsUseTheirDeclaredBase()
         {
-            var oneHalf = new NumeralValue(
-                new List<int> { 0 },
-                new List<int> { 1 },
-                false,
-                2);
+            var oneHalf = NumeralValue.FromDigits(new[] { 0 }, new[] { 1 }, false, 2);
 
             Assert.That(oneHalf.ToDecimal(), Is.EqualTo(0.5m));
             Assert.That(oneHalf.ToDouble(), Is.EqualTo(0.5d));
@@ -37,7 +33,13 @@ namespace NumeralSystem.Net.NUnit
         {
             var source = NumeralValue.FromDecimal(10.625m);
 
-            var exact = source.TryToBase(2, 16, out var binary);
+            var options = new NumeralConversionOptions(
+                16,
+                NumeralRoundingMode.ToZero,
+                true,
+                InfiniteExpansionBehavior.Throw);
+            var binary = source.ToBase(2, options);
+            var exact = binary.IsExactRepresentation;
 
             Assert.That(exact, Is.True);
             Assert.That(binary.Integral, Is.EqualTo(new[] { 1, 0, 1, 0 }));
@@ -48,17 +50,19 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void RepeatingFractionReportsTruncation()
         {
-            var oneThird = new NumeralValue(
-                new List<int> { 0 },
-                new List<int> { 1 },
-                false,
-                3);
+            var oneThird = NumeralValue.FromDigits(new[] { 0 }, new[] { 1 }, false, 3);
 
-            var exact = oneThird.TryToBase(10, 6, out var decimalValue);
+            var options = new NumeralConversionOptions(
+                6,
+                NumeralRoundingMode.ToZero,
+                false,
+                InfiniteExpansionBehavior.Truncate);
+            var decimalValue = oneThird.ToBase(10, options);
+            var exact = decimalValue.IsExactRepresentation;
 
             Assert.That(exact, Is.False);
             Assert.That(decimalValue.Decimals, Is.EqualTo(new[] { 3, 3, 3, 3, 3, 3 }));
-            Assert.That(decimalValue.ToDecimal(), Is.EqualTo(0.333333m));
+            Assert.That(decimalValue.ExactValue, Is.EqualTo(new RationalValue(1, 3)));
         }
 
         [Test]
@@ -78,7 +82,7 @@ namespace NumeralSystem.Net.NUnit
         {
             var value = NumeralValue.FromDecimal(0.5m);
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => value.ToBase(2, -1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new NumeralConversionOptions(-1));
             Assert.Throws<ArgumentOutOfRangeException>(() => BaseDecimal.ToIndicesOfBase(0.5m, 2, -1));
         }
 
@@ -92,7 +96,7 @@ namespace NumeralSystem.Net.NUnit
             ternary.AdjustToFitIntegralLength = false;
 
             var numeral = hexadecimal[value];
-            var converted = numeral.To(ternary);
+            var converted = numeral.To(ternary, NumeralConversionOptions.Default);
             var digitValue = Value.FromBigInteger(value, 36);
 
             Assert.That(numeral.BigInteger, Is.EqualTo(value));
@@ -126,14 +130,14 @@ namespace NumeralSystem.Net.NUnit
         }
 
         [Test]
-        public void SignedPropertySettersUpdateTheNumeralSign()
+        public void ImmutableReplacementUpdatesTheNumeralSign()
         {
             var numeral = Numeral.System.OfBase(10)[1];
 
-            numeral.Integer = -42;
+            numeral = numeral.WithExactValue(RationalValue.FromInteger(-42));
             Assert.That(numeral.BigInteger, Is.EqualTo(new BigInteger(-42)));
 
-            numeral.BigInteger = BigInteger.Pow(-2, 65);
+            numeral = numeral.WithExactValue(RationalValue.FromInteger(BigInteger.Pow(-2, 65)));
             Assert.That(numeral.Positive, Is.False);
             Assert.That(numeral.BigInteger, Is.EqualTo(BigInteger.Pow(-2, 65)));
         }

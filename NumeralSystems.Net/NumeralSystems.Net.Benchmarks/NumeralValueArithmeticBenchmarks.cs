@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Numerics;
 using BenchmarkDotNet.Attributes;
 
@@ -16,9 +15,9 @@ namespace NumeralSystems.Net.Benchmarks
         [GlobalSetup]
         public void Setup()
         {
-            _binaryFraction = new NumeralValue(
-                new List<int> { 1, 0 },
-                new List<int> { 1, 0, 1 },
+            _binaryFraction = NumeralValue.FromDigits(
+                new[] { 1, 0 },
+                new[] { 1, 0, 1 },
                 false,
                 2);
             _decimalFraction = NumeralValue.FromDecimal(3.75m);

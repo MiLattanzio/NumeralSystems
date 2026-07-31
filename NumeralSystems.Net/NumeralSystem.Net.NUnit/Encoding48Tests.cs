@@ -277,6 +277,21 @@ namespace NumeralSystem.Net.NUnit
         }
 
         [Test]
+        public void JsonSerializationPreservesExactRationalBehindARepeatingProjection()
+        {
+            var system = Numeral.System.OfBase(10);
+            system.AdjustToFitIntegralLength = false;
+            var value = Numeral.FromRational(system, new RationalValue(1, 3));
+
+            var json = JsonSerializer.Serialize(value);
+            var roundTrip = JsonSerializer.Deserialize<Numeral>(json);
+
+            Assert.That(roundTrip, Is.Not.Null);
+            Assert.That(roundTrip.ExactValue, Is.EqualTo(new RationalValue(1, 3)));
+            Assert.That(roundTrip.Decimal, Is.EqualTo(1m / 3m));
+        }
+
+        [Test]
         public void JsonSerializationRejectsDigitsOutsideTheBase()
         {
             const string json =

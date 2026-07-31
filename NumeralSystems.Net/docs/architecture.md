@@ -88,11 +88,12 @@ On .NET 8, `NumeralJsonConverter` serializes numeric structure rather than
 formatted text:
 
 ```text
-Numeral -> { base, positive, integral[], fractional[] }
+Numeral -> { base, positive, numerator, denominator, integral[], fractional[] }
 ```
 
-That representation preserves leading/trailing digit zeros and is independent
-of culture. Presentation alphabets remain an application/protocol concern.
+That representation preserves leading/trailing digit zeros and the exact
+rational state independently of culture. Numerator and denominator are JSON
+strings so they are not limited by a consumer's numeric precision.
 
 ### Streaming encodings
 
@@ -136,9 +137,12 @@ Combines a `NumeralSystem` reference with:
 - integral digits;
 - fractional digits;
 - a sign.
+- an exact `RationalValue` snapshot when created through the 5.0 factories.
 
 It is the appropriate type when parsing, formatting, and custom alphabets are
-part of the operation.
+part of the operation. Digit getters return copies. The 4.x mutation surface is
+retained with migration warnings; new code creates replacement values with
+`FromRational` and `WithExactValue`.
 
 ### `Value`
 
@@ -154,13 +158,35 @@ Use it for encoded identifiers and raw digit transformations.
 
 ### `NumeralValue`
 
-Stores signed integral and fractional digits without formatting concerns. It is
-the arithmetic type:
+Stores a normalized exact rational value plus an immutable positional digit
+projection without formatting concerns. It is the arithmetic type:
 
-- exact rational intermediate calculations;
-- bounded result expansion;
+- exact rational state and calculations;
+- explicit bounded, periodic, truncated, or rounded expansion;
 - arbitrary-precision integral views;
 - base-independent comparison.
+
+### `RationalValue`, options, and expansion
+
+`RationalValue` owns normalized `BigInteger/BigInteger` state and exact
+arithmetic. `NumeralConversionOptions` is immutable policy. `NumeralExpansion`
+owns read-only digits and termination/period/rounding metadata. This split
+prevents a finite display buffer from becoming the numeric source of truth.
+
+```text
+RationalValue + base + NumeralConversionOptions
+                         |
+                         v
+              remainder expansion loop
+                         |
+             +-----------+------------+
+             |                        |
+             v                        v
+      terminating digits       period / bounded tail
+                         |
+                         v
+                 NumeralExpansion
+```
 
 ## Positional conversion core
 

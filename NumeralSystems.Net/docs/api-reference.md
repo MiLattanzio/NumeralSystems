@@ -1,5 +1,7 @@
 # API reference
 
+[Exact rational values](exact-rationals.md)
+
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
 [Numeral systems](numeral-systems.md) ·
@@ -37,34 +39,64 @@ Represents a non-negative integral value as digit indices in one base.
 
 `Value` does not represent a sign or fractional digits.
 
-### `NumeralValue`
+### `RationalValue`
 
-Represents integral and fractional digit lists, a sign, and a base.
+Immutable normalized exact value backed by a signed `BigInteger` numerator and
+a positive `BigInteger` denominator.
 
 | Member family | Members |
 | --- | --- |
-| State | `Integral`, `Decimals`, `Negative`, `Base`, `IsZero` |
-| Precision | `DefaultMaxFractionalDigits` |
-| Construction | constructor, `FromDecimal`, `FromBigInteger` (optionally with a base), `FromInt`, `FromFloat`, `FromDouble`, `FromValue` |
+| State | `Numerator`, `Denominator`, `IsZero`, `IsInteger`, `Sign`, `Zero`, `One` |
+| Construction | constructor, `FromInteger`, `FromDecimal`, `FromSingle`, `FromDouble`, `FromDigits` |
+| Conversion | `Expand`, `Truncate`, `ToDecimal`, `ToString` |
+| Arithmetic | `Add`, `Subtract`, `Multiply`, `Divide`, `Negate`, `Abs`; `+`, `-`, `*`, `/` |
+| Equality/order | `Equals`, `CompareTo`, `==`, `!=` |
+
+Construction reduces the fraction, makes the denominator positive, and
+normalizes zero to `0/1`. IEEE factories preserve the exact finite bit value.
+
+### `NumeralConversionOptions`
+
+Immutable policy for rational-to-positional expansion.
+
+| Member | Purpose |
+| --- | --- |
+| `MaxFractionalDigits` | Bounds generated digits and period-detection state |
+| `RoundingMode` | Selects one of six directed or nearest rounding rules |
+| `DetectRepeatingPeriod` | Enables remainder-cycle detection |
+| `InfiniteBehavior` | `Throw`, `Truncate`, `Round`, or `PreservePeriod` |
+| `Default` | Exact-first 128-digit period-preserving policy |
+| `Legacy` | 4.x-compatible 128-digit truncation policy |
+| `With*` | Creates a modified options instance |
+
+### `NumeralExpansion`
+
+Immutable digits and metadata produced by `RationalValue.Expand` or
+`NumeralValue.Expand`. State includes `Value`, `Base`, `IntegralDigits`,
+`FractionalDigits`, `Negative`, `IsTerminating`, `IsExact`, `WasRounded`,
+`RepeatingStartIndex`, `RepeatingLength`, and `HasRepeatingPeriod`. The alphabet
+formatter encloses a preserved period in parentheses by default.
+
+### `NumeralValue`
+
+Sealed immutable exact rational value with a positional digit projection.
+
+| Member family | Members |
+| --- | --- |
+| Exact state | `ExactValue`, `Numerator`, `Denominator`, `IsZero` |
+| Projection | `Integral`, `Decimals`, `Negative`, `Base`, `IsExactRepresentation`, `WasRounded` |
+| Period | `RepeatingStartIndex`, `RepeatingLength`, `HasRepeatingPeriod` |
+| Construction | `FromDigits`, `FromRational`, `FromDecimal`, `FromBigInteger`, `FromInt`, `FromFloat`, `FromDouble`, `FromValue` |
 | Primitive conversion | `ToBigInteger`, `ToDecimal`, `ToInt`, `ToFloat`, `ToDouble`, `ToValue` |
-| Base conversion | `ToBase`, `TryToBase` |
+| Base conversion | `Expand`, `ToBase(int, NumeralConversionOptions)` |
 | Arithmetic | `Add`, `Subtract`, `Multiply`, `Divide`, `Negate`, `Abs` |
 | Comparison | `CompareTo`, `NumericallyEquals` |
 | Operators | binary `+`, `-`, `*`, `/`; unary `-`; `<`, `>`, `<=`, `>=` |
 
-`TryToBase` returns `false` when a repeating fractional expansion reaches the
-requested digit limit. Its output still contains the truncated conversion.
-
-Arithmetic methods have:
-
-- a short overload that returns a result in the current instance's base;
-- a precision-aware overload with `out bool exact`, optional `resultBase`, and
-  `maxFractionalDigits`.
-
-Operators use the left operand's base and
-`DefaultMaxFractionalDigits`. Division by zero throws
-`DivideByZeroException`. `NumericallyEquals` compares exact numeric magnitude
-without changing the reference-equality behavior of `object.Equals`.
+The list constructor and 4.x base-conversion overloads remain with migration
+warnings. Compatibility arithmetic overloads keep `out bool exact` to report
+whether the digit projection terminated, while the returned value retains its
+exact rational state. Operators use the left operand's base.
 
 ### `NumeralSystem`
 
@@ -91,15 +123,17 @@ Stores one value in a `NumeralSystem`.
 
 | Member family | Members |
 | --- | --- |
-| State | `Positive`, `Base`, `IntegralIndices`, `FractionalIndices` |
+| State | `Positive`, `Base`, copied `IntegralIndices`/`FractionalIndices`, `ExactValue` |
 | Text components | `GetIntegralStrings`, `GetIntegralString`, `GetFractionalStrings`, `GetFractionalString` |
 | Primitive views | `BigInteger`, `Integer`, `Char`, `Double`, `Decimal`, `Float`, `Bytes` |
-| Mutation | property setters, `TrySetValue` |
-| Conversion | `To(NumeralSystem)` |
+| Immutable creation | `FromRational`, `WithExactValue` |
+| Compatibility mutation | obsolete property setters and `TrySetValue` |
+| Conversion | `To(NumeralSystem, NumeralConversionOptions)` |
 | Formatting | `ToString()`, alphabet/identity overloads, `IFormattable.ToString(G/R, provider)`, .NET 8 `TryFormat` |
 
 `Numeral` also provides `NumeralAlphabet` overloads for digit access and
-formatting, plus `ToString(SerializationInfo)`.
+formatting, plus `ToString(SerializationInfo)`. The parameterless conversion
+and mutating 4.x surface remain as a warning-based migration layer.
 
 ### `NumeralAlphabet`
 
@@ -180,8 +214,9 @@ distinct units in first-occurrence order.
 ## `NumeralSystems.Net.Serialization` (.NET 8)
 
 `NumeralJsonConverter` integrates `Numeral` with `System.Text.Json`. It writes
-`base`, `positive`, `integral`, and `fractional`, preserving exact digit arrays
-without depending on culture or presentation alphabets.
+`base`, `positive`, `numerator`, `denominator`, `integral`, and `fractional`.
+Exact integers are strings to avoid JSON precision limits. The reader remains
+compatible with 4.8 digit-only JSON.
 
 ## `NumeralSystems.Net.Type.Base`
 

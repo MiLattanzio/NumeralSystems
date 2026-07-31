@@ -216,7 +216,7 @@ namespace NumeralSystem.Net.NUnit
                         var source = sourceSystem[value];
                         var sourceText = source.ToString(sourceAlphabet);
                         var sourceRoundTrip = sourceSystem.Parse(sourceText, sourceAlphabet);
-                        var converted = sourceRoundTrip.To(destinationSystem);
+                        var converted = sourceRoundTrip.To(destinationSystem, NumeralConversionOptions.Default);
                         var destinationText = converted.ToString(destinationAlphabet);
                         var destinationRoundTrip =
                             destinationSystem.Parse(destinationText, destinationAlphabet);

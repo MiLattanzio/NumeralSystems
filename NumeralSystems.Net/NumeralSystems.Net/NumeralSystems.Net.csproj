@@ -5,24 +5,24 @@
         <LangVersion>9</LangVersion>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageId>NumeralSystems.Net</PackageId>
-        <Version>4.8.1</Version>
-        <PackageVersion>4.8.1</PackageVersion>
+        <Version>5.0.0</Version>
+        <PackageVersion>5.0.0</PackageVersion>
         <Title>NumeralSystems.Net</Title>
         <Authors>Mi Lattanzio</Authors>
-        <Description>Work with arbitrary numeral systems, ordered alphabets, Unicode Rune transforms, standard Base16/Base32/Base64 codecs, streaming, exact arithmetic, and bit patterns.</Description>
+        <Description>Exact rational arithmetic and arbitrary-base numeral expansion with ordered alphabets, repeating periods, explicit rounding, Unicode, streaming codecs, and bit patterns.</Description>
         <Copyright>Copyright © Mi Lattanzio and contributors</Copyright>
         <RepositoryUrl>https://github.com/MiLattanzio/NumeralSystems</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <Company>PastaSoftware</Company>
-        <AssemblyVersion>4.8.1.0</AssemblyVersion>
-        <FileVersion>4.8.1.0</FileVersion>
+        <AssemblyVersion>5.0.0.0</AssemblyVersion>
+        <FileVersion>5.0.0.0</FileVersion>
         <NeutralLanguage>en</NeutralLanguage>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/MiLattanzio/NumeralSystems</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <PackageTags>numeral-systems;numeral-alphabet;base-conversion;unicode;rune;base16;base32;base64;streaming;span;json;round-trip;parser;rational-arithmetic;big-integer;bit-pattern</PackageTags>
+        <PackageTags>numeral-systems;numeral-alphabet;base-conversion;exact-rational;repeating-fractions;rounding;unicode;rune;base16;base32;base64;streaming;span;json;big-integer;bit-pattern</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageReleaseNotes>Removes every obsolete compatibility API, leaving explicit ordered-alphabet, UTF-16, Rune, and standard byte-codec entry points; updates package authorship and project contact information.</PackageReleaseNotes>
+        <PackageReleaseNotes>Adds immutable normalized RationalValue storage, exact cross-base conversion, repeating-period metadata, explicit rounding and infinite-expansion policies, exact rational JSON state, nullable-annotated 5.0 APIs, and a warning-based 4.x migration layer.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>

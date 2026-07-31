@@ -62,20 +62,22 @@ digit list is required.
 The fraction may repeat in the destination base. For example, one third repeats
 in base 10, while one tenth repeats in base 2.
 
-Use a bounded conversion and inspect its Boolean result:
+Use an explicit policy and inspect the expansion metadata:
 
 ```csharp
-var exact = value.TryToBase(
-    baseValue: 10,
-    maxFractionalDigits: 32,
-    result: out var converted);
+var options = new NumeralConversionOptions(
+    32,
+    NumeralRoundingMode.ToNearestEven,
+    true,
+    InfiniteExpansionBehavior.PreservePeriod);
+var expansion = value.Expand(10, options);
 ```
 
-If `exact` is `false`, `converted` contains a truncated expansion. Increase the
-limit, select a more suitable base, or reject the value according to application
-requirements.
+Inspect `IsTerminating`, `HasRepeatingPeriod`, and `RepeatingLength`. Increase
+the limit, select a more suitable base, or select `Truncate`, `Round`, or
+`Throw` according to application requirements.
 
-## Arithmetic returned `exact == false`
+## A compatibility arithmetic call returned `exact == false`
 
 Arithmetic is performed on an exact rational value first. The flag describes
 only the final representation in the result base.
@@ -87,14 +89,13 @@ Common causes:
   the chosen result base;
 - `maxFractionalDigits` is smaller than a terminating expansion requires.
 
-Pass an explicit `resultBase` and limit:
+Prefer an explicit result base and policy:
 
 ```csharp
 var result = left.Divide(
     right,
-    exact: out var exact,
-    resultBase: 3,
-    maxFractionalDigits: 128);
+    NumeralConversionOptions.Default,
+    resultBase: 3);
 ```
 
 See [Arithmetic](arithmetic.md) for the complete precision contract.
@@ -108,12 +109,12 @@ var result = left + right;
 Console.WriteLine(result.Base == left.Base); // True
 ```
 
-Use the precision-aware method when a specific result base is required:
+Use the option-aware method when a specific result base is required:
 
 ```csharp
 var result = left.Add(
     right,
-    exact: out var exact,
+    NumeralConversionOptions.Default,
     resultBase: 16);
 ```
 
@@ -141,8 +142,15 @@ For an integral value, use:
 BigInteger integer = value.ToBigInteger();
 ```
 
-For a very large fractional value, keep it as `NumeralValue` and operate on its
-digits instead of requesting a primitive view.
+For a very large fractional value, keep it as `NumeralValue` or
+`RationalValue`; `ExactValue` is not bounded by the primitive target range.
+
+## `NumeralExpansionLimitException` is thrown
+
+`PreservePeriod` refuses to return an inexact value. The terminating tail or
+repeating cycle was not completed before `MaxFractionalDigits`. Increase the
+limit for trusted input, choose `Truncate` or `Round` for display, or choose
+`Throw` when the output format forbids repeating fractions.
 
 ## Two numerically equal values do not pass `object.Equals`
 

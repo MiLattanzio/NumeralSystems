@@ -140,6 +140,8 @@ The JSON shape is intentionally alphabet- and culture-independent:
 {
   "base": 16,
   "positive": false,
+  "numerator": "-3841",
+  "denominator": "256",
   "integral": [0, 15],
   "fractional": [0, 1]
 }
@@ -149,13 +151,18 @@ This preserves:
 
 - the positional base;
 - the sign;
+- the normalized exact rational numerator and denominator without JSON number
+  precision limits;
 - leading integral zeros;
 - fractional zeros and exact digit count;
 - every digit without converting through `double` or `decimal`.
 
-Deserialization rejects bases below 2, missing properties, non-integer digits,
-and digits outside `0..base-1` with `JsonException`. Empty digit arrays are
-preserved for compatibility with a default-constructed `Numeral`.
+Deserialization rejects bases below 2, incomplete or invalid rational fields,
+missing digit properties, non-integer digits, and digits outside
+`0..base-1` with `JsonException`. The reader accepts 4.8 payloads without
+`numerator` and `denominator`; in that case it derives the exact finite value
+from the digit arrays. Empty digit arrays are preserved for compatibility with
+a default-constructed `Numeral`.
 An alphabet is not serialized because a `Numeral` stores numeric digit indices,
 not a presentation alphabet. Transmit an application-specific alphabet
 identifier separately when the wire protocol requires one.

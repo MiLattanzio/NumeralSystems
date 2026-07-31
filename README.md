@@ -82,7 +82,8 @@ esplicitamente alfabeto e separatori.
 | Sistemi numerici | `NumeralSystem`, `Numeral` | Creazione, parsing, formattazione e conversione tra basi |
 | Alfabeti ordinati | `NumeralAlphabet`, `ParseResult` | Codifica deterministica, validazione e diagnostica del parsing |
 | Cifre non negative | `Value` | Sequenze intere, inclusi valori a precisione arbitraria |
-| Valori con segno e frazioni | `NumeralValue` | Conversione, calcolo e confronto con precisione limitata e verificabile |
+| Valori razionali esatti | `RationalValue`, `NumeralValue` | Conservazione `BigInteger/BigInteger` e proiezione in qualsiasi base |
+| Politica di espansione | `NumeralConversionOptions`, `NumeralExpansion` | Limite cifre, arrotondamento, rifiuto dell'infinito o periodo esplicito |
 | Primitive bitwise | `Type.Base.*` | Wrapper per byte, interi, caratteri e numeri floating point |
 | Bit indeterminati | `BitPattern`, `Type.Incomplete.*` | Pattern ternari, vincoli, operazioni inverse ed enumerazione limitata |
 | Codec standard | `StandardBaseCodec` | Base16/Base32/Base64 RFC con API in memoria, Span e streaming |
@@ -145,31 +146,32 @@ anche API streaming a memoria costante.
 
 `Numeral` implementa `IFormattable` con formati `G` dipendente dal provider e
 `R` invariante. Il target .NET 8 aggiunge overload Span e serializzazione
-`System.Text.Json` esatta di base, segno e array di cifre.
+`System.Text.Json` esatta di base, segno, numeratore/denominatore e array di cifre.
 
 ### Aritmetica tra basi diverse
 
-`NumeralValue` calcola usando valori razionali intermedi esatti. Gli operandi
-possono avere basi differenti:
+`NumeralValue` conserva internamente un razionale normalizzato esatto. Le cifre
+posizionali sono una proiezione immutabile: una visualizzazione troncata non
+degrada i calcoli successivi.
 
 ```csharp
-var metaBinaria = new NumeralValue(
-    new List<int> { 0 },
-    new List<int> { 1 },
-    false,
-    2);
+var metaBinaria = NumeralValue.FromRational(1, 2, baseValue: 2);
 
 var quartoDecimale = NumeralValue.FromDecimal(0.25m);
-var somma = metaBinaria.Add(quartoDecimale, out var esatto);
+var somma = metaBinaria.Add(
+    quartoDecimale,
+    NumeralConversionOptions.Default,
+    resultBase: 2);
 
-Console.WriteLine(esatto);            // True
 Console.WriteLine(somma.Base);        // 2
 Console.WriteLine(somma.ToDecimal()); // 0.75
 ```
 
-Gli operatori `+`, `-`, `*` e `/` usano la base dell'operando sinistro. I
-metodi con precisione esplicita segnalano quando un'espansione periodica deve
-essere troncata.
+`NumeralConversionOptions` rende espliciti limite di cifre, arrotondamento,
+rilevamento del periodo e comportamento per espansioni infinite. Per esempio
+`0.1` decimale diventa esattamente `0.0(0011)` in base 2, mentre `1/3` termina
+come `0.1` in base 3. Gli operatori `+`, `-`, `*` e `/` usano la base
+dell'operando sinistro e conservano lo stato razionale esatto.
 
 ### Operazioni bitwise inverse
 
@@ -224,6 +226,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [alfabeti ordinati, preset e diagnostica del parsing](NumeralSystems.Net/docs/numeral-alphabets.md);
 - [provider di formattazione, Span e JSON](NumeralSystems.Net/docs/formatting-and-serialization.md);
 - [aritmetica, precisione, operatori e confronto](NumeralSystems.Net/docs/arithmetic.md);
+- [razionali esatti, periodi e arrotondamento](NumeralSystems.Net/docs/exact-rationals.md);
 - [ricettario con esempi pratici](NumeralSystems.Net/docs/cookbook.md);
 - [primitive e operazioni bitwise](NumeralSystems.Net/docs/bitwise-values.md);
 - [motore immutabile BitPattern e risoluzione dei vincoli](NumeralSystems.Net/docs/bit-patterns.md);
@@ -235,6 +238,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [migrazione alla 4.7.0](NumeralSystems.Net/docs/migration-4.7.md);
 - [migrazione alla 4.8.0](NumeralSystems.Net/docs/migration-4.8.md);
 - [migrazione alla 4.8.1](NumeralSystems.Net/docs/migration-4.8.1.md);
+- [migrazione dalla 4.8.1 alla 5.0.0](NumeralSystems.Net/docs/migration-5.0.md);
 - [processo di release e pubblicazione NuGet](NumeralSystems.Net/docs/releasing.md).
 
 Tutta la documentazione è scritta in Markdown e viene versionata insieme al
@@ -257,7 +261,10 @@ dotnet run --configuration Release \
 - Una base posizionale deve essere maggiore o uguale a 2.
 - Le cifre sono indici interi nell'intervallo `0..base-1`.
 - Le cifre frazionarie hanno il significato posizionale della base dichiarata;
-  `TryToBase` segnala quando un'espansione periodica raggiunge il limite.
+  lo stato razionale esatto sopravvive alle proiezioni periodiche, troncate e
+  arrotondate.
+- `NumeralConversionOptions` rende espliciti limite, arrotondamento,
+  rilevamento del periodo e comportamento per espansioni infinite.
 - Gli indexer e le viste `BigInteger` non hanno i limiti dei tipi interi primitivi.
 - `Value` non memorizza segno o parte frazionaria; usare `NumeralValue` o
   `Numeral` quando servono.

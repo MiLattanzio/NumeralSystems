@@ -156,16 +156,15 @@ var decimalSystem = Numeral.System.OfBase(10);
 var hexadecimal = Numeral.System.OfBase(16);
 
 var source = decimalSystem[65535];
-var destination = source.To(hexadecimal);
+var destination = source.To(hexadecimal, NumeralConversionOptions.Default);
 
 Console.WriteLine(destination); // FFFF
 ```
 
-Fractional conversions generate at most
-`NumeralValue.DefaultMaxFractionalDigits` digits (128 by default). Use
-`NumeralValue.TryToBase` when the distinction between an exact terminating
-expansion and a truncated repeating expansion matters. Primitive `decimal`,
-`double`, and `float` views remain bounded by their underlying .NET type.
+Fractional conversions use immutable `NumeralConversionOptions`. The default
+generates at most 128 digits and preserves a detected period exactly; explicit
+policies can throw, truncate, or round. Primitive `decimal`, `double`, and
+`float` views remain bounded by their underlying .NET type.
 
 ### Controlling fractional precision
 
@@ -173,32 +172,22 @@ Each fractional position has the normal positional meaning. For example,
 `0.1` in base 2 is `1 × 2⁻¹`, or `0.5` in base 10:
 
 ```csharp
-var oneHalf = new NumeralValue(
-    integral: new List<int> { 0 },
-    decimals: new List<int> { 1 },
-    negative: false,
-    baseValue: 2);
+var oneHalf = NumeralValue.FromRational(1, 2, baseValue: 2);
 
 Console.WriteLine(oneHalf.ToDecimal()); // 0.5
 ```
 
-Some expansions repeat in the destination base. The Boolean result indicates
-whether the expansion terminated within the supplied limit:
+Some expansions repeat in the destination base. The expansion result exposes
+both termination and period metadata:
 
 ```csharp
-var oneThird = new NumeralValue(
-    integral: new List<int> { 0 },
-    decimals: new List<int> { 1 },
-    negative: false,
-    baseValue: 3);
+var oneThird = NumeralValue.FromRational(1, 3, baseValue: 3);
+var expansion = oneThird.Expand(10, NumeralConversionOptions.Default);
 
-var exact = oneThird.TryToBase(
-    baseValue: 10,
-    maxFractionalDigits: 6,
-    result: out var converted);
-
-Console.WriteLine(exact);                         // False
-Console.WriteLine(string.Concat(converted.Decimals)); // 333333
+Console.WriteLine(expansion.IsTerminating);       // False
+Console.WriteLine(expansion.RepeatingStartIndex); // 0
+Console.WriteLine(expansion.RepeatingLength);     // 1
+Console.WriteLine(expansion.ToString(NumeralAlphabet.Base10)); // 0.(3)
 ```
 
 ## Using `Value`
@@ -232,12 +221,13 @@ minimum base of 2. See [Text and binary encodings](string-encoding.md).
 
 ## Using `NumeralValue`
 
-`NumeralValue` keeps integral digits, fractional digits, a sign, and a base:
+`NumeralValue` keeps an exact rational value and an immutable positional
+projection:
 
 ```csharp
-var value = new NumeralValue(
-    integral: new List<int> { 1, 0 },
-    decimals: new List<int> { 6, 2, 5 },
+var value = NumeralValue.FromDigits(
+    integral: new[] { 1, 0 },
+    fractional: new[] { 6, 2, 5 },
     negative: false,
     baseValue: 10);
 

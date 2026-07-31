@@ -1,5 +1,7 @@
 # NumeralSystems.Net documentation
 
+[Exact rational values and positional expansions](exact-rationals.md)
+
 [Getting started](getting-started.md) ·
 [Numeral systems](numeral-systems.md) ·
 [Numeral alphabets](numeral-alphabets.md) ·
@@ -31,6 +33,8 @@ directly on GitHub and changed without a documentation generator.
 | Process UTF-16 units or Unicode scalars explicitly | `CharacterIdentity` and `CharacterRadixTransform` |
 | Convert an existing sequence of non-negative digits | `Value` |
 | Preserve a sign and fractional digits while changing base | `NumeralValue` |
+| Preserve an exact fraction and inspect a repeating expansion | `RationalValue`, `NumeralExpansion` |
+| Choose limits, period detection, rounding, and infinite behavior | `NumeralConversionOptions` |
 | Calculate or compare signed values in different bases | `NumeralValue` arithmetic |
 | Run logical operations on primitive representations | `NumeralSystems.Net.Type.Base` |
 | Represent or solve for unknown bits | `NumeralSystems.Net.Type.Incomplete` |
@@ -48,13 +52,15 @@ var numeral = hexadecimal[255];
 Console.WriteLine(numeral);          // FF
 Console.WriteLine(numeral.Integer);  // 255
 
-var binary = numeral.To(Numeral.System.OfBase(2));
+var binary = numeral.To(
+    Numeral.System.OfBase(2),
+    NumeralConversionOptions.Default);
 Console.WriteLine(binary.Integer);   // 255
 ```
 
-`Numeral` owns a reference to its `NumeralSystem`, an integral digit list, an
-optional fractional digit list, and a sign. A digit is stored as an integer
-index from `0` through `base - 1`.
+`Numeral` owns a reference to its `NumeralSystem`, copied integral/fractional
+digits, a sign, and an exact rational snapshot when built through the 5.0
+factories. A digit is stored as an integer index from `0` through `base - 1`.
 
 ## Important defaults
 
@@ -65,8 +71,10 @@ index from `0` through `base - 1`.
   culture's sign and decimal separator.
 - For stable storage or a wire format, always pass an explicit alphabet,
   digit separator, negative sign, and decimal separator.
-- Fractional conversion and arithmetic generate at most 128 fractional digits
-  by default. Use precision-aware overloads when truncation must be observable.
+- Exact-first fractional conversion generates at most 128 digits and preserves
+  a detected period by default. It throws when an exact expansion cannot be
+  completed inside the limit. Use an explicit `Truncate` or `Round` policy at
+  display and protocol boundaries.
 - Primitive-wrapper `Binary` arrays are indexed from the least-significant bit.
 - Incomplete values use `bool?`: `false` means zero, `true` means one, and
   `null` means unknown.
@@ -83,6 +91,8 @@ index from `0` through `base - 1`.
   `IFormatProvider`, standard formats, Span APIs, JSON, and the target matrix.
 - [Arithmetic](arithmetic.md) covers exact rational operations, result bases,
   bounded fractional expansions, operators, and numeric comparison.
+- [Exact rationals](exact-rationals.md) covers normalized `BigInteger` ratios,
+  terminating and repeating expansions, policies, rounding, and exact JSON.
 - [Cookbook](cookbook.md) provides task-oriented recipes across the library.
 - [Bitwise values](bitwise-values.md) covers primitive wrappers and logical
   operations.
@@ -105,6 +115,8 @@ index from `0` through `base - 1`.
   standard codecs, smallest-base behavior, providers, JSON, and multi-targeting.
 - [Migrating to 4.8.1](migration-4.8.1.md) maps every removed compatibility
   API to its explicit ordered-alphabet, UTF-16, Rune, or byte-codec replacement.
+- [Migrating to 5.0.0](migration-5.0.md) maps the warning-based 4.x layer to
+  exact rational factories, immutable replacement, and explicit policies.
 - [Releasing](releasing.md) documents package versioning and automated
   publication to NuGet.org.
 

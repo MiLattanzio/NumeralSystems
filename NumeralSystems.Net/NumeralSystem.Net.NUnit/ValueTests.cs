@@ -100,9 +100,9 @@ namespace NumeralSystem.Net.NUnit
         public void SubZeroNumeralValueSpecificTest1()
         {
             var zerozeroone = NumeralValue.FromDecimal(0.01m);
-            var binary = zerozeroone.ToBase(2);
+            var binary = zerozeroone.ToBase(2, NumeralConversionOptions.Default);
             Assert.That(zerozeroone.ToDecimal(), Is.EqualTo(binary.ToDecimal()));
-            var original = binary.ToBase(zerozeroone.Base);
+            var original = binary.ToBase(zerozeroone.Base, NumeralConversionOptions.Default);
             Assert.That(original.ToDecimal(), Is.EqualTo(zerozeroone.ToDecimal()));
         }
         
@@ -111,9 +111,14 @@ namespace NumeralSystem.Net.NUnit
         {
             var sourceNumber = _random.Next() + _random.NextDouble();
             var number = NumeralValue.FromDouble(sourceNumber);
-            var binary = number.ToBase(2);
+            var options = new NumeralConversionOptions(
+                128,
+                NumeralRoundingMode.ToZero,
+                false,
+                InfiniteExpansionBehavior.Truncate);
+            var binary = number.ToBase(2, options);
             Assert.That(number.ToDecimal(), Is.EqualTo(binary.ToDecimal()));
-            var original = binary.ToBase(number.Base);
+            var original = binary.ToBase(number.Base, options);
             Assert.That(original.ToDecimal(), Is.EqualTo(number.ToDecimal()));
             //Assert.That(sourceNumber, Is.EqualTo(original.ToDouble()));
         }

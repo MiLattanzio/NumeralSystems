@@ -132,7 +132,7 @@ var decimalSystem = Numeral.System.OfBase(10);
 var hexadecimal = Numeral.System.OfBase(16);
 
 var decimalValue = decimalSystem[255];
-var hexValue = decimalValue.To(hexadecimal);
+var hexValue = decimalValue.To(hexadecimal, NumeralConversionOptions.Default);
 
 Console.WriteLine(hexValue); // FF
 ```
@@ -146,18 +146,17 @@ primitive type:
 
 ```csharp
 var left = NumeralValue.FromDecimal(10.5m);
-var right = new NumeralValue(
-    integral: new List<int> { 10 },
-    decimals: new List<int> { 8 },
+var right = NumeralValue.FromDigits(
+    integral: new[] { 10 },
+    fractional: new[] { 8 },
     negative: false,
     baseValue: 16);
 
 var sum = left.Add(
     right,
-    exact: out var exact,
+    NumeralConversionOptions.Default,
     resultBase: 10);
 
-Console.WriteLine(exact);           // True
 Console.WriteLine(sum.ToDecimal()); // 21.0
 ```
 

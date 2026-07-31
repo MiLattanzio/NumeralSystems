@@ -50,10 +50,10 @@ namespace NumeralSystem.Net.NUnit
             var source = Numeral.System.OfBase(sourceBase.Length);
             var destination = Numeral.System.OfBase(destinationBase.Length);
             var re = source.Parse(sourceString, sourceBase, string.Empty, "-", ".");
-            var result = re.To(destination);
+            var result = re.To(destination, NumeralConversionOptions.Default);
             var destinationString = result.ToString(destinationBase, string.Empty, "-", ".");
             Assert.That(sourceString, Is.Not.EqualTo(destinationString));
-            var back = result.To(source);
+            var back = result.To(source, NumeralConversionOptions.Default);
             var backString = back.ToString(sourceBase, string.Empty, "-", ".");
             Assert.That(backString, Is.EqualTo(sourceString));
 

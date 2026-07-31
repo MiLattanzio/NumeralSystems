@@ -48,8 +48,8 @@ vMAJOR.MINOR.PATCH-prerelease
 Examples:
 
 ```text
-v4.8.1
-v4.8.1-beta.1
+v5.0.0
+v5.0.0-beta.1
 ```
 
 The leading `v` is removed before setting `PackageVersion`. A prerelease GitHub

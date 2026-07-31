@@ -31,7 +31,7 @@ namespace NumeralSystem.Net.NUnit.Encoding
         private static string EncodeIdNumeral(string youtubeId)
         {
             var number = YoutubeNumeralSystem.Parse(youtubeId, YoutubeAlphabet, string.Empty, "#", "^");
-            var cleanNumber = number.To(NumeralSystem);
+            var cleanNumber = number.To(NumeralSystem, NumeralConversionOptions.Default);
             var result = cleanNumber.ToString(CleanYoutubeAlphabet, string.Empty, "#", "^");
             return result;
         }
@@ -39,7 +39,7 @@ namespace NumeralSystem.Net.NUnit.Encoding
         private static string DecodeIdNumeral(string cleanId)
         {
             var cleanNumber = NumeralSystem.Parse(cleanId, CleanYoutubeAlphabet, string.Empty, "#", "^");
-            var youtubeNumber = cleanNumber.To(YoutubeNumeralSystem);
+            var youtubeNumber = cleanNumber.To(YoutubeNumeralSystem, NumeralConversionOptions.Default);
             var youtubeId = youtubeNumber.ToString(YoutubeAlphabet, string.Empty, "#", "^");
             return youtubeId;
         }

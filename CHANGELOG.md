@@ -4,6 +4,69 @@ All notable changes to NumeralSystems.Net are documented in this file.
 
 The project follows [Semantic Versioning](https://semver.org/).
 
+## [5.0.0] - 2026-07-31
+
+### Added
+
+- Add immutable, normalized `RationalValue` state backed by a signed
+  `BigInteger` numerator and positive `BigInteger` denominator.
+- Add exact factories for integers, positional digits, `decimal`, IEEE 754
+  `float`, and IEEE 754 `double` values.
+- Add immutable `NumeralConversionOptions` with an explicit fractional digit
+  limit, six rounding modes, period detection, and `Throw`, `Truncate`,
+  `Round`, or `PreservePeriod` infinite-expansion policies.
+- Add immutable `NumeralExpansion` results with termination, rounding,
+  repeating-start, and repeating-length metadata, plus parenthesized period
+  formatting through a `NumeralAlphabet`.
+- Add `InfiniteNumeralExpansionException` and
+  `NumeralExpansionLimitException` under the common
+  `NumeralExpansionException` hierarchy.
+- Add `NumeralValue.FromDigits`, `FromRational`, `Expand`, exact numerator and
+  denominator properties, period metadata, and option-aware conversion and
+  arithmetic overloads.
+- Add `Numeral.ExactValue`, `FromRational`, `WithExactValue`, and option-aware
+  base conversion.
+- Add tests for normalization, exact requested examples, repeating binary
+  one tenth, every rounding category, digit carry, expansion failures,
+  immutability, exact IEEE values, large-ratio decimal conversion, and exact
+  rational JSON round trips.
+- Add dedicated exact-rational and 5.0 migration guides, with expanded README,
+  arithmetic, architecture, and API documentation.
+
+### Changed
+
+- Make an exact rational value, rather than the currently materialized digits,
+  authoritative for `NumeralValue` conversion, arithmetic, comparison, and
+  primitive views.
+- Preserve the original rational after a truncated or rounded digit
+  projection, allowing a later conversion to recover an exact terminating
+  representation in another base.
+- Make `NumeralValue` sealed and keep all digit collections read-only.
+- Return copies from `Numeral.IntegralIndices` and `FractionalIndices`; retain
+  the 4.x mutation surface only as a warning-based migration layer.
+- Serialize `Numeral` numerator and denominator as arbitrary-precision JSON
+  strings on .NET 8 while continuing to accept 4.8 digit-only JSON.
+- Convert large rational ratios to `decimal` without casting their numerator
+  and denominator separately.
+- Add nullable reference annotations to the new 5.0 value, options, expansion,
+  exception, and conversion APIs.
+
+### Deprecated
+
+- Deprecate the list-based `NumeralValue` constructor in favor of
+  `FromDigits` or `FromRational`.
+- Deprecate implicit-precision `NumeralValue.ToBase` and `TryToBase` overloads
+  in favor of `NumeralConversionOptions` and `NumeralExpansion` metadata.
+- Deprecate `Numeral.To(NumeralSystem)`, mutating digit/sign/primitive setters,
+  and `TrySetValue` in favor of immutable replacement APIs.
+
+### Compatibility
+
+- Keep `Polecola.Primitive` 1.0.0 unchanged; the exact-rational layer has no
+  required changes in that package.
+- Retain forwarding implementations for deprecated 4.x calls so existing
+  source continues to compile with migration warnings.
+
 ## [4.8.1] - 2026-07-31
 
 ### Removed

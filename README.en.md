@@ -81,7 +81,8 @@ formats and protocols.
 | Numeral systems | `NumeralSystem`, `Numeral` | Create, parse, format, and convert values between bases |
 | Ordered alphabets | `NumeralAlphabet`, `ParseResult` | Encode deterministically, validate symbols, and diagnose parsing |
 | Non-negative digits | `Value` | Store integral digit sequences, including arbitrary-precision integers |
-| Signed and fractional values | `NumeralValue` | Convert, calculate, and compare values with bounded, observable precision |
+| Exact rational values | `RationalValue`, `NumeralValue` | Preserve `BigInteger/BigInteger` values and project them into any base |
+| Expansion policy | `NumeralConversionOptions`, `NumeralExpansion` | Bound digits, round, reject infinity, or preserve a repeating period |
 | Bitwise primitives | `Type.Base.*` | Wrap bytes, integers, characters, and floating-point values |
 | Unknown bits | `BitPattern`, `Type.Incomplete.*` | Represent ternary patterns, combine constraints, solve reverse operations, and enumerate with an explicit limit |
 | Standard byte codecs | `StandardBaseCodec` | RFC Base16/Base32/Base64 with in-memory, Span, and streaming APIs |
@@ -144,30 +145,31 @@ families also have constant-memory reader/writer or stream APIs.
 
 `Numeral` implements `IFormattable` with provider-driven `G` and invariant `R`
 formats. The .NET 8 asset adds Span overloads and exact `System.Text.Json`
-serialization of base, sign, and digit arrays.
+serialization of base, sign, exact numerator/denominator, and digit arrays.
 
 ### Cross-base arithmetic
 
-`NumeralValue` calculates through exact rational intermediates. Operands may use
-different bases:
+`NumeralValue` stores a normalized exact rational value. Positional digits are
+an immutable projection, so a truncated display never corrupts later arithmetic:
 
 ```csharp
-var binaryHalf = new NumeralValue(
-    new List<int> { 0 },
-    new List<int> { 1 },
-    false,
-    2);
+var binaryHalf = NumeralValue.FromRational(1, 2, baseValue: 2);
 
 var decimalQuarter = NumeralValue.FromDecimal(0.25m);
-var sum = binaryHalf.Add(decimalQuarter, out var exact);
+var sum = binaryHalf.Add(
+    decimalQuarter,
+    NumeralConversionOptions.Default,
+    resultBase: 2);
 
-Console.WriteLine(exact);           // True
 Console.WriteLine(sum.Base);        // 2
 Console.WriteLine(sum.ToDecimal()); // 0.75
 ```
 
-Operators `+`, `-`, `*`, and `/` use the left operand's base. Precision-aware
-methods report when the result requires a truncated repeating expansion.
+`NumeralConversionOptions` makes the digit limit, rounding rule, period
+detection, and infinite-expansion behavior explicit. For example, decimal
+`0.1` expands in base 2 as exact `0.0(0011)`, while `1/3` is terminating
+`0.1` in base 3. Operators `+`, `-`, `*`, and `/` use the left operand's base
+and retain the exact rational state.
 
 ### Reverse bitwise operations
 
@@ -222,6 +224,7 @@ The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/
 - [ordered numeral alphabets, presets, and parse diagnostics](NumeralSystems.Net/docs/numeral-alphabets.md);
 - [formatting providers, Span, and JSON](NumeralSystems.Net/docs/formatting-and-serialization.md);
 - [arithmetic, precision, operators, and comparison](NumeralSystems.Net/docs/arithmetic.md);
+- [exact rational values, repeating periods, and rounding](NumeralSystems.Net/docs/exact-rationals.md);
 - [task-oriented cookbook](NumeralSystems.Net/docs/cookbook.md);
 - [primitive wrappers and bitwise operations](NumeralSystems.Net/docs/bitwise-values.md);
 - [the immutable BitPattern engine and constraint solving](NumeralSystems.Net/docs/bit-patterns.md);
@@ -233,6 +236,7 @@ The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/
 - [migration to 4.7.0](NumeralSystems.Net/docs/migration-4.7.md);
 - [migration to 4.8.0](NumeralSystems.Net/docs/migration-4.8.md);
 - [migration to 4.8.1](NumeralSystems.Net/docs/migration-4.8.1.md);
+- [migration from 4.8.1 to 5.0.0](NumeralSystems.Net/docs/migration-5.0.md);
 - [release and NuGet publishing process](NumeralSystems.Net/docs/releasing.md).
 
 All documentation is maintained as Markdown and versioned with the code. No
@@ -253,8 +257,10 @@ dotnet run --configuration Release \
 
 - A positional base must be 2 or greater.
 - Every digit is an integer index in the range `0..base-1`.
-- Fractional digits have positional meaning in their declared base;
-  `TryToBase` reports when a repeating expansion reaches its precision limit.
+- Fractional digits have positional meaning in their declared base; exact
+  rational state survives periodic, truncated, and rounded projections.
+- `NumeralConversionOptions` makes digit limits, rounding, period detection,
+  and infinite-expansion behavior explicit.
 - `BigInteger` indexers and views avoid primitive integer-size limits.
 - `Value` does not preserve a sign or a fractional part; use `NumeralValue` or
   `Numeral` when those are required.

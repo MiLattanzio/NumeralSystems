@@ -17,22 +17,22 @@ namespace NumeralSystem.Net.NUnit
     public class ValidationTests
     {
         [Test]
-        public void PublicApiContainsNoObsoleteMembers()
+        public void PublicApiContainsDocumentedFiveZeroMigrationLayer()
         {
-            var publicTypes = typeof(Value).Assembly.GetExportedTypes();
-            var obsoleteTypes = publicTypes
-                .Where(type => type.GetCustomAttribute<ObsoleteAttribute>() != null)
-                .Select(type => type.FullName);
-            var obsoleteMembers = publicTypes
-                .SelectMany(type => type.GetMembers(
-                    BindingFlags.Public |
-                    BindingFlags.Instance |
-                    BindingFlags.Static |
-                    BindingFlags.DeclaredOnly))
-                .Where(member => member.GetCustomAttribute<ObsoleteAttribute>() != null)
-                .Select(member => $"{member.DeclaringType?.FullName}.{member.Name}");
+            var constructor = typeof(NumeralValue).GetConstructor(new[]
+            {
+                typeof(List<int>), typeof(List<int>), typeof(bool), typeof(int)
+            });
+            var legacyToBase = typeof(NumeralValue).GetMethod(
+                nameof(NumeralValue.ToBase),
+                new[] { typeof(int), typeof(bool) });
+            var legacyNumeralTo = typeof(Numeral).GetMethod(
+                nameof(Numeral.To),
+                new[] { typeof(NumeralSystems.Net.NumeralSystem) });
 
-            Assert.That(obsoleteTypes.Concat(obsoleteMembers), Is.Empty);
+            Assert.That(constructor?.GetCustomAttribute<ObsoleteAttribute>(), Is.Not.Null);
+            Assert.That(legacyToBase?.GetCustomAttribute<ObsoleteAttribute>(), Is.Not.Null);
+            Assert.That(legacyNumeralTo?.GetCustomAttribute<ObsoleteAttribute>(), Is.Not.Null);
         }
 
         [TestCase(0)]
@@ -42,7 +42,7 @@ namespace NumeralSystem.Net.NUnit
             Assert.Throws<ArgumentOutOfRangeException>(() => new NumeralSystems.Net.NumeralSystem(baseValue));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Value(new List<int> { 0 }, baseValue));
             Assert.Throws<ArgumentOutOfRangeException>(() =>
-                new NumeralValue(new List<int> { 0 }, new List<int>(), false, baseValue));
+                NumeralValue.FromDigits(new[] { 0 }, Array.Empty<int>(), false, baseValue));
             Assert.Throws<ArgumentOutOfRangeException>(() => BaseULong.ToIndicesOfBase(10, baseValue));
             Assert.Throws<ArgumentOutOfRangeException>(() => BaseBigInteger.ToIndicesOfBase(10, baseValue));
             Assert.Throws<ArgumentOutOfRangeException>(() =>
@@ -55,9 +55,9 @@ namespace NumeralSystem.Net.NUnit
             Assert.Throws<ArgumentOutOfRangeException>(() => new Value(new List<int> { -1 }, 10));
             Assert.Throws<ArgumentOutOfRangeException>(() => new Value(new List<int> { 10 }, 10));
             Assert.Throws<ArgumentOutOfRangeException>(() =>
-                new NumeralValue(new List<int> { -1 }, new List<int>(), false, 10));
+                NumeralValue.FromDigits(new[] { -1 }, Array.Empty<int>(), false, 10));
             Assert.Throws<ArgumentOutOfRangeException>(() =>
-                new NumeralValue(new List<int> { 0 }, new List<int> { 10 }, false, 10));
+                NumeralValue.FromDigits(new[] { 0 }, new[] { 10 }, false, 10));
             Assert.Throws<ArgumentOutOfRangeException>(() => BaseULong.FromIndicesOfBase(new ulong[] { 2 }, 2));
             Assert.Throws<ArgumentOutOfRangeException>(() => BaseBigInteger.FromIndicesOfBase(new ulong[] { 16 }, 16));
         }
@@ -65,7 +65,7 @@ namespace NumeralSystem.Net.NUnit
         [Test]
         public void ToValuePreservesBaseAndIntegralDigits()
         {
-            var numeralValue = new NumeralValue(new List<int> { 1, 0, 1 }, new List<int> { 1 }, false, 2);
+            var numeralValue = NumeralValue.FromDigits(new[] { 1, 0, 1 }, new[] { 1 }, false, 2);
 
             var value = numeralValue.ToValue();
 

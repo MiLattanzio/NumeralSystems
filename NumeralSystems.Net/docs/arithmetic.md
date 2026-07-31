@@ -1,5 +1,7 @@
 # Arithmetic with `NumeralValue`
 
+[Exact rational values](exact-rationals.md)
+
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
 [Numeral systems](numeral-systems.md) ·
@@ -27,11 +29,13 @@ The supported operations are:
 | Comparison | `CompareTo`, `NumericallyEquals` | `<`, `>`, `<=`, `>=` |
 
 Every operation creates a new `NumeralValue`. The input objects and their digit
-lists are not modified.
+lists are not modified. In 5.0 the normalized `ExactValue` is authoritative;
+the digits are only a projection selected by `NumeralConversionOptions`.
 
 ## Numeric model
 
-A finite positional value is treated internally as an exact rational number.
+A positional value is stored internally as an exact rational number, including
+when its current base has an infinite repeating expansion.
 For integral digits `I`, fractional digits `F`, base `b`, and `n` fractional
 positions:
 
@@ -46,8 +50,9 @@ For example, the binary digits `10.101` mean:
 ```
 
 The library reduces the rational numerator and denominator with
-arbitrary-precision integers before performing an operation. Only the final
-conversion to the requested result base can require truncation.
+arbitrary-precision integers before performing an operation. A final rounded or
+truncated projection does not replace that exact state. See
+[Exact rational values and positional expansions](exact-rationals.md).
 
 ## Basic arithmetic
 
@@ -84,17 +89,8 @@ Operands do not need the same base. This example adds one half in base 2 and
 one quarter in base 4:
 
 ```csharp
-var oneHalf = new NumeralValue(
-    integral: new List<int> { 0 },
-    decimals: new List<int> { 1 },
-    negative: false,
-    baseValue: 2);
-
-var oneQuarter = new NumeralValue(
-    integral: new List<int> { 0 },
-    decimals: new List<int> { 1 },
-    negative: false,
-    baseValue: 4);
+var oneHalf = NumeralValue.FromRational(1, 2, baseValue: 2);
+var oneQuarter = NumeralValue.FromRational(1, 4, baseValue: 4);
 
 var sum = oneHalf + oneQuarter;
 
@@ -114,13 +110,14 @@ The precision-aware overloads accept `resultBase`:
 var one = NumeralValue.FromInt(1);
 var four = NumeralValue.FromInt(4);
 
-var binaryQuarter = one.Divide(
-    four,
-    exact: out var exact,
-    resultBase: 2,
-    maxFractionalDigits: 16);
+var finiteOnly = new NumeralConversionOptions(
+    16,
+    NumeralRoundingMode.ToNearestEven,
+    true,
+    InfiniteExpansionBehavior.Throw);
+var binaryQuarter = one.Divide(four, finiteOnly, resultBase: 2);
 
-Console.WriteLine(exact);                              // True
+Console.WriteLine(binaryQuarter.IsExactRepresentation); // True
 Console.WriteLine(string.Concat(binaryQuarter.Decimals)); // 01
 ```
 
@@ -128,38 +125,41 @@ Choosing a suitable result base can turn a repeating expansion into a finite
 one. One quarter terminates in bases 2, 4, 8, 10, 16, and many others, but one
 third does not terminate in base 10.
 
-## Exact and truncated results
+## Exact, periodic, and bounded results
 
-The short methods and operators use
-`NumeralValue.DefaultMaxFractionalDigits`, currently 128. Use an overload with
-`out bool exact` when truncation must be observable:
+Use an immutable policy to state whether an infinite expansion should preserve
+its period, throw, truncate, or round:
 
 ```csharp
 var one = NumeralValue.FromInt(1);
 var three = NumeralValue.FromInt(3);
 
-var result = one.Divide(
-    three,
-    exact: out var exact,
-    resultBase: 10,
-    maxFractionalDigits: 6);
+var options = new NumeralConversionOptions(
+    6,
+    NumeralRoundingMode.ToZero,
+    false,
+    InfiniteExpansionBehavior.Truncate);
+var result = one.Divide(three, options, resultBase: 10);
 
-Console.WriteLine(exact);                        // False
+Console.WriteLine(result.IsExactRepresentation); // False
 Console.WriteLine(string.Concat(result.Decimals)); // 333333
+Console.WriteLine(result.ExactValue);              // 1/3
 ```
 
-`exact == false` does not mean the operation failed. It means the exact rational
-result has a non-terminating expansion, or needs more positions than the
-supplied limit. The returned value contains the truncated expansion.
+The digit list is truncated, but calculation, comparison, `ToDecimal`, and the
+next base conversion use `ExactValue`. Select `Round` and a rounding mode for a
+rounded projection. Select `PreservePeriod` to obtain exact cycle metadata.
 
-The conversion policy is truncation toward zero. It does not round the final
-digit.
+The 4.x overloads with `out bool exact` remain for source compatibility. The
+flag still reports whether the projected digits terminate within the supplied
+limit, and those overloads use truncation toward zero.
 
 Use these patterns:
 
-- operators for concise calculations where the default precision is accepted;
-- methods with `out bool exact` for persistence, validation, finance, protocol
-  fields, or any calculation where truncation must be handled explicitly;
+- operators for concise calculations whose result terminates within the
+  compatibility limit;
+- methods with `NumeralConversionOptions` for persistence, validation, finance,
+  protocol fields, and every explicit display boundary;
 - a result base whose prime factors match the expected denominators when exact
   finite output is required.
 
@@ -250,11 +250,7 @@ Digit lists that look different can represent the same number. Use
 `CompareTo` or `NumericallyEquals` for a base-independent comparison:
 
 ```csharp
-var binaryHalf = new NumeralValue(
-    new List<int> { 0 },
-    new List<int> { 1 },
-    false,
-    2);
+var binaryHalf = NumeralValue.FromRational(1, 2, baseValue: 2);
 
 var decimalHalf = NumeralValue.FromDecimal(0.5m);
 
@@ -275,7 +271,9 @@ set behavior remains unchanged.
 | `resultBase < 2` | `ArgumentOutOfRangeException` |
 | `maxFractionalDigits < 0` | `ArgumentOutOfRangeException` |
 | divisor is zero | `DivideByZeroException` |
-| result does not terminate within the limit | result returned with `exact == false` |
+| infinite expansion is forbidden | `InfiniteNumeralExpansionException` |
+| period is not found within the exact limit | `NumeralExpansionLimitException` |
+| explicit truncate/round reaches the limit | inexact digit projection; exact rational retained |
 | conversion to `decimal` exceeds its range | `OverflowException` |
 
 The arithmetic itself uses `BigInteger`; primitive overflow is only possible

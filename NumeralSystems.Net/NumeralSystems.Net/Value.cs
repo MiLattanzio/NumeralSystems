@@ -49,21 +49,6 @@ namespace NumeralSystems.Net
         public int Base { get; }
 
         /// <summary>
-        /// Creates a Value object from a string representation using a specified set of base indices.
-        /// </summary>
-        /// <param name="value">The string representation from which to create the Value. If the string is null, an empty Value object will be created.</param>
-        /// <param name="baseIndices">A set of valid characters that define the base indices. Each character in the input string is matched against this set to form numerical indices.</param>
-        /// <returns>A Value object representing the parsed input string with numerical indices based on the provided base indices set.</returns>
-        [Obsolete(
-            "HashSet<string> does not define numeric symbol order. Use FromString(string, NumeralAlphabet, string) instead.")]
-        public static Value FromString(string value, HashSet<string> baseIndices)
-        {
-            if (baseIndices == null) throw new ArgumentNullException(nameof(baseIndices));
-            var alphabet = new NumeralAlphabet(baseIndices.OrderBy(symbol => symbol, StringComparer.Ordinal));
-            return FromString(value, alphabet);
-        }
-
-        /// <summary>
         /// Creates a value by decoding symbols with an ordered immutable alphabet.
         /// </summary>
         public static Value FromString(
@@ -85,18 +70,6 @@ namespace NumeralSystems.Net
                     $"Invalid numeral at position {errorPosition}. Reason: {reason}.");
             return new Value(indices, alphabet.Count);
         }
-
-        /// <summary>
-        /// Creates a new <see cref="Value"/> instance from the given string and an optional fit parameter.
-        /// </summary>
-        /// <param name="value">The string representation to convert into a <see cref="Value"/>.</param>
-        /// <param name="fit">A boolean indicating whether to fit the value within the smallest possible base.</param>
-        /// <returns>A <see cref="Value"/> instance that represents the given string.</returns>
-        [Obsolete(
-            "This API transforms UTF-16 code units and is not a standard text encoding. " +
-            "Use FromUtf16String, FromRunes, NumeralAlphabet, or StandardBaseCodec explicitly.")]
-        public static Value FromString(string value, bool fit = false) =>
-            FromUtf16String(value, fit);
 
         /// <summary>
         /// Creates an experimental value whose digits are individual UTF-16 code

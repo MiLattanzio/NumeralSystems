@@ -113,8 +113,9 @@ Owns the ordered text-to-digit mapping:
 - predefined and deterministic generated alphabets.
 
 Parsing scans the input against this mapping and returns a `ParseResult` with a
-UTF-16 position and `ParseErrorReason`. Legacy list-based overloads remain
-available, while the `HashSet<string>` `Value.FromString` overload is obsolete.
+UTF-16 position and `ParseErrorReason`. Legacy list-based numeral overloads
+remain available, but unordered `HashSet<string>` alphabet input was removed in
+4.8.1.
 
 ```text
 text + NumeralAlphabet + formatting tokens

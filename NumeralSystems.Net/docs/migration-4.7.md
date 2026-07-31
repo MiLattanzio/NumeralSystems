@@ -37,9 +37,9 @@ var alphabet = new NumeralAlphabet(orderedSymbols);
 var value = Value.FromString(text, alphabet);
 ```
 
-The `Value.FromString(string, HashSet<string>)` overload remains binary/source
-compatible but is marked `Obsolete`. Its remaining behavior sorts the set
-ordinally; applications must not rely on a previous runtime-specific set order.
+The `Value.FromString(string, HashSet<string>)` compatibility overload was
+deprecated in 4.7 and removed in 4.8.1. Applications must pass an explicitly
+ordered `NumeralAlphabet`.
 
 Construction now detects:
 

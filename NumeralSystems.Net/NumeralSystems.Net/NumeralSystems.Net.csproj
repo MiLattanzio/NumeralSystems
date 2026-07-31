@@ -5,24 +5,24 @@
         <LangVersion>9</LangVersion>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageId>NumeralSystems.Net</PackageId>
-        <Version>4.8.0</Version>
-        <PackageVersion>4.8.0</PackageVersion>
+        <Version>4.8.1</Version>
+        <PackageVersion>4.8.1</PackageVersion>
         <Title>NumeralSystems.Net</Title>
-        <Authors>Polecola</Authors>
+        <Authors>Mi Lattanzio</Authors>
         <Description>Work with arbitrary numeral systems, ordered alphabets, Unicode Rune transforms, standard Base16/Base32/Base64 codecs, streaming, exact arithmetic, and bit patterns.</Description>
-        <Copyright>Copyright © MiLattanzio and contributors</Copyright>
+        <Copyright>Copyright © Mi Lattanzio and contributors</Copyright>
         <RepositoryUrl>https://github.com/MiLattanzio/NumeralSystems</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <Company>PastaSoftware</Company>
-        <AssemblyVersion>4.8.0.0</AssemblyVersion>
-        <FileVersion>4.8.0.0</FileVersion>
+        <AssemblyVersion>4.8.1.0</AssemblyVersion>
+        <FileVersion>4.8.1.0</FileVersion>
         <NeutralLanguage>en</NeutralLanguage>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/MiLattanzio/NumeralSystems</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>numeral-systems;numeral-alphabet;base-conversion;unicode;rune;base16;base32;base64;streaming;span;json;round-trip;parser;rational-arithmetic;big-integer;bit-pattern</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageReleaseNotes>Adds Rune-aware and UTF-16 character transforms, correct empty-input and smallest-base behavior, separate RFC Base16/Base32/Base64 byte codecs, streaming APIs, IFormatProvider and standard formats, JSON serialization, modern Span overloads, tests, and expanded documentation.</PackageReleaseNotes>
+        <PackageReleaseNotes>Removes every obsolete compatibility API, leaving explicit ordered-alphabet, UTF-16, Rune, and standard byte-codec entry points; updates package authorship and project contact information.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>

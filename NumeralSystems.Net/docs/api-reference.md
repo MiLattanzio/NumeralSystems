@@ -27,10 +27,8 @@ Represents a non-negative integral value as digit indices in one base.
 | `IReadOnlyList<int> Indices` | Digits from most significant to least significant |
 | `int Base` | Source base |
 | `FromString(string, NumeralAlphabet, separator)` | Maps ordered symbols to indices deterministically |
-| `FromString(string, HashSet<string>)` | Obsolete compatibility overload; ordinally sorts the set |
 | `FromUtf16String(string, bool fit = false)` | Uses UTF-16 code units as digit indices |
 | `FromRunes(string, bool fit = false)` | Uses Unicode scalar values as digits on .NET 8 |
-| `FromString(string, bool fit = false)` | Obsolete compatibility alias for `FromUtf16String` |
 | `FromBigInteger(BigInteger, int baseValue = 10)` | Creates a digit sequence without an integer-size limit |
 | `ToBigInteger()` | Returns the complete non-negative integer value |
 | `ToString(NumeralAlphabet, separator)` | Formats stored digits with an ordered alphabet |
@@ -177,8 +175,7 @@ and reader/writer streaming. `GetSmallestBaseUtf16` and
 `GetSmallestBaseRunes` return `maxDigit + 1`, with a minimum of 2.
 
 `CharacterIdentity.GetUtf16CodeUnits` and the .NET 8 `GetRunes` member return
-distinct units in first-occurrence order. The old `Encoding.String` class is
-obsolete and forwards to the UTF-16 API.
+distinct units in first-occurrence order.
 
 ## `NumeralSystems.Net.Serialization` (.NET 8)
 
@@ -235,14 +232,13 @@ The following partial classes expose static conversion methods:
 | `Float` | `FromIndicesOfBase`, `ToIndicesOfBase` |
 | `UInt` | `FromIndicesOfBase`, `ToIndicesOfBase` |
 | `ULong` | `FromIndicesOfBase`, `ToIndicesOfBase` |
-| `String` | Obsolete UTF-16 forwarding members: `EncodeToBase`, `DecodeFromBase`, `ToIndicesOfBase`, `FromIndicesOfBase`, `GetSmallestBase` |
 
 ### `String`
 
 The instance API implements `IList<Type.Base.Char>` and includes the normal
-mutable collection members plus `ToString()` and `ToString(format)`. Its static
-base-conversion methods remain for compatibility; use the explicit APIs in
-[String encoding](string-encoding.md) for new code.
+mutable collection members plus `ToString()` and `ToString(format)`. Character
+identity and radix transformation belong to the explicit APIs described in
+[String encoding](string-encoding.md).
 
 ## `NumeralSystems.Net.Type.Incomplete`
 

@@ -35,7 +35,7 @@ representing the project in public.
 ## Reporting and enforcement
 
 Report conduct concerns privately to
-[michelangelolattanzio@gmail.com](mailto:michelangelolattanzio@gmail.com).
+[mi@polecola.it](mailto:mi@polecola.it).
 Include relevant links or records and explain any immediate safety concern.
 
 Project maintainers will review reports as promptly and impartially as

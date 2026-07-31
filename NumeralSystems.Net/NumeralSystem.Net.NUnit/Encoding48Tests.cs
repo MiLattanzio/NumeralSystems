@@ -7,7 +7,6 @@ using System.Text.Json;
 using NumeralSystems.Net;
 using NumeralSystems.Net.Encoding;
 using NUnit.Framework;
-using ExperimentalString = NumeralSystems.Net.Type.Base.String;
 
 namespace NumeralSystem.Net.NUnit
 {
@@ -19,10 +18,6 @@ namespace NumeralSystem.Net.NUnit
         {
             var utf16 = CharacterRadixTransform.EncodeUtf16(string.Empty, 16, out var utf16Width);
             var runes = CharacterRadixTransform.EncodeRunes(string.Empty, 16, out var runeWidth);
-#pragma warning disable CS0618
-            var legacy = ExperimentalString.EncodeToBase(string.Empty, 16, out var legacyWidth);
-#pragma warning restore CS0618
-
             Assert.Multiple(() =>
             {
                 Assert.That(utf16, Is.Empty);
@@ -31,11 +26,6 @@ namespace NumeralSystem.Net.NUnit
                 Assert.That(runes, Is.Empty);
                 Assert.That(runeWidth, Is.Zero);
                 Assert.That(CharacterRadixTransform.DecodeRunes(string.Empty, 16, 0), Is.Empty);
-                Assert.That(legacy, Is.Empty);
-                Assert.That(legacyWidth, Is.Zero);
-#pragma warning disable CS0618
-                Assert.That(ExperimentalString.DecodeFromBase(string.Empty, 16, 0), Is.Empty);
-#pragma warning restore CS0618
                 Assert.That(StandardBaseCodec.EncodeBase16(Array.Empty<byte>()), Is.Empty);
                 Assert.That(StandardBaseCodec.DecodeBase64(string.Empty), Is.Empty);
                 Assert.That(Value.FromUtf16String(string.Empty, true).Indices, Is.Empty);
@@ -58,9 +48,6 @@ namespace NumeralSystem.Net.NUnit
                 Assert.That(CharacterRadixTransform.GetSmallestBaseUtf16("A"), Is.EqualTo('A' + 1));
                 Assert.That(CharacterRadixTransform.GetSmallestBaseUtf16("\uFFFF"),
                     Is.EqualTo(char.MaxValue + 1));
-#pragma warning disable CS0618
-                Assert.That(ExperimentalString.GetSmallestBase("A"), Is.EqualTo('A' + 1));
-#pragma warning restore CS0618
                 Assert.That(CharacterRadixTransform.GetSmallestBaseRunes("😀"),
                     Is.EqualTo(0x1F600 + 1));
                 Assert.That(utf16Maximum.Base, Is.EqualTo(char.MaxValue + 1));

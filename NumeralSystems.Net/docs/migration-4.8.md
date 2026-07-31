@@ -44,14 +44,14 @@ var encoded = StandardBaseCodec.EncodeBase64(Encoding.UTF8.GetBytes(text));
 var decoded = Encoding.UTF8.GetString(StandardBaseCodec.DecodeBase64(encoded));
 ```
 
-The old methods remain present but are marked obsolete so the compiler can
-direct new code to an unambiguous layer.
+These ambiguous methods were deprecated in 4.8.0 and removed in 4.8.1. Migrate
+before updating when an application still calls them.
 
 ## Smallest-base behavior changed
 
 `Type.Base.String.GetSmallestBase` previously returned the maximum UTF-16 code
-unit itself. A positional base must be greater than every digit, so 4.8 returns
-`maximum + 1` and delegates to:
+unit itself. A positional base must be greater than every digit. Its explicit
+replacement returns `maximum + 1`:
 
 ```csharp
 CharacterRadixTransform.GetSmallestBaseUtf16(text)
@@ -80,8 +80,8 @@ prevents a missing number from being confused with zero.
 65,535. The previous base could not contain digit 65,535 (`U+FFFF`) because
 digits must be strictly smaller than their base.
 
-`Value.FromString(string, bool)` forwards to this corrected behavior but is
-obsolete. Replace it with `FromUtf16String` or `FromRunes` to state the unit.
+`Value.FromString(string, bool)` was removed in 4.8.1. Use
+`FromUtf16String` or `FromRunes` to state the unit.
 
 ## Formatting providers
 

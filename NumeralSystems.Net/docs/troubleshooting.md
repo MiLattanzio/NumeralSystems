@@ -216,10 +216,10 @@ Console.WriteLine(result.Message);
 `Position` is a zero-based UTF-16 index. `ErrorLength` identifies how much text
 belongs to the error.
 
-## HashSet alphabet order changed
+## A HashSet alphabet overload no longer exists
 
-`Value.FromString(string, HashSet<string>)` is deprecated. A set does not define
-which symbol means zero, one, or any other digit.
+`Value.FromString(string, HashSet<string>)` was removed in 4.8.1. A set does not
+define which symbol means zero, one, or any other digit.
 
 Create the alphabet from an ordered sequence:
 
@@ -252,10 +252,9 @@ task is only to test whether one known value is compatible.
 
 ## String encoding produced control characters
 
-`CharacterRadixTransform.EncodeUtf16` and the obsolete forwarding
-`Type.Base.String` members map character values to raw positional digits. The
-encoded string is not designed to be printable, URL-safe, or interoperable
-with Base64.
+`CharacterRadixTransform.EncodeUtf16` maps character values to raw positional
+digits. The encoded string is not designed to be printable, URL-safe, or
+interoperable with Base64.
 
 Retain both:
 

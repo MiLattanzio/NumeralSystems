@@ -7,7 +7,7 @@ namespace NumeralSystems.Net.Type.Base
     /// <summary>
     /// Represents a custom string type that implements the IList interface for Char objects.
     /// </summary>
-    public partial class String: IList<Char>
+    public class String: IList<Char>
     {
         /// <summary>
         /// Initializes a new instance of the String class.

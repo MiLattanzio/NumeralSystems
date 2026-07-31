@@ -224,15 +224,14 @@ that modified list. New code should set and retain `Alphabet`.
 
 ## Migrating from HashSet
 
-This overload is deprecated:
+This overload was removed in 4.8.1:
 
 ```csharp
 Value.FromString(text, HashSet<string> symbols)
 ```
 
-`HashSet<T>` describes membership, not numeric order. The legacy overload is
-marked `Obsolete` and sorts symbols ordinally only to make its remaining
-behavior deterministic.
+`HashSet<T>` describes membership, not numeric order, so it cannot be a numeral
+alphabet.
 
 Replace it with:
 

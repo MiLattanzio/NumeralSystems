@@ -103,6 +103,8 @@ index from `0` through `base - 1`.
   `BigInteger`, arithmetic, comparison, and upgrade tests.
 - [Migrating to 4.8.0](migration-4.8.md) covers explicit Unicode units,
   standard codecs, smallest-base behavior, providers, JSON, and multi-targeting.
+- [Migrating to 4.8.1](migration-4.8.1.md) maps every removed compatibility
+  API to its explicit ordered-alphabet, UTF-16, Rune, or byte-codec replacement.
 - [Releasing](releasing.md) documents package versioning and automated
   publication to NuGet.org.
 

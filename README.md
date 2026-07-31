@@ -234,6 +234,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [architettura e note per i contributori](NumeralSystems.Net/docs/architecture.md);
 - [migrazione alla 4.7.0](NumeralSystems.Net/docs/migration-4.7.md);
 - [migrazione alla 4.8.0](NumeralSystems.Net/docs/migration-4.8.md);
+- [migrazione alla 4.8.1](NumeralSystems.Net/docs/migration-4.8.1.md);
 - [processo di release e pubblicazione NuGet](NumeralSystems.Net/docs/releasing.md).
 
 Tutta la documentazione è scritta in Markdown e viene versionata insieme al
@@ -272,6 +273,7 @@ dotnet run --configuration Release \
 Leggere [CONTRIBUTING.md](CONTRIBUTING.md) prima di aprire una pull request.
 I problemi di sicurezza non devono essere segnalati in un'issue pubblica:
 seguire [SECURITY.md](SECURITY.md).
+Contatto privato del progetto: [mi@polecola.it](mailto:mi@polecola.it).
 
 Il progetto adotta il [codice di condotta](CODE_OF_CONDUCT.md) ed è distribuito
 con licenza [MIT](LICENSE.txt).

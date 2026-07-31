@@ -4,6 +4,23 @@ All notable changes to NumeralSystems.Net are documented in this file.
 
 The project follows [Semantic Versioning](https://semver.org/).
 
+## [4.8.1] - 2026-07-31
+
+### Removed
+
+- Remove every API previously marked `Obsolete`:
+  `Value.FromString(string, HashSet<string>)`,
+  `Value.FromString(string, bool)`, `NumeralSystems.Net.Encoding.String`, and
+  the static character-transformation members of `Type.Base.String`.
+- Remove obsolete-specific compatibility tests and warning suppressions.
+
+### Changed
+
+- Set the NuGet author metadata to `Mi Lattanzio`.
+- Set the project security and conduct contact address to `mi@polecola.it`.
+- Update the API reference, migration guides, README files, recipes, and
+  troubleshooting guidance to expose only the explicit 4.8 API families.
+
 ## [4.8.0] - 2026-07-31
 
 ### Added

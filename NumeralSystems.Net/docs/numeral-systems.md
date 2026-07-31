@@ -216,17 +216,16 @@ var text = string.Concat(hexadecimalDigits.Indices.Select(i => i.ToString("X")))
 Console.WriteLine(text); // FF
 ```
 
-`Value.FromString(string, HashSet<string>)` is deprecated because a set cannot
-define numeric symbol order. Use the ordered overload:
+An unordered set cannot define numeric symbol order. Version 4.8.1 exposes
+only the ordered alphabet overload:
 
 ```csharp
 var value = Value.FromString("00FF", NumeralAlphabet.Base16);
 var text = value.ToString(NumeralAlphabet.Base16);
 ```
 
-The old `Value.FromString(string, bool)` character transform is also
-deprecated because its unit is ambiguous. Use `FromUtf16String` explicitly, or
-`FromRunes` on .NET 8. With `fit: true`, both select `maxDigit + 1` with a
+Use `FromUtf16String` for UTF-16 code units, or `FromRunes` on .NET 8 for
+Unicode scalar values. With `fit: true`, both select `maxDigit + 1` with a
 minimum base of 2. See [Text and binary encodings](string-encoding.md).
 
 `Value` does not preserve a sign or fractional digits.

@@ -4,7 +4,7 @@
 
 Do not open a public issue for a suspected vulnerability.
 
-Email [michelangelolattanzio@gmail.com](mailto:michelangelolattanzio@gmail.com)
+Email [mi@polecola.it](mailto:mi@polecola.it)
 with the subject `NumeralSystems.Net security report`. Include:
 
 - the affected version or commit;

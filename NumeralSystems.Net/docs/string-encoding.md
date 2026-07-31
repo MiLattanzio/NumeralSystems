@@ -148,7 +148,7 @@ input to find its maximum value.
 
 ## Extract distinct text units
 
-Use `CharacterIdentity` instead of the old misleading `Encoding.String` name:
+Use `CharacterIdentity` to make the text unit explicit:
 
 ```csharp
 var codeUnits = CharacterIdentity.GetUtf16CodeUnits("😀😀"); // two surrogates
@@ -173,9 +173,9 @@ Console.WriteLine(runeValue.ToRuneString()); // A😀
 `fit: true` selects `maxDigit + 1`, with a minimum base of 2. Without fitting,
 UTF-16 uses base 65,536 and Rune values use base 1,114,112.
 
-The old `Value.FromString(string, bool)`, `Encoding.String`, and static
-`Type.Base.String` transformation members remain as obsolete forwarding APIs.
-They are retained for compatibility, not recommended for new code.
+Version 4.8.1 removes the ambiguous `Value.FromString(string, bool)`,
+`Encoding.String`, and static `Type.Base.String` transformation members. Use
+the explicit methods above; there is no compatibility forwarding layer.
 
 ## Smallest-base contract
 
@@ -188,8 +188,8 @@ CharacterRadixTransform.GetSmallestBaseRunes("😀"); // 128513
 CharacterRadixTransform.GetSmallestBaseUtf16("");  // 2
 ```
 
-The historical `Type.Base.String.GetSmallestBase` now follows this corrected
-contract while forwarding to `GetSmallestBaseUtf16`.
+`GetSmallestBaseUtf16` and `GetSmallestBaseRunes` are the only smallest-base
+entry points in 4.8.1.
 
 ## Modern Span overloads
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Reflection;
 using NumeralSystems.Net;
 using NumeralSystems.Net.Encoding;
 using NumeralSystems.Net.Type.Incomplete;
@@ -15,6 +16,25 @@ namespace NumeralSystem.Net.NUnit
     [TestFixture]
     public class ValidationTests
     {
+        [Test]
+        public void PublicApiContainsNoObsoleteMembers()
+        {
+            var publicTypes = typeof(Value).Assembly.GetExportedTypes();
+            var obsoleteTypes = publicTypes
+                .Where(type => type.GetCustomAttribute<ObsoleteAttribute>() != null)
+                .Select(type => type.FullName);
+            var obsoleteMembers = publicTypes
+                .SelectMany(type => type.GetMembers(
+                    BindingFlags.Public |
+                    BindingFlags.Instance |
+                    BindingFlags.Static |
+                    BindingFlags.DeclaredOnly))
+                .Where(member => member.GetCustomAttribute<ObsoleteAttribute>() != null)
+                .Select(member => $"{member.DeclaringType?.FullName}.{member.Name}");
+
+            Assert.That(obsoleteTypes.Concat(obsoleteMembers), Is.Empty);
+        }
+
         [TestCase(0)]
         [TestCase(1)]
         public void PositionalTypesRejectBasesSmallerThanTwo(int baseValue)

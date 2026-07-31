@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Reflection;
 using NumeralSystems.Net;
 using NUnit.Framework;
 
@@ -97,20 +96,6 @@ namespace NumeralSystem.Net.NUnit
                 Assert.Throws<ArgumentException>(() => separatorDigit.ValidateFormat("|", "-", "."));
                 Assert.Throws<ArgumentException>(() => normal.ValidateFormat("::", ":", "."));
             });
-        }
-
-        [Test]
-        public void HashSetAlphabetOverloadIsMarkedObsolete()
-        {
-            var method = typeof(Value).GetMethod(
-                nameof(Value.FromString),
-                BindingFlags.Public | BindingFlags.Static,
-                binder: null,
-                types: new[] { typeof(string), typeof(HashSet<string>) },
-                modifiers: null);
-
-            Assert.That(method, Is.Not.Null);
-            Assert.That(method.GetCustomAttribute<ObsoleteAttribute>(), Is.Not.Null);
         }
 
         [Test]

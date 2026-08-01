@@ -258,6 +258,40 @@ candidate count = 2^unknownBits
 Inspect `Permutations` before iterating `Enumerable`. Prefer `Contains` when the
 task is only to test whether one known value is compatible.
 
+## A bit constraint parses but has no solution
+
+Syntax validity and mathematical satisfiability are separate. Parse a single
+expression with `BitConstraintParser.Parse` to inspect `ErrorReason` and
+`ErrorPosition`. For a valid set, inspect `BitConstraintSolution.IsSatisfiable`:
+
+```csharp
+var solution = BitConstraintSet.Parse(
+    "x ^ 0000 = 0000; x | 0000 = 0001").Solve();
+
+foreach (var bit in solution.Explanations.Where(item => item.IsContradiction))
+    Console.WriteLine(bit.Message);
+```
+
+`Pattern` is `null` and `CandidateCount` is zero for a contradiction. This is
+not a parser failure.
+
+## Constraint composition rejects a rule
+
+All rules in one `BitConstraintSet` must use the same variable and width. Check
+for accidental padding differences and variable spelling. Variable comparison
+is case-insensitive, so `x` and `X` are compatible.
+
+## Constraint solving exceeded a limit or timed out
+
+`BitConstraintLimitException` identifies count, width, or enumeration policy
+through `LimitName`. Increase only the relevant
+`BitConstraintSolverOptions` value after validating the input source.
+
+`BitConstraintTimeoutException` means the configured elapsed-time budget was
+reached. Candidate enumeration has its own timer and always requires an
+explicit limit. Cancellation produces `OperationCanceledException` instead.
+The CLI maps timeout to exit code 4 and never accepts `--limit` above 10,000.
+
 ## String encoding produced control characters
 
 `CharacterRadixTransform.EncodeUtf16` maps character values to raw positional

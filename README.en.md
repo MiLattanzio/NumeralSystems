@@ -48,9 +48,9 @@ dotnet test --configuration Release --no-build
 Install the packages and global tool from NuGet:
 
 ```bash
-dotnet add package NumeralSystems.Net --version 5.1.0
-dotnet add package NumeralSystems.Net.Json --version 5.1.0
-dotnet tool install --global dotnet-numeralsystems --version 5.1.0
+dotnet add package NumeralSystems.Net --version 5.2.0
+dotnet add package NumeralSystems.Net.Json --version 5.2.0
+dotnet tool install --global dotnet-numeralsystems --version 5.2.0
 
 numsys convert FF --from 16 --to 2
 numsys inspect "1100????" --type byte
@@ -97,7 +97,7 @@ formats and protocols.
 | Exact rational values | `RationalValue`, `NumeralValue` | Preserve `BigInteger/BigInteger` values and project them into any base |
 | Expansion policy | `NumeralConversionOptions`, `NumeralExpansion` | Bound digits, round, reject infinity, or preserve a repeating period |
 | Bitwise primitives | `Type.Base.*` | Wrap bytes, integers, characters, and floating-point values |
-| Unknown bits | `BitPattern`, `Type.Incomplete.*` | Represent ternary patterns, combine constraints, solve reverse operations, and enumerate with an explicit limit |
+| Unknown bits | `BitPattern`, `BitConstraint`, `BitConstraintSet` | Represent ternary patterns, compose constraints, explain solutions, and enumerate with an explicit limit |
 | Standard byte codecs | `StandardBaseCodec` | RFC Base16/Base32/Base64 with in-memory, Span, and streaming APIs |
 | Character processing | `CharacterIdentity`, `CharacterRadixTransform` | Explicit UTF-16 or Rune identities and experimental radix transforms |
 | Formatting | `NumeralFormatInfo` | Provider-driven text, `G`/`R` formats, and Span |
@@ -164,9 +164,10 @@ enabled explicitly through `options.AddNumeralSystems()`.
 
 ### Tool and playground
 
-`numsys` exposes conversion, bounded candidate inspection, and AND-constraint
-solving from a shell. `NumeralSystems.Net.Playground` is a backend-free Blazor
-WebAssembly app with a converter, fraction-period graph, and unknown-bit viewer:
+`numsys` exposes conversion, bounded candidate inspection, and composed AND,
+OR, XOR, and NAND solving from a shell. `NumeralSystems.Net.Playground` is a
+backend-free Blazor WebAssembly app with a converter, fraction-period graph,
+unknown-bit viewer, and per-bit constraint explanations:
 
 ```bash
 dotnet run --project NumeralSystems.Net/NumeralSystems.Net.Playground
@@ -225,17 +226,17 @@ explicit limit:
 ```csharp
 using NumeralSystems.Net.Type.Incomplete;
 
-var mask = BitPattern.FromUnsigned(0b1111_0000, width: 8);
-var required = BitPattern.FromUnsigned(0b1010_0000, width: 8);
+var constraints = BitConstraintSet.Parse(
+    "x & 10101010 = 10001000; " +
+    "x | 00001111 = 10001111");
+var solution = constraints.Solve(new BitConstraintSolverOptions(
+    maximumEnumeratedCandidates: 4,
+    timeout: TimeSpan.FromSeconds(1)));
 
-if (BitPattern.TrySolveAnd(mask, required, out var input))
-{
-    Console.WriteLine(input);                 // 1010????
-    Console.WriteLine(input.CandidateCount);  // 16
-
-    foreach (var candidate in input.EnumerateCandidates(limit: 4))
-        Console.WriteLine(candidate);
-}
+Console.WriteLine(solution.GetPatternOrThrow()); // 10001?0?
+Console.WriteLine(solution.CandidateCount);      // 4
+foreach (var explanation in solution.Explanations)
+    Console.WriteLine(explanation.Message);
 ```
 
 The engine also provides compatibility/intersection, reverse XOR/NAND, logical
@@ -256,6 +257,7 @@ The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/
 - [task-oriented cookbook](NumeralSystems.Net/docs/cookbook.md);
 - [primitive wrappers and bitwise operations](NumeralSystems.Net/docs/bitwise-values.md);
 - [the immutable BitPattern engine and constraint solving](NumeralSystems.Net/docs/bit-patterns.md);
+- [composable bitwise constraints, explanations, and limits](NumeralSystems.Net/docs/bit-constraints.md);
 - [incomplete values and reverse operations](NumeralSystems.Net/docs/incomplete-values.md);
 - [string encoding](NumeralSystems.Net/docs/string-encoding.md);
 - [troubleshooting](NumeralSystems.Net/docs/troubleshooting.md);
@@ -266,6 +268,7 @@ The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/
 - [migration to 4.8.1](NumeralSystems.Net/docs/migration-4.8.1.md);
 - [migration from 4.8.1 to 5.0.0](NumeralSystems.Net/docs/migration-5.0.md);
 - [migration from 5.0.0 to 5.1.0](NumeralSystems.Net/docs/migration-5.1.md);
+- [migration from 5.1.0 to 5.2.0](NumeralSystems.Net/docs/migration-5.2.md);
 - [release and NuGet publishing process](NumeralSystems.Net/docs/releasing.md).
 
 All documentation is maintained as Markdown and versioned with the code. No
@@ -275,7 +278,7 @@ documentation generator or additional tool is required to read or edit it.
 
 Performance benchmarks live in a separate project so they do not affect test
 discovery or execution. They cover formatting, parsing, conversion, rational
-arithmetic, repeating division, and large-value comparison:
+arithmetic, repeating division, large-value comparison, and constraint solving:
 
 ```bash
 dotnet run --configuration Release \

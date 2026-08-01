@@ -1,6 +1,5 @@
 using System.Globalization;
 using System.Numerics;
-using System.Text.RegularExpressions;
 using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Tool;
@@ -8,9 +7,7 @@ namespace NumeralSystems.Net.Tool;
 /// <summary>Command dispatcher for the <c>numsys</c> global tool.</summary>
 public static class NumsysApplication
 {
-    private static readonly Regex AndConstraint = new(
-        @"^\s*x\s*&\s*([01?_\s]+?)\s*=\s*([01?_\s]+?)\s*$",
-        RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+    private static readonly BigInteger MaximumCliEnumeration = new(10_000);
 
     /// <summary>Runs one command and returns a process exit code.</summary>
     public static int Run(
@@ -41,6 +38,10 @@ public static class NumsysApplication
         catch (Exception exception) when (exception is ArgumentException or FormatException or InvalidOperationException)
         {
             return Fail(error, exception.Message);
+        }
+        catch (TimeoutException exception)
+        {
+            return Fail(error, exception.Message, 4);
         }
     }
 
@@ -86,27 +87,58 @@ public static class NumsysApplication
     private static int Solve(IReadOnlyList<string> arguments, TextWriter output)
     {
         if (arguments.Count < 2)
-            throw new ArgumentException("solve requires a quoted constraint such as \"x & 1010 = 1000\".");
+            throw new ArgumentException(
+                "solve requires one or more quoted constraints such as \"x & 1010 = 1000\".");
 
-        var match = AndConstraint.Match(arguments[1]);
-        if (!match.Success)
-            throw new FormatException("Supported syntax: x & BIT_PATTERN = BIT_PATTERN.");
+        var enumerationLimit = ReadOptionalBigIntegerOption(arguments, "--limit");
+        if (enumerationLimit > MaximumCliEnumeration)
+            throw new ArgumentOutOfRangeException(
+                "--limit",
+                $"The CLI candidate limit cannot exceed {MaximumCliEnumeration}.");
 
-        var mask = BitPattern.Parse(match.Groups[1].Value);
-        var result = BitPattern.Parse(match.Groups[2].Value);
-        if (mask.Count != result.Count)
-            throw new ArgumentException("The mask and result must have the same width.");
+        var timeoutMilliseconds = ReadOptionalIntegerOption(arguments, "--timeout") ?? 5_000;
+        var options = new BitConstraintSolverOptions(
+            maximumConstraints: 256,
+            maximumBitWidth: 4_096,
+            maximumEnumeratedCandidates: enumerationLimit ?? BigInteger.Zero,
+            timeout: TimeSpan.FromMilliseconds(timeoutMilliseconds));
+        var constraints = BitConstraintSet.Parse(arguments[1]);
+        var solution = constraints.Solve(options);
+        var explain = HasOption(arguments, "--explain");
 
-        if (!BitPattern.TrySolveAnd(mask, result, out var solution))
+        if (!solution.IsSatisfiable)
         {
             output.WriteLine("No solution.");
+            if (explain) WriteExplanations(output, solution);
             return 3;
         }
 
-        output.WriteLine($"x = {solution}");
+        var pattern = solution.GetPatternOrThrow();
+        output.WriteLine($"{constraints.VariableName} = {pattern}");
         output.WriteLine($"Candidates: {solution.CandidateCount}");
-        output.WriteLine($"Unsigned range: {solution.MinValue}..{solution.MaxValue}");
+        output.WriteLine($"Unsigned range: {pattern.MinValue}..{pattern.MaxValue}");
+        if (explain) WriteExplanations(output, solution);
+        if (enumerationLimit.HasValue)
+        {
+            output.WriteLine($"First candidates (limit {enumerationLimit.Value}):");
+            foreach (var candidate in solution.EnumerateCandidates(enumerationLimit.Value))
+                output.WriteLine($"  {candidate}");
+        }
         return 0;
+    }
+
+    private static void WriteExplanations(TextWriter output, BitConstraintSolution solution)
+    {
+        output.WriteLine("Explanation (MSB to LSB):");
+        foreach (var explanation in solution.Explanations.Reverse())
+        {
+            var state = explanation.IsContradiction
+                ? "!"
+                : explanation.RequiredValue.HasValue
+                    ? explanation.RequiredValue.Value ? "1" : "0"
+                    : "?";
+            output.WriteLine($"  bit {explanation.BitIndex,4}: {state}  {explanation.Message}");
+        }
     }
 
     private static int ReadIntegerOption(IReadOnlyList<string> arguments, string name)
@@ -131,6 +163,40 @@ public static class NumsysApplication
         throw new ArgumentException($"Missing required option {name}.");
     }
 
+    private static int? ReadOptionalIntegerOption(IReadOnlyList<string> arguments, string name)
+    {
+        var text = ReadOptionalStringOption(arguments, name);
+        if (text is null) return null;
+        if (!int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var value))
+            throw new ArgumentException($"Option {name} must be a non-negative integer.");
+        return value;
+    }
+
+    private static BigInteger? ReadOptionalBigIntegerOption(IReadOnlyList<string> arguments, string name)
+    {
+        var text = ReadOptionalStringOption(arguments, name);
+        if (text is null) return null;
+        if (!BigInteger.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var value))
+            throw new ArgumentException($"Option {name} must be a non-negative integer.");
+        return value;
+    }
+
+    private static string? ReadOptionalStringOption(IReadOnlyList<string> arguments, string name)
+    {
+        for (var index = 0; index < arguments.Count; index++)
+        {
+            if (!string.Equals(arguments[index], name, StringComparison.OrdinalIgnoreCase)) continue;
+            if (index + 1 >= arguments.Count)
+                throw new ArgumentException($"Option {name} requires a value.");
+            return arguments[index + 1];
+        }
+
+        return null;
+    }
+
+    private static bool HasOption(IReadOnlyList<string> arguments, string name) =>
+        arguments.Any(argument => string.Equals(argument, name, StringComparison.OrdinalIgnoreCase));
+
     private static int WidthOf(string typeName) => typeName.ToLowerInvariant() switch
     {
         "byte" or "sbyte" => 8,
@@ -152,10 +218,10 @@ public static class NumsysApplication
     private static bool IsHelp(string value) =>
         value is "--help" or "-h" or "help";
 
-    private static int Fail(TextWriter error, string message)
+    private static int Fail(TextWriter error, string message, int exitCode = 2)
     {
         error.WriteLine($"error: {message}");
-        return 2;
+        return exitCode;
     }
 
     private static void WriteHelp(TextWriter output)
@@ -165,8 +231,9 @@ public static class NumsysApplication
         output.WriteLine("Usage:");
         output.WriteLine("  numsys convert VALUE --from BASE --to BASE");
         output.WriteLine("  numsys inspect PATTERN --type TYPE");
-        output.WriteLine("  numsys solve \"x & MASK = RESULT\"");
+        output.WriteLine("  numsys solve \"CONSTRAINT[; CONSTRAINT...]\" [--explain] [--limit COUNT] [--timeout MS]");
         output.WriteLine();
         output.WriteLine("Patterns use 0, 1, and ? from most-significant to least-significant bit.");
+        output.WriteLine("Constraint operators are &, |, ^, and nand. Exit code 4 means timeout.");
     }
 }

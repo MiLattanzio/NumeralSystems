@@ -6,10 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <PackageId>NumeralSystems.Net.Json</PackageId>
-    <Version>5.1.0</Version>
-    <PackageVersion>5.1.0</PackageVersion>
-    <AssemblyVersion>5.1.0.0</AssemblyVersion>
-    <FileVersion>5.1.0.0</FileVersion>
+    <Version>5.2.0</Version>
+    <PackageVersion>5.2.0</PackageVersion>
+    <AssemblyVersion>5.2.0.0</AssemblyVersion>
+    <FileVersion>5.2.0.0</FileVersion>
     <Authors>Mi Lattanzio</Authors>
     <Description>Explicit System.Text.Json integration for exact NumeralSystems.Net values.</Description>
     <PackageTags>numeral-systems;json;system-text-json;exact-rational;serialization</PackageTags>

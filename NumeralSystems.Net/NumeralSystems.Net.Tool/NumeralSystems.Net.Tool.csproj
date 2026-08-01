@@ -9,12 +9,12 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>numsys</ToolCommandName>
     <PackageId>dotnet-numeralsystems</PackageId>
-    <Version>5.1.0</Version>
-    <PackageVersion>5.1.0</PackageVersion>
-    <AssemblyVersion>5.1.0.0</AssemblyVersion>
-    <FileVersion>5.1.0.0</FileVersion>
+    <Version>5.2.0</Version>
+    <PackageVersion>5.2.0</PackageVersion>
+    <AssemblyVersion>5.2.0.0</AssemblyVersion>
+    <FileVersion>5.2.0.0</FileVersion>
     <Authors>Mi Lattanzio</Authors>
-    <Description>Global .NET tool for numeral conversion and unknown-bit constraint inspection.</Description>
+    <Description>Global .NET tool for numeral conversion, unknown-bit inspection, and composable bit-constraint solving.</Description>
     <PackageTags>dotnet-tool;numeral-systems;base-conversion;bit-pattern;constraint-solver</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/MiLattanzio/NumeralSystems</RepositoryUrl>

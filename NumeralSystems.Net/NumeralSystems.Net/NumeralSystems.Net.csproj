@@ -5,8 +5,8 @@
         <LangVersion>9</LangVersion>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageId>NumeralSystems.Net</PackageId>
-        <Version>5.1.0</Version>
-        <PackageVersion>5.1.0</PackageVersion>
+        <Version>5.2.0</Version>
+        <PackageVersion>5.2.0</PackageVersion>
         <Title>NumeralSystems.Net</Title>
         <Authors>Mi Lattanzio</Authors>
         <Description>Exact rational arithmetic and arbitrary-base numeral expansion with ordered alphabets, repeating periods, explicit rounding, Unicode, streaming codecs, and bit patterns.</Description>
@@ -14,15 +14,15 @@
         <RepositoryUrl>https://github.com/MiLattanzio/NumeralSystems</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <Company>PastaSoftware</Company>
-        <AssemblyVersion>5.1.0.0</AssemblyVersion>
-        <FileVersion>5.1.0.0</FileVersion>
+        <AssemblyVersion>5.2.0.0</AssemblyVersion>
+        <FileVersion>5.2.0.0</FileVersion>
         <NeutralLanguage>en</NeutralLanguage>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageProjectUrl>https://github.com/MiLattanzio/NumeralSystems</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageTags>numeral-systems;numeral-alphabet;base-conversion;exact-rational;repeating-fractions;rounding;unicode;rune;base16;base32;base64;streaming;span;big-integer;bit-pattern</PackageTags>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-        <PackageReleaseNotes>Adds the numsys global tool, an interactive WebAssembly playground, bounded bit-pattern parsing and visualization, release benchmarks, executable examples and notebooks. JSON support moves to NumeralSystems.Net.Json, and the obsolete 4.x migration layer is removed.</PackageReleaseNotes>
+        <PackageReleaseNotes>Adds immutable, composable AND/OR/XOR/NAND constraints, shared structured parsing, exact BitPattern solutions, per-bit explanations, BigInteger candidate counts, and explicit solve/enumeration limits with timeout and cancellation.</PackageReleaseNotes>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
         <EmbedUntrackedSources>true</EmbedUntrackedSources>

@@ -4,7 +4,7 @@
 
 <header class="hero">
     <div class="hero-copy">
-        <p class="eyebrow">NumeralSystems.Net 5.1</p>
+        <p class="eyebrow">NumeralSystems.Net 5.2</p>
         <h1>Numbers are exact.<br />Representations are choices.</h1>
         <p class="lead">
             Convert alphabets, explore repeating fractions, and inspect unknown bits.
@@ -153,6 +153,92 @@
                 <p class="error">@_patternError</p>
             }
         </article>
+
+        <article class="panel constraints-panel">
+            <div class="panel-heading">
+                <div>
+                    <p class="kicker">Bit constraints</p>
+                    <h2>Compose rules without enumerating</h2>
+                </div>
+                <span class="badge mint">exact solver</span>
+            </div>
+
+            <label for="constraints">One constraint per line (operators: &amp;, |, ^, nand)</label>
+            <textarea id="constraints"
+                      class="primary-input mono constraint-input"
+                      rows="4"
+                      @bind="_constraintText"
+                      @bind:event="oninput"></textarea>
+
+            <div class="constraint-controls">
+                <div>
+                    <label for="candidate-limit">Candidate preview limit (0-256)</label>
+                    <input id="candidate-limit"
+                           type="number"
+                           min="0"
+                           max="256"
+                           @bind="_constraintCandidateLimit" />
+                </div>
+                <div>
+                    <label for="constraint-timeout">Timeout in milliseconds (1-5000)</label>
+                    <input id="constraint-timeout"
+                           type="number"
+                           min="1"
+                           max="5000"
+                           @bind="_constraintTimeoutMilliseconds" />
+                </div>
+                <button class="small-action" @onclick="SolveConstraints">Solve constraints</button>
+            </div>
+
+            @if (_constraintSolution is { IsSatisfiable: true, Pattern: { } solvedPattern })
+            {
+                <div class="constraint-status success-status">Satisfiable: exact per-bit projection</div>
+                <div class="bit-cells">
+                    @foreach (var bit in solvedPattern.ToArray().Reverse())
+                    {
+                        <span class="@BitClass(bit)">@(bit.HasValue ? (bit.Value ? "1" : "0") : "?")</span>
+                    }
+                </div>
+                <dl class="metrics">
+                    <div><dt>Pattern</dt><dd>@solvedPattern</dd></div>
+                    <div><dt>Candidates</dt><dd>@_constraintSolution.CandidateCount</dd></div>
+                    <div><dt>Unsigned</dt><dd>@solvedPattern.MinValue to @solvedPattern.MaxValue</dd></div>
+                    <div><dt>Previewed</dt><dd>@_constraintCandidates.Count / @_constraintCandidateLimit</dd></div>
+                </dl>
+                @if (_constraintCandidates.Count > 0)
+                {
+                    <div class="candidate-list">
+                        @foreach (var candidate in _constraintCandidates)
+                        {
+                            <span>@candidate</span>
+                        }
+                    </div>
+                }
+            }
+            else if (_constraintSolution is { IsSatisfiable: false })
+            {
+                <div class="constraint-status contradiction-status">No solution: at least one bit is contradictory.</div>
+            }
+
+            @if (_constraintSolution is not null)
+            {
+                <div class="explanation-list" aria-label="Bit-by-bit explanation">
+                    <h3>Why, from MSB to LSB</h3>
+                    @foreach (var explanation in _constraintSolution.Explanations.Reverse())
+                    {
+                        <div class="@(explanation.IsContradiction ? "explanation-row contradiction-row" : "explanation-row")">
+                            <span class="explanation-index">bit @explanation.BitIndex</span>
+                            <span class="explanation-value">@ExplanationValue(explanation)</span>
+                            <span>@explanation.Message</span>
+                        </div>
+                    }
+                </div>
+            }
+            @if (!string.IsNullOrEmpty(_constraintError))
+            {
+                <p class="error">@_constraintError</p>
+            }
+        </article>
     </section>
 </main>
 
@@ -180,11 +266,21 @@
     private BitPattern? _bitPattern;
     private string? _patternError;
 
+    private string _constraintText =
+        "x & 10101010 = 10001000" + Environment.NewLine +
+        "x | 00001111 = 10001111";
+    private int _constraintCandidateLimit = 16;
+    private int _constraintTimeoutMilliseconds = 250;
+    private BitConstraintSolution? _constraintSolution;
+    private List<BigInteger> _constraintCandidates = new();
+    private string? _constraintError;
+
     protected override void OnInitialized()
     {
         ConvertValue();
         UpdateFraction();
         UpdatePattern();
+        SolveConstraints();
     }
 
     private void ConvertOnEnter(KeyboardEventArgs args)
@@ -292,6 +388,50 @@
         false => "bit bit-zero",
         null => "bit bit-unknown"
     };
+
+    private void SolveConstraints()
+    {
+        try
+        {
+            if (_constraintCandidateLimit is < 0 or > 256)
+                throw new ArgumentOutOfRangeException(
+                    nameof(_constraintCandidateLimit),
+                    "The candidate preview limit must be between 0 and 256.");
+            if (_constraintTimeoutMilliseconds is < 1 or > 5_000)
+                throw new ArgumentOutOfRangeException(
+                    nameof(_constraintTimeoutMilliseconds),
+                    "The timeout must be between 1 and 5000 milliseconds.");
+
+            var constraints = BitConstraintSet.Parse(_constraintText);
+            var options = new BitConstraintSolverOptions(
+                maximumConstraints: 64,
+                maximumBitWidth: 1_024,
+                maximumEnumeratedCandidates: _constraintCandidateLimit,
+                timeout: TimeSpan.FromMilliseconds(_constraintTimeoutMilliseconds));
+            _constraintSolution = constraints.Solve(options);
+            _constraintCandidates = _constraintSolution
+                .EnumerateCandidates(_constraintCandidateLimit)
+                .ToList();
+            _constraintError = null;
+        }
+        catch (Exception exception)
+        {
+            _constraintSolution = null;
+            _constraintCandidates.Clear();
+            _constraintError = exception.Message;
+        }
+    }
+
+    private static string ExplanationValue(BitConstraintBitExplanation explanation)
+    {
+        if (explanation.IsContradiction) return "!";
+        return explanation.RequiredValue switch
+        {
+            true => "1",
+            false => "0",
+            null => "?"
+        };
+    }
 
     private sealed record PeriodBar(
         int Denominator,

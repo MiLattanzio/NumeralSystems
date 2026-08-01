@@ -11,6 +11,7 @@
 [Cookbook](cookbook.md) ·
 [Bitwise values](bitwise-values.md) ·
 [BitPattern engine](bit-patterns.md) ·
+[Composable bit constraints](bit-constraints.md) ·
 [Incomplete values](incomplete-values.md)
 
 This Markdown reference catalogs the public surface by namespace and member
@@ -302,6 +303,33 @@ implements `IReadOnlyList<bool?>`.
 Candidate counts, encoded bounds, candidate values, and limits use
 `System.Numerics.BigInteger`. See the [BitPattern guide](bit-patterns.md) for
 set semantics and examples.
+
+### Constraint engine
+
+`BitConstraint` is an immutable equation over one variable, a
+`BitConstraintOperator`, an operand, and an expected result.
+
+| Type | Main members |
+| --- | --- |
+| `BitConstraint` | `VariableName`, `Operation`, `Operand`, `ExpectedResult`, `Width`, `Parse`, `TryParse`, `Solve`, `TrySolve` |
+| `BitConstraintOperator` | `And`, `Or`, `Xor`, `Nand` |
+| `BitConstraintParser` | non-throwing structured `Parse` |
+| `BitConstraintParseResult` | `IsSuccess`, `Constraint`, `ErrorReason`, `ErrorPosition`, `Message` |
+| `BitConstraintSet` | immutable `IReadOnlyList`, `Parse`, `TryParse`, `Add`, `Solve` |
+| `BitConstraintSolverOptions` | `MaximumConstraints`, `MaximumBitWidth`, `MaximumEnumeratedCandidates`, `Timeout`, `Default` |
+| `BitConstraintSolution` | `IsSatisfiable`, `Pattern`, `CandidateCount`, `Explanations`, `GetPatternOrThrow`, `EnumerateCandidates` |
+| `BitConstraintBitExplanation` | `BitIndex`, `CanBeZero`, `CanBeOne`, `RequiredValue`, `IsContradiction`, `Sources`, `Message` |
+
+`BitConstraintParseErrorReason` distinguishes empty input, invalid variables or
+operators, missing operands/results/equality, invalid patterns, and width
+mismatch. Resource failures use `BitConstraintLimitException` and
+`BitConstraintTimeoutException`; normal cancellation uses
+`OperationCanceledException`.
+
+Solving computes a per-bit intersection and never enumerates candidates.
+Concrete enumeration requires an explicit requested limit that cannot exceed
+the maximum stored in the solver options. See the
+[constraint guide](bit-constraints.md) for grammar and semantics.
 
 ### Incomplete primitive wrappers
 

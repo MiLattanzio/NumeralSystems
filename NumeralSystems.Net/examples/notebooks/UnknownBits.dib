@@ -11,7 +11,7 @@ use `BigInteger`; enumeration is always given an explicit upper bound.
 
 #!csharp
 
-#r "nuget: NumeralSystems.Net, 5.1.0"
+#r "nuget: NumeralSystems.Net, 5.2.0"
 using NumeralSystems.Net.Type.Incomplete;
 
 var pattern = BitPattern.Parse("1100????");
@@ -26,12 +26,24 @@ new {
 
 #!markdown
 
-Solve the constraint `x & 10101010 = 10001000`. The result is another pattern
-describing every valid value of `x`.
+Compose two constraints. The solver intersects them per bit without enumerating
+the candidate space and retains an explanation for every position.
 
 #!csharp
 
-var solution = BitPattern.SolveAnd(
-    BitPattern.Parse("10101010"),
-    BitPattern.Parse("10001000"));
-solution.ToString()
+var constraints = BitConstraintSet.Parse(
+    "x & 10101010 = 10001000; " +
+    "x | 00001111 = 10001111");
+var solution = constraints.Solve(new BitConstraintSolverOptions(
+    maximumEnumeratedCandidates: 4,
+    timeout: TimeSpan.FromSeconds(1)));
+
+new {
+    Pattern = solution.GetPatternOrThrow().ToString(),
+    solution.CandidateCount,
+    Preview = solution.EnumerateCandidates(4).ToArray(),
+    Explanation = solution.Explanations
+        .Reverse()
+        .Select(bit => $"bit {bit.BitIndex}: {bit.Message}")
+        .ToArray()
+}

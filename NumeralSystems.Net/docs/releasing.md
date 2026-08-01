@@ -17,8 +17,8 @@ NuGet publication uses Trusted Publishing and GitHub OpenID Connect (OIDC).
 There is no long-lived API key to create, store, or rotate.
 
 1. Sign in to NuGet.org with the account or organization that owns
-   `NumeralSystems.Net`. Before the first 5.1 release, confirm that the same
-   owner can publish `NumeralSystems.Net.Json` and `dotnet-numeralsystems`.
+   `NumeralSystems.Net`. Confirm that the same owner can publish
+   `NumeralSystems.Net.Json` and `dotnet-numeralsystems`.
 2. Open **Trusted Publishing** and create a GitHub Actions policy with these
    values:
 

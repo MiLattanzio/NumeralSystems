@@ -4,6 +4,42 @@ All notable changes to NumeralSystems.Net are documented in this file.
 
 The project follows [Semantic Versioning](https://semver.org/).
 
+## [5.2.0] - 2026-08-01
+
+### Added
+
+- Add immutable `BitConstraint` values for AND, OR, XOR, and NAND equations.
+- Add `BitConstraintSet` composition for one variable and fixed width, with
+  exact `BitPattern` solutions and contradiction detection without candidate
+  enumeration.
+- Add structured `BitConstraintParser` diagnostics with UTF-16 error position
+  and machine-readable reason.
+- Add `BitConstraintSolution` with exact `BigInteger` candidate count,
+  bit-by-bit explanations, source constraints, and bounded enumeration.
+- Add immutable solver options for maximum constraints, bit width, candidate
+  enumeration, timeout, and cancellation.
+- Add composed constraint solving and explanations to the global tool and
+  WebAssembly playground.
+- Add focused, exhaustive byte-oriented, and deterministic larger-pattern
+  tests plus dedicated constraint parser/solver benchmarks.
+- Add a constraint-engine guide and a 5.2 migration guide.
+
+### Changed
+
+- Make the library parser the single grammar implementation used by the core,
+  CLI, examples, and playground.
+- Extend `numsys solve` with semicolon- or line-separated rules, `--explain`,
+  `--limit`, and `--timeout`; exit code 4 identifies timeout.
+- Extend the playground with visible resource limits, exact candidate preview,
+  contradiction state, and MSB-to-LSB explanations.
+
+### Fixed
+
+- Make release benchmarks select every BenchmarkDotNet class non-interactively
+  and fail early when Markdown or JSON exports are missing.
+- Add manual release-asset recovery for an existing tag without republishing
+  NuGet packages.
+
 ## [5.1.0] - 2026-08-01
 
 ### Added

@@ -70,10 +70,17 @@ static void UnknownBits()
     Console.WriteLine($"{pattern}: {pattern.UnknownBitCount} unknown, {pattern.CandidateCount} candidates");
     Console.WriteLine($"unsigned range {pattern.MinValue}..{pattern.MaxValue}");
 
-    var solution = BitPattern.SolveAnd(
-        BitPattern.Parse("10101010"),
-        BitPattern.Parse("10001000"));
-    Console.WriteLine($"x & 10101010 = 10001000 -> x = {solution}");
+    var constraints = BitConstraintSet.Parse(
+        "x & 10101010 = 10001000; " +
+        "x | 00001111 = 10001111");
+    var solution = constraints.Solve(new BitConstraintSolverOptions(
+        maximumEnumeratedCandidates: 8,
+        timeout: TimeSpan.FromSeconds(1)));
+
+    Console.WriteLine($"composed solution: x = {solution.GetPatternOrThrow()}");
+    Console.WriteLine($"exact candidates: {solution.CandidateCount}");
+    foreach (var explanation in solution.Explanations.Reverse())
+        Console.WriteLine($"bit {explanation.BitIndex}: {explanation.Message}");
 }
 
 static void JsonRoundTrip()

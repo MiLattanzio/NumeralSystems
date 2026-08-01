@@ -49,9 +49,9 @@ dotnet test --configuration Release --no-build
 Installazione da NuGet e uso del tool globale:
 
 ```bash
-dotnet add package NumeralSystems.Net --version 5.1.0
-dotnet add package NumeralSystems.Net.Json --version 5.1.0
-dotnet tool install --global dotnet-numeralsystems --version 5.1.0
+dotnet add package NumeralSystems.Net --version 5.2.0
+dotnet add package NumeralSystems.Net.Json --version 5.2.0
+dotnet tool install --global dotnet-numeralsystems --version 5.2.0
 
 numsys convert FF --from 16 --to 2
 numsys inspect "1100????" --type byte
@@ -98,7 +98,7 @@ esplicitamente alfabeto e separatori.
 | Valori razionali esatti | `RationalValue`, `NumeralValue` | Conservazione `BigInteger/BigInteger` e proiezione in qualsiasi base |
 | Politica di espansione | `NumeralConversionOptions`, `NumeralExpansion` | Limite cifre, arrotondamento, rifiuto dell'infinito o periodo esplicito |
 | Primitive bitwise | `Type.Base.*` | Wrapper per byte, interi, caratteri e numeri floating point |
-| Bit indeterminati | `BitPattern`, `Type.Incomplete.*` | Pattern ternari, vincoli, operazioni inverse ed enumerazione limitata |
+| Bit indeterminati | `BitPattern`, `BitConstraint`, `BitConstraintSet` | Pattern ternari, vincoli componibili, spiegazioni ed enumerazione limitata |
 | Codec standard | `StandardBaseCodec` | Base16/Base32/Base64 RFC con API in memoria, Span e streaming |
 | Caratteri | `CharacterIdentity`, `CharacterRadixTransform` | Identità UTF-16/Rune e trasformazioni sperimentali esplicite |
 | Formattazione | `NumeralFormatInfo` | Provider, formati `G`/`R` e Span |
@@ -166,9 +166,10 @@ ed è attivata esplicitamente con `options.AddNumeralSystems()`.
 ### Tool e playground
 
 `numsys` rende disponibili conversione, ispezione limitata dei candidati e
-risoluzione di vincoli AND dalla shell. Il progetto
+composizione di vincoli AND, OR, XOR e NAND dalla shell. Il progetto
 `NumeralSystems.Net.Playground` è un'app Blazor WebAssembly senza backend con
-convertitore, grafico dei periodi e visualizzatore dei bit sconosciuti:
+convertitore, grafico dei periodi, visualizzatore dei bit sconosciuti e solver
+con spiegazioni bit per bit:
 
 ```bash
 dotnet run --project NumeralSystems.Net/NumeralSystems.Net.Playground
@@ -228,17 +229,17 @@ sempre un limite esplicito:
 ```csharp
 using NumeralSystems.Net.Type.Incomplete;
 
-var mask = BitPattern.FromUnsigned(0b1111_0000, width: 8);
-var required = BitPattern.FromUnsigned(0b1010_0000, width: 8);
+var constraints = BitConstraintSet.Parse(
+    "x & 10101010 = 10001000; " +
+    "x | 00001111 = 10001111");
+var solution = constraints.Solve(new BitConstraintSolverOptions(
+    maximumEnumeratedCandidates: 4,
+    timeout: TimeSpan.FromSeconds(1)));
 
-if (BitPattern.TrySolveAnd(mask, required, out var input))
-{
-    Console.WriteLine(input);                // 1010????
-    Console.WriteLine(input.CandidateCount); // 16
-
-    foreach (var candidate in input.EnumerateCandidates(limit: 4))
-        Console.WriteLine(candidate);
-}
+Console.WriteLine(solution.GetPatternOrThrow()); // 10001?0?
+Console.WriteLine(solution.CandidateCount);      // 4
+foreach (var explanation in solution.Explanations)
+    Console.WriteLine(explanation.Message);
 ```
 
 Il motore comprende anche compatibilità e intersezione, reverse XOR/NAND, shift
@@ -259,6 +260,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [ricettario con esempi pratici](NumeralSystems.Net/docs/cookbook.md);
 - [primitive e operazioni bitwise](NumeralSystems.Net/docs/bitwise-values.md);
 - [motore immutabile BitPattern e risoluzione dei vincoli](NumeralSystems.Net/docs/bit-patterns.md);
+- [vincoli bitwise componibili, spiegazioni e limiti](NumeralSystems.Net/docs/bit-constraints.md);
 - [valori incompleti e operazioni inverse](NumeralSystems.Net/docs/incomplete-values.md);
 - [codifica delle stringhe](NumeralSystems.Net/docs/string-encoding.md);
 - [risoluzione dei problemi](NumeralSystems.Net/docs/troubleshooting.md);
@@ -269,6 +271,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [migrazione alla 4.8.1](NumeralSystems.Net/docs/migration-4.8.1.md);
 - [migrazione dalla 4.8.1 alla 5.0.0](NumeralSystems.Net/docs/migration-5.0.md);
 - [migrazione dalla 5.0.0 alla 5.1.0](NumeralSystems.Net/docs/migration-5.1.md);
+- [migrazione dalla 5.1.0 alla 5.2.0](NumeralSystems.Net/docs/migration-5.2.md);
 - [processo di release e pubblicazione NuGet](NumeralSystems.Net/docs/releasing.md).
 
 Tutta la documentazione è scritta in Markdown e viene versionata insieme al
@@ -279,7 +282,8 @@ modificarla.
 
 I benchmark prestazionali vivono in un progetto separato, così non influenzano
 la scoperta o l'esecuzione dei test. Coprono formattazione, parsing, conversione,
-aritmetica razionale, divisioni periodiche e confronto di grandi valori:
+aritmetica razionale, divisioni periodiche, confronto di grandi valori e motore
+dei vincoli:
 
 ```bash
 dotnet run --configuration Release \

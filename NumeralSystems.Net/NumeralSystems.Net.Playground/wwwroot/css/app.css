@@ -16,7 +16,7 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; background: radial-gradient(circle at 75% 0%, #242033 0, transparent 35rem), #111318; }
-button, input { font: inherit; }
+button, input, textarea { font: inherit; }
 button { cursor: pointer; }
 
 .hero {
@@ -39,7 +39,7 @@ h1 { margin: 10px 0 20px; font-size: clamp(3rem, 7vw, 6.6rem); line-height: .93;
 main { max-width: 1320px; margin: 0 auto; padding: 0 36px 64px; }
 .tool-grid { display: grid; grid-template-columns: minmax(300px, .82fr) minmax(520px, 1.45fr); gap: 18px; align-items: start; }
 .panel { background: linear-gradient(145deg, #1c2027, #171a20); border: 1px solid var(--line); padding: 28px; box-shadow: 0 18px 60px #0004; }
-.bits-panel { grid-column: 1 / -1; }
+.bits-panel, .constraints-panel { grid-column: 1 / -1; }
 .panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
 .panel-heading h2 { margin: 4px 0 0; font-size: 1.35rem; letter-spacing: -.025em; }
 .panel-heading p { margin: 0; }
@@ -47,8 +47,8 @@ main { max-width: 1320px; margin: 0 auto; padding: 0 36px 64px; }
 .badge.amber { border-color: #8d6a34; color: var(--amber); }
 .badge.mint { border-color: #457967; color: var(--mint); }
 label { display: block; margin: 0 0 8px; color: var(--muted); font-size: .76rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
-input { width: 100%; color: var(--ink); background: #101217; border: 1px solid var(--line); padding: 12px 13px; outline: none; }
-input:focus { border-color: var(--mint); box-shadow: 0 0 0 2px #91f2ce1f; }
+input, textarea { width: 100%; color: var(--ink); background: #101217; border: 1px solid var(--line); padding: 12px 13px; outline: none; }
+input:focus, textarea:focus { border-color: var(--mint); box-shadow: 0 0 0 2px #91f2ce1f; }
 .primary-input { font: 500 1.35rem ui-monospace, "Cascadia Code", monospace; padding: 16px; }
 .field-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: end; margin: 18px 0; }
 .swap { color: var(--muted); padding-bottom: 12px; }
@@ -94,6 +94,20 @@ output { display: block; margin-top: 8px; overflow-wrap: anywhere; color: var(--
 .candidate-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 .candidate-list span { padding: 5px 8px; background: #101217; color: var(--muted); font: .75rem ui-monospace, "Cascadia Code", monospace; }
 
+.constraint-input { resize: vertical; min-height: 126px; line-height: 1.65; }
+.constraint-controls { display: grid; grid-template-columns: minmax(160px, 1fr) minmax(180px, 1fr) auto; gap: 12px; align-items: end; margin: 18px 0 22px; }
+.constraint-status { margin: 12px 0 18px; padding: 13px 15px; border-left: 3px solid; background: #111318; font-size: .84rem; }
+.success-status { color: var(--mint); border-color: var(--mint); }
+.contradiction-status { color: var(--danger); border-color: var(--danger); }
+.explanation-list { margin-top: 24px; border: 1px solid var(--line); background: #111318; }
+.explanation-list h3 { margin: 0; padding: 14px 16px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .76rem; text-transform: uppercase; letter-spacing: .08em; }
+.explanation-row { display: grid; grid-template-columns: 72px 36px 1fr; gap: 12px; padding: 11px 16px; border-bottom: 1px solid #282d36; color: var(--muted); font-size: .78rem; line-height: 1.45; }
+.explanation-row:last-child { border-bottom: 0; }
+.explanation-index, .explanation-value { color: var(--ink); font-family: ui-monospace, "Cascadia Code", monospace; }
+.explanation-value { color: var(--violet); font-weight: 800; }
+.contradiction-row { background: #3b1f244d; color: var(--danger); }
+.contradiction-row .explanation-value { color: var(--danger); }
+
 footer { max-width: 1320px; margin: 0 auto; padding: 24px 36px 44px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--muted); font-size: .75rem; }
 .loading-shell { min-height: 100vh; display: grid; place-content: center; text-align: center; color: var(--muted); }
 .loading-mark { color: var(--mint); font: 500 2rem ui-monospace, "Cascadia Code", monospace; }
@@ -104,7 +118,7 @@ footer { max-width: 1320px; margin: 0 auto; padding: 24px 36px 44px; border-top:
     .hero { align-items: flex-start; padding-top: 48px; }
     .hero-mark { display: none; }
     .tool-grid { grid-template-columns: 1fr; }
-    .bits-panel { grid-column: auto; }
+    .bits-panel, .constraints-panel { grid-column: auto; }
     .metrics { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -115,6 +129,8 @@ footer { max-width: 1320px; margin: 0 auto; padding: 24px 36px 44px; border-top:
     .fraction-inputs .base-prefix { grid-column: 1; }
     .fraction-inputs .small-action { grid-column: 1 / -1; }
     .inline-action { grid-template-columns: 1fr; }
+    .constraint-controls { grid-template-columns: 1fr; }
+    .explanation-row { grid-template-columns: 58px 24px 1fr; padding: 10px; gap: 8px; }
     .metrics { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 8px; }
 }

@@ -227,6 +227,11 @@ BitPattern.TrySolveAnd(
 constraint is contradictory. On a legacy wrapper, `result.TrySolveAnd(mask,
 out solution)` provides the same behavior and preserves the wrapper type.
 
+For parsed AND, OR, XOR, or NAND expressions and composition of multiple rules,
+use the [composable constraint engine](bit-constraints.md). `BitConstraintSet`
+returns the exact intersected `BitPattern`, detects contradictions, and explains
+every bit without enumerating candidate values.
+
 ## Expressiveness limit
 
 A `BitPattern` represents independent choices at each bit position. It cannot

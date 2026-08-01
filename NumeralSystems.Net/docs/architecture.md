@@ -13,6 +13,10 @@
 ```text
 NumeralSystems.Net/
 ├── NumeralSystems.Net/             Library targeting .NET Standard 2.1
+├── NumeralSystems.Net.Json/        Explicit .NET 8 JSON integration
+├── NumeralSystems.Net.Tool/        Global `numsys` command
+├── NumeralSystems.Net.Playground/  Standalone Blazor WebAssembly UI
+├── NumeralSystems.Net.Examples/    Compiled executable examples
 ├── NumeralSystem.Net.NUnit/        NUnit regression and behavior tests
 ├── NumeralSystems.Net.Benchmarks/  BenchmarkDotNet performance suite
 ├── docs/                           Versioned Markdown documentation
@@ -306,6 +310,34 @@ Reverse logical operations produce a pattern containing the per-bit projection
 of every compatible complete value. The representation intentionally cannot
 encode correlations between different bit positions.
 
+### Composable constraints
+
+Version 5.2 places the grammar and solver in the portable core assembly. The
+CLI and playground are presentation adapters over exactly the same types:
+
+```text
+constraint text
+      |
+      v
+BitConstraintParser ---> BitConstraint
+                              |
+                              v
+                       BitConstraintSet
+                              |
+                   per-bit truth-table intersection
+                              |
+                   +----------+-----------+
+                   |                      |
+                   v                      v
+              BitPattern       bit explanations / conflict
+```
+
+The solver is linear in bit width times constraint count. It tests whether zero
+and one remain possible at each position and never walks the exponential
+candidate space. `BitConstraintSolverOptions` bounds untrusted count, width,
+enumeration, and elapsed time; cancellation is checked inside both solving and
+candidate enumeration.
+
 ## Test organization
 
 The NUnit project groups tests by concern:
@@ -318,6 +350,7 @@ The NUnit project groups tests by concern:
 | Constructor and input validation | `ValidationTests` |
 | Primitive wrappers | `Type/*` |
 | Incomplete values | `Type/Incomplete/*` |
+| Constraint engine | `BitConstraintTests`, `ToolTests` |
 | Logical operations | `Math/*`, `BinaryOperationsTests` |
 | String conversion | `Encoding/*`, `Utils/EncodeTests` |
 
@@ -341,7 +374,8 @@ Current benchmark groups cover:
 - same-base arithmetic;
 - cross-base arithmetic;
 - repeating division;
-- large cross-base comparison.
+- large cross-base comparison;
+- bit-constraint parsing, single-rule solving, and composed solving.
 
 Run a specific benchmark:
 

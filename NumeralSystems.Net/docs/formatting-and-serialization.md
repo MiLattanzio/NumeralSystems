@@ -122,7 +122,7 @@ Install the separate package so applications that do not serialize numerals do
 not carry JSON integration:
 
 ```console
-dotnet add package NumeralSystems.Net.Json --version 5.1.0
+dotnet add package NumeralSystems.Net.Json --version 5.2.0
 ```
 
 Register the converter on the `JsonSerializerOptions` used by the application:

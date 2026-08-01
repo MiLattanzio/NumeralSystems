@@ -29,7 +29,7 @@ dotnet run --project NumeralSystems.Net.Examples -- json
 | --- | --- |
 | `exact` | Exact `1/10` in base 2, repeating metadata, and terminating `1/3` in base 3 |
 | `periods` | A compact text graph of decimal period lengths for `1/d` |
-| `bits` | Parsing unknown bits, bounded metadata, and solving an AND constraint |
+| `bits` | Parsing unknown bits, composing constraints, exact candidate counts, and bit explanations |
 | `json` | Explicit converter registration and exact rational JSON round-trip |
 
 The examples reference the core and JSON projects directly, so a local run
@@ -44,8 +44,9 @@ The `examples/notebooks` directory contains two `.dib` notebooks:
 
 Open them with a .NET Interactive/Polyglot Notebooks-compatible editor. Each
 notebook references the published `NumeralSystems.Net` package so it is also a
-copyable consumer example. Before 5.1.0 is published, change the `#r "nuget:…"`
-line to an available prerelease version or use the executable project instead.
+copyable consumer example. When preparing a future release, point the
+`#r "nuget:…"` line to an available package version or use the executable
+project to test the current checkout.
 
 ## Keeping examples valid
 

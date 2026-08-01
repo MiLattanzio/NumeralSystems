@@ -11,7 +11,7 @@ representation. The repeated block is metadata, not a rounded `decimal` value.
 
 #!csharp
 
-#r "nuget: NumeralSystems.Net, 5.1.0"
+#r "nuget: NumeralSystems.Net, 5.2.0"
 using NumeralSystems.Net;
 
 var options = new NumeralConversionOptions(

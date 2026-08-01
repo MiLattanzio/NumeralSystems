@@ -2,8 +2,12 @@
 
 [![Build](https://github.com/MiLattanzio/NumeralSystems/actions/workflows/dotnet.yml/badge.svg)](https://github.com/MiLattanzio/NumeralSystems/actions/workflows/dotnet.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.txt)
+[![Online playground](https://img.shields.io/badge/playground-online-2ea44f.svg)](https://milattanzio.github.io/NumeralSystems/)
 
 English · [Italiano](README.md)
+
+**Try it without installing anything:** [open the online playground](https://milattanzio.github.io/NumeralSystems/)
+or [explore the interactive examples](https://milattanzio.github.io/NumeralSystems/docs/).
 
 NumeralSystems.Net is a .NET library for representing, converting, and
 formatting values in arbitrary numeral systems and performing cross-base
@@ -260,6 +264,7 @@ The complete guide lives in [`NumeralSystems.Net/docs`](NumeralSystems.Net/docs/
 - [ordered numeral alphabets, presets, and parse diagnostics](NumeralSystems.Net/docs/numeral-alphabets.md);
 - [formatting providers, Span, and JSON](NumeralSystems.Net/docs/formatting-and-serialization.md);
 - [global tool and WebAssembly playground](NumeralSystems.Net/docs/tool-and-playground.md);
+- [playground recipes, shareable links, and exports](NumeralSystems.Net/docs/playground-recipes.md);
 - [executable examples and notebooks](NumeralSystems.Net/docs/examples-and-notebooks.md);
 - [arithmetic, precision, operators, and comparison](NumeralSystems.Net/docs/arithmetic.md);
 - [exact rational values, repeating periods, and rounding](NumeralSystems.Net/docs/exact-rationals.md);

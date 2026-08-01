@@ -2,6 +2,7 @@
 
 [Documentation home](index.md) ·
 [Getting started](getting-started.md) ·
+[Playground recipes](playground-recipes.md) ·
 [BitPattern engine](bit-patterns.md) ·
 [Exact rationals](exact-rationals.md)
 
@@ -202,6 +203,10 @@ Query parameters are optional and individually validated. Invalid numeric
 limits fall back to safe defaults, while invalid domain input remains visible
 as a normal panel error. The `embed` parameter (`convert`, `fraction`, `bits`,
 or `constraints`) renders one focused panel for live documentation.
+
+See [Playground recipes and shareable links](playground-recipes.md) for the
+complete query-string contract, ready-to-open examples, export behavior, and
+an embedding template.
 
 All calculations execute locally in the browser. There is no server API, font
 CDN, telemetry endpoint, or JavaScript numeric reimplementation. JavaScript is

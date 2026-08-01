@@ -1,30 +1,34 @@
 # NumeralSystems.Net documentation
 
-[Exact rational values and positional expansions](exact-rationals.md)
-
 [Getting started](getting-started.md) ·
-[Numeral systems](numeral-systems.md) ·
-[Numeral alphabets](numeral-alphabets.md) ·
-[Formatting and JSON](formatting-and-serialization.md) ·
-[Arithmetic](arithmetic.md) ·
-[Cookbook](cookbook.md) ·
-[Bitwise values](bitwise-values.md) ·
-[BitPattern engine](bit-patterns.md) ·
-[Composable bit constraints](bit-constraints.md) ·
-[Incomplete values](incomplete-values.md) ·
-[String encoding](string-encoding.md) ·
 [Tool and playground](tool-and-playground.md) ·
-[Examples and notebooks](examples-and-notebooks.md) ·
+[Playground recipes](playground-recipes.md) ·
 [Troubleshooting](troubleshooting.md) ·
-[API reference](api-reference.md) ·
-[Architecture](architecture.md) ·
-[Releasing](releasing.md)
+[API reference](api-reference.md)
 
 NumeralSystems.Net targets .NET Standard 2.1 and .NET 8 for working with
 positional number systems, text/binary encodings, cross-base rational
 arithmetic, and bit-level representations.
 The repository documentation is plain Markdown: every guide can be read
 directly on GitHub and changed without a documentation generator.
+
+> **Live resources:** open the [WebAssembly playground](https://milattanzio.github.io/NumeralSystems/)
+> to experiment without installing .NET, or use the
+> [interactive examples](https://milattanzio.github.io/NumeralSystems/docs/)
+> to follow focused, runnable scenarios.
+
+## Start by goal
+
+| Goal | Recommended path |
+| --- | --- |
+| Evaluate the project without installing anything | [Open the live playground](https://milattanzio.github.io/NumeralSystems/) |
+| Learn with focused browser examples | [Open the interactive documentation](https://milattanzio.github.io/NumeralSystems/docs/) |
+| Build a first .NET integration | [Getting started](getting-started.md), then [Numeral systems](numeral-systems.md) |
+| Automate conversions or constraint solving | [Global tool and playground](tool-and-playground.md) |
+| Share or embed a prepared browser example | [Playground recipes](playground-recipes.md) |
+| Work with exact fractions and repeating periods | [Exact rational values](exact-rationals.md) |
+| Work with unknown bits or equations | [BitPattern](bit-patterns.md), then [composable constraints](bit-constraints.md) |
+| Find a type or diagnose a failure | [API reference](api-reference.md) or [troubleshooting](troubleshooting.md) |
 
 ## Choose the right abstraction
 
@@ -115,6 +119,9 @@ factories. A digit is stored as an integer index from `0` through `base - 1`.
 - [Global tool and WebAssembly playground](tool-and-playground.md) documents
   `numsys`, pipelines, JSON, exit codes, share links, exports, interactive
   visualizations, and GitHub Pages publishing.
+- [Playground recipes and shareable links](playground-recipes.md) provides
+  ready-to-open examples, the query-string contract, export semantics,
+  embedding guidance, and local-development instructions.
 - [Executable examples and notebooks](examples-and-notebooks.md) maps runnable
   console topics and educational `.dib` notebooks.
 - [Troubleshooting](troubleshooting.md) maps common symptoms and exceptions to

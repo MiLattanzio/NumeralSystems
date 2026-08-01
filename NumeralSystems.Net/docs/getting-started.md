@@ -6,7 +6,21 @@
 [Formatting and JSON](formatting-and-serialization.md) ·
 [Arithmetic](arithmetic.md) ·
 [Cookbook](cookbook.md) ·
+[Tool and playground](tool-and-playground.md) ·
 [API reference](api-reference.md)
+
+## Try the project in a browser
+
+No installation is required to evaluate the main workflows. The
+[public WebAssembly playground](https://milattanzio.github.io/NumeralSystems/)
+provides base conversion, exact fraction periods, unknown-bit inspection, and
+composable constraint solving. The
+[interactive documentation](https://milattanzio.github.io/NumeralSystems/docs/)
+opens focused examples that use the same library engine.
+
+Use **Copy share link** in the playground to preserve inputs and resource
+limits in the URL. See [Playground recipes](playground-recipes.md) for
+ready-to-open links, exports, and embedding.
 
 ## Requirements
 
@@ -209,4 +223,8 @@ Continue with:
   and serialization;
 - [Arithmetic](arithmetic.md) for calculations and comparison;
 - [Cookbook](cookbook.md) for task-oriented examples;
+- [Global tool and playground](tool-and-playground.md) for CLI pipelines,
+  browser tools, and JSON output;
+- [Playground recipes](playground-recipes.md) for shareable and embeddable
+  examples;
 - [Troubleshooting](troubleshooting.md) for common errors.

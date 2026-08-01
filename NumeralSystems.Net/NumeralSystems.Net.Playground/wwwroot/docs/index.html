@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Interactive documentation and executable examples for NumeralSystems.Net." />
+    <link rel="icon" href="../icon.svg" />
+    <link rel="stylesheet" href="docs.css" />
+    <title>Interactive documentation · NumeralSystems.Net</title>
+</head>
+<body>
+    <header>
+        <p class="eyebrow">NumeralSystems.Net 5.3 · live documentation</p>
+        <h1>Examples you can change, not screenshots to trust.</h1>
+        <p class="lead">
+            Every example below runs the published library locally in WebAssembly. Select a scenario,
+            edit its values, and inspect the exact result without a server round-trip.
+        </p>
+    </header>
+
+    <main>
+        <nav class="example-grid" aria-label="Interactive examples">
+            <button class="example" aria-selected="true"
+                    data-source="../?embed=convert&amp;value=FF&amp;from=16&amp;to=2">
+                <strong>Cross-base conversion</strong>
+                <span>FF₁₆ → 11111111₂ using ordered alphabets.</span>
+            </button>
+            <button class="example" aria-selected="false"
+                    data-source="../?embed=fraction&amp;numerator=1&amp;denominator=7&amp;fractionBase=10">
+                <strong>Repeating fraction</strong>
+                <span>Explore 1/7 and export the period graph.</span>
+            </button>
+            <button class="example" aria-selected="false"
+                    data-source="../?embed=bits&amp;pattern=1100%3F%3F%3F%3F">
+                <strong>Unknown bits</strong>
+                <span>Inspect the exact candidate space of 1100????.</span>
+            </button>
+            <button class="example" aria-selected="false"
+                    data-source="../?embed=constraints&amp;constraints=x%20%26%2010101010%20%3D%2010001000%3B%20x%20%7C%2000001111%20%3D%2010001111&amp;limit=8&amp;timeout=500">
+                <strong>Composed constraints</strong>
+                <span>Solve two rules and read the bit-by-bit proof.</span>
+            </button>
+        </nav>
+
+        <section class="live-shell" aria-label="Live example">
+            <div class="live-heading">
+                <span>Live WebAssembly example</span>
+                <a id="open-example" href="../?value=FF&amp;from=16&amp;to=2" target="_blank" rel="noopener">Open full playground</a>
+            </div>
+            <iframe id="live-example"
+                    title="Interactive NumeralSystems.Net example"
+                    src="../?embed=convert&amp;value=FF&amp;from=16&amp;to=2"
+                    loading="eager"></iframe>
+        </section>
+
+        <section class="notes" aria-label="Example notes">
+            <article>
+                <h2>Shareable state</h2>
+                <p>The full playground stores inputs and limits in its query string. Copying a share link reproduces the same workspace.</p>
+            </article>
+            <article>
+                <h2>Portable exports</h2>
+                <p>Download a complete JSON snapshot, or export fraction-period data as SVG and CSV for reports and notebooks.</p>
+            </article>
+            <article>
+                <h2>Bounded enumeration</h2>
+                <p>Candidate counts remain exact <code>BigInteger</code> values. Concrete previews always use an explicit limit.</p>
+            </article>
+            <article>
+                <h2>One implementation</h2>
+                <p>The library, CLI, playground, and these examples share the same numeral and bit-constraint engines.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <span>NumeralSystems.Net interactive documentation</span>
+        <span><a href="../">Playground</a> · <a href="https://github.com/MiLattanzio/NumeralSystems/tree/master/NumeralSystems.Net/docs">Markdown guides</a></span>
+    </footer>
+
+    <script>
+        const frame = document.getElementById("live-example");
+        const openLink = document.getElementById("open-example");
+        document.querySelectorAll(".example").forEach(button => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".example").forEach(item => item.setAttribute("aria-selected", "false"));
+                button.setAttribute("aria-selected", "true");
+                const source = button.dataset.source;
+                frame.src = source;
+                openLink.href = source.replace(/([?&])embed=[^&]*&?/, "$1").replace(/[?&]$/, "");
+            });
+        });
+    </script>
+</body>
+</html>

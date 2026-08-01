@@ -1,10 +1,14 @@
 @page "/"
+@inject NavigationManager Navigation
+@inject IJSRuntime JavaScript
 
 <PageTitle>NumeralSystems.Net Playground</PageTitle>
 
+@if (string.IsNullOrEmpty(_embedSection))
+{
 <header class="hero">
     <div class="hero-copy">
-        <p class="eyebrow">NumeralSystems.Net 5.2</p>
+        <p class="eyebrow">NumeralSystems.Net 5.3</p>
         <h1>Numbers are exact.<br />Representations are choices.</h1>
         <p class="lead">
             Convert alphabets, explore repeating fractions, and inspect unknown bits.
@@ -15,10 +19,31 @@
         <span>1</span><span>0</span><span>?</span><span>1</span>
     </div>
 </header>
+}
 
-<main>
+<main class="@EmbedClass">
+    @if (string.IsNullOrEmpty(_embedSection))
+    {
+        <section class="share-toolbar" aria-label="Share and export playground results">
+            <div>
+                <span class="result-label">Portable results</span>
+                <strong>Share, copy, or download the current workspace</strong>
+            </div>
+            <div class="toolbar-actions">
+                <a class="secondary-action link-action" href="docs/">Interactive docs</a>
+                <button class="secondary-action" @onclick="CopyShareLink">Copy share link</button>
+                <button class="secondary-action" @onclick="CopyResults">Copy results</button>
+                <button class="secondary-action" @onclick="DownloadJson">Download JSON</button>
+            </div>
+            @if (!string.IsNullOrEmpty(_actionStatus))
+            {
+                <span class="action-status" role="status">@_actionStatus</span>
+            }
+        </section>
+    }
+
     <section class="tool-grid" aria-label="Numeral tools">
-        <article class="panel converter-panel">
+        <article id="converter" class="panel converter-panel">
             <div class="panel-heading">
                 <div>
                     <p class="kicker">Base converter</p>
@@ -52,7 +77,7 @@
             </div>
         </article>
 
-        <article class="panel fraction-panel">
+        <article id="fractions" class="panel fraction-panel">
             <div class="panel-heading">
                 <div>
                     <p class="kicker">Exact rational</p>
@@ -94,7 +119,7 @@
                 <span>d = 2…@_chartDenominatorLimit</span>
             </div>
             <div class="chart-scroll">
-                <svg class="period-chart" viewBox="0 0 760 230" role="img" aria-label="Period lengths by denominator">
+                <svg id="period-chart" class="period-chart" viewBox="0 0 760 230" role="img" aria-label="Period lengths by denominator">
                     <line x1="34" y1="196" x2="744" y2="196" class="axis" />
                     @foreach (var bar in _periodBars)
                     {
@@ -110,9 +135,13 @@
                     }
                 </svg>
             </div>
+            <div class="panel-actions">
+                <button class="secondary-action" @onclick="DownloadPeriodSvg">Export SVG</button>
+                <button class="secondary-action" @onclick="DownloadPeriodCsv">Export CSV</button>
+            </div>
         </article>
 
-        <article class="panel bits-panel">
+        <article id="unknown-bits" class="panel bits-panel">
             <div class="panel-heading">
                 <div>
                     <p class="kicker">Unknown bits</p>
@@ -154,7 +183,7 @@
             }
         </article>
 
-        <article class="panel constraints-panel">
+        <article id="constraints" class="panel constraints-panel">
             <div class="panel-heading">
                 <div>
                     <p class="kicker">Bit constraints</p>
@@ -242,10 +271,13 @@
     </section>
 </main>
 
-<footer>
-    <span>NumeralSystems.Net</span>
-    <span>Exact arithmetic · explicit limits · no server round-trips</span>
-</footer>
+@if (string.IsNullOrEmpty(_embedSection))
+{
+    <footer>
+        <span>NumeralSystems.Net</span>
+        <span>Exact arithmetic · explicit limits · no server round-trips</span>
+    </footer>
+}
 
 @code {
     private string _convertInput = "FF";
@@ -274,9 +306,16 @@
     private BitConstraintSolution? _constraintSolution;
     private List<BigInteger> _constraintCandidates = new();
     private string? _constraintError;
+    private string? _embedSection;
+    private string? _actionStatus;
+
+    private string EmbedClass => string.IsNullOrEmpty(_embedSection)
+        ? string.Empty
+        : $"embed-mode embed-{_embedSection}";
 
     protected override void OnInitialized()
     {
+        ApplyQueryString();
         ConvertValue();
         UpdateFraction();
         UpdatePattern();
@@ -431,6 +470,211 @@
             false => "0",
             null => "?"
         };
+    }
+
+    private void ApplyQueryString()
+    {
+        var query = ParseQuery(new Uri(Navigation.Uri).Query);
+        if (query.TryGetValue("value", out var value)) _convertInput = value;
+        if (TryReadInteger(query, "from", 2, 256, out var fromBase)) _fromBase = fromBase;
+        if (TryReadInteger(query, "to", 2, 256, out var toBase)) _toBase = toBase;
+        if (query.TryGetValue("numerator", out var numerator)) _numeratorText = numerator;
+        if (query.TryGetValue("denominator", out var denominator)) _denominatorText = denominator;
+        if (TryReadInteger(query, "fractionBase", 2, 64, out var fractionBase)) _fractionBase = fractionBase;
+        if (query.TryGetValue("pattern", out var pattern)) _patternText = pattern;
+        if (query.TryGetValue("constraints", out var constraints)) _constraintText = constraints;
+        if (TryReadInteger(query, "limit", 0, 256, out var limit)) _constraintCandidateLimit = limit;
+        if (TryReadInteger(query, "timeout", 1, 5_000, out var timeout))
+            _constraintTimeoutMilliseconds = timeout;
+        if (query.TryGetValue("embed", out var embed) &&
+            embed is "convert" or "fraction" or "bits" or "constraints")
+            _embedSection = embed;
+    }
+
+    private async Task CopyShareLink()
+    {
+        var uri = new Uri(Navigation.Uri);
+        var link = uri.GetLeftPart(UriPartial.Path) + BuildQueryString();
+        Navigation.NavigateTo(link, replace: true);
+        await JavaScript.InvokeVoidAsync("numeralSystems.copyText", link);
+        _actionStatus = "Share link copied.";
+    }
+
+    private async Task CopyResults()
+    {
+        var lines = new List<string>
+        {
+            $"Convert: {_convertInput} (base {_fromBase}) = {_convertOutput} (base {_toBase})"
+        };
+        if (_fractionExpansion is not null)
+        {
+            lines.Add(
+                $"Fraction: {_numeratorText}/{_denominatorText} = " +
+                _fractionExpansion.ToString(NumeralAlphabet.CreateDefault(_fractionExpansion.Base)));
+        }
+        if (_bitPattern is not null)
+            lines.Add($"Pattern: {_bitPattern}; candidates: {_bitPattern.CandidateCount}");
+        if (_constraintSolution is not null)
+            lines.Add(_constraintSolution.IsSatisfiable
+                ? $"Constraints: {_constraintSolution.Pattern}; candidates: {_constraintSolution.CandidateCount}"
+                : "Constraints: no solution");
+
+        await JavaScript.InvokeVoidAsync(
+            "numeralSystems.copyText",
+            string.Join(Environment.NewLine, lines));
+        _actionStatus = "Results copied.";
+    }
+
+    private async Task DownloadJson()
+    {
+        var json = JsonSerializer.Serialize(BuildSnapshot(), new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true
+        });
+        await JavaScript.InvokeVoidAsync(
+            "numeralSystems.downloadText",
+            "numeralsystems-results.json",
+            json,
+            "application/json;charset=utf-8");
+        _actionStatus = "JSON download created.";
+    }
+
+    private async Task DownloadPeriodCsv()
+    {
+        var rows = new List<string> { "denominator,periodLength,terminating" };
+        rows.AddRange(_periodBars.Select(bar =>
+            $"{bar.Denominator},{bar.Length},{(bar.Length == 0 ? "true" : "false")}"));
+        await JavaScript.InvokeVoidAsync(
+            "numeralSystems.downloadText",
+            $"periods-base-{_fractionBase}.csv",
+            string.Join("\n", rows) + "\n",
+            "text/csv;charset=utf-8");
+        _actionStatus = "CSV graph data downloaded.";
+    }
+
+    private async Task DownloadPeriodSvg()
+    {
+        await JavaScript.InvokeVoidAsync(
+            "numeralSystems.downloadSvg",
+            "period-chart",
+            $"periods-base-{_fractionBase}.svg");
+        _actionStatus = "SVG graph downloaded.";
+    }
+
+    private object BuildSnapshot()
+    {
+        var fractionText = _fractionExpansion?.ToString(
+            NumeralAlphabet.CreateDefault(_fractionExpansion.Base));
+        return new
+        {
+            schemaVersion = "1.0",
+            generatedBy = "NumeralSystems.Net Playground 5.3.0",
+            converter = new
+            {
+                input = _convertInput,
+                fromBase = _fromBase,
+                toBase = _toBase,
+                result = _convertOutput,
+                error = _convertError
+            },
+            fraction = new
+            {
+                numerator = _numeratorText,
+                denominator = _denominatorText,
+                baseValue = _fractionBase,
+                result = fractionText,
+                terminating = _fractionExpansion?.IsTerminating,
+                repeatingStart = _fractionExpansion?.RepeatingStartIndex,
+                repeatingLength = _fractionExpansion?.RepeatingLength,
+                error = _fractionError
+            },
+            periodGraph = _periodBars.Select(bar => new
+            {
+                denominator = bar.Denominator,
+                periodLength = bar.Length,
+                terminating = bar.Length == 0
+            }),
+            unknownBits = new
+            {
+                pattern = _bitPattern?.ToString(),
+                unknownBitCount = _bitPattern?.UnknownBitCount,
+                candidateCount = _bitPattern?.CandidateCount.ToString(CultureInfo.InvariantCulture),
+                minimum = _bitPattern?.MinValue.ToString(CultureInfo.InvariantCulture),
+                maximum = _bitPattern?.MaxValue.ToString(CultureInfo.InvariantCulture),
+                error = _patternError
+            },
+            constraints = new
+            {
+                source = _constraintText,
+                satisfiable = _constraintSolution?.IsSatisfiable,
+                pattern = _constraintSolution?.Pattern?.ToString(),
+                candidateCount = _constraintSolution?.CandidateCount.ToString(CultureInfo.InvariantCulture),
+                preview = _constraintCandidates.Select(value => value.ToString(CultureInfo.InvariantCulture)),
+                explanation = _constraintSolution?.Explanations.Reverse().Select(explanation => new
+                {
+                    bitIndex = explanation.BitIndex,
+                    state = ExplanationValue(explanation),
+                    explanation.Message
+                }),
+                error = _constraintError
+            }
+        };
+    }
+
+    private string BuildQueryString()
+    {
+        var values = new Dictionary<string, string>
+        {
+            ["value"] = _convertInput,
+            ["from"] = _fromBase.ToString(CultureInfo.InvariantCulture),
+            ["to"] = _toBase.ToString(CultureInfo.InvariantCulture),
+            ["numerator"] = _numeratorText,
+            ["denominator"] = _denominatorText,
+            ["fractionBase"] = _fractionBase.ToString(CultureInfo.InvariantCulture),
+            ["pattern"] = _patternText,
+            ["constraints"] = _constraintText,
+            ["limit"] = _constraintCandidateLimit.ToString(CultureInfo.InvariantCulture),
+            ["timeout"] = _constraintTimeoutMilliseconds.ToString(CultureInfo.InvariantCulture)
+        };
+        return "?" + string.Join("&", values.Select(pair =>
+            $"{Uri.EscapeDataString(pair.Key)}={Uri.EscapeDataString(pair.Value)}"));
+    }
+
+    private static Dictionary<string, string> ParseQuery(string query)
+    {
+        var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var segment in query.TrimStart('?').Split('&', StringSplitOptions.RemoveEmptyEntries))
+        {
+            var separator = segment.IndexOf('=');
+            var key = separator < 0 ? segment : segment[..separator];
+            var value = separator < 0 ? string.Empty : segment[(separator + 1)..];
+            try
+            {
+                var decodedKey = Uri.UnescapeDataString(key.Replace('+', ' '));
+                if (decodedKey.Length == 0) continue;
+                result[decodedKey] = Uri.UnescapeDataString(value.Replace('+', ' '));
+            }
+            catch (UriFormatException)
+            {
+                // Ignore malformed parameters and retain safe defaults for the panel.
+            }
+        }
+        return result;
+    }
+
+    private static bool TryReadInteger(
+        IReadOnlyDictionary<string, string> query,
+        string key,
+        int minimum,
+        int maximum,
+        out int value)
+    {
+        value = 0;
+        return query.TryGetValue(key, out var text) &&
+               int.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out value) &&
+               value >= minimum &&
+               value <= maximum;
     }
 
     private sealed record PeriodBar(

@@ -4,6 +4,41 @@ All notable changes to NumeralSystems.Net are documented in this file.
 
 The project follows [Semantic Versioning](https://semver.org/).
 
+## [5.3.0] - 2026-08-01
+
+### Added
+
+- Add global `--output text|json` CLI formatting with a versioned JSON envelope,
+  machine-readable errors, and precision-safe string representation for
+  `BigInteger` values.
+- Add line-oriented standard-input conversion and explicit `--input FILE|-`
+  support for shell and PowerShell pipelines.
+- Extend `--explain` to conversion and unknown-bit inspection while retaining
+  the existing per-bit constraint explanations.
+- Add shareable playground state through query-string parameters.
+- Add copy-result and share-link actions plus complete JSON workspace download.
+- Add SVG and CSV export for fraction-period graphs.
+- Add a static interactive documentation page backed by one embedded
+  WebAssembly playground instance and four editable examples.
+- Add automatic playground and documentation deployment to GitHub Pages on
+  `master`, releases, and manual release recovery runs.
+- Add CLI tests for pipeline input, files, JSON success/error contracts, and
+  explanations.
+
+### Changed
+
+- Keep ordinary conversion output line-oriented and free of diagnostics so it
+  composes safely with other command-line tools.
+- Include interactive documentation and `.nojekyll` in release playground
+  archives and validate them during CI.
+- Align the core, JSON integration, and global-tool package versions at 5.3.0.
+
+### Fixed
+
+- Ignore a leading `U+FEFF` marker inserted by Windows PowerShell 5 when text
+  is redirected to a native .NET process, so the documented `Get-Content |
+  numsys convert` pipeline works without shell-specific encoding changes.
+
 ## [5.2.0] - 2026-08-01
 
 ### Added
@@ -295,6 +330,8 @@ The project follows [Semantic Versioning](https://semver.org/).
 - Produce repository metadata and symbol packages alongside the NuGet package.
 - Treat compiler warnings as errors in the library, tests, and benchmarks.
 
+[5.3.0]: https://github.com/MiLattanzio/NumeralSystems/compare/v5.2.0...v5.3.0
+[5.2.0]: https://github.com/MiLattanzio/NumeralSystems/compare/v5.1.0...v5.2.0
 [4.7.0]: https://github.com/MiLattanzio/NumeralSystems/compare/v4.6.0...v4.7.0
 [4.6.0]: https://github.com/MiLattanzio/NumeralSystems/compare/v4.5.2...v4.6.0
 [4.5.2]: https://github.com/MiLattanzio/NumeralSystems/releases/tag/v4.5.2

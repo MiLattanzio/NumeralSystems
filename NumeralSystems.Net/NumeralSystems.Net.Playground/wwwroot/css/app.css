@@ -37,6 +37,20 @@ h1 { margin: 10px 0 20px; font-size: clamp(3rem, 7vw, 6.6rem); line-height: .93;
 .hero-mark span:nth-child(3) { color: #111318; background: var(--mint); }
 
 main { max-width: 1320px; margin: 0 auto; padding: 0 36px 64px; }
+.share-toolbar { display: grid; grid-template-columns: 1fr auto; gap: 14px 24px; align-items: center; margin-bottom: 18px; padding: 18px 20px; background: #15181e; border: 1px solid var(--line); }
+.share-toolbar strong { display: block; margin-top: 5px; font-size: .92rem; }
+.toolbar-actions, .panel-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.secondary-action { border: 1px solid var(--line); color: var(--ink); background: #20242c; padding: 9px 12px; font-size: .76rem; font-weight: 750; }
+.link-action { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.secondary-action:hover { color: var(--mint); border-color: #457967; }
+.action-status { grid-column: 1 / -1; color: var(--mint); font-size: .75rem; }
+.embed-mode { padding-top: 18px; padding-bottom: 18px; }
+.embed-mode .tool-grid { grid-template-columns: 1fr; }
+.embed-convert .panel:not(.converter-panel),
+.embed-fraction .panel:not(.fraction-panel),
+.embed-bits .panel:not(.bits-panel),
+.embed-constraints .panel:not(.constraints-panel) { display: none; }
+.embed-mode .panel { grid-column: auto; box-shadow: none; }
 .tool-grid { display: grid; grid-template-columns: minmax(300px, .82fr) minmax(520px, 1.45fr); gap: 18px; align-items: start; }
 .panel { background: linear-gradient(145deg, #1c2027, #171a20); border: 1px solid var(--line); padding: 28px; box-shadow: 0 18px 60px #0004; }
 .bits-panel, .constraints-panel { grid-column: 1 / -1; }
@@ -73,6 +87,7 @@ output { display: block; margin-top: 8px; overflow-wrap: anywhere; color: var(--
 .prefix-digit { color: var(--muted); }
 .chart-heading { display: flex; justify-content: space-between; margin: 26px 0 8px; color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
 .chart-scroll { overflow-x: auto; }
+.panel-actions { margin-top: 10px; }
 .period-chart { display: block; min-width: 680px; width: 100%; background: #111318; }
 .axis { stroke: #4a505b; stroke-width: 1; }
 .period-bar { fill: var(--amber); }
@@ -130,6 +145,9 @@ footer { max-width: 1320px; margin: 0 auto; padding: 24px 36px 44px; border-top:
     .fraction-inputs .small-action { grid-column: 1 / -1; }
     .inline-action { grid-template-columns: 1fr; }
     .constraint-controls { grid-template-columns: 1fr; }
+    .share-toolbar { grid-template-columns: 1fr; }
+    .toolbar-actions { justify-content: stretch; }
+    .toolbar-actions .secondary-action { flex: 1 1 auto; }
     .explanation-row { grid-template-columns: 58px 24px 1fr; padding: 10px; gap: 8px; }
     .metrics { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 8px; }

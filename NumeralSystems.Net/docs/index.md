@@ -45,8 +45,8 @@ directly on GitHub and changed without a documentation generator.
 | Parse, compose, solve, and explain bitwise equations | `BitConstraint` and `BitConstraintSet` |
 | Format with culture/custom tokens | `NumeralFormatInfo` and `Numeral` |
 | Serialize an exact numeral as JSON | `NumeralSystems.Net.Json` |
-| Convert or inspect from a shell | the `numsys` global tool |
-| Explore periods or unknown bits in a browser | the WebAssembly playground |
+| Convert, inspect, or automate from a shell/CI pipeline | the `numsys` global tool with text or JSON output |
+| Explore, share, and export periods or unknown bits in a browser | the WebAssembly playground |
 
 ## Minimal example
 
@@ -113,7 +113,8 @@ factories. A digit is stored as an integer index from `0` through `base - 1`.
 - [String encoding](string-encoding.md) separates numeral text, RFC byte
   codecs, UTF-16 code units, Unicode Runes, and streaming.
 - [Global tool and WebAssembly playground](tool-and-playground.md) documents
-  `numsys`, its exit codes, interactive visualizations, and static publishing.
+  `numsys`, pipelines, JSON, exit codes, share links, exports, interactive
+  visualizations, and GitHub Pages publishing.
 - [Executable examples and notebooks](examples-and-notebooks.md) maps runnable
   console topics and educational `.dib` notebooks.
 - [Troubleshooting](troubleshooting.md) maps common symptoms and exceptions to
@@ -134,6 +135,8 @@ factories. A digit is stored as an integer index from `0` through `base - 1`.
   explicit JSON registration, and the new package/tool layout.
 - [Migrating to 5.2.0](migration-5.2.md) covers the composable constraint
   model, shared parser, resource options, and CLI additions.
+- [Migrating to 5.3.0](migration-5.3.md) covers CLI pipelines and JSON,
+  shareable playground state, exports, interactive documentation, and Pages.
 - [Releasing](releasing.md) documents package versioning and automated
   publication to NuGet.org.
 

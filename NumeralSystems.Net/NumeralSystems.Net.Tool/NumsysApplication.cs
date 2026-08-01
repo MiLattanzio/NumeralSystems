@@ -1,5 +1,7 @@
 using System.Globalization;
 using System.Numerics;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using NumeralSystems.Net.Type.Incomplete;
 
 namespace NumeralSystems.Net.Tool;
@@ -7,11 +9,28 @@ namespace NumeralSystems.Net.Tool;
 /// <summary>Command dispatcher for the <c>numsys</c> global tool.</summary>
 public static class NumsysApplication
 {
+    private const string JsonSchemaVersion = "1.0";
     private static readonly BigInteger MaximumCliEnumeration = new(10_000);
+    private static readonly JsonSerializerOptions JsonOptions = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+        WriteIndented = true
+    };
 
     /// <summary>Runs one command and returns a process exit code.</summary>
     public static int Run(
         IReadOnlyList<string> arguments,
+        TextWriter output,
+        TextWriter error) =>
+        Run(arguments, null, output, error);
+
+    /// <summary>
+    /// Runs one command with an optional redirected input stream and returns a process exit code.
+    /// </summary>
+    public static int Run(
+        IReadOnlyList<string> arguments,
+        TextReader? input,
         TextWriter output,
         TextWriter error)
     {
@@ -19,77 +38,171 @@ public static class NumsysApplication
         if (output is null) throw new ArgumentNullException(nameof(output));
         if (error is null) throw new ArgumentNullException(nameof(error));
 
+        var outputFormat = OutputFormat.Text;
+        var commandName = "command";
         try
         {
-            if (arguments.Count == 0 || IsHelp(arguments[0]))
+            var normalized = NormalizeGlobalOptions(arguments, out outputFormat);
+            if (normalized.Count == 0 || IsHelp(normalized[0]))
             {
-                WriteHelp(output);
+                WriteResult(output, outputFormat, HelpResult());
                 return 0;
             }
 
-            return arguments[0].ToLowerInvariant() switch
+            commandName = normalized[0].ToLowerInvariant();
+            var result = commandName switch
             {
-                "convert" => Convert(arguments, output),
-                "inspect" => Inspect(arguments, output),
-                "solve" => Solve(arguments, output),
-                _ => Fail(error, $"Unknown command '{arguments[0]}'. Run 'numsys --help'.")
+                "convert" => Convert(normalized, input),
+                "inspect" => Inspect(normalized),
+                "solve" => Solve(normalized),
+                _ => throw new ArgumentException(
+                    $"Unknown command '{normalized[0]}'. Run 'numsys --help'.")
             };
+
+            WriteResult(output, outputFormat, result);
+            return result.ExitCode;
         }
-        catch (Exception exception) when (exception is ArgumentException or FormatException or InvalidOperationException)
+        catch (Exception exception) when (exception is ArgumentException or FormatException or InvalidOperationException or IOException or UnauthorizedAccessException)
         {
-            return Fail(error, exception.Message);
+            return WriteFailure(error, outputFormat, commandName, exception.Message, 2, "invalid_input");
         }
         catch (TimeoutException exception)
         {
-            return Fail(error, exception.Message, 4);
+            return WriteFailure(error, outputFormat, commandName, exception.Message, 4, "timeout");
         }
     }
 
-    private static int Convert(IReadOnlyList<string> arguments, TextWriter output)
+    private static CommandResult Convert(IReadOnlyList<string> arguments, TextReader? input)
     {
-        if (arguments.Count < 2)
-            throw new ArgumentException("convert requires a value.");
-
+        ValidateOptions(arguments, new[] { "--from", "--to", "--input" }, new[] { "--explain" });
         var sourceBase = ReadIntegerOption(arguments, "--from");
         var destinationBase = ReadIntegerOption(arguments, "--to");
+        var explain = HasOption(arguments, "--explain");
         var sourceAlphabet = NumeralAlphabet.CreateDefault(sourceBase);
         var destinationAlphabet = NumeralAlphabet.CreateDefault(destinationBase);
-        var value = sourceAlphabet.Decode(arguments[1]);
+        var values = ReadConversionInputs(arguments, input).ToArray();
+        if (values.Length == 0)
+            throw new ArgumentException(
+                "convert requires a value, --input FILE, or redirected standard input.");
 
-        output.WriteLine(destinationAlphabet.Encode(value));
-        return 0;
+        var converted = values.Select((value, index) =>
+        {
+            try
+            {
+                var numericValue = sourceAlphabet.Decode(value);
+                return new ConversionItem(
+                    value,
+                    destinationAlphabet.Encode(numericValue),
+                    numericValue.ToString(CultureInfo.InvariantCulture));
+            }
+            catch (FormatException exception)
+            {
+                throw new FormatException(
+                    $"Cannot convert input {index + 1} ({JsonSerializer.Serialize(value)}): {exception.Message}",
+                    exception);
+            }
+        }).ToArray();
+
+        using var text = new StringWriter(CultureInfo.InvariantCulture);
+        foreach (var item in converted)
+        {
+            text.WriteLine(item.Result);
+            if (!explain) continue;
+            text.WriteLine(
+                $"  {item.Input} (base {sourceBase}) = {item.DecimalValue} (base 10) = " +
+                $"{item.Result} (base {destinationBase})");
+        }
+
+        var payload = new
+        {
+            fromBase = sourceBase,
+            toBase = destinationBase,
+            count = converted.Length,
+            results = converted.Select(item => new
+            {
+                input = item.Input,
+                result = item.Result,
+                decimalValue = item.DecimalValue,
+                explanation = explain
+                    ? $"Decoded with the ordered base-{sourceBase} alphabet and encoded with the ordered base-{destinationBase} alphabet."
+                    : null
+            })
+        };
+        return new CommandResult("convert", 0, text.ToString(), payload);
     }
 
-    private static int Inspect(IReadOnlyList<string> arguments, TextWriter output)
+    private static CommandResult Inspect(IReadOnlyList<string> arguments)
     {
-        if (arguments.Count < 2)
-            throw new ArgumentException("inspect requires a bit pattern.");
-
+        ValidateOptions(arguments, new[] { "--type" }, new[] { "--explain" });
+        var patternText = ReadRequiredPositional(arguments, 1, "inspect requires a bit pattern.");
         var typeName = ReadStringOption(arguments, "--type");
         var width = WidthOf(typeName);
-        var pattern = BitPattern.Parse(arguments[1]);
+        var pattern = BitPattern.Parse(patternText);
         if (pattern.Count != width)
             throw new ArgumentException(
                 $"Type '{typeName}' requires {width} bits, but the pattern contains {pattern.Count}.");
 
-        output.WriteLine($"Pattern: {pattern}");
-        output.WriteLine($"Type: {typeName.ToLowerInvariant()} ({width} bits)");
-        output.WriteLine($"Unknown bits: {pattern.UnknownBitCount}");
-        output.WriteLine($"Candidates: {pattern.CandidateCount}");
-        output.WriteLine($"Unsigned range: {pattern.MinValue}..{pattern.MaxValue}");
-        output.WriteLine($"Signed range: {pattern.SignedMinValue}..{pattern.SignedMaxValue}");
-        output.WriteLine("First candidates:");
-        foreach (var candidate in pattern.EnumerateCandidates(16))
-            output.WriteLine($"  {candidate,4}  0x{FormatHex(candidate, width)}");
-        return 0;
+        var explain = HasOption(arguments, "--explain");
+        var candidates = pattern.EnumerateCandidates(16).Select(candidate => new
+        {
+            value = candidate.ToString(CultureInfo.InvariantCulture),
+            hexadecimal = FormatHex(candidate, width)
+        }).ToArray();
+
+        using var text = new StringWriter(CultureInfo.InvariantCulture);
+        text.WriteLine($"Pattern: {pattern}");
+        text.WriteLine($"Type: {typeName.ToLowerInvariant()} ({width} bits)");
+        text.WriteLine($"Unknown bits: {pattern.UnknownBitCount}");
+        text.WriteLine($"Candidates: {pattern.CandidateCount}");
+        text.WriteLine($"Unsigned range: {pattern.MinValue}..{pattern.MaxValue}");
+        text.WriteLine($"Signed range: {pattern.SignedMinValue}..{pattern.SignedMaxValue}");
+        text.WriteLine("First candidates:");
+        foreach (var candidate in candidates)
+            text.WriteLine($"  {candidate.value,4}  0x{candidate.hexadecimal}");
+        if (explain)
+        {
+            text.WriteLine("Explanation (MSB to LSB):");
+            foreach (var bit in BuildPatternExplanation(pattern))
+                text.WriteLine($"  bit {bit.Index,4}: {bit.State}  {bit.Message}");
+        }
+
+        var payload = new
+        {
+            pattern = pattern.ToString(),
+            type = typeName.ToLowerInvariant(),
+            width,
+            unknownBitCount = pattern.UnknownBitCount,
+            candidateCount = pattern.CandidateCount.ToString(CultureInfo.InvariantCulture),
+            unsignedRange = new
+            {
+                minimum = pattern.MinValue.ToString(CultureInfo.InvariantCulture),
+                maximum = pattern.MaxValue.ToString(CultureInfo.InvariantCulture)
+            },
+            signedRange = new
+            {
+                minimum = pattern.SignedMinValue.ToString(CultureInfo.InvariantCulture),
+                maximum = pattern.SignedMaxValue.ToString(CultureInfo.InvariantCulture)
+            },
+            candidates,
+            explanation = explain
+                ? BuildPatternExplanation(pattern).Select(bit => new
+                {
+                    bitIndex = bit.Index,
+                    state = bit.State,
+                    message = bit.Message
+                })
+                : null
+        };
+        return new CommandResult("inspect", 0, text.ToString(), payload);
     }
 
-    private static int Solve(IReadOnlyList<string> arguments, TextWriter output)
+    private static CommandResult Solve(IReadOnlyList<string> arguments)
     {
-        if (arguments.Count < 2)
-            throw new ArgumentException(
-                "solve requires one or more quoted constraints such as \"x & 1010 = 1000\".");
-
+        ValidateOptions(arguments, new[] { "--limit", "--timeout" }, new[] { "--explain" });
+        var expression = ReadRequiredPositional(
+            arguments,
+            1,
+            "solve requires one or more quoted constraints such as \"x & 1010 = 1000\".");
         var enumerationLimit = ReadOptionalBigIntegerOption(arguments, "--limit");
         if (enumerationLimit > MaximumCliEnumeration)
             throw new ArgumentOutOfRangeException(
@@ -102,29 +215,220 @@ public static class NumsysApplication
             maximumBitWidth: 4_096,
             maximumEnumeratedCandidates: enumerationLimit ?? BigInteger.Zero,
             timeout: TimeSpan.FromMilliseconds(timeoutMilliseconds));
-        var constraints = BitConstraintSet.Parse(arguments[1]);
+        var constraints = BitConstraintSet.Parse(expression);
         var solution = constraints.Solve(options);
         var explain = HasOption(arguments, "--explain");
+        var candidates = enumerationLimit.HasValue
+            ? solution.EnumerateCandidates(enumerationLimit.Value)
+                .Select(candidate => candidate.ToString(CultureInfo.InvariantCulture))
+                .ToArray()
+            : Array.Empty<string>();
 
+        using var text = new StringWriter(CultureInfo.InvariantCulture);
         if (!solution.IsSatisfiable)
         {
-            output.WriteLine("No solution.");
-            if (explain) WriteExplanations(output, solution);
-            return 3;
+            text.WriteLine("No solution.");
+            if (explain) WriteExplanations(text, solution);
+        }
+        else
+        {
+            var pattern = solution.GetPatternOrThrow();
+            text.WriteLine($"{constraints.VariableName} = {pattern}");
+            text.WriteLine($"Candidates: {solution.CandidateCount}");
+            text.WriteLine($"Unsigned range: {pattern.MinValue}..{pattern.MaxValue}");
+            if (explain) WriteExplanations(text, solution);
+            if (enumerationLimit.HasValue)
+            {
+                text.WriteLine($"First candidates (limit {enumerationLimit.Value}):");
+                foreach (var candidate in candidates) text.WriteLine($"  {candidate}");
+            }
         }
 
-        var pattern = solution.GetPatternOrThrow();
-        output.WriteLine($"{constraints.VariableName} = {pattern}");
-        output.WriteLine($"Candidates: {solution.CandidateCount}");
-        output.WriteLine($"Unsigned range: {pattern.MinValue}..{pattern.MaxValue}");
-        if (explain) WriteExplanations(output, solution);
-        if (enumerationLimit.HasValue)
+        var solvedPattern = solution.Pattern;
+        var payload = new
         {
-            output.WriteLine($"First candidates (limit {enumerationLimit.Value}):");
-            foreach (var candidate in solution.EnumerateCandidates(enumerationLimit.Value))
-                output.WriteLine($"  {candidate}");
+            variable = constraints.VariableName,
+            width = constraints.Width,
+            constraints = constraints.Select(constraint => constraint.ToString()),
+            satisfiable = solution.IsSatisfiable,
+            pattern = solvedPattern?.ToString(),
+            candidateCount = solution.CandidateCount.ToString(CultureInfo.InvariantCulture),
+            unsignedRange = solvedPattern is null
+                ? null
+                : new
+                {
+                    minimum = solvedPattern.MinValue.ToString(CultureInfo.InvariantCulture),
+                    maximum = solvedPattern.MaxValue.ToString(CultureInfo.InvariantCulture)
+                },
+            candidates,
+            explanation = explain
+                ? solution.Explanations.Reverse().Select(ToJsonExplanation)
+                : null
+        };
+        return new CommandResult("solve", solution.IsSatisfiable ? 0 : 3, text.ToString(), payload);
+    }
+
+    private static object ToJsonExplanation(BitConstraintBitExplanation explanation) => new
+    {
+        bitIndex = explanation.BitIndex,
+        state = explanation.IsContradiction
+            ? "contradiction"
+            : explanation.RequiredValue.HasValue
+                ? explanation.RequiredValue.Value ? "1" : "0"
+                : "unknown",
+        canBeZero = explanation.CanBeZero,
+        canBeOne = explanation.CanBeOne,
+        message = explanation.Message,
+        sources = explanation.Sources.Select(source => source.ToString())
+    };
+
+    private static IReadOnlyList<PatternBitExplanation> BuildPatternExplanation(BitPattern pattern)
+    {
+        var result = new List<PatternBitExplanation>(pattern.Count);
+        for (var bitIndex = pattern.Count - 1; bitIndex >= 0; bitIndex--)
+        {
+            var bit = pattern[bitIndex];
+            result.Add(bit switch
+            {
+                true => new PatternBitExplanation(bitIndex, "1", "This bit is fixed to one."),
+                false => new PatternBitExplanation(bitIndex, "0", "This bit is fixed to zero."),
+                null => new PatternBitExplanation(bitIndex, "?", "Both zero and one are possible.")
+            });
         }
-        return 0;
+
+        return result;
+    }
+
+    private static IEnumerable<string> ReadConversionInputs(
+        IReadOnlyList<string> arguments,
+        TextReader? input)
+    {
+        var positionalValues = ReadPositionals(
+            arguments,
+            1,
+            "--from",
+            "--to",
+            "--input",
+            "--limit",
+            "--timeout");
+        var inputPath = ReadOptionalStringOption(arguments, "--input");
+        if (positionalValues.Count > 0 && inputPath is not null)
+            throw new ArgumentException("A positional value cannot be combined with --input.");
+        if (positionalValues.Count > 1)
+            throw new ArgumentException("convert accepts one positional value; use standard input or --input for batches.");
+        if (positionalValues.Count == 1)
+        {
+            yield return positionalValues[0];
+            yield break;
+        }
+
+        IEnumerable<string> lines;
+        if (inputPath is not null && inputPath != "-")
+        {
+            lines = File.ReadLines(Path.GetFullPath(inputPath));
+        }
+        else
+        {
+            if (input is null)
+                throw new ArgumentException(
+                    "No redirected standard input is available. Pass VALUE or --input FILE.");
+            lines = ReadLines(input);
+        }
+
+        foreach (var line in lines)
+        {
+            // Windows PowerShell 5 may prefix redirected native-command input
+            // with U+FEFF even when $OutputEncoding reports ASCII.
+            var value = line.Trim().TrimStart('\uFEFF');
+            if (value.Length > 0) yield return value;
+        }
+    }
+
+    private static IEnumerable<string> ReadLines(TextReader reader)
+    {
+        string? line;
+        while ((line = reader.ReadLine()) is not null) yield return line;
+    }
+
+    private static IReadOnlyList<string> NormalizeGlobalOptions(
+        IReadOnlyList<string> arguments,
+        out OutputFormat outputFormat)
+    {
+        outputFormat = OutputFormat.Text;
+        var normalized = new List<string>(arguments.Count);
+        for (var index = 0; index < arguments.Count; index++)
+        {
+            if (!string.Equals(arguments[index], "--output", StringComparison.OrdinalIgnoreCase))
+            {
+                normalized.Add(arguments[index]);
+                continue;
+            }
+
+            if (index + 1 >= arguments.Count)
+                throw new ArgumentException("Option --output requires text or json.");
+            outputFormat = arguments[++index].ToLowerInvariant() switch
+            {
+                "text" => OutputFormat.Text,
+                "json" => OutputFormat.Json,
+                var value => throw new ArgumentException(
+                    $"Unknown output format '{value}'. Use text or json.")
+            };
+        }
+
+        return normalized;
+    }
+
+    private static IReadOnlyList<string> ReadPositionals(
+        IReadOnlyList<string> arguments,
+        int startIndex,
+        params string[] optionsWithValues)
+    {
+        var values = new List<string>();
+        for (var index = startIndex; index < arguments.Count; index++)
+        {
+            if (optionsWithValues.Any(option =>
+                    string.Equals(arguments[index], option, StringComparison.OrdinalIgnoreCase)))
+            {
+                index++;
+                continue;
+            }
+            if (arguments[index].StartsWith("--", StringComparison.Ordinal)) continue;
+            values.Add(arguments[index]);
+        }
+
+        return values;
+    }
+
+    private static void ValidateOptions(
+        IReadOnlyList<string> arguments,
+        IReadOnlyCollection<string> optionsWithValues,
+        IReadOnlyCollection<string> flags)
+    {
+        for (var index = 1; index < arguments.Count; index++)
+        {
+            if (!arguments[index].StartsWith("--", StringComparison.Ordinal)) continue;
+            if (flags.Contains(arguments[index], StringComparer.OrdinalIgnoreCase)) continue;
+            if (optionsWithValues.Contains(arguments[index], StringComparer.OrdinalIgnoreCase))
+            {
+                if (index + 1 >= arguments.Count)
+                    throw new ArgumentException($"Option {arguments[index]} requires a value.");
+                index++;
+                continue;
+            }
+
+            throw new ArgumentException($"Unknown option '{arguments[index]}'.");
+        }
+    }
+
+    private static string ReadRequiredPositional(
+        IReadOnlyList<string> arguments,
+        int startIndex,
+        string errorMessage)
+    {
+        var values = ReadPositionals(arguments, startIndex, "--type", "--limit", "--timeout", "--input");
+        if (values.Count == 0) throw new ArgumentException(errorMessage);
+        if (values.Count > 1) throw new ArgumentException("Only one positional expression is accepted.");
+        return values[0];
     }
 
     private static void WriteExplanations(TextWriter output, BitConstraintSolution solution)
@@ -153,14 +457,8 @@ public static class NumsysApplication
 
     private static string ReadStringOption(IReadOnlyList<string> arguments, string name)
     {
-        for (var index = 0; index < arguments.Count; index++)
-        {
-            if (!string.Equals(arguments[index], name, StringComparison.OrdinalIgnoreCase)) continue;
-            if (index + 1 >= arguments.Count)
-                throw new ArgumentException($"Option {name} requires a value.");
-            return arguments[index + 1];
-        }
-        throw new ArgumentException($"Missing required option {name}.");
+        var value = ReadOptionalStringOption(arguments, name);
+        return value ?? throw new ArgumentException($"Missing required option {name}.");
     }
 
     private static int? ReadOptionalIntegerOption(IReadOnlyList<string> arguments, string name)
@@ -215,25 +513,91 @@ public static class NumsysApplication
         return text.PadLeft(digits, '0');
     }
 
-    private static bool IsHelp(string value) =>
-        value is "--help" or "-h" or "help";
+    private static bool IsHelp(string value) => value is "--help" or "-h" or "help";
 
-    private static int Fail(TextWriter error, string message, int exitCode = 2)
+    private static CommandResult HelpResult()
     {
-        error.WriteLine($"error: {message}");
+        const string help = """
+            NumeralSystems.Net command line
+
+            Usage:
+              numsys [--output text|json] convert [VALUE] --from BASE --to BASE [--input FILE|-] [--explain]
+              numsys [--output text|json] inspect PATTERN --type TYPE [--explain]
+              numsys [--output text|json] solve "CONSTRAINT[; CONSTRAINT...]" [--explain] [--limit COUNT] [--timeout MS]
+
+            Omit VALUE to read one value per line from redirected standard input. Blank lines are ignored.
+            Patterns use 0, 1, and ? from most-significant to least-significant bit.
+            Constraint operators are &, |, ^, and nand. Exit code 3 means unsatisfiable; 4 means timeout.
+            """;
+        return new CommandResult(
+            "help",
+            0,
+            help + Environment.NewLine,
+            new
+            {
+                usage = new[]
+                {
+                    "numsys [--output text|json] convert [VALUE] --from BASE --to BASE [--input FILE|-] [--explain]",
+                    "numsys [--output text|json] inspect PATTERN --type TYPE [--explain]",
+                    "numsys [--output text|json] solve \"CONSTRAINT[; CONSTRAINT...]\" [--explain] [--limit COUNT] [--timeout MS]"
+                }
+            });
+    }
+
+    private static void WriteResult(TextWriter output, OutputFormat format, CommandResult result)
+    {
+        if (format == OutputFormat.Text)
+        {
+            output.Write(result.Text);
+            return;
+        }
+
+        output.WriteLine(JsonSerializer.Serialize(new
+        {
+            schemaVersion = JsonSchemaVersion,
+            command = result.Command,
+            success = result.ExitCode == 0,
+            exitCode = result.ExitCode,
+            result = result.Payload
+        }, JsonOptions));
+    }
+
+    private static int WriteFailure(
+        TextWriter error,
+        OutputFormat format,
+        string command,
+        string message,
+        int exitCode,
+        string code)
+    {
+        if (format == OutputFormat.Text)
+        {
+            error.WriteLine($"error: {message}");
+        }
+        else
+        {
+            error.WriteLine(JsonSerializer.Serialize(new
+            {
+                schemaVersion = JsonSchemaVersion,
+                command,
+                success = false,
+                exitCode,
+                error = new { code, message }
+            }, JsonOptions));
+        }
+
         return exitCode;
     }
 
-    private static void WriteHelp(TextWriter output)
+    private enum OutputFormat
     {
-        output.WriteLine("NumeralSystems.Net command line");
-        output.WriteLine();
-        output.WriteLine("Usage:");
-        output.WriteLine("  numsys convert VALUE --from BASE --to BASE");
-        output.WriteLine("  numsys inspect PATTERN --type TYPE");
-        output.WriteLine("  numsys solve \"CONSTRAINT[; CONSTRAINT...]\" [--explain] [--limit COUNT] [--timeout MS]");
-        output.WriteLine();
-        output.WriteLine("Patterns use 0, 1, and ? from most-significant to least-significant bit.");
-        output.WriteLine("Constraint operators are &, |, ^, and nand. Exit code 4 means timeout.");
+        Text,
+        Json
     }
+
+    private sealed record CommandResult(string Command, int ExitCode, string Text, object Payload);
+
+    private sealed record ConversionItem(string Input, string Result, string DecimalValue);
+
+    private sealed record PatternBitExplanation(int Index, string State, string Message);
 }

@@ -8,6 +8,20 @@ Version 5.1 adds examples that can be executed, debugged, and kept in sync with
 the source tree. The Markdown cookbook remains the fastest reference; this
 project and the notebooks are useful when changing inputs interactively.
 
+## Browser examples
+
+Version 5.3 publishes
+[interactive documentation](https://milattanzio.github.io/NumeralSystems/docs/)
+alongside the playground. Its conversion, repeating-fraction, unknown-bit, and
+composed-constraint examples are live WebAssembly panels rather than captured
+output. Selecting an example replaces the single embedded runtime, so the page
+does not instantiate four playground applications simultaneously.
+
+Each example is an ordinary query-string URL. Use **Open full playground** to
+continue with all four panels, then **Copy share link** to preserve the changed
+inputs and limits. JSON, SVG, and CSV exports make the same example reusable in
+tests, reports, and notebooks.
+
 ## Console examples
 
 Run all topics:

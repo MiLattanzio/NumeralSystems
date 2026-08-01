@@ -9,7 +9,8 @@ The `.github/workflows/dotnet.yml` workflow builds and tests every push and pull
 request targeting `master` or `develop`. It also packages and publishes
 `NumeralSystems.Net`, `NumeralSystems.Net.Json`, and `dotnet-numeralsystems`
 when a GitHub Release is published. A second release job exports benchmarks
-and the static WebAssembly playground.
+and the static WebAssembly playground. The playground and its interactive
+documentation are also deployed automatically to GitHub Pages.
 
 ## One-time repository setup
 
@@ -34,6 +35,9 @@ There is no long-lived API key to create, store, or rotate.
    address.
 4. In **Settings > Environments**, review the automatically referenced
    `nuget-release` environment and add any desired deployment protection rules.
+5. In **Settings > Pages**, select **GitHub Actions** as the publishing source.
+   The first deployment creates or reuses the `github-pages` environment; add
+   a protection rule that allows the `master` branch if desired.
 
 The publish job requests `id-token: write` only for the OIDC exchange.
 `NuGet/login@v1` obtains a short-lived credential immediately before the push;
@@ -69,7 +73,8 @@ are rejected by the workflow.
 3. Update release notes and choose the next semantic version.
 4. Create a GitHub Release from the `master` commit with a valid tag.
 5. Publish the release.
-6. Wait for build, NuGet publication, and release-asset publication to finish.
+6. Wait for build, NuGet publication, release assets, and GitHub Pages
+   deployment to finish.
 7. Verify all three packages on NuGet.org, install the tool in a clean
    directory, and open the playground archive from a static HTTP server.
 
@@ -91,7 +96,15 @@ For a release, the workflow:
    three packages to `https://api.nuget.org/v3/index.json`;
 7. runs the short BenchmarkDotNet suite with GitHub Markdown and JSON exporters;
 8. publishes the standalone Blazor WebAssembly project;
-9. attaches benchmark and playground archives to the GitHub Release.
+9. attaches benchmark and playground archives to the GitHub Release;
+10. uploads `artifacts/pages/wwwroot` as the Pages artifact and deploys it to
+    the `github-pages` environment.
+
+Every successful push to `master` also deploys the current playground and live
+documentation, independently of creating a release. Release and manual recovery
+runs deploy the exact tag checked out by those jobs. The Pages job follows the
+official `configure-pages`, `upload-pages-artifact`, and `deploy-pages` flow and
+requests only `pages: write`, `id-token: write`, and read-only repository access.
 
 Benchmark execution always passes `--filter '*'`. Without an explicit filter,
 BenchmarkDotNet prompts for a benchmark class when the assembly contains more
@@ -111,7 +124,9 @@ The workflow supports a manual `workflow_dispatch` run for an existing release:
 The normal build-and-test job first checks out and verifies the requested tag.
 `Package and publish to NuGet.org` is skipped for a manual run, while
 `Publish benchmarks and playground` recreates both archives from that same tag
-and uploads them to the GitHub Release with `--clobber`.
+and uploads them to the GitHub Release with `--clobber`. The Pages job also
+redeploys the same tag, which makes a manual run useful for recovering either
+release assets or the public site.
 
 `--skip-duplicate` makes a repeated run harmless when the same package version
 already exists. NuGet packages are immutable, so code changes require a new
@@ -131,5 +146,9 @@ version rather than overwriting a published package.
   the commands in [Architecture](architecture.md) and
   [Tool and playground](tool-and-playground.md), then manually dispatch the
   workflow for the same release tag.
+- **Pages deployment failure:** confirm that **Settings > Pages > Source** is
+  set to GitHub Actions and that the `github-pages` environment permits the
+  source branch. The uploaded artifact must contain `wwwroot/index.html`,
+  `.nojekyll`, `docs/index.html`, and the `_framework` directory.
 - **Build or test failure:** fix the failure on `master`, then create a new tag
   and release from the corrected commit.

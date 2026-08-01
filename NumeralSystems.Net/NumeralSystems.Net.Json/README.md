@@ -1,6 +1,6 @@
 # NumeralSystems.Net.Json
 
-Explicit `System.Text.Json` integration for `NumeralSystems.Net` 5.2.
+Explicit `System.Text.Json` integration for `NumeralSystems.Net` 5.3.
 
 ```csharp
 using System.Text.Json;

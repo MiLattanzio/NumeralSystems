@@ -93,6 +93,15 @@ jobs:
           --no-restore
           --output artifacts/playground-validation
 
+      - name: Validate interactive documentation assets
+        working-directory: NumeralSystems.Net
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f artifacts/playground-validation/wwwroot/.nojekyll
+          test -f artifacts/playground-validation/wwwroot/docs/index.html
+          test -f artifacts/playground-validation/wwwroot/js/playground.js
+
   publish-nuget:
     name: Package and publish to NuGet.org
     if: github.event_name == 'release'
@@ -291,3 +300,57 @@ jobs:
           NumeralSystems.Net/artifacts/NumeralSystems.Net-benchmarks-*.tar.gz
           NumeralSystems.Net/artifacts/NumeralSystems.Net-playground-*.zip
           --clobber
+
+  deploy-pages:
+    name: Deploy playground and interactive docs to GitHub Pages
+    if: >-
+      (github.event_name == 'push' && github.ref == 'refs/heads/master') ||
+      github.event_name == 'release' ||
+      github.event_name == 'workflow_dispatch'
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Check out deployment source
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || github.event_name == 'workflow_dispatch' && inputs.release_tag || github.sha }}
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Restore playground dependencies
+        working-directory: NumeralSystems.Net
+        run: dotnet restore NumeralSystems.Net.Playground/NumeralSystems.Net.Playground.csproj
+
+      - name: Publish playground and interactive documentation
+        working-directory: NumeralSystems.Net
+        run: >-
+          dotnet publish NumeralSystems.Net.Playground/NumeralSystems.Net.Playground.csproj
+          --configuration Release
+          --no-restore
+          --output artifacts/pages
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: NumeralSystems.Net/artifacts/pages/wwwroot
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

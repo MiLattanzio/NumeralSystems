@@ -11,7 +11,7 @@ use `BigInteger`; enumeration is always given an explicit upper bound.
 
 #!csharp
 
-#r "nuget: NumeralSystems.Net, 5.2.0"
+#r "nuget: NumeralSystems.Net, 5.3.0"
 using NumeralSystems.Net.Type.Incomplete;
 
 var pattern = BitPattern.Parse("1100????");

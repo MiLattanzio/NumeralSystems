@@ -49,9 +49,9 @@ dotnet test --configuration Release --no-build
 Installazione da NuGet e uso del tool globale:
 
 ```bash
-dotnet add package NumeralSystems.Net --version 5.2.0
-dotnet add package NumeralSystems.Net.Json --version 5.2.0
-dotnet tool install --global dotnet-numeralsystems --version 5.2.0
+dotnet add package NumeralSystems.Net --version 5.3.0
+dotnet add package NumeralSystems.Net.Json --version 5.3.0
+dotnet tool install --global dotnet-numeralsystems --version 5.3.0
 
 numsys convert FF --from 16 --to 2
 numsys inspect "1100????" --type byte
@@ -169,12 +169,21 @@ ed è attivata esplicitamente con `options.AddNumeralSystems()`.
 composizione di vincoli AND, OR, XOR e NAND dalla shell. Il progetto
 `NumeralSystems.Net.Playground` è un'app Blazor WebAssembly senza backend con
 convertitore, grafico dei periodi, visualizzatore dei bit sconosciuti e solver
-con spiegazioni bit per bit:
+con spiegazioni bit per bit. La 5.3 aggiunge input da pipeline/file, output JSON
+e `--explain` alla CLI; il playground offre link condivisibili, copia risultati,
+download JSON ed esportazione SVG/CSV:
 
 ```bash
 dotnet run --project NumeralSystems.Net/NumeralSystems.Net.Playground
 dotnet run --project NumeralSystems.Net/NumeralSystems.Net.Examples -- all
+
+Get-Content values.txt | numsys convert --from 16 --to 2
+numsys --output json solve "x & 10101010 = 10001000" --explain
 ```
+
+Il [playground pubblico](https://milattanzio.github.io/NumeralSystems/) e gli
+[esempi interattivi](https://milattanzio.github.io/NumeralSystems/docs/) vengono
+distribuiti automaticamente su GitHub Pages dopo i test di `master`.
 
 ### Aritmetica tra basi diverse
 
@@ -272,6 +281,7 @@ La guida completa si trova in [`NumeralSystems.Net/docs`](NumeralSystems.Net/doc
 - [migrazione dalla 4.8.1 alla 5.0.0](NumeralSystems.Net/docs/migration-5.0.md);
 - [migrazione dalla 5.0.0 alla 5.1.0](NumeralSystems.Net/docs/migration-5.1.md);
 - [migrazione dalla 5.1.0 alla 5.2.0](NumeralSystems.Net/docs/migration-5.2.md);
+- [migrazione dalla 5.2.0 alla 5.3.0](NumeralSystems.Net/docs/migration-5.3.md);
 - [processo di release e pubblicazione NuGet](NumeralSystems.Net/docs/releasing.md).
 
 Tutta la documentazione è scritta in Markdown e viene versionata insieme al

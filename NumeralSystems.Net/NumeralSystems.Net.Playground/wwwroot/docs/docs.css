@@ -1,0 +1,40 @@
+:root {
+    color-scheme: dark;
+    font-family: "Segoe UI Variable", "Aptos", system-ui, sans-serif;
+    background: #111318;
+    color: #f4f2eb;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(circle at 75% 0%, #242033 0, transparent 35rem), #111318; }
+header, main, footer { width: min(1120px, calc(100% - 36px)); margin-inline: auto; }
+header { padding: 64px 0 34px; }
+.eyebrow { color: #91f2ce; text-transform: uppercase; letter-spacing: .16em; font-size: .72rem; font-weight: 800; }
+h1 { max-width: 800px; margin: 10px 0 18px; font-size: clamp(2.4rem, 7vw, 5rem); line-height: .95; letter-spacing: -.055em; }
+.lead { max-width: 760px; color: #a4a9b2; font-size: 1.06rem; line-height: 1.7; }
+.example-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; margin-bottom: 18px; }
+.example { min-height: 96px; padding: 14px; text-align: left; color: #f4f2eb; background: #191c22; border: 1px solid #343a45; cursor: pointer; }
+.example strong, .example span { display: block; }
+.example span { margin-top: 7px; color: #a4a9b2; font-size: .75rem; line-height: 1.4; }
+.example[aria-selected="true"] { border-color: #91f2ce; box-shadow: inset 0 -3px #91f2ce; }
+.live-shell { border: 1px solid #343a45; background: #15181e; }
+.live-heading { display: flex; justify-content: space-between; gap: 16px; padding: 13px 16px; border-bottom: 1px solid #343a45; color: #a4a9b2; font-size: .78rem; }
+.live-heading a, footer a { color: #91f2ce; }
+iframe { display: block; width: 100%; height: 730px; border: 0; background: #111318; }
+.notes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 28px 0; }
+.notes article { padding: 20px; border: 1px solid #343a45; background: #191c22; }
+.notes h2 { margin: 0 0 9px; font-size: 1rem; }
+.notes p { margin: 0; color: #a4a9b2; font-size: .86rem; line-height: 1.6; }
+code { color: #a99cff; }
+footer { display: flex; justify-content: space-between; gap: 20px; padding: 24px 0 40px; border-top: 1px solid #343a45; color: #a4a9b2; font-size: .78rem; }
+
+@media (max-width: 760px) {
+    header { padding-top: 42px; }
+    .example-grid, .notes { grid-template-columns: 1fr 1fr; }
+    iframe { height: 850px; }
+}
+
+@media (max-width: 520px) {
+    .example-grid, .notes { grid-template-columns: 1fr; }
+    footer { flex-direction: column; }
+}
